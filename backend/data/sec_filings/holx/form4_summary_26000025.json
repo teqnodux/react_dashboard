@@ -1,0 +1,31 @@
+{
+  "ticker": "HOLX",
+  "issuer": "HOLOGIC INC",
+  "filing_date": "03/02/26",
+  "insider_name": "Nanaz Mohtashami",
+  "insider_title": "Director",
+  "relationship": "Director",
+  "L1_headline": "+ HOLX \u2013 Nanaz Mohtashami acquired 3,190 restricted stock units. | 02/26/2026",
+  "L2_brief": "Director Nanaz Mohtashami acquired 3,190 restricted stock units (RSUs) in Hologic Inc on 02/26/2026. The RSUs vest on the date of the 2027 Annual Meeting of Stockholders and settle one-for-one into shares of common stock. Following the transaction, Mohtashami holds 7,371 shares of common stock directly.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "02/26/2026",
+        "shares": "3,190",
+        "price_per_share": "N/A",
+        "total_value": "N/A",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "7,371 shares of common stock (direct)",
+    "ownership_type": "Direct",
+    "deal_signal": "N/A",
+    "pattern_notes": "This is a grant of restricted stock units as part of director compensation, vesting at the 2027 Annual Meeting of Stockholders. No price was reported for the transaction, consistent with a compensation award rather than an open-market purchase. Prior to the grant, Mohtashami held approximately 4,181 shares directly.",
+    "risks_flagged": [
+      "No 10b5-1 plan indicated",
+      "Transaction is a director compensation RSU grant, not a discretionary open-market transaction"
+    ]
+  },
+  "filing_type": "FORM 4"
+}

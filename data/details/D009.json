@@ -1,0 +1,345 @@
+{
+  "deal_id": "D009",
+  "dma_sections": [
+    {
+      "name": "Presigning",
+      "clauses": [
+        {
+          "topic": "Confidentiality Agreement",
+          "concise": "Standard mutual NDA executed prior to diligence",
+          "fulsome": "The parties entered into a mutual confidentiality agreement dated August 15, 2025, governing the exchange of non-public information during the due diligence process. The agreement includes standard provisions for information handling, permitted disclosures, and return/destruction of materials.",
+          "clause_text": "WHEREAS, the parties have entered into that certain Confidentiality Agreement, dated as of August 15, 2025 (the \"Confidentiality Agreement\"), pursuant to which each party agreed to keep confidential certain information furnished to it by the other party...",
+          "references": [
+            "\u00a7 Recitals",
+            "Exhibit A"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Consideration",
+      "clauses": [
+        {
+          "topic": "Merger Consideration",
+          "concise": "$11.36 cash + 0.3803 PB shares per STEL share",
+          "fulsome": "Each share of Stellar common stock will be converted into the right to receive $11.36 in cash plus 0.3803 shares of Prosperity common stock. Based on PB's unaffected price, this represents a premium of approximately 26.7% to Stellar's unaffected trading price.",
+          "clause_text": "Subject to the terms and conditions of this Agreement, at the Effective Time, by virtue of the Merger and without any action on the part of Prosperity, Merger Sub, Stellar or the holders of any shares of Stellar Common Stock, each share of Stellar Common Stock issued and outstanding immediately prior to the Effective Time shall be converted into the right to receive (i) $11.36 in cash, without interest (the \"Cash Consideration\"), and (ii) 0.3803 shares of Prosperity Common Stock (the \"Stock Consideration\" and, together with the Cash Consideration, the \"Merger Consideration\").",
+          "references": [
+            "\u00a7 2.1(a)",
+            "\u00a7 2.1(c)"
+          ]
+        },
+        {
+          "topic": "19.9% Collar",
+          "concise": "Stock consideration adjusts if PB trades outside $78.50-$95.94 range",
+          "fulsome": "The exchange ratio is subject to a symmetric collar mechanism. If Prosperity's volume-weighted average price during the measurement period falls below $78.50, the exchange ratio increases to deliver $36.50 in stock value. If it exceeds $95.94, the ratio decreases. This protects Stellar shareholders from significant PB price movements while providing Prosperity shareholders some protection against overpaying.",
+          "clause_text": "Notwithstanding Section 2.1(a), if the Prosperity Average Price is less than $78.50 (the \"Minimum Price\"), then the Stock Consideration shall be equal to a number of shares of Prosperity Common Stock equal to (x) $36.50 divided by (y) the Prosperity Average Price. If the Prosperity Average Price is greater than $95.94 (the \"Maximum Price\"), then the Stock Consideration shall be equal to a number of shares of Prosperity Common Stock equal to (x) $36.50 divided by (y) the Maximum Price.",
+          "references": [
+            "\u00a7 2.1(b)"
+          ]
+        },
+        {
+          "topic": "Fractional Shares",
+          "concise": "Cash in lieu of fractional shares at PB closing price",
+          "fulsome": "No fractional shares of Prosperity common stock will be issued. Instead, each holder entitled to a fractional share will receive cash equal to such fraction multiplied by Prosperity's closing stock price on the last trading day before closing.",
+          "clause_text": "No fractional shares of Prosperity Common Stock shall be issued in the Merger. Each holder of Stellar Common Stock who would otherwise be entitled to receive a fraction of a share of Prosperity Common Stock shall receive, in lieu thereof, cash (without interest) in an amount equal to such fraction multiplied by the closing price of Prosperity Common Stock on the NYSE on the last trading day immediately preceding the Closing Date.",
+          "references": [
+            "\u00a7 2.1(e)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Regulatory",
+      "clauses": [
+        {
+          "topic": "Outside Date",
+          "concise": "Jan 27, 2027; auto-extends to Apr 27, 2027 if regulatory pending",
+          "fulsome": "The agreement may be terminated if closing has not occurred by January 27, 2027 (the \"Outside Date\"). However, if all conditions except regulatory approvals have been satisfied or waived, and regulatory approvals remain pending, the Outside Date automatically extends to April 27, 2027. Either party may terminate after the Outside Date if not in material breach.",
+          "clause_text": "This Agreement may be terminated at any time prior to the Effective Time: by either Prosperity or Stellar if the Merger shall not have been consummated on or before January 27, 2027 (the \"Outside Date\"); provided, however, that if as of January 27, 2027, all of the conditions to Closing set forth in Article VII have been satisfied or waived (other than conditions that by their nature are to be satisfied at the Closing, but subject to the satisfaction or waiver of such conditions), other than the conditions set forth in Section 7.1(b) or Section 7.1(c), then the Outside Date shall automatically be extended to April 27, 2027.",
+          "references": [
+            "\u00a7 8.1(b)"
+          ]
+        },
+        {
+          "topic": "Hell-or-High-Water",
+          "concise": "No hell-or-high-water; efforts limited to non-material divestitures",
+          "fulsome": "Prosperity's regulatory efforts obligation does not include a \"hell-or-high-water\" commitment. Prosperity is not required to agree to any divestiture, license, or hold-separate arrangement that would reasonably be expected to have a material adverse effect on the combined company.",
+          "clause_text": "Notwithstanding anything to the contrary in this Agreement, neither Prosperity nor any of its Subsidiaries shall be required to (and Stellar shall not, without the prior written consent of Prosperity, commit to) divest, hold separate, license, or otherwise dispose of any assets, properties, products, rights, services, or businesses of Prosperity, Stellar, or any of their respective Subsidiaries if such action would reasonably be expected to have a Material Adverse Effect on Prosperity and its Subsidiaries, taken as a whole (assuming the Merger had been consummated).",
+          "references": [
+            "\u00a7 6.4(b)"
+          ]
+        },
+        {
+          "topic": "Required Regulatory Approvals",
+          "concise": "FRB, FDIC, Texas Department of Banking approval required",
+          "fulsome": "The merger requires approval from the Federal Reserve Board under the Bank Holding Company Act, the FDIC for the bank merger, and the Texas Department of Banking for state-chartered bank matters. HSR clearance was obtained with early termination granted.",
+          "clause_text": "The obligation of each party to consummate the Merger is subject to the satisfaction or waiver of the following conditions: (b) all required approvals of the Federal Reserve Board, the FDIC, and the Texas Department of Banking shall have been obtained and shall remain in full force and effect, and all statutory waiting periods shall have expired.",
+          "references": [
+            "\u00a7 7.1(b)",
+            "\u00a7 7.1(c)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Covenants",
+      "clauses": [
+        {
+          "topic": "Interim Operating Covenants",
+          "concise": "Ordinary course operations; standard exceptions with consent",
+          "fulsome": "Stellar agrees to conduct business in ordinary course consistent with past practice and to preserve relationships with customers, employees, and regulators. Material actions outside ordinary course require Prosperity's consent.",
+          "clause_text": "During the period from the date of this Agreement until the Effective Time, except as set forth in Section 5.1 of the Stellar Disclosure Schedule, as required by applicable Law or the regulations or requirements of any Governmental Entity, or as otherwise expressly contemplated by this Agreement, Stellar shall, and shall cause each of its Subsidiaries to: (a) conduct its business in the ordinary course consistent with past practice; and (b) use commercially reasonable efforts to preserve intact its business organization and relationships with customers, suppliers, licensors, licensees, distributors and others having business relationships with it.",
+          "references": [
+            "\u00a7 5.1"
+          ]
+        },
+        {
+          "topic": "No Shop",
+          "concise": "Standard no-shop with fiduciary out for unsolicited superior proposals",
+          "fulsome": "Stellar agrees not to solicit, initiate, or knowingly encourage competing acquisition proposals. However, prior to shareholder approval, the board may respond to unsolicited bona fide proposals that constitute or could reasonably be expected to lead to a superior proposal.",
+          "clause_text": "Stellar agrees that it shall not, and shall cause its Subsidiaries and its and their officers, directors, employees, agents and representatives not to, directly or indirectly: (i) solicit, initiate or knowingly encourage or knowingly facilitate any inquiry or proposal that constitutes, or could reasonably be expected to lead to, an Acquisition Proposal...",
+          "references": [
+            "\u00a7 5.4(a)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Termination",
+      "clauses": [
+        {
+          "topic": "Company Termination Fee",
+          "concise": "$78M fee if Stellar terminates for superior proposal",
+          "fulsome": "If Stellar terminates the agreement to accept a superior proposal, or if Prosperity terminates due to a change in Stellar board recommendation following a competing proposal, Stellar must pay a termination fee of $78 million (approximately 3.25% of equity value).",
+          "clause_text": "In the event that this Agreement is terminated by Stellar pursuant to Section 8.1(f) [Superior Proposal] or by Prosperity pursuant to Section 8.1(e) [Change in Recommendation], Stellar shall pay to Prosperity, by wire transfer of immediately available funds, a fee equal to $78,000,000 (the \"Company Termination Fee\").",
+          "references": [
+            "\u00a7 8.2(b)"
+          ]
+        },
+        {
+          "topic": "Reverse Termination Fee",
+          "concise": "$78M fee if Prosperity fails to close due to regulatory issues",
+          "fulsome": "If the agreement terminates because required regulatory approvals are not obtained by the Outside Date (as extended), and all other conditions have been satisfied, Prosperity must pay Stellar a reverse termination fee of $78 million.",
+          "clause_text": "In the event that this Agreement is terminated pursuant to Section 8.1(b) [Outside Date] or Section 8.1(c) [Regulatory Denial] and at the time of such termination all of the conditions set forth in Section 7.1 and Section 7.2 have been satisfied (other than those conditions that by their nature are to be satisfied at the Closing), Prosperity shall pay to Stellar, by wire transfer of immediately available funds, a fee equal to $78,000,000 (the \"Reverse Termination Fee\").",
+          "references": [
+            "\u00a7 8.2(c)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MAE Definition",
+      "clauses": [
+        {
+          "topic": "MAE Carveouts",
+          "concise": "Standard carveouts: macro, industry, law changes, pandemic, war",
+          "fulsome": "The Material Adverse Effect definition excludes changes affecting the banking industry generally, general economic or market conditions, changes in GAAP or law, natural disasters, pandemics, acts of war or terrorism, and the announcement or pendency of the merger itself.",
+          "clause_text": "\"Material Adverse Effect\" means any effect, change, event, circumstance, condition, occurrence or development that has had, or would reasonably be expected to have, individually or in the aggregate, a material adverse effect on the business, financial condition or results of operations of Stellar and its Subsidiaries, taken as a whole; provided, however, that none of the following shall be deemed to constitute, and none of the following shall be taken into account in determining whether there has been, a Material Adverse Effect: (i) changes in GAAP or regulatory accounting requirements; (ii) changes in laws, rules or regulations of general applicability...",
+          "references": [
+            "\u00a7 1.1 (definition)",
+            "\u00a7 3.1(a)"
+          ]
+        }
+      ]
+    }
+  ],
+  "timeline_events": [
+    {
+      "event_date": "2025-11-04",
+      "event_type": "milestone",
+      "title": "Deal Announced",
+      "description": "Prosperity Bancshares announces definitive agreement to acquire Stellar Bancorp in $2.4B deal",
+      "status": "completed"
+    },
+    {
+      "event_date": "2025-11-15",
+      "event_type": "regulatory",
+      "title": "HSR Filing",
+      "description": "Hart-Scott-Rodino premerger notification filed with FTC/DOJ",
+      "status": "completed"
+    },
+    {
+      "event_date": "2025-11-30",
+      "event_type": "regulatory",
+      "title": "HSR Early Termination",
+      "description": "HSR waiting period terminated early - no second request",
+      "status": "completed"
+    },
+    {
+      "event_date": "2025-12-01",
+      "event_type": "regulatory",
+      "title": "FRB Application Filed",
+      "description": "Federal Reserve Board application submitted for bank holding company approval",
+      "status": "completed"
+    },
+    {
+      "event_date": "2025-12-05",
+      "event_type": "regulatory",
+      "title": "FDIC Application Filed",
+      "description": "FDIC merger application submitted for bank merger approval",
+      "status": "completed"
+    },
+    {
+      "event_date": "2025-12-10",
+      "event_type": "regulatory",
+      "title": "TDB Application Filed",
+      "description": "Texas Department of Banking application submitted",
+      "status": "completed"
+    },
+    {
+      "event_date": "2026-01-10",
+      "event_type": "filing",
+      "title": "S-4 Filed",
+      "description": "Registration statement and joint proxy filed with SEC",
+      "status": "completed"
+    },
+    {
+      "event_date": "2026-01-25",
+      "event_type": "filing",
+      "title": "SEC Comments Received",
+      "description": "Initial SEC comment letter received on S-4",
+      "status": "completed"
+    },
+    {
+      "event_date": "2026-02-05",
+      "event_type": "filing",
+      "title": "S-4 Amendment Filed",
+      "description": "Amended S-4 filed responding to SEC comments",
+      "status": "pending"
+    },
+    {
+      "event_date": "2026-02-15",
+      "event_type": "regulatory",
+      "title": "FRB Approval Expected",
+      "description": "Anticipated Federal Reserve Board approval decision",
+      "status": "pending"
+    },
+    {
+      "event_date": "2026-02-25",
+      "event_type": "regulatory",
+      "title": "FDIC Approval Expected",
+      "description": "Anticipated FDIC approval decision",
+      "status": "pending"
+    },
+    {
+      "event_date": "2026-03-01",
+      "event_type": "regulatory",
+      "title": "TDB Approval Expected",
+      "description": "Anticipated Texas Department of Banking approval",
+      "status": "pending"
+    },
+    {
+      "event_date": "2026-04-01",
+      "event_type": "shareholder",
+      "title": "Shareholder Votes",
+      "description": "Special meetings for both Prosperity and Stellar shareholders",
+      "status": "pending"
+    },
+    {
+      "event_date": "2026-04-15",
+      "event_type": "milestone",
+      "title": "Expected Close",
+      "description": "Anticipated transaction closing and merger effective date",
+      "status": "pending"
+    }
+  ],
+  "regulatory_events": [
+    {
+      "agency": "DOJ/FTC",
+      "event": "HSR Filed",
+      "event_date": "2025-11-15",
+      "status": "completed",
+      "notes": "Initial 30-day waiting period"
+    },
+    {
+      "agency": "DOJ/FTC",
+      "event": "HSR Early Termination",
+      "event_date": "2025-11-30",
+      "status": "completed",
+      "notes": "Cleared without second request"
+    },
+    {
+      "agency": "FRB",
+      "event": "Application Filed",
+      "event_date": "2025-12-01",
+      "status": "pending",
+      "notes": "Bank Holding Company Act approval"
+    },
+    {
+      "agency": "FRB",
+      "event": "Comment Period Closes",
+      "event_date": "2026-01-15",
+      "status": "completed",
+      "notes": "No significant adverse comments"
+    },
+    {
+      "agency": "FRB",
+      "event": "Approval Expected",
+      "event_date": "2026-02-15",
+      "status": "pending",
+      "notes": "60-90 day typical review period"
+    },
+    {
+      "agency": "FDIC",
+      "event": "Application Filed",
+      "event_date": "2025-12-05",
+      "status": "pending",
+      "notes": "Bank Merger Act approval"
+    },
+    {
+      "agency": "FDIC",
+      "event": "Approval Expected",
+      "event_date": "2026-02-25",
+      "status": "pending",
+      "notes": "Usually concurrent with FRB"
+    },
+    {
+      "agency": "TDB",
+      "event": "Application Filed",
+      "event_date": "2025-12-10",
+      "status": "pending",
+      "notes": "Texas Department of Banking"
+    },
+    {
+      "agency": "TDB",
+      "event": "Approval Expected",
+      "event_date": "2026-03-01",
+      "status": "pending",
+      "notes": "State-level bank charter approval"
+    }
+  ],
+  "proxy_filings": [
+    {
+      "filing_type": "S-4",
+      "filed_date": "2025-12-20",
+      "description": "Registration Statement on Form S-4",
+      "sec_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=stellar+bancorp",
+      "is_amendment": false,
+      "amendment_number": 0,
+      "shareholder_dates": "Record date is January 16, 2026. Special meeting scheduled for March 15, 2026 at 10:00 a.m. Central Time. Both Stellar and Prosperity shareholders will vote on the merger.",
+      "consideration_details": "Mixed consideration: $11.36 cash + 0.3803 PB shares per STEL share. 19.9% issuance cap with cash adjustment if exceeded. No averaging periods. Fractional shares paid in cash at PB closing price.",
+      "regulatory_updates": "HSR early termination granted November 30, 2025. FRB, FDIC, and TDB applications filed December 2025. Approvals expected Q1 2026. No second requests or extended reviews anticipated.",
+      "closing_guidance": "Expected closing in Q2 2026, subject to regulatory approvals and shareholder votes. Outside date is January 27, 2027 with automatic extension to April 27, 2027 if only regulatory conditions remain.",
+      "background_summary": "Prosperity approached Stellar in September 2025. Exclusive negotiations began October 2025 after preliminary due diligence. Board approved deal November 19, 2025 following fairness opinion from financial advisor."
+    },
+    {
+      "filing_type": "S-4/A",
+      "filed_date": "2026-01-15",
+      "description": "Amendment No. 1 to Form S-4",
+      "sec_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=stellar+bancorp",
+      "is_amendment": true,
+      "amendment_number": 1,
+      "changes_summary": "Updated financial projections for both companies. Added Q3 2025 results. Revised risk factors related to interest rate environment. Extended outside date disclosure."
+    },
+    {
+      "filing_type": "S-4/A",
+      "filed_date": "2026-01-28",
+      "description": "Amendment No. 2 to Form S-4",
+      "sec_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=stellar+bancorp",
+      "is_amendment": true,
+      "amendment_number": 2,
+      "changes_summary": "SEC comment letter responses. Updated share count calculations. Minor disclosure corrections."
+    }
+  ]
+}

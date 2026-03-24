@@ -1,0 +1,1038 @@
+{
+  "company": "pen",
+  "total_filings": 22,
+  "successful": 22,
+  "failed": 0,
+  "results": [
+    {
+      "index": 22,
+      "date": "02/18/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1781561/000178156126000002/xslF345X05/wk-form4_1771463043.xml",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "issuer": "Penumbra Inc",
+        "filing_date": "02/18/26",
+        "insider_name": "Surbhi Sarna",
+        "insider_title": "Director",
+        "relationship": "Director",
+        "L1_headline": "+ PEN \u2013 Surbhi Sarna acquired 589 RSU shares. | 02/13/2026",
+        "L2_brief": "Penumbra Inc director Surbhi Sarna acquired 589 shares of common stock on 02/13/2026 at $0 per share via a restricted stock unit (RSU) grant. The RSUs vest quarterly through 12/31/2026, with accelerated full vesting upon closing of the pending merger with Boston Scientific Corporation. Post-transaction holdings total 4,293 shares (direct), a portion of which remain subject to vesting.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "02/13/2026",
+              "shares": "589",
+              "price_per_share": "$0",
+              "total_value": "$0",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "4,293 shares (a portion subject to vesting)",
+          "ownership_type": "Direct",
+          "deal_signal": "The filing references a pending merger: per the Agreement and Plan of Merger dated January 14, 2026, among Penumbra Inc, Boston Scientific Corporation, and Pinehurst Merger Sub, Inc., any unvested RSUs will fully vest upon the closing of the merger, subject to continued service as director through the closing date. The RSU grant itself is a standard director compensation award with merger-related acceleration provisions.",
+          "pattern_notes": "This is a scheduled RSU grant to a director, vesting quarterly (1/4 on each of 03/31/2026, 06/30/2026, 09/30/2026, and 12/31/2026). The grant includes an acceleration clause tied to the pending Boston Scientific merger closing. No open-market purchase activity is indicated.",
+          "risks_flagged": [
+            "No 10b5-1 plan noted; transaction is an RSU award at $0 price, not a discretionary open-market trade",
+            "A portion of the 4,293 post-transaction shares remains subject to vesting conditions",
+            "RSU vesting acceleration is contingent on pending merger closing with Boston Scientific"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_1561_26000002.json"
+    },
+    {
+      "index": 21,
+      "date": "02/18/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1765394/000176539426000002/xslF345X05/wk-form4_1771463069.xml",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "issuer": "Penumbra Inc",
+        "filing_date": "02/18/26",
+        "insider_name": "Janet Leeds",
+        "insider_title": "Director",
+        "relationship": "Director",
+        "L1_headline": "+ PEN \u2013 Janet Leeds acquired 589 RSU shares. | 02/13/2026",
+        "L2_brief": "Director Janet Leeds acquired 589 shares of Penumbra common stock on 02/13/2026 at $0 per share via a restricted stock unit (RSU) award. The RSUs vest quarterly through 12/31/2026, with accelerated full vesting upon closing of the pending merger with Boston Scientific. Following the transaction, Leeds holds 6,639 shares directly, a portion of which remain subject to vesting.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "02/13/2026",
+              "shares": "589",
+              "price_per_share": "$0",
+              "total_value": "$0",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "6,639 shares (a portion subject to vesting)",
+          "ownership_type": "Direct",
+          "deal_signal": "Penumbra is subject to a pending Agreement and Plan of Merger dated January 14, 2026, with Boston Scientific Corporation and Pinehurst Merger Sub, Inc. Per the filing, the RSUs contain an acceleration provision: any unvested RSUs will fully vest upon the closing of the merger, subject to Leeds' continued service as director through that date. No discretionary purchase or sale activity is present in this filing.",
+          "pattern_notes": "This is a routine RSU grant to a director with quarterly vesting (1/4 on each of 03/31/2026, 06/30/2026, 09/30/2026, and 12/31/2026). The grant includes a merger-related acceleration clause tied to the Boston Scientific acquisition. No open-market buying or selling activity is reflected.",
+          "risks_flagged": [
+            "No 10b5-1 plan noted; transaction is a compensatory RSU award at $0 cost",
+            "RSUs contain merger-closing acceleration provision \u2014 all unvested RSUs vest upon deal close",
+            "A portion of total holdings (6,639 shares) remains subject to vesting conditions"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_5394_26000002.json"
+    },
+    {
+      "index": 20,
+      "date": "02/18/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1491299/000149129926000004/xslF345X05/wk-form4_1771463016.xml",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "issuer": "Penumbra Inc",
+        "filing_date": "02/18/26",
+        "insider_name": "Thomas Wilder",
+        "insider_title": "Director",
+        "relationship": "Director",
+        "L1_headline": "+ PEN \u2013 Thomas Wilder acquired 589 RSU shares. | 02/13/2026",
+        "L2_brief": "Director Thomas Wilder acquired 589 shares of Penumbra common stock on 02/13/2026 via a restricted stock unit (RSU) award at $0 per share. The RSUs vest quarterly through 12/31/2026, with full accelerated vesting upon the closing of the pending merger with Boston Scientific Corporation. Following the transaction, Wilder holds 589 shares directly (a portion subject to vesting) and 4,506 shares indirectly through a family trust.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "02/13/2026",
+              "shares": "589",
+              "price_per_share": "$0",
+              "total_value": "$0",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "589 shares (Direct, a portion subject to vesting) + 4,506 shares (Indirect, via Thomas and Catharine Wilder Family Trust dated March 31, 2006) = 5,095 total shares beneficially owned",
+          "ownership_type": "Direct and Indirect (through Thomas and Catharine Wilder Family Trust dated March 31, 2006)",
+          "deal_signal": "Penumbra Inc is subject to a pending merger with Boston Scientific Corporation pursuant to an Agreement and Plan of Merger dated January 14, 2026, involving merger sub Pinehurst Merger Sub, Inc. The RSU award contains an acceleration provision whereby any unvested RSUs will fully vest upon the closing of the merger, subject to continued service as director through the closing date. The standard quarterly vesting schedule runs through 12/31/2026.",
+          "pattern_notes": "This is a director RSU grant at no cost, consistent with routine director equity compensation. The 589-share direct holding represents a relatively small position compared to the 4,506 shares held indirectly through the family trust. The RSU grant was made approximately one month after the merger agreement was announced (01/14/2026).",
+          "risks_flagged": [
+            "No 10b5-1 plan noted for this transaction",
+            "RSU vesting accelerates upon merger closing, creating alignment between director compensation and deal completion",
+            "A portion of the 589 directly held shares remains subject to vesting conditions"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_1299_26000004.json"
+    },
+    {
+      "index": 19,
+      "date": "02/18/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1796068/000179606826000002/xslF345X05/wk-form4_1771462951.xml",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "issuer": "Penumbra Inc",
+        "filing_date": "02/18/26",
+        "insider_name": "Lambert Shiu",
+        "insider_title": "Chief Accounting Officer",
+        "relationship": "Officer",
+        "L1_headline": "+ PEN \u2013 Lambert Shiu acquired RSUs and disposed of shares for tax withholding. | 02/18/26",
+        "L2_brief": "Lambert Shiu, Chief Accounting Officer of Penumbra Inc, received two RSU grants of 2,300 shares each on 02/13/2026 and 02/17/2026 at $0 cost, and had 412 shares withheld at $339.30 on 02/15/2026 to cover tax obligations on vesting RSUs. Both RSU grants contain provisions for full accelerated vesting upon closing of the pending merger with Boston Scientific Corporation under the Agreement and Plan of Merger dated January 14, 2026. Post-transaction direct holdings total 39,473 shares (a portion subject to vesting), plus 300 shares held indirectly through spouse's IRA.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "02/13/2026",
+              "shares": "2,300",
+              "price_per_share": "$0",
+              "total_value": "$0",
+              "acquired_or_disposed": "Acquired (A)"
+            },
+            {
+              "type": "Sale",
+              "date": "02/15/2026",
+              "shares": "412",
+              "price_per_share": "$339.30",
+              "total_value": "$139,791.60",
+              "acquired_or_disposed": "Disposed (D)"
+            },
+            {
+              "type": "Other",
+              "date": "02/17/2026",
+              "shares": "2,300",
+              "price_per_share": "$0",
+              "total_value": "$0",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "39,473 shares (Direct, a portion subject to vesting) + 300 shares (Indirect, held by spouse's IRA) = 39,773 total beneficial ownership",
+          "ownership_type": "Direct and Indirect (300 shares through Spouse's IRA)",
+          "deal_signal": "Penumbra Inc is subject to a pending Agreement and Plan of Merger dated January 14, 2026, with Boston Scientific Corporation and Pinehurst Merger Sub, Inc. Both RSU grants (02/13/2026 and 02/17/2026) explicitly provide that all unvested RSUs will fully vest upon the Closing of the merger, subject to continued service through such date. The company continued issuing equity compensation with merger-accelerated vesting provisions.",
+          "pattern_notes": "Two RSU grants were issued within four days (02/13 and 02/17/2026), each for 2,300 shares, both with identical merger-acceleration vesting clauses. The 412-share disposition on 02/15/2026 was a mandatory tax withholding event triggered by RSU vesting, not a discretionary sale. The filing was executed by Johanna Roberts as attorney-in-fact for Lambert Shiu.",
+          "risks_flagged": [
+            "No 10b5-1 plan box was checked on this filing",
+            "The 412-share disposition was a non-discretionary tax withholding event (Transaction Code F), not a voluntary sale",
+            "A portion of the 39,473 directly held shares remains subject to vesting conditions"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_6068_26000002.json"
+    },
+    {
+      "index": 18,
+      "date": "02/18/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1375889/000137588926000004/xslF345X05/wk-form4_1771463100.xml",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "issuer": "Penumbra Inc",
+        "filing_date": "02/18/26",
+        "insider_name": "Harpreet Grewal",
+        "insider_title": "Director",
+        "relationship": "Director",
+        "L1_headline": "+ PEN \u2013 Harpreet Grewal acquired 589 RSU shares. | 02/13/2026",
+        "L2_brief": "Director Harpreet Grewal acquired 589 shares of Penumbra Inc common stock on 02/13/2026 at $0 per share via a restricted stock unit (RSU) grant. The RSUs vest quarterly through 12/31/2026 but will fully accelerate upon the closing of Penumbra's pending merger with Boston Scientific Corporation. Post-transaction holdings are 8,819 shares (direct), a portion of which remain subject to vesting.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "02/13/2026",
+              "shares": "589",
+              "price_per_share": "$0",
+              "total_value": "$0",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "8,819 shares (a portion subject to vesting)",
+          "ownership_type": "Direct",
+          "deal_signal": "Penumbra Inc is subject to a pending Agreement and Plan of Merger dated 01/14/2026 with Boston Scientific Corporation and Pinehurst Merger Sub, Inc. Per the filing, the RSUs contain a merger acceleration provision: any unvested RSUs will fully vest upon the Closing of the merger, subject to continued service as director through that date. This is a standard equity acceleration clause in the merger agreement; no discretionary trading activity is present in this filing.",
+          "pattern_notes": "This is a routine annual/periodic RSU grant to a director with quarterly vesting (1/4 on each of 03/31/2026, 06/30/2026, 09/30/2026, and 12/31/2026). No open-market purchases or sales were reported. The grant represents approximately 6.7% of post-transaction holdings.",
+          "risks_flagged": [
+            "No 10b5-1 plan noted; transaction is an RSU grant, not an open-market trade",
+            "Merger acceleration clause: unvested RSUs fully vest upon closing of Boston Scientific merger",
+            "A portion of total holdings (8,819 shares) remains subject to vesting conditions"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_5889_26000004.json"
+    },
+    {
+      "index": 17,
+      "date": "02/18/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1796057/000179605726000002/xslF345X05/wk-form4_1771462991.xml",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "issuer": "Penumbra Inc",
+        "filing_date": "02/18/26",
+        "insider_name": "Maggie Yuen",
+        "insider_title": "Chief Financial Officer",
+        "relationship": "Officer",
+        "L1_headline": "+ PEN \u2013 Maggie Yuen received RSU grants and disposed of shares for tax withholding. | 02/18/26",
+        "L2_brief": "Penumbra CFO Maggie Yuen received two RSU grants of 2,630 shares each on 02/13/2026 and 02/17/2026 at $0 cost, and disposed of 481 shares on 02/15/2026 at $339.30/share via tax withholding on vesting RSUs. Both RSU grants contain accelerated vesting provisions tied to the closing of the pending merger with Boston Scientific Corporation under an Agreement and Plan of Merger dated January 14, 2026.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "02/13/2026",
+              "shares": "2,630",
+              "price_per_share": "$0",
+              "total_value": "$0",
+              "acquired_or_disposed": "Acquired (A)"
+            },
+            {
+              "type": "Sale",
+              "date": "02/15/2026",
+              "shares": "481",
+              "price_per_share": "$339.30",
+              "total_value": "$163,203.30",
+              "acquired_or_disposed": "Disposed (D)"
+            },
+            {
+              "type": "Other",
+              "date": "02/17/2026",
+              "shares": "2,630",
+              "price_per_share": "$0",
+              "total_value": "$0",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "20,785 shares (a portion subject to vesting)",
+          "ownership_type": "Direct",
+          "deal_signal": "The filing references a pending Agreement and Plan of Merger dated January 14, 2026, among Penumbra Inc, Boston Scientific Corporation, and Pinehurst Merger Sub, Inc. Both RSU grants (02/13/2026 and 02/17/2026) contain provisions stating that all unvested RSUs will fully vest upon the Closing of the merger, subject to continued service through such date. The RSU grants are standard equity compensation awards made under the existing equity incentive plan. The disposal of 481 shares was a mandatory tax withholding event tied to RSU vesting, not a discretionary sale.",
+          "pattern_notes": "The two RSU grants of identical size (2,630 shares each) were awarded within four days of each other. The 481-share disposition on 02/15/2026 was a non-discretionary tax withholding event coinciding with the vesting of the first 1/4 tranche of the 02/13/2026 RSU grant. No open-market purchases or discretionary sales were reported. The issuer continues to grant equity compensation to its CFO despite the pending merger, with merger-related accelerated vesting provisions included.",
+          "risks_flagged": [
+            "No 10b5-1 plan noted; the 02/15/2026 disposition was a mandatory tax withholding event (Code F), not a discretionary sale",
+            "A portion of post-transaction holdings (20,785 shares) remains subject to vesting conditions",
+            "Accelerated vesting of all unvested RSUs is contingent on merger closing, creating significant economic interest in deal completion"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_6057_26000002.json"
+    },
+    {
+      "index": 16,
+      "date": "02/18/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1651318/000165131826000002/xslF345X05/wk-form4_1771463094.xml",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "issuer": "Penumbra Inc",
+        "filing_date": "02/18/26",
+        "insider_name": "Arani Bose",
+        "insider_title": "Director",
+        "relationship": "Director",
+        "L1_headline": "+ PEN \u2013 Arani Bose acquired 589 RSU shares. | 02/13/2026",
+        "L2_brief": "Director Arani Bose acquired 589 shares of Penumbra Inc common stock on 02/13/2026 at $0 per share via a restricted stock unit award. The RSUs vest quarterly through 12/31/2026, with full accelerated vesting upon the closing of the pending merger with Boston Scientific Corporation pursuant to the Agreement and Plan of Merger dated 01/14/2026. Post-transaction direct holdings are 1,147 shares, with an additional 258,462 shares held indirectly through Bose Family Holdings II, LLC.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "02/13/2026",
+              "shares": "589",
+              "price_per_share": "$0",
+              "total_value": "$0",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "1,147 shares (Direct, a portion subject to vesting) + 258,462 shares (Indirect, through Bose Family Holdings II, LLC)",
+          "ownership_type": "Direct and Indirect (through Bose Family Holdings II, LLC)",
+          "deal_signal": "Penumbra Inc is subject to a pending Agreement and Plan of Merger dated 01/14/2026 with Boston Scientific Corporation and Pinehurst Merger Sub, Inc. The RSU grant includes a provision for full accelerated vesting upon closing of the merger, contingent on Dr. Bose's continued service as director through the closing date. The transaction is an RSU award at $0 and does not constitute an open-market purchase or sale.",
+          "pattern_notes": "This is a standard director RSU grant with quarterly vesting (1/4 on each of 03/31/2026, 06/30/2026, 09/30/2026, and 12/31/2026). The grant includes merger-related acceleration provisions. No open-market buying or selling activity is present in this filing.",
+          "risks_flagged": [
+            "No 10b5-1 plan noted for this transaction",
+            "RSU award at $0 \u2014 not a discretionary open-market transaction",
+            "Direct holdings of 1,147 shares are small relative to 258,462 indirect shares held through LLC"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_1318_26000002.json"
+    },
+    {
+      "index": 15,
+      "date": "02/18/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1704713/000170471326000002/xslF345X05/wk-form4_1771463049.xml",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "issuer": "Penumbra Inc",
+        "filing_date": "02/18/26",
+        "insider_name": "Bridget O'Rourke",
+        "insider_title": "Director",
+        "relationship": "Director",
+        "L1_headline": "+ PEN \u2013 Bridget O'Rourke acquired 589 RSU shares. | 02/13/2026",
+        "L2_brief": "Director Bridget O'Rourke acquired 589 shares of Penumbra Inc common stock on 02/13/2026 at $0 per share via a restricted stock unit (RSU) grant. Following the transaction, she holds 5,962 shares directly, a portion of which remain subject to vesting. The RSU award contains an accelerated vesting provision tied to the closing of the pending merger with Boston Scientific Corporation.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "02/13/2026",
+              "shares": "589",
+              "price_per_share": "$0",
+              "total_value": "$0",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "5,962 shares (a portion subject to vesting)",
+          "ownership_type": "Direct",
+          "deal_signal": "Penumbra Inc is subject to a pending Agreement and Plan of Merger dated January 14, 2026, with Boston Scientific Corporation and Pinehurst Merger Sub, Inc. The RSU grant includes a provision that any unvested RSUs will fully vest upon the closing of the merger, subject to continued service as director through that date. The standard vesting schedule is 1/4 on each of March 31, June 30, September 30, and December 31, 2026.",
+          "pattern_notes": "This is an RSU grant to a director at $0, not an open-market purchase. The grant was made approximately one month after the merger agreement was announced on January 14, 2026. A portion of the insider's total holdings of 5,962 shares remain subject to vesting.",
+          "risks_flagged": [
+            "No 10b5-1 plan indicated for this transaction",
+            "RSU grant includes merger-related accelerated vesting provision, meaning unvested equity converts upon deal close"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_4713_26000002.json"
+    },
+    {
+      "index": 14,
+      "date": "02/18/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1751980/000175198026000002/xslF345X05/wk-form4_1771463008.xml",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "issuer": "Penumbra Inc",
+        "filing_date": "02/18/26",
+        "insider_name": "Johanna Roberts",
+        "insider_title": "EVP, Gen. Counsel & Secretary",
+        "relationship": "Officer",
+        "L1_headline": "+ PEN \u2013 Johanna Roberts acquired RSUs and disposed of shares for tax withholding. | 02/18/26",
+        "L2_brief": "Johanna Roberts, EVP, General Counsel & Secretary of Penumbra Inc, received two RSU grants of 2,630 shares each on 02/13/2026 and 02/17/2026 at $0, and had 482 shares withheld at $339.30 on 02/15/2026 to cover tax obligations upon partial RSU vesting. Both RSU grants include provisions for full accelerated vesting upon closing of the pending merger with Boston Scientific Corporation under the Agreement and Plan of Merger dated January 14, 2026.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "02/13/2026",
+              "shares": "2,630",
+              "price_per_share": "$0",
+              "total_value": "$0",
+              "acquired_or_disposed": "Acquired (A)"
+            },
+            {
+              "type": "Sale",
+              "date": "02/15/2026",
+              "shares": "482",
+              "price_per_share": "$339.30",
+              "total_value": "$163,542.60",
+              "acquired_or_disposed": "Disposed (D)"
+            },
+            {
+              "type": "Other",
+              "date": "02/17/2026",
+              "shares": "2,630",
+              "price_per_share": "$0",
+              "total_value": "$0",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "67,484 shares (a portion subject to vesting)",
+          "ownership_type": "Direct",
+          "deal_signal": "Penumbra Inc has a pending Agreement and Plan of Merger with Boston Scientific Corporation (dated January 14, 2026). Both RSU grants explicitly state that unvested RSUs will fully vest upon the closing of the merger, subject to continued service through the closing date. The 02/15/2026 disposition of 482 shares was a mandatory tax withholding event related to RSU vesting, not a discretionary sale.",
+          "pattern_notes": "Two RSU grants were issued within four days of each other (02/13 and 02/17/2026), both for the identical amount of 2,630 shares, both containing merger-related accelerated vesting provisions. The 482-share disposition on 02/15/2026 was solely for tax withholding upon vesting of a portion of the first RSU grant, representing less than 1% of total holdings.",
+          "risks_flagged": [
+            "No 10b5-1 plan noted; the 02/15/2026 share disposition was a mandatory tax withholding event (transaction code F), not a discretionary sale",
+            "A portion of the reported 67,484 total shares remains subject to vesting conditions",
+            "Both RSU grants contain accelerated vesting provisions tied to the closing of the pending Boston Scientific merger"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_1980_26000002.json"
+    },
+    {
+      "index": 13,
+      "date": "02/05/26",
+      "form_type": "SC 13G",
+      "url": "https://www.sec.gov/Archives/edgar/data/1321732/000031506626000608/xslSCHEDULE_13G_X01/primary_doc.xml",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "subject_company": "Penumbra Inc",
+        "filing_date": "02/05/26",
+        "filing_type": "SC 13G/A",
+        "filer_name": "FMR LLC",
+        "filer_type": "Mutual Fund",
+        "L1_headline": "+ PEN \u2013 FMR LLC discloses 4.7% stake. | 02/05/26",
+        "L2_brief": "FMR LLC (Fidelity) filed its 11th amendment to Schedule 13G disclosing beneficial ownership of 1,826,862 shares of Penumbra Inc common stock, representing 4.7% of the outstanding class. The filing is made under Rule 13d-1(b) as a parent holding company, with the filer certifying the shares were acquired in the ordinary course of business and not for the purpose of changing or influencing control of the issuer. Abigail P. Johnson is listed as a co-reporting person with sole dispositive power over the same shares but no voting power.",
+        "L3_detailed": {
+          "ownership_details": {
+            "shares_held": "1,826,862.09",
+            "percentage_owned": "4.7%",
+            "sole_voting_power": "1,822,618 (FMR LLC); 0 (Abigail P. Johnson)",
+            "shared_voting_power": "0",
+            "sole_dispositive_power": "1,826,862.09 (both FMR LLC and Abigail P. Johnson)",
+            "shared_dispositive_power": "0"
+          },
+          "position_change": "Decreased below 5% \u2014 this is an amendment (No. 11) and Item 5 is checked indicating ownership of 5 percent or less of the class",
+          "source_of_funds": "Not specified",
+          "purpose_of_transaction": "The filer certifies that the securities 'were acquired and are held in the ordinary course of business and were not acquired and are not held for the purpose of or with the effect of changing or influencing the control of the issuer of the securities and were not acquired and are not held in connection with or as a participant in any transaction having that purpose or effect.'",
+          "activist_intentions": "None stated. Filing is a passive Schedule 13G under Rule 13d-1(b).",
+          "deal_implications": "FMR LLC's stake has fallen below the 5% threshold. One or more other persons are known to have the right to receive dividends or proceeds from the sale of the shares, but no single other person's interest exceeds 5% of the total outstanding common stock.",
+          "related_agreements": "Exhibit 99 referenced for 13d-1(k)(1) agreement. Power of Attorney documents referenced for both FMR LLC and Abigail P. Johnson.",
+          "risks_flagged": [
+            "Large institutional holder has reduced position below 5% reporting threshold, which may reflect reduced conviction or portfolio rebalancing"
+          ]
+        }
+      },
+      "_filename": "sc13g_summary_26000608.json"
+    },
+    {
+      "index": 12,
+      "date": "03/04/26",
+      "form_type": "OTHER",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001321732&type=4&dateb=&owner=include&count=40",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "company": "Penumbra Inc",
+        "filing_type": "EDGAR Filing Index (Multiple: 425, Form 4)",
+        "filing_date": "03/04/26",
+        "L1_headline": "+ PEN \u2013 Active 425 filings indicate pending business combination. | 03/04/26",
+        "L2_brief": "Penumbra Inc's EDGAR filing index shows a series of Form 425 filings (prospectuses and communications related to business combinations) filed from January through March 2026, alongside numerous Form 4 insider transaction filings. The pattern of repeated 425 filings is consistent with an ongoing merger or acquisition transaction requiring shareholder communications. Multiple Form 4 insider ownership filings in the same period indicate changes in beneficial ownership among insiders.",
+        "L3_detailed": {
+          "filing_purpose": "This is an EDGAR company search results page aggregating recent SEC filings by Penumbra Inc (CIK 0001321732). It is not a single filing but an index of filings, primarily Form 425 (business combination communications) and Form 4 (insider ownership changes).",
+          "key_information": [
+            "Penumbra Inc (SIC 3841 - Surgical & Medical Instruments & Apparatus) is incorporated in Delaware with fiscal year ending December 31",
+            "At least 10 Form 425 filings (prospectuses and communications related to business combinations) were filed between January 15, 2026 and March 3, 2026, indicating an active pending business combination",
+            "The most recent 425 filing was made on March 3, 2026 (Acc-no: 0001104659-26-022918)",
+            "Numerous Form 4 insider ownership change filings were made from November 2025 through March 2026",
+            "SEC file number 001-37557 is associated with the 425 filings"
+          ],
+          "financial_highlights": [
+            "No specific financial figures are available from this index page alone"
+          ],
+          "deal_relevance": "The repeated Form 425 filings from mid-January 2026 onward are strong evidence of a pending business combination (merger or acquisition). Form 425 is used specifically for prospectuses and communications related to business combinations under Rule 425 of the Securities Act. The volume and frequency of these filings (10+ in approximately 7 weeks) indicate active deal communications with shareholders. The underlying 425 documents would contain specific deal terms, counterparty identity, and transaction structure.",
+          "regulatory_mentions": "Filings are made under the Securities Exchange Act of 1934 (34 Act noted on 425 filings). No specific regulatory approvals or investigations are identifiable from this index page.",
+          "timeline_or_dates": [
+            "First 425 filing in this series: 01/15/2026",
+            "Most recent 425 filing: 03/03/2026",
+            "Cluster of Form 4 insider filings: 02/18/2026 (10 filings on same date)",
+            "Earlier cluster of Form 4 filings: 11/18/2025 - 12/17/2025"
+          ],
+          "conditions_or_requirements": [
+            "Specific conditions and requirements would be contained in the underlying 425 filing documents, which are not provided here"
+          ],
+          "risks_flagged": [
+            "Underlying deal details, including any risk factors, antitrust conditions, or shareholder vote requirements, are not available from this index page and require review of the actual 425 filings",
+            "The large number of Form 4 insider transactions during the deal period warrants review for any unusual selling patterns"
+          ]
+        }
+      },
+      "_filename": "other_summary_015f2373.json"
+    },
+    {
+      "index": 11,
+      "date": "03/03/26",
+      "form_type": "425",
+      "url": "https://www.sec.gov/Archives/edgar/data/1321732/000110465926022918/tm266847d5_425.htm",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "filer": "Boston Scientific Corporation (BSX)",
+        "subject_company": "Penumbra, Inc.",
+        "filing_date": "03/03/26",
+        "communication_type": "Conference Call Transcript",
+        "L1_headline": "+ PEN \u2013 BSX CEO details strategic rationale, regulatory process ongoing. | 03/03/26",
+        "L2_brief": "At TD Cowen's 46th Annual Health Care Conference, BSX CEO Michael Mahoney discussed the Penumbra acquisition rationale, emphasizing complementary portfolios in neurovascular and thrombectomy, international scaling opportunities, and plans to operate Penumbra as a stand-alone business within BSX's cardiovascular group under the ICTx PI vascular business. When asked about regulatory timeline, Mahoney stated only that they are 'in the heat of that now,' with no specific closing date provided. BSX has filed a Form S-4 registration statement including a proxy statement/prospectus with the SEC as of February 27, 2026.",
+        "L3_detailed": {
+          "deal_parties": "Boston Scientific Corporation (BSX) acquiring Penumbra, Inc. (PEN)",
+          "deal_status_update": "Deal is in the regulatory review process. BSX filed a registration statement on Form S-4 with the SEC on February 27, 2026, which includes a proxy statement/prospectus for Penumbra stockholders.",
+          "timeline_update": "No specific closing date provided. When asked about regulatory expectations, Mahoney said 'We'll see. We're in the heat of that now.' No milestones or expected dates were disclosed.",
+          "terms_update": "No changes to or reaffirmation of specific deal terms (price, exchange ratio) discussed in this communication. Mahoney referenced giving Penumbra 'a compelling offer' and noted the proxy has been filed.",
+          "management_tone": "Mahoney spoke positively about the strategic fit, cultural alignment, and mutual benefits of the combination. On regulatory progress, his response was brief and non-committal ('We'll see. We're in the heat of that now.').",
+          "key_messages": [
+            "Penumbra will operate as a stand-alone business within BSX's cardiovascular group, specifically under the ICTx PI vascular business led by Joe Fitzgerald",
+            "BSX plans to retain Penumbra's commercial team and global business unit president, consistent with BSX's integration approach for other acquired businesses",
+            "Key benefit to Penumbra: BSX's international scale in Europe, Middle East, Africa, and Asia-Pacific where Penumbra is under-scaled",
+            "Key benefit to BSX: Penumbra fills portfolio gaps in neurovascular and venous thrombectomy, complementing BSX's interventional cardiology and vascular offerings",
+            "Additional synergies expected in supply chain (both companies have Costa Rica manufacturing presence) and cross-selling through BSX's existing customer relationships with vascular surgeons, interventional radiologists, and interventional cardiologists",
+            "Mahoney described the combination as fitting BSX's category leadership strategy and its goal to improve weighted average market growth rate (WAMGR)",
+            "Both companies had detailed knowledge of each other prior to the transaction, and the negotiation period was described as relatively condensed"
+          ],
+          "regulatory_update": "Regulatory review is actively underway. No specifics provided on antitrust filings, jurisdictions, or expected regulatory timeline. Mahoney's only comment was 'We're in the heat of that now.'",
+          "shareholder_vote_info": "Form S-4 registration statement including proxy statement/prospectus for Penumbra stockholders was filed with the SEC on February 27, 2026. Penumbra will mail the proxy statement/prospectus to its stockholders. No record date, vote date, or board recommendation details were discussed in this transcript.",
+          "integration_details": "Penumbra will be integrated into BSX's ICTx PI vascular business under Joe Fitzgerald. BSX intends to retain Penumbra's commercial team and operate it similarly to how BSX runs WATCHMAN, ICTx, and CRM/EP as distinct business units. International expansion leveraging BSX's existing infrastructure is a stated priority. Supply chain synergies expected given overlapping Costa Rica manufacturing footprints. Cross-selling opportunities identified where BSX's balloon, stent, and guidewire products can complement Penumbra procedures.",
+          "risks_flagged": [
+            "Regulatory approvals may not be obtained at all or in a timely manner (per cautionary statement)",
+            "Closing of the proposed transaction may not occur or may be delayed",
+            "Integration risks including ability to achieve anticipated benefits and retain key employees, customers, and suppliers",
+            "Business disruptions following announcement and/or closing",
+            "No specific regulatory timeline provided by management, with only a vague acknowledgment that the process is ongoing"
+          ]
+        },
+        "filing_type": "425"
+      },
+      "_filename": "425_summary_26022918.json"
+    },
+    {
+      "index": 10,
+      "date": "02/25/26",
+      "form_type": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1321732/000132173226000006/pen-20260225.htm",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "filing_date": "02/25/26",
+        "items_reported": [
+          "Item 2.02",
+          "Item 9.01"
+        ],
+        "L1_headline": "PEN \u2013 Q4 and FY2025 earnings results announced. | 02/25/26",
+        "L2_brief": "Penumbra, Inc. issued a press release on February 25, 2026 announcing financial results for Q4 and full year ended December 31, 2025. The filing furnishes the press release as Exhibit 99.1 but does not include specific financial figures in the 8-K text itself. No merger or deal-related information is referenced in this filing.",
+        "L3_detailed": {
+          "event": "Penumbra reported Q4 and full-year 2025 financial results via press release furnished as Exhibit 99.1.",
+          "key_figures": [
+            "Reporting period: Q4 and fiscal year ended December 31, 2025",
+            "Press release date: February 25, 2026",
+            "Specific financial figures not included in the 8-K body; contained in Exhibit 99.1"
+          ],
+          "deal_implications": "No merger or acquisition transaction is referenced in this filing. This is a standard earnings results disclosure.",
+          "remaining_conditions": [],
+          "risks_flagged": []
+        },
+        "filing_type": "8-K"
+      },
+      "_filename": "8k_summary_26000006.json"
+    },
+    {
+      "index": 9,
+      "date": "02/25/26",
+      "form_type": "10-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1321732/000132173226000007/pen-20251231.htm",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "company": "Penumbra, Inc.",
+        "filing_type": "10-K",
+        "period_end_date": "12/31/25",
+        "filing_date": "02/25/26",
+        "fiscal_period": "FY 2025",
+        "L1_headline": "+ PEN \u2013 Strong growth amid Boston Scientific merger. | 02/25/26",
+        "L2_brief": "Penumbra delivered strong FY 2025 results with revenue up 17.5% to $1.40 billion and operating income surging to $189.2 million from $9.3 million in 2024. Boston Scientific agreed to acquire the company for $374 per share ($14.5 billion enterprise value) in January 2026, with the merger expected to close by end of 2026 subject to approvals.",
+        "L3_detailed": {
+          "financial_performance": {
+            "revenue": "$1,403.7 million, up 17.5% from $1,194.6 million in 2024",
+            "net_income": "$177.7 million vs $14.0 million in 2024 (+1,169%)",
+            "eps": "Basic EPS $4.57 vs $0.36 in 2024; Diluted EPS $4.52 vs $0.36 in 2024",
+            "gross_margin": "67.1% vs 63.2% in 2024",
+            "operating_income": "$189.2 million vs $9.3 million in 2024 (+1,934%)",
+            "free_cash_flow": "$175.0 million vs $147.3 million in 2024 (+18.8%)",
+            "other_metrics": [
+              "Thrombectomy revenue $947.9 million (+16.2%)",
+              "Embolization and access revenue $455.7 million (+20.2%)",
+              "US revenue $1,091.8 million (+21.0%)",
+              "International revenue $311.9 million (+6.6%)"
+            ]
+          },
+          "segment_performance": [
+            "Thrombectomy segment: $947.9 million revenue, up 16.2% from $815.5 million in 2024",
+            "Embolization and access segment: $455.7 million revenue, up 20.2% from $379.1 million in 2024",
+            "US operations: $1,091.8 million revenue (+21.0%), International: $311.9 million (+6.6%)"
+          ],
+          "guidance_and_outlook": "No specific numerical guidance provided. Management expects to continue developing thrombectomy, embolization, and access technologies portfolio. Merger with Boston Scientific expected to close by end of 2026 subject to approvals.",
+          "balance_sheet_highlights": {
+            "cash_and_equivalents": "$186.9 million vs $324.4 million at December 31, 2024",
+            "total_debt": "Not specified",
+            "net_debt": "Net cash position with $186.9 million cash plus $357.9 million marketable investments",
+            "shareholders_equity": "$1,427.6 million at December 31, 2025"
+          },
+          "risk_factors": [
+            "NEW: Merger uncertainty could adversely affect business operations and employee retention",
+            "NEW: Failure to complete merger could result in stock price decline and $525.0 million termination fee",
+            "Products may become obsolete due to rapidly advancing technology and short product life cycles",
+            "Intense competition from larger companies including Boston Scientific, Medtronic, Stryker",
+            "Dependence on single or limited suppliers for raw materials and components"
+          ],
+          "ma_and_deal_relevance": {
+            "pending_deals": "Boston Scientific merger agreement entered January 14, 2026 for $374 per share ($14.5 billion enterprise value)",
+            "deal_impact": "Consideration approximately 73% cash and 27% Boston Scientific stock, with $525.0 million termination fee provision",
+            "strategic_alternatives": "Company exited immersive healthcare business in 2024 with $115.3 million in total costs including $76.9 million impairment charge",
+            "acquisition_activity": "Asset acquisition completed September 29, 2023 for $18.2 million total consideration"
+          },
+          "legal_and_regulatory": [
+            "Legal proceedings referenced to Note 10 in consolidated financial statements"
+          ],
+          "key_developments": [
+            "Exited immersive healthcare business in 2024 with $115.3 million total exit costs",
+            "Share repurchase program authorized for $200.0 million with $100.0 million utilized in 2024",
+            "Change in auditors from Deloitte & Touche LLP to PricewaterhouseCoopers LLP in 2024",
+            "Costa Rica manufacturing facility construction project with approximately $58 million total expected cost",
+            "International sales declined as percentage of total revenue from 28.5% in 2023 to 22.2% in 2025"
+          ],
+          "capital_allocation": "Share repurchase program: $200.0 million authorized in August 2024, $100.0 million utilized in 2024, $100.0 million remaining. Capital expenditures increased to $63.7 million in 2025 from $21.2 million in 2024. No dividends mentioned."
+        }
+      },
+      "_filename": "10k_summary_26000007.json"
+    },
+    {
+      "index": 8,
+      "date": "02/18/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/2086163/000208616326000004/xslF345X05/wk-form4_1771462942.xml",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "issuer": "Penumbra Inc",
+        "filing_date": "02/18/26",
+        "insider_name": "Shruthi Narayan",
+        "insider_title": "President",
+        "relationship": "Officer",
+        "L1_headline": "+ PEN \u2013 Shruthi Narayan received RSU grants and had shares withheld for tax obligations. | 02/18/26",
+        "L2_brief": "Shruthi Narayan, President of Penumbra Inc, received two RSU grants of 2,630 shares each on 02/13/2026 and 02/17/2026 at $0 cost, and had 705 shares withheld on 02/15/2026 at $339.30 per share to cover tax withholding obligations on vesting RSUs. Both RSU grants contain provisions for full accelerated vesting upon the closing of the pending merger with Boston Scientific Corporation pursuant to the Agreement and Plan of Merger dated January 14, 2026. Post-transaction direct holdings total 30,872 shares, a portion of which remain subject to vesting.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "02/13/2026",
+              "shares": "2,630",
+              "price_per_share": "$0",
+              "total_value": "$0",
+              "acquired_or_disposed": "Acquired (A)"
+            },
+            {
+              "type": "Sale",
+              "date": "02/15/2026",
+              "shares": "705",
+              "price_per_share": "$339.30",
+              "total_value": "$239,206.50",
+              "acquired_or_disposed": "Disposed (D)"
+            },
+            {
+              "type": "Other",
+              "date": "02/17/2026",
+              "shares": "2,630",
+              "price_per_share": "$0",
+              "total_value": "$0",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "30,872 shares (a portion subject to vesting)",
+          "ownership_type": "Direct",
+          "deal_signal": "Penumbra Inc is subject to a pending Agreement and Plan of Merger dated January 14, 2026, with Boston Scientific Corporation and Pinehurst Merger Sub, Inc. Both RSU grants (02/13/2026 and 02/17/2026) include provisions stating that any unvested RSUs will fully vest upon the closing of the merger, subject to continued service through such date. No open-market purchases or sales by the insider were reported; all transactions relate to standard RSU grants and tax withholding.",
+          "pattern_notes": "Transactions are routine equity compensation activity: two RSU grants and a mandatory tax withholding disposition. No discretionary open-market buying or selling. The 705-share disposition on 02/15/2026 (transaction code F) represents shares withheld by the issuer to satisfy tax obligations upon RSU vesting, not a voluntary sale.",
+          "risks_flagged": [
+            "No 10b5-1 plan noted; transactions are equity compensation grants and mandatory tax withholdings",
+            "A portion of the 30,872 post-transaction shares remain subject to vesting conditions",
+            "Both RSU grants contain merger-related accelerated vesting provisions tied to the Boston Scientific acquisition closing"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_26000004.json"
+    },
+    {
+      "index": 7,
+      "date": "02/04/26",
+      "form_type": "425",
+      "url": "https://www.sec.gov/Archives/edgar/data/1321732/000094787126000086/ss5910887_425.htm",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "filer": "Boston Scientific Corporation (BSX)",
+        "subject_company": "Penumbra, Inc.",
+        "filing_date": "02/04/26",
+        "communication_type": "Conference Call Transcript",
+        "L1_headline": "+ PEN \u2013 BSX reaffirms 2026 close; deal enhances WAMGR. | 02/04/26",
+        "L2_brief": "During Boston Scientific's Q4 2025 earnings call, management reiterated that the Penumbra acquisition is expected to close in 2026, subject to customary closing conditions. CEO Mike Mahoney stated Penumbra gets BSX into new high-growth markets (PE and neurovascular) with a highly scaled sales force and could slightly improve BSX's weighted average market growth rate (WAMGR). All three major rating agencies affirmed BSX's single-A-minus equivalent credit rating following the deal announcement, with Fitch upgrading its outlook from stable to positive.",
+        "L3_detailed": {
+          "deal_parties": "Boston Scientific Corporation (BSX) acquiring Penumbra, Inc. (PEN)",
+          "deal_status_update": "Deal announced in January 2026; BSX will file a registration statement on Form S-4 containing a proxy statement/prospectus for Penumbra stockholders. No indication of any complications or changes to the transaction.",
+          "timeline_update": "Expected to close in 2026, subject to customary closing conditions including required regulatory approvals and clearances. No specific quarter or month cited for close.",
+          "terms_update": "No changes to deal terms discussed on the call. 2026 guidance excludes Penumbra (and Valencia Technologies). BSX noted it will file an S-4 with proxy statement/prospectus.",
+          "management_tone": "CEO Mahoney described the deal as 'really exciting,' called it 'both strategically and financially attractive,' and stated Penumbra 'further enhances our WAMGR and further strengthens the company.' CFO Monson highlighted that all three rating agencies affirmed BSX's credit rating post-announcement.",
+          "key_messages": [
+            "Penumbra provides entry into high-growth segments where BSX lacks offerings, including mechanical thrombectomy and neurovascular",
+            "Penumbra comes with a highly scaled sales force",
+            "Penumbra could slightly improve BSX's weighted average market growth rate (WAMGR) beyond the ~9% target",
+            "All three major rating agencies affirmed BSX's single-A-minus equivalent credit rating; Fitch upgraded outlook from stable to positive",
+            "BSX gross debt leverage ratio was 1.9x as of December 31, 2025, with $1.965 billion cash on hand",
+            "BSX's 2026 financial guidance and long-range plan (LRP) targets exclude Penumbra",
+            "BSX reaffirmed its LRP targets of 10%+ organic revenue growth for 2026-2028, 150 bps of margin improvement, and strong double-digit EPS growth, all excluding Penumbra"
+          ],
+          "regulatory_update": "No specific regulatory filing or approval milestones disclosed. Filing states closing is subject to receipt of required regulatory approvals and clearances.",
+          "shareholder_vote_info": "BSX will file an S-4 registration statement containing a proxy statement/prospectus for Penumbra stockholders. Penumbra will mail the proxy statement/prospectus to its stockholders. No record date or vote date disclosed.",
+          "integration_details": "No specific integration plans or synergy estimates disclosed. Mahoney noted Penumbra's portfolio operates in segments where BSX lacks offerings and referenced the deal delivering 'significant value to patients and customers globally.' BSX is separately combining the reporting structure of its PI and Interventional Cardiology business units.",
+          "risks_flagged": [
+            "Closing conditions may not be satisfied at all or in a timely manner",
+            "Closing may not occur or may be delayed",
+            "Ability to achieve anticipated benefits and successfully integrate Penumbra's operations cited as a risk factor",
+            "Potential business disruptions in relationships with employees, customers, or suppliers following announcement and/or closing",
+            "Foreign currency fluctuations, regulatory conditions, changing trade and tariff policies listed as general risk factors"
+          ]
+        },
+        "filing_type": "425"
+      },
+      "_filename": "425_summary_26000086.json"
+    },
+    {
+      "index": 6,
+      "date": "01/20/26",
+      "form_type": "425",
+      "url": "https://www.sec.gov/Archives/edgar/data/1321732/000094787126000060/ss5842704_425.htm",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "filer": "Boston Scientific Corporation (BSX)",
+        "subject_company": "Penumbra, Inc.",
+        "filing_date": "01/20/26",
+        "communication_type": "Other",
+        "L1_headline": "+ PEN \u2013 BSX CEO contrasts $14.5B deal with past Guidant misstep. | 01/20/26",
+        "L2_brief": "Boston Scientific filed a Minnesota Star Tribune article from January 17, 2026, in which CEO Mike Mahoney discusses the $14.5 billion cash-and-stock acquisition of Penumbra, emphasizing the company's improved acquisition capabilities versus its troubled 2006 Guidant deal. The deal is structured as 73% cash and 27% stock, with BSX expecting the close sometime in 2026, slight EPS dilution in year one, and accretion by the second year. Analyst commentary included in the article is positive, citing accelerated sales growth and global expansion opportunities for Penumbra's neurovascular and pulmonary embolism portfolio.",
+        "L3_detailed": {
+          "deal_parties": "Boston Scientific Corporation (BSX) acquiring Penumbra, Inc. (PEN)",
+          "deal_status_update": "Definitive agreement announced January 15, 2026. BSX will file a Form S-4 registration statement with the SEC containing a proxy statement/prospectus for Penumbra stockholders. No indication the proxy has been filed yet as of this filing date.",
+          "timeline_update": "Boston Scientific expects the deal to close sometime in 2026. No specific quarter or regulatory milestone dates were provided.",
+          "terms_update": "$14.5 billion total consideration, structured as approximately 73% cash and 27% stock. BSX expects the deal to be slightly dilutive to earnings in the first full year after close, neutral to slightly accretive in the second year, and more accretive thereafter.",
+          "management_tone": "CEO Mahoney characterized the deal from a position of strength, stating BSX has completed approximately 50 acquisitions over 14 years and that the integration team is experienced. He explicitly differentiated this deal from the 2006 Guidant acquisition, noting the company's stronger financial position and acquisition track record. He described Penumbra's products as 'life-saving, life-changing.'",
+          "key_messages": [
+            "BSX re-enters the neurovascular market it exited in 2011 (sold to Stryker for $1.5B), now from a 'position of strength'",
+            "Penumbra provides neurovascular devices treating stroke-causing brain clots and pulmonary embolism clots in the lungs",
+            "BSX's global footprint enables scaling Penumbra's business in Europe, China, Japan, and the Middle East",
+            "Deal negotiations were kept confidential to avoid jeopardizing the transaction",
+            "J.P. Morgan analysts noted the deal may make BSX's long-range plan of sustained 10%+ organic sales growth 'more achievable and much more durable'",
+            "Stifel analysts called it 'a truly compelling and exciting acquisition' and 'an excellent operational and cultural fit'",
+            "Penumbra expects 2025 revenue of approximately $1.4 billion, representing 17%+ year-over-year growth"
+          ],
+          "regulatory_update": "No specific regulatory filings or approvals discussed beyond the forward-looking cautionary language noting the transaction is subject to required regulatory approvals and clearances.",
+          "shareholder_vote_info": "Penumbra stockholder approval required. BSX will file a Form S-4 containing a proxy statement/prospectus for Penumbra stockholders. No record date, meeting date, or board recommendation details provided beyond standard disclosure that proxy materials will be mailed to Penumbra stockholders.",
+          "integration_details": "Penumbra will be added as a new division to Boston Scientific. BSX plans to leverage its global commercial footprint to scale Penumbra's products internationally. Mahoney cited BSX's track record of approximately 50 acquisitions over 14 years as evidence of integration capability. Complementary product cross-selling opportunities were referenced. No specific synergy dollar estimates or integration timeline provided.",
+          "risks_flagged": [
+            "BSX stock dropped nearly 6% in the days following the deal announcement",
+            "Some investors may view the deal as a departure from BSX's historical M&A philosophy of smaller, single-product acquisitions",
+            "This is BSX's first deal above $10 billion since the troubled 2006 Guidant acquisition ($27B), which triggered years of legal challenges and deflated financial results",
+            "Forward-looking risk factors include: regulatory approval conditions may not be satisfied in a timely manner or at all, business disruptions following announcement, changing trade and tariff policies, and integration challenges",
+            "Expected slight EPS dilution in the first full year post-close"
+          ]
+        },
+        "filing_type": "425"
+      },
+      "_filename": "425_summary_26000060.json"
+    },
+    {
+      "index": 5,
+      "date": "01/16/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/2086163/000208616326000002/xslF345X05/wk-form4_1768611003.xml",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "issuer": "Penumbra Inc",
+        "filing_date": "01/16/26",
+        "insider_name": "Shruthi Narayan",
+        "insider_title": "President",
+        "relationship": "Officer",
+        "L1_headline": "+ PEN \u2013 Shruthi Narayan disposed 286 shares (tax withholding on RSU vesting). | 01/15/2026",
+        "L2_brief": "Shruthi Narayan, President of Penumbra Inc, had 286 shares of common stock withheld by the issuer on 01/15/2026 at $350.49 per share to satisfy tax withholding obligations in connection with the vesting of restricted stock units. Following the transaction, Narayan directly holds 26,317 shares of common stock.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "01/15/2026",
+              "shares": "286",
+              "price_per_share": "$350.49",
+              "total_value": "$100,240.14",
+              "acquired_or_disposed": "Disposed (D)"
+            }
+          ],
+          "post_transaction_holdings": "26,317 shares of common stock",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "Transaction code 'F' indicates shares withheld by the issuer to cover tax obligations upon RSU vesting. This is a routine, non-discretionary disposition and not an open-market sale. The 286 shares disposed represent approximately 1.1% of post-transaction holdings.",
+          "risks_flagged": [
+            "Transaction is a mandatory tax withholding disposition (Code F), not a discretionary sale"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_26000002.json"
+    },
+    {
+      "index": 4,
+      "date": "01/16/26",
+      "form_type": "425",
+      "url": "https://www.sec.gov/Archives/edgar/data/1321732/000095010326000602/dp240103_425.htm",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "filer": "Penumbra, Inc.",
+        "subject_company": "Penumbra, Inc.",
+        "filing_date": "01/16/26",
+        "communication_type": "Customer Letter",
+        "L1_headline": "+ PEN \u2013 Stakeholder comms affirm BSX acquisition, 2026 close. | 01/16/26",
+        "L2_brief": "Penumbra filed talking points and written communications for HCPs, customers/business partners, suppliers, and clinical study partners regarding its definitive agreement to be acquired by Boston Scientific. All communications state the transaction is expected to close in 2026, that the companies will operate independently until closing, and that existing contracts, partnerships, and points of contact will remain unchanged. No new details on deal terms, regulatory milestones, or shareholder vote were provided.",
+        "L3_detailed": {
+          "deal_parties": "Boston Scientific Corporation (BSX) acquiring Penumbra, Inc. (PEN)",
+          "deal_status_update": "Definitive agreement has been reached. Parent (BSX) will file a registration statement on Form S-4 including a proxy statement/prospectus with the SEC; these documents have not yet been filed.",
+          "timeline_update": "Transaction expected to close in 2026. No specific quarter or month provided. No regulatory timeline milestones disclosed.",
+          "terms_update": "No deal price, exchange ratio, or other specific terms mentioned in this filing. The filing references that BSX will file a Form S-4 with a proxy statement/prospectus, implying stock consideration is part of the deal structure.",
+          "management_tone": "Communications use positive language ('exciting opportunity,' 'excited for our next chapter') and emphasize continuity and stability for all stakeholder groups.",
+          "key_messages": [
+            "Penumbra has entered a definitive agreement to be acquired by Boston Scientific",
+            "Both companies share a commitment to innovation and advancing healthcare",
+            "Existing contracts, partnerships, clinical trials, and points of contact will remain unchanged",
+            "Penumbra and Boston Scientific will operate independently until close",
+            "Goal is to expand global access to Penumbra's products by combining with BSX's global reach",
+            "Transaction expected to close in 2026"
+          ],
+          "regulatory_update": "No specific regulatory approvals discussed. Forward-looking statements reference the need for regulatory approvals as a condition to closing.",
+          "shareholder_vote_info": "Stockholder approval is required. BSX will file a Form S-4 containing a proxy statement/prospectus for PEN stockholders. No record date, meeting date, or board recommendation details provided in this filing.",
+          "integration_details": "No specific integration plans, synergies, or organizational changes discussed. Communications emphasize continuity of operations, same contacts, same processes (contracting, ordering, shipping, invoicing) through close and beyond.",
+          "risks_flagged": [
+            "Completion dependent on stockholder and regulatory approvals",
+            "Potential litigation relating to the proposed transaction",
+            "Risk of disruptions to business during pendency of the transaction",
+            "Potential adverse reactions or changes to business relationships from announcement or pendency",
+            "Restrictions during pendency may limit pursuit of business opportunities or strategic transactions",
+            "Uncertainty as to long-term value of Parent's common stock",
+            "Failure to realize anticipated benefits including due to integration delays"
+          ]
+        },
+        "filing_type": "425"
+      },
+      "_filename": "425_summary_26000602.json"
+    },
+    {
+      "index": 3,
+      "date": "01/15/26",
+      "form_type": "99.1",
+      "url": "https://www.sec.gov/Archives/edgar/data/1321732/000095010326000524/dp240009_ex9902.htm",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "company": "Penumbra, Inc.",
+        "filing_date": "01/15/26",
+        "exhibit_type": "Deal Announcement",
+        "L1_headline": "+ PEN \u2013 BSX to acquire Penumbra for $374/share. | 01/15/26",
+        "L2_brief": "Boston Scientific (BSX) and Penumbra (PEN) announced a definitive agreement under which BSX will acquire PEN in a cash and stock transaction at $374 per share, reflecting an enterprise value of approximately $14.5 billion. The consideration mix is approximately 73% cash (~$11 billion) and 27% BSX common stock, with PEN stockholders able to elect cash or 3.8721 BSX shares per PEN share, subject to proration. The transaction is expected to close in 2026, subject to PEN stockholder approval and customary closing conditions.",
+        "L3_detailed": {
+          "event": "Boston Scientific entered into a definitive agreement to acquire Penumbra, Inc. in a cash and stock transaction at $374 per share, expanding BSX's cardiovascular portfolio into mechanical thrombectomy and neurovascular segments.",
+          "key_figures": [
+            "$374 per share offer price",
+            "~$14.5 billion enterprise value",
+            "~$15 billion fully diluted equity value (based on ~40.0 million fully diluted shares)",
+            "~$470 million net cash and short-term investments as of September 30, 2025",
+            "73% cash / 27% stock consideration mix",
+            "~$11 billion cash portion to be financed with cash on hand and new debt",
+            "Stock election ratio: 3.8721 BSX shares per PEN share (based on 10-day VWAP as of January 13, 2026)",
+            "39.2 million PEN common shares outstanding",
+            "PEN Q4 2025 preliminary revenue growth: ~21.4%-22.0%",
+            "PEN full year 2025 revenue: ~$1.4 billion (~17.3%-17.5% YoY growth)",
+            "Expected $0.06-$0.08 dilutive to BSX adjusted EPS in first full year post-close",
+            "Expected neutral to slightly accretive to BSX adjusted EPS in second year"
+          ],
+          "market_impact": "The acquisition provides Boston Scientific entry into mechanical thrombectomy and neurovascular markets. The transaction is expected to be $0.06-$0.08 dilutive to BSX adjusted EPS in the first full year, neutral to slightly accretive in the second year, and more accretive thereafter. GAAP EPS impact is expected to be dilutive in the first full year due to amortization expense and acquisition-related net charges, and less dilutive or increasingly accretive thereafter. Penumbra CEO Adam Elsesser has indicated he will elect to receive BSX shares for all his PEN shares and will join the BSX board upon close.",
+          "forward_guidance": "Penumbra expects Q4 2025 reported revenue growth of approximately 21.4%-22.0% and full year 2025 reported revenue of approximately $1.4 billion, representing growth of approximately 17.3%-17.5% over the prior fiscal year. The transaction is expected to close in 2026. BSX expects the deal to become neutral to slightly accretive to adjusted EPS in the second full year post-close and more accretive thereafter.",
+          "deal_relevance": "Definitive agreement announced. Closing expected in 2026. Conditions include Penumbra stockholder approval, required regulatory approvals and clearances, and other customary closing conditions. BSX will file a Form S-4 registration statement with the SEC containing a proxy statement/prospectus for PEN stockholders. The stock election is subject to proration to maintain the 73%/27% cash/stock split. Perella Weinberg Partners is exclusive financial advisor to PEN; Allen Overy Shearman Sterling and Arnold & Porter are legal advisors to BSX; Davis Polk & Wardwell is legal advisor to PEN.",
+          "risks_flagged": [
+            "Closing conditions may not be satisfied at all or in a timely manner",
+            "Required regulatory approvals and clearances not yet obtained",
+            "Penumbra stockholder approval required",
+            "Integration risks and ability to achieve anticipated benefits",
+            "Business disruptions following announcement and/or closing (relationships with employees, customers, suppliers)",
+            "Foreign currency fluctuations and economic conditions",
+            "Changing trade and tariff policies",
+            "Geopolitical events",
+            "Manufacturing, distribution and supply chain disruptions and cost increases",
+            "Cybersecurity event disruptions",
+            "GAAP EPS expected to be dilutive in first full year post-close due to amortization and acquisition-related charges",
+            "New debt issuance required for ~$11 billion cash portion"
+          ]
+        },
+        "filing_type": "99.1"
+      },
+      "_filename": "99.1_summary_26000524.json"
+    },
+    {
+      "index": 2,
+      "date": "01/15/26",
+      "form_type": "425",
+      "url": "https://www.sec.gov/Archives/edgar/data/1321732/000095010326000558/dp240020_425.htm",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "filer": "Penumbra, Inc.",
+        "subject_company": "Penumbra, Inc.",
+        "filing_date": "01/15/26",
+        "communication_type": "Employee Communication",
+        "L1_headline": "+ PEN \u2013 Boston Scientific to acquire Penumbra at $374/share. | 01/15/26",
+        "L2_brief": "Penumbra announced a definitive agreement to be acquired by Boston Scientific for $374 per share in a mix of cash and BSX stock. The transaction is expected to close in 2026, subject to Penumbra stockholder approval and regulatory approvals. CEO Adam Elsesser will join the Boston Scientific Board of Directors upon closing, and Penumbra will operate as a standalone group within Boston Scientific.",
+        "L3_detailed": {
+          "deal_parties": "Boston Scientific Corporation (BSX) acquiring Penumbra, Inc. (PEN)",
+          "deal_status_update": "Definitive agreement announced on January 15, 2026. Boston Scientific will file an S-4 registration statement including a proxy statement/prospectus with the SEC.",
+          "timeline_update": "Transaction expected to close in 2026. No specific quarter or month provided. Proxy statement/prospectus has not yet been filed.",
+          "terms_update": "$374 per share of Penumbra common stock, payable in a mix of cash and Boston Scientific stock. Unvested RSU awards will generally vest upon closing and be exchanged for the same mix of cash and BSX stock. ESPP and ESPRP will continue through the end of the current purchase period.",
+          "management_tone": "CEO Elsesser characterized the deal as a 'tremendous recognition' of Penumbra's accomplishments and expressed confidence that becoming part of Boston Scientific will enable Penumbra to 'thrive and rise to greater challenges.' Messaging emphasized cultural alignment, shared values, and continuity.",
+          "key_messages": [
+            "Penumbra will become a standalone group within Boston Scientific post-closing",
+            "CEO Adam Elsesser will join the Boston Scientific Board of Directors upon closing",
+            "No immediate changes to employee day-to-day work, reporting structures, FY26 goals, or benefit programs",
+            "Penumbra's current offices and manufacturing facilities will be maintained",
+            "Boston Scientific's acquisition rationale centers on expanding global access to Penumbra's technologies",
+            "Boston Scientific recognizes Penumbra's team as its greatest asset; priority is to minimize disruption"
+          ],
+          "regulatory_update": "Transaction subject to required regulatory approvals and clearances; no specific regulators or jurisdictions identified in this filing.",
+          "shareholder_vote_info": "Penumbra stockholder approval is required. Boston Scientific will file an S-4 with a proxy statement/prospectus. No record date or vote date disclosed yet.",
+          "integration_details": "Penumbra will operate as a standalone group within Boston Scientific. Current offices and manufacturing facilities will be maintained. Integration will focus on continuity and stability for employees, customers, and patients. Over time, opportunities may emerge to leverage each other's strengths.",
+          "risks_flagged": [
+            "Failure to obtain Penumbra stockholder approval",
+            "Failure to obtain required regulatory approvals and clearances",
+            "Potential litigation relating to the proposed transaction",
+            "Business disruption during pendency of the transaction",
+            "Potential adverse reactions or changes to business relationships",
+            "Uncertainty as to long-term value of Boston Scientific common stock",
+            "Restrictions during pendency that may limit Penumbra's ability to pursue business opportunities"
+          ]
+        },
+        "filing_type": "425"
+      },
+      "_filename": "425_summary_26000558.json"
+    },
+    {
+      "index": 1,
+      "date": "01/15/26",
+      "form_type": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1321732/000095010326000523/dp240008_8k.htm",
+      "status": "success",
+      "ticker": "PEN",
+      "summary": {
+        "ticker": "PEN",
+        "filing_date": "01/15/26",
+        "items_reported": [
+          "Item 1.01",
+          "Item 2.02",
+          "Item 7.01",
+          "Item 9.01"
+        ],
+        "L1_headline": "PEN \u2013 Boston Scientific to acquire Penumbra in cash/stock deal. | 01/15/26",
+        "L2_brief": "Penumbra entered into a definitive merger agreement with Boston Scientific on January 14, 2026, under which PEN shareholders will receive $374.00 per share in cash (73.26% of shares) or 3.8721 BSX shares per PEN share (26.74% of shares), subject to proration. The transaction requires PEN stockholder approval (majority vote), HSR and international antitrust clearances, and SEC effectiveness of a Form S-4 registration statement; Parent owes a $900M reverse termination fee for antitrust-related failure, while the Company owes a $525M termination fee under specified circumstances.",
+        "L3_detailed": {
+          "event": "Penumbra, Inc. (PEN) entered into an Agreement and Plan of Merger with Boston Scientific Corporation (BSX) and its wholly owned subsidiary Pinehurst Merger Sub, Inc., pursuant to which Merger Sub will merge with and into PEN, with PEN surviving as a wholly owned subsidiary of BSX.",
+          "key_figures": [
+            "Cash consideration: $374.00 per share (for 73.26% of outstanding shares)",
+            "Stock consideration: 3.8721 BSX shares per PEN share (for 26.74% of outstanding shares)",
+            "Equity Award Cash Consideration: $274.00 per share; Equity Award Stock Consideration: 1.0353 BSX shares per PEN share",
+            "Company termination fee: $525,000,000",
+            "Parent reverse termination fee (antitrust-related): $900,000,000",
+            "Merger Agreement signed: January 14, 2026",
+            "No financing condition"
+          ],
+          "deal_implications": "The merger agreement has been executed with a mixed cash/stock structure subject to proration. The absence of a financing condition removes funding risk. The large $900M reverse break fee provides protection to PEN shareholders against antitrust-related deal failure. Timeline depends on SEC registration statement effectiveness, stockholder vote, and antitrust clearances across multiple jurisdictions.",
+          "remaining_conditions": [
+            "PEN stockholder approval (majority of outstanding voting power)",
+            "HSR Act waiting period expiration or termination",
+            "Antitrust consents/approvals in certain other jurisdictions",
+            "Effectiveness of BSX Form S-4 registration statement with the SEC",
+            "NYSE listing approval for BSX shares to be issued as stock consideration",
+            "No law or order enjoining or prohibiting the Merger",
+            "Accuracy of representations and warranties (subject to materiality qualifiers)",
+            "Material compliance with pre-closing covenants",
+            "Absence of material adverse effect on either party"
+          ],
+          "risks_flagged": [
+            "Antitrust regulatory risk across multiple jurisdictions (HSR and international)",
+            "Potential litigation relating to the proposed transaction against PEN or its directors (noted in forward-looking statements)",
+            "Proration mechanism means individual shareholders may not receive their elected form of consideration",
+            "Fiduciary out provision permits the PEN Board to change recommendation or terminate for a superior proposal (subject to $525M termination fee)",
+            "Preliminary Q4/FY2025 financial results disclosed but unaudited; actual results may differ"
+          ]
+        },
+        "filing_type": "8-K"
+      },
+      "_filename": "8k_summary_26000523.json"
+    }
+  ],
+  "failures": []
+}

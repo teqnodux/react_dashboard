@@ -1,0 +1,75 @@
+{
+  "deal_id": "D009",
+  "events": [
+    {
+      "agency": "DOJ/FTC",
+      "event": "HSR Filed",
+      "event_date": "2025-11-15",
+      "status": "completed",
+      "notes": "Initial 30-day waiting period"
+    },
+    {
+      "agency": "DOJ/FTC",
+      "event": "HSR Early Termination",
+      "event_date": "2025-11-30",
+      "status": "completed",
+      "notes": "Cleared without second request"
+    },
+    {
+      "agency": "FRB",
+      "event": "Application Filed",
+      "event_date": "2025-12-01",
+      "status": "pending",
+      "notes": "Bank Holding Company Act approval"
+    },
+    {
+      "agency": "FRB",
+      "event": "Comment Period Opens",
+      "event_date": "2025-12-15",
+      "status": "completed",
+      "notes": "30-day public comment period"
+    },
+    {
+      "agency": "FRB",
+      "event": "Comment Period Closes",
+      "event_date": "2026-01-15",
+      "status": "completed",
+      "notes": "No significant adverse comments"
+    },
+    {
+      "agency": "FRB",
+      "event": "Approval Expected",
+      "event_date": "2026-02-15",
+      "status": "pending",
+      "notes": "60-90 day typical review period"
+    },
+    {
+      "agency": "FDIC",
+      "event": "Application Filed",
+      "event_date": "2025-12-05",
+      "status": "pending",
+      "notes": "Bank Merger Act approval"
+    },
+    {
+      "agency": "FDIC",
+      "event": "Approval Expected",
+      "event_date": "2026-02-25",
+      "status": "pending",
+      "notes": "Usually concurrent with FRB"
+    },
+    {
+      "agency": "TDB",
+      "event": "Application Filed",
+      "event_date": "2025-12-10",
+      "status": "pending",
+      "notes": "Texas Department of Banking"
+    },
+    {
+      "agency": "TDB",
+      "event": "Approval Expected",
+      "event_date": "2026-03-01",
+      "status": "pending",
+      "notes": "State-level bank charter approval"
+    }
+  ]
+}

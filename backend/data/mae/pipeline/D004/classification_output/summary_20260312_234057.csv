@@ -1,0 +1,13 @@
+label,zone,best_cluster,category,ratio,distance,threshold,num_matches,text_preview
+(i),typical,Broad Economic and Financial Market Changes Exclusion,economic,0.44,0.1243,0.2801,1,changes in general economic conditions in the United States or any other country or region in the wo
+(ii),typical,Broad Economic and Financial Market Changes Exclusion,economic,0.48,0.1348,0.2801,1,"changes in conditions in the financial markets, credit markets or capital markets in the United Stat"
+(iii),outlier,Broad Economic and Financial Market Changes Exclusion,economic,1.29,0.3606,0.2801,0,changes in conditions in the industries in which such Person and its Subsidiaries conduct business
+(iv),typical,Broad Economic and Financial Market Changes Exclusion,economic,0.67,0.1873,0.2801,2,"changes in regulatory, legislative or political conditions in the United States or any other country"
+(v),typical,Catastrophic External Events Beyond Party Control,force_majeure,0.41,0.1208,0.2965,1,"any geopolitical conditions, outbreak of hostilities, acts of war, sabotage, cyberterrorism, terrori"
+(vi),typical,Catastrophic External Events Beyond Party Control,force_majeure,0.64,0.1886,0.2965,1,"earthquakes, volcanic activity, hurricanes, tsunamis, tornadoes, floods, mudslides, wild fires or ot"
+(vii),typical,Catastrophic External Events Beyond Party Control,force_majeure,0.89,0.2631,0.2965,1,"any pandemic, epidemic or disease outbreak (including COVID-19 and any COVID-19 Measures)"
+(viii),typical,Exclusion for impacts from deal announcement and execution,transaction,0.59,0.1491,0.254,1,the announcement of this Agreement or the pendency or consummation of the transactions contemplated 
+(ix),typical,Failure to Meet Financial Projections and Forecasts Exclusions,disclosure,0.53,0.1064,0.2025,1,"any failure by such Person to meet any public estimates or expectations of such Person's revenue, ea"
+(x),typical,"Changes in Law, GAAP, and Regulatory Accounting Standards",accounting,0.45,0.132,0.2942,1,changes in applicable Laws or other binding directives issued by any Governmental Authority or chang
+(xi),typical,Actions Taken Pursuant to or Required by Agreement Terms,transaction,0.68,0.1906,0.2786,1,"any actions taken or failed to be taken, in each case, to which Parent has approved, consented to or"
+(xii),atypical,Actions Taken Pursuant to or Required by Agreement Terms,transaction,1.02,0.284,0.2786,0,"any Effect arising out of, resulting from or attributable to such Person's compliance with the terms"

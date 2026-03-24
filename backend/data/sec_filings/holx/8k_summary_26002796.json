@@ -1,0 +1,27 @@
+{
+  "ticker": "HOLX",
+  "filing_date": "01/29/26",
+  "items_reported": [
+    "Item 2.02",
+    "Item 9.01"
+  ],
+  "L1_headline": "HOLX \u2013 Q1 FY2026 earnings released amid pending Blackstone/TPG acquisition. | 01/29/26",
+  "L2_brief": "Hologic reported Q1 FY2026 financial results for the quarter ended December 27, 2025. The filing references the pending acquisition by affiliates of Blackstone Inc. and TPG Capital, for which a Definitive Proxy Statement was filed with the SEC on December 23, 2025 and mailed to stockholders. No changes to deal terms or timeline were disclosed in this filing.",
+  "L3_detailed": {
+    "event": "Hologic issued a press release announcing financial results for Q1 FY2026 (quarter ended December 27, 2025). The 8-K also includes standard disclosure language regarding the proposed acquisition by Blackstone and TPG affiliates.",
+    "key_figures": [
+      "Q1 FY2026 quarter ended December 27, 2025",
+      "Definitive Proxy Statement filed with SEC on December 23, 2025"
+    ],
+    "deal_implications": "The filing does not disclose any changes to the proposed Blackstone/TPG acquisition terms, timeline, or conditions. Hologic continues to operate and report earnings while the transaction is pending. The stockholder vote date was not specified in this filing.",
+    "remaining_conditions": [
+      "Stockholder approval (Definitive Proxy Statement filed and mailed; vote date not specified in this filing)",
+      "Regulatory approvals (not detailed in this filing)",
+      "Other customary closing conditions (not detailed in this filing)"
+    ],
+    "risks_flagged": [
+      "Filing contains forward-looking statements with cautionary language noting actual results could differ materially from those expressed or implied"
+    ]
+  },
+  "filing_type": "8-K"
+}

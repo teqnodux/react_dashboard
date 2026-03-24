@@ -1,0 +1,150 @@
+{
+  "deal_name": "Kona Bidco / Kennedy-Wilson Holdings",
+  "acquirer": "Kona Bidco, LLC",
+  "acquirer_ticker": "",
+  "target": "Kennedy-Wilson Holdings, Inc.",
+  "target_ticker": "KW",
+  "signing_date": "2026-02-16",
+  "nda_date": "2026-01-14",
+  "outside_date_initial": "2026-11-16",
+  "outside_date_extended": null,
+  "outside_date_extension_note": "The outside date of November 16, 2026 may be extended to a later date by mutual written consent of Kennedy-Wilson Holdings, Inc. (with prior approval of the Special Committee) and Kona Bidco, LLC, with no specific extended date or fixed period stated; it also automatically extends by twenty Business Days beyond the resolution date (or court-set date) if any party brings an Action before November 16, 2026.",
+  "financing_type": "equity",
+  "financing_commitment_expiry": null,
+  "offer_price_per_share": 10.9,
+  "exchange_ratio": null,
+  "requires_s4": false,
+  "is_going_private": true,
+  "schedule_13e3_required": true,
+  "majority_of_minority_required": true,
+  "regulatory_approvals": [],
+  "static_events": [
+    {
+      "label": "Confidentiality Agreement",
+      "date": "2026-01-14",
+      "ref": null
+    },
+    {
+      "label": "Merger Agreement Signed",
+      "date": "2026-02-16",
+      "ref": null
+    },
+    {
+      "label": "Approved by the Board; Special Committee recommended",
+      "date": "2026-02-16",
+      "ref": null
+    },
+    {
+      "label": "Outside Date (Initial)",
+      "date": "2026-11-16",
+      "ref": null
+    }
+  ],
+  "extension_note": "The outside date of November 16, 2026 may be extended to a later date by mutual written consent of Kennedy-Wilson Holdings, Inc. (with prior approval of the Special Committee) and Kona Bidco, LLC, with no specific extended date or fixed period stated; it also automatically extends by twenty Business Days beyond the resolution date (or court-set date) if any party brings an Action before November 16, 2026.",
+  "deadline_events": [
+    {
+      "label": "Proxy Statement",
+      "date": "2026-03-30",
+      "calculation": "+30 Business Days from Signing",
+      "trigger_key": "proxy_filed",
+      "ref": null
+    }
+  ],
+  "triggered_chains": [
+    {
+      "trigger_label": "HSR Filed (actual date)",
+      "trigger_key": "hsr_filed",
+      "downstream": [
+        {
+          "label": "HSR Waiting Period Expires",
+          "rule": "+30 calendar days after HSR filed (statutory \u2014 HSR Act, not stated in merger agreement)",
+          "calc_days": 30,
+          "calc_days_type": "calendar",
+          "calc_from": "trigger",
+          "ref": null
+        }
+      ]
+    },
+    {
+      "trigger_label": "Schedule 13E-3 Filed (actual date)",
+      "trigger_key": "13e3_filed",
+      "downstream": [
+        {
+          "label": "SEC Review Period (13E-3)",
+          "rule": "Open-ended \u2014 SEC has 10 business days initial review; comments may follow",
+          "calc_days": 10,
+          "calc_days_type": "business",
+          "calc_from": "trigger",
+          "ref": null
+        },
+        {
+          "label": "13E-3 / Proxy Cleared by SEC",
+          "rule": "SEC staff completes review; company may mail proxy",
+          "calc_days": null,
+          "calc_days_type": null,
+          "calc_from": "prev",
+          "ref": null
+        }
+      ]
+    },
+    {
+      "trigger_label": "Proxy Statement Filed (actual date)",
+      "trigger_key": "proxy_filed",
+      "downstream": [
+        {
+          "label": "SEC Proxy Review Period",
+          "rule": "Open-ended \u2014 SEC review (typically 10 business days for preliminary proxy)",
+          "calc_days": 10,
+          "calc_days_type": "business",
+          "calc_from": "trigger",
+          "ref": null
+        },
+        {
+          "label": "Proxy Mailed to Shareholders",
+          "rule": "After SEC clearance \u2014 typically \u226520 calendar days before meeting",
+          "calc_days": 20,
+          "calc_days_type": "calendar",
+          "calc_from": "prev",
+          "ref": null
+        },
+        {
+          "label": "Stockholder Meeting Deadline",
+          "rule": "Date not yet disclosed",
+          "calc_days": null,
+          "calc_days_type": "calendar",
+          "calc_from": "prev",
+          "ref": null
+        }
+      ]
+    },
+    {
+      "trigger_label": "All Closing Conditions Satisfied",
+      "trigger_key": "conditions_satisfied",
+      "downstream": [
+        {
+          "label": "Closing",
+          "rule": "+3 Business Days after all conditions satisfied / waived",
+          "calc_days": 3,
+          "calc_days_type": "business",
+          "calc_from": "trigger",
+          "ref": null
+        }
+      ]
+    }
+  ],
+  "checklist": [
+    "HSR actual filing date (Kona Bidco, LLC + KW)",
+    "HSR early termination granted?",
+    "Schedule 13E-3 actual filing date",
+    "SEC 13E-3 / proxy comment letter received?",
+    "Schedule 13E-3 / proxy cleared by SEC",
+    "Preliminary proxy filed (PREM14A)?",
+    "Definitive proxy filed (DEFM14A)?",
+    "Proxy mailing date",
+    "Record date for stockholder votes",
+    "Majority-of-minority vote \u2014 KW unaffiliated stockholders",
+    "Kennedy-Wilson Holdings, Inc. stockholder meeting date (vote)",
+    "All closing conditions satisfied?",
+    "Actual closing date"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "ticker": "SEM",
+  "filing_date": "12/19/25",
+  "items_reported": [
+    "Item 5.02",
+    "Item 9.01"
+  ],
+  "L1_headline": "SEM \u2013 CEO employment agreement renewed effective Jan 2026. | 12/19/25",
+  "L2_brief": "Select Medical Holdings subsidiary entered into a new employment agreement with CEO Thomas P. Mullin effective January 1, 2026, with a $700,000 annual base salary and automatic one-year renewal terms. This is a routine executive compensation matter with no direct merger or deal implications.",
+  "L3_detailed": {
+    "event": "Select Medical Corporation, wholly owned subsidiary of Select Medical Holdings Corporation, executed new employment agreement with CEO Thomas P. Mullin",
+    "key_figures": [
+      "$700,000 annual base salary",
+      "Initial term: 1 year with automatic successive 1-year renewals",
+      "Severance: 12 months base salary if terminated without Cause",
+      "2-year post-employment non-compete and non-solicitation period",
+      "Effective date: January 1, 2026"
+    ],
+    "deal_implications": "No merger or acquisition transaction involved; this is a standard executive employment agreement renewal with no impact on any pending deals",
+    "remaining_conditions": [
+      "None - employment agreement is fully executed"
+    ],
+    "risks_flagged": [
+      "Reference to existing change of control letter dated February 18, 2021 may contain provisions relevant to any future M&A activity"
+    ]
+  }
+}

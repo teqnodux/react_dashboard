@@ -1,0 +1,31 @@
+{
+  "ticker": "DAWN",
+  "company": "Day One Biopharmaceuticals, Inc.",
+  "filing_type": "8-K/A (Exhibit 23.1 - Auditor Consent)",
+  "filing_date": "03/09/26",
+  "L1_headline": "+ DAWN \u2013 EY consent filed for Mersana financials incorporation. | 03/09/26",
+  "L2_brief": "This is an auditor consent exhibit (EX-23.1) filed as part of a Form 8-K/A by Day One Biopharmaceuticals. Ernst & Young LLP consents to the incorporation by reference of its audit report on Mersana Therapeutics' consolidated financial statements (FY2024 and FY2023) into Day One's S-8 and S-3 registration statements. This filing is consistent with post-acquisition financial reporting requirements following Day One's acquisition of Mersana Therapeutics.",
+  "L2_brief_note": "",
+  "L3_detailed": {
+    "filing_purpose": "Ernst & Young LLP provided consent for its audit report on Mersana Therapeutics' financial statements to be incorporated by reference into Day One Biopharmaceuticals' registration statements via an amended 8-K (Form 8-K/A). This is a standard post-acquisition requirement to include acquired company financial statements in the acquirer's SEC filings.",
+    "key_information": [
+      "EY's audit report covers Mersana Therapeutics' consolidated financial statements as of December 31, 2024 and 2023, and for each of the two years ended December 31, 2024",
+      "The consent applies to incorporation by reference in six Form S-8 registration statements (Nos. 333-256521, 333-263343, 333-268071, 333-269727, 333-276372, and 333-284210)",
+      "The consent also applies to two Form S-3 registration statements (Nos. 333-274521 and 333-281822)",
+      "The EY audit report was originally dated March 3, 2025; the consent is dated March 9, 2026",
+      "Filing is structured as an exhibit to an 8-K/A (amended current report) by Day One Biopharmaceuticals"
+    ],
+    "financial_highlights": [],
+    "deal_relevance": "This filing confirms that Day One Biopharmaceuticals completed its acquisition of Mersana Therapeutics and is now fulfilling post-close SEC reporting obligations by amending its 8-K to include Mersana's audited financial statements. The 8-K/A with acquired company financials is a routine post-closing requirement typically filed within 71 days of the initial 8-K reporting the deal close.",
+    "regulatory_mentions": "SEC registration statements on Form S-8 and Form S-3 referenced; standard SEC compliance for incorporation by reference of acquired company financials.",
+    "timeline_or_dates": [
+      "March 3, 2025 \u2013 Date of EY's original audit report on Mersana Therapeutics",
+      "March 9, 2026 \u2013 Date of EY's consent letter",
+      "December 31, 2024 and 2023 \u2013 Periods covered by Mersana's audited financial statements"
+    ],
+    "conditions_or_requirements": [
+      "Standard SEC requirement to file acquired company financial statements via 8-K/A following completion of a significant acquisition"
+    ],
+    "risks_flagged": []
+  }
+}

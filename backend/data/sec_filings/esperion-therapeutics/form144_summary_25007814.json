@@ -1,0 +1,27 @@
+{
+  "ticker": "ESPR",
+  "issuer": "Esperion Therapeutics, Inc.",
+  "filing_date": "12/17/25",
+  "seller_name": "Sheldon L. Koenig",
+  "seller_relationship": "Officer, Director",
+  "L1_headline": "+ ESPR \u2013 Sheldon L. Koenig files to sell 48,244 shares. | 12/17/25",
+  "L2_brief": "Sheldon L. Koenig, an Officer and Director of Esperion Therapeutics, filed to sell 48,244 shares of common stock valued at approximately $177,200. The sale is related to covering tax obligations from recently vested restricted stock, representing a routine compensation-related transaction rather than discretionary selling.",
+  "L3_detailed": {
+    "proposed_sale": {
+      "shares_to_sell": "48,244",
+      "estimated_value": "$177,200.21",
+      "securities_type": "Common Stock",
+      "acquisition_date": "12/15/2025",
+      "acquisition_method": "Restricted Stock Vesting (Compensation)"
+    },
+    "broker_info": "Fidelity Brokerage Services LLC, 900 Salem Street, Smithfield, RI 02917",
+    "seller_total_holdings": "Not disclosed",
+    "percentage_of_holdings": "Not calculable from filing",
+    "deal_signal": "N/A",
+    "risks_flagged": [
+      "Recent prior sale of 28,427 shares on 09/17/2025 for $79,240.27",
+      "Pattern of selling upon vesting events",
+      "Sale explicitly noted as tax-obligation related, reducing signaling concern"
+    ]
+  }
+}

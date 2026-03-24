@@ -1,0 +1,48 @@
+{
+  "ticker": "TGNA",
+  "issuer": "TEGNA INC",
+  "filing_date": "03/03/26",
+  "insider_name": "Julie Heskett",
+  "insider_title": "SVP and CFO",
+  "relationship": "Officer",
+  "L1_headline": "+ TGNA \u2013 Julie Heskett exercised performance shares and acquired restricted stock units. | 03/03/26",
+  "L2_brief": "Julie Heskett, SVP and CFO of TEGNA INC, converted 12,080.934 vested 2023 Performance Shares into common stock on 02/27/2026, with 3,883.102 shares withheld at $20.95 to cover tax obligations. On 03/01/2026, she was granted 75,911 restricted stock units vesting over four years. Post-transaction direct holdings total 117,227.774 shares of common stock plus 75,911 RSUs and 10,590.27 shares held indirectly through a 401(k) plan.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Conversion",
+        "date": "02/27/2026",
+        "shares": "12,080.934",
+        "price_per_share": "$0",
+        "total_value": "$0 (vesting of 2023 Performance Shares into common stock)",
+        "acquired_or_disposed": "Acquired (A)"
+      },
+      {
+        "type": "Sale",
+        "date": "02/27/2026",
+        "shares": "3,883.102",
+        "price_per_share": "$20.95",
+        "total_value": "$81,350.99",
+        "acquired_or_disposed": "Disposed (D)"
+      },
+      {
+        "type": "Other",
+        "date": "03/01/2026",
+        "shares": "75,911 RSUs",
+        "price_per_share": "$0",
+        "total_value": "$0 (new RSU grant)",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "117,227.774 shares of common stock (Direct) + 75,911 RSUs (Direct) + 10,590.27 shares (Indirect, via 401(k) Plan)",
+    "ownership_type": "Direct and Indirect (401(k) Plan)",
+    "deal_signal": "N/A",
+    "pattern_notes": "The disposition of 3,883.102 shares was solely for tax withholding upon vesting of performance shares, not an open-market sale. The 75,911 RSU grant vests in four equal annual installments beginning 02/28/2027 through 02/28/2030, with a change-in-control acceleration provision noted. This is a routine annual compensation cycle event (performance share vesting and new RSU grant).",
+    "risks_flagged": [
+      "No 10b5-1 plan indicated for these transactions",
+      "Share withholding for tax was mandatory, not a discretionary sale",
+      "RSU vesting schedule includes change-in-control acceleration provision"
+    ]
+  },
+  "filing_type": "FORM 4"
+}

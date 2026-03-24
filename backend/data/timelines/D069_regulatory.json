@@ -1,0 +1,624 @@
+{
+  "deal_id": "D069",
+  "last_updated": "2026-03-18",
+  "approvals": [
+    {
+      "id": "hsr",
+      "jurisdiction": "United States",
+      "authority_short": "HSR Act",
+      "authority_full": "HSR Act",
+      "statute": "Hart-Scott-Rodino Antitrust Improvements Act",
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "hsr_filed",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": "within 25 business days after signing",
+      "conditions": null,
+      "notes": "Identified in DMA summary extraction",
+      "source_doc": "DMA Extract",
+      "source_doc_type": "dma_extract",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-18",
+      "linked_docs": [
+        {
+          "doc_type": "dma_extract",
+          "doc_date": "2026-03-18",
+          "doc_url": null,
+          "summary": "HSR Act, Antitrust approvals, Other required regulatory approvals",
+          "L1": "DMA Summary \u2014 D069",
+          "L2": "Regulatory approvals from DMA extraction",
+          "L3": null
+        },
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-18",
+          "doc_url": null,
+          "summary": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: The SEC filing provides a comprehensive list of six material regulatory approvals required for the merger: (1) HSR Act waiting period expiration/termination; (2) NMPRC approval under New Mexico Public Utility Act and Rule 450; (3) PUCT approval under PURA (with 180-day ruling timeline",
+          "L1": "Proxy Analysis \u2014 D069",
+          "L2": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: The SEC filing provides a comprehensive list of six material regulatory approvals req",
+          "L3": null
+        },
+        {
+          "doc_type": "press_release",
+          "doc_date": "2026-03-18",
+          "doc_url": null,
+          "summary": "Public Utility Commission of Texas (PUCT), New Mexico Public Regulation Commission (NMPRC), Federal Energy Regulatory Commission (FERC), Nuclear Regulatory Commission (NRC), Hart-Scott-Rodino (HSR)",
+          "L1": "Press Release \u2014 D069",
+          "L2": "Regulatory bodies identified in press release",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_antitrust_approvals",
+      "jurisdiction": null,
+      "authority_short": "Antitrust approvals",
+      "authority_full": "Antitrust approvals",
+      "statute": null,
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_antitrust_approvals",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in DMA summary extraction",
+      "source_doc": "DMA Extract",
+      "source_doc_type": "dma_extract",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-18",
+      "linked_docs": [
+        {
+          "doc_type": "dma_extract",
+          "doc_date": "2026-03-18",
+          "doc_url": null,
+          "summary": "HSR Act, Antitrust approvals, Other required regulatory approvals",
+          "L1": "DMA Summary \u2014 D069",
+          "L2": "Regulatory approvals from DMA extraction",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_other_required_regulatory_approvals",
+      "jurisdiction": null,
+      "authority_short": "Other required regulatory approvals",
+      "authority_full": "Other required regulatory approvals",
+      "statute": null,
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_other_required_regulatory_approvals",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in DMA summary extraction",
+      "source_doc": "DMA Extract",
+      "source_doc_type": "dma_extract",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-18",
+      "linked_docs": [
+        {
+          "doc_type": "dma_extract",
+          "doc_date": "2026-03-18",
+          "doc_url": null,
+          "summary": "HSR Act, Antitrust approvals, Other required regulatory approvals",
+          "L1": "DMA Summary \u2014 D069",
+          "L2": "Regulatory approvals from DMA extraction",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_nmprc",
+      "jurisdiction": "United States - New Mexico",
+      "authority_short": "NMPRC",
+      "authority_full": "New Mexico Public Regulation Commission",
+      "statute": "New Mexico Public Utility Act and Rule 450",
+      "category": "sector_specific",
+      "status": "pending",
+      "filing_key": "reg_nmprc",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "NMPRC approval required under the New Mexico Public Utility Act and Rule 450 for the merger transaction.",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-18",
+      "linked_docs": [
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-18",
+          "doc_url": null,
+          "summary": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: The SEC filing provides a comprehensive list of six material regulatory approvals required for the merger: (1) HSR Act waiting period expiration/termination; (2) NMPRC approval under New Mexico Public Utility Act and Rule 450; (3) PUCT approval under PURA (with 180-day ruling timeline",
+          "L1": "Proxy Analysis \u2014 D069",
+          "L2": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: The SEC filing provides a comprehensive list of six material regulatory approvals req",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_puct",
+      "jurisdiction": "United States - Texas",
+      "authority_short": "PUCT",
+      "authority_full": "Public Utility Commission of Texas",
+      "statute": "Public Utility Regulatory Act (PURA)",
+      "category": "sector_specific",
+      "status": "pending",
+      "filing_key": "reg_puct",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "PUCT approval required under PURA, with a 180-day ruling timeline that is extendable by 60 days.",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-18",
+      "linked_docs": [
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-18",
+          "doc_url": null,
+          "summary": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: The SEC filing provides a comprehensive list of six material regulatory approvals required for the merger: (1) HSR Act waiting period expiration/termination; (2) NMPRC approval under New Mexico Public Utility Act and Rule 450; (3) PUCT approval under PURA (with 180-day ruling timeline",
+          "L1": "Proxy Analysis \u2014 D069",
+          "L2": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: The SEC filing provides a comprehensive list of six material regulatory approvals req",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_ferc",
+      "jurisdiction": "United States",
+      "authority_short": "FERC",
+      "authority_full": "Federal Energy Regulatory Commission",
+      "statute": "Federal Power Act, Section 203",
+      "category": "sector_specific",
+      "status": "pending",
+      "filing_key": "reg_ferc",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "FERC approval required under Section 203 of the Federal Power Act for the merger transaction.",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-18",
+      "linked_docs": [
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-18",
+          "doc_url": null,
+          "summary": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: The SEC filing provides a comprehensive list of six material regulatory approvals required for the merger: (1) HSR Act waiting period expiration/termination; (2) NMPRC approval under New Mexico Public Utility Act and Rule 450; (3) PUCT approval under PURA (with 180-day ruling timeline",
+          "L1": "Proxy Analysis \u2014 D069",
+          "L2": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: The SEC filing provides a comprehensive list of six material regulatory approvals req",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_fcc",
+      "jurisdiction": "United States",
+      "authority_short": "FCC",
+      "authority_full": "Federal Communications Commission",
+      "statute": "Communications Act (transfer of license provisions)",
+      "category": "sector_specific",
+      "status": "pending",
+      "filing_key": "reg_fcc",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "FCC approval required for the transfer of wireless and microwave licenses in connection with the merger.",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-18",
+      "linked_docs": [
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-18",
+          "doc_url": null,
+          "summary": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: The SEC filing provides a comprehensive list of six material regulatory approvals required for the merger: (1) HSR Act waiting period expiration/termination; (2) NMPRC approval under New Mexico Public Utility Act and Rule 450; (3) PUCT approval under PURA (with 180-day ruling timeline",
+          "L1": "Proxy Analysis \u2014 D069",
+          "L2": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: The SEC filing provides a comprehensive list of six material regulatory approvals req",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_nrc",
+      "jurisdiction": "United States",
+      "authority_short": "NRC",
+      "authority_full": "Nuclear Regulatory Commission",
+      "statute": "Atomic Energy Act (indirect license transfer provisions)",
+      "category": "sector_specific",
+      "status": "pending",
+      "filing_key": "reg_nrc",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "NRC approval required for the indirect transfer of Palo Verde Nuclear Generating Station licenses in connection with the merger.",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-18",
+      "linked_docs": [
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-18",
+          "doc_url": null,
+          "summary": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: The SEC filing provides a comprehensive list of six material regulatory approvals required for the merger: (1) HSR Act waiting period expiration/termination; (2) NMPRC approval under New Mexico Public Utility Act and Rule 450; (3) PUCT approval under PURA (with 180-day ruling timeline",
+          "L1": "Proxy Analysis \u2014 D069",
+          "L2": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: The SEC filing provides a comprehensive list of six material regulatory approvals req",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_public_utility_commission_of_texas_puct",
+      "jurisdiction": null,
+      "authority_short": "Public Utility Commission of Texas (PUCT)",
+      "authority_full": "Public Utility Commission of Texas (PUCT)",
+      "statute": null,
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_public_utility_commission_of_texas_puct",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in press release",
+      "source_doc": "Press Release",
+      "source_doc_type": "press_release",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-18",
+      "linked_docs": [
+        {
+          "doc_type": "press_release",
+          "doc_date": "2026-03-18",
+          "doc_url": null,
+          "summary": "Public Utility Commission of Texas (PUCT), New Mexico Public Regulation Commission (NMPRC), Federal Energy Regulatory Commission (FERC), Nuclear Regulatory Commission (NRC), Hart-Scott-Rodino (HSR)",
+          "L1": "Press Release \u2014 D069",
+          "L2": "Regulatory bodies identified in press release",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_new_mexico_public_regulation_commission_nmprc",
+      "jurisdiction": null,
+      "authority_short": "New Mexico Public Regulation Commission (NMPRC)",
+      "authority_full": "New Mexico Public Regulation Commission (NMPRC)",
+      "statute": null,
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_new_mexico_public_regulation_commission_nmprc",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in press release",
+      "source_doc": "Press Release",
+      "source_doc_type": "press_release",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-18",
+      "linked_docs": [
+        {
+          "doc_type": "press_release",
+          "doc_date": "2026-03-18",
+          "doc_url": null,
+          "summary": "Public Utility Commission of Texas (PUCT), New Mexico Public Regulation Commission (NMPRC), Federal Energy Regulatory Commission (FERC), Nuclear Regulatory Commission (NRC), Hart-Scott-Rodino (HSR)",
+          "L1": "Press Release \u2014 D069",
+          "L2": "Regulatory bodies identified in press release",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_federal_energy_regulatory_commission_ferc",
+      "jurisdiction": "United States",
+      "authority_short": "Federal Energy Regulatory Commission (FERC)",
+      "authority_full": "Federal Energy Regulatory Commission (FERC)",
+      "statute": null,
+      "category": "sector_specific",
+      "status": "pending",
+      "filing_key": "reg_federal_energy_regulatory_commission_ferc",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in press release",
+      "source_doc": "Press Release",
+      "source_doc_type": "press_release",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-18",
+      "linked_docs": [
+        {
+          "doc_type": "press_release",
+          "doc_date": "2026-03-18",
+          "doc_url": null,
+          "summary": "Public Utility Commission of Texas (PUCT), New Mexico Public Regulation Commission (NMPRC), Federal Energy Regulatory Commission (FERC), Nuclear Regulatory Commission (NRC), Hart-Scott-Rodino (HSR)",
+          "L1": "Press Release \u2014 D069",
+          "L2": "Regulatory bodies identified in press release",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_nuclear_regulatory_commission_nrc",
+      "jurisdiction": null,
+      "authority_short": "Nuclear Regulatory Commission (NRC)",
+      "authority_full": "Nuclear Regulatory Commission (NRC)",
+      "statute": null,
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_nuclear_regulatory_commission_nrc",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in press release",
+      "source_doc": "Press Release",
+      "source_doc_type": "press_release",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-18",
+      "linked_docs": [
+        {
+          "doc_type": "press_release",
+          "doc_date": "2026-03-18",
+          "doc_url": null,
+          "summary": "Public Utility Commission of Texas (PUCT), New Mexico Public Regulation Commission (NMPRC), Federal Energy Regulatory Commission (FERC), Nuclear Regulatory Commission (NRC), Hart-Scott-Rodino (HSR)",
+          "L1": "Press Release \u2014 D069",
+          "L2": "Regulatory bodies identified in press release",
+          "L3": null
+        }
+      ]
+    }
+  ],
+  "documents_processed": [
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2026-03-18",
+      "doc_url": null,
+      "processed_at": "2026-03-18T18:50:48.301096Z",
+      "approvals_found": 3,
+      "additions": [
+        "hsr",
+        "reg_antitrust_approvals",
+        "reg_other_required_regulatory_approvals"
+      ],
+      "status_changes": []
+    },
+    {
+      "doc_type": "proxy",
+      "doc_date": "2026-03-18",
+      "doc_url": null,
+      "processed_at": "2026-03-18T18:54:04.106894Z",
+      "approvals_found": 6,
+      "additions": [
+        "reg_nmprc",
+        "reg_puct",
+        "reg_ferc",
+        "reg_fcc",
+        "reg_nrc"
+      ],
+      "status_changes": [
+        "hsr: pending\u2192filing_intent"
+      ]
+    },
+    {
+      "doc_type": "filing",
+      "doc_date": "2025-05-19",
+      "doc_url": "https://www.sec.gov/Archives/edgar/data/1108426/000110842625000048/pnm-20250519.htm",
+      "processed_at": "2026-03-18T19:03:18.176511Z",
+      "approvals_found": 5,
+      "additions": [],
+      "status_changes": [
+        "hsr: filing_intent\u2192pending"
+      ]
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2026-03-18",
+      "doc_url": null,
+      "processed_at": "2026-03-18T19:05:09.589699Z",
+      "approvals_found": 5,
+      "additions": [
+        "reg_public_utility_commission_of_texas_puct",
+        "reg_new_mexico_public_regulation_commission_nmprc",
+        "reg_federal_energy_regulatory_commission_ferc",
+        "reg_nuclear_regulatory_commission_nrc"
+      ],
+      "status_changes": []
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2026-03-18",
+      "doc_url": null,
+      "processed_at": "2026-03-18T19:37:15.286303Z",
+      "approvals_found": 5,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2026-03-18",
+      "doc_url": null,
+      "processed_at": "2026-03-18T19:37:15.287110Z",
+      "approvals_found": 3,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2026-03-18",
+      "doc_url": null,
+      "processed_at": "2026-03-18T19:37:23.025710Z",
+      "approvals_found": 5,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2026-03-18",
+      "doc_url": null,
+      "processed_at": "2026-03-18T19:37:23.026542Z",
+      "approvals_found": 3,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2026-03-18",
+      "doc_url": null,
+      "processed_at": "2026-03-18T19:39:10.771217Z",
+      "approvals_found": 5,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2026-03-18",
+      "doc_url": null,
+      "processed_at": "2026-03-18T19:39:10.772429Z",
+      "approvals_found": 3,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2026-03-18",
+      "doc_url": null,
+      "processed_at": "2026-03-18T20:08:44.655972Z",
+      "approvals_found": 5,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2026-03-18",
+      "doc_url": null,
+      "processed_at": "2026-03-18T20:08:44.657431Z",
+      "approvals_found": 3,
+      "additions": [],
+      "status_changes": []
+    }
+  ],
+  "change_log": [
+    {
+      "timestamp": "2026-03-18T18:50:48.301096Z",
+      "source_doc": "DMA Extract",
+      "source_doc_type": "dma_extract",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "hsr",
+          "detail": "HSR Act newly required \u2014 first seen in dma_extract"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_antitrust_approvals",
+          "detail": "Antitrust approvals newly required \u2014 first seen in dma_extract"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_other_required_regulatory_approvals",
+          "detail": "Other required regulatory approvals newly required \u2014 first seen in dma_extract"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-18T18:54:04.106894Z",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "pending",
+          "to": "filing_intent",
+          "detail": "HSR/FTC+DOJ status: pending \u2192 filing_intent"
+        },
+        {
+          "type": "date_update",
+          "approval_id": "hsr",
+          "field": "expected_filing_period",
+          "value": "within 25 business days after signing",
+          "detail": "HSR/FTC+DOJ expected_filing_period \u2192 within 25 business days after signing"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_nmprc",
+          "detail": "NMPRC newly required \u2014 first seen in proxy"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_puct",
+          "detail": "PUCT newly required \u2014 first seen in proxy"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_ferc",
+          "detail": "FERC newly required \u2014 first seen in proxy"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_fcc",
+          "detail": "FCC newly required \u2014 first seen in proxy"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_nrc",
+          "detail": "NRC newly required \u2014 first seen in proxy"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-18T19:03:18.176511Z",
+      "source_doc": "filing 2025-05-19",
+      "source_doc_type": "filing",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "filing_intent",
+          "to": "pending",
+          "detail": "HSR/FTC+DOJ status: filing_intent \u2192 pending"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-18T19:05:09.589699Z",
+      "source_doc": "Press Release",
+      "source_doc_type": "press_release",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "reg_public_utility_commission_of_texas_puct",
+          "detail": "Public Utility Commission of Texas (PUCT) newly required \u2014 first seen in press_release"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_new_mexico_public_regulation_commission_nmprc",
+          "detail": "New Mexico Public Regulation Commission (NMPRC) newly required \u2014 first seen in press_release"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_federal_energy_regulatory_commission_ferc",
+          "detail": "Federal Energy Regulatory Commission (FERC) newly required \u2014 first seen in press_release"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_nuclear_regulatory_commission_nrc",
+          "detail": "Nuclear Regulatory Commission (NRC) newly required \u2014 first seen in press_release"
+        }
+      ]
+    }
+  ]
+}

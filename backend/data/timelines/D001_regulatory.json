@@ -1,0 +1,52 @@
+{
+  "deal_id": "D001",
+  "last_updated": "2026-02-25",
+  "approvals": [
+    {
+      "id": "hsr",
+      "jurisdiction": "United States",
+      "authority_short": "HSR / FTC+DOJ",
+      "authority_full": "Federal Trade Commission / Department of Justice",
+      "statute": "Hart-Scott-Rodino Antitrust Improvements Act",
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "hsr_filed",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "HSR pre-merger notification filing required",
+      "source_doc": "Initial Summary",
+      "source_doc_type": "summary",
+      "source_doc_url": null,
+      "first_seen_date": "2026-02-25"
+    }
+  ],
+  "documents_processed": [
+    {
+      "doc_type": "summary",
+      "doc_date": "2026-02-10",
+      "doc_url": null,
+      "processed_at": "2026-02-26T04:14:43.306118Z",
+      "approvals_found": 1,
+      "additions": [
+        "hsr"
+      ],
+      "status_changes": []
+    }
+  ],
+  "change_log": [
+    {
+      "timestamp": "2026-02-26T04:14:43.306118Z",
+      "source_doc": "Initial Summary",
+      "source_doc_type": "summary",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "hsr",
+          "detail": "HSR / FTC+DOJ added from initial deal summary"
+        }
+      ]
+    }
+  ]
+}

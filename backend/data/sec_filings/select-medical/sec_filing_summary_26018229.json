@@ -1,0 +1,41 @@
+{
+  "ticker": "SEM",
+  "company": "Select Medical Holdings Corporation",
+  "filing_type": "DEF 14A (Preliminary Proxy Statement)",
+  "filing_date": "02/20/26",
+  "L1_headline": "+ SEM \u2013 Annual meeting proxy with board declassification vote. | 02/20/26",
+  "L2_brief": "Select Medical Holdings filed a preliminary proxy statement for its April 23, 2026 annual meeting. Key proposals include electing three Class II directors, a vote to declassify the board structure, and competing proposals on special meeting thresholds (Company proposes 25%, stockholder proposes 10%). No M&A transaction is pending; this is routine annual governance.",
+  "L3_detailed": {
+    "filing_purpose": "Preliminary proxy statement for the 2026 Annual Meeting of Stockholders to be held April 23, 2026, soliciting votes on director elections, executive compensation, auditor ratification, board declassification, and special meeting rights.",
+    "key_information": [
+      "124,018,300 shares outstanding as of record date February 27, 2026 with 134 registered holders",
+      "Board recommends FOR declassification proposal to phase out classified board structure",
+      "Company proposes 25% ownership threshold for stockholders to call special meetings; stockholder counter-proposal seeks 10% threshold",
+      "8 of 10 directors determined to be independent; Russell L. Carson serves as Lead Director",
+      "Board diversity: 2 female directors, 8 male directors; 1 Asian director identified"
+    ],
+    "financial_highlights": [
+      "NEO stock ownership requirements: 3.0x base salary for Executive Chairman, Vice Chairman, and CEO; 1.5x for other NEOs",
+      "2025 say-on-pay vote results: 108,011,565 votes for, 11,314,550 against (approximately 90.5% approval)"
+    ],
+    "deal_relevance": "No M&A transaction disclosed or pending. Filing is routine annual proxy solicitation with governance proposals. Board declassification could make the company marginally more susceptible to hostile takeover attempts if approved.",
+    "regulatory_mentions": "SEC, NYSE listing standards for director independence and audit committee requirements, Sarbanes-Oxley Act compliance, NIST Cybersecurity Framework, HIPAA Security Risk Assessment",
+    "timeline_or_dates": [
+      "February 20, 2026 - Preliminary proxy filing date",
+      "February 27, 2026 - Record date for voting",
+      "March 4, 2026 - Intended mailing date for Notice of Internet Availability",
+      "April 10, 2026 - Stockholder list available for examination",
+      "April 23, 2026 - Annual Meeting date at 11:00 a.m. EDT"
+    ],
+    "conditions_or_requirements": [
+      "Declassification proposal requires affirmative vote of majority of outstanding shares",
+      "Director elections require majority of votes cast (votes FOR must exceed votes AGAINST)",
+      "Proposals 2, 3, 5, and 6 require affirmative vote of majority of shares present or represented by proxy"
+    ],
+    "risks_flagged": [
+      "Cybersecurity and information security risks acknowledged; company has not experienced material breach in past three fiscal years",
+      "Company discloses risks including regulatory risk, credit risk, liquidity risk, reputational risk, and interest rate fluctuation risk",
+      "Third-party information security breaches have occurred but none with material impact"
+    ]
+  }
+}

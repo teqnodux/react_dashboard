@@ -1,0 +1,60 @@
+{
+  "ticker": "HOLX",
+  "company": "Hologic, Inc.",
+  "filing_type": "10-Q",
+  "period_end_date": "12/27/25",
+  "filing_date": "01/30/26",
+  "fiscal_period": "Q1 FY 2026",
+  "L1_headline": "+ HOLX \u2013 Revenue up 2.5%, pending $76-79 merger. | 01/30/26",
+  "L2_brief": "Hologic reported Q1 2026 revenue of $1.05 billion, up 2.5% year-over-year, but net income declined to $179.1 million ($0.79 EPS) from $201.0 million ($0.87 EPS) in the prior year. The company has a definitive merger agreement with Blackstone and TPG for $76.00 per share plus up to $3.00 CVR, expected to close in the first half of calendar 2026. A voluntary recall of Brevera 9 Gauge Needles was implemented following internal review of post-market data.",
+  "L3_detailed": {
+    "financial_performance": {
+      "revenue": "$1,047.8 million, up 2.5% from $1,021.8 million in Q1 2025",
+      "net_income": "$179.1 million, down from $201.0 million in Q1 2025",
+      "eps": "Diluted EPS $0.79, down from $0.87 in Q1 2025",
+      "gross_margin": "55.9% vs 56.8% in prior year",
+      "operating_income": "Not specified",
+      "free_cash_flow": "Operating cash flow $229.9 million vs $189.3 million in Q1 2025",
+      "other_metrics": [
+        "Product revenues up 1.7% to $831.4 million",
+        "Service revenues up 6.1% to $216.4 million",
+        "Effective tax rate 22.0% vs 18.8% prior year"
+      ]
+    },
+    "segment_performance": [
+      "Product revenues increased $13.5 million or 1.7% to $831.4 million",
+      "Service and other revenues increased $12.5 million or 6.1% to $216.4 million"
+    ],
+    "guidance_and_outlook": "CVR payments contingent on achieving certain global revenue metrics for Breast Health business in fiscal 2026 and 2027. Brevera 9 Gauge Needles stop-ship may be prolonged as company re-engineers manufacturing process.",
+    "balance_sheet_highlights": {
+      "cash_and_equivalents": "$2,168.0 million, up from $1,959.5 million",
+      "total_debt": "$2,508.7 million including $1,169 million term loan and $1,350 million senior notes",
+      "net_debt": "$340.7 million net debt position",
+      "shareholders_equity": "Working capital of $2,892.1 million"
+    },
+    "risk_factors": [
+      "Timing and receipt of governmental and regulatory approvals for proposed merger",
+      "Supply chain constraints and cost inflation including $15.3 million tariff cost increase",
+      "Cybersecurity threats and targeted computer crime",
+      "Interest rate risk on variable rate debt",
+      "Foreign currency exchange rate exposure"
+    ],
+    "ma_and_deal_relevance": {
+      "pending_deals": "Definitive merger agreement with Blackstone and TPG for $76.00 per share plus up to $3.00 CVR, total up to $79.00 per share",
+      "deal_impact": "Transaction expected to close in first half of calendar 2026 subject to stockholder approval and regulatory approvals. Purported stockholder lawsuits filed challenging merger proxy disclosures.",
+      "strategic_alternatives": "Company expects to continue reviewing and evaluating potential strategic transactions",
+      "acquisition_activity": "Gynesonics acquisition completed January 2, 2025 for $340.7 million purchase price. Strategic investment in Maverix Medical LLC with 45% ownership and $27.2 million net investment."
+    },
+    "legal_and_regulatory": [
+      "BioZorb litigation settlement reached with no financial liability to company, fully covered by insurance",
+      "Voluntary field safety notice and recall of Brevera 9 Gauge Needles issued January 2026"
+    ],
+    "key_developments": [
+      "Brevera 9 Gauge Needles stop-ship implemented mid-November 2025 following internal review",
+      "Manchester manufacturing facility ceased production in mid-November 2025",
+      "Discontinuing sale of Fluoroscan Insight FD systems effective in fiscal 2026",
+      "No stock option grants in Q1 2026 pursuant to merger agreement"
+    ],
+    "capital_allocation": "New stock repurchase program authorized for up to $1.5 billion with $937.5 million remaining unused. Interest expense decreased to $27.6 million from $30.5 million due to debt refinancing."
+  }
+}

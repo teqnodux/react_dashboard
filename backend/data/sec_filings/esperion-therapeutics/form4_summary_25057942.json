@@ -1,0 +1,30 @@
+{
+  "ticker": "ESPR",
+  "issuer": "Esperion Therapeutics, Inc.",
+  "filing_date": "12/18/25",
+  "insider_name": "Benjamin Halladay",
+  "insider_title": "Chief Financial Officer",
+  "relationship": "Officer",
+  "L1_headline": "+ ESPR \u2013 Benjamin Halladay sold 7,337 shares. | 12/17/25",
+  "L2_brief": "CFO Benjamin Halladay sold 7,337 shares of common stock at $3.667 per share (~$26,900 total) on December 17, 2025. This was a tax-related sale to cover obligations on vesting RSUs, not a discretionary sale, suggesting no negative signal about company prospects.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Sale",
+        "date": "12/17/2025",
+        "shares": "7,337",
+        "price_per_share": "$3.667",
+        "total_value": "$26,902",
+        "acquired_or_disposed": "Disposed (D)"
+      }
+    ],
+    "post_transaction_holdings": "467,525 shares",
+    "ownership_type": "Direct",
+    "deal_signal": "N/A",
+    "pattern_notes": "This is a routine tax-withholding sale upon RSU vesting, not a discretionary disposal. The sale represents only ~1.5% of the insider's total holdings, indicating no significant reduction in ownership stake.",
+    "risks_flagged": [
+      "Sale was for tax obligation on RSU vesting - not discretionary",
+      "No 10b5-1 plan indicated for this transaction"
+    ]
+  }
+}

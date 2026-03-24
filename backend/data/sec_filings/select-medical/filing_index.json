@@ -1,0 +1,1198 @@
+{
+  "company": "SELECT MEDICAL HOLDINGS CORP",
+  "total_filings": 30,
+  "successful": 30,
+  "failed": 0,
+  "results": [
+    {
+      "index": 1,
+      "date": "2026-03-03",
+      "form_type": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000110465926022577/tm267827d1_8k.htm",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "filing_date": "03/03/26",
+        "items_reported": [
+          "Item 1.01",
+          "Item 7.01",
+          "Item 9.01"
+        ],
+        "L1_headline": "SEM \u2013 Announces $16.50 per share merger agreement. | 03/02/26",
+        "L2_brief": "Select Medical Holdings Corporation entered into a definitive merger agreement with Stallion Intermediate Corporation (backed by WCAS XIV) to be acquired for $16.50 per share in cash. The deal requires both majority stockholder approval and a separate majority-of-the-minority vote, with an outside date of December 1, 2026 (extendable to March 1, 2027). Company termination fee is $66.5M and reverse termination fee is $133M, with committed equity and debt financing in place.",
+        "L3_detailed": {
+          "event": "Select Medical entered into Agreement and Plan of Merger with Stallion Intermediate Corporation (Parent) and Stallion MergerSub Corporation to be taken private",
+          "key_figures": [
+            "$16.50 per share cash merger consideration",
+            "$66,504,813 company termination fee",
+            "$133,009,627 reverse termination fee (Parent)",
+            "Outside Date: December 1, 2026 (extendable to March 1, 2027)",
+            "Equity financing from WCAS XIV, L.P."
+          ],
+          "deal_implications": "Transaction has board and special committee unanimous approval. No financing condition exists as committed equity and debt financing secured. Deal structure includes rollover shares for certain holders, indicating management/insider participation in go-private transaction.",
+          "remaining_conditions": [
+            "Majority approval of outstanding shares entitled to vote",
+            "Majority-of-the-minority vote (excluding Parent, Merger Sub, Rollover Holders and affiliates)",
+            "HSR Act waiting period expiration or termination",
+            "Healthcare regulatory approvals",
+            "No Material Adverse Effect on the Company",
+            "Customary representations and warranties accuracy",
+            "NYSE delisting and SEC deregistration"
+          ],
+          "risks_flagged": [
+            "Dual voting requirement including majority-of-the-minority creates additional approval hurdle",
+            "Healthcare regulatory approvals required beyond standard HSR clearance",
+            "Forward-looking statements warn of potential litigation related to the proposed merger",
+            "Rollover Holders deemed participants in solicitation - potential conflicts of interest"
+          ]
+        }
+      }
+    },
+    {
+      "index": 2,
+      "date": "2026-02-23",
+      "form_type": "SCHEDULE 13D/A",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000095015726000173/xslSCHEDULE_13D_X01/primary_doc.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "subject_company": "Select Medical Holdings Corp",
+        "filing_date": "02/23/26",
+        "filing_type": "SC 13D/A",
+        "filer_name": "Robert A. Ortenzio, Martin F. Jackson, Estate of Rocco A. Ortenzio",
+        "filer_type": "Individual",
+        "L1_headline": "+ SEM \u2013 Robert A. Ortenzio (group) discloses 11.3% stake with $16.00/share take-private proposal. | 02/23/26",
+        "L2_brief": "Robert A. Ortenzio (Executive Chairman and co-founder), Martin F. Jackson (Senior EVP), and the Estate of Rocco A. Ortenzio filed an amended 13D disclosing a combined beneficial ownership of approximately 15.7% of Select Medical Holdings. The amendment reports that on February 22, 2026, Ortenzio delivered a refined non-binding proposal to the Special Committee to acquire all outstanding shares not already owned by the group at $16.00 per share in cash. This is a management-led take-private attempt by company insiders.",
+        "L3_detailed": {
+          "ownership_details": {
+            "shares_held": "Robert A. Ortenzio: 14,019,735; Martin F. Jackson: 1,383,421; Estate of Rocco A. Ortenzio: 4,085,550 (with significant overlap)",
+            "percentage_owned": "Robert A. Ortenzio: 11.3%; Martin F. Jackson: 1.1%; Estate of Rocco A. Ortenzio: 3.3%",
+            "sole_voting_power": "Robert A. Ortenzio: 7,081,788; Martin F. Jackson: 1,383,421; Estate: 0",
+            "shared_voting_power": "Robert A. Ortenzio: 6,937,947; Martin F. Jackson: 2,634; Estate: 4,085,550",
+            "sole_dispositive_power": "Robert A. Ortenzio: 7,081,788; Martin F. Jackson: 1,383,421; Estate: 0",
+            "shared_dispositive_power": "Robert A. Ortenzio: 6,937,947; Martin F. Jackson: 2,634; Estate: 4,085,550"
+          },
+          "position_change": "Amendment to original Schedule 13D filed November 24, 2025; no transactions in Issuer stock within past 60 days - filing triggered by refined buyout proposal, not position change",
+          "source_of_funds": "OO (Other) - Shares acquired through compensation for roles as officers/directors and ownership prior to IPO as co-founders",
+          "purpose_of_transaction": "On February 22, 2026, Mr. Ortenzio delivered a refined non-binding proposal to the Special Committee of the Board to acquire all outstanding Shares not already owned by the Reporting Persons at a price of $16.00 per share, payable in cash. This is a management buyout (MBO) proposal to take the company private.",
+          "activist_intentions": "Active take-private proposal. The filers are seeking to acquire 100% of shares they do not already own. Robert A. Ortenzio is Executive Chairman and co-founder; Martin F. Jackson is Senior EVP of Strategic Finance and Operations. This is an insider-led buyout attempt with full intent to gain control and delist the company.",
+          "deal_implications": "This is a potential take-private transaction led by management insiders controlling approximately 11-16% of shares (depending on overlap calculation). The proposal is subject to Special Committee approval and regulatory approvals. The filing explicitly warns that discussions may be terminated at any time without prior notice and there is no assurance a definitive agreement will be reached. Key risks include Special Committee rejection, financing contingencies, and regulatory hurdles. As an insider-led deal, there may be heightened scrutiny of fairness and potential for competing bids from third parties.",
+          "related_agreements": "None explicitly mentioned. The refined proposal letter (Exhibit 99.3) is referenced but not detailed in the filing. No standstill or voting agreements disclosed.",
+          "risks_flagged": [
+            "Management buyout with potential conflicts of interest requiring Special Committee scrutiny",
+            "No definitive agreement - proposal is non-binding and may be terminated without notice",
+            "Financing contingencies not detailed in filing",
+            "Regulatory approval required",
+            "Potential for competing bids given insider proposal",
+            "Special Committee may reject proposal or negotiate higher price"
+          ]
+        }
+      }
+    },
+    {
+      "index": 3,
+      "date": "2026-02-20",
+      "form_type": "PRE 14A",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000110465926018229/tm261416-1_pre14a.htm",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "company": "Select Medical Holdings Corporation",
+        "filing_type": "DEF 14A (Preliminary Proxy Statement)",
+        "filing_date": "02/20/26",
+        "L1_headline": "+ SEM \u2013 Annual meeting proxy with board declassification vote. | 02/20/26",
+        "L2_brief": "Select Medical Holdings filed a preliminary proxy statement for its April 23, 2026 annual meeting. Key proposals include electing three Class II directors, a vote to declassify the board structure, and competing proposals on special meeting thresholds (Company proposes 25%, stockholder proposes 10%). No M&A transaction is pending; this is routine annual governance.",
+        "L3_detailed": {
+          "filing_purpose": "Preliminary proxy statement for the 2026 Annual Meeting of Stockholders to be held April 23, 2026, soliciting votes on director elections, executive compensation, auditor ratification, board declassification, and special meeting rights.",
+          "key_information": [
+            "124,018,300 shares outstanding as of record date February 27, 2026 with 134 registered holders",
+            "Board recommends FOR declassification proposal to phase out classified board structure",
+            "Company proposes 25% ownership threshold for stockholders to call special meetings; stockholder counter-proposal seeks 10% threshold",
+            "8 of 10 directors determined to be independent; Russell L. Carson serves as Lead Director",
+            "Board diversity: 2 female directors, 8 male directors; 1 Asian director identified"
+          ],
+          "financial_highlights": [
+            "NEO stock ownership requirements: 3.0x base salary for Executive Chairman, Vice Chairman, and CEO; 1.5x for other NEOs",
+            "2025 say-on-pay vote results: 108,011,565 votes for, 11,314,550 against (approximately 90.5% approval)"
+          ],
+          "deal_relevance": "No M&A transaction disclosed or pending. Filing is routine annual proxy solicitation with governance proposals. Board declassification could make the company marginally more susceptible to hostile takeover attempts if approved.",
+          "regulatory_mentions": "SEC, NYSE listing standards for director independence and audit committee requirements, Sarbanes-Oxley Act compliance, NIST Cybersecurity Framework, HIPAA Security Risk Assessment",
+          "timeline_or_dates": [
+            "February 20, 2026 - Preliminary proxy filing date",
+            "February 27, 2026 - Record date for voting",
+            "March 4, 2026 - Intended mailing date for Notice of Internet Availability",
+            "April 10, 2026 - Stockholder list available for examination",
+            "April 23, 2026 - Annual Meeting date at 11:00 a.m. EDT"
+          ],
+          "conditions_or_requirements": [
+            "Declassification proposal requires affirmative vote of majority of outstanding shares",
+            "Director elections require majority of votes cast (votes FOR must exceed votes AGAINST)",
+            "Proposals 2, 3, 5, and 6 require affirmative vote of majority of shares present or represented by proxy"
+          ],
+          "risks_flagged": [
+            "Cybersecurity and information security risks acknowledged; company has not experienced material breach in past three fiscal years",
+            "Company discloses risks including regulatory risk, credit risk, liquidity risk, reputational risk, and interest rate fluctuation risk",
+            "Third-party information security breaches have occurred but none with material impact"
+          ]
+        }
+      }
+    },
+    {
+      "index": 4,
+      "date": "2026-02-19",
+      "form_type": "10-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000132041426000007/sem-20251231.htm",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "company": "Select Medical Holdings Corporation",
+        "filing_type": "10-K",
+        "filing_date": "02/01/26",
+        "L1_headline": "+ SEM \u2013 Strong rehab/hospital ops; take-private proposal pending. | 02/01/26",
+        "L2_brief": "Select Medical Holdings filed its FY2025 10-K reporting $5.45B revenue across 104 critical illness recovery hospitals, 38 rehabilitation hospitals, and 1,917 outpatient clinics. The company is subject to a pending take-private proposal from Executive Chairman Robert Ortenzio at $16.00-$16.20 per share, with an independent Special Committee evaluating the offer and strategic alternatives.",
+        "L3_detailed": {
+          "filing_purpose": "Annual report for fiscal year ended December 31, 2025, providing comprehensive financial and operational disclosure following the November 2024 spin-off of Concentra Group Holdings.",
+          "key_information": [
+            "Operates 104 critical illness recovery hospitals (70 HIH, 34 free-standing), 38 rehabilitation hospitals, and 1,917 outpatient rehab clinics across 39 states and DC",
+            "Robert Ortenzio submitted non-binding take-private proposal at $16.00-$16.20 per share on November 24, 2025",
+            "Special Committee formed November 25, 2025 to evaluate proposal and strategic alternatives",
+            "Completed tax-free distribution of Concentra (104.1M shares) on November 25, 2024",
+            "Approximately 45,300 total employees at December 31, 2025"
+          ],
+          "financial_highlights": [
+            "Total revenue of $5,452.8 million for FY2025",
+            "Revenue mix: ~45% critical illness recovery hospitals, ~24% rehabilitation hospitals, ~24% outpatient rehabilitation",
+            "Medicare represents 28.6% of revenue; commercial insurance 51.6%",
+            "6.25% Senior Notes due December 2032 outstanding"
+          ],
+          "deal_relevance": "Active take-private proposal at $16.00-$16.20 per share from Executive Chairman Ortenzio. Special Committee is evaluating the proposal and other strategic alternatives. Aggregate market value of non-affiliate shares was approximately $1.56B at June 30, 2025. The outcome of this evaluation could result in acquisition of the company or alternative strategic transaction.",
+          "regulatory_mentions": "Medicare certification requirements for LTCHs and IRFs; Joint Commission, DNV, and CIHQ accreditation; CMS quality reporting requirements; state Medicaid programs participation; potential regulatory changes to Medicare/Medicaid reimbursement noted as ongoing risk factor",
+          "timeline_or_dates": [
+            "November 24, 2025: Take-private proposal received at $16.00-$16.20 per share",
+            "November 25, 2025: Special Committee formed",
+            "November 25, 2024: Concentra spin-off completed",
+            "FY2025 ended December 31, 2025"
+          ],
+          "conditions_or_requirements": [
+            "Take-private proposal is non-binding",
+            "Special Committee evaluation ongoing with advisors",
+            "Medicare certification maintenance required for critical illness and rehabilitation hospitals",
+            "Hospital-within-hospital arrangements must maintain separate qualification from host hospitals"
+          ],
+          "risks_flagged": [
+            "Changes in government reimbursement policies could reduce revenue and profitability",
+            "Shortages in qualified nurses, therapists, and physicians could limit staffing capacity",
+            "Increased dependence on contract labor driving up operating costs",
+            "Potential impact of take-private evaluation process on business operations",
+            "Competition may limit growth and reduce profitability",
+            "Cybersecurity risks and HIPAA compliance requirements"
+          ]
+        }
+      }
+    },
+    {
+      "index": 5,
+      "date": "2026-02-19",
+      "form_type": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000110465926017585/tm266741d1_8k.htm",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "filing_date": "02/19/26",
+        "items_reported": [
+          "Item 2.02",
+          "Item 8.01",
+          "Item 9.01"
+        ],
+        "L1_headline": "SEM \u2013 Q4 2025 earnings and dividend declared. | 02/19/26",
+        "L2_brief": "Select Medical Holdings reported Q4 and full-year 2025 financial results and announced a quarterly cash dividend of $0.0625 per share. The dividend is payable March 12, 2026 to shareholders of record as of March 2, 2026. This is a routine earnings and dividend announcement with no merger-related implications.",
+        "L3_detailed": {
+          "event": "Company released Q4 and fiscal year 2025 earnings results and declared a quarterly cash dividend",
+          "key_figures": [
+            "Dividend: $0.0625 per share",
+            "Record date: March 2, 2026",
+            "Payment date: March 12, 2026"
+          ],
+          "deal_implications": "No merger or acquisition activity referenced in this filing; routine corporate disclosure",
+          "remaining_conditions": [],
+          "risks_flagged": []
+        }
+      }
+    },
+    {
+      "index": 6,
+      "date": "2026-02-13",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000147755326000002/xslF345X05/form4-02132026_090218.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "issuer": "SELECT MEDICAL HOLDINGS CORP",
+        "filing_date": "02/13/26",
+        "insider_name": "William H. Frist",
+        "insider_title": "Director",
+        "relationship": "Director",
+        "L1_headline": "+ SEM \u2013 William H. Frist acquired 1,109 shares (restricted stock grant). | 02/11/26",
+        "L2_brief": "Director William H. Frist received 1,109 shares of restricted stock at $16.23 per share on February 11, 2026, issued in lieu of an $18,000 quarterly director retainer under the company's 2020 Equity Incentive Plan. This is routine director compensation rather than a discretionary purchase, bringing his direct holdings to 305,172 shares.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "02/11/2026",
+              "shares": "1,109",
+              "price_per_share": "$16.23",
+              "total_value": "$17,999.07",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "305,172 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "Routine quarterly director compensation converted to equity in lieu of cash retainer. This is a standard board compensation structure and does not represent discretionary insider buying. The grant size (~$18,000) matches the stated quarterly retainer amount.",
+          "risks_flagged": [
+            "Transaction is formulaic compensation, not discretionary \u2014 limited signaling value for market sentiment"
+          ]
+        }
+      }
+    },
+    {
+      "index": 7,
+      "date": "2026-01-06",
+      "form_type": "3",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000210000326000002/xslF345X02/form3-01062026_100139.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "company": "Select Medical Holdings Corp",
+        "filing_type": "Form 3",
+        "filing_date": "01/06/26",
+        "L1_headline": "+ SEM \u2013 Exec VP initial ownership filing, 135K shares. | 01/06/26",
+        "L2_brief": "Form 3 initial beneficial ownership statement filed for John Tyler Hollenbach, newly designated Executive Vice President of Select Medical Holdings. He reports direct ownership of 135,084 shares of common stock, largely consisting of unvested restricted stock grants with vesting dates through 2029. No direct M&A implications from this routine insider disclosure.",
+        "L3_detailed": {
+          "filing_purpose": "Initial statement of beneficial ownership required under Section 16(a) following Hollenbach becoming an Executive Vice President (reporting person) effective January 1, 2026.",
+          "key_information": [
+            "John Tyler Hollenbach appointed Executive Vice President effective 01/01/2026",
+            "Total beneficial ownership of 135,084 shares of common stock (direct ownership)",
+            "130,000 of the shares are restricted stock grants subject to vesting conditions",
+            "Four separate restricted stock grants with staggered vesting through 2029",
+            "No derivative securities reported"
+          ],
+          "financial_highlights": [
+            "15,000 restricted shares vesting November 1, 2026",
+            "15,000 restricted shares vesting November 1, 2027",
+            "50,000 restricted shares vesting April 30, 2028",
+            "50,000 restricted shares vesting October 28, 2029",
+            "Special vesting of 1/3 of certain grants occurred November 5, 2024"
+          ],
+          "deal_relevance": "No direct M&A relevance. Routine executive ownership disclosure. However, substantial unvested equity (130,000 restricted shares) suggests retention incentives are in place; change-of-control provisions in equity plans could be relevant if any future deal emerges.",
+          "regulatory_mentions": "SEC Section 16(a) compliance filing",
+          "timeline_or_dates": [
+            "01/01/2026 - Event date (officer designation)",
+            "01/06/2026 - Filing date",
+            "11/01/2026 - Vesting date for 15,000 shares",
+            "11/01/2027 - Vesting date for 15,000 shares",
+            "04/30/2028 - Vesting date for 50,000 shares",
+            "10/28/2029 - Vesting date for 50,000 shares"
+          ],
+          "conditions_or_requirements": [
+            "Restricted stock vesting subject to continued employment with certain exceptions",
+            "Four-year cliff vesting structure on grants"
+          ],
+          "risks_flagged": [
+            "None identified in this filing"
+          ]
+        }
+      }
+    },
+    {
+      "index": 8,
+      "date": "2025-12-19",
+      "form_type": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000110465925123153/tm2533937d1_8k.htm",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "filing_date": "12/19/25",
+        "items_reported": [
+          "Item 5.02",
+          "Item 9.01"
+        ],
+        "L1_headline": "SEM \u2013 CEO employment agreement renewed effective Jan 2026. | 12/19/25",
+        "L2_brief": "Select Medical Holdings subsidiary entered into a new employment agreement with CEO Thomas P. Mullin effective January 1, 2026, with a $700,000 annual base salary and automatic one-year renewal terms. This is a routine executive compensation matter with no direct merger or deal implications.",
+        "L3_detailed": {
+          "event": "Select Medical Corporation, wholly owned subsidiary of Select Medical Holdings Corporation, executed new employment agreement with CEO Thomas P. Mullin",
+          "key_figures": [
+            "$700,000 annual base salary",
+            "Initial term: 1 year with automatic successive 1-year renewals",
+            "Severance: 12 months base salary if terminated without Cause",
+            "2-year post-employment non-compete and non-solicitation period",
+            "Effective date: January 1, 2026"
+          ],
+          "deal_implications": "No merger or acquisition transaction involved; this is a standard executive employment agreement renewal with no impact on any pending deals",
+          "remaining_conditions": [
+            "None - employment agreement is fully executed"
+          ],
+          "risks_flagged": [
+            "Reference to existing change of control letter dated February 18, 2021 may contain provisions relevant to any future M&A activity"
+          ]
+        }
+      }
+    },
+    {
+      "index": 9,
+      "date": "2025-11-25",
+      "form_type": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000110465925115701/tm2532134d1_8k.htm",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "filing_date": "11/25/25",
+        "items_reported": [
+          "Item 7.01",
+          "Item 9.01"
+        ],
+        "L1_headline": "SEM \u2013 Executive Chairman submits take-private proposal. | 11/24/25",
+        "L2_brief": "Select Medical disclosed a non-binding indication of interest from Executive Chairman Robert Ortenzio to take the company private, submitted to the Board on November 24, 2025. The proposal was filed via Schedule 13D by Ortenzio, the Estate of Rocco A. Ortenzio, and Mr. Jackson as a group. This represents an early-stage potential transaction with no binding agreement or definitive terms disclosed.",
+        "L3_detailed": {
+          "event": "Executive Chairman Robert A. Ortenzio submitted a non-binding indication of interest to the Board of Directors to take Select Medical Holdings Corporation private",
+          "key_figures": [
+            "Non-binding proposal date: November 24, 2025",
+            "No price or valuation disclosed in 8-K"
+          ],
+          "deal_implications": "Very early stage - non-binding indication of interest only; Board will need to evaluate proposal; no certainty of transaction occurring; potential for competing bids or Board rejection",
+          "remaining_conditions": [
+            "Board evaluation and response to proposal",
+            "Negotiation of definitive terms and price",
+            "Financing arrangements",
+            "Due diligence",
+            "Shareholder approval if deal proceeds",
+            "Regulatory approvals"
+          ],
+          "risks_flagged": [
+            "Non-binding nature of proposal creates significant uncertainty",
+            "Insider/management-led buyout may raise conflicts of interest and special committee requirements",
+            "No disclosed financing commitments"
+          ]
+        }
+      }
+    },
+    {
+      "index": 10,
+      "date": "2025-11-24",
+      "form_type": "SCHEDULE 13D",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000095015725000967/xslSCHEDULE_13D_X01/primary_doc.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "subject_company": "Select Medical Holdings Corp",
+        "filing_date": "11/24/25",
+        "filing_type": "SC 13D",
+        "filer_name": "Robert A. Ortenzio, Martin F. Jackson, and Estate of Rocco A. Ortenzio",
+        "filer_type": "Individual",
+        "L1_headline": "+ SEM \u2013 Ortenzio family/insiders disclose 15.7% stake with $16.00-$16.20 go-private proposal. | 11/24/25",
+        "L2_brief": "Executive Chairman Robert A. Ortenzio (11.3%), SVP Martin F. Jackson (1.1%), and the Estate of Rocco A. Ortenzio (3.3%) filed a Schedule 13D converting from 13G following submission of a non-binding go-private proposal to acquire all outstanding shares not already owned by the group at $16.00-$16.20 per share in cash. The filing group, consisting of company founders and senior executives, collectively controls approximately 15.7% of Select Medical and is seeking to take the company private, subject to Board approval, customary due diligence, and regulatory approvals.",
+        "L3_detailed": {
+          "ownership_details": {
+            "shares_held": "Robert A. Ortenzio: 14,019,735; Martin F. Jackson: 1,383,421; Estate of Rocco A. Ortenzio: 4,085,550 (significant overlap due to shared holdings)",
+            "percentage_owned": "Robert A. Ortenzio: 11.3%; Martin F. Jackson: 1.1%; Estate of Rocco A. Ortenzio: 3.3%",
+            "sole_voting_power": "Robert A. Ortenzio: 7,081,788; Martin F. Jackson: 1,383,421; Estate: 0",
+            "shared_voting_power": "Robert A. Ortenzio: 6,937,947; Martin F. Jackson: 2,634; Estate: 4,085,550",
+            "sole_dispositive_power": "Robert A. Ortenzio: 7,081,788; Martin F. Jackson: 1,383,421; Estate: 0",
+            "shared_dispositive_power": "Robert A. Ortenzio: 6,937,947; Martin F. Jackson: 2,634; Estate: 4,085,550"
+          },
+          "position_change": "Conversion from Schedule 13G to 13D due to submission of go-private proposal; no transactions in the past 60 days reported",
+          "source_of_funds": "OO (Other) - Shares acquired as compensation for officer/director roles and shares owned prior to IPO as co-founders",
+          "purpose_of_transaction": "On November 24, 2025, the Reporting Persons submitted a non-binding proposal to acquire all outstanding shares not already owned by them at $16.00-$16.20 per share in cash. The proposal is subject to customary due diligence, Board approval, and regulatory approvals. Filing states: 'Mr. Ortenzio delivered a non-binding proposal (the \"Proposal Letter\") to the Board to offer to acquire all such Shares at a price of $16.00 to $16.20 per share, payable in cash.'",
+          "activist_intentions": "Active go-private proposal submitted. As Executive Chairman and senior executives, the filers 'regularly engage in discussions with management of the Issuer, the Board, other shareholders of the Issuer and other relevant parties, which discussions may include matters ranging from the operations and conduct of the Issuer's business to considering or exploring extraordinary corporate transactions.' If the transaction is not consummated, filers reserve the right to engage in any actions under Item 4(a)-(j) of Schedule 13D including acquiring additional shares or selling existing holdings.",
+          "deal_implications": "This is a management-led buyout (MBO) proposal. The insider group controlling ~15.7% of shares is seeking to take the company private. Key considerations: (1) Board must form special committee to evaluate; (2) Transaction requires approval from unaffiliated shareholders; (3) Offer price of $16.00-$16.20 will be scrutinized for fairness; (4) Financing sources referenced but not detailed ('certain other financing sources'); (5) No assurance given that definitive agreement will be reached or transaction consummated.",
+          "related_agreements": "Joint Filing Agreement dated November 24, 2025 among the Reporting Persons (Exhibit 99.1); Proposal Letter dated November 24, 2025 (Exhibit 99.2). Robert A. Ortenzio has shared voting/dispositive power over multiple family trusts and foundations including Rocco A. Ortenzio Revocable Trust (4,028,767 shares) and various family trusts.",
+          "risks_flagged": [
+            "Management buyout creates inherent conflicts of interest requiring special committee review",
+            "Deal uncertainty - filing explicitly states 'no assurance' discussions will result in definitive agreement",
+            "Subject to completion of customary due diligence by the buyer group",
+            "Regulatory approval risk",
+            "Financing not fully detailed - references 'certain other financing sources'",
+            "If deal fails, insiders may acquire additional shares or sell existing holdings",
+            "Potential for competing bids given public disclosure of go-private interest"
+          ]
+        }
+      }
+    },
+    {
+      "index": 11,
+      "date": "2025-11-04",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000208145025000004/xslF345X05/form4-11042025_101116.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "issuer": "SELECT MEDICAL HOLDINGS CORP",
+        "filing_date": "11/04/25",
+        "insider_name": "John F. Duggan",
+        "insider_title": "Executive Vice President",
+        "relationship": "Officer",
+        "L1_headline": "+ SEM \u2013 John F. Duggan disposed 4,865 shares (tax withholding). | 11/01/2025",
+        "L2_brief": "Executive Vice President John F. Duggan disposed of 4,865 shares of common stock at $13.83 per share on November 1, 2025, totaling approximately $67,283. This was not a discretionary sale but rather a mandatory surrender of shares to cover tax withholding obligations upon the vesting of restricted stock, signaling no change in insider sentiment.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "11/01/2025",
+              "shares": "4,865",
+              "price_per_share": "$13.83",
+              "total_value": "$67,283.55",
+              "acquired_or_disposed": "Disposed (D)"
+            }
+          ],
+          "post_transaction_holdings": "194,710 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "Transaction was a routine tax withholding disposition incident to restricted stock vesting, not a discretionary sale. Insider retains substantial holdings of 194,710 shares. Disposal represents only ~2.4% of post-transaction holdings.",
+          "risks_flagged": [
+            "Not a discretionary sale - mandatory tax withholding transaction",
+            "No 10b5-1 plan indicated as this was a vesting-related event"
+          ]
+        }
+      }
+    },
+    {
+      "index": 12,
+      "date": "2025-11-04",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000196699025000004/xslF345X05/form4-11042025_101154.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "issuer": "SELECT MEDICAL HOLDINGS CORP",
+        "filing_date": "11/04/25",
+        "insider_name": "Michael F. Malatesta",
+        "insider_title": "Chief Financial Officer",
+        "relationship": "Officer",
+        "L1_headline": "+ SEM \u2013 Michael F. Malatesta disposed shares for tax withholding. | 11/01/25",
+        "L2_brief": "CFO Michael Malatesta surrendered 7,357 shares at $13.83 per share to cover tax withholding obligations upon vesting of restricted stock. This is a routine, non-discretionary transaction related to equity compensation and does not signal any change in insider sentiment about the company.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other (Tax Withholding on RSU Vesting)",
+              "date": "11/01/2025",
+              "shares": "7,357",
+              "price_per_share": "$13.83",
+              "total_value": "$101,767.31",
+              "acquired_or_disposed": "Disposed (D)"
+            }
+          ],
+          "post_transaction_holdings": "238,057 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "Transaction code 'F' indicates mandatory share surrender to satisfy tax withholding on vesting restricted stock. This is an automatic, non-discretionary disposition and does not reflect a voluntary decision to reduce holdings. The CFO retains a substantial position of 238,057 shares.",
+          "risks_flagged": [
+            "None - routine tax withholding transaction, not a discretionary sale"
+          ]
+        }
+      }
+    },
+    {
+      "index": 13,
+      "date": "2025-10-30",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000208145025000002/xslF345X05/form4-10302025_091017.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "issuer": "SELECT MEDICAL HOLDINGS CORP",
+        "filing_date": "10/30/25",
+        "insider_name": "John F. Duggan",
+        "insider_title": "Executive Vice President",
+        "relationship": "Officer",
+        "L1_headline": "+ SEM \u2013 John F. Duggan acquired 50,000 restricted stock shares. | 10/28/25",
+        "L2_brief": "Executive Vice President John F. Duggan received a grant of 50,000 restricted stock shares at $0 cost on October 28, 2025. The shares vest in full on October 28, 2029 (4-year cliff vesting). This is a standard equity compensation award rather than an open-market purchase, reflecting ongoing executive retention incentives.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "10/28/2025",
+              "shares": "50,000",
+              "price_per_share": "$0",
+              "total_value": "$0 (restricted stock grant)",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "199,575 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "This is a restricted stock grant with a 4-year cliff vesting period (vests October 28, 2029), indicating long-term retention compensation. The grant represents approximately 25% of Duggan's total post-transaction holdings, suggesting meaningful equity alignment with shareholders.",
+          "risks_flagged": [
+            "Not an open-market purchase - equity compensation grant",
+            "4-year cliff vesting creates retention lock-up"
+          ]
+        }
+      }
+    },
+    {
+      "index": 14,
+      "date": "2025-10-30",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000147755325000004/xslF345X05/form4-10302025_091058.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "issuer": "SELECT MEDICAL HOLDINGS CORP",
+        "filing_date": "10/30/25",
+        "insider_name": "William H. Frist",
+        "insider_title": "Director",
+        "relationship": "Director",
+        "L1_headline": "+ SEM \u2013 William H. Frist acquired restricted stock grant. | 10/28/25",
+        "L2_brief": "Director William H. Frist received 1,266 shares of restricted stock at $14.22 per share ($18,000 value) as quarterly board compensation in lieu of cash retainer. This is a routine director compensation grant under the company's 2020 Equity Incentive Plan, not a discretionary open-market purchase.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "10/28/2025",
+              "shares": "1,266",
+              "price_per_share": "$14.22",
+              "total_value": "$18,000",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "304,063 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "Routine quarterly director compensation grant in lieu of $18,000 cash retainer. Not a discretionary purchase signaling insider conviction. Frist holds a substantial position of over 304,000 shares, indicating long-term board member with significant equity stake.",
+          "risks_flagged": [
+            "Grant is automatic compensation, not discretionary buying - limited signal value for sentiment analysis"
+          ]
+        }
+      }
+    },
+    {
+      "index": 15,
+      "date": "2025-10-30",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000196694725000004/xslF345X05/form4-10302025_091047.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "issuer": "SELECT MEDICAL HOLDINGS CORP",
+        "filing_date": "10/30/25",
+        "insider_name": "Christopher Weigl",
+        "insider_title": "Chief Accounting Officer",
+        "relationship": "Officer",
+        "L1_headline": "+ SEM \u2013 Christopher Weigl received 20,000 restricted stock grant. | 10/28/25",
+        "L2_brief": "Christopher Weigl, Chief Accounting Officer of Select Medical Holdings, received a grant of 20,000 restricted shares on October 28, 2025, at no cost. The shares vest in full on October 28, 2029 (4-year cliff vesting). This is a standard equity compensation award that increases his direct holdings to 54,254 shares.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "10/28/2025",
+              "shares": "20,000",
+              "price_per_share": "$0",
+              "total_value": "$0 (equity compensation grant)",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "54,254 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "This is a restricted stock grant as part of executive compensation with a 4-year cliff vesting period (vests October 28, 2029). The grant represents approximately 37% of his total holdings, indicating meaningful equity alignment with shareholders. This is routine annual/periodic equity compensation for a CAO-level executive.",
+          "risks_flagged": [
+            "Restricted stock with 4-year cliff vesting - not immediately liquid",
+            "No 10b5-1 plan noted - this is an acquisition/grant, not a sale"
+          ]
+        }
+      }
+    },
+    {
+      "index": 16,
+      "date": "2025-10-30",
+      "form_type": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000110465925104425/tm2529665d1_8k.htm",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "filing_date": "10/30/25",
+        "items_reported": [
+          "Item 2.02",
+          "Item 8.01",
+          "Item 9.01"
+        ],
+        "L1_headline": "SEM \u2013 Q3 2025 earnings release and dividend declared. | 10/30/25",
+        "L2_brief": "Select Medical Holdings reported Q3 2025 financial results and declared a quarterly cash dividend of $0.0625 per share payable November 25, 2025. This is a routine operational filing with no merger or acquisition activity disclosed.",
+        "L3_detailed": {
+          "event": "Company announced Q3 2025 financial results and declared quarterly cash dividend",
+          "key_figures": [
+            "$0.0625 per share dividend",
+            "Record date: November 12, 2025",
+            "Payment date: November 25, 2025",
+            "Q3 ended September 30, 2025"
+          ],
+          "deal_implications": "No merger or acquisition activity disclosed in this filing; not relevant for merger arbitrage purposes",
+          "remaining_conditions": [],
+          "risks_flagged": []
+        }
+      }
+    },
+    {
+      "index": 17,
+      "date": "2025-10-30",
+      "form_type": "10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000132041425000015/sem-20250930.htm",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "company": "Select Medical Holdings Corporation",
+        "filing_type": "10-Q",
+        "filing_date": "10/30/25",
+        "L1_headline": "+ SEM \u2013 Q3 revenue up 7.2% YoY; Concentra fully separated. | 10/30/25",
+        "L2_brief": "Select Medical Holdings filed its Q3 2025 10-Q reporting quarterly revenue of $1.36B (up 7.2% YoY) and net income of $44.2M from continuing operations. The company completed the spin-off of Concentra in Q4 2024, and now operates three segments: critical illness recovery hospitals, rehabilitation hospitals, and outpatient rehabilitation. No active M&A transactions disclosed, though the company maintains equity method investments including a recent hospital contribution to Banner JV.",
+        "L3_detailed": {
+          "filing_purpose": "Quarterly report for the period ended September 30, 2025, required periodic filing under Section 13 of the Securities Exchange Act.",
+          "key_information": [
+            "Q3 2025 revenue of $1.363B vs $1.272B in Q3 2024 (7.2% increase)",
+            "Net income from continuing operations of $44.2M vs $41.3M prior year",
+            "Concentra distribution completed November 25, 2024 - now reported as discontinued operations for prior periods",
+            "Repurchased approximately 6.6 million shares YTD 2025 for approximately $100.4M",
+            "Medicare accounts receivable represents 21% of total receivables"
+          ],
+          "financial_highlights": [
+            "Q3 2025 Revenue: $1,363.4M (vs $1,271.6M Q3 2024)",
+            "Q3 2025 Income from continuing operations: $44.2M",
+            "9M 2025 Revenue: $4,056.2M (vs $3,874.5M 9M 2024)",
+            "Total debt: $1.79B including $550M 6.25% senior notes and $1.04B term loan",
+            "Cash and equivalents: $60.1M as of September 30, 2025",
+            "Total assets: $5.69B"
+          ],
+          "deal_relevance": "No pending M&A transactions. Concentra separation completed in Q4 2024 with tax-free distribution of 104.1M shares. Company contributed a $45.8M hospital to Banner JV in September 2025 in exchange for equity interest. Transition services agreement with Concentra generates $9.9M YTD revenue, terminates by November 2026.",
+          "regulatory_mentions": [
+            "DOJ/HHS investigation ongoing regarding physical therapy billing practices - qui tam lawsuit filed, DOJ declined to intervene but reserved rights",
+            "U.S. Attorney's Office for Western District of Oklahoma investigating SSH-Oklahoma City regarding respiratory therapy billing",
+            "Medicare represents significant portion of revenue - subject to CMS reimbursement rate changes"
+          ],
+          "timeline_or_dates": [
+            "September 30, 2025 - Quarter end date",
+            "November 25, 2025 - Dividend payment date",
+            "November 26, 2026 - TSA with Concentra terminates",
+            "March 31, 2028 - Interest rate cap maturity",
+            "2026 - $550M senior notes due August 15, 2026"
+          ],
+          "conditions_or_requirements": [
+            "Interest rate cap limits exposure to 4.5% on $1.0B of term loan principal",
+            "Revolving credit facility capacity of $150M drawn as of quarter end",
+            "Self-insured retention limits on professional liability and general liability insurance programs"
+          ],
+          "risks_flagged": [
+            "DOJ investigation into physical therapy billing practices - False Claims Act qui tam lawsuit pending",
+            "Oklahoma City billing investigation ongoing - timing and outcome unpredictable",
+            "Concentration of Medicare receivables (21% of AR) creates credit and reimbursement risk",
+            "Healthcare regulatory environment - potential for additional investigations",
+            "Labor costs pressure - personnel expense remains largest cost component"
+          ]
+        }
+      }
+    },
+    {
+      "index": 18,
+      "date": "2025-09-02",
+      "form_type": "3",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000141588925023448/xslF345X02/form3-09022025_090913.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "company": "Select Medical Holdings Corp",
+        "filing_type": "Form 3",
+        "filing_date": "09/02/25",
+        "L1_headline": "+ SEM \u2013 New EVP files initial beneficial ownership statement. | 09/02/25",
+        "L2_brief": "Form 3 initial ownership filing for John F. Duggan, newly appointed Executive Vice President of Select Medical Holdings Corp. Duggan beneficially owns 149,575 shares of common stock, consisting entirely of restricted stock grants from 2021-2024 with vesting dates through April 2028. No direct M&A implications but indicates executive leadership changes.",
+        "L3_detailed": {
+          "filing_purpose": "Initial statement of beneficial ownership required under Section 16(a) upon becoming an officer (Executive Vice President) effective September 1, 2025",
+          "key_information": [
+            "John F. Duggan appointed Executive Vice President effective 09/01/2025",
+            "Beneficially owns 149,575 shares of common stock (all restricted stock)",
+            "Holdings consist of four restricted stock grants: 25,000 shares each from 2021-2023, plus 50,000 shares from 2024",
+            "All grants subject to special vesting of 1/3 of shares on November 5, 2024",
+            "No derivative securities reported"
+          ],
+          "financial_highlights": [
+            "Total shares beneficially owned: 149,575 shares",
+            "2021 grant: 25,000 restricted shares",
+            "2022 grant: 25,000 restricted shares",
+            "2023 grant: 25,000 restricted shares",
+            "2024 grant: 50,000 restricted shares"
+          ],
+          "deal_relevance": "No direct M&A relevance. However, executive appointments and insider ownership positions are monitored for potential signals of corporate activity. The multi-year vesting schedule suggests long-term retention focus rather than near-term transaction preparation.",
+          "regulatory_mentions": "Standard Section 16(a) Securities Exchange Act compliance filing",
+          "timeline_or_dates": [
+            "09/01/2025 - Event date (appointment as EVP)",
+            "11/05/2024 - Special vesting date (1/3 of all grants)",
+            "11/01/2025 - Full vesting of 2021 grant",
+            "11/01/2026 - Full vesting of 2022 grant",
+            "11/01/2027 - Full vesting of 2023 grant",
+            "04/30/2028 - Full vesting of 2024 grant"
+          ],
+          "conditions_or_requirements": [
+            "Restricted stock vesting subject to continued employment with certain exceptions",
+            "Four-year vesting period from grant date for each award"
+          ],
+          "risks_flagged": []
+        }
+      }
+    },
+    {
+      "index": 19,
+      "date": "2025-09-02",
+      "form_type": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000110465925086392/tm2524778d1_8k.htm",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "filing_date": "09/02/25",
+        "items_reported": [
+          "Item 5.02",
+          "Item 7.01",
+          "Item 9.01"
+        ],
+        "L1_headline": "SEM \u2013 New CEO appointed; leadership transition. | 09/02/25",
+        "L2_brief": "Select Medical appointed Thomas P. Mullin as CEO effective September 1, 2025, replacing David S. Chernow who becomes Vice Chairman. This is a routine executive succession with no merger or deal implications; Mullin has 17 years with the company and previously served as Co-President.",
+        "L3_detailed": {
+          "event": "CEO succession: Thomas P. Mullin (41) appointed CEO effective September 1, 2025, replacing David S. Chernow (68) who transitions to Vice Chairman. John A. Saich becomes sole President.",
+          "key_figures": [
+            "Mullin annual base salary: $618,000",
+            "Restricted stock grants: 100,000 shares/year in 2024 and 2025 with 3-year cliff vesting",
+            "Mullin tenure: 17 years with company",
+            "Mullin oversees 140 critical illness recovery and inpatient rehabilitation hospitals"
+          ],
+          "deal_implications": "No merger or acquisition involved; this is an internal leadership succession unrelated to any pending transaction.",
+          "remaining_conditions": [],
+          "risks_flagged": []
+        }
+      }
+    },
+    {
+      "index": 20,
+      "date": "2025-08-04",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000141588925020958/xslF345X05/form4-08042025_080821.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "issuer": "SELECT MEDICAL HOLDINGS CORP",
+        "filing_date": "08/04/25",
+        "insider_name": "John A. Saich",
+        "insider_title": "Executive Vice President",
+        "relationship": "Officer",
+        "L1_headline": "+ SEM \u2013 John A. Saich disposed shares for tax withholding. | 08/01/25",
+        "L2_brief": "John A. Saich, Executive Vice President of Select Medical Holdings, disposed of 21,745 shares at $12.57 per share on August 1, 2025. This was not a discretionary sale but rather a mandatory surrender of shares to cover tax withholding obligations upon the vesting of restricted stock, representing a routine compensation-related transaction.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "08/01/2025",
+              "shares": "21,745",
+              "price_per_share": "$12.57",
+              "total_value": "$273,336.65",
+              "acquired_or_disposed": "Disposed (D)"
+            }
+          ],
+          "post_transaction_holdings": "736,412 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "This is a routine tax withholding transaction upon restricted stock vesting, not a discretionary sale. The disposed shares represent approximately 2.9% of post-transaction holdings, indicating a relatively small portion of total ownership used for tax purposes.",
+          "risks_flagged": [
+            "Transaction is tax withholding related (Code F), not a voluntary sale \u2014 no negative signal"
+          ]
+        }
+      }
+    },
+    {
+      "index": 21,
+      "date": "2025-08-04",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000141588925020956/xslF345X05/form4-08042025_080826.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "issuer": "SELECT MEDICAL HOLDINGS CORP",
+        "filing_date": "08/04/25",
+        "insider_name": "Thomas P Mullin",
+        "insider_title": "CO-PRESIDENT",
+        "relationship": "Officer",
+        "L1_headline": "+ SEM \u2013 Thomas P Mullin disposed shares for tax withholding. | 08/01/25",
+        "L2_brief": "Thomas P Mullin, Co-President of Select Medical Holdings, surrendered 22,045 shares at $12.57 per share on 08/01/25 to satisfy tax withholding obligations upon vesting of restricted stock. This is a routine, non-discretionary transaction related to equity compensation and does not signal a change in insider sentiment.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "08/01/2025",
+              "shares": "22,045",
+              "price_per_share": "$12.57",
+              "total_value": "$277,105.65",
+              "acquired_or_disposed": "Disposed (D)"
+            }
+          ],
+          "post_transaction_holdings": "391,709 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "Tax withholding surrender upon restricted stock vesting \u2014 this is an automatic, routine transaction tied to compensation, not a discretionary sale. Insider retains substantial holdings of 391,709 shares post-transaction.",
+          "risks_flagged": [
+            "Transaction code F indicates mandatory tax withholding surrender, not a discretionary sale",
+            "Shares surrendered represent approximately 5.3% of post-transaction holdings \u2014 modest relative to total position"
+          ]
+        }
+      }
+    },
+    {
+      "index": 22,
+      "date": "2025-08-04",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000141588925020954/xslF345X05/form4-08042025_080812.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "issuer": "SELECT MEDICAL HOLDINGS CORP",
+        "filing_date": "08/04/25",
+        "insider_name": "Michael E. Tarvin",
+        "insider_title": "Executive Vice President",
+        "relationship": "Officer",
+        "L1_headline": "+ SEM \u2013 Michael E. Tarvin disposed 19,640 shares (tax withholding). | 08/01/25",
+        "L2_brief": "Michael E. Tarvin, Executive Vice President of Select Medical Holdings, disposed of 19,640 shares at $12.57 per share on August 1, 2025. This was not a voluntary sale but rather a mandatory surrender of shares to cover tax withholding obligations upon vesting of restricted stock, which is a neutral signal regarding insider sentiment.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other (Tax Withholding on Vest)",
+              "date": "08/01/2025",
+              "shares": "19,640",
+              "price_per_share": "$12.57",
+              "total_value": "$246,914.80",
+              "acquired_or_disposed": "Disposed (D)"
+            }
+          ],
+          "post_transaction_holdings": "508,120 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "This is a routine tax withholding transaction associated with restricted stock vesting, not a discretionary sale. The insider retains a substantial holding of over 508,000 shares, indicating continued alignment with shareholders.",
+          "risks_flagged": [
+            "Transaction is mandatory tax withholding, not discretionary selling - neutral signal"
+          ]
+        }
+      }
+    },
+    {
+      "index": 23,
+      "date": "2025-08-04",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000141588925020952/xslF345X05/form4-08042025_080802.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "issuer": "SELECT MEDICAL HOLDINGS CORP",
+        "filing_date": "08/04/25",
+        "insider_name": "Martin F. Jackson",
+        "insider_title": "Executive Vice President",
+        "relationship": "Officer",
+        "L1_headline": "+ SEM \u2013 Martin F. Jackson disposed 29,460 shares (tax withholding). | 08/01/25",
+        "L2_brief": "Executive Vice President Martin F. Jackson disposed of 29,460 shares of common stock at $12.57 per share on August 1, 2025, totaling approximately $370,313. This was a mandatory surrender of shares to cover tax withholding obligations upon vesting of restricted stock, not a discretionary sale, and therefore does not signal bearish sentiment.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "08/01/2025",
+              "shares": "29,460",
+              "price_per_share": "$12.57",
+              "total_value": "$370,313.22",
+              "acquired_or_disposed": "Disposed (D)"
+            }
+          ],
+          "post_transaction_holdings": "1,393,957 total (1,383,421 direct + 10,536 indirect through children)",
+          "ownership_type": "Direct and Indirect (through children)",
+          "deal_signal": "N/A",
+          "pattern_notes": "Transaction code 'F' indicates this was a mandatory tax withholding disposition upon restricted stock vesting, not a voluntary sale. The insider retains substantial holdings of over 1.39 million shares, demonstrating continued significant alignment with shareholders.",
+          "risks_flagged": [
+            "Transaction was mandatory tax withholding (Code F), not discretionary selling"
+          ]
+        }
+      }
+    },
+    {
+      "index": 24,
+      "date": "2025-08-04",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000141588925020950/xslF345X05/form4-08042025_080854.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "issuer": "SELECT MEDICAL HOLDINGS CORP",
+        "filing_date": "08/04/25",
+        "insider_name": "David S. Chernow",
+        "insider_title": "CEO",
+        "relationship": "Officer & Director",
+        "L1_headline": "+ SEM \u2013 David S. Chernow disposed shares for tax withholding. | 08/01/25",
+        "L2_brief": "CEO David Chernow surrendered 49,100 shares at $12.57 to cover tax obligations on vesting restricted stock. This is a routine, non-discretionary transaction related to equity compensation and does not signal any change in insider sentiment. He retains 892,830 shares directly following the transaction.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "08/01/2025",
+              "shares": "49,100",
+              "price_per_share": "$12.57",
+              "total_value": "$617,187",
+              "acquired_or_disposed": "Disposed (D)"
+            }
+          ],
+          "post_transaction_holdings": "892,830 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "Routine tax withholding surrender on restricted stock vesting. Transaction code 'F' indicates mandatory disposition to satisfy tax obligations, not a voluntary sale. Disposal represents approximately 5.2% of post-transaction holdings.",
+          "risks_flagged": [
+            "Non-discretionary transaction for tax withholding purposes - not indicative of insider sentiment"
+          ]
+        }
+      }
+    },
+    {
+      "index": 25,
+      "date": "2025-08-04",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000141588925020940/xslF345X05/form4-08042025_080827.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "issuer": "SELECT MEDICAL HOLDINGS CORP",
+        "filing_date": "08/04/25",
+        "insider_name": "Brian R. Rusignuolo",
+        "insider_title": "Chief Information Officer",
+        "relationship": "Officer",
+        "L1_headline": "+ SEM \u2013 Brian R. Rusignuolo disposed shares for tax withholding. | 08/01/25",
+        "L2_brief": "Brian Rusignuolo, CIO of Select Medical Holdings, disposed of 14,680 shares at $12.57 per share on August 1, 2025. This was not a voluntary sale but rather a mandatory surrender of shares to cover tax withholding obligations upon vesting of restricted stock. The transaction is routine and does not signal insider sentiment.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "08/01/2025",
+              "shares": "14,680",
+              "price_per_share": "$12.57",
+              "total_value": "$184,527.60",
+              "acquired_or_disposed": "Disposed (D)"
+            }
+          ],
+          "post_transaction_holdings": "361,370 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "Transaction code 'F' indicates this was a mandatory tax withholding disposition upon restricted stock vesting, not a discretionary sale. This is a routine, non-voluntary transaction that does not reflect the insider's market outlook.",
+          "risks_flagged": [
+            "Disposal represents approximately 4% of post-transaction holdings - relatively modest proportion",
+            "Not a discretionary sale - tax withholding obligation only"
+          ]
+        }
+      }
+    },
+    {
+      "index": 26,
+      "date": "2025-08-04",
+      "form_type": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000110465925073383/tm2522425d1_8k.htm",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "filing_date": "08/04/25",
+        "items_reported": [
+          "Item 5.03",
+          "Item 9.01"
+        ],
+        "L1_headline": "SEM \u2013 Board adopts amended bylaws for proxy rules. | 08/04/25",
+        "L2_brief": "Select Medical Holdings' Board approved amended and restated bylaws on July 30, 2025, enhancing stockholder nomination procedures in response to SEC universal proxy rules. The changes require stockholders to solicit proxies from holders of at least 67% of voting power for director nominations. This is a governance update with no direct merger deal implications.",
+        "L3_detailed": {
+          "event": "Board of Directors approved and adopted amended and restated bylaws to update stockholder nomination and proposal procedures in light of SEC Rule 14a-19 universal proxy requirements",
+          "key_figures": [
+            "67% voting power threshold for proxy solicitation requirement",
+            "Board approval date: July 30, 2025",
+            "Filing date: August 4, 2025"
+          ],
+          "deal_implications": "No active merger deal referenced; this is a routine corporate governance update that strengthens advance notice requirements for stockholder nominations, potentially making activist or hostile approaches more procedurally challenging",
+          "remaining_conditions": [
+            "N/A - no pending transaction disclosed"
+          ],
+          "risks_flagged": [
+            "No litigation or regulatory issues mentioned; bylaws changes could impact future proxy contests or unsolicited takeover attempts"
+          ]
+        }
+      }
+    },
+    {
+      "index": 27,
+      "date": "2025-07-31",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000141588925020767/xslF345X05/form4-07312025_090726.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "issuer": "SELECT MEDICAL HOLDINGS CORP",
+        "filing_date": "07/31/25",
+        "insider_name": "Daniel Thomas",
+        "insider_title": "Director",
+        "relationship": "Director",
+        "L1_headline": "+ SEM \u2013 Daniel Thomas acquired 14,035 restricted shares. | 07/29/25",
+        "L2_brief": "Director Daniel Thomas received a grant of 14,035 restricted stock shares at $0 cost on July 29, 2025. The shares vest in full on July 29, 2026. This is a standard director compensation grant rather than an open-market purchase, bringing his total direct holdings to 80,035 shares.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "07/29/2025",
+              "shares": "14,035",
+              "price_per_share": "$0",
+              "total_value": "$0 (restricted stock grant)",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "80,035 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "This is a restricted stock grant as part of director compensation, not a discretionary open-market purchase. The grant represents approximately 17.5% of the director's total post-transaction holdings, indicating a meaningful equity stake tied to company performance. Shares vest on one-year anniversary (July 29, 2026).",
+          "risks_flagged": [
+            "Restricted stock grant with 1-year cliff vesting - not an open market transaction indicating insider sentiment"
+          ]
+        }
+      }
+    },
+    {
+      "index": 28,
+      "date": "2025-07-31",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000141588925020762/xslF345X05/form4-07312025_090727.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "issuer": "SELECT MEDICAL HOLDINGS CORP",
+        "filing_date": "07/31/25",
+        "insider_name": "John A. Saich",
+        "insider_title": "Executive Vice President",
+        "relationship": "Officer",
+        "L1_headline": "+ SEM \u2013 John A. Saich acquired 100,000 restricted stock shares. | 07/29/25",
+        "L2_brief": "John A. Saich, Executive Vice President of Select Medical Holdings, received a grant of 100,000 restricted stock shares on July 29, 2025, at no cost. The shares vest in full on July 29, 2028, representing a long-term retention award that aligns executive compensation with shareholder interests over a 3-year period.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "07/29/2025",
+              "shares": "100,000",
+              "price_per_share": "$0",
+              "total_value": "$0 (compensation grant)",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "758,157 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "This is a restricted stock grant as part of executive compensation, not an open-market purchase. The grant represents approximately 13% of the insider's total post-transaction holdings, indicating a meaningful equity stake. The 3-year cliff vesting schedule suggests the company is focused on long-term executive retention.",
+          "risks_flagged": [
+            "Not a discretionary purchase - compensation grant",
+            "No 10b5-1 plan indicated as this is an award, not a sale"
+          ]
+        }
+      }
+    },
+    {
+      "index": 29,
+      "date": "2025-07-31",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000141588925020760/xslF345X05/form4-07312025_090731.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "issuer": "SELECT MEDICAL HOLDINGS CORP",
+        "filing_date": "07/31/25",
+        "insider_name": "Katherine R Davisson",
+        "insider_title": "Director",
+        "relationship": "Director",
+        "L1_headline": "+ SEM \u2013 Katherine R Davisson acquired restricted stock grant. | 07/29/25",
+        "L2_brief": "Director Katherine R Davisson received a grant of 14,035 restricted shares of Select Medical Holdings on July 29, 2025, at $0 cost as part of director compensation. The shares vest on July 29, 2026, bringing her total direct holdings to 60,035 shares. This is a routine equity compensation award rather than an open-market purchase.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "07/29/2025",
+              "shares": "14,035",
+              "price_per_share": "$0",
+              "total_value": "$0",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "60,035 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "Standard annual director equity compensation grant. Restricted stock vests in one year (July 29, 2026). This represents approximately 23% of her post-transaction holdings, indicating a meaningful portion of her ownership is in unvested restricted stock.",
+          "risks_flagged": [
+            "Not an open-market purchase - compensation grant with no cash outlay",
+            "Shares subject to one-year vesting cliff"
+          ]
+        }
+      }
+    },
+    {
+      "index": 30,
+      "date": "2025-07-31",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1320414/000141588925020758/xslF345X05/form4-07312025_090741.xml",
+      "status": "success",
+      "ticker": "SEM",
+      "summary": {
+        "ticker": "SEM",
+        "issuer": "SELECT MEDICAL HOLDINGS CORP",
+        "filing_date": "07/31/25",
+        "insider_name": "James S. Ely III",
+        "insider_title": "Director",
+        "relationship": "Director",
+        "L1_headline": "+ SEM \u2013 James S. Ely III acquired 14,035 restricted stock shares. | 07/29/25",
+        "L2_brief": "Director James S. Ely III received a grant of 14,035 restricted stock shares at $0 cost as part of director compensation. The shares vest on July 29, 2026, bringing his total direct holdings to 161,674 shares. This is a routine director equity grant rather than a discretionary open-market purchase.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "07/29/2025",
+              "shares": "14,035",
+              "price_per_share": "$0",
+              "total_value": "$0 (restricted stock grant)",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "161,674 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "Routine annual director compensation grant of restricted stock with 1-year cliff vesting (vests July 29, 2026). Not a discretionary open-market purchase indicating conviction.",
+          "risks_flagged": [
+            "Grant is restricted stock subject to vesting conditions",
+            "Not an open-market purchase - limited signal value for sentiment analysis"
+          ]
+        }
+      }
+    }
+  ],
+  "failures": []
+}

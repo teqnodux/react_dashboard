@@ -1,0 +1,11 @@
+label,zone,best_cluster,category,ratio,distance,threshold,num_matches,text_preview
+(i),typical,Broad Economic and Financial Market Changes Exclusion,economic,0.36,0.1009,0.2801,1,"change in general United States or global economic conditions, including changes in the credit, debt"
+(ii),typical,Broad Economic and Financial Market Changes Exclusion,economic,0.99,0.2785,0.2801,1,change that generally affects any of the industries or markets in which the Company and its Subsidia
+(iii),typical,Catastrophic External Events Beyond Party Control,force_majeure,0.89,0.2643,0.2965,1,change in political conditions (or the escalation of any such change in political conditions existin
+(iv),typical,Catastrophic External Events Beyond Party Control,force_majeure,0.7,0.2067,0.2965,1,"earthquakes, hurricanes, tsunamis, tornadoes, floods, mudslides, wild fires or other natural disaste"
+(v),typical,"Changes in Law, GAAP, and Regulatory Accounting Standards",accounting,0.38,0.112,0.2942,1,change in applicable Law or GAAP or other applicable accounting standards (or the interpretation the
+(vi),typical,Exclusion for impacts from deal announcement and execution,transaction,0.58,0.1465,0.254,1,"announcement or pendency of this Agreement or the transactions contemplated by this Agreement, inclu"
+(vii),typical,Failure to Meet Financial Projections and Forecasts Exclusions,disclosure,0.79,0.1603,0.2025,1,"failure by the Company or Parent, as applicable, to meet any projections, forecasts, guidance, estim"
+(viii),typical,Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks,transaction,0.41,0.1135,0.2792,1,"change in the Company's stock price or the trading volume of the Company's stock, or any change in t"
+(ix),typical,Actions Taken Pursuant to or Required by Agreement Terms,transaction,0.43,0.1184,0.2786,1,"action taken (or omitted to be taken) by the Company or any of its Subsidiaries, or Parent or any of"
+(x),typical,Exclusion for Matters Previously Disclosed in Transaction Documents,disclosure,0.71,0.1746,0.2448,1,"matter disclosed in the Company Disclosure Letter or the Parent Disclosure Letter, as applicable"

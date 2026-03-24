@@ -1,0 +1,31 @@
+{
+  "ticker": "DAWN",
+  "company": "Day One Biopharmaceuticals, Inc.",
+  "filing_date": "03/06/26",
+  "exhibit_type": "Deal Announcement",
+  "L1_headline": "+ DAWN \u2013 Servier to acquire Day One for $21.50/share. | 03/06/26",
+  "L2_brief": "Servier and Day One Biopharmaceuticals announced a definitive agreement for Servier to acquire Day One via cash tender offer at $21.50 per share, representing a total equity value of approximately $2.5 billion. The offer price represents a ~68% premium over the March 5, 2026 closing price and ~86% premium over the one-month VWAP. The transaction is expected to close in Q2 2026, subject to customary closing conditions including majority share tender and U.S. antitrust clearance.",
+  "L3_detailed": {
+    "event": "Servier entered into a definitive merger agreement to acquire Day One Biopharmaceuticals via a cash tender offer, followed by a second-step merger for any remaining shares at the same price. The acquisition expands Servier's rare oncology portfolio, particularly in pediatric low-grade glioma.",
+    "key_figures": [
+      "$21.50 per share in cash",
+      "Total equity value of approximately $2.5 billion",
+      "~68% premium over March 5, 2026 closing price",
+      "~86% premium over one-month VWAP as of March 5, 2026",
+      "Servier revenues of \u20ac6.9 billion in 2024/25 financial year"
+    ],
+    "market_impact": "Day One's Board of Directors recommends shareholders tender their shares. Servier expects to fund the transaction through existing cash and investments. The acquisition positions Servier as a leader in pediatric low-grade glioma and expands its oncology pipeline with programs from early stage to phase 3.",
+    "forward_guidance": "Transaction expected to close in Q2 2026. Tender offer has not yet commenced as of the filing date; Servier and the purchaser will file tender offer materials on Schedule TO with the SEC upon commencement.",
+    "deal_relevance": "Structure is a cash tender offer at $21.50/share followed by a second-step merger at the same price. Closing conditions include tender of at least a majority of outstanding Day One common stock and U.S. antitrust clearance. Day One's Board recommends tendering. Goldman Sachs is advising Servier; Centerview Partners is advising Day One. Baker McKenzie is Servier's legal counsel; Fenwick & West is Day One's legal counsel.",
+    "risks_flagged": [
+      "Uncertainties as to timing of the offer and subsequent merger",
+      "Uncertainties as to how many stockholders will tender shares",
+      "Risk that competing offers or acquisition proposals will be made",
+      "Possibility that various closing conditions may not be satisfied or waived",
+      "Effects of disruption from the transaction on Day One's business and relationships with employees, suppliers, and business partners",
+      "Risk that stockholder litigation in connection with the offer or merger may result in significant costs of defense, indemnification, and liability",
+      "Possibility of termination of the Merger Agreement"
+    ]
+  },
+  "filing_type": "99.1"
+}

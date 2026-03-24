@@ -1,0 +1,24 @@
+{
+  "events": {
+    "hsr_filed": {
+      "date": null,
+      "source": null
+    },
+    "proxy_filed": {
+      "date": null,
+      "source": null
+    },
+    "s4_filed": {
+      "date": null,
+      "source": null
+    },
+    "s4_effective": {
+      "date": null,
+      "source": null
+    },
+    "conditions_satisfied": {
+      "date": null,
+      "source": null
+    }
+  }
+}

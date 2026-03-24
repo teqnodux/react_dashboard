@@ -1,0 +1,63 @@
+{
+  "document_id": "d809559d8k",
+  "total_clauses": 7,
+  "extraction_source": "8k_8k",
+  "clauses": [
+    {
+      "clause_id": "1",
+      "clause_type": "trigger",
+      "trigger_type": "mutual_consent",
+      "original_text": "the Merger Agreement may be terminated (a) by the mutual written consent of both the Company and JHX",
+      "processed_text": "the Merger Agreement may be terminated (a) by the mutual written consent of both the Company and JHX",
+      "parties_replaced": []
+    },
+    {
+      "clause_id": "2",
+      "clause_type": "trigger",
+      "trigger_type": "outside_date",
+      "original_text": "by either the Company or JHX if the consummation of the Merger does not occur on or before March 23, 2026, subject to an automatic extension for a period of three months under certain circumstances",
+      "processed_text": "by either the Company or JHX if the consummation of the Merger does not occur on or before March 23, 2026, subject to an automatic extension for a period of three months under certain circumstances",
+      "parties_replaced": []
+    },
+    {
+      "clause_id": "3",
+      "clause_type": "trigger",
+      "trigger_type": "regulatory_block",
+      "original_text": "by either the Company or JHX if there exists a final and nonappealable law or order prohibiting the Merger",
+      "processed_text": "by either the Company or JHX if there exists a final and nonappealable law or order prohibiting the Merger",
+      "parties_replaced": []
+    },
+    {
+      "clause_id": "4",
+      "clause_type": "trigger",
+      "trigger_type": "other",
+      "original_text": "by either the Company or JHX upon a failure to receive the Company Stockholder Approval (after a stockholder meeting is held for such purpose)",
+      "processed_text": "by either the Company or JHX upon a failure to receive the Company Stockholder Approval (after a stockholder meeting is held for such purpose)",
+      "parties_replaced": []
+    },
+    {
+      "clause_id": "5",
+      "clause_type": "trigger",
+      "trigger_type": "breach",
+      "original_text": "by either the Company or JHX in the event of a material uncured breach by the other party of its representations, warranties, covenants or other agreements under the Merger Agreement",
+      "processed_text": "by either the Company or JHX in the event of a material uncured breach by the other party of its representations, warranties, covenants or other agreements under the Merger Agreement",
+      "parties_replaced": []
+    },
+    {
+      "clause_id": "6",
+      "clause_type": "trigger",
+      "trigger_type": "superior_proposal",
+      "original_text": "by the Company in order to accept a Superior Proposal (as defined in the Merger Agreement)",
+      "processed_text": "by the Company in order to accept a Superior Proposal (as defined in the Merger Agreement)",
+      "parties_replaced": []
+    },
+    {
+      "clause_id": "7",
+      "clause_type": "trigger",
+      "trigger_type": "fiduciary_out",
+      "original_text": "by JHX in the event the Company Board of Directors makes an adverse recommendation change",
+      "processed_text": "by JHX in the event the Company Board of Directors makes an adverse recommendation change",
+      "parties_replaced": []
+    }
+  ]
+}

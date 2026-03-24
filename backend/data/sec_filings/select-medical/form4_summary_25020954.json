@@ -1,0 +1,29 @@
+{
+  "ticker": "SEM",
+  "issuer": "SELECT MEDICAL HOLDINGS CORP",
+  "filing_date": "08/04/25",
+  "insider_name": "Michael E. Tarvin",
+  "insider_title": "Executive Vice President",
+  "relationship": "Officer",
+  "L1_headline": "+ SEM \u2013 Michael E. Tarvin disposed 19,640 shares (tax withholding). | 08/01/25",
+  "L2_brief": "Michael E. Tarvin, Executive Vice President of Select Medical Holdings, disposed of 19,640 shares at $12.57 per share on August 1, 2025. This was not a voluntary sale but rather a mandatory surrender of shares to cover tax withholding obligations upon vesting of restricted stock, which is a neutral signal regarding insider sentiment.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other (Tax Withholding on Vest)",
+        "date": "08/01/2025",
+        "shares": "19,640",
+        "price_per_share": "$12.57",
+        "total_value": "$246,914.80",
+        "acquired_or_disposed": "Disposed (D)"
+      }
+    ],
+    "post_transaction_holdings": "508,120 shares",
+    "ownership_type": "Direct",
+    "deal_signal": "N/A",
+    "pattern_notes": "This is a routine tax withholding transaction associated with restricted stock vesting, not a discretionary sale. The insider retains a substantial holding of over 508,000 shares, indicating continued alignment with shareholders.",
+    "risks_flagged": [
+      "Transaction is mandatory tax withholding, not discretionary selling - neutral signal"
+    ]
+  }
+}

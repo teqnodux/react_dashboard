@@ -1,0 +1,249 @@
+{
+  "document_id": "a05192025txnmex21",
+  "total_clauses": 13,
+  "clauses": [
+    {
+      "section_number": "SECTION 8.1",
+      "section_title": "Termination",
+      "clause_id": "preamble",
+      "clause_type": "preamble",
+      "trigger_type": "preamble",
+      "original_text": "This Agreement may be terminated and the Merger may be abandoned at any time prior to the Effective Time, whether before or after receipt of the Company Requisite Vote (other than as expressly indicated below):",
+      "processed_text": "This Agreement may be terminated and the Merger may be abandoned at any time prior to the Effective Time, whether before or after receipt of the Company Requisite Vote (other than as expressly indicated below):",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ]
+    },
+    {
+      "section_number": "SECTION 8.1",
+      "section_title": "Termination",
+      "clause_id": "a",
+      "clause_type": "trigger",
+      "trigger_type": "mutual_consent",
+      "original_text": "by mutual written consent of Parent and the Company;",
+      "processed_text": "by mutual written consent of Parent and the Company;",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "SECTION 8.1",
+      "section_title": "Termination",
+      "clause_id": "b",
+      "clause_type": "trigger",
+      "trigger_type": "regulatory_block",
+      "original_text": "by Parent or the Company if the condition set forth in Section 7.1(b) (No Legal Restraint) is not satisfied and the Legal Restraint giving rise to such nonsatisfaction has become final and nonappealable; provided, however, that (i) the right to terminate this Agreement under this Section 8.1(b) shall not be available to any Party if the Legal Restraint was due to the breach of this Agreement by such Party (or, in the case of Parent, Merger Sub) seeking to terminate this Agreement (it being understood that deemed compliance with Section 6.4 pursuant to Section 6.4(f) shall not constitute a breach under this Section 8.1(b)), and (ii) the Party seeking to terminate this Agreement under this Section 8.1(b) shall have complied in all material respects with Section 6.4 (Regulatory Approvals; Reasonable Best Efforts) (it being understood that deemed compliance with Section 6.4 pursuant to Section 6.4(f) constitutes compliance under this Section 8.1(b));",
+      "processed_text": "by Parent or the Company if the condition set forth in Section 7.1(b) (No Legal Restraint) is not satisfied and the Legal Restraint giving rise to such nonsatisfaction has become final and nonappealable; provided, however, that (i) the right to terminate this Agreement under this Section 8.1(b) shall not be available to any Party if the Legal Restraint was due to the breach of this Agreement by such Party (or, in the case of Parent, Merger Sub) seeking to terminate this Agreement (it being understood that deemed compliance with Section 6.4 pursuant to Section 6.4(f) shall not constitute a breach under this Section 8.1(b)), and (ii) the Party seeking to terminate this Agreement under this Section 8.1(b) shall have complied in all material respects with Section 6.4 (Regulatory Approvals; Reasonable Best Efforts) (it being understood that deemed compliance with Section 6.4 pursuant to Section 6.4(f) constitutes compliance under this Section 8.1(b));",
+      "parties_replaced": [
+        {
+          "term": "Merger Sub",
+          "standard_role": "Merger Sub"
+        },
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "SECTION 8.1",
+      "section_title": "Termination",
+      "clause_id": "c",
+      "clause_type": "trigger",
+      "trigger_type": "outside_date",
+      "original_text": "by Parent or the Company if the Effective Time shall not have occurred on or before 5:00 p.m. New York City time on August 18, 2026 (as may be extended pursuant to the following proviso, the \"End Date\"); provided, however, that if, prior to the End Date, all of the conditions to the Closing set forth in Article VII have been satisfied or waived, as applicable, or for conditions that by their nature are to be satisfied at the Closing, shall then be capable of being satisfied (except for any condition set forth in (i) Section 7.1(b) (No Legal Restraint) or (ii) Section 7.1(c) (Required Regulatory Approvals)), the End Date shall (A) automatically be extended to December 31, 2026 (the \"Extended End Date\" which shall constitute the End Date if such extension occurs) and (B) following the extension in the foregoing clause (A), be extended to a date that is three (3) months after the Extended End Date (and if so extended, such later date being the End Date) by mutual written agreement of Parent and the Company not less than three (3) Business Days prior to the Extended End Date, which agreement shall not be unreasonably withheld, conditioned or delayed by either Parent or the Company; provided, further, that the right to terminate this Agreement pursuant to this Section 8.1(c) shall not be available to a Party if the failure of the Effective Time to occur on or before the End Date was due to the breach of this Agreement by such Party (or, in the case of Parent, Merger Sub) seeking to terminate this Agreement (it being understood that deemed compliance with Section 6.4 pursuant to Section 6.4(f) shall not constitute a breach under this Section 8.1(c));",
+      "processed_text": "by Parent or the Company if the Effective Time shall not have occurred on or before 5:00 p.m. New York City time on August 18, 2026 (as may be extended pursuant to the following proviso, the \"End Date\"); provided, however, that if, prior to the End Date, all of the conditions to the Closing set forth in Article VII have been satisfied or waived, as applicable, or for conditions that by their nature are to be satisfied at the Closing, shall then be capable of being satisfied (except for any condition set forth in (i) Section 7.1(b) (No Legal Restraint) or (ii) Section 7.1(c) (Required Regulatory Approvals)), the End Date shall (A) automatically be extended to December 31, 2026 (the \"Extended End Date\" which shall constitute the End Date if such extension occurs) and (B) following the extension in the foregoing clause (A), be extended to a date that is three (3) months after the Extended End Date (and if so extended, such later date being the End Date) by mutual written agreement of Parent and the Company not less than three (3) Business Days prior to the Extended End Date, which agreement shall not be unreasonably withheld, conditioned or delayed by either Parent or the Company; provided, further, that the right to terminate this Agreement pursuant to this Section 8.1(c) shall not be available to a Party if the failure of the Effective Time to occur on or before the End Date was due to the breach of this Agreement by such Party (or, in the case of Parent, Merger Sub) seeking to terminate this Agreement (it being understood that deemed compliance with Section 6.4 pursuant to Section 6.4(f) shall not constitute a breach under this Section 8.1(c));",
+      "parties_replaced": [
+        {
+          "term": "Merger Sub",
+          "standard_role": "Merger Sub"
+        },
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "SECTION 8.1",
+      "section_title": "Termination",
+      "clause_id": "d_preamble",
+      "clause_type": "preamble",
+      "trigger_type": "preamble",
+      "original_text": "by written notice from the Company if:",
+      "processed_text": "by written notice from the Company if:",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ]
+    },
+    {
+      "section_number": "SECTION 8.1",
+      "section_title": "Termination",
+      "clause_id": "d_i",
+      "clause_type": "trigger",
+      "trigger_type": "acquirer_breach",
+      "original_text": "a breach of any representation or warranty or failure to perform any covenant or agreement on the part of Parent or Merger Sub set forth in this Agreement shall have occurred that would cause the conditions set forth in Section 7.3(a) or Section 7.3(b) not to be satisfied and to be incapable of being satisfied by the End Date, except that, if such breach or failure to perform is curable by Parent or Merger Sub, then, until the earlier of (A) three (3) Business Days prior to the End Date and (B) thirty (30) days after receipt by Parent of written notice from the Company of such breach or failure to perform, but only as long as Parent or Merger Sub, as applicable, continues to use its reasonable best efforts to cure such breach or failure to perform (the \"Parent Cure Period\"), such termination shall become effective only if the breach or failure to perform is not cured within the Parent Cure Period; provided, however, that, the Parent Cure Period shall not be applicable to any breach or failure to perform by Parent or Merger Sub that gives rise to a termination right under Section 8.1(d)(iii) (Parent Failure to Close); provided, further, that the Company shall not have the right to terminate this Agreement pursuant to this Section 8.1(d)(i) if it is then in breach of any of its representations, warranties, covenants or other agreements contained in this Agreement and such breach would result in a failure of a condition set forth in Section 7.2(a) or Section 7.2(b);",
+      "processed_text": "a breach of any representation or warranty or failure to perform any covenant or agreement on the part of Parent or Merger Sub set forth in this Agreement shall have occurred that would cause the conditions set forth in Section 7.3(a) or Section 7.3(b) not to be satisfied and to be incapable of being satisfied by the End Date, except that, if such breach or failure to perform is curable by Parent or Merger Sub, then, until the earlier of (A) three (3) Business Days prior to the End Date and (B) thirty (30) days after receipt by Parent of written notice from the Company of such breach or failure to perform, but only as long as Parent or Merger Sub, as applicable, continues to use its reasonable best efforts to cure such breach or failure to perform (the \"Parent Cure Period\"), such termination shall become effective only if the breach or failure to perform is not cured within the Parent Cure Period; provided, however, that, the Parent Cure Period shall not be applicable to any breach or failure to perform by Parent or Merger Sub that gives rise to a termination right under Section 8.1(d)(iii) (Parent Failure to Close); provided, further, that the Company shall not have the right to terminate this Agreement pursuant to this Section 8.1(d)(i) if it is then in breach of any of its representations, warranties, covenants or other agreements contained in this Agreement and such breach would result in a failure of a condition set forth in Section 7.2(a) or Section 7.2(b);",
+      "parties_replaced": [
+        {
+          "term": "Merger Sub",
+          "standard_role": "Merger Sub"
+        },
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "SECTION 8.1",
+      "section_title": "Termination",
+      "clause_id": "d_ii",
+      "clause_type": "trigger",
+      "trigger_type": "target_fiduciary_out",
+      "original_text": "prior to obtaining the Company Requisite Vote, in accordance with, and subject to, and in compliance with, all of the terms and conditions of, Section 6.1(d) in order to enter into a definitive agreement with respect to a Superior Proposal; provided, that the Company shall pay the Company Termination Fee pursuant to Section 8.2(b)(i) at such time as specified in Section 8.2(b)(i);",
+      "processed_text": "prior to obtaining the Company Requisite Vote, in accordance with, and subject to, and in compliance with, all of the terms and conditions of, Section 6.1(d) in order to enter into a definitive agreement with respect to a Superior Proposal; provided, that the Company shall pay the Company Termination Fee pursuant to Section 8.2(b)(i) at such time as specified in Section 8.2(b)(i);",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ]
+    },
+    {
+      "section_number": "SECTION 8.1",
+      "section_title": "Termination",
+      "clause_id": "d_iii",
+      "clause_type": "trigger",
+      "trigger_type": "acquirer_breach",
+      "original_text": "(A) if all of the conditions set forth in Article VII (other than those conditions that by their nature are to be satisfied at the Closing) have been satisfied or (to the extent permitted by applicable Law) waived in accordance with this Agreement, (B) the conditions set forth in Article VII that by their nature are to be satisfied at the Closing are capable of being satisfied at the Closing, (C) Parent and Merger Sub fail to consummate the Closing on the date that the Closing should have occurred pursuant to Section 1.3, (D) following such failure contemplated by the foregoing clause (C), the Company has given irrevocable written notice to Parent and Merger Sub that (1) all of the conditions set forth in Article VII (other than those conditions that by their nature are to be satisfied at the Closing) have been satisfied or (to the extent permitted by applicable Law) waived in accordance with this Agreement, (2) the conditions set forth in Article VII that by their nature are to be satisfied at the Closing are capable of being satisfied at the Closing if the Closing were to occur at the time of delivery of such notice, and (3) it is prepared, willing and able to consummate the Closing, and if Parent and Merger Sub are prepared, willing and able to consummate the Closing, it will proceed with and immediately consummate the Closing as required pursuant to Section 1.3 (the \"Satisfaction Notice\"), and (E) Parent and Merger Sub fail to consummate the Closing by the close of business on the second (2nd) Business Day following receipt of the Satisfaction Notice.",
+      "processed_text": "(A) if all of the conditions set forth in Article VII (other than those conditions that by their nature are to be satisfied at the Closing) have been satisfied or (to the extent permitted by applicable Law) waived in accordance with this Agreement, (B) the conditions set forth in Article VII that by their nature are to be satisfied at the Closing are capable of being satisfied at the Closing, (C) Parent and Merger Sub fail to consummate the Closing on the date that the Closing should have occurred pursuant to Section 1.3, (D) following such failure contemplated by the foregoing clause (C), the Company has given irrevocable written notice to Parent and Merger Sub that (1) all of the conditions set forth in Article VII (other than those conditions that by their nature are to be satisfied at the Closing) have been satisfied or (to the extent permitted by applicable Law) waived in accordance with this Agreement, (2) the conditions set forth in Article VII that by their nature are to be satisfied at the Closing are capable of being satisfied at the Closing if the Closing were to occur at the time of delivery of such notice, and (3) it is prepared, willing and able to consummate the Closing, and if Parent and Merger Sub are prepared, willing and able to consummate the Closing, it will proceed with and immediately consummate the Closing as required pursuant to Section 1.3 (the \"Satisfaction Notice\"), and (E) Parent and Merger Sub fail to consummate the Closing by the close of business on the second (2nd) Business Day following receipt of the Satisfaction Notice.",
+      "parties_replaced": [
+        {
+          "term": "Merger Sub",
+          "standard_role": "Merger Sub"
+        },
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "SECTION 8.1",
+      "section_title": "Termination",
+      "clause_id": "e_preamble",
+      "clause_type": "preamble",
+      "trigger_type": "preamble",
+      "original_text": "by written notice from Parent if:",
+      "processed_text": "by written notice from Parent if:",
+      "parties_replaced": [
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "SECTION 8.1",
+      "section_title": "Termination",
+      "clause_id": "e_i",
+      "clause_type": "trigger",
+      "trigger_type": "target_breach",
+      "original_text": "a breach of any representation or warranty or failure to perform any covenant or agreement on the part of the Company set forth in this Agreement shall have occurred that would cause the conditions set forth in Section 7.2(a) or Section 7.2(b) not to be satisfied and to be incapable of being satisfied by the End Date, except that, if such breach or failure to perform is curable by the Company, then, until the earlier of (A) three (3) Business Days prior to the End Date and (B) thirty (30) days after receipt by the Company of written notice from Parent of such breach or failure to perform, but only as long as the Company continues to use its reasonable best efforts to cure such breach or failure to perform (the \"Company Cure Period\"), such termination shall become effective only if the breach or failure to perform is not cured within the Company Cure Period; provided, however, that Parent shall not have the right to terminate this Agreement pursuant to this Section 8.1(e)(i) if Parent or Merger Sub is then in breach of any of its representations, warranties, covenants or other agreements contained in this Agreement and such breach would result in a failure of a condition set forth in Section 7.3(a) or Section 7.3(b);",
+      "processed_text": "a breach of any representation or warranty or failure to perform any covenant or agreement on the part of the Company set forth in this Agreement shall have occurred that would cause the conditions set forth in Section 7.2(a) or Section 7.2(b) not to be satisfied and to be incapable of being satisfied by the End Date, except that, if such breach or failure to perform is curable by the Company, then, until the earlier of (A) three (3) Business Days prior to the End Date and (B) thirty (30) days after receipt by the Company of written notice from Parent of such breach or failure to perform, but only as long as the Company continues to use its reasonable best efforts to cure such breach or failure to perform (the \"the Company Cure Period\"), such termination shall become effective only if the breach or failure to perform is not cured within the Company Cure Period; provided, however, that Parent shall not have the right to terminate this Agreement pursuant to this Section 8.1(e)(i) if Parent or Merger Sub is then in breach of any of its representations, warranties, covenants or other agreements contained in this Agreement and such breach would result in a failure of a condition set forth in Section 7.3(a) or Section 7.3(b);",
+      "parties_replaced": [
+        {
+          "term": "Merger Sub",
+          "standard_role": "Merger Sub"
+        },
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "SECTION 8.1",
+      "section_title": "Termination",
+      "clause_id": "e_ii",
+      "clause_type": "trigger",
+      "trigger_type": "target_fiduciary_out",
+      "original_text": "the Company Board of Directors shall have made, prior to obtaining the Company Requisite Vote and whether or not in compliance with Section 6.1, a Company Change of Recommendation;",
+      "processed_text": "the Company Board of Directors shall have made, prior to obtaining the Company Requisite Vote and whether or not in compliance with Section 6.1, a the Company Change of Recommendation;",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ]
+    },
+    {
+      "section_number": "SECTION 8.1",
+      "section_title": "Termination",
+      "clause_id": "f",
+      "clause_type": "trigger",
+      "trigger_type": "shareholder_vote_failure",
+      "original_text": "by either Parent or the Company if the Company Requisite Vote shall not have been obtained at the Company Shareholders Meeting duly convened therefor or at any adjournment or postponement thereof, at which a vote on the adoption and approval of this Agreement was taken;",
+      "processed_text": "by either Parent or the Company if the Company Requisite Vote shall not have been obtained at the Company Shareholders Meeting duly convened therefor or at any adjournment or postponement thereof, at which a vote on the adoption and approval of this Agreement was taken;",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "SECTION 8.1",
+      "section_title": "Termination",
+      "clause_id": "g",
+      "clause_type": "trigger",
+      "trigger_type": "other",
+      "original_text": "by the Company if the Stock Purchase Agreement is terminated by the Company pursuant Article IX of the Stock Purchase Agreement.",
+      "processed_text": "by the Company if the Stock Purchase Agreement is terminated by the Company pursuant Article IX of the Stock Purchase Agreement.",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ]
+    }
+  ]
+}

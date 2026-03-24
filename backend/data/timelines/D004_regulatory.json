@@ -1,0 +1,1718 @@
+{
+  "deal_id": "D004",
+  "last_updated": "2026-03-13",
+  "approvals": [
+    {
+      "id": "hsr",
+      "jurisdiction": "United States",
+      "authority_short": "HSR / FTC+DOJ",
+      "authority_full": "Federal Trade Commission / Department of Justice",
+      "statute": "Hart-Scott-Rodino Antitrust Improvements Act",
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "hsr_filed",
+      "filed_date": "2026-02-13",
+      "cleared_date": "2026-02-13",
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "HSR pre-merger notification filing required",
+      "source_doc": "Initial Summary",
+      "source_doc_type": "summary",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-09",
+      "linked_docs": [
+        {
+          "doc_type": "press_release",
+          "doc_date": "2025-07-31",
+          "doc_url": null,
+          "summary": "Hart-Scott-Rodino Act (HSR), Nasdaq, Israeli Companies Registrar, Multiple antitrust and foreign investment regulatory bodies",
+          "L1": "Press Release \u2014 D004",
+          "L2": "Regulatory bodies identified in press release",
+          "L3": null
+        },
+        {
+          "doc_type": "dma_extract",
+          "doc_date": "2026-03-10",
+          "doc_url": null,
+          "summary": "HSR Act, other Regulatory Laws (foreign filings)",
+          "L1": "DMA Summary \u2014 D004",
+          "L2": "Regulatory approvals from DMA extraction",
+          "L3": null
+        },
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-10",
+          "doc_url": null,
+          "summary": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background sec",
+          "L1": "Proxy Analysis \u2014 D004",
+          "L2": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory ",
+          "L3": null
+        },
+        {
+          "doc_type": "6K",
+          "doc_date": "2025-07-31",
+          "doc_url": null,
+          "summary": "regulatory_notes: Hart-Scott-Rodino Act waiting period required. Additional approvals required under specified antitrust and foreign investment laws. Israeli Companies Registrar filing required with a 50-day statutory waiting period. Nasdaq listing approval required for PANW shares to be issued.\ncross_border_considerations: CyberArk is incorporated in Israel; Merger Sub (Athens Strategies Ltd.) is an Israeli entity. Israeli Companies Law governs the merger structure and imposes statutory waiting",
+          "L1": "+ CYBR \u2013 Palo Alto Networks to acquire CyberArk via merger. | 07/31/25",
+          "L2": "CyberArk Software Ltd. entered into a definitive Agreement and Plan of Merger with Palo Alto Networks, Inc. (PANW) on July 30, 2025, under which each CYBR share will be converted into 2.2005 PANW shares plus $45.00 in cash. The transaction requires CYBR shareholder approval (simple majority), HSR clearance, other antitrust/foreign investment approvals, and Israeli statutory waiting periods, with an outside date of July 30, 2026 (extendable to October 30, 2026 for regulatory approvals). CYBR would owe a $750 million termination fee if it accepts a superior proposal or its board changes its recommendation, while PANW would owe a $1 billion reverse termination fee if the deal fails due to regulatory approvals.",
+          "L3": {
+            "event": "CyberArk Software Ltd. entered into an Agreement and Plan of Merger with Palo Alto Networks, Inc. and its Israeli subsidiary Athens Strategies Ltd. Merger Sub will merge with and into CyberArk, with CyberArk surviving as a wholly owned subsidiary of PANW. Both boards unanimously approved the transaction, and CYBR's board recommends shareholder approval.",
+            "key_figures": [
+              "Per-share merger consideration: 2.2005 PANW shares + $45.00 cash",
+              "CYBR termination fee: $750 million",
+              "PANW reverse termination fee (regulatory failure): $1 billion",
+              "CYBR shareholder approval threshold: simple majority of voting power represented and voting",
+              "Israeli statutory waiting period: at least 50 days after merger proposal filing with Companies Registrar and at least 30 days after shareholder approval",
+              "Outside date: July 30, 2026, extendable to October 30, 2026 for regulatory approvals",
+              "CYBR ordinary share par value: NIS 0.01",
+              "PANW common stock par value: $0.0001"
+            ],
+            "market_impact": "Upon completion, CYBR shares will be delisted from Nasdaq and deregistered under the Exchange Act. CYBR shareholders will receive a mix of PANW stock and cash. The cash portion is expected to be financed from cash on hand with no financing condition.",
+            "deal_relevance": "The merger requires CYBR shareholder approval (simple majority), HSR clearance, additional antitrust/foreign investment approvals, Nasdaq listing approval for new PANW shares, effectiveness of PANW's Form S-4, and Israeli statutory waiting periods. The outside date is July 30, 2026, extendable to October 30, 2026 for regulatory approvals. A $750 million CYBR termination fee applies if the board changes its recommendation or CYBR enters a superior proposal. A $1 billion PANW reverse termination fee applies if the deal fails due to regulatory approvals. Customary no-solicitation provisions apply with a fiduciary out for superior proposals.",
+            "regulatory_notes": "Hart-Scott-Rodino Act waiting period required. Additional approvals required under specified antitrust and foreign investment laws. Israeli Companies Registrar filing required with a 50-day statutory waiting period. Nasdaq listing approval required for PANW shares to be issued.",
+            "cross_border_considerations": "CyberArk is incorporated in Israel; Merger Sub (Athens Strategies Ltd.) is an Israeli entity. Israeli Companies Law governs the merger structure and imposes statutory waiting periods (50 days from merger proposal filing, 30 days from shareholder approval). CYBR share par value is denominated in NIS (NIS 0.01). Cash consideration of $45.00 per share is in USD. Foreign investment law approvals may be required in addition to US HSR clearance.",
+            "risks_flagged": [
+              "Regulatory approvals required across multiple jurisdictions including US (HSR) and foreign investment laws",
+              "Israeli statutory waiting periods extend timeline beyond shareholder approval",
+              "Potential for third-party superior proposals under fiduciary out provisions",
+              "Risk of litigation against directors in connection with the transaction",
+              "Integration risk post-closing",
+              "Mixed consideration subjects CYBR shareholders to PANW stock price fluctuations between signing and closing",
+              "No financing condition but cash portion dependent on PANW cash on hand"
+            ]
+          }
+        },
+        {
+          "doc_type": "dma_extract",
+          "doc_date": "2026-03-13",
+          "doc_url": null,
+          "summary": "HSR Act, other Regulatory Laws (foreign filings)",
+          "L1": "DMA Summary \u2014 D004",
+          "L2": "Regulatory approvals from DMA extraction",
+          "L3": null
+        },
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-13",
+          "doc_url": null,
+          "summary": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background sec",
+          "L1": "Proxy Analysis \u2014 D004",
+          "L2": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory ",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_nasdaq",
+      "jurisdiction": "United States",
+      "authority_short": "Nasdaq",
+      "authority_full": "Nasdaq",
+      "statute": "Nasdaq Listing Rules",
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_nasdaq",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in press release",
+      "source_doc": "Press Release",
+      "source_doc_type": "press_release",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-10",
+      "linked_docs": [
+        {
+          "doc_type": "press_release",
+          "doc_date": "2025-07-31",
+          "doc_url": null,
+          "summary": "Hart-Scott-Rodino Act (HSR), Nasdaq, Israeli Companies Registrar, Multiple antitrust and foreign investment regulatory bodies",
+          "L1": "Press Release \u2014 D004",
+          "L2": "Regulatory bodies identified in press release",
+          "L3": null
+        },
+        {
+          "doc_type": "6K",
+          "doc_date": "2025-07-31",
+          "doc_url": null,
+          "summary": "regulatory_notes: Hart-Scott-Rodino Act waiting period required. Additional approvals required under specified antitrust and foreign investment laws. Israeli Companies Registrar filing required with a 50-day statutory waiting period. Nasdaq listing approval required for PANW shares to be issued.\ncross_border_considerations: CyberArk is incorporated in Israel; Merger Sub (Athens Strategies Ltd.) is an Israeli entity. Israeli Companies Law governs the merger structure and imposes statutory waiting",
+          "L1": "+ CYBR \u2013 Palo Alto Networks to acquire CyberArk via merger. | 07/31/25",
+          "L2": "CyberArk Software Ltd. entered into a definitive Agreement and Plan of Merger with Palo Alto Networks, Inc. (PANW) on July 30, 2025, under which each CYBR share will be converted into 2.2005 PANW shares plus $45.00 in cash. The transaction requires CYBR shareholder approval (simple majority), HSR clearance, other antitrust/foreign investment approvals, and Israeli statutory waiting periods, with an outside date of July 30, 2026 (extendable to October 30, 2026 for regulatory approvals). CYBR would owe a $750 million termination fee if it accepts a superior proposal or its board changes its recommendation, while PANW would owe a $1 billion reverse termination fee if the deal fails due to regulatory approvals.",
+          "L3": {
+            "event": "CyberArk Software Ltd. entered into an Agreement and Plan of Merger with Palo Alto Networks, Inc. and its Israeli subsidiary Athens Strategies Ltd. Merger Sub will merge with and into CyberArk, with CyberArk surviving as a wholly owned subsidiary of PANW. Both boards unanimously approved the transaction, and CYBR's board recommends shareholder approval.",
+            "key_figures": [
+              "Per-share merger consideration: 2.2005 PANW shares + $45.00 cash",
+              "CYBR termination fee: $750 million",
+              "PANW reverse termination fee (regulatory failure): $1 billion",
+              "CYBR shareholder approval threshold: simple majority of voting power represented and voting",
+              "Israeli statutory waiting period: at least 50 days after merger proposal filing with Companies Registrar and at least 30 days after shareholder approval",
+              "Outside date: July 30, 2026, extendable to October 30, 2026 for regulatory approvals",
+              "CYBR ordinary share par value: NIS 0.01",
+              "PANW common stock par value: $0.0001"
+            ],
+            "market_impact": "Upon completion, CYBR shares will be delisted from Nasdaq and deregistered under the Exchange Act. CYBR shareholders will receive a mix of PANW stock and cash. The cash portion is expected to be financed from cash on hand with no financing condition.",
+            "deal_relevance": "The merger requires CYBR shareholder approval (simple majority), HSR clearance, additional antitrust/foreign investment approvals, Nasdaq listing approval for new PANW shares, effectiveness of PANW's Form S-4, and Israeli statutory waiting periods. The outside date is July 30, 2026, extendable to October 30, 2026 for regulatory approvals. A $750 million CYBR termination fee applies if the board changes its recommendation or CYBR enters a superior proposal. A $1 billion PANW reverse termination fee applies if the deal fails due to regulatory approvals. Customary no-solicitation provisions apply with a fiduciary out for superior proposals.",
+            "regulatory_notes": "Hart-Scott-Rodino Act waiting period required. Additional approvals required under specified antitrust and foreign investment laws. Israeli Companies Registrar filing required with a 50-day statutory waiting period. Nasdaq listing approval required for PANW shares to be issued.",
+            "cross_border_considerations": "CyberArk is incorporated in Israel; Merger Sub (Athens Strategies Ltd.) is an Israeli entity. Israeli Companies Law governs the merger structure and imposes statutory waiting periods (50 days from merger proposal filing, 30 days from shareholder approval). CYBR share par value is denominated in NIS (NIS 0.01). Cash consideration of $45.00 per share is in USD. Foreign investment law approvals may be required in addition to US HSR clearance.",
+            "risks_flagged": [
+              "Regulatory approvals required across multiple jurisdictions including US (HSR) and foreign investment laws",
+              "Israeli statutory waiting periods extend timeline beyond shareholder approval",
+              "Potential for third-party superior proposals under fiduciary out provisions",
+              "Risk of litigation against directors in connection with the transaction",
+              "Integration risk post-closing",
+              "Mixed consideration subjects CYBR shareholders to PANW stock price fluctuations between signing and closing",
+              "No financing condition but cash portion dependent on PANW cash on hand"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "reg_israeli_companies_registrar",
+      "jurisdiction": "Israel",
+      "authority_short": "Israeli Companies Registrar",
+      "authority_full": "Israeli Companies Registrar",
+      "statute": "Israeli Companies Law",
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_israeli_companies_registrar",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in press release",
+      "source_doc": "Press Release",
+      "source_doc_type": "press_release",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-10",
+      "linked_docs": [
+        {
+          "doc_type": "press_release",
+          "doc_date": "2025-07-31",
+          "doc_url": null,
+          "summary": "Hart-Scott-Rodino Act (HSR), Nasdaq, Israeli Companies Registrar, Multiple antitrust and foreign investment regulatory bodies",
+          "L1": "Press Release \u2014 D004",
+          "L2": "Regulatory bodies identified in press release",
+          "L3": null
+        },
+        {
+          "doc_type": "6K",
+          "doc_date": "2025-07-31",
+          "doc_url": null,
+          "summary": "regulatory_notes: Hart-Scott-Rodino Act waiting period required. Additional approvals required under specified antitrust and foreign investment laws. Israeli Companies Registrar filing required with a 50-day statutory waiting period. Nasdaq listing approval required for PANW shares to be issued.\ncross_border_considerations: CyberArk is incorporated in Israel; Merger Sub (Athens Strategies Ltd.) is an Israeli entity. Israeli Companies Law governs the merger structure and imposes statutory waiting",
+          "L1": "+ CYBR \u2013 Palo Alto Networks to acquire CyberArk via merger. | 07/31/25",
+          "L2": "CyberArk Software Ltd. entered into a definitive Agreement and Plan of Merger with Palo Alto Networks, Inc. (PANW) on July 30, 2025, under which each CYBR share will be converted into 2.2005 PANW shares plus $45.00 in cash. The transaction requires CYBR shareholder approval (simple majority), HSR clearance, other antitrust/foreign investment approvals, and Israeli statutory waiting periods, with an outside date of July 30, 2026 (extendable to October 30, 2026 for regulatory approvals). CYBR would owe a $750 million termination fee if it accepts a superior proposal or its board changes its recommendation, while PANW would owe a $1 billion reverse termination fee if the deal fails due to regulatory approvals.",
+          "L3": {
+            "event": "CyberArk Software Ltd. entered into an Agreement and Plan of Merger with Palo Alto Networks, Inc. and its Israeli subsidiary Athens Strategies Ltd. Merger Sub will merge with and into CyberArk, with CyberArk surviving as a wholly owned subsidiary of PANW. Both boards unanimously approved the transaction, and CYBR's board recommends shareholder approval.",
+            "key_figures": [
+              "Per-share merger consideration: 2.2005 PANW shares + $45.00 cash",
+              "CYBR termination fee: $750 million",
+              "PANW reverse termination fee (regulatory failure): $1 billion",
+              "CYBR shareholder approval threshold: simple majority of voting power represented and voting",
+              "Israeli statutory waiting period: at least 50 days after merger proposal filing with Companies Registrar and at least 30 days after shareholder approval",
+              "Outside date: July 30, 2026, extendable to October 30, 2026 for regulatory approvals",
+              "CYBR ordinary share par value: NIS 0.01",
+              "PANW common stock par value: $0.0001"
+            ],
+            "market_impact": "Upon completion, CYBR shares will be delisted from Nasdaq and deregistered under the Exchange Act. CYBR shareholders will receive a mix of PANW stock and cash. The cash portion is expected to be financed from cash on hand with no financing condition.",
+            "deal_relevance": "The merger requires CYBR shareholder approval (simple majority), HSR clearance, additional antitrust/foreign investment approvals, Nasdaq listing approval for new PANW shares, effectiveness of PANW's Form S-4, and Israeli statutory waiting periods. The outside date is July 30, 2026, extendable to October 30, 2026 for regulatory approvals. A $750 million CYBR termination fee applies if the board changes its recommendation or CYBR enters a superior proposal. A $1 billion PANW reverse termination fee applies if the deal fails due to regulatory approvals. Customary no-solicitation provisions apply with a fiduciary out for superior proposals.",
+            "regulatory_notes": "Hart-Scott-Rodino Act waiting period required. Additional approvals required under specified antitrust and foreign investment laws. Israeli Companies Registrar filing required with a 50-day statutory waiting period. Nasdaq listing approval required for PANW shares to be issued.",
+            "cross_border_considerations": "CyberArk is incorporated in Israel; Merger Sub (Athens Strategies Ltd.) is an Israeli entity. Israeli Companies Law governs the merger structure and imposes statutory waiting periods (50 days from merger proposal filing, 30 days from shareholder approval). CYBR share par value is denominated in NIS (NIS 0.01). Cash consideration of $45.00 per share is in USD. Foreign investment law approvals may be required in addition to US HSR clearance.",
+            "risks_flagged": [
+              "Regulatory approvals required across multiple jurisdictions including US (HSR) and foreign investment laws",
+              "Israeli statutory waiting periods extend timeline beyond shareholder approval",
+              "Potential for third-party superior proposals under fiduciary out provisions",
+              "Risk of litigation against directors in connection with the transaction",
+              "Integration risk post-closing",
+              "Mixed consideration subjects CYBR shareholders to PANW stock price fluctuations between signing and closing",
+              "No financing condition but cash portion dependent on PANW cash on hand"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "reg_sec",
+      "jurisdiction": "United States",
+      "authority_short": "SEC",
+      "authority_full": "U.S. Securities and Exchange Commission",
+      "statute": "Securities Act of 1933 / Securities Exchange Act of 1934 (Form S-4)",
+      "category": "sector_specific",
+      "status": "pending",
+      "filing_key": "reg_sec",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "SEC effectiveness of the Form S-4 registration statement (covering Boston Scientific shares to be issued) is required as a closing condition.",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-10",
+      "linked_docs": [
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-10",
+          "doc_url": null,
+          "summary": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background sec",
+          "L1": "Proxy Analysis \u2014 D004",
+          "L2": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory ",
+          "L3": null
+        },
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-13",
+          "doc_url": null,
+          "summary": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background sec",
+          "L1": "Proxy Analysis \u2014 D004",
+          "L2": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory ",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_nyse",
+      "jurisdiction": "United States",
+      "authority_short": "NYSE",
+      "authority_full": "New York Stock Exchange",
+      "statute": "NYSE Listing Standards",
+      "category": "sector_specific",
+      "status": "pending",
+      "filing_key": "reg_nyse",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "NYSE listing approval for Boston Scientific shares to be issued as merger consideration is required as a closing condition.",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-10",
+      "linked_docs": [
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-10",
+          "doc_url": null,
+          "summary": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background sec",
+          "L1": "Proxy Analysis \u2014 D004",
+          "L2": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory ",
+          "L3": null
+        },
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-13",
+          "doc_url": null,
+          "summary": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background sec",
+          "L1": "Proxy Analysis \u2014 D004",
+          "L2": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory ",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_ec",
+      "jurisdiction": "European Union",
+      "authority_short": "EC",
+      "authority_full": "European Commission, Directorate-General for Competition",
+      "statute": "EU Merger Regulation (Council Regulation (EC) No 139/2004)",
+      "category": "antitrust",
+      "status": "filing_intent",
+      "filing_key": "reg_ec",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": "Q1 2026",
+      "conditions": null,
+      "notes": "EU competition law clearance from the European Commission is required; a referral is noted as pending, with filing intended in Q1 2026 and approval expected by end of Q2 2026.",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-10",
+      "linked_docs": [
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-10",
+          "doc_url": null,
+          "summary": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background sec",
+          "L1": "Proxy Analysis \u2014 D004",
+          "L2": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory ",
+          "L3": null
+        },
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-13",
+          "doc_url": null,
+          "summary": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background sec",
+          "L1": "Proxy Analysis \u2014 D004",
+          "L2": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory ",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_accc",
+      "jurisdiction": "Australia",
+      "authority_short": "ACCC",
+      "authority_full": "Australian Competition and Consumer Commission",
+      "statute": "Competition and Consumer Act 2010 (Cth)",
+      "category": "antitrust",
+      "status": "filing_intent",
+      "filing_key": "reg_accc",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": "Q1 2026",
+      "conditions": null,
+      "notes": "ACCC merger clearance is required for Australia; filing is intended in Q1 2026, within the 50-calendar-day window from the January 14, 2026 Merger Agreement date, with approval expected by end of Q2 2026.",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-10",
+      "linked_docs": [
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-10",
+          "doc_url": null,
+          "summary": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background sec",
+          "L1": "Proxy Analysis \u2014 D004",
+          "L2": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory ",
+          "L3": null
+        },
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-13",
+          "doc_url": null,
+          "summary": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background sec",
+          "L1": "Proxy Analysis \u2014 D004",
+          "L2": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory ",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_firb",
+      "jurisdiction": "Australia",
+      "authority_short": "FIRB",
+      "authority_full": "Foreign Investment Review Board",
+      "statute": "Foreign Acquisitions and Takeovers Act 1975 (Cth)",
+      "category": "foreign_investment",
+      "status": "filing_intent",
+      "filing_key": "reg_firb",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": "Q1 2026",
+      "conditions": null,
+      "notes": "FIRB foreign investment approval is required for Australia as a separate condition from the ACCC antitrust review; filing is intended in Q1 2026 with approval expected by end of Q2 2026.",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-10",
+      "linked_docs": [
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-10",
+          "doc_url": null,
+          "summary": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background sec",
+          "L1": "Proxy Analysis \u2014 D004",
+          "L2": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory ",
+          "L3": null
+        },
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-13",
+          "doc_url": null,
+          "summary": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background sec",
+          "L1": "Proxy Analysis \u2014 D004",
+          "L2": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory ",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_samr",
+      "jurisdiction": "China",
+      "authority_short": "SAMR",
+      "authority_full": "State Administration for Market Regulation",
+      "statute": "Anti-Monopoly Law of the People's Republic of China",
+      "category": "antitrust",
+      "status": "filing_intent",
+      "filing_key": "reg_samr",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": "Q1 2026",
+      "conditions": null,
+      "notes": "SAMR merger control filing and clearance is required in China; filing is intended in Q1 2026, within the 50-calendar-day window from the January 14, 2026 Merger Agreement date, with approval expected by end of Q2 2026.",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-10",
+      "linked_docs": [
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-10",
+          "doc_url": null,
+          "summary": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background sec",
+          "L1": "Proxy Analysis \u2014 D004",
+          "L2": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory ",
+          "L3": null
+        },
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-13",
+          "doc_url": null,
+          "summary": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background sec",
+          "L1": "Proxy Analysis \u2014 D004",
+          "L2": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory ",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_tca",
+      "jurisdiction": "Turkey",
+      "authority_short": "TCA",
+      "authority_full": "Turkish Competition Authority (Rekabet Kurumu)",
+      "statute": "Law No. 4054 on the Protection of Competition (Turkey)",
+      "category": "antitrust",
+      "status": "filing_intent",
+      "filing_key": "reg_tca",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": "Q1 2026",
+      "conditions": null,
+      "notes": "Turkish Competition Authority merger control clearance is required; filing is intended in Q1 2026 with approval expected by end of Q2 2026.",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-10",
+      "linked_docs": [
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-10",
+          "doc_url": null,
+          "summary": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background sec",
+          "L1": "Proxy Analysis \u2014 D004",
+          "L2": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory ",
+          "L3": null
+        },
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-13",
+          "doc_url": null,
+          "summary": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background sec",
+          "L1": "Proxy Analysis \u2014 D004",
+          "L2": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory ",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_comco",
+      "jurisdiction": "Switzerland",
+      "authority_short": "COMCO",
+      "authority_full": "Swiss Competition Commission (Commission de la concurrence / Wettbewerbskommission)",
+      "statute": "Federal Act on Cartels and Other Restraints of Competition (CartA, SR 251)",
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_comco",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": "Q1 2026",
+      "conditions": null,
+      "notes": "Swiss merger control clearance is required; filing is intended in Q1 2026, within the 50-calendar-day window from the January 14, 2026 Merger Agreement date, with approval expected by end of Q2 2026.",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-10",
+      "linked_docs": [
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-10",
+          "doc_url": null,
+          "summary": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background sec",
+          "L1": "Proxy Analysis \u2014 D004",
+          "L2": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory ",
+          "L3": null
+        },
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-13",
+          "doc_url": null,
+          "summary": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background sec",
+          "L1": "Proxy Analysis \u2014 D004",
+          "L2": "[Overview]\nHOLX Merger Filing Analysis Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A) The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory ",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_israeli_foreign_investment",
+      "jurisdiction": "Israel",
+      "authority_short": "Israeli Foreign Investment",
+      "authority_full": "Israeli Foreign Investment Authority (or applicable Israeli regulatory body)",
+      "statute": "Israeli foreign investment laws (specific statute not named)",
+      "category": "foreign_investment",
+      "status": "pending",
+      "filing_key": "reg_israeli_foreign_investment",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Foreign investment law approvals in Israel may be required given that CyberArk is an Israeli-incorporated company being acquired by a U.S. entity; specific statute not identified in the filing.",
+      "source_doc": "6K 2025-07-31",
+      "source_doc_type": "6K",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-10",
+      "linked_docs": [
+        {
+          "doc_type": "6K",
+          "doc_date": "2025-07-31",
+          "doc_url": null,
+          "summary": "regulatory_notes: Hart-Scott-Rodino Act waiting period required. Additional approvals required under specified antitrust and foreign investment laws. Israeli Companies Registrar filing required with a 50-day statutory waiting period. Nasdaq listing approval required for PANW shares to be issued.\ncross_border_considerations: CyberArk is incorporated in Israel; Merger Sub (Athens Strategies Ltd.) is an Israeli entity. Israeli Companies Law governs the merger structure and imposes statutory waiting",
+          "L1": "+ CYBR \u2013 Palo Alto Networks to acquire CyberArk via merger. | 07/31/25",
+          "L2": "CyberArk Software Ltd. entered into a definitive Agreement and Plan of Merger with Palo Alto Networks, Inc. (PANW) on July 30, 2025, under which each CYBR share will be converted into 2.2005 PANW shares plus $45.00 in cash. The transaction requires CYBR shareholder approval (simple majority), HSR clearance, other antitrust/foreign investment approvals, and Israeli statutory waiting periods, with an outside date of July 30, 2026 (extendable to October 30, 2026 for regulatory approvals). CYBR would owe a $750 million termination fee if it accepts a superior proposal or its board changes its recommendation, while PANW would owe a $1 billion reverse termination fee if the deal fails due to regulatory approvals.",
+          "L3": {
+            "event": "CyberArk Software Ltd. entered into an Agreement and Plan of Merger with Palo Alto Networks, Inc. and its Israeli subsidiary Athens Strategies Ltd. Merger Sub will merge with and into CyberArk, with CyberArk surviving as a wholly owned subsidiary of PANW. Both boards unanimously approved the transaction, and CYBR's board recommends shareholder approval.",
+            "key_figures": [
+              "Per-share merger consideration: 2.2005 PANW shares + $45.00 cash",
+              "CYBR termination fee: $750 million",
+              "PANW reverse termination fee (regulatory failure): $1 billion",
+              "CYBR shareholder approval threshold: simple majority of voting power represented and voting",
+              "Israeli statutory waiting period: at least 50 days after merger proposal filing with Companies Registrar and at least 30 days after shareholder approval",
+              "Outside date: July 30, 2026, extendable to October 30, 2026 for regulatory approvals",
+              "CYBR ordinary share par value: NIS 0.01",
+              "PANW common stock par value: $0.0001"
+            ],
+            "market_impact": "Upon completion, CYBR shares will be delisted from Nasdaq and deregistered under the Exchange Act. CYBR shareholders will receive a mix of PANW stock and cash. The cash portion is expected to be financed from cash on hand with no financing condition.",
+            "deal_relevance": "The merger requires CYBR shareholder approval (simple majority), HSR clearance, additional antitrust/foreign investment approvals, Nasdaq listing approval for new PANW shares, effectiveness of PANW's Form S-4, and Israeli statutory waiting periods. The outside date is July 30, 2026, extendable to October 30, 2026 for regulatory approvals. A $750 million CYBR termination fee applies if the board changes its recommendation or CYBR enters a superior proposal. A $1 billion PANW reverse termination fee applies if the deal fails due to regulatory approvals. Customary no-solicitation provisions apply with a fiduciary out for superior proposals.",
+            "regulatory_notes": "Hart-Scott-Rodino Act waiting period required. Additional approvals required under specified antitrust and foreign investment laws. Israeli Companies Registrar filing required with a 50-day statutory waiting period. Nasdaq listing approval required for PANW shares to be issued.",
+            "cross_border_considerations": "CyberArk is incorporated in Israel; Merger Sub (Athens Strategies Ltd.) is an Israeli entity. Israeli Companies Law governs the merger structure and imposes statutory waiting periods (50 days from merger proposal filing, 30 days from shareholder approval). CYBR share par value is denominated in NIS (NIS 0.01). Cash consideration of $45.00 per share is in USD. Foreign investment law approvals may be required in addition to US HSR clearance.",
+            "risks_flagged": [
+              "Regulatory approvals required across multiple jurisdictions including US (HSR) and foreign investment laws",
+              "Israeli statutory waiting periods extend timeline beyond shareholder approval",
+              "Potential for third-party superior proposals under fiduciary out provisions",
+              "Risk of litigation against directors in connection with the transaction",
+              "Integration risk post-closing",
+              "Mixed consideration subjects CYBR shareholders to PANW stock price fluctuations between signing and closing",
+              "No financing condition but cash portion dependent on PANW cash on hand"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "reg_other_antitrust_fdi_authorities",
+      "jurisdiction": "Multiple (unspecified)",
+      "authority_short": "Other Antitrust/FDI Authorities",
+      "authority_full": "Unspecified foreign antitrust and foreign investment authorities",
+      "statute": "Specified antitrust and foreign investment laws (jurisdictions not individually named)",
+      "category": "other",
+      "status": "pending",
+      "filing_key": "reg_other_antitrust_fdi_authorities",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "The filing references additional required approvals under specified antitrust and foreign investment laws in unspecified foreign jurisdictions beyond the U.S. HSR and Israeli requirements; specific jurisdictions and authorities are not individually named and thus this entry is included solely because the filing explicitly acknowledges their existence as distinct named requirements.",
+      "source_doc": "6K 2025-07-31",
+      "source_doc_type": "6K",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-10"
+    },
+    {
+      "id": "reg_foreign_investment_authorities",
+      "jurisdiction": "Multiple (unspecified)",
+      "authority_short": "Foreign Investment Authorities",
+      "authority_full": "Unspecified Foreign Investment Review Authorities",
+      "statute": "Unspecified foreign investment laws",
+      "category": "foreign_investment",
+      "status": "pending",
+      "filing_key": "reg_foreign_investment_authorities",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "The filing notes that foreign investment law approvals may be required in additional jurisdictions beyond US HSR, though specific countries and authorities are not named; these are cited as a regulatory risk that could extend the deal timeline.",
+      "source_doc": "6K 2025-07-31",
+      "source_doc_type": "6K",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-10",
+      "linked_docs": [
+        {
+          "doc_type": "6K",
+          "doc_date": "2025-07-31",
+          "doc_url": null,
+          "summary": "regulatory_notes: Hart-Scott-Rodino Act waiting period required. Additional approvals required under specified antitrust and foreign investment laws. Israeli Companies Registrar filing required with a 50-day statutory waiting period. Nasdaq listing approval required for PANW shares to be issued.\ncross_border_considerations: CyberArk is incorporated in Israel; Merger Sub (Athens Strategies Ltd.) is an Israeli entity. Israeli Companies Law governs the merger structure and imposes statutory waiting",
+          "L1": "+ CYBR \u2013 Palo Alto Networks to acquire CyberArk via merger. | 07/31/25",
+          "L2": "CyberArk Software Ltd. entered into a definitive Agreement and Plan of Merger with Palo Alto Networks, Inc. (PANW) on July 30, 2025, under which each CYBR share will be converted into 2.2005 PANW shares plus $45.00 in cash. The transaction requires CYBR shareholder approval (simple majority), HSR clearance, other antitrust/foreign investment approvals, and Israeli statutory waiting periods, with an outside date of July 30, 2026 (extendable to October 30, 2026 for regulatory approvals). CYBR would owe a $750 million termination fee if it accepts a superior proposal or its board changes its recommendation, while PANW would owe a $1 billion reverse termination fee if the deal fails due to regulatory approvals.",
+          "L3": {
+            "event": "CyberArk Software Ltd. entered into an Agreement and Plan of Merger with Palo Alto Networks, Inc. and its Israeli subsidiary Athens Strategies Ltd. Merger Sub will merge with and into CyberArk, with CyberArk surviving as a wholly owned subsidiary of PANW. Both boards unanimously approved the transaction, and CYBR's board recommends shareholder approval.",
+            "key_figures": [
+              "Per-share merger consideration: 2.2005 PANW shares + $45.00 cash",
+              "CYBR termination fee: $750 million",
+              "PANW reverse termination fee (regulatory failure): $1 billion",
+              "CYBR shareholder approval threshold: simple majority of voting power represented and voting",
+              "Israeli statutory waiting period: at least 50 days after merger proposal filing with Companies Registrar and at least 30 days after shareholder approval",
+              "Outside date: July 30, 2026, extendable to October 30, 2026 for regulatory approvals",
+              "CYBR ordinary share par value: NIS 0.01",
+              "PANW common stock par value: $0.0001"
+            ],
+            "market_impact": "Upon completion, CYBR shares will be delisted from Nasdaq and deregistered under the Exchange Act. CYBR shareholders will receive a mix of PANW stock and cash. The cash portion is expected to be financed from cash on hand with no financing condition.",
+            "deal_relevance": "The merger requires CYBR shareholder approval (simple majority), HSR clearance, additional antitrust/foreign investment approvals, Nasdaq listing approval for new PANW shares, effectiveness of PANW's Form S-4, and Israeli statutory waiting periods. The outside date is July 30, 2026, extendable to October 30, 2026 for regulatory approvals. A $750 million CYBR termination fee applies if the board changes its recommendation or CYBR enters a superior proposal. A $1 billion PANW reverse termination fee applies if the deal fails due to regulatory approvals. Customary no-solicitation provisions apply with a fiduciary out for superior proposals.",
+            "regulatory_notes": "Hart-Scott-Rodino Act waiting period required. Additional approvals required under specified antitrust and foreign investment laws. Israeli Companies Registrar filing required with a 50-day statutory waiting period. Nasdaq listing approval required for PANW shares to be issued.",
+            "cross_border_considerations": "CyberArk is incorporated in Israel; Merger Sub (Athens Strategies Ltd.) is an Israeli entity. Israeli Companies Law governs the merger structure and imposes statutory waiting periods (50 days from merger proposal filing, 30 days from shareholder approval). CYBR share par value is denominated in NIS (NIS 0.01). Cash consideration of $45.00 per share is in USD. Foreign investment law approvals may be required in addition to US HSR clearance.",
+            "risks_flagged": [
+              "Regulatory approvals required across multiple jurisdictions including US (HSR) and foreign investment laws",
+              "Israeli statutory waiting periods extend timeline beyond shareholder approval",
+              "Potential for third-party superior proposals under fiduciary out provisions",
+              "Risk of litigation against directors in connection with the transaction",
+              "Integration risk post-closing",
+              "Mixed consideration subjects CYBR shareholders to PANW stock price fluctuations between signing and closing",
+              "No financing condition but cash portion dependent on PANW cash on hand"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "reg_foreign_antitrust_authorities",
+      "jurisdiction": "Multiple (unspecified)",
+      "authority_short": "Foreign Antitrust Authorities",
+      "authority_full": "Unspecified Foreign Antitrust Authorities",
+      "statute": "Unspecified foreign antitrust laws",
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_foreign_antitrust_authorities",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "The filing references additional antitrust approvals required under specified antitrust laws in jurisdictions beyond the US, though specific countries and authorities are not individually named; these are cited as a regulatory risk that could extend the deal timeline to the outside date of July 30, 2026, extendable to October 30, 2026.",
+      "source_doc": "6K 2025-07-31",
+      "source_doc_type": "6K",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-10",
+      "linked_docs": [
+        {
+          "doc_type": "6K",
+          "doc_date": "2025-07-31",
+          "doc_url": null,
+          "summary": "regulatory_notes: Hart-Scott-Rodino Act waiting period required. Additional approvals required under specified antitrust and foreign investment laws. Israeli Companies Registrar filing required with a 50-day statutory waiting period. Nasdaq listing approval required for PANW shares to be issued.\ncross_border_considerations: CyberArk is incorporated in Israel; Merger Sub (Athens Strategies Ltd.) is an Israeli entity. Israeli Companies Law governs the merger structure and imposes statutory waiting",
+          "L1": "+ CYBR \u2013 Palo Alto Networks to acquire CyberArk via merger. | 07/31/25",
+          "L2": "CyberArk Software Ltd. entered into a definitive Agreement and Plan of Merger with Palo Alto Networks, Inc. (PANW) on July 30, 2025, under which each CYBR share will be converted into 2.2005 PANW shares plus $45.00 in cash. The transaction requires CYBR shareholder approval (simple majority), HSR clearance, other antitrust/foreign investment approvals, and Israeli statutory waiting periods, with an outside date of July 30, 2026 (extendable to October 30, 2026 for regulatory approvals). CYBR would owe a $750 million termination fee if it accepts a superior proposal or its board changes its recommendation, while PANW would owe a $1 billion reverse termination fee if the deal fails due to regulatory approvals.",
+          "L3": {
+            "event": "CyberArk Software Ltd. entered into an Agreement and Plan of Merger with Palo Alto Networks, Inc. and its Israeli subsidiary Athens Strategies Ltd. Merger Sub will merge with and into CyberArk, with CyberArk surviving as a wholly owned subsidiary of PANW. Both boards unanimously approved the transaction, and CYBR's board recommends shareholder approval.",
+            "key_figures": [
+              "Per-share merger consideration: 2.2005 PANW shares + $45.00 cash",
+              "CYBR termination fee: $750 million",
+              "PANW reverse termination fee (regulatory failure): $1 billion",
+              "CYBR shareholder approval threshold: simple majority of voting power represented and voting",
+              "Israeli statutory waiting period: at least 50 days after merger proposal filing with Companies Registrar and at least 30 days after shareholder approval",
+              "Outside date: July 30, 2026, extendable to October 30, 2026 for regulatory approvals",
+              "CYBR ordinary share par value: NIS 0.01",
+              "PANW common stock par value: $0.0001"
+            ],
+            "market_impact": "Upon completion, CYBR shares will be delisted from Nasdaq and deregistered under the Exchange Act. CYBR shareholders will receive a mix of PANW stock and cash. The cash portion is expected to be financed from cash on hand with no financing condition.",
+            "deal_relevance": "The merger requires CYBR shareholder approval (simple majority), HSR clearance, additional antitrust/foreign investment approvals, Nasdaq listing approval for new PANW shares, effectiveness of PANW's Form S-4, and Israeli statutory waiting periods. The outside date is July 30, 2026, extendable to October 30, 2026 for regulatory approvals. A $750 million CYBR termination fee applies if the board changes its recommendation or CYBR enters a superior proposal. A $1 billion PANW reverse termination fee applies if the deal fails due to regulatory approvals. Customary no-solicitation provisions apply with a fiduciary out for superior proposals.",
+            "regulatory_notes": "Hart-Scott-Rodino Act waiting period required. Additional approvals required under specified antitrust and foreign investment laws. Israeli Companies Registrar filing required with a 50-day statutory waiting period. Nasdaq listing approval required for PANW shares to be issued.",
+            "cross_border_considerations": "CyberArk is incorporated in Israel; Merger Sub (Athens Strategies Ltd.) is an Israeli entity. Israeli Companies Law governs the merger structure and imposes statutory waiting periods (50 days from merger proposal filing, 30 days from shareholder approval). CYBR share par value is denominated in NIS (NIS 0.01). Cash consideration of $45.00 per share is in USD. Foreign investment law approvals may be required in addition to US HSR clearance.",
+            "risks_flagged": [
+              "Regulatory approvals required across multiple jurisdictions including US (HSR) and foreign investment laws",
+              "Israeli statutory waiting periods extend timeline beyond shareholder approval",
+              "Potential for third-party superior proposals under fiduciary out provisions",
+              "Risk of litigation against directors in connection with the transaction",
+              "Integration risk post-closing",
+              "Mixed consideration subjects CYBR shareholders to PANW stock price fluctuations between signing and closing",
+              "No financing condition but cash portion dependent on PANW cash on hand"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "reg_foreign_investment_authorities_unspecified",
+      "jurisdiction": "Multiple (unspecified)",
+      "authority_short": "Foreign Investment Authorities (unspecified)",
+      "authority_full": "Unspecified Foreign Investment Review Authorities",
+      "statute": "Unspecified foreign investment laws",
+      "category": "foreign_investment",
+      "status": "pending",
+      "filing_key": "reg_foreign_investment_authorities_unspecified",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Additional foreign investment law approvals are specifically cited as potentially required in multiple jurisdictions beyond U.S. HSR clearance, though the specific countries and authorities are not named in this filing.",
+      "source_doc": "6K 2025-07-31",
+      "source_doc_type": "6K",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-13",
+      "linked_docs": [
+        {
+          "doc_type": "6K",
+          "doc_date": "2025-07-31",
+          "doc_url": null,
+          "summary": "regulatory_notes: Hart-Scott-Rodino Act waiting period required. Additional approvals required under specified antitrust and foreign investment laws. Israeli Companies Registrar filing required with a 50-day statutory waiting period. Nasdaq listing approval required for PANW shares to be issued.\ncross_border_considerations: CyberArk is incorporated in Israel; Merger Sub (Athens Strategies Ltd.) is an Israeli entity. Israeli Companies Law governs the merger structure and imposes statutory waiting",
+          "L1": "+ CYBR \u2013 Palo Alto Networks to acquire CyberArk via merger. | 07/31/25",
+          "L2": "CyberArk Software Ltd. entered into a definitive Agreement and Plan of Merger with Palo Alto Networks, Inc. (PANW) on July 30, 2025, under which each CYBR share will be converted into 2.2005 PANW shares plus $45.00 in cash. The transaction requires CYBR shareholder approval (simple majority), HSR clearance, other antitrust/foreign investment approvals, and Israeli statutory waiting periods, with an outside date of July 30, 2026 (extendable to October 30, 2026 for regulatory approvals). CYBR would owe a $750 million termination fee if it accepts a superior proposal or its board changes its recommendation, while PANW would owe a $1 billion reverse termination fee if the deal fails due to regulatory approvals.",
+          "L3": {
+            "event": "CyberArk Software Ltd. entered into an Agreement and Plan of Merger with Palo Alto Networks, Inc. and its Israeli subsidiary Athens Strategies Ltd. Merger Sub will merge with and into CyberArk, with CyberArk surviving as a wholly owned subsidiary of PANW. Both boards unanimously approved the transaction, and CYBR's board recommends shareholder approval.",
+            "key_figures": [
+              "Per-share merger consideration: 2.2005 PANW shares + $45.00 cash",
+              "CYBR termination fee: $750 million",
+              "PANW reverse termination fee (regulatory failure): $1 billion",
+              "CYBR shareholder approval threshold: simple majority of voting power represented and voting",
+              "Israeli statutory waiting period: at least 50 days after merger proposal filing with Companies Registrar and at least 30 days after shareholder approval",
+              "Outside date: July 30, 2026, extendable to October 30, 2026 for regulatory approvals",
+              "CYBR ordinary share par value: NIS 0.01",
+              "PANW common stock par value: $0.0001"
+            ],
+            "market_impact": "Upon completion, CYBR shares will be delisted from Nasdaq and deregistered under the Exchange Act. CYBR shareholders will receive a mix of PANW stock and cash. The cash portion is expected to be financed from cash on hand with no financing condition.",
+            "deal_relevance": "The merger requires CYBR shareholder approval (simple majority), HSR clearance, additional antitrust/foreign investment approvals, Nasdaq listing approval for new PANW shares, effectiveness of PANW's Form S-4, and Israeli statutory waiting periods. The outside date is July 30, 2026, extendable to October 30, 2026 for regulatory approvals. A $750 million CYBR termination fee applies if the board changes its recommendation or CYBR enters a superior proposal. A $1 billion PANW reverse termination fee applies if the deal fails due to regulatory approvals. Customary no-solicitation provisions apply with a fiduciary out for superior proposals.",
+            "regulatory_notes": "Hart-Scott-Rodino Act waiting period required. Additional approvals required under specified antitrust and foreign investment laws. Israeli Companies Registrar filing required with a 50-day statutory waiting period. Nasdaq listing approval required for PANW shares to be issued.",
+            "cross_border_considerations": "CyberArk is incorporated in Israel; Merger Sub (Athens Strategies Ltd.) is an Israeli entity. Israeli Companies Law governs the merger structure and imposes statutory waiting periods (50 days from merger proposal filing, 30 days from shareholder approval). CYBR share par value is denominated in NIS (NIS 0.01). Cash consideration of $45.00 per share is in USD. Foreign investment law approvals may be required in addition to US HSR clearance.",
+            "risks_flagged": [
+              "Regulatory approvals required across multiple jurisdictions including US (HSR) and foreign investment laws",
+              "Israeli statutory waiting periods extend timeline beyond shareholder approval",
+              "Potential for third-party superior proposals under fiduciary out provisions",
+              "Risk of litigation against directors in connection with the transaction",
+              "Integration risk post-closing",
+              "Mixed consideration subjects CYBR shareholders to PANW stock price fluctuations between signing and closing",
+              "No financing condition but cash portion dependent on PANW cash on hand"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "reg_foreign_antitrust_authorities_unspecified",
+      "jurisdiction": "Multiple (unspecified)",
+      "authority_short": "Foreign Antitrust Authorities (unspecified)",
+      "authority_full": "Unspecified Foreign Antitrust Authorities",
+      "statute": "Unspecified antitrust laws",
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_foreign_antitrust_authorities_unspecified",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "The filing specifically references additional antitrust approvals required under specified antitrust laws in foreign jurisdictions beyond the U.S. HSR filing, though individual countries and authorities are not named; the outside date is extendable to October 30, 2026 specifically to accommodate regulatory approvals.",
+      "source_doc": "6K 2025-07-31",
+      "source_doc_type": "6K",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-13",
+      "linked_docs": [
+        {
+          "doc_type": "6K",
+          "doc_date": "2025-07-31",
+          "doc_url": null,
+          "summary": "regulatory_notes: Hart-Scott-Rodino Act waiting period required. Additional approvals required under specified antitrust and foreign investment laws. Israeli Companies Registrar filing required with a 50-day statutory waiting period. Nasdaq listing approval required for PANW shares to be issued.\ncross_border_considerations: CyberArk is incorporated in Israel; Merger Sub (Athens Strategies Ltd.) is an Israeli entity. Israeli Companies Law governs the merger structure and imposes statutory waiting",
+          "L1": "+ CYBR \u2013 Palo Alto Networks to acquire CyberArk via merger. | 07/31/25",
+          "L2": "CyberArk Software Ltd. entered into a definitive Agreement and Plan of Merger with Palo Alto Networks, Inc. (PANW) on July 30, 2025, under which each CYBR share will be converted into 2.2005 PANW shares plus $45.00 in cash. The transaction requires CYBR shareholder approval (simple majority), HSR clearance, other antitrust/foreign investment approvals, and Israeli statutory waiting periods, with an outside date of July 30, 2026 (extendable to October 30, 2026 for regulatory approvals). CYBR would owe a $750 million termination fee if it accepts a superior proposal or its board changes its recommendation, while PANW would owe a $1 billion reverse termination fee if the deal fails due to regulatory approvals.",
+          "L3": {
+            "event": "CyberArk Software Ltd. entered into an Agreement and Plan of Merger with Palo Alto Networks, Inc. and its Israeli subsidiary Athens Strategies Ltd. Merger Sub will merge with and into CyberArk, with CyberArk surviving as a wholly owned subsidiary of PANW. Both boards unanimously approved the transaction, and CYBR's board recommends shareholder approval.",
+            "key_figures": [
+              "Per-share merger consideration: 2.2005 PANW shares + $45.00 cash",
+              "CYBR termination fee: $750 million",
+              "PANW reverse termination fee (regulatory failure): $1 billion",
+              "CYBR shareholder approval threshold: simple majority of voting power represented and voting",
+              "Israeli statutory waiting period: at least 50 days after merger proposal filing with Companies Registrar and at least 30 days after shareholder approval",
+              "Outside date: July 30, 2026, extendable to October 30, 2026 for regulatory approvals",
+              "CYBR ordinary share par value: NIS 0.01",
+              "PANW common stock par value: $0.0001"
+            ],
+            "market_impact": "Upon completion, CYBR shares will be delisted from Nasdaq and deregistered under the Exchange Act. CYBR shareholders will receive a mix of PANW stock and cash. The cash portion is expected to be financed from cash on hand with no financing condition.",
+            "deal_relevance": "The merger requires CYBR shareholder approval (simple majority), HSR clearance, additional antitrust/foreign investment approvals, Nasdaq listing approval for new PANW shares, effectiveness of PANW's Form S-4, and Israeli statutory waiting periods. The outside date is July 30, 2026, extendable to October 30, 2026 for regulatory approvals. A $750 million CYBR termination fee applies if the board changes its recommendation or CYBR enters a superior proposal. A $1 billion PANW reverse termination fee applies if the deal fails due to regulatory approvals. Customary no-solicitation provisions apply with a fiduciary out for superior proposals.",
+            "regulatory_notes": "Hart-Scott-Rodino Act waiting period required. Additional approvals required under specified antitrust and foreign investment laws. Israeli Companies Registrar filing required with a 50-day statutory waiting period. Nasdaq listing approval required for PANW shares to be issued.",
+            "cross_border_considerations": "CyberArk is incorporated in Israel; Merger Sub (Athens Strategies Ltd.) is an Israeli entity. Israeli Companies Law governs the merger structure and imposes statutory waiting periods (50 days from merger proposal filing, 30 days from shareholder approval). CYBR share par value is denominated in NIS (NIS 0.01). Cash consideration of $45.00 per share is in USD. Foreign investment law approvals may be required in addition to US HSR clearance.",
+            "risks_flagged": [
+              "Regulatory approvals required across multiple jurisdictions including US (HSR) and foreign investment laws",
+              "Israeli statutory waiting periods extend timeline beyond shareholder approval",
+              "Potential for third-party superior proposals under fiduciary out provisions",
+              "Risk of litigation against directors in connection with the transaction",
+              "Integration risk post-closing",
+              "Mixed consideration subjects CYBR shareholders to PANW stock price fluctuations between signing and closing",
+              "No financing condition but cash portion dependent on PANW cash on hand"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "documents_processed": [
+    {
+      "doc_type": "summary",
+      "doc_date": "2025-07-30",
+      "doc_url": null,
+      "processed_at": "2026-03-10T03:51:37.763747Z",
+      "approvals_found": 1,
+      "additions": [
+        "hsr"
+      ],
+      "status_changes": []
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-10T23:11:06.364386Z",
+      "approvals_found": 3,
+      "additions": [
+        "reg_nasdaq",
+        "reg_israeli_companies_registrar"
+      ],
+      "status_changes": []
+    },
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2026-03-10",
+      "doc_url": null,
+      "processed_at": "2026-03-10T23:11:06.371878Z",
+      "approvals_found": 1,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "proxy",
+      "doc_date": "2026-03-10",
+      "doc_url": null,
+      "processed_at": "2026-03-10T23:11:26.712993Z",
+      "approvals_found": 9,
+      "additions": [
+        "reg_sec",
+        "reg_nyse",
+        "reg_ec",
+        "reg_accc",
+        "reg_firb",
+        "reg_samr",
+        "reg_tca",
+        "reg_comco"
+      ],
+      "status_changes": [
+        "hsr: pending\u2192cleared"
+      ]
+    },
+    {
+      "doc_type": "6K",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-10T23:11:37.591615Z",
+      "approvals_found": 5,
+      "additions": [
+        "reg_israeli_foreign_investment",
+        "reg_other_antitrust_fdi_authorities"
+      ],
+      "status_changes": [
+        "hsr: cleared\u2192pending"
+      ]
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-10T23:47:27.395729Z",
+      "approvals_found": 3,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2026-03-10",
+      "doc_url": null,
+      "processed_at": "2026-03-10T23:47:27.417391Z",
+      "approvals_found": 1,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "proxy",
+      "doc_date": "2026-03-10",
+      "doc_url": null,
+      "processed_at": "2026-03-10T23:47:46.859159Z",
+      "approvals_found": 9,
+      "additions": [],
+      "status_changes": [
+        "hsr: pending\u2192cleared",
+        "reg_comco: filing_intent\u2192pending"
+      ]
+    },
+    {
+      "doc_type": "6K",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-10T23:47:57.244240Z",
+      "approvals_found": 5,
+      "additions": [
+        "reg_foreign_investment_authorities",
+        "reg_foreign_antitrust_authorities"
+      ],
+      "status_changes": [
+        "hsr: cleared\u2192pending"
+      ]
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-13T12:54:46.127498Z",
+      "approvals_found": 3,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2026-03-13",
+      "doc_url": null,
+      "processed_at": "2026-03-13T12:54:46.130821Z",
+      "approvals_found": 1,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "proxy",
+      "doc_date": "2026-03-13",
+      "doc_url": null,
+      "processed_at": "2026-03-13T12:55:02.244838Z",
+      "approvals_found": 9,
+      "additions": [],
+      "status_changes": [
+        "hsr: pending\u2192cleared"
+      ]
+    },
+    {
+      "doc_type": "6K",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-13T12:55:09.690109Z",
+      "approvals_found": 4,
+      "additions": [],
+      "status_changes": [
+        "hsr: cleared\u2192pending"
+      ]
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:04:57.956705Z",
+      "approvals_found": 3,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2026-03-13",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:04:57.961054Z",
+      "approvals_found": 1,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "proxy",
+      "doc_date": "2026-03-13",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:05:11.790514Z",
+      "approvals_found": 9,
+      "additions": [],
+      "status_changes": [
+        "hsr: pending\u2192cleared",
+        "reg_comco: pending\u2192filing_intent"
+      ]
+    },
+    {
+      "doc_type": "6K",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:05:17.965359Z",
+      "approvals_found": 3,
+      "additions": [],
+      "status_changes": [
+        "hsr: cleared\u2192pending"
+      ]
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:07:24.207493Z",
+      "approvals_found": 3,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2026-03-13",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:07:24.211186Z",
+      "approvals_found": 1,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "proxy",
+      "doc_date": "2026-03-13",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:07:39.719109Z",
+      "approvals_found": 9,
+      "additions": [],
+      "status_changes": [
+        "hsr: pending\u2192cleared",
+        "reg_comco: filing_intent\u2192pending"
+      ]
+    },
+    {
+      "doc_type": "6K",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:07:44.708264Z",
+      "approvals_found": 3,
+      "additions": [],
+      "status_changes": [
+        "hsr: cleared\u2192pending"
+      ]
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:08:27.070346Z",
+      "approvals_found": 3,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2026-03-13",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:08:27.072330Z",
+      "approvals_found": 1,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "proxy",
+      "doc_date": "2026-03-13",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:08:42.490036Z",
+      "approvals_found": 9,
+      "additions": [],
+      "status_changes": [
+        "hsr: pending\u2192cleared"
+      ]
+    },
+    {
+      "doc_type": "6K",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:08:52.698039Z",
+      "approvals_found": 5,
+      "additions": [
+        "reg_foreign_investment_authorities_unspecified",
+        "reg_foreign_antitrust_authorities_unspecified"
+      ],
+      "status_changes": [
+        "hsr: cleared\u2192pending"
+      ]
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:11:03.937746Z",
+      "approvals_found": 3,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2026-03-13",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:11:03.941051Z",
+      "approvals_found": 1,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "proxy",
+      "doc_date": "2026-03-13",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:11:20.612266Z",
+      "approvals_found": 9,
+      "additions": [],
+      "status_changes": [
+        "hsr: pending\u2192cleared"
+      ]
+    },
+    {
+      "doc_type": "6K",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:11:29.926054Z",
+      "approvals_found": 5,
+      "additions": [],
+      "status_changes": [
+        "hsr: cleared\u2192pending"
+      ]
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:13:08.765903Z",
+      "approvals_found": 3,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2026-03-13",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:13:08.772877Z",
+      "approvals_found": 1,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "proxy",
+      "doc_date": "2026-03-13",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:13:24.600248Z",
+      "approvals_found": 9,
+      "additions": [],
+      "status_changes": [
+        "hsr: pending\u2192cleared",
+        "reg_comco: pending\u2192filing_intent"
+      ]
+    },
+    {
+      "doc_type": "6K",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-13T13:13:37.030237Z",
+      "approvals_found": 5,
+      "additions": [],
+      "status_changes": [
+        "hsr: cleared\u2192pending"
+      ]
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-13T14:17:03.905536Z",
+      "approvals_found": 3,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2026-03-13",
+      "doc_url": null,
+      "processed_at": "2026-03-13T14:17:03.909020Z",
+      "approvals_found": 1,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "proxy",
+      "doc_date": "2026-03-13",
+      "doc_url": null,
+      "processed_at": "2026-03-13T14:17:19.868755Z",
+      "approvals_found": 9,
+      "additions": [],
+      "status_changes": [
+        "hsr: pending\u2192cleared"
+      ]
+    },
+    {
+      "doc_type": "6K",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-13T14:17:27.383330Z",
+      "approvals_found": 4,
+      "additions": [],
+      "status_changes": [
+        "hsr: cleared\u2192pending"
+      ]
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-13T14:28:17.365255Z",
+      "approvals_found": 3,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2026-03-13",
+      "doc_url": null,
+      "processed_at": "2026-03-13T14:28:17.368729Z",
+      "approvals_found": 1,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "proxy",
+      "doc_date": "2026-03-13",
+      "doc_url": null,
+      "processed_at": "2026-03-13T14:28:34.467678Z",
+      "approvals_found": 9,
+      "additions": [],
+      "status_changes": [
+        "hsr: pending\u2192cleared",
+        "reg_comco: filing_intent\u2192pending"
+      ]
+    },
+    {
+      "doc_type": "6K",
+      "doc_date": "2025-07-31",
+      "doc_url": null,
+      "processed_at": "2026-03-13T14:28:41.295842Z",
+      "approvals_found": 3,
+      "additions": [],
+      "status_changes": [
+        "hsr: cleared\u2192pending"
+      ]
+    },
+    {
+      "doc_type": "filing",
+      "doc_date": "2025-11-21",
+      "doc_url": "https://www.sec.gov/Archives/edgar/data/39899/000110465925115057/tm2531511d1_8k.htm",
+      "processed_at": "2026-03-13T15:16:11.425760Z",
+      "approvals_found": 0,
+      "additions": [],
+      "status_changes": []
+    }
+  ],
+  "change_log": [
+    {
+      "timestamp": "2026-03-10T03:51:37.763747Z",
+      "source_doc": "Initial Summary",
+      "source_doc_type": "summary",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "hsr",
+          "detail": "HSR / FTC+DOJ added from initial deal summary"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-10T23:11:06.364386Z",
+      "source_doc": "Press Release",
+      "source_doc_type": "press_release",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "reg_nasdaq",
+          "detail": "Nasdaq newly required \u2014 first seen in press_release"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_israeli_companies_registrar",
+          "detail": "Israeli Companies Registrar newly required \u2014 first seen in press_release"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-10T23:11:26.712993Z",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "pending",
+          "to": "cleared",
+          "detail": "HSR/DOJ+FTC status: pending \u2192 cleared"
+        },
+        {
+          "type": "date_update",
+          "approval_id": "hsr",
+          "field": "filed_date",
+          "value": "2026-02-13",
+          "detail": "HSR/DOJ+FTC filed_date \u2192 2026-02-13"
+        },
+        {
+          "type": "date_update",
+          "approval_id": "hsr",
+          "field": "cleared_date",
+          "value": "2026-02-13",
+          "detail": "HSR/DOJ+FTC cleared_date \u2192 2026-02-13"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_sec",
+          "detail": "SEC newly required \u2014 first seen in proxy"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_nyse",
+          "detail": "NYSE newly required \u2014 first seen in proxy"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_ec",
+          "detail": "EC newly required \u2014 first seen in proxy"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_accc",
+          "detail": "ACCC newly required \u2014 first seen in proxy"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_firb",
+          "detail": "FIRB newly required \u2014 first seen in proxy"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_samr",
+          "detail": "SAMR newly required \u2014 first seen in proxy"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_tca",
+          "detail": "TCA newly required \u2014 first seen in proxy"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_comco",
+          "detail": "COMCO newly required \u2014 first seen in proxy"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-10T23:11:37.591615Z",
+      "source_doc": "6K 2025-07-31",
+      "source_doc_type": "6K",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "cleared",
+          "to": "pending",
+          "detail": "HSR/FTC+DOJ status: cleared \u2192 pending"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_israeli_foreign_investment",
+          "detail": "Israeli Foreign Investment newly required \u2014 first seen in 6K"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_other_antitrust_fdi_authorities",
+          "detail": "Other Antitrust/FDI Authorities newly required \u2014 first seen in 6K"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-10T23:47:46.859159Z",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "pending",
+          "to": "cleared",
+          "detail": "HSR/DOJ+FTC status: pending \u2192 cleared"
+        },
+        {
+          "type": "status_change",
+          "approval_id": "reg_comco",
+          "from": "filing_intent",
+          "to": "pending",
+          "detail": "COMCO status: filing_intent \u2192 pending"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-10T23:47:57.244240Z",
+      "source_doc": "6K 2025-07-31",
+      "source_doc_type": "6K",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "cleared",
+          "to": "pending",
+          "detail": "HSR/FTC+DOJ status: cleared \u2192 pending"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_foreign_investment_authorities",
+          "detail": "Foreign Investment Authorities newly required \u2014 first seen in 6K"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_foreign_antitrust_authorities",
+          "detail": "Foreign Antitrust Authorities newly required \u2014 first seen in 6K"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-13T12:55:02.244838Z",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "pending",
+          "to": "cleared",
+          "detail": "HSR/DOJ+FTC status: pending \u2192 cleared"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-13T12:55:09.690109Z",
+      "source_doc": "6K 2025-07-31",
+      "source_doc_type": "6K",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "cleared",
+          "to": "pending",
+          "detail": "HSR/FTC+DOJ status: cleared \u2192 pending"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-13T13:05:11.790514Z",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "pending",
+          "to": "cleared",
+          "detail": "HSR/FTC+DOJ status: pending \u2192 cleared"
+        },
+        {
+          "type": "status_change",
+          "approval_id": "reg_comco",
+          "from": "pending",
+          "to": "filing_intent",
+          "detail": "COMCO status: pending \u2192 filing_intent"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-13T13:05:17.965359Z",
+      "source_doc": "6K 2025-07-31",
+      "source_doc_type": "6K",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "cleared",
+          "to": "pending",
+          "detail": "HSR/FTC+DOJ status: cleared \u2192 pending"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-13T13:07:39.719109Z",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "pending",
+          "to": "cleared",
+          "detail": "HSR/FTC+DOJ status: pending \u2192 cleared"
+        },
+        {
+          "type": "status_change",
+          "approval_id": "reg_comco",
+          "from": "filing_intent",
+          "to": "pending",
+          "detail": "COMCO status: filing_intent \u2192 pending"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-13T13:07:44.708264Z",
+      "source_doc": "6K 2025-07-31",
+      "source_doc_type": "6K",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "cleared",
+          "to": "pending",
+          "detail": "HSR/FTC+DOJ status: cleared \u2192 pending"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-13T13:08:42.490036Z",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "pending",
+          "to": "cleared",
+          "detail": "HSR/DOJ+FTC status: pending \u2192 cleared"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-13T13:08:52.698039Z",
+      "source_doc": "6K 2025-07-31",
+      "source_doc_type": "6K",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "cleared",
+          "to": "pending",
+          "detail": "HSR/FTC+DOJ status: cleared \u2192 pending"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_foreign_investment_authorities_unspecified",
+          "detail": "Foreign Investment Authorities (unspecified) newly required \u2014 first seen in 6K"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_foreign_antitrust_authorities_unspecified",
+          "detail": "Foreign Antitrust Authorities (unspecified) newly required \u2014 first seen in 6K"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-13T13:11:20.612266Z",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "pending",
+          "to": "cleared",
+          "detail": "HSR/FTC+DOJ status: pending \u2192 cleared"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-13T13:11:29.926054Z",
+      "source_doc": "6K 2025-07-31",
+      "source_doc_type": "6K",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "cleared",
+          "to": "pending",
+          "detail": "HSR/FTC+DOJ status: cleared \u2192 pending"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-13T13:13:24.600248Z",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "pending",
+          "to": "cleared",
+          "detail": "HSR/DOJ+FTC status: pending \u2192 cleared"
+        },
+        {
+          "type": "status_change",
+          "approval_id": "reg_comco",
+          "from": "pending",
+          "to": "filing_intent",
+          "detail": "COMCO status: pending \u2192 filing_intent"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-13T13:13:37.030237Z",
+      "source_doc": "6K 2025-07-31",
+      "source_doc_type": "6K",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "cleared",
+          "to": "pending",
+          "detail": "HSR/FTC+DOJ status: cleared \u2192 pending"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-13T14:17:19.868755Z",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "pending",
+          "to": "cleared",
+          "detail": "HSR/DOJ+FTC status: pending \u2192 cleared"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-13T14:17:27.383330Z",
+      "source_doc": "6K 2025-07-31",
+      "source_doc_type": "6K",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "cleared",
+          "to": "pending",
+          "detail": "HSR/FTC+DOJ status: cleared \u2192 pending"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-13T14:28:34.467678Z",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "pending",
+          "to": "cleared",
+          "detail": "HSR/DOJ+FTC status: pending \u2192 cleared"
+        },
+        {
+          "type": "status_change",
+          "approval_id": "reg_comco",
+          "from": "filing_intent",
+          "to": "pending",
+          "detail": "COMCO status: filing_intent \u2192 pending"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-13T14:28:41.295842Z",
+      "source_doc": "6K 2025-07-31",
+      "source_doc_type": "6K",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "cleared",
+          "to": "pending",
+          "detail": "HSR/FTC+DOJ status: cleared \u2192 pending"
+        }
+      ]
+    }
+  ]
+}

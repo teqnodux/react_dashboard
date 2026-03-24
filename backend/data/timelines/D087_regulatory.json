@@ -1,0 +1,223 @@
+{
+  "deal_id": "D087",
+  "last_updated": "2026-03-19",
+  "approvals": [
+    {
+      "id": "hsr",
+      "jurisdiction": "United States",
+      "authority_short": "HSR/FTC+DOJ",
+      "authority_full": "Federal Trade Commission / Department of Justice Antitrust Division",
+      "statute": "Hart-Scott-Rodino Antitrust Improvements Act of 1976, as amended",
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "hsr_filed",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Expiration or termination of the HSR waiting period is an explicit condition to consummation of the Offer, as stated in the Merger Agreement conditions set forth in the 8-K.",
+      "source_doc": "filing 2026-03-06",
+      "source_doc_type": "filing",
+      "source_doc_url": "https://www.sec.gov/Archives/edgar/data/1845337/000119312526095174/d108979d8k.htm",
+      "first_seen_date": "2026-03-19",
+      "linked_docs": [
+        {
+          "doc_type": "dma_extract",
+          "doc_date": "2026-03-19",
+          "doc_url": null,
+          "summary": "HSR Act (FTC/DOJ), Foreign Antitrust Laws",
+          "L1": "DMA Summary \u2014 D087",
+          "L2": "Regulatory approvals from DMA extraction",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_foreign_antitrust_laws",
+      "jurisdiction": null,
+      "authority_short": "Foreign Antitrust Laws",
+      "authority_full": "Foreign Antitrust Laws",
+      "statute": null,
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_foreign_antitrust_laws",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in DMA summary extraction",
+      "source_doc": "DMA Extract",
+      "source_doc_type": "dma_extract",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "linked_docs": [
+        {
+          "doc_type": "dma_extract",
+          "doc_date": "2026-03-19",
+          "doc_url": null,
+          "summary": "HSR Act (FTC/DOJ), Foreign Antitrust Laws",
+          "L1": "DMA Summary \u2014 D087",
+          "L2": "Regulatory approvals from DMA extraction",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_sec",
+      "jurisdiction": "European Union",
+      "authority_short": "SEC",
+      "authority_full": "SEC",
+      "statute": null,
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_sec",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in press release",
+      "source_doc": "Press Release",
+      "source_doc_type": "press_release",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "linked_docs": [
+        {
+          "doc_type": "press_release",
+          "doc_date": "2026-03-19",
+          "doc_url": null,
+          "summary": "SEC, U.S. antitrust authority",
+          "L1": "Press Release \u2014 D087",
+          "L2": "Regulatory bodies identified in press release",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_u_s_antitrust_authority",
+      "jurisdiction": null,
+      "authority_short": "U.S. antitrust authority",
+      "authority_full": "U.S. antitrust authority",
+      "statute": null,
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_u_s_antitrust_authority",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in press release",
+      "source_doc": "Press Release",
+      "source_doc_type": "press_release",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "linked_docs": [
+        {
+          "doc_type": "press_release",
+          "doc_date": "2026-03-19",
+          "doc_url": null,
+          "summary": "SEC, U.S. antitrust authority",
+          "L1": "Press Release \u2014 D087",
+          "L2": "Regulatory bodies identified in press release",
+          "L3": null
+        }
+      ]
+    }
+  ],
+  "documents_processed": [
+    {
+      "doc_type": "filing",
+      "doc_date": "2026-03-06",
+      "doc_url": "https://www.sec.gov/Archives/edgar/data/1845337/000119312526095174/d108979d8k.htm",
+      "processed_at": "2026-03-19T21:20:30.816008Z",
+      "approvals_found": 1,
+      "additions": [
+        "hsr"
+      ],
+      "status_changes": []
+    },
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2026-03-19",
+      "doc_url": null,
+      "processed_at": "2026-03-19T21:22:18.771951Z",
+      "approvals_found": 2,
+      "additions": [
+        "reg_foreign_antitrust_laws"
+      ],
+      "status_changes": []
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2026-03-19",
+      "doc_url": null,
+      "processed_at": "2026-03-19T21:22:29.256123Z",
+      "approvals_found": 2,
+      "additions": [
+        "reg_sec",
+        "reg_u_s_antitrust_authority"
+      ],
+      "status_changes": []
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2026-03-19",
+      "doc_url": null,
+      "processed_at": "2026-03-19T21:37:51.885065Z",
+      "approvals_found": 2,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2026-03-19",
+      "doc_url": null,
+      "processed_at": "2026-03-19T21:37:51.886601Z",
+      "approvals_found": 2,
+      "additions": [],
+      "status_changes": []
+    }
+  ],
+  "change_log": [
+    {
+      "timestamp": "2026-03-19T21:20:30.816008Z",
+      "source_doc": "filing 2026-03-06",
+      "source_doc_type": "filing",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "hsr",
+          "detail": "HSR/FTC+DOJ newly required \u2014 first seen in filing"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-19T21:22:18.771951Z",
+      "source_doc": "DMA Extract",
+      "source_doc_type": "dma_extract",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "reg_foreign_antitrust_laws",
+          "detail": "Foreign Antitrust Laws newly required \u2014 first seen in dma_extract"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-19T21:22:29.256123Z",
+      "source_doc": "Press Release",
+      "source_doc_type": "press_release",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "reg_sec",
+          "detail": "SEC newly required \u2014 first seen in press_release"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_u_s_antitrust_authority",
+          "detail": "U.S. antitrust authority newly required \u2014 first seen in press_release"
+        }
+      ]
+    }
+  ]
+}

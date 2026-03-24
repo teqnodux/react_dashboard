@@ -1,0 +1,57 @@
+{
+  "ticker": "PEN",
+  "company": "Penumbra",
+  "filing_type": "10-K",
+  "period_end_date": "12/31/25",
+  "filing_date": "02/25/26",
+  "fiscal_period": "FY 2025",
+  "L1_headline": "+ PEN \u2013 Corporate governance filing with anti-takeover provisions. | 02/25/26",
+  "L2_brief": "Penumbra filed corporate governance details showing common stock traded on NYSE under 'PEN' with 300 million authorized shares. The company maintains anti-takeover provisions including staggered board terms and Delaware Section 203 protections, though board terms will transition to one-year structure by 2028.",
+  "L3_detailed": {
+    "financial_performance": {
+      "revenue": "Not specified",
+      "net_income": "Not specified",
+      "eps": "Not specified",
+      "gross_margin": "Not specified",
+      "operating_income": "Not specified",
+      "free_cash_flow": "Not specified",
+      "other_metrics": [
+        "Par value $0.001 per share",
+        "300M authorized common shares",
+        "5M authorized preferred shares"
+      ]
+    },
+    "segment_performance": [
+      "Not specified"
+    ],
+    "guidance_and_outlook": "Not specified",
+    "balance_sheet_highlights": {
+      "cash_and_equivalents": "Not specified",
+      "total_debt": "Not specified",
+      "net_debt": "Not specified",
+      "shareholders_equity": "Not specified"
+    },
+    "risk_factors": [
+      "Authorized preferred stock may facilitate anti-takeover defense",
+      "Staggered board increases time to change board composition",
+      "Delaware Section 203 restricts business combinations with 15%+ stockholders",
+      "Various provisions make acquisition of control more difficult",
+      "Preferred stock issuance may adversely affect common stockholder rights"
+    ],
+    "ma_and_deal_relevance": {
+      "pending_deals": "None disclosed",
+      "deal_impact": "Not applicable",
+      "strategic_alternatives": "None disclosed",
+      "acquisition_activity": "Anti-takeover provisions designed to discourage coercive takeover practices and encourage negotiation with board"
+    },
+    "legal_and_regulatory": [
+      "Subject to Delaware Section 203 anti-takeover statute"
+    ],
+    "key_developments": [
+      "Board structure transitioning from staggered three-year terms to one-year terms starting 2026",
+      "Full transition to declassified board by 2028",
+      "Seven-member board within authorized range of 5-9 directors"
+    ],
+    "capital_allocation": "Not specified"
+  }
+}

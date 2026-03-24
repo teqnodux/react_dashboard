@@ -1,0 +1,8 @@
+{
+  "events": {
+    "hsr_filed": {
+      "date": "2026-03-14",
+      "source": "HSR waiting period expiration"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "filing_type": "SC 14D-9",
+  "bidder": "Servier S.A.S. (via Servier Pharmaceuticals LLC and Servier Detroit Inc.)",
+  "bidder_ticker": null,
+  "target": "Day One Biopharmaceuticals, Inc.",
+  "target_ticker": "DAWN",
+  "filing_date": "03/06/26",
+  "L1_headline": "+ DAWN \u2013 Preliminary SC 14D-9 filed for Servier acquisition. | 03/06/26",
+  "L2_brief": "Day One Biopharmaceuticals filed a preliminary SC 14D-9 communication in connection with its proposed acquisition by Servier S.A.S. pursuant to a Merger Agreement dated March 6, 2026. The deal structure involves a tender offer by Servier's subsidiary (Servier Detroit Inc.) followed by a back-end merger. Specific offer price, premium, and board recommendation details are not included in this preliminary communication filing and will be disclosed in the formal Schedule TO and Schedule 14D-9 filings once the tender offer commences.",
+  "L3_detailed": {
+    "offer_terms": {
+      "offer_price": "Not disclosed in this preliminary communication",
+      "offer_type": "Cash (presumed based on tender offer structure; not explicitly stated)",
+      "exchange_ratio": null,
+      "premium": "Not disclosed in this preliminary communication",
+      "total_deal_value": "Not disclosed in this preliminary communication",
+      "shares_sought": "All outstanding shares of common stock (par value $0.001 per share)",
+      "minimum_condition": "Not disclosed in this preliminary communication; referenced as a condition to be satisfied",
+      "top_up_option": "Not disclosed in this preliminary communication"
+    },
+    "timing": {
+      "offer_commenced": "Not yet commenced as of filing date (March 6, 2026)",
+      "expiration_date": "Not yet determined; offer has not commenced",
+      "withdrawal_deadline": "Not yet determined",
+      "expected_closing": "Not disclosed in this preliminary communication",
+      "extensions": "Not disclosed in this preliminary communication"
+    },
+    "board_recommendation": "UNABLE TO DETERMINE \u2014 This is a preliminary communication only. The formal Solicitation/Recommendation Statement on Schedule 14D-9 has not yet been filed.",
+    "fairness_opinion": "Not disclosed in this preliminary communication",
+    "background_of_transaction": "An Agreement and Plan of Merger was entered into on March 6, 2026, among Day One Biopharmaceuticals, Servier S.A.S. (a French soci\u00e9t\u00e9 par actions simplifi\u00e9e), Servier Pharmaceuticals LLC (a Delaware LLC and indirect wholly owned subsidiary of Servier), and Servier Detroit Inc. (a Delaware corporation and wholly owned subsidiary of Servier Pharmaceuticals LLC). The deal is structured as a tender offer followed by a back-end merger. No further negotiation history, competing bidder details, or timeline of discussions is provided in this preliminary filing.",
+    "conditions_to_offer": [
+      "Minimum tender condition (details not yet disclosed)",
+      "Other conditions set forth in the Merger Agreement (not yet detailed in this preliminary communication)"
+    ],
+    "financing": {
+      "source": "Not disclosed in this preliminary communication",
+      "committed_financing": "Not disclosed in this preliminary communication",
+      "financing_condition": "Not disclosed in this preliminary communication"
+    },
+    "regulatory_approvals": {
+      "required": [
+        "Not specified in this preliminary communication"
+      ],
+      "status": "Not disclosed",
+      "expected_timeline": "Not disclosed"
+    },
+    "deal_protections": {
+      "breakup_fee": "Not disclosed in this preliminary communication",
+      "reverse_breakup_fee": "Not disclosed in this preliminary communication",
+      "go_shop": "Not disclosed in this preliminary communication",
+      "matching_rights": "Not disclosed in this preliminary communication",
+      "force_the_vote": "Not disclosed in this preliminary communication"
+    },
+    "competing_offers": "None mentioned; the filing's risk factors reference 'the risk that competing offers or acquisition proposals will be made'",
+    "litigation": "The filing's risk factors reference 'the risk that stockholder litigation in connection with the offer or the merger may result in significant costs of defense, indemnification and liability' but no specific litigation is reported",
+    "dissenting_shareholders": "None mentioned",
+    "amendment_changes": "N/A \u2014 This is the initial preliminary communication filing, not an amendment",
+    "risks_flagged": [
+      "Offer has not yet commenced; tender offer materials not yet filed",
+      "Uncertainties as to timing of the offer and subsequent merger",
+      "Uncertainties as to how many stockholders will tender their shares",
+      "Risk of competing offers or acquisition proposals",
+      "Possibility that various conditions to consummation may not be satisfied or waived",
+      "Business disruption risk from announcement and pendency of the transaction",
+      "Risk of stockholder litigation resulting in significant costs",
+      "No offer price, premium, board recommendation, or deal terms have been publicly disclosed yet \u2014 all key details pending formal filings"
+    ]
+  }
+}

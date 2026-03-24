@@ -1,0 +1,37 @@
+{
+  "ticker": "PEN",
+  "filer": "Penumbra, Inc.",
+  "subject_company": "Penumbra, Inc.",
+  "filing_date": "01/16/26",
+  "communication_type": "Customer Letter",
+  "L1_headline": "+ PEN \u2013 Stakeholder comms affirm BSX deal, 2026 close. | 01/16/26",
+  "L2_brief": "Penumbra filed talking points and written communications for HCPs, customers/business partners, suppliers, and clinical study partners regarding its definitive agreement to be acquired by Boston Scientific. All communications emphasize continuity of contracts, products, personnel, and clinical trials, with the transaction expected to close in 2026. The companies will operate independently until close.",
+  "L3_detailed": {
+    "deal_parties": "Boston Scientific Corporation (BSX) acquiring Penumbra, Inc. (PEN)",
+    "deal_status_update": "Definitive agreement has been reached. Parent will file an S-4 registration statement with the SEC that will include a proxy statement/prospectus for Penumbra stockholders.",
+    "timeline_update": "Transaction expected to close in 2026. No specific quarter or month provided. Proxy statement/prospectus has not yet been filed.",
+    "terms_update": "No specific deal price, exchange ratio, or terms are mentioned in this filing. The S-4 registration statement indicates stock consideration is part of the deal structure.",
+    "management_tone": "Uniformly positive across all stakeholder communications, characterizing the deal as an 'exciting opportunity' that will 'greatly benefit patients and partners' and 'accelerate access to innovations.'",
+    "key_messages": [
+      "Penumbra will become part of Boston Scientific under a definitive agreement",
+      "Existing contracts, partnerships, clinical trials, and commitments will remain unchanged",
+      "Penumbra points of contact, sales representatives, and all operational processes will remain the same",
+      "Companies will operate independently until close",
+      "Combined entity aims to expand global access to Penumbra products and reach more patients",
+      "Shared commitment to innovation and advancing healthcare"
+    ],
+    "regulatory_update": "Forward-looking statements reference the need for regulatory approvals as a condition to closing, but no specific regulatory filings or status updates are disclosed.",
+    "shareholder_vote_info": "Stockholder approval is required. Parent will file a registration statement on Form S-4 containing a proxy statement/prospectus. No record date or vote date has been announced. No board recommendation language is included beyond standard solicitation disclaimers.",
+    "integration_details": "No specific integration plans, synergy estimates, or organizational changes are disclosed. Communications emphasize continuity and stability of all existing operations, processes (contracting, ordering, shipping, invoicing), and personnel during the pre-close period.",
+    "risks_flagged": [
+      "Completion subject to stockholder and regulatory approvals",
+      "Potential litigation relating to the proposed transaction against the Company or its directors",
+      "Risk of disruptions to business from the proposed transaction",
+      "Potential adverse reactions or changes to business relationships from announcement or pendency",
+      "Uncertainty as to long-term value of Parent's common stock",
+      "Restrictions during pendency may limit Company's ability to pursue business opportunities or strategic transactions",
+      "Failure to realize anticipated benefits including due to delay in completing or integrating"
+    ]
+  },
+  "filing_type": "425"
+}

@@ -1,0 +1,285 @@
+Page,Section,Field Name,Display Location,Data Source Type,Specific Source,Status,Notes
+Pipeline Tearsheet,Summary Cards,All Deals Count,Top summary bar,API Response,summary.total_deals,REAL,GET /api/deals
+Pipeline Tearsheet,Summary Cards,Watchlist Count,Top summary bar,localStorage,merger_arb_watchlist,REAL,Persisted across sessions
+Pipeline Tearsheet,Filters,View Filter,Filter bar,Component State,Local state + localStorage,REAL,All / Watchlist toggle
+Pipeline Tearsheet,Filters,Deal Type Filter,Filter bar,Deal Model,deal.deal_type,REAL,Cash / Stock / Mixed
+Pipeline Tearsheet,Filters,Spread Range Filter,Filter bar,Calculation,deal.gross_spread_pct,REAL,Tight / Mid / Wide based on %
+Pipeline Tearsheet,Filters,Timing Filter,Filter bar,Calculation,deal.days_to_close,REAL,Near / Mid / Long based on days
+Pipeline Tearsheet,Filters,Search Bar,Filter bar,Component State,Filters multiple deal fields,REAL,Searches target/acquirer/ticker
+Pipeline Tearsheet,Table - Target (collapsed),Target Name,Main table column,Deal Model,deal.target,REAL,
+Pipeline Tearsheet,Table - Target (collapsed),Target Ticker,Main table column,Deal Model,deal.target_ticker,REAL,
+Pipeline Tearsheet,Table - Target (expanded),Share Price,Expanded column,Deal Model,deal.current_price,REAL,
+Pipeline Tearsheet,Table - Target (expanded),Shares Out (M),Expanded column,MISSING,N/A,MISSING,Need to add to Deal model
+Pipeline Tearsheet,Table - Target (expanded),Market Cap,Expanded column,MISSING,N/A,MISSING,Need shares_out * current_price
+Pipeline Tearsheet,Table - Acquirer (collapsed),Acquirer Name,Main table column,Deal Model,deal.acquirer,REAL,
+Pipeline Tearsheet,Table - Acquirer (collapsed),Acquirer Ticker,Main table column,Deal Model,deal.acquirer_ticker,REAL,
+Pipeline Tearsheet,Table - Acquirer (expanded),Share Price,Expanded column,MISSING,N/A,MISSING,Could get from yfinance
+Pipeline Tearsheet,Table - Acquirer (expanded),Shares Out (M),Expanded column,MISSING,N/A,MISSING,Need to add to Deal model
+Pipeline Tearsheet,Table - Acquirer (expanded),Market Cap,Expanded column,MISSING,N/A,MISSING,Need acquirer shares_out * price
+Pipeline Tearsheet,Table - Consideration (collapsed),Cash,Main table column,Deal Model,deal.offer_price (if cash),REAL,
+Pipeline Tearsheet,Table - Consideration (collapsed),Stock,Main table column,Deal Model,deal.offer_price (if stock),REAL,
+Pipeline Tearsheet,Table - Consideration (expanded),Per Share Value,Expanded column,Deal Model,deal.offer_price,REAL,
+Pipeline Tearsheet,Table - Consideration (expanded),Premium %,Expanded column,Calculation,"(offer - unaffected) / unaffected * 100",REAL,
+Pipeline Tearsheet,Table - Consideration (expanded),Total Value,Expanded column,Deal Model,deal.deal_value_bn,REAL,
+Pipeline Tearsheet,Table - Trading (collapsed),Target Price,Main table column,yfinance + Deal Model,"liveQuotes.target_quote.current_price OR deal.current_price",REAL,Manual refresh required
+Pipeline Tearsheet,Table - Trading (collapsed),Acquirer Price,Main table column,yfinance,liveQuotes.acquirer_quote.current_price,PARTIAL,Only if live quotes fetched
+Pipeline Tearsheet,Table - Trading (expanded),Target Bid,Expanded column,yfinance,liveQuotes.target_quote.bid,PARTIAL,Manual refresh required
+Pipeline Tearsheet,Table - Trading (expanded),Target Ask,Expanded column,yfinance,liveQuotes.target_quote.ask,PARTIAL,Manual refresh required
+Pipeline Tearsheet,Table - Trading (expanded),Target Volume,Expanded column,yfinance,liveQuotes.target_quote.volume,PARTIAL,Manual refresh required
+Pipeline Tearsheet,Table - Gross Spread (collapsed),Spread $,Main table column,Deal Model,deal.gross_spread_dollars,REAL,Backend calculation
+Pipeline Tearsheet,Table - Gross Spread (collapsed),Spread %,Main table column,Deal Model,deal.gross_spread_pct,REAL,Backend calculation
+Pipeline Tearsheet,Table - Gross Spread (expanded),Annualized,Expanded column,Deal Model,deal.annualized_gross,REAL,Backend calculation
+Pipeline Tearsheet,Table - Net Spread (collapsed),Net Spread $,Main table column,Deal Model,deal.net_spread_dollars,REAL,Backend calculation
+Pipeline Tearsheet,Table - Net Spread (collapsed),Net Spread %,Main table column,Deal Model,deal.net_spread_pct,REAL,Backend calculation
+Pipeline Tearsheet,Table - Net Spread (expanded),Borrow Cost,Expanded column,Deal Model,deal.borrow_cost_to_close,REAL,Backend calculation
+Pipeline Tearsheet,Table - Net Spread (expanded),Dividend,Expanded column,Deal Model,deal.dividend_expected,REAL,
+Pipeline Tearsheet,Table - Net Spread (expanded),Annualized Net,Expanded column,Deal Model,deal.annualized_net,REAL,Backend calculation
+Pipeline Tearsheet,Table - Timing (collapsed),Timing Ann %,Main table column,Deal Model,deal.annualized_gross,REAL,
+Pipeline Tearsheet,Table - Timing (collapsed),Close Date,Main table column,Deal Model,deal.expected_close,REAL,
+Pipeline Tearsheet,Table - Timing (expanded),Announce Date,Expanded column,Deal Model,deal.announce_date,REAL,
+Pipeline Tearsheet,Table - Timing (expanded),Outside Date,Expanded column,Deal Model,deal.outside_date,REAL,Nullable
+Pipeline Tearsheet,Table - Downsides (collapsed),IPC (Unaffected),Main table column,Deal Model,deal.unaffected_price,REAL,
+Pipeline Tearsheet,Table - Downsides (collapsed),Up/Down %,Main table column,Calculation,"(unaffected - current) / current * 100",REAL,
+Pipeline Tearsheet,Table - Downsides (expanded),Break Price,Expanded column,MISSING,N/A,MISSING,Need break-even calculation
+Pipeline Tearsheet,Tooltip - Consideration,Cash,Hover tooltip,Deal Model,deal.offer_price,REAL,
+Pipeline Tearsheet,Tooltip - Consideration,ACI Divs,Hover tooltip,PLACEHOLDER,$0.05 hardcoded,MISSING,Need acquirer dividend field
+Pipeline Tearsheet,Tooltip - Consideration,Stock,Hover tooltip,Deal Model,deal.offer_price,REAL,
+Pipeline Tearsheet,Tooltip - Consideration,Number (Exchange Ratio),Hover tooltip,PLACEHOLDER,2 hardcoded,MISSING,Need exchange_ratio field
+Pipeline Tearsheet,Tooltip - Consideration,Other,Hover tooltip,PLACEHOLDER,$0 hardcoded,MISSING,Need other_consideration field
+Pipeline Tearsheet,Tooltip - Consideration,Total,Hover tooltip,PLACEHOLDER,$0.10 hardcoded,MISSING,Should sum all components
+Pipeline Tearsheet,Tooltip - Consideration,CVR,Hover tooltip,PLACEHOLDER,$0 hardcoded,MISSING,Need cvr_value field
+Pipeline Tearsheet,Tooltip - Consideration,KR Divs,Hover tooltip,PLACEHOLDER,n/a hardcoded,MISSING,Need acquirer dividend field
+Pipeline Tearsheet,Tooltip - Consideration,Proration,Hover tooltip,PLACEHOLDER,n/a hardcoded,MISSING,Could parse from DMA
+Pipeline Tearsheet,Tooltip - Consideration,Collar,Hover tooltip,PLACEHOLDER,n/a hardcoded,MISSING,Could parse from DMA
+Pipeline Tearsheet,Tooltip - Trading,Target Bid,Hover tooltip,yfinance,liveQuotes.target_quote.bid OR $21.00,PARTIAL,Fallback to placeholder
+Pipeline Tearsheet,Tooltip - Trading,Target Last,Hover tooltip,yfinance + Deal,liveQuotes.target_quote.current_price OR deal.current_price,REAL,
+Pipeline Tearsheet,Tooltip - Trading,Target Ask,Hover tooltip,yfinance,liveQuotes.target_quote.ask OR $21.12,PARTIAL,Fallback to placeholder
+Pipeline Tearsheet,Tooltip - Trading,Spread Bid,Hover tooltip,Calculation,offer_price - bid OR $6.25,PARTIAL,Fallback to placeholder
+Pipeline Tearsheet,Tooltip - Trading,Spread Last,Hover tooltip,Deal Model,deal.gross_spread_dollars,REAL,
+Pipeline Tearsheet,Tooltip - Trading,Spread Ask,Hover tooltip,Calculation,offer_price - ask OR $6.13,PARTIAL,Fallback to placeholder
+Pipeline Tearsheet,Tooltip - Trading,Vol (mm),Hover tooltip,Calculation,(volume * price) / 1M OR $24.5,PARTIAL,Fallback to placeholder
+Pipeline Tearsheet,Tooltip - Trading,Vol (shares),Hover tooltip,yfinance,"liveQuotes.target_quote.volume OR 1,301,329",PARTIAL,Fallback to placeholder
+Pipeline Tearsheet,Tooltip - Trading,30-day Vol,Hover tooltip,MISSING,"6,040,076 hardcoded",MISSING,Need yfinance .history() avg volume
+Pipeline Tearsheet,Tooltip - Timing,Announcement Date,Hover tooltip,Deal Model,deal.announce_date,REAL,
+Pipeline Tearsheet,Tooltip - Timing,Closing Guidance,Hover tooltip,PLACEHOLDER,2H25 hardcoded,MISSING,Could parse from DMA/filings
+Pipeline Tearsheet,Tooltip - Timing,Our Est. Close,Hover tooltip,Deal Model,deal.expected_close,REAL,
+Pipeline Tearsheet,Tooltip - Timing,HSR Filed,Hover tooltip,PLACEHOLDER,11/20/23 hardcoded,MISSING,Should come from regulatory_timeline
+Pipeline Tearsheet,Tooltip - Timing,FTC Second Request Issued,Hover tooltip,PLACEHOLDER,12/20/23 hardcoded,MISSING,Should come from regulatory_timeline
+Pipeline Tearsheet,Tooltip - Timing,Timing Agreement Entered,Hover tooltip,PLACEHOLDER,12/20/24 hardcoded,MISSING,Should come from regulatory_timeline
+Pipeline Tearsheet,Tooltip - Timing,Timing Agreement Expired,Hover tooltip,PLACEHOLDER,3/20/24 hardcoded,MISSING,Should come from regulatory_timeline
+Pipeline Tearsheet,Tooltip - Timing,FTC Lawsuit Filed,Hover tooltip,PLACEHOLDER,3/15/24 hardcoded,MISSING,Should come from regulatory_timeline
+Pipeline Tearsheet,Tooltip - Timing,Companies' Response Filed,Hover tooltip,PLACEHOLDER,3/29/24 hardcoded,MISSING,Should come from regulatory_timeline
+Pipeline Tearsheet,Tooltip - Timing,Deadline for Depositions,Hover tooltip,PLACEHOLDER,9/30/24 hardcoded,MISSING,Should come from regulatory_timeline
+Pipeline Tearsheet,Tooltip - Downsides,Undisturbed,Hover tooltip,Deal Model,deal.unaffected_price,REAL,
+Pipeline Tearsheet,Tooltip - Downsides,Downside Est,Hover tooltip,PLACEHOLDER,$15.00 hardcoded,MISSING,Need downside analysis calculation
+Pipeline Tearsheet,Tooltip - Downsides,Peers Used,Hover tooltip,PLACEHOLDER,n/a hardcoded,MISSING,Need comparable companies analysis
+Pipeline Tearsheet,Tooltip - Downsides,Index Used,Hover tooltip,PLACEHOLDER,SPY hardcoded,MISSING,Need index correlation data
+Pipeline Tearsheet,Tooltip - Downsides,Implied EV/EBITDA,Hover tooltip,PLACEHOLDER,5x hardcoded,MISSING,Need valuation multiples
+Pipeline Tearsheet,Tooltip - Downsides,Historical EV/EBITDA,Hover tooltip,PLACEHOLDER,5.4x hardcoded,MISSING,Need historical multiples
+Pipeline Tearsheet,Tooltip - Downsides (Calc),Calculation Formula,Expanded calculation,REAL,1 - (Deal Spread) / (Total Spread),REAL,
+Pipeline Tearsheet,Tooltip - Downsides (Calc),Deal Spread,Expanded calculation,Deal Model,deal.gross_spread_dollars,REAL,
+Pipeline Tearsheet,Tooltip - Downsides (Calc),Total Spread,Expanded calculation,PARTIAL,offer_price - 15.00 (uses placeholder),PARTIAL,Need real downside_estimate
+Pipeline Tearsheet,Tooltip - Downsides (Calc),Downside Estimate,Expanded calculation,PLACEHOLDER,$15.00 hardcoded,MISSING,Same as Downside Est
+Pipeline Tearsheet,Tooltip - Downsides (Calc),Undisturbed Price,Expanded calculation,Deal Model,deal.unaffected_price,REAL,
+Pipeline Tearsheet,Tooltip - Downsides (Calc),Method,Expanded calculation,PLACEHOLDER,SPY Beta-adjusted text,MISSING,Need actual methodology
+Pipeline Tearsheet,Indicators,Regulatory Challenge Flag,Row indicator,Calculation,gross_spread_pct >= 10,REAL,Shows 🚩 emoji
+Pipeline Tearsheet,Indicators,Approaching Outside Date,Row indicator,Calculation,Days to outside < 60,REAL,Shows ⚠️ emoji
+Pipeline Tearsheet,Indicators,High Downside Risk,Row indicator,Calculation,Downside % < -20%,REAL,Shows ⚠️ emoji
+Pipeline Tearsheet,Indicators,At-Risk Row Class,Row highlighting,Calculation,"Wide spread OR high downside OR approaching outside",REAL,Red border on row
+Pipeline Tearsheet,Indicators,Recent Activity,Row highlighting,Calculation,Days since announce <= 7,REAL,Blue dot indicator
+Pipeline Tearsheet,Indicators,Spread Trend Arrow,Cell indicator,Heuristic,Based on spread % and days to close,REAL,"Shows ↗↘→ arrows"
+Pipeline Tearsheet,Actions,Refresh All Quotes,Button action,yfinance API,GET /api/deals/{id}/quotes for each deal,REAL,Manual button click
+Pipeline Tearsheet,Actions,Quote Timestamps,Status display,Component State,Tracked per deal in state,REAL,Shows time since update
+Pipeline Tearsheet,Actions,Export to CSV,Button action,Component State,Exports filtered data to CSV,REAL,Respects hidden columns
+Pipeline Tearsheet,Actions,Watchlist Toggle,Row action,localStorage,Adds/removes from watchlist array,REAL,Star icon in row
+Pipeline Tearsheet,Actions,Bulk Actions,Multi-select,Component State,Select multiple deals for bulk watchlist ops,REAL,Checkboxes + bulk buttons
+Pipeline Tearsheet,Actions,Compare Deals,Comparison modal,Component State,Shows 2-3 deals side-by-side,REAL,Select up to 3 deals
+Pipeline Tearsheet,Actions,Column Visibility,Settings dropdown,localStorage,Show/hide entire column groups,REAL,⚙️ Columns button
+Pipeline Tearsheet,Actions,Saved Views,Custom views,localStorage,Save filter/sort/column configs,REAL,💾 Views button
+Activity Feed,Summary Stats,Last 7 Days Count,Summary card,API Response,summary.last_7_days,REAL,GET /api/all-activity
+Activity Feed,Summary Stats,Total Tracked,Summary card,API Response,summary.total_activities,REAL,
+Activity Feed,Summary Stats,Upcoming Events,Summary card,API Response,summary.upcoming_events,REAL,
+Activity Feed,Summary Stats,Activity Breakdown,Summary card,API Response,summary.by_type (object),REAL,Shows counts per type
+Activity Feed,Filters,Search Bar,Filter section,Component State,Filters title and description,REAL,
+Activity Feed,Filters,Date Range,Filter dropdown,Component State,"24h, 7d, 30d, 90d, all",REAL,
+Activity Feed,Filters,Deal Filter,Filter dropdown,Component State,Unique deals from activities,REAL,
+Activity Feed,Filters,Importance Filter,Filter dropdown,Component State,"High, Medium, Low",REAL,
+Activity Feed,Filters,Type Filters,Toggle buttons,Component State,"Filing, Regulatory, Docket, Milestone, Press, Financial",REAL,Multiple selection allowed
+Activity Feed,Activity Items,Deal Tag,Activity card,API Response,activity.deal_name + link,REAL,
+Activity Feed,Activity Items,Type Badge,Activity card,API Response,activity.type,REAL,Shows icon + label
+Activity Feed,Activity Items,Importance Badge,Activity card,API Response,activity.importance,REAL,"High, Medium, Low"
+Activity Feed,Activity Items,Timestamp,Activity card,API Response,activity.timestamp,REAL,Relative time display
+Activity Feed,Activity Items,Title,Activity card,API Response,activity.title,REAL,
+Activity Feed,Activity Items,Description,Activity card,API Response,activity.description,REAL,
+Activity Feed,Activity Items,Source,Activity card,API Response,activity.source,REAL,Optional field
+Activity Feed,Activity Items,Link,Activity card,API Response,activity.link,MISSING,Field exists but not populated
+All Dockets,Summary Stats,Total Dockets,Summary card,API Response,summary.total_deals_with_dockets,REAL,GET /api/all-dockets
+All Dockets,Summary Stats,Following,Summary card,localStorage,followed_dockets Set size,REAL,
+All Dockets,Summary Stats,Total Entries,Summary card,API Response,summary.total_entries,REAL,
+All Dockets,Summary Stats,High Relevance,Summary card,API Response,summary.high_relevance,REAL,
+All Dockets,Summary Stats,Opposition Filings,Summary card,API Response,summary.opposition_count,REAL,
+All Dockets,Filters,Search Bar,Filter section,Component State,Filters deal names,REAL,
+All Dockets,Filters,All / Following Toggle,Filter buttons,Component State + localStorage,Filters by followed dockets,REAL,
+All Dockets,Docket Cards,Deal Name,Card header,API Response,docketCase.deal_name + link,REAL,
+All Dockets,Docket Cards,Follow Button,Card header,localStorage,Star icon toggle,REAL,Saves to followed_dockets
+All Dockets,Docket Cards,Docket Number,Card meta,API Response,docketCase.docket_number,MISSING,Field exists but not populated
+All Dockets,Docket Cards,Total Entries,Card stats,API Response,docketCase.entry_count,REAL,Aggregated from entries
+All Dockets,Docket Cards,High Relevance,Card stats,API Response,docketCase.high_relevance_count,REAL,Filtered count
+All Dockets,Docket Cards,Opposition,Card stats,API Response,docketCase.opposition_count,REAL,Filtered count
+All Dockets,Docket Cards,Support,Card stats,API Response,docketCase.support_count,REAL,Filtered count
+All Dockets,Docket Cards,Latest Activity,Card stats,API Response,docketCase.latest_entry_date,REAL,Most recent entry
+All Regulatory,Summary Stats,Total Events,Summary card,API Response,summary.total_events,REAL,GET /api/all-regulatory
+All Regulatory,Summary Stats,Deals Tracked,Summary card,API Response,summary.total_deals,REAL,
+All Regulatory,Summary Stats,Pending Approvals,Summary card,API Response,summary.pending_approvals,REAL,
+All Regulatory,Summary Stats,Completed,Summary card,API Response,summary.completed_approvals,REAL,
+All Regulatory,Summary Stats,Events by Agency,Section,API Response,summary.events_by_agency array,REAL,Shows breakdown
+All Regulatory,Filters,Deal Filter,Filter dropdown,API Response,summary.events_by_deal,REAL,
+All Regulatory,Filters,Agency Filter,Filter dropdown,API Response,summary.events_by_agency,REAL,
+All Regulatory,Filters,Status Filter,Filter buttons,Component State,"All, Pending, Completed, Not Required",REAL,
+All Regulatory,Table,Deal,Table column,API Response,event.deal_name + link,REAL,
+All Regulatory,Table,Agency,Table column,API Response,event.agency,REAL,
+All Regulatory,Table,Event,Table column,API Response,event.event,REAL,
+All Regulatory,Table,Date,Table column,API Response,event.event_date,REAL,Nullable
+All Regulatory,Table,Status,Table column,API Response,event.status,REAL,"Pending, Completed, Not Required"
+All Regulatory,Table,Notes,Table column,API Response,event.notes,REAL,
+Deal Detail,Header,Target Name,Page header,Deal Model,deal.target,REAL,
+Deal Detail,Header,Acquirer Name,Page header,Deal Model,deal.acquirer,REAL,
+Deal Detail,Header,Target Ticker,Page header badge,Deal Model,deal.target_ticker,REAL,
+Deal Detail,Header,Status Badge,Page header,Deal Model,deal.status,REAL,
+Deal Detail,Header,Deal Type,Page header,Deal Model,deal.deal_type,REAL,
+Deal Detail,Header,Deal Value,Page header,Deal Model,deal.deal_value_bn,REAL,
+Deal Detail,Header,Close Date,Page header,Deal Model,deal.expected_close,REAL,
+Deal Detail,Header,Days Remaining,Page header,Deal Model,deal.days_to_close,REAL,
+Deal Detail,Header,Current Price,Page header,Deal Model,deal.current_price,REAL,
+Deal Detail,Header,Offer Price,Page header,Deal Model,deal.offer_price,REAL,
+Deal Detail,Header,Gross Spread,Page header,Deal Model,deal.gross_spread_dollars + _pct,REAL,
+Deal Detail,Header,Net Spread,Page header,Deal Model,deal.net_spread_dollars,REAL,
+Deal Detail,Header,Annualized,Page header,Deal Model,deal.annualized_net,REAL,
+Deal Detail,Tab - Overview - Pricing,Current Price,Pricing section,Deal Model,deal.current_price,REAL,
+Deal Detail,Tab - Overview - Pricing,Offer Price,Pricing section,Deal Model,deal.offer_price,REAL,
+Deal Detail,Tab - Overview - Pricing,Unaffected Price,Pricing section,Deal Model,deal.unaffected_price,REAL,
+Deal Detail,Tab - Overview - Pricing,Gross Spread,Pricing section,Deal Model,deal.gross_spread_dollars + _pct,REAL,
+Deal Detail,Tab - Overview - Spread,Gross Spread,Spread components,Deal Model,deal.gross_spread_dollars,REAL,
+Deal Detail,Tab - Overview - Spread,Borrow Cost,Spread components,Deal Model,deal.borrow_cost_to_close,REAL,
+Deal Detail,Tab - Overview - Spread,Expected Dividend,Spread components,Deal Model,deal.dividend_expected,REAL,
+Deal Detail,Tab - Overview - Spread,Net Spread,Spread components,Deal Model,deal.net_spread_dollars + _pct,REAL,
+Deal Detail,Tab - Overview - Spread,Annualized Return,Spread components,Deal Model,deal.annualized_net,REAL,
+Deal Detail,Tab - Overview - Dates,Announced,Key dates,Deal Model,deal.announce_date,REAL,
+Deal Detail,Tab - Overview - Dates,Expected Close,Key dates,Deal Model,deal.expected_close,REAL,
+Deal Detail,Tab - Overview - Dates,Outside Date,Key dates,Deal Model,deal.outside_date,REAL,Nullable
+Deal Detail,Tab - Overview - Dates,Days to Close,Key dates,Deal Model,deal.days_to_close,REAL,
+Deal Detail,Tab - Overview - Info,Deal Value,Deal info,Deal Model,deal.deal_value_bn,REAL,
+Deal Detail,Tab - Overview - Info,Deal Type,Deal info,Deal Model,deal.deal_type,REAL,
+Deal Detail,Tab - Overview - Info,Premium,Deal info,Calculation,(offer - unaffected) / unaffected,REAL,
+Deal Detail,Tab - Overview - Info,Regulatory,Deal info,Deal Model,deal.regulatory_bodies array,REAL,
+Deal Detail,Tab - Overview - Notes,Notes,Notes section,Deal Model,deal.notes,REAL,Nullable
+Deal Detail,Tab - Overview - Chart,Spread History,Chart data,Deal Model,deal.spread_history array,REAL,Historical data points
+Deal Detail,Tab - Overview - Chart,Timeline Events,Chart annotations,Deal Model,deal.timeline_events,REAL,Event markers on chart
+Deal Detail,Tab - Tearsheet,All Tearsheet Data,Full tearsheet view,Same as Pipeline Tearsheet,All deal fields + tooltips,REAL,Single-deal view
+Deal Detail,Tab - DMA - Header,Target,DMA summary,Deal Model,deal.target,REAL,
+Deal Detail,Tab - DMA - Header,Acquirer,DMA summary,Deal Model,deal.acquirer,REAL,
+Deal Detail,Tab - DMA - Header,Deal Type,DMA summary,Deal Model,deal.deal_type,REAL,
+Deal Detail,Tab - DMA - Header,Consideration,DMA summary,Deal Model,deal.offer_price,REAL,
+Deal Detail,Tab - DMA - Controls,View Toggle,DMA controls,Deal Model,concise_sections vs fulsome_sections,REAL,Switch between views
+Deal Detail,Tab - DMA - Controls,Expand/Collapse All,DMA controls,Component State,UI state toggle,REAL,
+Deal Detail,Tab - DMA - Controls,Search,DMA controls,Component State,Filters clause text,REAL,
+Deal Detail,Tab - DMA - Sections,Section Name,DMA content,Deal Model,dma_section.name,REAL,
+Deal Detail,Tab - DMA - Sections,Clause Text,DMA content,Deal Model,clause.text / concise / fulsome,REAL,Based on view mode
+Deal Detail,Tab - DMA - Sections,References,DMA content,Deal Model,clause.references array,REAL,
+Deal Detail,Tab - DMA - Sections,Clause Count,DMA content,Calculation,Count of clauses per section,REAL,
+Deal Detail,Tab - Timeline,Event Date,Timeline entry,Deal Model,timeline_events[].event_date,REAL,
+Deal Detail,Tab - Timeline,Event Type,Timeline entry,Deal Model,timeline_events[].event_type,REAL,
+Deal Detail,Tab - Timeline,Title,Timeline entry,Deal Model,timeline_events[].title,REAL,
+Deal Detail,Tab - Timeline,Description,Timeline entry,Deal Model,timeline_events[].description,REAL,
+Deal Detail,Tab - Timeline,Status,Timeline entry,Deal Model,timeline_events[].status,REAL,
+Deal Detail,Tab - Proxy,Proxy Data,Tab content,PLACEHOLDER,Info message only,MISSING,Future development
+Deal Detail,Tab - SEC Filings,SEC Filings,Tab content,PLACEHOLDER,Info message only,MISSING,Future development
+Deal Detail,Tab - MAE Review,MAE Clauses,Tab content,PLACEHOLDER,Hardcoded sample data,MISSING,Need real MAE analysis
+Deal Detail,Tab - MAE Review,Zone Classification,MAE analysis,PLACEHOLDER,Sample data,MISSING,Typical/Atypical/Outlier
+Deal Detail,Tab - MAE Review,Category,MAE analysis,PLACEHOLDER,Sample data,MISSING,
+Deal Detail,Tab - MAE Review,Cluster Name,MAE analysis,PLACEHOLDER,Sample data,MISSING,
+Deal Detail,Tab - MAE Review,Ratio,MAE analysis,PLACEHOLDER,Sample data,MISSING,
+Deal Detail,Tab - MAE Review,Risk Analysis,MAE analysis,PLACEHOLDER,Sample data,MISSING,
+Deal Detail,Tab - MAE Review,Compliance,MAE analysis,PLACEHOLDER,Sample data,MISSING,
+Deal Detail,Tab - Covenants,Covenant Data,Tab content,PLACEHOLDER,Info message only,MISSING,Future development
+Deal Detail,Tab - Regulatory,Agency,Regulatory table,Deal Model,regulatory_timeline[].agency,REAL,
+Deal Detail,Tab - Regulatory,Event,Regulatory table,Deal Model,regulatory_timeline[].event,REAL,
+Deal Detail,Tab - Regulatory,Date,Regulatory table,Deal Model,regulatory_timeline[].event_date,REAL,Nullable
+Deal Detail,Tab - Regulatory,Status,Regulatory table,Deal Model,regulatory_timeline[].status,REAL,
+Deal Detail,Tab - Regulatory,Notes,Regulatory table,Deal Model,regulatory_timeline[].notes,REAL,
+Deal Detail,Tab - Docket,All Docket Data,Full docket view,Deal Model,"docket_entries, stakeholders, conditions, metadata",REAL,Via DocketView component
+Deal Detail,Tab - Reddit,Reddit Analysis,Reddit findings,JSON File,{deal_id}_reddit.json,REAL,Per-deal Reddit analysis
+Deal Detail,Tab - Reddit,Posts Analyzed,Summary stat,JSON File,data.total_items,REAL,
+Deal Detail,Tab - Reddit,Keyword Filtered,Summary stat,JSON File,data.filtered_items,REAL,
+Deal Detail,Tab - Reddit,Relevant Items,Summary stat,JSON File,data.relevant_items,REAL,
+Deal Detail,Tab - Reddit,Findings by Tier,Findings cards,JSON File,"tier1, tier2, tier3 arrays",REAL,
+Deal Detail,Tab - Twitter,Twitter Data,Tab content,PLACEHOLDER,Info message only,MISSING,Future development
+Deal Detail,Tab - Feed,Unified Feed,Tab content,PLACEHOLDER,Info message only,MISSING,Future development
+Deal Detail,Tab - Background,Scorecard,Tab content,PLACEHOLDER,Info message only,MISSING,Future development
+Deal Detail,Tab - Termination,Termination Provisions,Tab content,PLACEHOLDER,Info message only,MISSING,Future development
+Reddit Analysis,Summary Stats,Total Items,Summary card,JSON File,data.total_items,REAL,sample_reddit_analysis.json
+Reddit Analysis,Summary Stats,Filtered,Summary card,JSON File,data.filtered_items,REAL,
+Reddit Analysis,Summary Stats,Relevant,Summary card,JSON File,data.relevant_items,REAL,
+Reddit Analysis,Summary Stats,High Value,Summary card,JSON File,data.tier1_high_value,REAL,
+Reddit Analysis,Filters,Search Bar,Filter section,Component State,Filters finding text,REAL,
+Reddit Analysis,Findings,Category (A-L),Finding card,JSON File,finding.category,REAL,12 antitrust categories
+Reddit Analysis,Findings,Evidence Quote,Finding card,JSON File,finding.evidence_quote,REAL,
+Reddit Analysis,Findings,Confidence,Finding card,JSON File,finding.confidence,REAL,"HIGH, MEDIUM, LOW"
+Reddit Analysis,Findings,Why It Matters,Finding card,JSON File,finding.why_it_matters,REAL,
+Reddit Analysis,Findings,Item Type,Finding card,JSON File,finding.item_type,REAL,Post or Comment
+Reddit Analysis,Findings,Post Title,Finding card,JSON File,finding.post_title,REAL,
+Reddit Analysis,Findings,Full Text,Finding card,JSON File,finding.text,REAL,Original Reddit content
+Backend API,Deals Endpoint,All Deals,GET /api/deals,Backend,data_loader.py → JSON files,REAL,Returns deals + summary
+Backend API,Deal Detail,Single Deal,GET /api/deals/{id},Backend,data_loader.py → JSON files,REAL,Full deal with all sections
+Backend API,Live Quotes,Market Quotes,GET /api/deals/{id}/quotes,yfinance,quote_fetcher.py → Yahoo Finance,REAL,Manual refresh
+Backend API,Activity Feed,All Activity,GET /api/all-activity,Backend,Aggregates from deal data,REAL,Timeline + regulatory + dockets
+Backend API,Dockets,All Dockets,GET /api/all-dockets,Backend,Aggregates docket entries,REAL,
+Backend API,Regulatory,All Regulatory,GET /api/all-regulatory,Backend,Aggregates regulatory events,REAL,
+Backend API,Reddit,Reddit Analysis,GET /api/reddit-analysis,JSON File,sample_reddit_analysis.json,REAL,Sample data
+Backend API,Deal Reddit,Deal Reddit,GET /api/deals/{id}/reddit,JSON File,{deal_id}_reddit.json,REAL,Per-deal JSON
+Backend API,Refresh,Reload Deals,POST /api/refresh,Backend,Reloads from JSON files,REAL,
+Backend API,Refresh Prices,Update Prices,POST /api/refresh-prices,yfinance,Updates all deal prices,REAL,Uses yfinance
+Backend API,Health,Health Check,GET /api/health,Backend,Simple status check,REAL,
+Data Model,Deal Model,ID,deals.json,Backend,Unique identifier,REAL,
+Data Model,Deal Model,Target,deals.json,Backend,Company being acquired,REAL,
+Data Model,Deal Model,Target Ticker,deals.json,Backend,Stock symbol,REAL,
+Data Model,Deal Model,Acquirer,deals.json,Backend,Acquiring company,REAL,
+Data Model,Deal Model,Acquirer Ticker,deals.json,Backend,Stock symbol,REAL,
+Data Model,Deal Model,Deal Value (Bn),deals.json,Backend,Total deal value in billions,REAL,
+Data Model,Deal Model,Deal Type,deals.json,Backend,"Cash, Stock, Mixed",REAL,
+Data Model,Deal Model,Category,deals.json,Backend,Deal risk category,REAL,
+Data Model,Deal Model,Offer Price,deals.json,Backend,Per share offer,REAL,
+Data Model,Deal Model,Current Price,deals.json,Backend,Current trading price,REAL,
+Data Model,Deal Model,Unaffected Price,deals.json,Backend,Pre-announcement price,REAL,
+Data Model,Deal Model,Borrow Rate Annual,deals.json,Backend,Annual borrow cost %,REAL,
+Data Model,Deal Model,Dividend Expected,deals.json,Backend,Expected dividend amount,REAL,
+Data Model,Deal Model,Announce Date,deals.json,Backend,Deal announcement date,REAL,
+Data Model,Deal Model,Expected Close,deals.json,Backend,Estimated closing date,REAL,
+Data Model,Deal Model,Outside Date,deals.json,Backend,Contract termination date,REAL,Nullable
+Data Model,Deal Model,Status,deals.json,Backend,Deal status,REAL,
+Data Model,Deal Model,Regulatory Bodies,deals.json,Backend,Array of reviewing agencies,REAL,
+Data Model,Deal Model,Next Milestone,deals.json,Backend,Upcoming event,REAL,
+Data Model,Deal Model,Next Milestone Date,deals.json,Backend,Milestone date,REAL,Nullable
+Data Model,Deal Model,Gross Spread Dollars,deals.json,Backend Calculation,offer_price - current_price,REAL,
+Data Model,Deal Model,Gross Spread Pct,deals.json,Backend Calculation,(offer - current) / current * 100,REAL,
+Data Model,Deal Model,Days to Close,deals.json,Backend Calculation,(expected_close - today).days,REAL,
+Data Model,Deal Model,Borrow Cost to Close,deals.json,Backend Calculation,current * rate * (days/365),REAL,
+Data Model,Deal Model,Net Spread Dollars,deals.json,Backend Calculation,gross - borrow + dividend,REAL,
+Data Model,Deal Model,Net Spread Pct,deals.json,Backend Calculation,net / current * 100,REAL,
+Data Model,Deal Model,Annualized Gross,deals.json,Backend Calculation,gross_pct * (365 / days),REAL,
+Data Model,Deal Model,Annualized Net,deals.json,Backend Calculation,net_pct * (365 / days),REAL,
+Data Model,Deal Model,Notes,deals.json,Backend,Free text notes,REAL,Nullable
+Data Model,DealDetail Extended,DMA Sections,deal JSON,Backend,Parsed from DMA agreement,REAL,
+Data Model,DealDetail Extended,Concise Sections,deal JSON,Backend,Concise DMA view,REAL,
+Data Model,DealDetail Extended,Fulsome Sections,deal JSON,Backend,Detailed DMA view,REAL,
+Data Model,DealDetail Extended,Timeline Events,deal JSON,Backend,Deal timeline array,REAL,
+Data Model,DealDetail Extended,Regulatory Timeline,deal JSON,Backend,Regulatory events array,REAL,
+Data Model,DealDetail Extended,Docket Entries,deal JSON,Backend,Court docket entries,REAL,
+Data Model,DealDetail Extended,Docket Stakeholders,deal JSON,Backend,Filing parties,REAL,
+Data Model,DealDetail Extended,Docket Conditions,deal JSON,Backend,Regulatory conditions,REAL,
+Data Model,DealDetail Extended,Docket Metadata,deal JSON,Backend,"Docket #, case name, jurisdiction",PARTIAL,Some fields missing
+Data Model,DealDetail Extended,Spread History,deal JSON,Backend,Historical spread data points,REAL,
+Local Storage,Watchlist,Watched Deals,localStorage,Frontend,merger_arb_watchlist array,REAL,Array of deal IDs
+Local Storage,Followed Dockets,Followed Dockets,localStorage,Frontend,followed_dockets array,REAL,Array of deal IDs
+Local Storage,Column Visibility,Hidden Columns,localStorage,Frontend,tearsheet_hidden_columns array,REAL,Column group names
+Local Storage,Saved Views,Custom Views,localStorage,Frontend,tearsheet_saved_views array,REAL,Filter/sort/column configs

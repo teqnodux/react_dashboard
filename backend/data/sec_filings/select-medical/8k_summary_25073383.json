@@ -1,0 +1,25 @@
+{
+  "ticker": "SEM",
+  "filing_date": "08/04/25",
+  "items_reported": [
+    "Item 5.03",
+    "Item 9.01"
+  ],
+  "L1_headline": "SEM \u2013 Board adopts amended bylaws for proxy rules. | 08/04/25",
+  "L2_brief": "Select Medical Holdings' Board approved amended and restated bylaws on July 30, 2025, enhancing stockholder nomination procedures in response to SEC universal proxy rules. The changes require stockholders to solicit proxies from holders of at least 67% of voting power for director nominations. This is a governance update with no direct merger deal implications.",
+  "L3_detailed": {
+    "event": "Board of Directors approved and adopted amended and restated bylaws to update stockholder nomination and proposal procedures in light of SEC Rule 14a-19 universal proxy requirements",
+    "key_figures": [
+      "67% voting power threshold for proxy solicitation requirement",
+      "Board approval date: July 30, 2025",
+      "Filing date: August 4, 2025"
+    ],
+    "deal_implications": "No active merger deal referenced; this is a routine corporate governance update that strengthens advance notice requirements for stockholder nominations, potentially making activist or hostile approaches more procedurally challenging",
+    "remaining_conditions": [
+      "N/A - no pending transaction disclosed"
+    ],
+    "risks_flagged": [
+      "No litigation or regulatory issues mentioned; bylaws changes could impact future proxy contests or unsolicited takeover attempts"
+    ]
+  }
+}

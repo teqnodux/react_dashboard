@@ -1,0 +1,48 @@
+{
+  "ticker": "PEN",
+  "issuer": "Penumbra Inc",
+  "filing_date": "02/18/26",
+  "insider_name": "Lambert Shiu",
+  "insider_title": "Chief Accounting Officer",
+  "relationship": "Officer",
+  "L1_headline": "+ PEN \u2013 Lambert Shiu acquired RSUs and disposed of shares for tax withholding. | 02/18/26",
+  "L2_brief": "Lambert Shiu, Chief Accounting Officer of Penumbra Inc, received two RSU grants of 2,300 shares each on 02/13/2026 and 02/17/2026 at $0 cost, and had 412 shares withheld at $339.30 on 02/15/2026 to cover tax obligations on vesting RSUs. Both RSU grants contain provisions for full accelerated vesting upon closing of the pending merger with Boston Scientific Corporation under the Agreement and Plan of Merger dated January 14, 2026. Post-transaction direct holdings total 39,473 shares (a portion subject to vesting), plus 300 shares held indirectly through spouse's IRA.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "02/13/2026",
+        "shares": "2,300",
+        "price_per_share": "$0",
+        "total_value": "$0",
+        "acquired_or_disposed": "Acquired (A)"
+      },
+      {
+        "type": "Sale",
+        "date": "02/15/2026",
+        "shares": "412",
+        "price_per_share": "$339.30",
+        "total_value": "$139,791.60",
+        "acquired_or_disposed": "Disposed (D)"
+      },
+      {
+        "type": "Other",
+        "date": "02/17/2026",
+        "shares": "2,300",
+        "price_per_share": "$0",
+        "total_value": "$0",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "39,473 shares (Direct, a portion subject to vesting) + 300 shares (Indirect, held by spouse's IRA) = 39,773 total beneficial ownership",
+    "ownership_type": "Direct and Indirect (300 shares through Spouse's IRA)",
+    "deal_signal": "Penumbra Inc is subject to a pending Agreement and Plan of Merger dated January 14, 2026, with Boston Scientific Corporation and Pinehurst Merger Sub, Inc. Both RSU grants (02/13/2026 and 02/17/2026) explicitly provide that all unvested RSUs will fully vest upon the Closing of the merger, subject to continued service through such date. The company continued issuing equity compensation with merger-accelerated vesting provisions.",
+    "pattern_notes": "Two RSU grants were issued within four days (02/13 and 02/17/2026), each for 2,300 shares, both with identical merger-acceleration vesting clauses. The 412-share disposition on 02/15/2026 was a mandatory tax withholding event triggered by RSU vesting, not a discretionary sale. The filing was executed by Johanna Roberts as attorney-in-fact for Lambert Shiu.",
+    "risks_flagged": [
+      "No 10b5-1 plan box was checked on this filing",
+      "The 412-share disposition was a non-discretionary tax withholding event (Transaction Code F), not a voluntary sale",
+      "A portion of the 39,473 directly held shares remains subject to vesting conditions"
+    ]
+  },
+  "filing_type": "FORM 4"
+}

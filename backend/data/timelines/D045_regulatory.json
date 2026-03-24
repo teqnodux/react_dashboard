@@ -1,0 +1,197 @@
+{
+  "deal_id": "D045",
+  "last_updated": "2026-03-11",
+  "approvals": [
+    {
+      "id": "hsr",
+      "jurisdiction": "United States",
+      "authority_short": "HSR/FTC",
+      "authority_full": "HSR/FTC",
+      "statute": null,
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "hsr_filed",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in DMA summary extraction",
+      "source_doc": "DMA Extract",
+      "source_doc_type": "dma_extract",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-11",
+      "linked_docs": [
+        {
+          "doc_type": "dma_extract",
+          "doc_date": "2025-06-25",
+          "doc_url": null,
+          "summary": "HSR/FTC, Foreign regulatory approvals under non-U.S. Regulatory Laws",
+          "L1": "DMA Summary \u2014 D045",
+          "L2": "Regulatory approvals from DMA extraction",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_foreign_regulatory_approvals_under_non_u_s_regulatory_laws",
+      "jurisdiction": null,
+      "authority_short": "Foreign regulatory approvals under non-U.S. Regulatory Laws",
+      "authority_full": "Foreign regulatory approvals under non-U.S. Regulatory Laws",
+      "statute": null,
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_foreign_regulatory_approvals_under_non_u_s_regulatory_laws",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in DMA summary extraction",
+      "source_doc": "DMA Extract",
+      "source_doc_type": "dma_extract",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-11",
+      "linked_docs": [
+        {
+          "doc_type": "dma_extract",
+          "doc_date": "2025-06-25",
+          "doc_url": null,
+          "summary": "HSR/FTC, Foreign regulatory approvals under non-U.S. Regulatory Laws",
+          "L1": "DMA Summary \u2014 D045",
+          "L2": "Regulatory approvals from DMA extraction",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_sec",
+      "jurisdiction": "European Union",
+      "authority_short": "SEC",
+      "authority_full": "SEC",
+      "statute": null,
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_sec",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in press release",
+      "source_doc": "Press Release",
+      "source_doc_type": "press_release",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-11",
+      "linked_docs": [
+        {
+          "doc_type": "press_release",
+          "doc_date": "2026-03-11",
+          "doc_url": null,
+          "summary": "SEC, Nasdaq",
+          "L1": "Press Release \u2014 D045",
+          "L2": "Regulatory bodies identified in press release",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_nasdaq",
+      "jurisdiction": "United States",
+      "authority_short": "Nasdaq",
+      "authority_full": "Nasdaq",
+      "statute": null,
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_nasdaq",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in press release",
+      "source_doc": "Press Release",
+      "source_doc_type": "press_release",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-11",
+      "linked_docs": [
+        {
+          "doc_type": "press_release",
+          "doc_date": "2026-03-11",
+          "doc_url": null,
+          "summary": "SEC, Nasdaq",
+          "L1": "Press Release \u2014 D045",
+          "L2": "Regulatory bodies identified in press release",
+          "L3": null
+        }
+      ]
+    }
+  ],
+  "documents_processed": [
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2025-06-25",
+      "doc_url": null,
+      "processed_at": "2026-03-12T00:54:14.194714Z",
+      "approvals_found": 2,
+      "additions": [
+        "hsr",
+        "reg_foreign_regulatory_approvals_under_non_u_s_regulatory_laws"
+      ],
+      "status_changes": []
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2026-03-11",
+      "doc_url": null,
+      "processed_at": "2026-03-12T00:54:30.999277Z",
+      "approvals_found": 2,
+      "additions": [
+        "reg_sec",
+        "reg_nasdaq"
+      ],
+      "status_changes": []
+    },
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2025-06-25",
+      "doc_url": null,
+      "processed_at": "2026-03-12T00:54:31.000751Z",
+      "approvals_found": 2,
+      "additions": [],
+      "status_changes": []
+    }
+  ],
+  "change_log": [
+    {
+      "timestamp": "2026-03-12T00:54:14.194714Z",
+      "source_doc": "DMA Extract",
+      "source_doc_type": "dma_extract",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "hsr",
+          "detail": "HSR/FTC newly required \u2014 first seen in dma_extract"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_foreign_regulatory_approvals_under_non_u_s_regulatory_laws",
+          "detail": "Foreign regulatory approvals under non-U.S. Regulatory Laws newly required \u2014 first seen in dma_extract"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-12T00:54:30.999277Z",
+      "source_doc": "Press Release",
+      "source_doc_type": "press_release",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "reg_sec",
+          "detail": "SEC newly required \u2014 first seen in press_release"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_nasdaq",
+          "detail": "Nasdaq newly required \u2014 first seen in press_release"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "ticker": "PEN",
+  "issuer": "Penumbra Inc",
+  "filing_date": "02/18/26",
+  "insider_name": "Maggie Yuen",
+  "insider_title": "Chief Financial Officer",
+  "relationship": "Officer",
+  "L1_headline": "+ PEN \u2013 Maggie Yuen received RSU grants and disposed of shares for tax withholding. | 02/18/26",
+  "L2_brief": "Penumbra CFO Maggie Yuen received two RSU grants of 2,630 shares each on 02/13/2026 and 02/17/2026 at $0 cost, and disposed of 481 shares on 02/15/2026 at $339.30/share via tax withholding on vesting RSUs. Both RSU grants contain accelerated vesting provisions tied to the closing of the pending merger with Boston Scientific Corporation under an Agreement and Plan of Merger dated January 14, 2026.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "02/13/2026",
+        "shares": "2,630",
+        "price_per_share": "$0",
+        "total_value": "$0",
+        "acquired_or_disposed": "Acquired (A)"
+      },
+      {
+        "type": "Sale",
+        "date": "02/15/2026",
+        "shares": "481",
+        "price_per_share": "$339.30",
+        "total_value": "$163,203.30",
+        "acquired_or_disposed": "Disposed (D)"
+      },
+      {
+        "type": "Other",
+        "date": "02/17/2026",
+        "shares": "2,630",
+        "price_per_share": "$0",
+        "total_value": "$0",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "20,785 shares (a portion subject to vesting)",
+    "ownership_type": "Direct",
+    "deal_signal": "The filing references a pending Agreement and Plan of Merger dated January 14, 2026, among Penumbra Inc, Boston Scientific Corporation, and Pinehurst Merger Sub, Inc. Both RSU grants (02/13/2026 and 02/17/2026) contain provisions stating that all unvested RSUs will fully vest upon the Closing of the merger, subject to continued service through such date. The RSU grants are standard equity compensation awards made under the existing equity incentive plan. The disposal of 481 shares was a mandatory tax withholding event tied to RSU vesting, not a discretionary sale.",
+    "pattern_notes": "The two RSU grants of identical size (2,630 shares each) were awarded within four days of each other. The 481-share disposition on 02/15/2026 was a non-discretionary tax withholding event coinciding with the vesting of the first 1/4 tranche of the 02/13/2026 RSU grant. No open-market purchases or discretionary sales were reported. The issuer continues to grant equity compensation to its CFO despite the pending merger, with merger-related accelerated vesting provisions included.",
+    "risks_flagged": [
+      "No 10b5-1 plan noted; the 02/15/2026 disposition was a mandatory tax withholding event (Code F), not a discretionary sale",
+      "A portion of post-transaction holdings (20,785 shares) remains subject to vesting conditions",
+      "Accelerated vesting of all unvested RSUs is contingent on merger closing, creating significant economic interest in deal completion"
+    ]
+  },
+  "filing_type": "FORM 4"
+}

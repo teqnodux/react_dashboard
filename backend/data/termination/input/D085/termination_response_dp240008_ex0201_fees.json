@@ -1,0 +1,46 @@
+{
+  "company_termination_fee": {
+    "amount_usd": 525000000,
+    "amount_text": "$525,000,000",
+    "triggers": [
+      "tail_provision",
+      "adverse_recommendation_change",
+      "company_breach",
+      "fiduciary_out",
+      "superior_proposal"
+    ],
+    "notes": "Payable under: (i) tail provision - if Acquisition Proposal was publicly announced prior to termination and within 12 months of Termination Date Company enters into or consummates an Acquisition Proposal; (ii) termination by Parent for Company breach (Section 8.01(e)); (iii) termination by Company to enter into Superior Proposal (Section 8.01(f)). Fee is sole and exclusive remedy except in cases of Willful Breach."
+  },
+  "reverse_termination_fee": {
+    "amount_usd": null,
+    "amount_text": null,
+    "triggers": [],
+    "notes": "No standard reverse termination fee distinct from the regulatory termination fee. The Parent Termination Fee is specifically tied to regulatory/antitrust failure."
+  },
+  "parent_regulatory_termination_fee": {
+    "amount_usd": 900000000,
+    "amount_text": "$900,000,000",
+    "triggers": [
+      "regulatory_block"
+    ],
+    "notes": "Payable by Parent when termination occurs under Section 8.01(b) or 8.01(c) due to failure to obtain Requisite Regulatory Approval or Antitrust Law-related Order, provided the merger conditions in Section 7.01(a) and 7.02 were otherwise satisfied. Payment due within two Business Days after Termination Date. Sole and exclusive remedy except in cases of Willful Breach."
+  },
+  "expense_reimbursement": {
+    "amount_usd": null,
+    "amount_text": null,
+    "triggers": [],
+    "notes": "Each party bears its own expenses generally. However, if a party fails to timely pay a termination fee, the non-paying party is entitled to reimbursement of reasonable expenses incurred in collection/enforcement plus interest at the prime lending rate (defined as Termination Fee Collection Costs)."
+  },
+  "offer_price_per_share": {
+    "amount_usd": null,
+    "amount_text": null,
+    "consideration_type": null
+  },
+  "specific_performance_available": true,
+  "willful_breach_carveout": true,
+  "tail_provision_months": 12,
+  "sole_remedy_for_acquirer": true,
+  "notes": "The agreement explicitly states that payment of the applicable termination fee is the sole and exclusive remedy for each party in circumstances where such fee is payable, but expressly carves out liability for Willful Breach. No party may receive both specific performance resulting in consummation and a termination fee. Neither fee may be paid more than once.",
+  "document_id": "dp240008_ex0201",
+  "section_number": "Section 8.03"
+}

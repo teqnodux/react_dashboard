@@ -1,0 +1,405 @@
+{
+  "deal_id": "d809559dex21",
+  "assessment_timestamp": "20260310_212036",
+  "classification_file": "termination_classification_d809559dex21_20260310_212010.json",
+  "summary": {
+    "total_clauses": 8,
+    "avg_deal_risk_score": 5.375,
+    "median_deal_risk_score": 6,
+    "deal_risk_distribution": {
+      "very_low_risk (0-2)": 1,
+      "moderate_risk (3-5)": 1,
+      "high_risk (6-8)": 6,
+      "extreme_risk (9-10)": 0
+    },
+    "trigger_characteristic_distribution": {
+      "mutual_right": 3,
+      "regulatory_trigger": 2,
+      "outside_date": 1,
+      "breach_trigger": 3,
+      "unilateral_acquirer": 3,
+      "unilateral_target": 1,
+      "fiduciary_out": 2,
+      "fee_bearing": 1
+    },
+    "investigation_required": 5,
+    "priority_distribution": {
+      "urgent": 4,
+      "routine": 1,
+      "review": 3
+    },
+    "party_favorable_distribution": {
+      "mutual": 3,
+      "buyer_favorable": 4,
+      "seller_favorable": 1
+    },
+    "clauses_with_red_flags": 7,
+    "outlier_statistics": {
+      "total_outliers": 0,
+      "high_risk_outliers": 0,
+      "outlier_percentage": 0.0,
+      "outlier_threshold": 0.7
+    }
+  },
+  "benchmark_comparison": {
+    "benchmark_file": "termination_benchmark_20260223_205852.json",
+    "benchmark_total_clusters": 41,
+    "deal_category_distribution": {
+      "mutual_termination": 2,
+      "outside_date": 1,
+      "regulatory_failure": 1,
+      "breach_based": 2,
+      "fiduciary_out": 2
+    },
+    "benchmark_category_distribution": {
+      "fiduciary_out": 112,
+      "breach_based": 116,
+      "outside_date": 49,
+      "acquirer_termination": 4,
+      "regulatory_failure": 56,
+      "mutual_termination": 102,
+      "target_termination": 2,
+      "other": 1,
+      "specific_performance": 4
+    },
+    "deal_party_distribution": {
+      "mutual": 3,
+      "buyer_favorable": 4,
+      "seller_favorable": 1
+    },
+    "benchmark_party_distribution": {
+      "seller_favorable": 62,
+      "buyer_favorable": 69,
+      "mutual": 313,
+      "neutral": 2
+    },
+    "deal_high_risk_clauses": 0,
+    "deal_high_risk_percentage": 0.0,
+    "avg_deal_risk_score": 5.375
+  },
+  "assessed_clauses": [
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "a",
+      "clause_type": "trigger",
+      "trigger_type": "mutual_consent",
+      "original_text": "by mutual written consent of each of Parent and the Company;",
+      "processed_text": "by mutual written consent of each of Parent and the Company;",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ],
+      "clause_index": 0,
+      "assigned_cluster": 16,
+      "similarity_score": 0.9763360846802409,
+      "cluster_trigger_category": "mutual_termination",
+      "cluster_theme": "Bilateral Termination by Mutual Written Consent Anytime",
+      "party_favored": "mutual",
+      "deal_risk_pattern": "low_walkaway_risk",
+      "deal_risk_score": 2,
+      "fee_implications": "none - mutual consent terminations typically do not trigger termination fees or break-up fees for either party, as both sides are agreeing to walk away; parties generally bear their own expenses",
+      "trigger_characteristics": [
+        "mutual_right"
+      ],
+      "requires_investigation": false,
+      "unusual_provisions": [],
+      "party_favorable": "mutual",
+      "red_flags": [],
+      "investigation_priority": "routine",
+      "termination_explanation": "This clause allows either party to terminate the agreement by mutual consent, which is a standard provision that poses very low risk of deal failure as it requires agreement from both parties.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "b_i",
+      "clause_type": "trigger",
+      "trigger_type": "outside_date",
+      "original_text": "the Merger shall not have been consummated on or before 5:00 p.m. (Chicago, Illinois, United States time) on the twelve (12)-month anniversary of the date of this Agreement (the \"Termination Date\"); provided that if, on the Termination Date, any of the conditions to Closing set forth in Section 6.1(d) or Section 6.1(e) (if the Restraint is in respect of an Antitrust Law) shall not have been satisfied, but all other conditions set forth in Section 6.1 through Section 6.3 shall have been satisfied or waived (other than those conditions that by their nature are to be satisfied at the Effective Time (if such conditions are capable of being satisfied were the Closing to occur at such time)), the Termination Date shall automatically, without any action on the part of the parties hereto, be extended for three (3) months, and such date as so extended shall be the \"Termination Date\" for all purposes hereunder; provided, further, that the right to terminate this Agreement pursuant to this Section 7.1(b)(i) shall not be available to any party if a material breach by such party of any of its obligations under this Agreement has been the principal cause of or principally resulted in the failure of the Closing to have occurred on or before the Termination Date;",
+      "processed_text": "the Merger shall not have been consummated on or before 5:00 p.m. (Chicago, Illinois, United States time) on the twelve (12)-month anniversary of the date of this Agreement (the \"Termination Date\"); provided that if, on the Termination Date, any of the conditions to Closing set forth in Section 6.1(d) or Section 6.1(e) (if the Restraint is in respect of an Antitrust Law) shall not have been satisfied, but all other conditions set forth in Section 6.1 through Section 6.3 shall have been satisfied or waived (other than those conditions that by their nature are to be satisfied at the Effective Time (if such conditions are capable of being satisfied were the Closing to occur at such time)), the Termination Date shall automatically, without any action on the part of the parties hereto, be extended for three (3) months, and such date as so extended shall be the \"Termination Date\" for all purposes hereunder; provided, further, that the right to terminate this Agreement pursuant to this Section 7.1(b)(i) shall not be available to any party if a material breach by such party of any of its obligations under this Agreement has been the principal cause of or principally resulted in the failure of the Closing to have occurred on or before the Termination Date;",
+      "parties_replaced": [],
+      "clause_index": 1,
+      "assigned_cluster": 3,
+      "similarity_score": 0.8760487785863403,
+      "cluster_trigger_category": "outside_date",
+      "cluster_theme": "Mutual Outside Date Termination with Automatic Regulatory Extensions",
+      "party_favored": "mutual",
+      "deal_risk_pattern": "low_walkaway_risk",
+      "deal_risk_score": 4,
+      "fee_implications": "Termination under outside date provisions typically triggers reverse termination fees if regulatory approvals are not obtained, protecting the target from buyer's failure to secure clearances. The automatic extension mechanism reduces the likelihood of fee payment by giving additional time for regulatory resolution.",
+      "trigger_characteristics": [
+        "mutual_right",
+        "regulatory_trigger",
+        "outside_date"
+      ],
+      "requires_investigation": false,
+      "unusual_provisions": [],
+      "party_favorable": "mutual",
+      "red_flags": [
+        "Potential for automatic extension could lead to prolonged uncertainty in closing timeline",
+        "Conditions for extension may be ambiguous, particularly regarding what constitutes a material breach"
+      ],
+      "investigation_priority": "review",
+      "termination_explanation": "This clause allows either party to terminate the agreement if the merger is not completed by the specified outside date, with an automatic extension if certain regulatory conditions are unmet, which could lead to delays and uncertainty in closing.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "b_ii",
+      "clause_type": "trigger",
+      "trigger_type": "regulatory_block",
+      "original_text": "prior to the Effective Time, any Restraint shall have been enacted or promulgated after the date of this Agreement that has the effect of permanently restraining, enjoining or otherwise prohibiting the Merger, and in the case of a Restraint that is an Order, such Order shall have become final and non-appealable; provided, however, that the right to terminate this Agreement under this Section 7.1(b)(ii) shall not be available to a party if a material breach by such party of its obligations under Section 5.4 has been the principal cause of or principally resulted in the issuance of such Restraint; or",
+      "processed_text": "prior to the Effective Time, any Restraint shall have been enacted or promulgated after the date of this Agreement that has the effect of permanently restraining, enjoining or otherwise prohibiting the Merger, and in the case of a Restraint that is an Order, such Order shall have become final and non-appealable; provided, however, that the right to terminate this Agreement under this Section 7.1(b)(ii) shall not be available to a party if a material breach by such party of its obligations under Section 5.4 has been the principal cause of or principally resulted in the issuance of such Restraint; or",
+      "parties_replaced": [],
+      "clause_index": 2,
+      "assigned_cluster": 19,
+      "similarity_score": 0.8812832529016947,
+      "cluster_trigger_category": "regulatory_failure",
+      "cluster_theme": "Permanent Legal Restraint Preventing Merger Consummation Termination Rights",
+      "party_favored": "mutual",
+      "deal_risk_pattern": "moderate_walkaway_risk",
+      "deal_risk_score": 6,
+      "fee_implications": "Typically no termination fee payable by either party when termination occurs due to final governmental prohibition, as this represents a regulatory failure outside parties' control; however, the proviso requiring compliance with efforts obligations protects against strategic behavior that might trigger the prohibition.",
+      "trigger_characteristics": [
+        "regulatory_trigger",
+        "breach_trigger"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "party_favorable": "buyer_favorable",
+      "red_flags": [
+        "Potential for regulatory bodies to impose restraints post-agreement",
+        "The clause allows termination if a material breach by the acquirer leads to a regulatory block, which could be interpreted broadly"
+      ],
+      "investigation_priority": "urgent",
+      "termination_explanation": "This clause allows termination of the merger agreement if a regulatory restraint is enacted that permanently prohibits the merger, posing a significant risk to deal completion if such restraints are imposed.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "b_iii",
+      "clause_type": "trigger",
+      "trigger_type": "shareholder_vote_failure",
+      "original_text": "the Company Stockholder Approval shall not have been obtained upon a vote taken thereon at the Company Stockholders' Meeting duly convened therefor or at any adjournment or postponement thereof;",
+      "processed_text": "the Company Stockholder Approval shall not have been obtained upon a vote taken thereon at the Company Stockholders' Meeting duly convened therefor or at any adjournment or postponement thereof;",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 3,
+      "assigned_cluster": 11,
+      "similarity_score": 0.9216506982959823,
+      "cluster_trigger_category": "mutual_termination",
+      "cluster_theme": "Termination Right Upon Failure to Obtain Required Stockholder Approval",
+      "party_favored": "mutual",
+      "deal_risk_pattern": "moderate_walkaway_risk",
+      "deal_risk_score": 6,
+      "fee_implications": "Generally no termination fee payable as this is a mutual termination right based on stockholder decision rather than party breach or fiduciary change; however, 3 instances show fee-bearing characteristics suggesting some agreements may impose fees if vote failure results from target's failure to recommend or other conduct",
+      "trigger_characteristics": [
+        "mutual_right"
+      ],
+      "requires_investigation": false,
+      "unusual_provisions": [],
+      "party_favorable": "mutual",
+      "red_flags": [
+        "Potential for shareholder dissent or lack of support for the merger"
+      ],
+      "investigation_priority": "review",
+      "termination_explanation": "This clause allows either party to terminate the agreement if the necessary shareholder approval is not obtained, creating a moderate risk of deal failure if shareholder support is lacking.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "c_i",
+      "clause_type": "trigger",
+      "trigger_type": "acquirer_breach",
+      "original_text": "Parent or Merger Sub shall have breached or failed to perform any of their respective representations, warranties, covenants or other agreements set forth in this Agreement, which breach or failure to perform (A) would result in the failure of a condition set forth in Section 6.3(a) or Section 6.3(b) and (B) is not capable of being cured by Parent or Merger Sub, as applicable, by the Termination Date or, if capable of being cured, shall not have been cured by Parent or Merger Sub on or before the earlier of (x) the Termination Date and (y) the date that is thirty (30) calendar days following the Company's delivery of written notice to Parent of such breach or failure to perform; provided, however, that the Company shall not have the right to terminate this Agreement pursuant to this Section 7.1(c)(i) if the Company is then in material breach of any of its obligations under this Agreement so as to result in the failure of a condition set forth in Section 6.2(b); or",
+      "processed_text": "Parent or Merger Sub shall have breached or failed to perform any of their respective representations, warranties, covenants or other agreements set forth in this Agreement, which breach or failure to perform (A) would result in the failure of a condition set forth in Section 6.3(a) or Section 6.3(b) and (B) is not capable of being cured by Parent or Merger Sub, as applicable, by the Termination Date or, if capable of being cured, shall not have been cured by Parent or Merger Sub on or before the earlier of (x) the Termination Date and (y) the date that is thirty (30) calendar days following the Company's delivery of written notice to Parent of such breach or failure to perform; provided, however, that the Company shall not have the right to terminate this Agreement pursuant to this Section 7.1(c)(i) if the Company is then in material breach of any of its obligations under this Agreement so as to result in the failure of a condition set forth in Section 6.2(b); or",
+      "parties_replaced": [
+        {
+          "term": "Merger Sub",
+          "standard_role": "Merger Sub"
+        },
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ],
+      "clause_index": 4,
+      "assigned_cluster": 40,
+      "similarity_score": 0.9425804233341386,
+      "cluster_trigger_category": "breach_based",
+      "cluster_theme": "Termination Rights for Material Breach with Cure Period",
+      "party_favored": "mutual",
+      "deal_risk_pattern": "moderate_walkaway_risk",
+      "deal_risk_score": 6,
+      "fee_implications": "Termination under these provisions typically does not trigger termination fees unless the breach is willful or intentional. May preserve rights to specific performance or damages for material breach. The non-breaching party generally walks away without fee obligation, though the breaching party may face liability for damages.",
+      "trigger_characteristics": [
+        "unilateral_acquirer",
+        "breach_trigger"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "party_favorable": "buyer_favorable",
+      "red_flags": [
+        "Potential for acquirer to breach representations or covenants leading to termination",
+        "Cure period may not be sufficient for complex breaches"
+      ],
+      "investigation_priority": "urgent",
+      "termination_explanation": "This clause allows the acquirer to terminate the agreement if it breaches its representations or covenants, creating a significant risk of deal failure if such breaches occur and are not cured in time.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "c_ii",
+      "clause_type": "trigger",
+      "trigger_type": "target_fiduciary_out",
+      "original_text": "at any time prior to receipt of the Company Stockholder Approval, in order for the Company to enter into a definitive agreement with respect to a Superior Proposal to the extent permitted by, and subject to the applicable terms and conditions of, Section 5.6(d); provided that prior to or substantially concurrently with such termination, the Company pays or causes to be paid to Merger Sub (or a United States Affiliate of Merger Sub as Merger Sub may designate) the Termination Amount; or",
+      "processed_text": "at any time prior to receipt of the Company Stockholder Approval, in order for the Company to enter into a definitive agreement with respect to a Superior Proposal to the extent permitted by, and subject to the applicable terms and conditions of, Section 5.6(d); provided that prior to or substantially concurrently with such termination, the Company pays or causes to be paid to Merger Sub (or a United States Affiliate of Merger Sub as Merger Sub may designate) the Termination Amount; or",
+      "parties_replaced": [
+        {
+          "term": "Merger Sub",
+          "standard_role": "Merger Sub"
+        },
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 5,
+      "assigned_cluster": 0,
+      "similarity_score": 0.8464975117880806,
+      "cluster_trigger_category": "fiduciary_out",
+      "cluster_theme": "Target Board Termination Right to Accept Superior Proposal",
+      "party_favored": "seller_favorable",
+      "deal_risk_pattern": "moderate_walkaway_risk",
+      "deal_risk_score": 7,
+      "fee_implications": "Target must pay termination fee (typically 2-4% of deal value) to the original acquirer prior to or concurrently with termination. This fee compensates the jilted buyer for deal costs and opportunity costs. 37 of 43 clauses explicitly require fee payment, and 20 indicate this may be the sole remedy available to the acquirer.",
+      "trigger_characteristics": [
+        "unilateral_target",
+        "fiduciary_out",
+        "fee_bearing"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "party_favorable": "seller_favorable",
+      "red_flags": [
+        "Target may terminate for a Superior Proposal, creating a risk of losing the deal to a competing offer.",
+        "The requirement to pay a Termination Amount may not sufficiently deter the target from pursuing a better offer."
+      ],
+      "investigation_priority": "urgent",
+      "termination_explanation": "This clause allows the target to terminate the agreement to accept a superior proposal, which poses a significant risk of deal failure if a competing offer emerges.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "d_i",
+      "clause_type": "trigger",
+      "trigger_type": "target_breach",
+      "original_text": "the Company shall have breached or failed to perform any of its representations, warranties, covenants or other agreements set forth in this Agreement, which breach or failure to perform (A) would result in the failure of a condition set forth in Section 6.2(a) or Section 6.2(b) and (B) is not capable of being cured by the Company by the Termination Date or, if capable of being cured, shall not have been cured by the Company on or before the earlier of (x) the Termination Date and (y) the date that is thirty (30) calendar days following Parent's delivery of written notice to the Company of such breach or failure to perform; provided, however, that Parent shall not have the right to terminate this Agreement pursuant to this Section 7.1(d)(i) if Parent or Merger Sub is then in material breach of any of its obligations under this Agreement so as to result in the failure of a condition set forth in Section 6.3(b); or",
+      "processed_text": "the Company shall have breached or failed to perform any of its representations, warranties, covenants or other agreements set forth in this Agreement, which breach or failure to perform (A) would result in the failure of a condition set forth in Section 6.2(a) or Section 6.2(b) and (B) is not capable of being cured by the Company by the Termination Date or, if capable of being cured, shall not have been cured by the Company on or before the earlier of (x) the Termination Date and (y) the date that is thirty (30) calendar days following Parent's delivery of written notice to the Company of such breach or failure to perform; provided, however, that Parent shall not have the right to terminate this Agreement pursuant to this Section 7.1(d)(i) if Parent or Merger Sub is then in material breach of any of its obligations under this Agreement so as to result in the failure of a condition set forth in Section 6.3(b); or",
+      "parties_replaced": [
+        {
+          "term": "Merger Sub",
+          "standard_role": "Merger Sub"
+        },
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ],
+      "clause_index": 6,
+      "assigned_cluster": 40,
+      "similarity_score": 0.9463906930930296,
+      "cluster_trigger_category": "breach_based",
+      "cluster_theme": "Termination Rights for Material Breach with Cure Period",
+      "party_favored": "mutual",
+      "deal_risk_pattern": "moderate_walkaway_risk",
+      "deal_risk_score": 6,
+      "fee_implications": "Termination under these provisions typically does not trigger termination fees unless the breach is willful or intentional. May preserve rights to specific performance or damages for material breach. The non-breaching party generally walks away without fee obligation, though the breaching party may face liability for damages.",
+      "trigger_characteristics": [
+        "unilateral_acquirer",
+        "breach_trigger"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "party_favorable": "buyer_favorable",
+      "red_flags": [
+        "Potential for material breach claims by the acquirer if the target fails to meet its obligations",
+        "Cure period could lead to delays in deal closure"
+      ],
+      "investigation_priority": "review",
+      "termination_explanation": "This clause allows the acquirer to terminate the agreement if the target breaches key representations or covenants, provided the breach is uncured by a specified date, which poses a moderate risk of deal failure if the target cannot remedy the breach in time.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "d_ii",
+      "clause_type": "trigger",
+      "trigger_type": "target_fiduciary_out",
+      "original_text": "at any time prior to the receipt of the Company Stockholder Approval, (A) the Company Board shall have made an Adverse Recommendation Change, (B) the Company or the Company Board shall have failed to include in the Proxy Statement the Company Recommendation or (C) the Company or the Company Board, as applicable, shall have (I) materially violated or breached any of its obligations under Section 5.6(a), (II) failed to publicly reaffirm the Company Recommendation within ten (10) Business Days of receipt of a written request by Parent to provide such reaffirmation following receipt by the Company of an Acquisition Proposal that is publicly announced and not publicly withdrawn (which request by Parent may only be given once with respect to each such Acquisition Proposal; provided that Parent may make another written request to which this clause (II) shall apply in the event of any publicly disclosed change to the price or other material terms of such Acquisition Proposal) or (III) failed to recommend against any Acquisition Proposal that is a tender or exchange offer subject to Regulation 14D under the Exchange Act (in a Solicitation/Recommendation Statement on Schedule 14D-9, if such statement is required to be filed or is otherwise filed), within ten (10) Business Days after the commencement (within the meaning of Rule 14d-2 under the Exchange Act) of such tender or exchange offer.",
+      "processed_text": "at any time prior to the receipt of the Company Stockholder Approval, (A) the Company Board shall have made an Adverse Recommendation Change, (B) the Company or the Company Board shall have failed to include in the Proxy Statement the Company Recommendation or (C) the Company or the Company Board, as applicable, shall have (I) materially violated or breached any of its obligations under Section 5.6(a), (II) failed to publicly reaffirm the Company Recommendation within ten (10) Business Days of receipt of a written request by Parent to provide such reaffirmation following receipt by the Company of an Acquisition Proposal that is publicly announced and not publicly withdrawn (which request by Parent may only be given once with respect to each such Acquisition Proposal; provided that Parent may make another written request to which this clause (II) shall apply in the event of any publicly disclosed change to the price or other material terms of such Acquisition Proposal) or (III) failed to recommend against any Acquisition Proposal that is a tender or exchange offer subject to Regulation 14D under the Exchange Act (in a Solicitation/Recommendation Statement on Schedule 14D-9, if such statement is required to be filed or is otherwise filed), within ten (10) Business Days after the commencement (within the meaning of Rule 14d-2 under the Exchange Act) of such tender or exchange offer.",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ],
+      "clause_index": 7,
+      "assigned_cluster": 1,
+      "similarity_score": 0.8681702175085874,
+      "cluster_trigger_category": "fiduciary_out",
+      "cluster_theme": "Acquirer Termination Right for Adverse Recommendation Change Events",
+      "party_favored": "buyer_favorable",
+      "deal_risk_pattern": "moderate_walkaway_risk",
+      "deal_risk_score": 6,
+      "fee_implications": "Almost always coupled with termination fee payable by target to acquirer (typically 3-4% of deal value) when acquirer exercises this termination right, compensating acquirer for deal costs and lost opportunity",
+      "trigger_characteristics": [
+        "unilateral_acquirer",
+        "fiduciary_out"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "party_favorable": "buyer_favorable",
+      "red_flags": [
+        "Potential for frequent adverse recommendation changes by the target board",
+        "Ambiguity in the definition of 'materially violated or breached' could lead to disputes"
+      ],
+      "investigation_priority": "urgent",
+      "termination_explanation": "This clause allows the acquirer to terminate the agreement if the target's board changes its recommendation or fails to uphold its fiduciary duties, posing a significant risk of deal failure if the target receives a competing proposal.",
+      "is_outlier": false
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 7907,
+    "output_tokens": 953,
+    "estimated_cost": 0.00175785
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "ticker": "TGNA",
+  "company": "TEGNA Inc.",
+  "filing_type": "10-K/A",
+  "period_end_date": "12/31/25",
+  "filing_date": "03/02/26",
+  "fiscal_period": "FY 2025",
+  "L1_headline": "+ TGNA \u2013 Revenue down 13%, merger pending regulatory approval. | 03/02/26",
+  "L2_brief": "TEGNA reported 2025 revenue of $2.7 billion, down 13% year-over-year, with operating income declining 44% to $443 million primarily due to a 90% drop in political advertising revenue. The company's pending $22.00 per share cash merger with Nexstar Media Group, approved by stockholders in November 2025, is expected to close in the second half of 2026 subject to regulatory approvals.",
+  "L3_detailed": {
+    "financial_performance": {
+      "revenue": "$2.71 billion, down 13% from $3.10 billion in 2024",
+      "net_income": "$219.9 million, down 63% from $599.8 million in 2024",
+      "eps": "Diluted EPS of $1.34, down 62% from $3.53 in 2024",
+      "gross_margin": "Not specified",
+      "operating_income": "$443.0 million, down 44% from $784.8 million in 2024",
+      "free_cash_flow": "$282.6 million (operating cash flow of $326.0 million minus capex of $43.4 million)",
+      "other_metrics": [
+        "Adjusted EBITDA of $578.9 million, down 38%",
+        "Leverage ratio of 2.78x",
+        "Effective tax rate of 24.0%"
+      ]
+    },
+    "segment_performance": [
+      "Distribution revenue $1.47 billion, down 1%",
+      "AMS revenue $1.17 billion, down 4%",
+      "Political revenue $38.8 million, down 90% from $373.2 million"
+    ],
+    "guidance_and_outlook": "Merger with Nexstar expected to close by second half of 2026. Company plans to continue paying quarterly dividend of 12.5 cents per share through merger closing. Management believes existing cash and borrowing capacity will be sufficient for next twelve months and beyond.",
+    "balance_sheet_highlights": {
+      "cash_and_equivalents": "$291.2 million, down from $693.2 million",
+      "total_debt": "$2.53 billion",
+      "net_debt": "Approximately $2.24 billion",
+      "shareholders_equity": "Not specified"
+    },
+    "risk_factors": [
+      "Merger closing conditions may not be satisfied",
+      "Ongoing challenges in television advertising market",
+      "Cord-cutting reducing MVPD subscribers and distribution revenue",
+      "Cybersecurity threats and IT system failures",
+      "Competition from streaming platforms and digital media"
+    ],
+    "ma_and_deal_relevance": {
+      "pending_deals": "Merger agreement with Nexstar Media Group for $22.00 per share in cash, entered August 18, 2025",
+      "deal_impact": "Stockholders approved merger on November 18, 2025. Three stockholder complaints filed challenging the merger as of March 2, 2026",
+      "strategic_alternatives": "No strategic review or activism mentioned",
+      "acquisition_activity": "Premion redeemed Gray Media's ownership interest for $20.8 million in 2025"
+    },
+    "legal_and_regulatory": [
+      "Three stockholder complaints filed challenging the Nexstar merger",
+      "Merger subject to FCC approvals and Hart-Scott-Rodino antitrust clearance"
+    ],
+    "key_developments": [
+      "Operates 64 TV stations reaching 39% of U.S. TV households",
+      "Retired $550 million of debt scheduled to mature in March 2026",
+      "Broadcasting in both ATSC 1.0 and ATSC 3.0 formats on 23 primary channels",
+      "Expanded Sales Development Representative Academy from 6 to 20 participants",
+      "FCC eliminated Top Four Restriction in October 2025"
+    ],
+    "capital_allocation": "Paid $80.5 million in dividends in 2025, retired $550 million in debt, capex of $43.4 million"
+  }
+}

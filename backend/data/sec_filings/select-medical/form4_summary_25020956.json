@@ -1,0 +1,30 @@
+{
+  "ticker": "SEM",
+  "issuer": "SELECT MEDICAL HOLDINGS CORP",
+  "filing_date": "08/04/25",
+  "insider_name": "Thomas P Mullin",
+  "insider_title": "CO-PRESIDENT",
+  "relationship": "Officer",
+  "L1_headline": "+ SEM \u2013 Thomas P Mullin disposed shares for tax withholding. | 08/01/25",
+  "L2_brief": "Thomas P Mullin, Co-President of Select Medical Holdings, surrendered 22,045 shares at $12.57 per share on 08/01/25 to satisfy tax withholding obligations upon vesting of restricted stock. This is a routine, non-discretionary transaction related to equity compensation and does not signal a change in insider sentiment.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "08/01/2025",
+        "shares": "22,045",
+        "price_per_share": "$12.57",
+        "total_value": "$277,105.65",
+        "acquired_or_disposed": "Disposed (D)"
+      }
+    ],
+    "post_transaction_holdings": "391,709 shares",
+    "ownership_type": "Direct",
+    "deal_signal": "N/A",
+    "pattern_notes": "Tax withholding surrender upon restricted stock vesting \u2014 this is an automatic, routine transaction tied to compensation, not a discretionary sale. Insider retains substantial holdings of 391,709 shares post-transaction.",
+    "risks_flagged": [
+      "Transaction code F indicates mandatory tax withholding surrender, not a discretionary sale",
+      "Shares surrendered represent approximately 5.3% of post-transaction holdings \u2014 modest relative to total position"
+    ]
+  }
+}

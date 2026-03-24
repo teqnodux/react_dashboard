@@ -1,0 +1,36 @@
+{
+  "deal_id": "D045",
+  "extracted": {
+    "target": "Hologic, Inc.",
+    "acquirer": "Blackstone and TPG",
+    "offer_price_cash": 76.0,
+    "cvr_value": 3.0,
+    "stock_exchange_ratio": null,
+    "total_consideration": 79.0,
+    "deal_value_bn": 18.3,
+    "deal_type": "cash+CVR",
+    "premium_pct": 46.0,
+    "undisturbed_date": "2025-05-23",
+    "undisturbed_reference": "closing price on May 23, 2025",
+    "expected_close": "1H26",
+    "expected_close_date": "2026-04-01",
+    "go_shop_days": 45,
+    "diluted_shares_mm": 228.0,
+    "cash_on_hand_bn": 2.2,
+    "debt_bn": 2.5,
+    "financing": "Committed debt financing from Citi, Bank of America, Barclays, Royal Bank of Canada, and SMBC; equity commitment letters from Blackstone and TPG funds",
+    "regulatory_bodies": [
+      "SEC",
+      "Nasdaq"
+    ],
+    "shareholder_approval_required": true,
+    "dividend_info": null,
+    "special_conditions": "Non-tradable CVR of up to $3 per share tied to Breast Health global revenue milestones in FY2026 and FY2027, with two payments of up to $1.50 each",
+    "minority_investors": [
+      "ADIA",
+      "GIC"
+    ],
+    "raw_summary": "HOLX – Blackstone and TPG to acquire for up to $79/share. | 10/21/25"
+  },
+  "source_text": "======================================================================\n  EXHIBIT 99.1 SUMMARY\n======================================================================\n\n   Company: Hologic, Inc. (HOLX)\n   Type:    Deal Announcement\n   Date:    10/21/25\n\n📌 L1 | HEADLINE\n   + HOLX – Blackstone and TPG to acquire for up to $79/share. | 10/21/25\n\n📋 L2 | BRIEF\n   Hologic announced a definitive agreement to be acquired by Blackstone and TPG for $76 per share in cash plus a non-tradable CVR of up to $3 per share (tied to Breast Health revenue milestones in FY2026 and FY2027), representing an enterprise value of up to $18.3 billion and a 46% premium to the undisturbed closing price on May 23, 2025. The transaction includes minority investments from ADIA and GIC, has committed debt financing, a 45-day go-shop period, and is expected to close in the first half of calendar year 2026 subject to stockholder approval and regulatory clearances.\n\n📊 L3 | DETAILED\n   Event:          Hologic entered into a definitive merger agreement to be acquired by funds managed by Blackstone and TPG in an all-cash transaction with a contingent value right component.\n   Key Figures:\n     • $76 per share cash consideration at closing\n     • Up to $3 per share via non-tradable CVR (two payments of up to $1.50 each tied to Breast Health global revenue goals in FY2026 and FY2027)\n     • Up to $79 per share total consideration\n     • Enterprise value of up to $18.3 billion\n     • 46% premium to undisturbed closing price on May 23, 2025\n     • Based on 228 million diluted shares outstanding\n     • $2.2 billion cash and short-term investments on balance sheet as of 9/27/2025\n     • $2.5 billion of Hologic debt as of 9/27/2025\n     • 45-day go-shop period\n   Market Impact:  The transaction represents a 46% premium to the undisturbed stock price. Hologic will be delisted from Nasdaq upon completion. The company will not provide FY2026 financial guidance and will not hold earnings calls while the transaction is pending. Fourth quarter FY2025 results will be reported via press release on November 3.\n   Fwd Guidance:   Hologic will not provide FY2026 financial guidance. The company plans to file its Form 10-K for fiscal 2025 with the SEC in late November. Q4 FY2025 results to be released November 3 via press release only, with no earnings call.\n   Deal Relevance: Expected closing in the first half of calendar year 2026. Conditions include Hologic stockholder approval, required regulatory approvals, and other customary closing conditions. The Hologic Board unanimously approved the merger agreement and recommends stockholder approval. Committed debt financing provided by Citi, Bank of America, Barclays, Royal Bank of Canada, and SMBC, along with equity commitment letters from Blackstone and TPG funds. A 45-day go-shop period allows Hologic to solicit alternative proposals; the Board may terminate the agreement for a superior proposal subject to the merger agreement terms. ADIA and GIC are making significant minority equity investments. Hologic will maintain its Marlborough, MA headquarters and continue operating under the Hologic name.\n   Risks:\n     • Required governmental and regulatory approvals could delay or prevent consummation\n     • Stockholders may not approve the proposed transaction\n     • Conditions to closing may not be satisfied in a timely manner or at all\n     • Possible termination of the merger agreement due to triggering events\n     • CVR holders may receive less-than-anticipated payments\n     • Disruption of management time from ongoing business operations\n     • Adverse effects on market price of HOLX common stock from announcements\n     • Risk of unexpected costs or litigation relating to the transaction\n     • Risk of adverse effect on ability to retain key personnel and maintain business relationships\n     • Go-shop period may or may not result in a superior proposal\n======================================================================"
+}

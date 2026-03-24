@@ -1,0 +1,484 @@
+{
+  "company": "dawn",
+  "total_filings": 10,
+  "successful": 10,
+  "failed": 0,
+  "results": [
+    {
+      "index": 10,
+      "date": "03/06/26",
+      "form_type": "SC TO-C",
+      "url": "https://www.sec.gov/Archives/edgar/data/1845337/000119312526095178/d55904dsctoc.htm",
+      "status": "success",
+      "ticker": "DAWN",
+      "summary": {
+        "filing_type": "SC TO-T",
+        "bidder": "Servier S.A.S (via Servier Detroit Inc., a wholly owned subsidiary of Servier Pharmaceuticals LLC)",
+        "bidder_ticker": null,
+        "target": "Day One Biopharmaceuticals, Inc.",
+        "target_ticker": "DAWN",
+        "filing_date": "03/06/26",
+        "L1_headline": "+ DAWN \u2013 Servier announces planned tender offer (pre-commencement). | 03/06/26",
+        "L2_brief": "Servier S.A.S, through its subsidiary Servier Detroit Inc., has entered into a Merger Agreement dated March 6, 2026 to acquire all outstanding shares of Day One Biopharmaceuticals (DAWN) via a tender offer followed by a merger. The tender offer has not yet commenced; this SC TO-C filing relates solely to preliminary communications. No offer price, premium, or board recommendation details are disclosed in this pre-commencement filing.",
+        "L3_detailed": {
+          "offer_terms": {
+            "offer_price": "Not disclosed in this pre-commencement filing",
+            "offer_type": "Unable to determine \u2014 tender offer not yet commenced",
+            "exchange_ratio": null,
+            "premium": "Not disclosed in this filing",
+            "total_deal_value": "Not disclosed in this filing",
+            "shares_sought": "All issued and outstanding shares of common stock, par value $0.001 per share",
+            "minimum_condition": "Not disclosed in this filing; referenced as a risk factor ('whether sufficient shareholders of the Company tender their shares')",
+            "top_up_option": "Not disclosed in this filing"
+          },
+          "timing": {
+            "offer_commenced": "Not yet commenced as of filing date (03/06/26)",
+            "expiration_date": "Not yet set \u2014 tender offer not commenced",
+            "withdrawal_deadline": "Not yet set",
+            "expected_closing": "Not disclosed in this filing",
+            "extensions": "Not disclosed in this filing"
+          },
+          "board_recommendation": "UNABLE TO DETERMINE \u2014 this is a pre-commencement SC TO-C; the Company's Schedule 14D-9 has not yet been filed",
+          "fairness_opinion": "Not disclosed in this filing",
+          "background_of_transaction": "Servier S.A.S, Servier Pharmaceuticals LLC (Parent), and Servier Detroit Inc. (Merger Sub) entered into an Agreement and Plan of Merger with Day One Biopharmaceuticals on March 6, 2026. No further background on negotiations, competing bidders, or prior approaches is provided in this pre-commencement filing.",
+          "conditions_to_offer": [
+            "Sufficient shareholders tendering their shares (minimum tender condition referenced but threshold not specified)",
+            "Required regulatory approvals",
+            "No injunctions or legal proceedings preventing the transaction (implied by risk factors)",
+            "Other tender offer conditions to be detailed in the forthcoming Schedule TO"
+          ],
+          "financing": {
+            "source": "Not disclosed in this filing",
+            "committed_financing": "Not disclosed in this filing",
+            "financing_condition": "Unable to determine from this filing"
+          },
+          "regulatory_approvals": {
+            "required": [
+              "Referenced generically \u2014 'required regulatory approvals relating to the transaction'; specific agencies not identified in this filing"
+            ],
+            "status": "Not disclosed",
+            "expected_timeline": "Not disclosed"
+          },
+          "deal_protections": {
+            "breakup_fee": "Not disclosed in this filing",
+            "reverse_breakup_fee": "Not disclosed in this filing",
+            "go_shop": "Not disclosed in this filing",
+            "matching_rights": "Risk factors reference 'the possibility that competing offers will be made' but no matching rights detail provided",
+            "force_the_vote": "Not disclosed in this filing"
+          },
+          "competing_offers": "None disclosed; risk factors note 'the possibility that competing offers will be made'",
+          "litigation": "Risk factors reference 'the outcome of legal proceedings that may be instituted against the Company and/or others relating to the transaction' but no actual litigation disclosed",
+          "dissenting_shareholders": "None disclosed",
+          "amendment_changes": "N/A \u2014 this is the initial pre-commencement SC TO-C filing",
+          "risks_flagged": [
+            "Tender offer has not yet commenced \u2014 this is only a preliminary communication (SC TO-C)",
+            "No offer price, financing details, or specific conditions are disclosed",
+            "Risk that insufficient shareholders tender their shares",
+            "Risk of failure or delay in receiving required regulatory approvals",
+            "Risk of competing offers",
+            "Risk of legal proceedings related to the transaction",
+            "Termination risk \u2014 occurrence of any event giving rise to termination of the Merger Agreement",
+            "Integration risks post-closing",
+            "Bidder (Servier S.A.S) is a private French company \u2014 limited public financial information available"
+          ]
+        }
+      },
+      "_filename": "sctoc_summary_5337_26095178.json"
+    },
+    {
+      "index": 9,
+      "date": "03/06/26",
+      "form_type": "SC 14D-9",
+      "url": "https://www.sec.gov/Archives/edgar/data/1845337/000119312526095176/d321704dsc14d9c.htm",
+      "status": "success",
+      "ticker": "DAWN",
+      "summary": {
+        "filing_type": "SC 14D-9",
+        "bidder": "Servier S.A.S. (via Servier Pharmaceuticals LLC and Servier Detroit Inc.)",
+        "bidder_ticker": null,
+        "target": "Day One Biopharmaceuticals, Inc.",
+        "target_ticker": "DAWN",
+        "filing_date": "03/06/26",
+        "L1_headline": "+ DAWN \u2013 Preliminary SC 14D-9 filed for Servier acquisition. | 03/06/26",
+        "L2_brief": "Day One Biopharmaceuticals filed a preliminary SC 14D-9 communication in connection with its proposed acquisition by Servier S.A.S. pursuant to a Merger Agreement dated March 6, 2026. The deal structure involves a tender offer by Servier's subsidiary (Servier Detroit Inc.) followed by a back-end merger. Specific offer price, premium, and board recommendation details are not included in this preliminary communication filing and will be disclosed in the formal Schedule TO and Schedule 14D-9 filings once the tender offer commences.",
+        "L3_detailed": {
+          "offer_terms": {
+            "offer_price": "Not disclosed in this preliminary communication",
+            "offer_type": "Cash (presumed based on tender offer structure; not explicitly stated)",
+            "exchange_ratio": null,
+            "premium": "Not disclosed in this preliminary communication",
+            "total_deal_value": "Not disclosed in this preliminary communication",
+            "shares_sought": "All outstanding shares of common stock (par value $0.001 per share)",
+            "minimum_condition": "Not disclosed in this preliminary communication; referenced as a condition to be satisfied",
+            "top_up_option": "Not disclosed in this preliminary communication"
+          },
+          "timing": {
+            "offer_commenced": "Not yet commenced as of filing date (March 6, 2026)",
+            "expiration_date": "Not yet determined; offer has not commenced",
+            "withdrawal_deadline": "Not yet determined",
+            "expected_closing": "Not disclosed in this preliminary communication",
+            "extensions": "Not disclosed in this preliminary communication"
+          },
+          "board_recommendation": "UNABLE TO DETERMINE \u2014 This is a preliminary communication only. The formal Solicitation/Recommendation Statement on Schedule 14D-9 has not yet been filed.",
+          "fairness_opinion": "Not disclosed in this preliminary communication",
+          "background_of_transaction": "An Agreement and Plan of Merger was entered into on March 6, 2026, among Day One Biopharmaceuticals, Servier S.A.S. (a French soci\u00e9t\u00e9 par actions simplifi\u00e9e), Servier Pharmaceuticals LLC (a Delaware LLC and indirect wholly owned subsidiary of Servier), and Servier Detroit Inc. (a Delaware corporation and wholly owned subsidiary of Servier Pharmaceuticals LLC). The deal is structured as a tender offer followed by a back-end merger. No further negotiation history, competing bidder details, or timeline of discussions is provided in this preliminary filing.",
+          "conditions_to_offer": [
+            "Minimum tender condition (details not yet disclosed)",
+            "Other conditions set forth in the Merger Agreement (not yet detailed in this preliminary communication)"
+          ],
+          "financing": {
+            "source": "Not disclosed in this preliminary communication",
+            "committed_financing": "Not disclosed in this preliminary communication",
+            "financing_condition": "Not disclosed in this preliminary communication"
+          },
+          "regulatory_approvals": {
+            "required": [
+              "Not specified in this preliminary communication"
+            ],
+            "status": "Not disclosed",
+            "expected_timeline": "Not disclosed"
+          },
+          "deal_protections": {
+            "breakup_fee": "Not disclosed in this preliminary communication",
+            "reverse_breakup_fee": "Not disclosed in this preliminary communication",
+            "go_shop": "Not disclosed in this preliminary communication",
+            "matching_rights": "Not disclosed in this preliminary communication",
+            "force_the_vote": "Not disclosed in this preliminary communication"
+          },
+          "competing_offers": "None mentioned; the filing's risk factors reference 'the risk that competing offers or acquisition proposals will be made'",
+          "litigation": "The filing's risk factors reference 'the risk that stockholder litigation in connection with the offer or the merger may result in significant costs of defense, indemnification and liability' but no specific litigation is reported",
+          "dissenting_shareholders": "None mentioned",
+          "amendment_changes": "N/A \u2014 This is the initial preliminary communication filing, not an amendment",
+          "risks_flagged": [
+            "Offer has not yet commenced; tender offer materials not yet filed",
+            "Uncertainties as to timing of the offer and subsequent merger",
+            "Uncertainties as to how many stockholders will tender their shares",
+            "Risk of competing offers or acquisition proposals",
+            "Possibility that various conditions to consummation may not be satisfied or waived",
+            "Business disruption risk from announcement and pendency of the transaction",
+            "Risk of stockholder litigation resulting in significant costs",
+            "No offer price, premium, board recommendation, or deal terms have been publicly disclosed yet \u2014 all key details pending formal filings"
+          ]
+        }
+      },
+      "_filename": "sc14d9_summary_5337_26095176.json"
+    },
+    {
+      "index": 8,
+      "date": "03/06/26",
+      "form_type": "SC TO-C",
+      "url": "https://www.sec.gov/Archives/edgar/data/1845337/000119312526097262/d99312dsctoc.htm",
+      "status": "success",
+      "ticker": "DAWN",
+      "summary": {
+        "filing_type": "SC TO-C",
+        "bidder": "Servier S.A.S. (via Servier Detroit Inc., a wholly owned subsidiary of Servier Pharmaceuticals LLC)",
+        "bidder_ticker": null,
+        "target": "Day One Biopharmaceuticals, Inc.",
+        "target_ticker": "DAWN",
+        "filing_date": "03/06/26",
+        "L1_headline": "+ DAWN \u2013 Servier announces planned tender offer (pre-commencement). | 03/06/26",
+        "L2_brief": "Servier S.A.S., through its subsidiary Servier Detroit Inc., has entered into a Merger Agreement dated March 6, 2026 to acquire all outstanding shares of Day One Biopharmaceuticals (DAWN) via a tender offer that has not yet commenced. This SC TO-C filing relates solely to preliminary communications made before the commencement of the tender offer. No offer price, premium, or board recommendation details are disclosed in this pre-commencement communication."
+      },
+      "_filename": "sctot_summary_5337_26097262.json"
+    },
+    {
+      "index": 5,
+      "date": "03/19/26",
+      "form_type": "SC 13G",
+      "url": "https://www.sec.gov/Archives/edgar/data/1845337/000107680926000031/xslSCHEDULE_13G_X02/primary_doc.xml",
+      "status": "success",
+      "ticker": "DAWN",
+      "summary": {
+        "ticker": "DAWN",
+        "subject_company": "Day One Biopharmaceuticals, Inc.",
+        "filing_date": "03/19/26",
+        "filing_type": "SC 13G",
+        "filer_name": "Glazer Capital, LLC / Paul J. Glazer",
+        "filer_type": "Hedge Fund",
+        "L1_headline": "+ DAWN \u2013 Glazer Capital discloses 5.4% stake. | 03/19/26",
+        "L2_brief": "Glazer Capital, LLC and its Managing Member Paul J. Glazer filed a Schedule 13G disclosing beneficial ownership of 5,615,390 shares of Day One Biopharmaceuticals common stock, representing approximately 5.4% of shares outstanding. The shares are held through Glazer Funds managed by Glazer Capital, with all voting and dispositive power shared. The filing certifies the securities were not acquired for the purpose of changing or influencing control of the issuer.",
+        "L3_detailed": {
+          "ownership_details": {
+            "shares_held": "5,615,390",
+            "percentage_owned": "5.4% (5.44% per Item 4)",
+            "sole_voting_power": "0",
+            "shared_voting_power": "5,615,390",
+            "sole_dispositive_power": "0",
+            "shared_dispositive_power": "5,615,390"
+          },
+          "position_change": "New position (initial Schedule 13G filing triggered by event date 03/12/2026)",
+          "source_of_funds": "Not specified in filing",
+          "purpose_of_transaction": "Passive investment. The filing includes the Item 10 certification stating: \"the securities referred to above were not acquired and are not held for the purpose of or with the effect of changing or influencing the control of the issuer of the securities and were not acquired and are not held in connection with or as a participant in any transaction having that purpose or effect.\"",
+          "activist_intentions": "None stated. Filed under Rule 13d-1(b) as an investment adviser, indicating passive intent.",
+          "deal_implications": "Glazer Capital is a merger arbitrage-focused fund. Glazer Capital Enhanced Master Fund, Ltd. holds more than 5% of the outstanding shares and has the right to receive proceeds from the sale of such shares. This represents a significant passive block that could be relevant to any pending or future transaction vote.",
+          "related_agreements": "None disclosed.",
+          "risks_flagged": [
+            "Large merger-arb oriented fund accumulating a 5.4% passive stake may indicate market expectation of a transaction or position in connection with a pending deal"
+          ]
+        }
+      },
+      "_filename": "sc13g_summary_5337_26000031.json"
+    },
+    {
+      "index": 4,
+      "date": "03/09/26",
+      "form_type": "8-K/A",
+      "url": "https://www.sec.gov/Archives/edgar/data/1845337/000119312526098851/dawn-ex23_1.htm",
+      "status": "success",
+      "ticker": "DAWN",
+      "summary": {
+        "ticker": "DAWN",
+        "company": "Day One Biopharmaceuticals, Inc.",
+        "filing_type": "8-K/A (Exhibit 23.1 - Auditor Consent)",
+        "filing_date": "03/09/26",
+        "L1_headline": "+ DAWN \u2013 EY consent filed for Mersana financials incorporation. | 03/09/26",
+        "L2_brief": "This is an auditor consent exhibit (EX-23.1) filed as part of a Form 8-K/A by Day One Biopharmaceuticals. Ernst & Young LLP consents to the incorporation by reference of its audit report on Mersana Therapeutics' consolidated financial statements (FY2024 and FY2023) into Day One's S-8 and S-3 registration statements. This filing is consistent with post-acquisition financial reporting requirements following Day One's acquisition of Mersana Therapeutics.",
+        "L2_brief_note": "",
+        "L3_detailed": {
+          "filing_purpose": "Ernst & Young LLP provided consent for its audit report on Mersana Therapeutics' financial statements to be incorporated by reference into Day One Biopharmaceuticals' registration statements via an amended 8-K (Form 8-K/A). This is a standard post-acquisition requirement to include acquired company financial statements in the acquirer's SEC filings.",
+          "key_information": [
+            "EY's audit report covers Mersana Therapeutics' consolidated financial statements as of December 31, 2024 and 2023, and for each of the two years ended December 31, 2024",
+            "The consent applies to incorporation by reference in six Form S-8 registration statements (Nos. 333-256521, 333-263343, 333-268071, 333-269727, 333-276372, and 333-284210)",
+            "The consent also applies to two Form S-3 registration statements (Nos. 333-274521 and 333-281822)",
+            "The EY audit report was originally dated March 3, 2025; the consent is dated March 9, 2026",
+            "Filing is structured as an exhibit to an 8-K/A (amended current report) by Day One Biopharmaceuticals"
+          ],
+          "financial_highlights": [],
+          "deal_relevance": "This filing confirms that Day One Biopharmaceuticals completed its acquisition of Mersana Therapeutics and is now fulfilling post-close SEC reporting obligations by amending its 8-K to include Mersana's audited financial statements. The 8-K/A with acquired company financials is a routine post-closing requirement typically filed within 71 days of the initial 8-K reporting the deal close.",
+          "regulatory_mentions": "SEC registration statements on Form S-8 and Form S-3 referenced; standard SEC compliance for incorporation by reference of acquired company financials.",
+          "timeline_or_dates": [
+            "March 3, 2025 \u2013 Date of EY's original audit report on Mersana Therapeutics",
+            "March 9, 2026 \u2013 Date of EY's consent letter",
+            "December 31, 2024 and 2023 \u2013 Periods covered by Mersana's audited financial statements"
+          ],
+          "conditions_or_requirements": [
+            "Standard SEC requirement to file acquired company financial statements via 8-K/A following completion of a significant acquisition"
+          ],
+          "risks_flagged": []
+        }
+      },
+      "_filename": "other_summary_5337_26098851.json"
+    },
+    {
+      "index": 3,
+      "date": "03/06/26",
+      "form_type": "99.1",
+      "url": "https://www.sec.gov/Archives/edgar/data/1845337/000119312526095176/d321704dex991.htm",
+      "status": "success",
+      "ticker": "DAWN",
+      "summary": {
+        "ticker": "DAWN",
+        "company": "Day One Biopharmaceuticals, Inc.",
+        "filing_date": "03/06/26",
+        "exhibit_type": "Deal Announcement",
+        "L1_headline": "+ DAWN \u2013 Servier to acquire Day One for $21.50/share. | 03/06/26",
+        "L2_brief": "Servier and Day One Biopharmaceuticals announced a definitive agreement for Servier to acquire Day One via cash tender offer at $21.50 per share, representing a total equity value of approximately $2.5 billion. The offer price represents a ~68% premium over the March 5, 2026 closing price and ~86% premium over the one-month VWAP. The transaction is expected to close in Q2 2026, subject to customary closing conditions including majority tender and U.S. antitrust clearance.",
+        "L3_detailed": {
+          "event": "Servier entered into a definitive merger agreement to acquire Day One Biopharmaceuticals via a cash tender offer followed by a second-step merger, expanding Servier's rare oncology portfolio, particularly in pediatric low-grade glioma.",
+          "key_figures": [
+            "$21.50 per share in cash",
+            "Total equity value of approximately $2.5 billion",
+            "~68% premium over March 5, 2026 closing price",
+            "~86% premium over one-month VWAP as of March 5, 2026",
+            "Servier revenues of \u20ac6.9 billion in 2024/25 financial year"
+          ],
+          "market_impact": "Day One's Board of Directors recommends that shareholders tender their shares. Servier expects to fund the transaction through existing cash and investments. The acquisition positions Servier as a leader in pediatric low-grade glioma and expands its pipeline with programs targeting adult and pediatric cancers.",
+          "forward_guidance": "Transaction expected to close in Q2 2026. Tender offer has not yet commenced as of the filing date; Servier and the Purchaser intend to file tender offer materials on Schedule TO with the SEC upon commencement.",
+          "deal_relevance": "Closing is subject to customary conditions including tender of at least a majority of Day One's outstanding shares and receipt of U.S. antitrust clearance. Upon successful completion of the tender offer, Servier will acquire remaining shares via a second-step merger at the same $21.50 per share price.",
+          "risks_flagged": [
+            "Conditions to consummation may not be satisfied or waived",
+            "Risk that competing offers or acquisition proposals may be made",
+            "Uncertainties as to how many stockholders will tender shares",
+            "Possible disruption to Day One's business and difficulty maintaining relationships with employees, suppliers, and business partners during pendency",
+            "Risk that stockholder litigation in connection with the offer or merger may result in significant costs",
+            "Uncertainties as to timing of the offer and subsequent merger"
+          ]
+        },
+        "filing_type": "99.1"
+      },
+      "_filename": "99.1_summary_5337_26095176.json"
+    },
+    {
+      "index": 2,
+      "date": "03/06/26",
+      "form_type": "99.1",
+      "url": "https://www.sec.gov/Archives/edgar/data/1845337/000119312526095178/d55904dex991.htm",
+      "status": "success",
+      "ticker": "DAWN",
+      "summary": {
+        "ticker": "DAWN",
+        "company": "Day One Biopharmaceuticals, Inc.",
+        "filing_date": "03/06/26",
+        "exhibit_type": "Deal Announcement",
+        "L1_headline": "+ DAWN \u2013 Servier to acquire Day One for $21.50/share. | 03/06/26",
+        "L2_brief": "Servier and Day One Biopharmaceuticals announced a definitive agreement for Servier to acquire Day One via cash tender offer at $21.50 per share, representing a total equity value of approximately $2.5 billion. The offer price represents a ~68% premium over the March 5, 2026 closing price and ~86% premium over the one-month VWAP. The transaction is expected to close in Q2 2026, subject to customary closing conditions including majority share tender and U.S. antitrust clearance.",
+        "L3_detailed": {
+          "event": "Servier entered into a definitive merger agreement to acquire Day One Biopharmaceuticals via a cash tender offer, followed by a second-step merger for any remaining shares at the same price. The acquisition expands Servier's rare oncology portfolio, particularly in pediatric low-grade glioma.",
+          "key_figures": [
+            "$21.50 per share in cash",
+            "Total equity value of approximately $2.5 billion",
+            "~68% premium over March 5, 2026 closing price",
+            "~86% premium over one-month VWAP as of March 5, 2026",
+            "Servier revenues of \u20ac6.9 billion in 2024/25 financial year"
+          ],
+          "market_impact": "Day One's Board of Directors recommends shareholders tender their shares. Servier expects to fund the transaction through existing cash and investments. The acquisition positions Servier as a leader in pediatric low-grade glioma and expands its oncology pipeline with programs from early stage to phase 3.",
+          "forward_guidance": "Transaction expected to close in Q2 2026. Tender offer has not yet commenced as of the filing date; Servier and the purchaser will file tender offer materials on Schedule TO with the SEC upon commencement.",
+          "deal_relevance": "Structure is a cash tender offer at $21.50/share followed by a second-step merger at the same price. Closing conditions include tender of at least a majority of outstanding Day One common stock and U.S. antitrust clearance. Day One's Board recommends tendering. Goldman Sachs is advising Servier; Centerview Partners is advising Day One. Baker McKenzie is Servier's legal counsel; Fenwick & West is Day One's legal counsel.",
+          "risks_flagged": [
+            "Uncertainties as to timing of the offer and subsequent merger",
+            "Uncertainties as to how many stockholders will tender shares",
+            "Risk that competing offers or acquisition proposals will be made",
+            "Possibility that various closing conditions may not be satisfied or waived",
+            "Effects of disruption from the transaction on Day One's business and relationships with employees, suppliers, and business partners",
+            "Risk that stockholder litigation in connection with the offer or merger may result in significant costs of defense, indemnification, and liability",
+            "Possibility of termination of the Merger Agreement"
+          ]
+        },
+        "filing_type": "99.1"
+      },
+      "_filename": "99.1_summary_5337_26095178.json"
+    },
+    {
+      "index": 1,
+      "date": "03/06/26",
+      "form_type": "99.1",
+      "url": "https://www.sec.gov/Archives/edgar/data/1845337/000119312526095174/d108979dex991.htm",
+      "status": "success",
+      "ticker": "DAWN",
+      "summary": {
+        "ticker": "DAWN",
+        "company": "Day One Biopharmaceuticals, Inc.",
+        "filing_date": "03/06/26",
+        "exhibit_type": "Deal Announcement",
+        "L1_headline": "+ DAWN \u2013 Servier to acquire Day One for $21.50/share. | 03/06/26",
+        "L2_brief": "Servier and Day One Biopharmaceuticals announced a definitive agreement for Servier to acquire Day One via cash tender offer at $21.50 per share, representing a total equity value of approximately $2.5 billion. The offer price represents a ~68% premium over Day One's closing price on March 5, 2026, and an ~86% premium over the one-month VWAP. The transaction is expected to close in Q2 2026, subject to customary closing conditions including majority share tender and U.S. antitrust clearance.",
+        "L3_detailed": {
+          "event": "Servier entered into a definitive merger agreement to acquire Day One Biopharmaceuticals via a cash tender offer, followed by a second-step merger for any remaining shares at the same price.",
+          "key_figures": [
+            "$21.50 per share in cash",
+            "Total equity value of approximately $2.5 billion",
+            "~68% premium over closing price on March 5, 2026",
+            "~86% premium over one-month VWAP as of March 5, 2026",
+            "Servier FY 2024/25 revenues of \u20ac6.9 billion"
+          ],
+          "market_impact": "Day One shareholders would receive $21.50 per share in cash. Day One's Board of Directors recommends shareholders tender their shares. Servier expects to fund the transaction through existing cash and investments. The acquisition expands Servier's rare oncology portfolio, particularly in pediatric low-grade glioma.",
+          "forward_guidance": "The transaction is expected to close in Q2 2026. The tender offer has not yet commenced; Servier and the Purchaser will file tender offer materials on Schedule TO with the SEC upon commencement.",
+          "deal_relevance": "Closing conditions include tender of at least a majority of Day One's outstanding shares and receipt of U.S. antitrust clearance. Upon successful completion of the tender offer, Servier will acquire remaining shares via a second-step merger at the same $21.50 per share price. Day One's Board recommends shareholders tender their shares.",
+          "risks_flagged": [
+            "Uncertainty as to timing of the offer and subsequent merger",
+            "Uncertainty as to how many stockholders will tender their shares",
+            "Risk of competing offers or acquisition proposals",
+            "Possibility that various closing conditions may not be satisfied or waived",
+            "Effects of disruption from the transaction on Day One's business and relationships with employees, suppliers, and business partners",
+            "Risk that stockholder litigation in connection with the offer or merger may result in significant costs"
+          ]
+        },
+        "filing_type": "99.1"
+      },
+      "_filename": "99.1_summary_5337_26095174.json"
+    },
+    {
+      "index": 6,
+      "date": "03/06/26",
+      "form_type": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1845337/000119312526095174/d108979d8k.htm",
+      "status": "success",
+      "ticker": "DAWN",
+      "summary": {
+        "ticker": "DAWN",
+        "filing_date": "03/06/26",
+        "items_reported": [
+          "Item 1.01",
+          "Item 8.01",
+          "Item 9.01"
+        ],
+        "L1_headline": "DAWN \u2013 Servier to acquire via $21.50 cash tender offer. | 03/06/26",
+        "L2_brief": "Day One Biopharmaceuticals entered into a definitive merger agreement with Servier Pharmaceuticals LLC under which Servier will acquire all outstanding DAWN shares at $21.50 per share in cash via tender offer followed by a back-end merger under DGCL Section 251(h). The offer must commence within 15 business days and is subject to a majority tender condition, HSR clearance, and other customary conditions, with an outside date of December 6, 2026 (extendable by 150 days for regulatory approval). The Company termination fee is $87.7 million, and no financing condition applies.",
+        "L3_detailed": {
+          "event": "Day One Biopharmaceuticals signed an Agreement and Plan of Merger with Servier Pharmaceuticals LLC (Parent), Servier Detroit Inc. (Merger Sub), and Servier S.A.S. (Guarantor). Merger Sub will commence a cash tender offer for all outstanding DAWN shares, followed by a short-form merger under DGCL Section 251(h) without a stockholder vote.",
+          "key_figures": [
+            "Offer price: $21.50 per share in cash",
+            "Company termination fee: $87.7 million",
+            "Offer must commence within 15 business days of March 6, 2026",
+            "Offer period: 20 business days from commencement",
+            "Outside date: December 6, 2026, extendable by 150 days for regulatory approval",
+            "Minimum tender condition: majority of outstanding shares"
+          ],
+          "deal_implications": "The Board unanimously approved the transaction and recommends stockholders tender their shares. The merger will be effected under DGCL Section 251(h), requiring no stockholder vote post-tender. No financing condition exists; Servier S.A.S. guarantees all payment obligations. The tender offer has not yet commenced.",
+          "remaining_conditions": [
+            "Majority of outstanding shares tendered in the Offer",
+            "Expiration or termination of HSR Act waiting period",
+            "Accuracy of Company representations and warranties (subject to MAE standard)",
+            "Company compliance with covenants in all material respects",
+            "Other conditions set forth in Exhibit A to the Merger Agreement",
+            "Commencement and completion of the tender offer",
+            "Filing of Schedule TO and Schedule 14D-9 with the SEC"
+          ],
+          "risks_flagged": [
+            "Competing offers or superior proposals could emerge; Company has fiduciary-out provisions for Superior Company Proposals",
+            "Potential stockholder litigation in connection with the Offer or Merger",
+            "Regulatory approval (HSR) not yet obtained; outside date extension of 150 days if regulatory approval is delayed",
+            "Customary non-solicitation restrictions with exceptions for unsolicited Superior Company Proposals",
+            "Risk that sufficient shares may not be tendered to satisfy the majority condition"
+          ]
+        },
+        "filing_type": "8-K"
+      },
+      "summary_file": "8k_summary_5337_26095174.json"
+    },
+    {
+      "index": 7,
+      "date": "01/06/26",
+      "form_type": "8-K (Exhibit 99.1)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1845337/000119312526098851/d108979dex991.htm",
+      "status": "success",
+      "ticker": "DAWN",
+      "summary": {
+        "ticker": "DAWN",
+        "company": "Day One Biopharmaceuticals, Inc.",
+        "filing_date": "01/06/26",
+        "exhibit_type": "Deal Update",
+        "L1_headline": "+ DAWN \u2013 Completed acquisition of Mersana Therapeutics. | 01/06/26",
+        "L2_brief": "Day One Biopharmaceuticals completed its acquisition of Mersana Therapeutics on January 6, 2026, paying $25.00 per share in cash plus one CVR per share worth up to $30.25 in potential milestone payments, for total consideration of up to $55.25 per share. The total estimated fair value of consideration transferred was $173.0 million ($125.0 million cash plus $48.0 million estimated fair value of CVRs), with $196.9 million in identifiable intangible assets acquired (including $174.5 million IPR&D) and $36.7 million in goodwill recognized.",
+        "L3_detailed": {
+          "event": "Day One Biopharmaceuticals completed its acquisition of all outstanding shares of Mersana Therapeutics via tender offer, as announced under the Merger Agreement dated November 12, 2025. The filing presents unaudited pro forma condensed combined financial information as of and for the nine months ended September 30, 2025 and for the year ended December 31, 2024.",
+          "key_figures": [
+            "Cash consideration: $125.0 million ($25.00 per share)",
+            "CVR estimated fair value: $48.0 million ($8.3 million current, $39.7 million long-term)",
+            "Total estimated consideration: $173.0 million",
+            "Maximum CVR payout: up to $30.25 per share (~$156.0 million aggregate undiscounted maximum)",
+            "Maximum total per-share consideration: up to $55.25",
+            "Identifiable intangible assets acquired: $196.9 million (contract-based license $22.4 million, IPR&D $174.5 million)",
+            "Goodwill recognized: $36.7 million",
+            "Deferred revenue assumed: $102.7 million",
+            "Pro forma combined net loss (9 months ended Sep 30, 2025): $145.9 million / ($1.42) per share",
+            "Pro forma combined net loss (year ended Dec 31, 2024): $180.5 million / ($1.94) per share",
+            "Pro forma combined revenue (9 months ended Sep 30, 2025): $121.3 million",
+            "Pro forma combined revenue (year ended Dec 31, 2024): $171.7 million",
+            "Day One liquidated $81.8 million in short-term investments to fund acquisition",
+            "Expected severance costs: ~$9.0 million",
+            "D&O tail insurance: $1.3 million",
+            "Transaction advisory/legal fees: $4.8 million; equity cash settlement obligations: $3.7 million"
+          ],
+          "market_impact": "The acquisition is completed. Day One's pro forma cash and short-term investments decrease significantly (from ~$451.6 million to ~$383.0 million combined). The combined entity carries $196.9 million in intangible assets and $36.7 million in goodwill. Pro forma combined net losses widen materially versus Day One standalone, reflecting Mersana's operating losses and transaction-related costs. The IPR&D asset of $174.5 million is indefinite-lived and not amortized until completion or abandonment of associated R&D.",
+          "forward_guidance": "Purchase price allocation is preliminary and subject to revision within the measurement period (up to one year from January 6, 2026 closing). CVR contingent consideration will be remeasured at fair value each reporting period with changes recognized in the statement of operations. Contract-based license intangible asset ($22.4 million) will be amortized over an estimated 17-year useful life. Management expects approximately $9.0 million in severance costs related to employee terminations.",
+          "deal_relevance": "The acquisition is complete as of January 6, 2026. All outstanding Mersana shares were acquired. CVR milestones remain outstanding, tied to regulatory milestones, commercial milestones, and specified net sales thresholds, with an aggregate undiscounted maximum of approximately $156.0 million. The company stated it is unable to reasonably estimate the range of undiscounted outcomes due to significant uncertainties regarding probability and timing of milestone achievement.",
+          "risks_flagged": [
+            "Purchase price allocation is preliminary and subject to material revision within the measurement period",
+            "CVR contingent consideration subject to remeasurement at fair value each reporting period, with changes flowing through the income statement",
+            "Significant uncertainties regarding CVR milestone achievement including development risk, regulatory approval risk, and variability of future commercial performance",
+            "IPR&D asset of $174.5 million is indefinite-lived and subject to impairment testing; could be impaired if associated R&D is abandoned",
+            "Mersana has significant net operating loss carryforwards with full valuation allowance; deferred tax accounting is preliminary and could have material effect",
+            "Pro forma financials do not reflect integration costs, synergies, or revenue growth",
+            "Combined entity shows widened pro forma net losses",
+            "Expected severance costs of approximately $9.0 million"
+          ]
+        },
+        "filing_type": "99.1"
+      },
+      "summary_file": "99.1_summary_5337_26098851.json"
+    }
+  ],
+  "failures": []
+}

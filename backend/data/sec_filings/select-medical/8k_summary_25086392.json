@@ -1,0 +1,23 @@
+{
+  "ticker": "SEM",
+  "filing_date": "09/02/25",
+  "items_reported": [
+    "Item 5.02",
+    "Item 7.01",
+    "Item 9.01"
+  ],
+  "L1_headline": "SEM \u2013 New CEO appointed; leadership transition. | 09/02/25",
+  "L2_brief": "Select Medical appointed Thomas P. Mullin as CEO effective September 1, 2025, replacing David S. Chernow who becomes Vice Chairman. This is a routine executive succession with no merger or deal implications; Mullin has 17 years with the company and previously served as Co-President.",
+  "L3_detailed": {
+    "event": "CEO succession: Thomas P. Mullin (41) appointed CEO effective September 1, 2025, replacing David S. Chernow (68) who transitions to Vice Chairman. John A. Saich becomes sole President.",
+    "key_figures": [
+      "Mullin annual base salary: $618,000",
+      "Restricted stock grants: 100,000 shares/year in 2024 and 2025 with 3-year cliff vesting",
+      "Mullin tenure: 17 years with company",
+      "Mullin oversees 140 critical illness recovery and inpatient rehabilitation hospitals"
+    ],
+    "deal_implications": "No merger or acquisition involved; this is an internal leadership succession unrelated to any pending transaction.",
+    "remaining_conditions": [],
+    "risks_flagged": []
+  }
+}

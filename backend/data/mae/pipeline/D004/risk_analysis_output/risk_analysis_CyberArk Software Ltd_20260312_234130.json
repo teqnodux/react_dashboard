@@ -1,0 +1,174 @@
+{
+  "deal_name": "CyberArk Software Ltd",
+  "analysis_timestamp": "2026-03-12T23:41:30.721178",
+  "total_clauses": 12,
+  "clauses_analyzed": 2,
+  "analysis_coverage": "16.7%",
+  "initial_risk_assessment": {
+    "typical_count": 10,
+    "atypical_count": 1,
+    "outlier_count": 1,
+    "risk_flags": [
+      {
+        "clause_id": "(iii)",
+        "reason": "OUTLIER: Broad Economic and Financial Market Changes Exclusion",
+        "ratio": 1.2872656956015123
+      },
+      {
+        "clause_id": "(xii)",
+        "reason": "ATYPICAL: Actions Taken Pursuant to or Required by Agreement Terms",
+        "ratio": 1.019363442840714
+      }
+    ],
+    "overall_risk": "medium",
+    "requires_review": true
+  },
+  "risk_summary": {
+    "final_risk_level": "medium",
+    "risk_score": 25.0,
+    "high_risk_count": 0,
+    "medium_risk_count": 1,
+    "low_risk_count": 1,
+    "disclosure_references_count": 0,
+    "key_concerns": []
+  },
+  "investigation_report": {
+    "executive_summary": "STANDARD RISK PROFILE: Most provisions align with market standards. Only 0 items flagged for routine review.",
+    "immediate_actions_required": [
+      "Standard due diligence process",
+      "Routine review of flagged items"
+    ],
+    "key_negotiation_points": [],
+    "red_flag_summary": [],
+    "disclosure_schedule_concerns": [],
+    "unusual_provisions_detail": []
+  },
+  "negotiation_recommendations": [
+    "Review 4 unusual provisions for potential narrowing"
+  ],
+  "benchmark_comparison": {
+    "vs_typical_deals": {
+      "typical_rate": {
+        "this_deal": "83.3%",
+        "note": "Higher is better - most clauses match standard patterns"
+      },
+      "outlier_rate": {
+        "this_deal": "8.3%",
+        "note": "Lower is better - fewer unusual provisions"
+      }
+    },
+    "statistical_outliers": [],
+    "category_distribution": {
+      "economic": "4/12 (33.3%)",
+      "force_majeure": "3/12 (25.0%)",
+      "transaction": "3/12 (25.0%)",
+      "disclosure": "1/12 (8.3%)",
+      "accounting": "1/12 (8.3%)"
+    },
+    "risk_distribution": {
+      "low": 1,
+      "medium": 1
+    }
+  },
+  "detailed_analysis": {
+    "high_risk_clauses": [],
+    "medium_risk_clauses": [
+      {
+        "clause_id": "(xii)",
+        "label": "(xii)",
+        "text_preview": "any Effect arising out of, resulting from or attributable to such Person's compliance with the terms...",
+        "cluster": "Actions Taken Pursuant to or Required by Agreement Terms",
+        "category": "transaction",
+        "distance_ratio": 1.019363442840714,
+        "zone": "atypical",
+        "risk_level": "medium",
+        "investigation_priority": "review",
+        "key_issues": "Broad exclusion for any actions 'contemplated by' the agreement creates significant ambiguity, Could shield material adverse effects from actions buyer is forcing seller to take, Lack of materiality qualifier or reasonableness standard, No carve-out for actions taken in bad faith or breach of fiduciary duty, Potential for seller to claim pre-signing actions were 'contemplated' retroactively"
+      }
+    ],
+    "disclosure_references": [],
+    "all_analyzed_clauses": [
+      {
+        "clause_id": "(iii)",
+        "label": "(iii)",
+        "text": "changes in conditions in the industries in which such Person and its Subsidiaries conduct business",
+        "text_preview": "changes in conditions in the industries in which such Person and its Subsidiaries conduct business",
+        "cluster_match": "Broad Economic and Financial Market Changes Exclusion",
+        "cluster_category": "economic",
+        "distance_ratio": 1.2872656956015123,
+        "zone": "outlier",
+        "risk_analysis": {
+          "risk_level": "low",
+          "requires_investigation": false,
+          "risk_factors": [
+            "Standard industry-wide conditions exclusion",
+            "No specific company or disclosure references",
+            "Typical MAE carve-out language"
+          ],
+          "unusual_provisions": [],
+          "disclosure_references": false,
+          "specific_company_issues": [],
+          "red_flags": [],
+          "investigation_priority": "routine",
+          "explanation": "This is a standard MAE exclusion clause that carves out industry-wide changes from the definition of Material Adverse Effect. The language 'changes in conditions in the industries in which such Person and its Subsidiaries conduct business' is boilerplate and commonly found in merger agreements. It protects the buyer from walking away due to general industry downturns that affect all market participants equally, not just the target company. The clause contains no references to: (1) disclosure schedules or letters, (2) specific known issues, (3) particular time periods, (4) named parties or transactions, (5) regulatory investigations, or (6) financial reporting problems. For CyberArk (a cybersecurity software company), this would cover general changes affecting the software/cybersecurity industry broadly. The clause appropriately uses 'industries' (plural) recognizing that companies may operate across multiple sectors. This is consistent with market standard MAE provisions and presents no elevated risk.",
+          "negotiation_impact": "This clause is market standard and unlikely to be a point of contention. It represents balanced risk allocation - the buyer accepts industry-wide risk while the seller remains responsible for company-specific underperformance. No negotiation leverage or concern indicated. The clause likely includes a 'disproportionate effect' exception elsewhere in the MAE definition, which would be the more relevant negotiation point.",
+          "similar_to_standard": true,
+          "confidence": 10
+        }
+      },
+      {
+        "clause_id": "(xii)",
+        "label": "(xii)",
+        "text": "any Effect arising out of, resulting from or attributable to such Person's compliance with the terms of, or the taking of any action required or contemplated by, this Agreement",
+        "text_preview": "any Effect arising out of, resulting from or attributable to such Person's compliance with the terms...",
+        "cluster_match": "Actions Taken Pursuant to or Required by Agreement Terms",
+        "cluster_category": "transaction",
+        "distance_ratio": 1.019363442840714,
+        "zone": "atypical",
+        "risk_analysis": {
+          "risk_level": "medium",
+          "requires_investigation": true,
+          "risk_factors": [
+            "Broad exclusion for any actions 'contemplated by' the agreement creates significant ambiguity",
+            "Could shield material adverse effects from actions buyer is forcing seller to take",
+            "Lack of materiality qualifier or reasonableness standard",
+            "No carve-out for actions taken in bad faith or breach of fiduciary duty",
+            "Potential for seller to claim pre-signing actions were 'contemplated' retroactively"
+          ],
+          "unusual_provisions": [
+            "Unusually broad 'contemplated by' language - goes beyond standard 'required by' formulation",
+            "No limitation to actions expressly required or specifically identified in agreement",
+            "Applies to 'any Effect' without materiality threshold",
+            "No distinction between mandatory covenants and permissive actions"
+          ],
+          "disclosure_references": false,
+          "specific_company_issues": [],
+          "red_flags": [
+            "CyberArk may be required to take disruptive operational actions pre-closing (customer notifications, employee retention issues, integration planning)",
+            "Software/cybersecurity companies often have sensitive customer relationships that could be damaged by transaction-related actions",
+            "Vague 'contemplated by' standard could encompass actions not explicitly stated in agreement",
+            "Could excuse effects from poorly negotiated interim operating covenants"
+          ],
+          "investigation_priority": "review",
+          "explanation": "This clause presents moderate risk due to its breadth. While excluding effects from agreement-mandated actions is standard and reasonable (parties shouldn't be penalized for doing what the deal requires), this version is problematic in two ways: (1) 'contemplated by' is vaguer and broader than 'required by' or 'expressly permitted by', potentially covering actions merely consistent with the deal rather than mandated; (2) it lacks protective qualifiers like 'reasonably' or 'in good faith.' For CyberArk specifically, cybersecurity software companies often must make sensitive disclosures to customers, partners, and employees during M&A that could trigger customer churn or competitive disadvantage. If the agreement 'contemplates' aggressive integration planning or operational changes pre-closing, this clause would excuse resulting damage. The risk is amplified because there's no materiality threshold - even 'any Effect' is excluded. This could allow the seller to avoid MAE liability for significant business deterioration caused by transaction-related actions.",
+          "negotiation_impact": "This clause likely reflects negotiation leverage favoring the seller (CyberArk). The buyer should push back to: (1) replace 'contemplated by' with 'expressly required by' or 'specifically set forth in Section X'; (2) add 'taken in compliance with' to ensure only proper execution is protected; (3) include 'except to the extent resulting from such Person's breach or willful misconduct'; (4) potentially add a materiality qualifier. The seller likely argued this protection is necessary because the buyer is dictating pre-closing conduct through covenants. The breadth suggests either strong seller leverage or buyer oversight during drafting. This is a negotiable point that sophisticated buyers typically limit more carefully.",
+          "similar_to_standard": false,
+          "confidence": 8
+        }
+      }
+    ]
+  },
+  "unusual_provisions_summary": [
+    "No distinction between mandatory covenants and permissive actions",
+    "Unusually broad 'contemplated by' language - goes beyond standard 'required by' formulation",
+    "No limitation to actions expressly required or specifically identified in agreement",
+    "Applies to 'any Effect' without materiality threshold"
+  ],
+  "red_flags": [
+    "(xii): CyberArk may be required to take disruptive operational actions pre-closing (customer notifications, employee retention issues, integration planning)",
+    "(xii): Software/cybersecurity companies often have sensitive customer relationships that could be damaged by transaction-related actions",
+    "(xii): Vague 'contemplated by' standard could encompass actions not explicitly stated in agreement",
+    "(xii): Could excuse effects from poorly negotiated interim operating covenants"
+  ],
+  "classification_file": "classification_20260312_234057.json"
+}

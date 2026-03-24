@@ -1,0 +1,117 @@
+{
+  "deal_id": "D009",
+  "events": [
+    {
+      "event_date": "2025-11-04",
+      "event_type": "milestone",
+      "title": "Deal Announced",
+      "description": "Prosperity Bancshares announces definitive agreement to acquire Stellar Bancorp in $2.4B deal",
+      "status": "completed"
+    },
+    {
+      "event_date": "2025-11-15",
+      "event_type": "regulatory",
+      "title": "HSR Filing",
+      "description": "Hart-Scott-Rodino premerger notification filed with FTC/DOJ",
+      "status": "completed"
+    },
+    {
+      "event_date": "2025-11-30",
+      "event_type": "regulatory",
+      "title": "HSR Early Termination",
+      "description": "HSR waiting period terminated early - no second request",
+      "status": "completed"
+    },
+    {
+      "event_date": "2025-12-01",
+      "event_type": "regulatory",
+      "title": "FRB Application Filed",
+      "description": "Federal Reserve Board application submitted for bank holding company approval",
+      "status": "completed"
+    },
+    {
+      "event_date": "2025-12-05",
+      "event_type": "regulatory",
+      "title": "FDIC Application Filed",
+      "description": "FDIC merger application submitted for bank merger approval",
+      "status": "completed"
+    },
+    {
+      "event_date": "2025-12-10",
+      "event_type": "regulatory",
+      "title": "TDB Application Filed",
+      "description": "Texas Department of Banking application submitted",
+      "status": "completed"
+    },
+    {
+      "event_date": "2026-01-10",
+      "event_type": "filing",
+      "title": "S-4 Filed",
+      "description": "Registration statement and joint proxy filed with SEC",
+      "status": "completed"
+    },
+    {
+      "event_date": "2026-01-25",
+      "event_type": "filing",
+      "title": "SEC Comments Received",
+      "description": "Initial SEC comment letter received on S-4",
+      "status": "completed"
+    },
+    {
+      "event_date": "2026-02-05",
+      "event_type": "filing",
+      "title": "S-4 Amendment Filed",
+      "description": "Amended S-4 filed responding to SEC comments",
+      "status": "pending"
+    },
+    {
+      "event_date": "2026-02-15",
+      "event_type": "regulatory",
+      "title": "FRB Approval Expected",
+      "description": "Anticipated Federal Reserve Board approval decision",
+      "status": "pending"
+    },
+    {
+      "event_date": "2026-02-20",
+      "event_type": "filing",
+      "title": "S-4 Effective",
+      "description": "Registration statement declared effective by SEC",
+      "status": "pending"
+    },
+    {
+      "event_date": "2026-02-25",
+      "event_type": "regulatory",
+      "title": "FDIC Approval Expected",
+      "description": "Anticipated FDIC approval decision",
+      "status": "pending"
+    },
+    {
+      "event_date": "2026-03-01",
+      "event_type": "regulatory",
+      "title": "TDB Approval Expected",
+      "description": "Anticipated Texas Department of Banking approval",
+      "status": "pending"
+    },
+    {
+      "event_date": "2026-03-15",
+      "event_type": "shareholder",
+      "title": "Record Date",
+      "description": "Record date for shareholder meetings",
+      "status": "pending"
+    },
+    {
+      "event_date": "2026-04-01",
+      "event_type": "shareholder",
+      "title": "Shareholder Votes",
+      "description": "Special meetings for both Prosperity and Stellar shareholders",
+      "status": "pending"
+    },
+    {
+      "event_date": "2026-04-15",
+      "event_type": "milestone",
+      "title": "Expected Close",
+      "description": "Anticipated transaction closing and merger effective date",
+      "status": "pending"
+    }
+  ]
+}

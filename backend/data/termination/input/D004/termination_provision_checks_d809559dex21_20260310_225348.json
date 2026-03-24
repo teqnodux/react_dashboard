@@ -1,0 +1,255 @@
+{
+  "deal_id": "d809559dex21",
+  "check_timestamp": "20260310_225348",
+  "track": "termination_specific_provisions",
+  "input_files": {
+    "fees_file": "termination_response_d809559dex21_fees.json",
+    "triggers_file": "termination_response_d809559dex21_triggers.json"
+  },
+  "provisions_checked": {
+    "outside_date_duration": {
+      "present": false,
+      "initial_outside_date_found": "unknown",
+      "duration_months_estimate": 0,
+      "meets_18_month_standard": false,
+      "extensions_available": false,
+      "extension_mechanism": "none",
+      "max_extended_duration_months": 0,
+      "regulatory_extension_trigger": false,
+      "party_favored": "unknown",
+      "risk_level": "high",
+      "risk_factors": [
+        "No initial outside date provided",
+        "No extension provisions mentioned",
+        "Uncertainty regarding duration and regulatory triggers"
+      ],
+      "confidence": "low"
+    },
+    "regulatory_rtf": {
+      "present": true,
+      "has_standard_rtf": true,
+      "has_separate_regulatory_rtf": true,
+      "regulatory_rtf_triggers": [
+        "antitrust injunction",
+        "regulatory block",
+        "outside date on regulatory conditions"
+      ],
+      "regulatory_rtf_amount_text": "$50 million",
+      "regulatory_rtf_relationship_to_standard": "additive",
+      "antitrust_specific": true,
+      "risk_level": "medium",
+      "risk_factors": [
+        "Regulatory RTF amount is relatively small compared to total deal size",
+        "Potential for regulatory delays or blocks",
+        "Buyer may not prioritize antitrust efforts due to lower financial penalty"
+      ],
+      "confidence": "medium"
+    },
+    "tail_provision": {
+      "present": true,
+      "tail_months": 12,
+      "meets_12_month_standard": true,
+      "is_longer_than_standard": false,
+      "tail_fee_type": "company_termination_fee",
+      "threshold_percentage": 20,
+      "party_favored": "buyer_favorable",
+      "risk_level": "low",
+      "risk_factors": [],
+      "confidence": "high"
+    },
+    "specific_performance": {
+      "present": true,
+      "target_can_force_closing": true,
+      "acquirer_can_force_closing": false,
+      "rtf_is_exclusive_remedy": false,
+      "specific_performance_conditions": [
+        "All conditions precedent to closing must be satisfied by the seller",
+        "No material adverse change affecting the target",
+        "The buyer must not be in breach of the agreement"
+      ],
+      "financing_condition_for_sp": false,
+      "party_favored": "seller_favorable",
+      "risk_level": "low",
+      "risk_factors": [
+        "Specific performance is available to the seller",
+        "Conditions for specific performance are reasonable and achievable",
+        "The buyer cannot unilaterally walk away without consequences"
+      ],
+      "confidence": "high"
+    },
+    "willful_breach": {
+      "present": true,
+      "carveout_explicit": true,
+      "survives_rtf_payment": true,
+      "survives_ctf_payment": true,
+      "definition_provided": true,
+      "fee_offset_against_damages": true,
+      "party_favored": "seller_favorable",
+      "risk_level": "low",
+      "risk_factors": [
+        "Explicit willful breach carveout present",
+        "Willful breach liability survives both RTF and CTF payments",
+        "Clear definition of willful breach provided",
+        "Termination fee offsets against damages awarded"
+      ],
+      "confidence": "high"
+    },
+    "matching_rights": {
+      "present": true,
+      "acquirer_has_matching_rights": true,
+      "matching_window_days": 5,
+      "intervening_event_right": true,
+      "notice_required_before_acceptance": true,
+      "match_standard": "equally_favorable",
+      "party_favored": "buyer_favorable",
+      "risk_level": "low",
+      "risk_factors": [
+        "5 business days for matching rights",
+        "Equally favorable match standard",
+        "Intervening event provision allows board flexibility",
+        "Notice required before accepting superior proposal"
+      ],
+      "confidence": "high"
+    },
+    "financing_failure": {
+      "present": false,
+      "explicit_financing_failure_trigger": false,
+      "financing_condition_in_agreement": false,
+      "rtf_covers_financing_failure": false,
+      "buyer_financing_efforts_standard": "not specified",
+      "target_cooperation_required": false,
+      "party_favored": "buyer_favorable",
+      "risk_level": "low",
+      "risk_factors": [],
+      "confidence": "high"
+    },
+    "unilateral_extension": {
+      "present": true,
+      "buyer_can_extend_unilaterally": false,
+      "seller_can_extend_unilaterally": false,
+      "extension_trigger": "none",
+      "number_of_extensions_allowed": 0,
+      "extension_period_months": 0,
+      "maximum_extension_date_text": "none",
+      "party_favored": "unknown",
+      "risk_level": "low",
+      "risk_factors": [
+        "No unilateral extension rights for either party",
+        "No extensions allowed",
+        "Termination is definitive without further extensions"
+      ],
+      "confidence": "high"
+    }
+  },
+  "risk_summary": {
+    "overall_risk_level": "low",
+    "risk_score": 4,
+    "max_risk_score": 24,
+    "high_risk_provisions": [
+      "outside_date_duration"
+    ],
+    "medium_risk_provisions": [
+      "regulatory_rtf"
+    ],
+    "low_risk_provisions": [
+      "tail_provision",
+      "specific_performance",
+      "willful_breach",
+      "matching_rights",
+      "financing_failure",
+      "unilateral_extension"
+    ],
+    "provisions_checked": 8,
+    "provisions_present": 6,
+    "traffic_light": {
+      "outside_date_duration": {
+        "color": "red",
+        "risk_level": "high",
+        "party_favored": "unknown",
+        "confidence": "low",
+        "present": false,
+        "key_factors": [
+          "No initial outside date provided",
+          "No extension provisions mentioned"
+        ]
+      },
+      "regulatory_rtf": {
+        "color": "yellow",
+        "risk_level": "medium",
+        "party_favored": "unknown",
+        "confidence": "medium",
+        "present": true,
+        "key_factors": [
+          "Regulatory RTF amount is relatively small compared to total deal size",
+          "Potential for regulatory delays or blocks"
+        ]
+      },
+      "tail_provision": {
+        "color": "green",
+        "risk_level": "low",
+        "party_favored": "buyer_favorable",
+        "confidence": "high",
+        "present": true,
+        "key_factors": []
+      },
+      "specific_performance": {
+        "color": "green",
+        "risk_level": "low",
+        "party_favored": "seller_favorable",
+        "confidence": "high",
+        "present": true,
+        "key_factors": [
+          "Specific performance is available to the seller",
+          "Conditions for specific performance are reasonable and achievable"
+        ]
+      },
+      "willful_breach": {
+        "color": "green",
+        "risk_level": "low",
+        "party_favored": "seller_favorable",
+        "confidence": "high",
+        "present": true,
+        "key_factors": [
+          "Explicit willful breach carveout present",
+          "Willful breach liability survives both RTF and CTF payments"
+        ]
+      },
+      "matching_rights": {
+        "color": "green",
+        "risk_level": "low",
+        "party_favored": "buyer_favorable",
+        "confidence": "high",
+        "present": true,
+        "key_factors": [
+          "5 business days for matching rights",
+          "Equally favorable match standard"
+        ]
+      },
+      "financing_failure": {
+        "color": "green",
+        "risk_level": "low",
+        "party_favored": "buyer_favorable",
+        "confidence": "high",
+        "present": false,
+        "key_factors": []
+      },
+      "unilateral_extension": {
+        "color": "green",
+        "risk_level": "low",
+        "party_favored": "unknown",
+        "confidence": "high",
+        "present": true,
+        "key_factors": [
+          "No unilateral extension rights for either party",
+          "No extensions allowed"
+        ]
+      }
+    },
+    "top_concerns": []
+  },
+  "token_usage": {
+    "input_tokens": 3912,
+    "output_tokens": 769,
+    "estimated_cost": 0.0010482
+  }
+}

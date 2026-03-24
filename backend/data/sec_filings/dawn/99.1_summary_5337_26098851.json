@@ -1,0 +1,43 @@
+{
+  "ticker": "DAWN",
+  "company": "Day One Biopharmaceuticals, Inc.",
+  "filing_date": "01/06/26",
+  "exhibit_type": "Deal Update",
+  "L1_headline": "+ DAWN \u2013 Completed acquisition of Mersana Therapeutics. | 01/06/26",
+  "L2_brief": "Day One Biopharmaceuticals completed its acquisition of Mersana Therapeutics on January 6, 2026, paying $25.00 per share in cash plus one CVR per share worth up to $30.25 in potential milestone payments, for total consideration of up to $55.25 per share. The total estimated fair value of consideration transferred was $173.0 million ($125.0 million cash plus $48.0 million estimated fair value of CVRs), with $196.9 million in identifiable intangible assets acquired (including $174.5 million IPR&D) and $36.7 million in goodwill recognized.",
+  "L3_detailed": {
+    "event": "Day One Biopharmaceuticals completed its acquisition of all outstanding shares of Mersana Therapeutics via tender offer, as announced under the Merger Agreement dated November 12, 2025. The filing presents unaudited pro forma condensed combined financial information as of and for the nine months ended September 30, 2025 and for the year ended December 31, 2024.",
+    "key_figures": [
+      "Cash consideration: $125.0 million ($25.00 per share)",
+      "CVR estimated fair value: $48.0 million ($8.3 million current, $39.7 million long-term)",
+      "Total estimated consideration: $173.0 million",
+      "Maximum CVR payout: up to $30.25 per share (~$156.0 million aggregate undiscounted maximum)",
+      "Maximum total per-share consideration: up to $55.25",
+      "Identifiable intangible assets acquired: $196.9 million (contract-based license $22.4 million, IPR&D $174.5 million)",
+      "Goodwill recognized: $36.7 million",
+      "Deferred revenue assumed: $102.7 million",
+      "Pro forma combined net loss (9 months ended Sep 30, 2025): $145.9 million / ($1.42) per share",
+      "Pro forma combined net loss (year ended Dec 31, 2024): $180.5 million / ($1.94) per share",
+      "Pro forma combined revenue (9 months ended Sep 30, 2025): $121.3 million",
+      "Pro forma combined revenue (year ended Dec 31, 2024): $171.7 million",
+      "Day One liquidated $81.8 million in short-term investments to fund acquisition",
+      "Expected severance costs: ~$9.0 million",
+      "D&O tail insurance: $1.3 million",
+      "Transaction advisory/legal fees: $4.8 million; equity cash settlement obligations: $3.7 million"
+    ],
+    "market_impact": "The acquisition is completed. Day One's pro forma cash and short-term investments decrease significantly (from ~$451.6 million to ~$383.0 million combined). The combined entity carries $196.9 million in intangible assets and $36.7 million in goodwill. Pro forma combined net losses widen materially versus Day One standalone, reflecting Mersana's operating losses and transaction-related costs. The IPR&D asset of $174.5 million is indefinite-lived and not amortized until completion or abandonment of associated R&D.",
+    "forward_guidance": "Purchase price allocation is preliminary and subject to revision within the measurement period (up to one year from January 6, 2026 closing). CVR contingent consideration will be remeasured at fair value each reporting period with changes recognized in the statement of operations. Contract-based license intangible asset ($22.4 million) will be amortized over an estimated 17-year useful life. Management expects approximately $9.0 million in severance costs related to employee terminations.",
+    "deal_relevance": "The acquisition is complete as of January 6, 2026. All outstanding Mersana shares were acquired. CVR milestones remain outstanding, tied to regulatory milestones, commercial milestones, and specified net sales thresholds, with an aggregate undiscounted maximum of approximately $156.0 million. The company stated it is unable to reasonably estimate the range of undiscounted outcomes due to significant uncertainties regarding probability and timing of milestone achievement.",
+    "risks_flagged": [
+      "Purchase price allocation is preliminary and subject to material revision within the measurement period",
+      "CVR contingent consideration subject to remeasurement at fair value each reporting period, with changes flowing through the income statement",
+      "Significant uncertainties regarding CVR milestone achievement including development risk, regulatory approval risk, and variability of future commercial performance",
+      "IPR&D asset of $174.5 million is indefinite-lived and subject to impairment testing; could be impaired if associated R&D is abandoned",
+      "Mersana has significant net operating loss carryforwards with full valuation allowance; deferred tax accounting is preliminary and could have material effect",
+      "Pro forma financials do not reflect integration costs, synergies, or revenue growth",
+      "Combined entity shows widened pro forma net losses",
+      "Expected severance costs of approximately $9.0 million"
+    ]
+  },
+  "filing_type": "99.1"
+}

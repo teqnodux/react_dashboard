@@ -1,0 +1,632 @@
+{
+  "deal_id": "D085",
+  "last_updated": "2026-03-20",
+  "approvals": [
+    {
+      "id": "hsr",
+      "master_id": "hsr_filing",
+      "jurisdiction": "US",
+      "authority_short": "DOJ / FTC",
+      "authority_full": "DOJ / FTC",
+      "statute": "Premerger notification required under 15 U.S.C. \u00a7 18a if size-of-transaction (>$119.5M indexed) and size-of-person thresholds are met. Initiates a 30-day waiting period (15 days for cash tender offers).",
+      "category": "US Antitrust",
+      "status": "cleared",
+      "status_detail": "Cleared \u2014 Waiting Period Expired",
+      "filing_key": "reg_hsr_filing",
+      "filed_date": "2026-02-13",
+      "cleared_date": "2026-03-15",
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "The transaction requires 'HSR Act waiting period expiration or termination' as a remaining closing condition.",
+      "source_doc": "PRESS_RELEASE 2026-01-14",
+      "source_doc_type": "PRESS_RELEASE",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-20",
+      "status_history": [
+        {
+          "status": "Not Filed",
+          "status_legacy": "filed",
+          "date": "2026-01-14",
+          "source_doc": "PRESS_RELEASE 2026-01-14",
+          "source_doc_type": "PRESS_RELEASE",
+          "source_url": null,
+          "excerpt": "The transaction requires 'HSR Act waiting period expiration or termination' as a remaining closing condition.",
+          "detected_at": "2026-03-21T00:02:47.581513Z"
+        },
+        {
+          "status": "Filed \u2014 Waiting Period Running",
+          "status_legacy": "filed",
+          "date": "2026-03-20",
+          "source_doc": "proxy_summary_2026-03-17T22-49-31 2026-03-20",
+          "source_doc_type": "proxy_summary_2026-03-17T22-49-31",
+          "source_url": null,
+          "excerpt": "Both parties filed HSR Act notifications on February 13, 2026, with the waiting period scheduled to expire March 16, 2026.",
+          "detected_at": "2026-03-21T00:06:58.954055Z"
+        },
+        {
+          "status": "Cleared \u2014 Waiting Period Expired",
+          "status_legacy": "cleared",
+          "date": "2026-03-15",
+          "source_doc": "Time-based inference",
+          "source_doc_type": "system",
+          "source_url": null,
+          "excerpt": "HSR 30-day waiting period expired on 2026-03-15 with no second request or litigation detected.",
+          "detected_at": "2026-03-21T00:06:58.982830Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "filing_date": "2026-02-13",
+        "waiting_period_end": "2026-03-16"
+      }
+    },
+    {
+      "id": "reg_ftc",
+      "master_id": "ftc_clearance",
+      "jurisdiction": "US",
+      "authority_short": "Federal Trade Commission",
+      "authority_full": "Federal Trade Commission",
+      "statute": "FTC substantive antitrust review. FTC typically reviews pharma, healthcare, consumer goods, and retail sectors. May issue consent order, accept divestitures, or issue administrative complaint and seek preliminary injunction.",
+      "category": "US Antitrust",
+      "status": "under_review",
+      "status_detail": "Under Review",
+      "filing_key": "reg_ftc_clearance",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "The merger agreement requires 'HSR Act waiting period expiration or termination' and 'antitrust consents/approvals in certain other jurisdictions' as remaining conditions.",
+      "source_doc": "PRESS_RELEASE 2026-01-14",
+      "source_doc_type": "PRESS_RELEASE",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-20",
+      "status_history": [
+        {
+          "status": "Under Review",
+          "status_legacy": "under_review",
+          "date": "2026-01-14",
+          "source_doc": "PRESS_RELEASE 2026-01-14",
+          "source_doc_type": "PRESS_RELEASE",
+          "source_url": null,
+          "excerpt": "The merger agreement requires 'HSR Act waiting period expiration or termination' and 'antitrust consents/approvals in certain other jurisdictions' as remaining conditions.",
+          "detected_at": "2026-03-21T00:02:47.581513Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "hsr_filing_date": "2026-02-13",
+        "waiting_period_end": "2026-03-16"
+      }
+    },
+    {
+      "id": "reg_nasdaq",
+      "master_id": "target_shareholder_vote",
+      "jurisdiction": "N/A",
+      "authority_short": "Target Board / Stockholders",
+      "authority_full": "Target Board / Stockholders",
+      "statute": "Stockholder approval required in most public company mergers. Threshold depends on merger structure and state of incorporation (typically majority of shares outstanding for Delaware long-form mergers).",
+      "category": "Shareholder & Contractual",
+      "status": "filed",
+      "status_detail": "Proxy Filed",
+      "filing_key": "reg_target_shareholder_vote",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "Definitive proxy and meeting dates contingent on SEC Form S-4 registration statement becoming effective",
+      "notes": "PEN stockholder approval (majority of outstanding voting power) is listed as a remaining closing condition, with a Form S-4 registration statement required for the stock consideration component.",
+      "source_doc": "PRESS_RELEASE 2026-01-14",
+      "source_doc_type": "PRESS_RELEASE",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-20",
+      "status_history": [
+        {
+          "status": "Proxy Filed",
+          "status_legacy": "filed",
+          "date": "2026-01-14",
+          "source_doc": "PRESS_RELEASE 2026-01-14",
+          "source_doc_type": "PRESS_RELEASE",
+          "source_url": null,
+          "excerpt": "PEN stockholder approval (majority of outstanding voting power) is listed as a remaining closing condition, with a Form S-4 registration statement required for the stock consideration component.",
+          "detected_at": "2026-03-21T00:02:47.581513Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "record_date": "TBD \u2014 blank placeholder in preliminary proxy",
+        "meeting_date": "TBD \u2014 blank placeholder in preliminary proxy",
+        "meeting_time": "10:00 a.m. Pacific Time",
+        "meeting_location": "Building 1310, One Penumbra Place, Alameda, CA 94502",
+        "proxy_filed_date": "2026-02-27"
+      }
+    },
+    {
+      "id": "reg_sec_s4_proxy",
+      "master_id": "sec_s4_proxy",
+      "jurisdiction": "US",
+      "authority_short": "Securities and Exchange Commission",
+      "authority_full": "Securities and Exchange Commission",
+      "statute": "Form S-4 registration statement required for stock-for-stock mergers; proxy statement (Schedule 14A) required for cash mergers requiring target stockholder vote. SEC staff review typically takes 30 days; comments must be resolved before effectiveness.",
+      "category": "Shareholder & Contractual",
+      "status": "pending",
+      "status_detail": "Preliminary Filing Made",
+      "filing_key": "reg_sec_s4_proxy",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "SEC must declare registration statement effective before definitive proxy can be mailed and meeting dates set",
+      "notes": "'Effectiveness of BSX Form S-4 registration statement with the SEC' is listed as a remaining closing condition.",
+      "source_doc": "PRESS_RELEASE 2026-01-14",
+      "source_doc_type": "PRESS_RELEASE",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-20",
+      "status_history": [
+        {
+          "status": "Not Filed",
+          "status_legacy": "filed",
+          "date": "2026-01-14",
+          "source_doc": "PRESS_RELEASE 2026-01-14",
+          "source_doc_type": "PRESS_RELEASE",
+          "source_url": null,
+          "excerpt": "'Effectiveness of BSX Form S-4 registration statement with the SEC' is listed as a remaining closing condition.",
+          "detected_at": "2026-03-21T00:02:47.581513Z"
+        },
+        {
+          "status": "Preliminary Filing Made",
+          "status_legacy": "pending",
+          "date": "2026-03-20",
+          "source_doc": "proxy_summary_2026-03-17T22-49-31 2026-03-20",
+          "source_doc_type": "proxy_summary_2026-03-17T22-49-31",
+          "source_url": null,
+          "excerpt": "The specific calendar dates will be populated in the definitive proxy statement once the SEC registration statement becomes effective, referencing a preliminary proxy statement dated February 27, 2026.",
+          "detected_at": "2026-03-21T00:06:58.954055Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "preliminary_proxy_filed_date": "2026-02-27",
+        "effective_date": "TBD \u2014 pending SEC review"
+      }
+    },
+    {
+      "id": "reg_fda",
+      "master_id": "fda_hhs_cms",
+      "jurisdiction": "US",
+      "authority_short": "FDA / HHS / CMS",
+      "authority_full": "FDA / HHS / CMS",
+      "statute": "FDA marketing authorizations (NDA, BLA, 510(k)) transfer with the legal entity but manufacturing site changes require FDA notification. CMS Change of Ownership (CHOW) required for each Medicare/Medicaid provider number. May require state-level CHOW in parallel.",
+      "category": "US Federal \u2014 Sector",
+      "status": "filed",
+      "status_detail": "Not Filed",
+      "filing_key": "reg_fda_hhs_cms",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "",
+      "source_doc": "PRESS_RELEASE 2026-01-14",
+      "source_doc_type": "PRESS_RELEASE",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-20",
+      "status_history": [
+        {
+          "status": "Not Filed",
+          "status_legacy": "filed",
+          "date": "2026-01-14",
+          "source_doc": "PRESS_RELEASE 2026-01-14",
+          "source_doc_type": "PRESS_RELEASE",
+          "source_url": null,
+          "excerpt": null,
+          "detected_at": "2026-03-21T00:02:47.581513Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {}
+    },
+    {
+      "id": "reg_ec",
+      "master_id": "eu_ec_merger",
+      "jurisdiction": "EU",
+      "authority_short": "European Commission \u2014 DG Competition",
+      "authority_full": "European Commission \u2014 DG Competition",
+      "statute": "EC merger review under EU Merger Regulation (EUMR) 139/2004. One-stop-shop for EU-wide transactions. Phase I: 25 working days. Phase II: additional 90 working days. Can be extended for remedies. Member state referrals possible under Article 9 (to national CA) or Article 22 (from national CAs to EC).",
+      "category": "International \u2014 Major",
+      "status": "pending",
+      "status_detail": "Pre-Filing",
+      "filing_key": "reg_eu_ec_merger",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "Pending referral noted \u2014 possible member state referral to or from European Commission under EUMR Article 9 or 22",
+      "notes": "The transaction requires 'antitrust consents/approvals in certain other jurisdictions' beyond the HSR, implying EU and potentially other international filings are anticipated.",
+      "source_doc": "PRESS_RELEASE 2026-01-14",
+      "source_doc_type": "PRESS_RELEASE",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-20",
+      "status_history": [
+        {
+          "status": "Pre-Filing",
+          "status_legacy": "pending",
+          "date": "2026-01-14",
+          "source_doc": "PRESS_RELEASE 2026-01-14",
+          "source_doc_type": "PRESS_RELEASE",
+          "source_url": null,
+          "excerpt": "The transaction requires 'antitrust consents/approvals in certain other jurisdictions' beyond the HSR, implying EU and potentially other international filings are anticipated.",
+          "detected_at": "2026-03-21T00:02:47.581513Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "non_us_filing_deadline": "2026-03-05",
+        "notes": "50 calendar days from January 14, 2026 = approximately March 5, 2026"
+      }
+    },
+    {
+      "id": "reg_state_ag_antitrust",
+      "master_id": "state_ag_antitrust",
+      "jurisdiction": "US",
+      "authority_short": "State Attorneys General",
+      "authority_full": "State Attorneys General",
+      "statute": "State attorneys general can independently investigate and challenge mergers under state antitrust law. Can seek injunctions in state or federal court. Most active AGs: California (DOJ), New York (AG), Texas (AG), Illinois (AG), Colorado (AG), Massachusetts (AG).",
+      "category": "US State",
+      "status": "filing_intent",
+      "status_detail": "Monitoring",
+      "filing_key": "reg_state_ag_antitrust",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "",
+      "source_doc": "PRESS_RELEASE 2026-01-14",
+      "source_doc_type": "PRESS_RELEASE",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-20",
+      "status_history": [
+        {
+          "status": "Monitoring",
+          "status_legacy": "filing_intent",
+          "date": "2026-01-14",
+          "source_doc": "PRESS_RELEASE 2026-01-14",
+          "source_doc_type": "PRESS_RELEASE",
+          "source_url": null,
+          "excerpt": null,
+          "detected_at": "2026-03-21T00:02:47.581513Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {}
+    }
+  ],
+  "documents_processed": [
+    {
+      "doc_type": "PRESS_RELEASE",
+      "doc_date": "2026-01-14",
+      "doc_url": null,
+      "processed_at": "2026-03-21T00:02:47.581513Z",
+      "approvals_found": 7,
+      "additions": [
+        "hsr",
+        "reg_ftc",
+        "reg_nasdaq",
+        "reg_sec_s4_proxy",
+        "reg_fda",
+        "reg_ec",
+        "reg_state_ag_antitrust"
+      ],
+      "status_changes": [],
+      "conflicts_created": 0,
+      "pipeline": "regulatory_monitor"
+    },
+    {
+      "doc_type": "DMA_SECTIONS",
+      "doc_date": "2026-03-20",
+      "doc_url": null,
+      "processed_at": "2026-03-21T00:04:20.207671Z",
+      "approvals_found": 6,
+      "additions": [],
+      "status_changes": [],
+      "conflicts_created": 0,
+      "pipeline": "regulatory_monitor"
+    },
+    {
+      "doc_type": "DMA_EXTRACT",
+      "doc_date": "2026-03-20",
+      "doc_url": null,
+      "processed_at": "2026-03-21T00:05:46.741808Z",
+      "approvals_found": 6,
+      "additions": [],
+      "status_changes": [],
+      "conflicts_created": 0,
+      "pipeline": "regulatory_monitor"
+    },
+    {
+      "doc_type": "proxy_summary_2026-03-17T22-49-31",
+      "doc_date": "2026-03-20",
+      "doc_url": null,
+      "processed_at": "2026-03-21T00:06:58.954055Z",
+      "approvals_found": 6,
+      "additions": [],
+      "status_changes": [
+        "hsr: Not Filed\u2192Filed \u2014 Waiting Period Running",
+        "reg_sec_s4_proxy: Not Filed\u2192Preliminary Filing Made"
+      ],
+      "conflicts_created": 0,
+      "pipeline": "regulatory_monitor"
+    }
+  ],
+  "documents_triaged": [
+    {
+      "doc_type": "10-K",
+      "doc_date": "02/25/26",
+      "doc_url": "https://www.sec.gov/Archives/edgar/data/1321732/000132173226000007/pen-20251231.htm",
+      "triaged_at": "2026-03-21T00:01:45.352584Z",
+      "relevant": false,
+      "reason": "This document is a Penumbra Inc 10-K filing containing only standard financial and operational data with no information about the Boston Scientific merger, regulatory approvals, antitrust review, government clearances, shareholder votes, or deal status."
+    },
+    {
+      "doc_type": "425",
+      "doc_date": "03/03/26",
+      "doc_url": "https://www.sec.gov/Archives/edgar/data/1321732/000110465926022918/tm266847d5_425.htm",
+      "triaged_at": "2026-03-21T00:01:51.503216Z",
+      "relevant": false,
+      "reason": "This document is a conference Q&A transcript discussing Boston Scientific's growth guidance and acquisition rationale for Penumbra, but contains no information about regulatory approvals, antitrust review status, government clearances, shareholder votes, or closing conditions."
+    },
+    {
+      "doc_type": "OTHER",
+      "doc_date": "03/04/26",
+      "doc_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001321732&type=4&dateb=&owner=include&count=40",
+      "triaged_at": "2026-03-21T00:01:57.963369Z",
+      "relevant": false,
+      "reason": "This document is only an EDGAR search results page listing Penumbra Inc filings and does not contain any substantive information about regulatory approvals, antitrust review, government clearances, shareholder votes, or deal closing conditions."
+    }
+  ],
+  "change_log": [
+    {
+      "timestamp": "2026-03-21T00:02:47.581513Z",
+      "source_doc": "PRESS_RELEASE 2026-01-14",
+      "source_doc_type": "PRESS_RELEASE",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "hsr",
+          "detail": "HSR Filing (Hart-Scott-Rodino) newly discovered from PRESS_RELEASE"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_ftc",
+          "detail": "FTC Clearance newly discovered from PRESS_RELEASE"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_nasdaq",
+          "detail": "Target Shareholder Vote newly discovered from PRESS_RELEASE"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_sec_s4_proxy",
+          "detail": "SEC Proxy / S-4 Registration Statement newly discovered from PRESS_RELEASE"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_fda",
+          "detail": "FDA / HHS / CMS Approvals newly discovered from PRESS_RELEASE"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_ec",
+          "detail": "EU \u2014 European Commission Merger Review (Phase I / II) newly discovered from PRESS_RELEASE"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_state_ag_antitrust",
+          "detail": "State AG Antitrust Review newly discovered from PRESS_RELEASE"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-21T00:06:58.954055Z",
+      "source_doc": "proxy_summary_2026-03-17T22-49-31 2026-03-20",
+      "source_doc_type": "proxy_summary_2026-03-17T22-49-31",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "Not Filed",
+          "to": "Filed \u2014 Waiting Period Running",
+          "detail": "DOJ / FTC: Not Filed \u2192 Filed \u2014 Waiting Period Running"
+        },
+        {
+          "type": "status_change",
+          "approval_id": "reg_sec_s4_proxy",
+          "from": "Not Filed",
+          "to": "Preliminary Filing Made",
+          "detail": "Securities and Exchange Commission: Not Filed \u2192 Preliminary Filing Made"
+        }
+      ]
+    }
+  ],
+  "deal_events": [
+    {
+      "doc_date": "2026-01-14",
+      "source_doc": "PRESS_RELEASE 2026-01-14",
+      "event_type": "S-4 Registration Statement",
+      "description": "BSX must file and obtain SEC effectiveness of Form S-4 before stockholder vote can occur; no filing date disclosed yet",
+      "excerpt": "Effectiveness of BSX Form S-4 registration statement with the SEC",
+      "detected_at": "2026-03-21T00:02:47.583513Z"
+    },
+    {
+      "doc_date": "2026-01-14",
+      "source_doc": "PRESS_RELEASE 2026-01-14",
+      "event_type": "Stockholder Vote",
+      "description": "PEN stockholder approval required; contingent on S-4 effectiveness; no meeting date set",
+      "excerpt": "PEN stockholder approval (majority of outstanding voting power)",
+      "detected_at": "2026-03-21T00:02:47.583519Z"
+    },
+    {
+      "doc_date": "2026-01-14",
+      "source_doc": "PRESS_RELEASE 2026-01-14",
+      "event_type": "Antitrust Clearances",
+      "description": "HSR waiting period expiration and international antitrust consents required; no timelines disclosed",
+      "excerpt": "HSR Act waiting period expiration or termination; antitrust consents/approvals in certain other jurisdictions",
+      "detected_at": "2026-03-21T00:02:47.583522Z"
+    },
+    {
+      "doc_date": "2026-01-14",
+      "source_doc": "PRESS_RELEASE 2026-01-14",
+      "event_type": "NYSE Listing",
+      "description": "NYSE listing approval for BSX shares issued as stock consideration is a parallel closing condition",
+      "excerpt": "NYSE listing approval for BSX shares to be issued as stock consideration",
+      "detected_at": "2026-03-21T00:02:47.583525Z"
+    },
+    {
+      "doc_date": "2026-01-14",
+      "source_doc": "PRESS_RELEASE 2026-01-14",
+      "event_type": "Merger Agreement Signed",
+      "description": "Penumbra entered into a definitive Agreement and Plan of Merger with Boston Scientific Corporation and wholly owned subsidiary Pinehurst Merger Sub, Inc.",
+      "excerpt": "Penumbra, Inc. (PEN) entered into an Agreement and Plan of Merger with Boston Scientific Corporation (BSX) and its wholly owned subsidiary Pinehurst Merger Sub, Inc.",
+      "detected_at": "2026-03-21T00:02:47.583528Z"
+    },
+    {
+      "doc_date": "2026-01-14",
+      "source_doc": "PRESS_RELEASE 2026-01-14",
+      "event_type": "Deal Structure Disclosed",
+      "description": "Mixed cash/stock deal: $374.00/share cash for 73.26% of shares; 3.8721 BSX shares per PEN share for 26.74% of shares, subject to proration; no financing condition",
+      "excerpt": "Cash consideration: $374.00 per share (for 73.26% of outstanding shares); Stock consideration: 3.8721 BSX shares per PEN share (for 26.74% of outstanding shares)",
+      "detected_at": "2026-03-21T00:02:47.583531Z"
+    },
+    {
+      "doc_date": "2026-01-14",
+      "source_doc": "PRESS_RELEASE 2026-01-14",
+      "event_type": "Termination Fee Disclosed",
+      "description": "Company termination fee set at $525M; Parent reverse termination fee for antitrust-related failure set at $900M",
+      "excerpt": "Parent owes a $900M reverse termination fee for antitrust-related failure, while the Company owes a $525M termination fee under specified circumstances.",
+      "detected_at": "2026-03-21T00:02:47.583534Z"
+    },
+    {
+      "doc_date": "2026-01-14",
+      "source_doc": "PRESS_RELEASE 2026-01-14",
+      "event_type": "Fiduciary Out Provision",
+      "description": "PEN Board retains right to change recommendation or terminate for a superior proposal subject to $525M termination fee",
+      "excerpt": "Fiduciary out provision permits the PEN Board to change recommendation or terminate for a superior proposal (subject to $525M termination fee)",
+      "detected_at": "2026-03-21T00:02:47.583537Z"
+    },
+    {
+      "doc_date": "2026-01-14",
+      "source_doc": "PRESS_RELEASE 2026-01-14",
+      "event_type": "Preliminary Financial Results Disclosed",
+      "description": "Preliminary unaudited Q4/FY2025 financial results disclosed in conjunction with merger announcement",
+      "excerpt": "Preliminary Q4/FY2025 financial results disclosed but unaudited; actual results may differ",
+      "detected_at": "2026-03-21T00:02:47.583540Z"
+    },
+    {
+      "doc_date": "2026-03-20",
+      "source_doc": "proxy_summary_2026-03-17T22-49-31 2026-03-20",
+      "event_type": "close_timing",
+      "description": "Expected close updated: unknown \u2192 2026 (management target), with Initial Outside Date of January 14, 2027",
+      "excerpt": null,
+      "detected_at": "2026-03-21T00:06:58.956311Z"
+    },
+    {
+      "doc_date": "2026-03-20",
+      "source_doc": "proxy_summary_2026-03-17T22-49-31 2026-03-20",
+      "event_type": "HSR Filing",
+      "description": "Both parties filed HSR Act notifications on February 13, 2026; initial 30-day waiting period scheduled to expire March 16, 2026",
+      "excerpt": "Both parties filed HSR Act notifications on February 13, 2026, with the waiting period scheduled to expire March 16, 2026.",
+      "detected_at": "2026-03-21T00:06:58.956321Z"
+    },
+    {
+      "doc_date": "2026-03-20",
+      "source_doc": "proxy_summary_2026-03-17T22-49-31 2026-03-20",
+      "event_type": "Preliminary Proxy / S-4 Filing",
+      "description": "Preliminary proxy statement filed February 27, 2026; SEC effectiveness pending before definitive proxy can be mailed and meeting dates set",
+      "excerpt": "The specific calendar dates will be populated in the definitive proxy statement once the SEC registration statement becomes effective.",
+      "detected_at": "2026-03-21T00:06:58.956324Z"
+    },
+    {
+      "doc_date": "2026-03-20",
+      "source_doc": "proxy_summary_2026-03-17T22-49-31 2026-03-20",
+      "event_type": "Shareholder Meeting",
+      "description": "Special Meeting date and Record Date formally set by Board but remain blank placeholders in preliminary proxy; meeting to be held in-person at Alameda, CA",
+      "excerpt": "The Record Date is established as [blank], 2026... The Special Meeting is scheduled for [blank], 2026 at 10:00 a.m. Pacific Time at Building 1310, One Penumbra Place, Alameda, CA 94502.",
+      "detected_at": "2026-03-21T00:06:58.956327Z"
+    },
+    {
+      "doc_date": "2026-03-20",
+      "source_doc": "proxy_summary_2026-03-17T22-49-31 2026-03-20",
+      "event_type": "Non-U.S. Regulatory Filings Deadline",
+      "description": "Non-U.S. filings required to be initiated within 50 calendar days of January 14, 2026 Merger Agreement (deadline approximately March 5, 2026)",
+      "excerpt": "Non-U.S. filings must be initiated within 50 calendar days of the January 14, 2026 Merger Agreement date.",
+      "detected_at": "2026-03-21T00:06:58.956329Z"
+    },
+    {
+      "doc_date": "2026-03-20",
+      "source_doc": "proxy_summary_2026-03-17T22-49-31 2026-03-20",
+      "event_type": "Outside Date / Reverse Termination Fee",
+      "description": "Initial Outside Date is January 14, 2027 (12 months from signing); Boston Scientific committed to $900M reverse termination fee if regulatory approvals not obtained within 24 months (by January 14, 2028)",
+      "excerpt": "The merger agreement establishes an Initial Outside Date of January 14, 2027 (12 months from signing), with extension provisions available to either party.",
+      "detected_at": "2026-03-21T00:06:58.956332Z"
+    },
+    {
+      "doc_date": "2026-02-13",
+      "source_doc": "proxy_summary_2026-03-17T22-49-31 2026-03-20",
+      "event_type": "HSR Filing",
+      "description": "Both Boston Scientific and Penumbra filed HSR Act premerger notifications on February 13, 2026; 30-day waiting period set to expire March 16, 2026",
+      "excerpt": "Both parties filed HSR Act notifications on February 13, 2026, with the waiting period scheduled to expire March 16, 2026.",
+      "detected_at": "2026-03-21T00:06:58.956335Z"
+    },
+    {
+      "doc_date": "2026-02-27",
+      "source_doc": "proxy_summary_2026-03-17T22-49-31 2026-03-20",
+      "event_type": "Preliminary Proxy / S-4 Filed",
+      "description": "Penumbra filed preliminary proxy statement (Form S-4 or Schedule 14A) with SEC dated February 27, 2026; SEC review and effectiveness pending",
+      "excerpt": "The specific calendar dates will be populated in the definitive proxy statement once the SEC registration statement becomes effective.",
+      "detected_at": "2026-03-21T00:06:58.956338Z"
+    },
+    {
+      "doc_date": "2026-02-27",
+      "source_doc": "proxy_summary_2026-03-17T22-49-31 2026-03-20",
+      "event_type": "Consideration Terms Confirmed",
+      "description": "10-day VWAP ending two trading days prior to closing confirmed as BSX stock price measurement period; fixed proration of 73.26% cash / 26.74% stock confirmed; no fractional shares, cash in lieu based on same VWAP",
+      "excerpt": "The Boston Scientific stock price for consideration purposes is determined using a 10-day volume-weighted average price (VWAP) ending two trading days prior to closing, sourced from Bloomberg L.P.",
+      "detected_at": "2026-03-21T00:06:58.956341Z"
+    },
+    {
+      "doc_date": "2026-02-27",
+      "source_doc": "proxy_summary_2026-03-17T22-49-31 2026-03-20",
+      "event_type": "EU Regulatory Filing Noted",
+      "description": "EU competition law clearance required and described as subject to pending referral; non-U.S. filings required within 50 days of signing (approximately March 5, 2026 deadline)",
+      "excerpt": "Non-U.S. approvals include EU competition law clearance (subject to pending referral) and competition/foreign investment approvals in certain other jurisdictions.",
+      "detected_at": "2026-03-21T00:06:58.956343Z"
+    },
+    {
+      "doc_date": "2026-02-27",
+      "source_doc": "proxy_summary_2026-03-17T22-49-31 2026-03-20",
+      "event_type": "Management Closing Guidance",
+      "description": "Management publicly targets 2026 close; Initial Outside Date January 14, 2027; reverse termination fee backstop extends to January 14, 2028",
+      "excerpt": "Management expects the transaction to close in 2026, as stated in the proxy statement filed following the January 14, 2026 merger agreement signing.",
+      "detected_at": "2026-03-21T00:06:58.956346Z"
+    },
+    {
+      "doc_date": "2026-02-27",
+      "source_doc": "proxy_summary_2026-03-17T22-49-31 2026-03-20",
+      "event_type": "No Competing Bids / No Union Issues",
+      "description": "No competing bids or inbound interest reported; no union or collective bargaining matters disclosed in proxy excerpts",
+      "excerpt": "No union-related matters are specifically disclosed in the provided SEC filing excerpts... the excerpts contain no references to collective bargaining agreements, union contracts, labor organizations, work stoppages, or union consultation requirements.",
+      "detected_at": "2026-03-21T00:06:58.956348Z"
+    }
+  ],
+  "management_commentary": [
+    {
+      "doc_date": "2026-01-14",
+      "source_doc": "PRESS_RELEASE 2026-01-14",
+      "commentary": "The absence of a financing condition removes funding risk; the large $900M reverse break fee provides protection to PEN shareholders against antitrust-related deal failure. Timeline depends on SEC registration statement effectiveness, stockholder vote, and antitrust clearances across multiple jurisdictions.",
+      "detected_at": "2026-03-21T00:02:47.583543Z"
+    },
+    {
+      "doc_date": "2026-03-20",
+      "source_doc": "proxy_summary_2026-03-17T22-49-31 2026-03-20",
+      "commentary": "Management expects the transaction to close in 2026 with an Initial Outside Date of January 14, 2027 and a $900M reverse termination fee backstop extending to January 14, 2028 for regulatory failure; the proxy cautions that actual timing depends on stockholder approval, HSR clearance, other regulatory approvals, and SEC registration statement effectiveness.",
+      "detected_at": "2026-03-21T00:06:58.956352Z"
+    }
+  ],
+  "expected_close": "2026 (management target), with Initial Outside Date of January 14, 2027"
+}

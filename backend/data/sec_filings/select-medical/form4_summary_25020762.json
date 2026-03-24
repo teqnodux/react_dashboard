@@ -1,0 +1,30 @@
+{
+  "ticker": "SEM",
+  "issuer": "SELECT MEDICAL HOLDINGS CORP",
+  "filing_date": "07/31/25",
+  "insider_name": "John A. Saich",
+  "insider_title": "Executive Vice President",
+  "relationship": "Officer",
+  "L1_headline": "+ SEM \u2013 John A. Saich acquired 100,000 restricted stock shares. | 07/29/25",
+  "L2_brief": "John A. Saich, Executive Vice President of Select Medical Holdings, received a grant of 100,000 restricted stock shares on July 29, 2025, at no cost. The shares vest in full on July 29, 2028, representing a long-term retention award that aligns executive compensation with shareholder interests over a 3-year period.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "07/29/2025",
+        "shares": "100,000",
+        "price_per_share": "$0",
+        "total_value": "$0 (compensation grant)",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "758,157 shares",
+    "ownership_type": "Direct",
+    "deal_signal": "N/A",
+    "pattern_notes": "This is a restricted stock grant as part of executive compensation, not an open-market purchase. The grant represents approximately 13% of the insider's total post-transaction holdings, indicating a meaningful equity stake. The 3-year cliff vesting schedule suggests the company is focused on long-term executive retention.",
+    "risks_flagged": [
+      "Not a discretionary purchase - compensation grant",
+      "No 10b5-1 plan indicated as this is an award, not a sale"
+    ]
+  }
+}

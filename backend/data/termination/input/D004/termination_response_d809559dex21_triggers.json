@@ -1,0 +1,208 @@
+{
+  "document_id": "d809559dex21",
+  "total_clauses": 12,
+  "clauses": [
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "preamble",
+      "clause_type": "preamble",
+      "trigger_type": "preamble",
+      "original_text": "Notwithstanding anything contained in this Agreement to the contrary, this Agreement may be terminated at any time prior to the Effective Time, whether before or after the Company Stockholder Approval is obtained (except as otherwise expressly noted), as follows:",
+      "processed_text": "Notwithstanding anything contained in this Agreement to the contrary, this Agreement may be terminated at any time prior to the Effective Time, whether before or after the Company Stockholder Approval is obtained (except as otherwise expressly noted), as follows:",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ]
+    },
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "a",
+      "clause_type": "trigger",
+      "trigger_type": "mutual_consent",
+      "original_text": "by mutual written consent of each of Parent and the Company;",
+      "processed_text": "by mutual written consent of each of Parent and the Company;",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "b_preamble",
+      "clause_type": "preamble",
+      "trigger_type": "preamble",
+      "original_text": "by either Parent or the Company, if:",
+      "processed_text": "by either Parent or the Company, if:",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "b_i",
+      "clause_type": "trigger",
+      "trigger_type": "outside_date",
+      "original_text": "the Merger shall not have been consummated on or before 5:00 p.m. (Chicago, Illinois, United States time) on the twelve (12)-month anniversary of the date of this Agreement (the \"Termination Date\"); provided that if, on the Termination Date, any of the conditions to Closing set forth in Section 6.1(d) or Section 6.1(e) (if the Restraint is in respect of an Antitrust Law) shall not have been satisfied, but all other conditions set forth in Section 6.1 through Section 6.3 shall have been satisfied or waived (other than those conditions that by their nature are to be satisfied at the Effective Time (if such conditions are capable of being satisfied were the Closing to occur at such time)), the Termination Date shall automatically, without any action on the part of the parties hereto, be extended for three (3) months, and such date as so extended shall be the \"Termination Date\" for all purposes hereunder; provided, further, that the right to terminate this Agreement pursuant to this Section 7.1(b)(i) shall not be available to any party if a material breach by such party of any of its obligations under this Agreement has been the principal cause of or principally resulted in the failure of the Closing to have occurred on or before the Termination Date;",
+      "processed_text": "the Merger shall not have been consummated on or before 5:00 p.m. (Chicago, Illinois, United States time) on the twelve (12)-month anniversary of the date of this Agreement (the \"Termination Date\"); provided that if, on the Termination Date, any of the conditions to Closing set forth in Section 6.1(d) or Section 6.1(e) (if the Restraint is in respect of an Antitrust Law) shall not have been satisfied, but all other conditions set forth in Section 6.1 through Section 6.3 shall have been satisfied or waived (other than those conditions that by their nature are to be satisfied at the Effective Time (if such conditions are capable of being satisfied were the Closing to occur at such time)), the Termination Date shall automatically, without any action on the part of the parties hereto, be extended for three (3) months, and such date as so extended shall be the \"Termination Date\" for all purposes hereunder; provided, further, that the right to terminate this Agreement pursuant to this Section 7.1(b)(i) shall not be available to any party if a material breach by such party of any of its obligations under this Agreement has been the principal cause of or principally resulted in the failure of the Closing to have occurred on or before the Termination Date;",
+      "parties_replaced": []
+    },
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "b_ii",
+      "clause_type": "trigger",
+      "trigger_type": "regulatory_block",
+      "original_text": "prior to the Effective Time, any Restraint shall have been enacted or promulgated after the date of this Agreement that has the effect of permanently restraining, enjoining or otherwise prohibiting the Merger, and in the case of a Restraint that is an Order, such Order shall have become final and non-appealable; provided, however, that the right to terminate this Agreement under this Section 7.1(b)(ii) shall not be available to a party if a material breach by such party of its obligations under Section 5.4 has been the principal cause of or principally resulted in the issuance of such Restraint; or",
+      "processed_text": "prior to the Effective Time, any Restraint shall have been enacted or promulgated after the date of this Agreement that has the effect of permanently restraining, enjoining or otherwise prohibiting the Merger, and in the case of a Restraint that is an Order, such Order shall have become final and non-appealable; provided, however, that the right to terminate this Agreement under this Section 7.1(b)(ii) shall not be available to a party if a material breach by such party of its obligations under Section 5.4 has been the principal cause of or principally resulted in the issuance of such Restraint; or",
+      "parties_replaced": []
+    },
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "b_iii",
+      "clause_type": "trigger",
+      "trigger_type": "shareholder_vote_failure",
+      "original_text": "the Company Stockholder Approval shall not have been obtained upon a vote taken thereon at the Company Stockholders' Meeting duly convened therefor or at any adjournment or postponement thereof;",
+      "processed_text": "the Company Stockholder Approval shall not have been obtained upon a vote taken thereon at the Company Stockholders' Meeting duly convened therefor or at any adjournment or postponement thereof;",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ]
+    },
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "c_preamble",
+      "clause_type": "preamble",
+      "trigger_type": "preamble",
+      "original_text": "by the Company if:",
+      "processed_text": "by the Company if:",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ]
+    },
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "c_i",
+      "clause_type": "trigger",
+      "trigger_type": "acquirer_breach",
+      "original_text": "Parent or Merger Sub shall have breached or failed to perform any of their respective representations, warranties, covenants or other agreements set forth in this Agreement, which breach or failure to perform (A) would result in the failure of a condition set forth in Section 6.3(a) or Section 6.3(b) and (B) is not capable of being cured by Parent or Merger Sub, as applicable, by the Termination Date or, if capable of being cured, shall not have been cured by Parent or Merger Sub on or before the earlier of (x) the Termination Date and (y) the date that is thirty (30) calendar days following the Company's delivery of written notice to Parent of such breach or failure to perform; provided, however, that the Company shall not have the right to terminate this Agreement pursuant to this Section 7.1(c)(i) if the Company is then in material breach of any of its obligations under this Agreement so as to result in the failure of a condition set forth in Section 6.2(b); or",
+      "processed_text": "Parent or Merger Sub shall have breached or failed to perform any of their respective representations, warranties, covenants or other agreements set forth in this Agreement, which breach or failure to perform (A) would result in the failure of a condition set forth in Section 6.3(a) or Section 6.3(b) and (B) is not capable of being cured by Parent or Merger Sub, as applicable, by the Termination Date or, if capable of being cured, shall not have been cured by Parent or Merger Sub on or before the earlier of (x) the Termination Date and (y) the date that is thirty (30) calendar days following the Company's delivery of written notice to Parent of such breach or failure to perform; provided, however, that the Company shall not have the right to terminate this Agreement pursuant to this Section 7.1(c)(i) if the Company is then in material breach of any of its obligations under this Agreement so as to result in the failure of a condition set forth in Section 6.2(b); or",
+      "parties_replaced": [
+        {
+          "term": "Merger Sub",
+          "standard_role": "Merger Sub"
+        },
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "c_ii",
+      "clause_type": "trigger",
+      "trigger_type": "target_fiduciary_out",
+      "original_text": "at any time prior to receipt of the Company Stockholder Approval, in order for the Company to enter into a definitive agreement with respect to a Superior Proposal to the extent permitted by, and subject to the applicable terms and conditions of, Section 5.6(d); provided that prior to or substantially concurrently with such termination, the Company pays or causes to be paid to Merger Sub (or a United States Affiliate of Merger Sub as Merger Sub may designate) the Termination Amount; or",
+      "processed_text": "at any time prior to receipt of the Company Stockholder Approval, in order for the Company to enter into a definitive agreement with respect to a Superior Proposal to the extent permitted by, and subject to the applicable terms and conditions of, Section 5.6(d); provided that prior to or substantially concurrently with such termination, the Company pays or causes to be paid to Merger Sub (or a United States Affiliate of Merger Sub as Merger Sub may designate) the Termination Amount; or",
+      "parties_replaced": [
+        {
+          "term": "Merger Sub",
+          "standard_role": "Merger Sub"
+        },
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ]
+    },
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "d_preamble",
+      "clause_type": "preamble",
+      "trigger_type": "preamble",
+      "original_text": "by Parent if:",
+      "processed_text": "by Parent if:",
+      "parties_replaced": [
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "d_i",
+      "clause_type": "trigger",
+      "trigger_type": "target_breach",
+      "original_text": "the Company shall have breached or failed to perform any of its representations, warranties, covenants or other agreements set forth in this Agreement, which breach or failure to perform (A) would result in the failure of a condition set forth in Section 6.2(a) or Section 6.2(b) and (B) is not capable of being cured by the Company by the Termination Date or, if capable of being cured, shall not have been cured by the Company on or before the earlier of (x) the Termination Date and (y) the date that is thirty (30) calendar days following Parent's delivery of written notice to the Company of such breach or failure to perform; provided, however, that Parent shall not have the right to terminate this Agreement pursuant to this Section 7.1(d)(i) if Parent or Merger Sub is then in material breach of any of its obligations under this Agreement so as to result in the failure of a condition set forth in Section 6.3(b); or",
+      "processed_text": "the Company shall have breached or failed to perform any of its representations, warranties, covenants or other agreements set forth in this Agreement, which breach or failure to perform (A) would result in the failure of a condition set forth in Section 6.2(a) or Section 6.2(b) and (B) is not capable of being cured by the Company by the Termination Date or, if capable of being cured, shall not have been cured by the Company on or before the earlier of (x) the Termination Date and (y) the date that is thirty (30) calendar days following Parent's delivery of written notice to the Company of such breach or failure to perform; provided, however, that Parent shall not have the right to terminate this Agreement pursuant to this Section 7.1(d)(i) if Parent or Merger Sub is then in material breach of any of its obligations under this Agreement so as to result in the failure of a condition set forth in Section 6.3(b); or",
+      "parties_replaced": [
+        {
+          "term": "Merger Sub",
+          "standard_role": "Merger Sub"
+        },
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "Section 7.1",
+      "section_title": "Termination",
+      "clause_id": "d_ii",
+      "clause_type": "trigger",
+      "trigger_type": "target_fiduciary_out",
+      "original_text": "at any time prior to the receipt of the Company Stockholder Approval, (A) the Company Board shall have made an Adverse Recommendation Change, (B) the Company or the Company Board shall have failed to include in the Proxy Statement the Company Recommendation or (C) the Company or the Company Board, as applicable, shall have (I) materially violated or breached any of its obligations under Section 5.6(a), (II) failed to publicly reaffirm the Company Recommendation within ten (10) Business Days of receipt of a written request by Parent to provide such reaffirmation following receipt by the Company of an Acquisition Proposal that is publicly announced and not publicly withdrawn (which request by Parent may only be given once with respect to each such Acquisition Proposal; provided that Parent may make another written request to which this clause (II) shall apply in the event of any publicly disclosed change to the price or other material terms of such Acquisition Proposal) or (III) failed to recommend against any Acquisition Proposal that is a tender or exchange offer subject to Regulation 14D under the Exchange Act (in a Solicitation/Recommendation Statement on Schedule 14D-9, if such statement is required to be filed or is otherwise filed), within ten (10) Business Days after the commencement (within the meaning of Rule 14d-2 under the Exchange Act) of such tender or exchange offer.",
+      "processed_text": "at any time prior to the receipt of the Company Stockholder Approval, (A) the Company Board shall have made an Adverse Recommendation Change, (B) the Company or the Company Board shall have failed to include in the Proxy Statement the Company Recommendation or (C) the Company or the Company Board, as applicable, shall have (I) materially violated or breached any of its obligations under Section 5.6(a), (II) failed to publicly reaffirm the Company Recommendation within ten (10) Business Days of receipt of a written request by Parent to provide such reaffirmation following receipt by the Company of an Acquisition Proposal that is publicly announced and not publicly withdrawn (which request by Parent may only be given once with respect to each such Acquisition Proposal; provided that Parent may make another written request to which this clause (II) shall apply in the event of any publicly disclosed change to the price or other material terms of such Acquisition Proposal) or (III) failed to recommend against any Acquisition Proposal that is a tender or exchange offer subject to Regulation 14D under the Exchange Act (in a Solicitation/Recommendation Statement on Schedule 14D-9, if such statement is required to be filed or is otherwise filed), within ten (10) Business Days after the commencement (within the meaning of Rule 14d-2 under the Exchange Act) of such tender or exchange offer.",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    }
+  ]
+}

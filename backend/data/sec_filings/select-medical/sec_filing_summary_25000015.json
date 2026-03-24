@@ -1,0 +1,51 @@
+{
+  "ticker": "SEM",
+  "company": "Select Medical Holdings Corporation",
+  "filing_type": "10-Q",
+  "filing_date": "10/30/25",
+  "L1_headline": "+ SEM \u2013 Q3 revenue up 7.2% YoY; Concentra fully separated. | 10/30/25",
+  "L2_brief": "Select Medical Holdings filed its Q3 2025 10-Q reporting quarterly revenue of $1.36B (up 7.2% YoY) and net income of $44.2M from continuing operations. The company completed the spin-off of Concentra in Q4 2024, and now operates three segments: critical illness recovery hospitals, rehabilitation hospitals, and outpatient rehabilitation. No active M&A transactions disclosed, though the company maintains equity method investments including a recent hospital contribution to Banner JV.",
+  "L3_detailed": {
+    "filing_purpose": "Quarterly report for the period ended September 30, 2025, required periodic filing under Section 13 of the Securities Exchange Act.",
+    "key_information": [
+      "Q3 2025 revenue of $1.363B vs $1.272B in Q3 2024 (7.2% increase)",
+      "Net income from continuing operations of $44.2M vs $41.3M prior year",
+      "Concentra distribution completed November 25, 2024 - now reported as discontinued operations for prior periods",
+      "Repurchased approximately 6.6 million shares YTD 2025 for approximately $100.4M",
+      "Medicare accounts receivable represents 21% of total receivables"
+    ],
+    "financial_highlights": [
+      "Q3 2025 Revenue: $1,363.4M (vs $1,271.6M Q3 2024)",
+      "Q3 2025 Income from continuing operations: $44.2M",
+      "9M 2025 Revenue: $4,056.2M (vs $3,874.5M 9M 2024)",
+      "Total debt: $1.79B including $550M 6.25% senior notes and $1.04B term loan",
+      "Cash and equivalents: $60.1M as of September 30, 2025",
+      "Total assets: $5.69B"
+    ],
+    "deal_relevance": "No pending M&A transactions. Concentra separation completed in Q4 2024 with tax-free distribution of 104.1M shares. Company contributed a $45.8M hospital to Banner JV in September 2025 in exchange for equity interest. Transition services agreement with Concentra generates $9.9M YTD revenue, terminates by November 2026.",
+    "regulatory_mentions": [
+      "DOJ/HHS investigation ongoing regarding physical therapy billing practices - qui tam lawsuit filed, DOJ declined to intervene but reserved rights",
+      "U.S. Attorney's Office for Western District of Oklahoma investigating SSH-Oklahoma City regarding respiratory therapy billing",
+      "Medicare represents significant portion of revenue - subject to CMS reimbursement rate changes"
+    ],
+    "timeline_or_dates": [
+      "September 30, 2025 - Quarter end date",
+      "November 25, 2025 - Dividend payment date",
+      "November 26, 2026 - TSA with Concentra terminates",
+      "March 31, 2028 - Interest rate cap maturity",
+      "2026 - $550M senior notes due August 15, 2026"
+    ],
+    "conditions_or_requirements": [
+      "Interest rate cap limits exposure to 4.5% on $1.0B of term loan principal",
+      "Revolving credit facility capacity of $150M drawn as of quarter end",
+      "Self-insured retention limits on professional liability and general liability insurance programs"
+    ],
+    "risks_flagged": [
+      "DOJ investigation into physical therapy billing practices - False Claims Act qui tam lawsuit pending",
+      "Oklahoma City billing investigation ongoing - timing and outcome unpredictable",
+      "Concentration of Medicare receivables (21% of AR) creates credit and reimbursement risk",
+      "Healthcare regulatory environment - potential for additional investigations",
+      "Labor costs pressure - personnel expense remains largest cost component"
+    ]
+  }
+}

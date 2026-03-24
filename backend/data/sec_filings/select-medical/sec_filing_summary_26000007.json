@@ -1,0 +1,46 @@
+{
+  "ticker": "SEM",
+  "company": "Select Medical Holdings Corporation",
+  "filing_type": "10-K",
+  "filing_date": "02/01/26",
+  "L1_headline": "+ SEM \u2013 Strong rehab/hospital ops; take-private proposal pending. | 02/01/26",
+  "L2_brief": "Select Medical Holdings filed its FY2025 10-K reporting $5.45B revenue across 104 critical illness recovery hospitals, 38 rehabilitation hospitals, and 1,917 outpatient clinics. The company is subject to a pending take-private proposal from Executive Chairman Robert Ortenzio at $16.00-$16.20 per share, with an independent Special Committee evaluating the offer and strategic alternatives.",
+  "L3_detailed": {
+    "filing_purpose": "Annual report for fiscal year ended December 31, 2025, providing comprehensive financial and operational disclosure following the November 2024 spin-off of Concentra Group Holdings.",
+    "key_information": [
+      "Operates 104 critical illness recovery hospitals (70 HIH, 34 free-standing), 38 rehabilitation hospitals, and 1,917 outpatient rehab clinics across 39 states and DC",
+      "Robert Ortenzio submitted non-binding take-private proposal at $16.00-$16.20 per share on November 24, 2025",
+      "Special Committee formed November 25, 2025 to evaluate proposal and strategic alternatives",
+      "Completed tax-free distribution of Concentra (104.1M shares) on November 25, 2024",
+      "Approximately 45,300 total employees at December 31, 2025"
+    ],
+    "financial_highlights": [
+      "Total revenue of $5,452.8 million for FY2025",
+      "Revenue mix: ~45% critical illness recovery hospitals, ~24% rehabilitation hospitals, ~24% outpatient rehabilitation",
+      "Medicare represents 28.6% of revenue; commercial insurance 51.6%",
+      "6.25% Senior Notes due December 2032 outstanding"
+    ],
+    "deal_relevance": "Active take-private proposal at $16.00-$16.20 per share from Executive Chairman Ortenzio. Special Committee is evaluating the proposal and other strategic alternatives. Aggregate market value of non-affiliate shares was approximately $1.56B at June 30, 2025. The outcome of this evaluation could result in acquisition of the company or alternative strategic transaction.",
+    "regulatory_mentions": "Medicare certification requirements for LTCHs and IRFs; Joint Commission, DNV, and CIHQ accreditation; CMS quality reporting requirements; state Medicaid programs participation; potential regulatory changes to Medicare/Medicaid reimbursement noted as ongoing risk factor",
+    "timeline_or_dates": [
+      "November 24, 2025: Take-private proposal received at $16.00-$16.20 per share",
+      "November 25, 2025: Special Committee formed",
+      "November 25, 2024: Concentra spin-off completed",
+      "FY2025 ended December 31, 2025"
+    ],
+    "conditions_or_requirements": [
+      "Take-private proposal is non-binding",
+      "Special Committee evaluation ongoing with advisors",
+      "Medicare certification maintenance required for critical illness and rehabilitation hospitals",
+      "Hospital-within-hospital arrangements must maintain separate qualification from host hospitals"
+    ],
+    "risks_flagged": [
+      "Changes in government reimbursement policies could reduce revenue and profitability",
+      "Shortages in qualified nurses, therapists, and physicians could limit staffing capacity",
+      "Increased dependence on contract labor driving up operating costs",
+      "Potential impact of take-private evaluation process on business operations",
+      "Competition may limit growth and reduce profitability",
+      "Cybersecurity risks and HIPAA compliance requirements"
+    ]
+  }
+}

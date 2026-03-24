@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackstone Inc / TXNM Energy Inc — Termination Analysis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0e14;
+            --bg-secondary: #0f1419;
+            --bg-tertiary: #151c24;
+            --bg-hover: #1a232e;
+            --text-primary: #e6e6e6;
+            --text-secondary: #8a919a;
+            --text-muted: #5c6370;
+            --accent-blue: #5ccfe6;
+            --accent-green: #87d96c;
+            --accent-yellow: #ffcc66;
+            --accent-red: #f07178;
+            --accent-orange: #ff8c42;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'IBM Plex Sans', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-sans); background: var(--bg-primary); color: var(--text-primary); line-height: 1.5; }
+        .container { max-width: 1600px; margin: 0 auto; padding: 16px; }
+
+        /* Header */
+        .header {
+            background: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 4px;
+            padding: 14px 20px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-family: var(--font-mono);
+        }
+        .deal-id { font-size: 1.15rem; font-weight: 600; color: var(--text-primary); }
+        .deal-meta { font-size: 0.72rem; color: var(--text-muted); margin-top: 3px; }
+        .deal-type-label {
+            margin-left: auto;
+            padding: 5px 14px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: rgba(92,207,230,0.12);
+            color: var(--accent-blue);
+            border: 1px solid rgba(92,207,230,0.3);
+            white-space: nowrap;
+        }
+
+        /* Section */
+        .section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 4px;
+            margin-bottom: 14px;
+            overflow: hidden;
+        }
+        .section-header {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--bg-tertiary);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-blue);
+        }
+        .section-body { padding: 14px 16px; }
+
+        /* Guide table */
+        .guide-table { width: 100%; border-collapse: collapse; }
+        .guide-table th {
+            font-family: var(--font-mono);
+            text-align: left;
+            padding: 8px 12px;
+            font-weight: 500;
+            font-size: 0.67rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            background: var(--bg-tertiary);
+        }
+        .guide-table td {
+            font-family: var(--font-mono);
+            padding: 9px 12px;
+            border-bottom: 1px solid var(--bg-tertiary);
+            font-size: 0.76rem;
+            vertical-align: top;
+        }
+        .guide-table tbody tr:last-child td { border-bottom: none; }
+        .guide-note { font-size: 0.68rem; color: var(--text-muted); margin-top: 2px; }
+        .guide-notes-cell { max-width: 180px; white-space: normal; word-wrap: break-word; }
+        .fee-summary {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+        .fee-summary-item {
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            padding: 7px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 120px;
+        }
+        .fee-summary-label {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .fee-summary-amount {
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+        .fee-summary-pct {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-top: 1px;
+        }
+
+        /* Structural terms cards */
+        .terms-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .term-card {
+            background: var(--bg-tertiary);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 4px;
+            padding: 12px 14px;
+        }
+        .term-label {
+            font-family: var(--font-mono);
+            font-size: 0.67rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        .term-value {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .term-sub {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            margin-top: 3px;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 2px 7px;
+            border-radius: 3px;
+            font-size: 0.68rem;
+            font-weight: 500;
+            font-family: var(--font-mono);
+        }
+        .badge-red    { background: rgba(240,113,120,0.15); color: var(--accent-red); }
+        .badge-yellow { background: rgba(255,204,102,0.15); color: var(--accent-yellow); }
+        .badge-green  { background: rgba(135,217,108,0.15); color: var(--accent-green); }
+        .badge-blue   { background: rgba(92,207,230,0.15);  color: var(--accent-blue); }
+        .badge-muted  { background: rgba(92,99,112,0.2);    color: var(--text-muted); }
+
+        /* Clause audit cards */
+        .audit-missing {
+            background: rgba(240,113,120,0.07);
+            border: 1px solid rgba(240,113,120,0.25);
+            border-radius: 4px;
+            padding: 10px 14px;
+            margin-bottom: 12px;
+        }
+        .audit-missing-title {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--accent-red);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+        .audit-missing-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .audit-missing-list li {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            padding: 2px 8px;
+            background: rgba(240,113,120,0.1);
+            border: 1px solid rgba(240,113,120,0.2);
+            border-radius: 3px;
+            color: var(--accent-red);
+        }
+        .audit-signals {
+            background: rgba(92,207,230,0.06);
+            border: 1px solid rgba(92,207,230,0.2);
+            border-radius: 4px;
+            padding: 10px 14px;
+            margin-bottom: 12px;
+        }
+        .audit-signals-title {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .signal-item { margin-bottom: 8px; }
+        .signal-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+        .signal-explanation { font-size: 0.76rem; color: var(--text-secondary); margin-top: 2px; }
+        /* Clause audit rows */
+        .audit-row {
+            display: grid;
+            grid-template-columns: 160px 1fr 70px 110px 20px;
+            align-items: center;
+            padding: 9px 16px;
+            border-bottom: 1px solid var(--bg-tertiary);
+            cursor: pointer;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            gap: 12px;
+        }
+        .audit-row:hover { background: var(--bg-hover); }
+        .audit-row:last-child { border-bottom: none; }
+        .audit-row.non-standard { border-left: 3px solid var(--accent-yellow); }
+        .audit-row.standard     { border-left: 3px solid transparent; }
+        .audit-trigger { font-weight: 600; }
+        .audit-theme   { color: var(--text-secondary); font-size: 0.72rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .audit-chevron { color: var(--text-muted); font-size: 0.65rem; text-align: right; transition: transform 0.15s; }
+        .audit-chevron.open { transform: rotate(90deg); }
+        .audit-detail {
+            display: none;
+            background: var(--bg-tertiary);
+            padding: 12px 16px 12px 20px;
+            border-bottom: 1px solid var(--bg-tertiary);
+            border-left: 3px solid var(--accent-yellow);
+        }
+        .audit-detail.show { display: block; }
+        .detail-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; margin-top: 8px; }
+        .detail-label:first-child { margin-top: 0; }
+        .detail-text { font-size: 0.74rem; color: var(--text-secondary); line-height: 1.55; font-family: var(--font-mono); }
+
+        /* Source provenance tags */
+        .source-tag {
+            display: inline-block;
+            padding: 1px 5px;
+            border-radius: 2px;
+            font-size: 0.55rem;
+            font-weight: 500;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            background: rgba(92,207,230,0.1);
+            color: var(--accent-blue);
+            border: 1px solid rgba(92,207,230,0.2);
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+
+        /* Discrepancy alert */
+        .discrepancy-section {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255,140,66,0.35);
+            border-left: 3px solid var(--accent-orange);
+            border-radius: 4px;
+            margin-bottom: 14px;
+            overflow: hidden;
+        }
+        .discrepancy-header {
+            padding: 10px 16px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-orange);
+            border-bottom: 1px solid rgba(255,140,66,0.15);
+        }
+        .discrepancy-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 8px 16px;
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            border-bottom: 1px solid var(--bg-tertiary);
+            align-items: center;
+        }
+        .discrepancy-row:last-child { border-bottom: none; }
+        .discrepancy-field { color: var(--text-primary); font-weight: 500; }
+        .discrepancy-val { color: var(--text-secondary); }
+        .discrepancy-label {
+            font-size: 0.62rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* Missing provisions */
+        .missing-prov-section {
+            padding: 14px 16px;
+            border-top: 1px solid var(--bg-tertiary);
+        }
+        .missing-prov-title {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        .missing-prov-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 8px;
+        }
+        .missing-prov-card {
+            background: var(--bg-primary);
+            border: 1px solid rgba(255,204,102,0.2);
+            border-left: 3px solid var(--accent-yellow);
+            border-radius: 4px;
+            padding: 9px 12px;
+        }
+        .missing-prov-name {
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            font-weight: 600;
+            color: var(--accent-yellow);
+            margin-bottom: 3px;
+        }
+        .missing-prov-desc { font-size: 0.70rem; color: var(--text-secondary); }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 1. HEADER -->
+    <div class="header">
+        <div>
+            <div class="deal-id">Blackstone Inc / TXNM Energy Inc</div><div class="deal-meta">D069 &middot; Termination Analysis &middot; 20260318_145653</div>
+            <div class="deal-meta" style="margin-top:4px">Sources: <span class="badge badge-green" style="font-size:0.62rem">Merger Agreement</span> <span class="badge badge-blue" style="font-size:0.62rem">8-K / Press Release</span></div>
+        </div>
+        <div class="deal-type-label">Regulatory-Sensitive Deal</div>
+    </div>
+
+
+
+    <!-- 2. TERMINATION GUIDE -->
+    <div class="section">
+        <div class="section-header">Termination Guide &mdash; What Happens in Each Scenario</div>
+        <div class="section-body">
+        <div class="fee-summary">        <div class="fee-summary-item">
+                <div class="fee-summary-label" style="color:var(--accent-yellow)">CTF <span class="source-tag">Agreement</span></div>
+                <div class="fee-summary-amount" style="color:var(--text-primary)">$210M</div>
+                
+            </div>        <div class="fee-summary-item">
+                <div class="fee-summary-label" style="color:var(--accent-blue)">RTF <span class="source-tag">Agreement</span></div>
+                <div class="fee-summary-amount" style="color:var(--text-primary)">$350M</div>
+                
+            </div></div>
+            <table class="guide-table">
+                <thead>
+                    <tr>
+                        <th>Trigger</th>
+                        <th>Who Invokes</th>
+                        <th>Fee</th>
+                        <th>Direction</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Mutual Consent</td>
+                    <td>Either party</td>
+                    <td><span style="font-size:0.9rem;font-weight:600;color:var(--text-muted)">None</span></td>
+                    <td>None</td>
+                    <td class="guide-notes-cell"></td>
+                </tr>
+                <tr>
+                    <td>Regulatory Block</td>
+                    <td>Either party</td>
+                    <td><span style="font-size:0.9rem;font-weight:600;color:var(--accent-blue)">$350M</span></td>
+                    <td>Parent &rarr; Company</td>
+                    <td class="guide-notes-cell"><div class="guide-note">Sole remedy upon payment; Separate regulatory fee for antitrust block</div></td>
+                </tr>
+                <tr>
+                    <td>Outside Date</td>
+                    <td>Either party</td>
+                    <td><span style="font-size:0.9rem;font-weight:600;color:var(--text-muted)">None</span></td>
+                    <td>None</td>
+                    <td class="guide-notes-cell"></td>
+                </tr>
+                <tr>
+                    <td>Acquirer Breach</td>
+                    <td>Company (target)</td>
+                    <td><span style="font-size:0.9rem;font-weight:600;color:var(--accent-blue)">$350M</span></td>
+                    <td>Parent &rarr; Company</td>
+                    <td class="guide-notes-cell"><div class="guide-note">Sole remedy upon payment; Separate regulatory fee for antitrust block</div></td>
+                </tr>
+                <tr>
+                    <td>Target Fiduciary Out</td>
+                    <td>Company (target)</td>
+                    <td><span style="font-size:0.9rem;font-weight:600;color:var(--accent-yellow)">$210M</span></td>
+                    <td>Company &rarr; Parent</td>
+                    <td class="guide-notes-cell"><div class="guide-note">Sole remedy upon payment; Tail: 12 mo</div></td>
+                </tr>
+                <tr>
+                    <td>Target Breach</td>
+                    <td>Parent (acquirer)</td>
+                    <td><span style="font-size:0.9rem;font-weight:600;color:var(--accent-yellow)">$210M</span></td>
+                    <td>Company &rarr; Parent</td>
+                    <td class="guide-notes-cell"><div class="guide-note">Sole remedy upon payment; Tail: 12 mo</div></td>
+                </tr>
+                <tr>
+                    <td>Shareholder Vote Failure</td>
+                    <td>Either party</td>
+                    <td><span style="font-size:0.9rem;font-weight:600;color:var(--text-muted)">None</span></td>
+                    <td>None</td>
+                    <td class="guide-notes-cell"></td>
+                </tr>
+                <tr>
+                    <td>Other</td>
+                    <td>See clause</td>
+                    <td><span style="font-size:0.9rem;font-weight:600;color:var(--text-muted)">None</span></td>
+                    <td>None</td>
+                    <td class="guide-notes-cell"></td>
+                </tr>
+                </tbody>
+            </table>
+            <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+                
+                <div style="background:var(--bg-tertiary);border-radius:4px;padding:9px 14px">
+                    <div style="font-size:0.88rem;font-weight:600;color:var(--text-primary);margin-bottom:2px">Acquirer Reimbursement Expenses</div>
+                    <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:6px">Company reimburses acquirer for documented out-of-pocket costs</div>
+                    <div style="font-size:0.72rem;color:var(--text-muted);font-style:italic">Not present in this agreement</div>
+                </div>
+                
+                <div style="background:var(--bg-tertiary);border-radius:4px;padding:9px 14px">
+                    <div style="font-size:0.88rem;font-weight:600;color:var(--text-primary);margin-bottom:2px">Target Reimbursement Expenses</div>
+                    <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:6px">Acquirer reimburses target for documented out-of-pocket costs</div>
+                    <div style="font-size:0.72rem;color:var(--text-muted);font-style:italic">Not present in this agreement</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. STRUCTURAL TERMS -->
+    <div class="section">
+        <div class="section-header">Structural Terms</div>
+        <div class="section-body">
+            <div class="terms-row">
+                <div class="term-card">
+                    <div class="term-label">Tail Provision <span class="source-tag">Agreement</span></div>
+                    <div class="term-value" style="color:var(--accent-green)">12 months</div>
+                    
+                </div>
+                <div class="term-card">
+                    <div class="term-label">Specific Performance <span class="source-tag">Agreement</span></div>
+                    <div class="term-value" style="color:var(--accent-green)">Available</div>
+                    <div class="term-sub">Can compel closing; not limited to fee collection</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-label">Willful Breach <span class="source-tag">Agreement</span></div>
+                    <div class="term-value" style="color:var(--accent-green)">Survives Fee Payment</div>
+                    <div class="term-sub">Willful breach exposes party to additional damages</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-label">Sole Remedy <span class="source-tag">Agreement</span></div>
+                    <div class="term-value" style="color:var(--accent-yellow)">Yes</div>
+                    <div class="term-sub">Fee payment extinguishes all other remedies</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. CLAUSE AUDIT + MISSING PROVISIONS -->
+    <div class="section">
+        <div class="section-header">Clause Audit</div>
+        <div class="section-body" style="padding:0">
+        <div class="missing-prov-section" style="border-top:none;border-bottom:1px solid var(--bg-tertiary)">
+            <div class="missing-prov-title">Provisions Not Present in this Document</div>
+            <div class="missing-prov-grid">
+            <div class="missing-prov-card">
+                    <div class="missing-prov-name">Financing Failure Trigger</div>
+                    <div class="missing-prov-desc">Termination right if the acquirer cannot obtain the debt financing needed to close.</div>
+                </div>            </div>
+        </div>
+        <div class="audit-row standard" onclick="toggleDetail(0)" id="row-0">
+            <div class="audit-trigger">Mutual Consent</div>
+            <div class="audit-theme">Bilateral Termination by Mutual Written Consent Anytime</div>
+            <div><span class="badge badge-green">99.0%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-0">&#9654;</div>
+        </div>        <div class="audit-row standard" onclick="toggleDetail(1)" id="row-1">
+            <div class="audit-trigger">Regulatory Block</div>
+            <div class="audit-theme">Permanent Legal Restraint Preventing Merger Consummation Termination Rights</div>
+            <div><span class="badge badge-green">80.6%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-1">&#9654;</div>
+        </div>        <div class="audit-row standard" onclick="toggleDetail(2)" id="row-2">
+            <div class="audit-trigger">Outside Date</div>
+            <div class="audit-theme">Mutual Outside Date Termination with Automatic Regulatory Extensions</div>
+            <div><span class="badge badge-green">90.4%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-2">&#9654;</div>
+        </div>        <div class="audit-row standard" onclick="toggleDetail(3)" id="row-3">
+            <div class="audit-trigger">Acquirer Breach</div>
+            <div class="audit-theme">Termination Rights for Material Breach with Cure Period</div>
+            <div><span class="badge badge-green">93.3%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-3">&#9654;</div>
+        </div>        <div class="audit-row standard" onclick="toggleDetail(4)" id="row-4">
+            <div class="audit-trigger">Target Fiduciary Out</div>
+            <div class="audit-theme">Target Board Termination Right to Accept Superior Proposal</div>
+            <div><span class="badge badge-green">82.6%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-4">&#9654;</div>
+        </div>        <div class="audit-row non-standard" onclick="toggleDetail(5)" id="row-5">
+            <div class="audit-trigger">Acquirer Breach</div>
+            <div class="audit-theme">Target's Right to Terminate for Buyer's Failure to Close</div>
+            <div><span class="badge badge-green">86.2%</span></div>
+            <div><span class="badge badge-yellow">Non-Standard</span></div>
+            <div class="audit-chevron" id="chev-5">&#9654;</div>
+        </div>        <div class="audit-row standard" onclick="toggleDetail(6)" id="row-6">
+            <div class="audit-trigger">Target Breach</div>
+            <div class="audit-theme">Termination Rights for Material Breach with Cure Period</div>
+            <div><span class="badge badge-green">93.8%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-6">&#9654;</div>
+        </div>        <div class="audit-row standard" onclick="toggleDetail(7)" id="row-7">
+            <div class="audit-trigger">Target Fiduciary Out</div>
+            <div class="audit-theme">Fiduciary Out Termination Rights for Adverse Recommendation Changes</div>
+            <div><span class="badge badge-green">85.7%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-7">&#9654;</div>
+        </div>        <div class="audit-row standard" onclick="toggleDetail(8)" id="row-8">
+            <div class="audit-trigger">Shareholder Vote Failure</div>
+            <div class="audit-theme">Termination Right Upon Failure to Obtain Required Stockholder Approval</div>
+            <div><span class="badge badge-green">88.5%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-8">&#9654;</div>
+        </div>        <div class="audit-row non-standard" onclick="toggleDetail(9)" id="row-9">
+            <div class="audit-trigger">Other</div>
+            <div class="audit-theme">Bilateral Agreement to Abandon Transaction Before Closing</div>
+            <div><span class="badge badge-red">61.0%</span></div>
+            <div><span class="badge badge-yellow">Non-Standard</span></div>
+            <div class="audit-chevron" id="chev-9">&#9654;</div>
+        </div>
+        <script>
+        const auditDetails = [{"idx": 0, "why_flagged": "", "original": "by mutual written consent of Parent and the Company;"}, {"idx": 1, "why_flagged": "", "original": "by Parent or the Company if the condition set forth in Section 7.1(b) (No Legal Restraint) is not satisfied and the Legal Restraint giving rise to such nonsatisfaction has become final and nonappealable; provided, however, that (i) the right to terminate this Agreement under this Section 8.1(b) shall not be available to any Party if the Legal Restraint was due to the breach of this Agreement by such Party (or, in the case of Parent, Merger Sub) seeking to terminate this Agreement (it being understood that deemed compliance with Section 6.4 pursuant to Section 6.4(f) shall not constitute a brea\u2026"}, {"idx": 2, "why_flagged": "", "original": "by Parent or the Company if the Effective Time shall not have occurred on or before 5:00 p.m. New York City time on August 18, 2026 (as may be extended pursuant to the following proviso, the \"End Date\"); provided, however, that if, prior to the End Date, all of the conditions to the Closing set forth in Article VII have been satisfied or waived, as applicable, or for conditions that by their nature are to be satisfied at the Closing, shall then be capable of being satisfied (except for any condition set forth in (i) Section 7.1(b) (No Legal Restraint) or (ii) Section 7.1(c) (Required Regulator\u2026"}, {"idx": 3, "why_flagged": "", "original": "a breach of any representation or warranty or failure to perform any covenant or agreement on the part of Parent or Merger Sub set forth in this Agreement shall have occurred that would cause the conditions set forth in Section 7.3(a) or Section 7.3(b) not to be satisfied and to be incapable of being satisfied by the End Date, except that, if such breach or failure to perform is curable by Parent or Merger Sub, then, until the earlier of (A) three (3) Business Days prior to the End Date and (B) thirty (30) days after receipt by Parent of written notice from the Company of such breach or failur\u2026"}, {"idx": 4, "why_flagged": "", "original": "prior to obtaining the Company Requisite Vote, in accordance with, and subject to, and in compliance with, all of the terms and conditions of, Section 6.1(d) in order to enter into a definitive agreement with respect to a Superior Proposal; provided, that the Company shall pay the Company Termination Fee pursuant to Section 8.2(b)(i) at such time as specified in Section 8.2(b)(i);"}, {"idx": 5, "why_flagged": "Tagged as 'Acquirer Breach' but the closest benchmark match is the 'Target's Right to Terminate for Buyer's Failure to Close' cluster \u2014 a specific performance pattern \u2014 at 86.2% similarity. The clause language resembles a specific performance provision more than a standard Acquirer Breach trigger.", "original": "(A) if all of the conditions set forth in Article VII (other than those conditions that by their nature are to be satisfied at the Closing) have been satisfied or (to the extent permitted by applicable Law) waived in accordance with this Agreement, (B) the conditions set forth in Article VII that by their nature are to be satisfied at the Closing are capable of being satisfied at the Closing, (C) Parent and Merger Sub fail to consummate the Closing on the date that the Closing should have occurred pursuant to Section 1.3, (D) following such failure contemplated by the foregoing clause (C), the\u2026"}, {"idx": 6, "why_flagged": "", "original": "a breach of any representation or warranty or failure to perform any covenant or agreement on the part of the Company set forth in this Agreement shall have occurred that would cause the conditions set forth in Section 7.2(a) or Section 7.2(b) not to be satisfied and to be incapable of being satisfied by the End Date, except that, if such breach or failure to perform is curable by the Company, then, until the earlier of (A) three (3) Business Days prior to the End Date and (B) thirty (30) days after receipt by the Company of written notice from Parent of such breach or failure to perform, but \u2026"}, {"idx": 7, "why_flagged": "", "original": "the Company Board of Directors shall have made, prior to obtaining the Company Requisite Vote and whether or not in compliance with Section 6.1, a Company Change of Recommendation;"}, {"idx": 8, "why_flagged": "", "original": "by either Parent or the Company if the Company Requisite Vote shall not have been obtained at the Company Shareholders Meeting duly convened therefor or at any adjournment or postponement thereof, at which a vote on the adoption and approval of this Agreement was taken;"}, {"idx": 9, "why_flagged": "Similarity to closest benchmark cluster is 61.0%, below the 80% threshold. Best match was 'Bilateral Agreement to Abandon Transaction Before Closing'. The clause language differs enough from any benchmark Other clause to fall outside standard range.", "original": "by the Company if the Stock Purchase Agreement is terminated by the Company pursuant Article IX of the Stock Purchase Agreement."}];
+        function toggleDetail(i) {
+            const existing = document.getElementById('detail-' + i);
+            const chev = document.getElementById('chev-' + i);
+            if (existing) {
+                existing.classList.toggle('show');
+                chev.classList.toggle('open');
+                return;
+            }
+            const d = auditDetails.find(x => x.idx === i);
+            if (!d) return;
+            const row = document.getElementById('row-' + i);
+            const div = document.createElement('div');
+            div.id = 'detail-' + i;
+            div.className = 'audit-detail show';
+            let html = '';
+            if (d.why_flagged) {
+                html += '<div class="detail-label">Why Flagged</div>';
+                html += '<div class="detail-text">' + d.why_flagged + '</div>';
+            }
+            if (d.original) {
+                html += '<div class="detail-label">Clause Text</div>';
+                html += '<div class="detail-text" style="font-style:italic">' + d.original + '</div>';
+            }
+            div.innerHTML = html || '<div class="detail-text" style="color:var(--text-muted)">Standard — no flags.</div>';
+            row.insertAdjacentElement('afterend', div);
+            chev.classList.add('open');
+        }
+        </script>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

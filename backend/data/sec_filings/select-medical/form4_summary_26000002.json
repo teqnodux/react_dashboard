@@ -1,0 +1,29 @@
+{
+  "ticker": "SEM",
+  "issuer": "SELECT MEDICAL HOLDINGS CORP",
+  "filing_date": "02/13/26",
+  "insider_name": "William H. Frist",
+  "insider_title": "Director",
+  "relationship": "Director",
+  "L1_headline": "+ SEM \u2013 William H. Frist acquired 1,109 shares (restricted stock grant). | 02/11/26",
+  "L2_brief": "Director William H. Frist received 1,109 shares of restricted stock at $16.23 per share on February 11, 2026, issued in lieu of an $18,000 quarterly director retainer under the company's 2020 Equity Incentive Plan. This is routine director compensation rather than a discretionary purchase, bringing his direct holdings to 305,172 shares.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "02/11/2026",
+        "shares": "1,109",
+        "price_per_share": "$16.23",
+        "total_value": "$17,999.07",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "305,172 shares",
+    "ownership_type": "Direct",
+    "deal_signal": "N/A",
+    "pattern_notes": "Routine quarterly director compensation converted to equity in lieu of cash retainer. This is a standard board compensation structure and does not represent discretionary insider buying. The grant size (~$18,000) matches the stated quarterly retainer amount.",
+    "risks_flagged": [
+      "Transaction is formulaic compensation, not discretionary \u2014 limited signaling value for market sentiment"
+    ]
+  }
+}

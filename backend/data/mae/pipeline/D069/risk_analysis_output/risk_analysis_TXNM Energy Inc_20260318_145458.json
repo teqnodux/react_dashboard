@@ -1,0 +1,199 @@
+{
+  "deal_name": "TXNM Energy Inc",
+  "analysis_timestamp": "2026-03-18T14:54:58.303487",
+  "total_clauses": 12,
+  "clauses_analyzed": 2,
+  "analysis_coverage": "16.7%",
+  "initial_risk_assessment": {
+    "typical_count": 10,
+    "atypical_count": 0,
+    "outlier_count": 2,
+    "risk_flags": [
+      {
+        "clause_id": "(J)",
+        "reason": "OUTLIER: Exclusion for Stockholder Litigation Arising from Merger Transaction",
+        "ratio": 1.5140160525177957
+      },
+      {
+        "clause_id": "(L)",
+        "reason": "OUTLIER: Exclusions for Acquiror Identity and Post-Acquisition Plans",
+        "ratio": 1.2542469999455723
+      }
+    ],
+    "overall_risk": "medium",
+    "requires_review": true
+  },
+  "risk_summary": {
+    "final_risk_level": "high",
+    "risk_score": 50.0,
+    "high_risk_count": 1,
+    "medium_risk_count": 0,
+    "low_risk_count": 1,
+    "disclosure_references_count": 0,
+    "key_concerns": [
+      {
+        "clause": "(L)",
+        "concern": "This MAE exclusion is HIGHLY PROBLEMATIC and represents a significant departure from market standard"
+      }
+    ]
+  },
+  "investigation_report": {
+    "executive_summary": "STANDARD RISK PROFILE: Most provisions align with market standards. Only 1 items flagged for routine review.",
+    "immediate_actions_required": [
+      "Standard due diligence process",
+      "Routine review of flagged items"
+    ],
+    "key_negotiation_points": [
+      {
+        "clause_id": "(L)",
+        "issue": "This MAE exclusion is HIGHLY PROBLEMATIC and represents a significant departure from market standard. Standard acquiror action exclusions typically only exclude effects arising from actions that (1) the target requested or consented to, (2) are required by the merger agreement, or (3) are taken in compliance with deal covenants. This clause contains NONE of these critical limitations. The unqualified language 'any action taken by Parent, Merger Sub or any of their respective Affiliates' creates a massive loophole that could allow the acquiror to: (a) intentionally harm the target's business through competitive actions, customer/employee poaching, or market interference; (b) cause regulatory violations or contract breaches; (c) trigger material adverse effects and then claim those effects are excluded from MAE analysis; (d) essentially control whether an MAE has occurred by choosing whether to take harmful actions. The inclusion of 'Affiliates' without definition exponentially expands this risk - Parent's entire corporate family could take destructive actions with impunity. This appears to be either: (1) a drafting error where critical limiting language was omitted, (2) evidence of extremely weak target negotiating leverage, or (3) a specific accommodation for planned post-signing actions that Parent knows will harm the target. For TXNM Energy (a regulated utility), this is particularly concerning as Parent could take actions affecting regulatory approvals, customer relationships, or operational permits that would normally constitute an MAE.",
+        "recommendation": "This provision fundamentally undermines the target's MAE protection and should be a deal-breaker in current form. Target shareholders are exposed to acquiror-caused harm with no recourse. Standard market practice requires limiting this exclusion to: (1) actions expressly required or permitted by the merger agreement, (2) actions taken with target's prior written consent, and (3) possibly actions taken in compliance with regulatory requirements. The clause should also exclude from the exclusion any actions that constitute breaches of Parent's covenants or representations. If Parent refuses to narrow this language, it strongly suggests they are planning specific harmful actions post-signing. Target's board may face fiduciary duty challenges for accepting such one-sided terms. This provision could also affect financing certainty and regulatory approval processes."
+      }
+    ],
+    "red_flag_summary": [
+      "Could be used to manufacture closing conditions failure while avoiding MAE",
+      "No protection against Parent-induced regulatory issues or contract breaches",
+      "May permit Parent to poach key employees, customers, or suppliers",
+      "Unusually one-sided provision suggesting weak target negotiating position",
+      "Enables Parent to take competitive actions harming target without recourse",
+      "Could allow Parent to sabotage target's business pre-closing without MAE consequences"
+    ],
+    "disclosure_schedule_concerns": [],
+    "unusual_provisions_detail": []
+  },
+  "negotiation_recommendations": [
+    "Request clarification on 1 high-risk provisions",
+    "  \u2022 (L): This provision fundamentally undermines the target's MAE protection and should be a deal-breaker in ",
+    "Review 5 unusual provisions for potential narrowing"
+  ],
+  "benchmark_comparison": {
+    "vs_typical_deals": {
+      "typical_rate": {
+        "this_deal": "83.3%",
+        "note": "Higher is better - most clauses match standard patterns"
+      },
+      "outlier_rate": {
+        "this_deal": "16.7%",
+        "note": "Lower is better - fewer unusual provisions"
+      }
+    },
+    "statistical_outliers": [],
+    "category_distribution": {
+      "economic": "2/12 (16.7%)",
+      "accounting": "2/12 (16.7%)",
+      "force_majeure": "2/12 (16.7%)",
+      "transaction": "5/12 (41.7%)",
+      "disclosure": "1/12 (8.3%)"
+    },
+    "risk_distribution": {
+      "low": 1,
+      "high": 1
+    }
+  },
+  "detailed_analysis": {
+    "high_risk_clauses": [
+      {
+        "clause_id": "(L)",
+        "label": "(L)",
+        "text_preview": "Effect arising out of or resulting from any action taken by Parent, Merger Sub or any of their respe...",
+        "cluster": "Exclusions for Acquiror Identity and Post-Acquisition Plans",
+        "category": "transaction",
+        "distance_ratio": 1.2542469999455723,
+        "zone": "outlier",
+        "risk_level": "high",
+        "investigation_priority": "urgent",
+        "key_issues": "Extremely broad exclusion protecting acquiror actions without limitation, No carve-out for breaches of transaction agreements or covenants, Potential shield for destructive pre-closing actions by Parent/Merger Sub, Asymmetric risk allocation favoring acquiror, Could enable acquiror to intentionally cause MAE and avoid liability"
+      }
+    ],
+    "medium_risk_clauses": [],
+    "disclosure_references": [],
+    "all_analyzed_clauses": [
+      {
+        "clause_id": "(J)",
+        "label": "(J)",
+        "text": "Transaction Litigation",
+        "text_preview": "Transaction Litigation",
+        "cluster_match": "Exclusion for Stockholder Litigation Arising from Merger Transaction",
+        "cluster_category": "transaction",
+        "distance_ratio": 1.5140160525177957,
+        "zone": "outlier",
+        "risk_analysis": {
+          "risk_level": "low",
+          "requires_investigation": false,
+          "risk_factors": [
+            "Stockholder litigation arising from merger announcement is common and expected",
+            "Exclusion prevents buyer from using predictable transaction litigation as walk-away right"
+          ],
+          "unusual_provisions": [],
+          "disclosure_references": false,
+          "specific_company_issues": [],
+          "red_flags": [],
+          "investigation_priority": "routine",
+          "explanation": "This is a standard and expected MAE exclusion clause. Stockholder litigation following merger announcements is extremely common (occurring in 80%+ of public M&A deals), typically consisting of class action lawsuits alleging breach of fiduciary duty or inadequate disclosures. This exclusion prevents the buyer from claiming that such predictable, transaction-related litigation constitutes a Material Adverse Effect that would allow termination of the deal. The clause is labeled '(J)' and clustered as 'Exclusion for Stockholder Litigation Arising from Merger Transaction,' which is entirely standard boilerplate. There are no references to specific lawsuits, disclosure schedules, known plaintiffs, particular allegations, or settlement amounts that would suggest pre-existing or unusually serious litigation. The clause does not carve out exceptions for certain types of stockholder suits or reference any ongoing investigations. This is a seller-favorable but market-standard provision that simply acknowledges the reality that merger announcements trigger routine litigation challenges.",
+          "negotiation_impact": "This is a balanced, market-standard provision that should not materially impact negotiations. Both sophisticated parties expect this exclusion in public M&A transactions. The buyer retains protection against truly material litigation unrelated to the transaction itself. No negotiation leverage or concessions should be required regarding this clause as it reflects standard practice.",
+          "similar_to_standard": true,
+          "confidence": 10
+        }
+      },
+      {
+        "clause_id": "(L)",
+        "label": "(L)",
+        "text": "Effect arising out of or resulting from any action taken by Parent, Merger Sub or any of their respective Affiliates",
+        "text_preview": "Effect arising out of or resulting from any action taken by Parent, Merger Sub or any of their respe...",
+        "cluster_match": "Exclusions for Acquiror Identity and Post-Acquisition Plans",
+        "cluster_category": "transaction",
+        "distance_ratio": 1.2542469999455723,
+        "zone": "outlier",
+        "risk_analysis": {
+          "risk_level": "high",
+          "requires_investigation": true,
+          "risk_factors": [
+            "Extremely broad exclusion protecting acquiror actions without limitation",
+            "No carve-out for breaches of transaction agreements or covenants",
+            "Potential shield for destructive pre-closing actions by Parent/Merger Sub",
+            "Asymmetric risk allocation favoring acquiror",
+            "Could enable acquiror to intentionally cause MAE and avoid liability"
+          ],
+          "unusual_provisions": [
+            "Unqualified exclusion for ANY action by Parent or Merger Sub",
+            "Includes actions by 'Affiliates' without definition or limitation",
+            "No temporal limitation (covers actions before or after signing)",
+            "No exception for actions violating deal covenants or fiduciary duties",
+            "Missing standard 'requested by' or 'consented to' qualifiers"
+          ],
+          "disclosure_references": false,
+          "specific_company_issues": [],
+          "red_flags": [
+            "Could allow Parent to sabotage target's business pre-closing without MAE consequences",
+            "May permit Parent to poach key employees, customers, or suppliers",
+            "Enables Parent to take competitive actions harming target without recourse",
+            "No protection against Parent-induced regulatory issues or contract breaches",
+            "Unusually one-sided provision suggesting weak target negotiating position",
+            "Could be used to manufacture closing conditions failure while avoiding MAE"
+          ],
+          "investigation_priority": "urgent",
+          "explanation": "This MAE exclusion is HIGHLY PROBLEMATIC and represents a significant departure from market standard. Standard acquiror action exclusions typically only exclude effects arising from actions that (1) the target requested or consented to, (2) are required by the merger agreement, or (3) are taken in compliance with deal covenants. This clause contains NONE of these critical limitations. The unqualified language 'any action taken by Parent, Merger Sub or any of their respective Affiliates' creates a massive loophole that could allow the acquiror to: (a) intentionally harm the target's business through competitive actions, customer/employee poaching, or market interference; (b) cause regulatory violations or contract breaches; (c) trigger material adverse effects and then claim those effects are excluded from MAE analysis; (d) essentially control whether an MAE has occurred by choosing whether to take harmful actions. The inclusion of 'Affiliates' without definition exponentially expands this risk - Parent's entire corporate family could take destructive actions with impunity. This appears to be either: (1) a drafting error where critical limiting language was omitted, (2) evidence of extremely weak target negotiating leverage, or (3) a specific accommodation for planned post-signing actions that Parent knows will harm the target. For TXNM Energy (a regulated utility), this is particularly concerning as Parent could take actions affecting regulatory approvals, customer relationships, or operational permits that would normally constitute an MAE.",
+          "negotiation_impact": "This provision fundamentally undermines the target's MAE protection and should be a deal-breaker in current form. Target shareholders are exposed to acquiror-caused harm with no recourse. Standard market practice requires limiting this exclusion to: (1) actions expressly required or permitted by the merger agreement, (2) actions taken with target's prior written consent, and (3) possibly actions taken in compliance with regulatory requirements. The clause should also exclude from the exclusion any actions that constitute breaches of Parent's covenants or representations. If Parent refuses to narrow this language, it strongly suggests they are planning specific harmful actions post-signing. Target's board may face fiduciary duty challenges for accepting such one-sided terms. This provision could also affect financing certainty and regulatory approval processes.",
+          "similar_to_standard": false,
+          "confidence": 10
+        }
+      }
+    ]
+  },
+  "unusual_provisions_summary": [
+    "No temporal limitation (covers actions before or after signing)",
+    "Includes actions by 'Affiliates' without definition or limitation",
+    "Unqualified exclusion for ANY action by Parent or Merger Sub",
+    "Missing standard 'requested by' or 'consented to' qualifiers",
+    "No exception for actions violating deal covenants or fiduciary duties"
+  ],
+  "red_flags": [
+    "(L): Could allow Parent to sabotage target's business pre-closing without MAE consequences",
+    "(L): May permit Parent to poach key employees, customers, or suppliers",
+    "(L): Enables Parent to take competitive actions harming target without recourse",
+    "(L): No protection against Parent-induced regulatory issues or contract breaches",
+    "(L): Unusually one-sided provision suggesting weak target negotiating position",
+    "(L): Could be used to manufacture closing conditions failure while avoiding MAE"
+  ],
+  "classification_file": "classification_20260318_145423.json"
+}

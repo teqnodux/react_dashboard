@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saltchuk Resources / Great Lakes Dredge & Dock — DMA Timeline</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary:     #0a0e14;
+            --bg-secondary:   #0f1419;
+            --bg-tertiary:    #151c24;
+            --bg-hover:       #1a232e;
+            --text-primary:   #e6e6e6;
+            --text-secondary: #8a919a;
+            --text-muted:     #5c6370;
+            --accent-blue:    #5ccfe6;
+            --accent-green:   #87d96c;
+            --accent-yellow:  #ffcc66;
+            --accent-red:     #f07178;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'IBM Plex Sans', sans-serif;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+        .container { max-width: 1600px; margin: 0 auto; padding: 16px; }
+
+        /* ── Alert Bar ─── */
+        .alert-bar {
+            background: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 4px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            display: flex; align-items: center; gap: 16px;
+            font-family: var(--font-mono); flex-wrap: wrap;
+        }
+        .deal-name  { font-size:1.1rem; font-weight:600; color:var(--text-primary); }
+        .alert-flag { padding:4px 10px; border-radius:4px; font-size:0.75rem; font-weight:500; }
+        .flag-outside    { background:rgba(240,113,120,0.20); color:var(--accent-red); }
+        .flag-outside-ok { background:rgba(255,204,102,0.15); color:var(--accent-yellow); }
+        .flag-nextup     { background:rgba(92,207,230,0.15);  color:var(--accent-blue); }
+        .flag-today      { background:rgba(135,217,108,0.15); color:var(--accent-green); }
+        .alert-divider   { color:var(--text-muted); }
+
+        /* ── Section ─── */
+        .section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 4px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+        .section-header {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--bg-tertiary);
+            font-family: var(--font-mono);
+            font-size: 0.85rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.05em;
+            display: flex; align-items: center; justify-content: space-between; gap: 12px;
+        }
+        .hdr-note { font-size:0.68rem; font-weight:400; color:var(--text-muted); letter-spacing:0; }
+
+        /* ── Timeline ─── */
+        .timeline-wrap { padding: 0 36px; overflow-x: auto; }
+        .timeline-track {
+            position: relative;
+            height: 280px;      /* axis at 140px (50%) */
+            min-width: 1200px;
+        }
+        /* horizontal axis line */
+        .timeline-track::before {
+            content: '';
+            position: absolute; top: 50%; left: 0; right: 0;
+            height: 2px; transform: translateY(-50%);
+            background: var(--bg-tertiary); border-radius: 1px;
+        }
+
+        /* ── Shaded bands ─── */
+        .tl-shade { position:absolute; top:0; bottom:0; pointer-events:none; z-index:0; }
+
+        /* ── Monthly gridlines (subtle vertical) ─── */
+        .tl-grid-line {
+            position: absolute; top: 0; bottom: 0; width: 1px;
+            background: rgba(255,255,255,0.035);
+            transform: translateX(-50%); z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ── TODAY: full-height dashed reference line + chip ─── */
+        .tl-today-full {
+            position: absolute; top: 0; bottom: 0; width: 1px;
+            background: repeating-linear-gradient(
+                to bottom,
+                rgba(135,217,108,0.70) 0px,
+                rgba(135,217,108,0.70) 5px,
+                transparent 5px,
+                transparent 9px
+            );
+            transform: translateX(-50%);
+            z-index: 2;
+            pointer-events: none;
+        }
+        .tl-today-chip {
+            position: absolute;
+            bottom: 22px;
+            font-family: var(--font-mono);
+            font-size: 0.58rem; font-weight: 600;
+            color: var(--accent-green);
+            background: rgba(135,217,108,0.12);
+            border: 1px solid rgba(135,217,108,0.35);
+            border-radius: 3px; padding: 2px 5px;
+            transform: translateX(-50%);
+            white-space: nowrap; z-index: 6;
+            pointer-events: none;
+        }
+
+        /* ── Milestone: dot on axis ─── */
+        .tl-dot {
+            position: absolute; top: 50%;
+            width: 8px; height: 8px; border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5; cursor: pointer;
+            transition: transform 0.15s;
+        }
+        .tl-dot:hover { transform: translate(-50%, -50%) scale(1.6); }
+
+        /* ── Connector line from label to dot ─── */
+        .tl-conn {
+            position: absolute; width: 1px;
+            transform: translateX(-50%);
+            z-index: 3; pointer-events: none; opacity: 0.45;
+        }
+
+        /* ── Labels — exactly two fixed rows ─── */
+        /*
+         * TOP ROW:    top: 8px  — all top-row labels share the same top edge
+         * BOTTOM ROW: bottom: 42px — all bottom-row labels share the same bottom edge
+         * Label height ≈ 50px, so:
+         *   top-row bottom edge    ≈ 58px  → connector top=58, height=78px to axis
+         *   bottom-row top edge    ≈ 188px → connector top=144, height=44px from axis
+         */
+        .tl-label {
+            position: absolute;
+            font-family: var(--font-mono);
+            text-align: center;
+            transform: translateX(-50%);
+            white-space: nowrap; z-index: 6;
+            background: rgba(10, 14, 20, 0.92);
+            padding: 3px 8px; border-radius: 3px;
+            pointer-events: none;
+        }
+        .row-top    { top: 8px; }
+        .row-bottom { bottom: 42px; }
+
+        .tl-label .tl-n    { font-size:0.68rem; font-weight:600; display:block; }
+        .tl-label .tl-name { font-size:0.62rem; display:block; }
+        .tl-label .tl-date { font-size:0.56rem; color:var(--text-muted); display:block; }
+
+        /* ── Month labels along bottom of track ─── */
+        .tl-month-lbl {
+            position: absolute;
+            bottom: 5px;
+            font-family: var(--font-mono);
+            font-size: 0.56rem; color: var(--text-muted);
+            transform: translateX(-50%); white-space: nowrap; z-index: 1;
+            background: var(--bg-secondary);
+            padding: 0 2px;
+        }
+
+        /* ── Tooltip ─── */
+        .tl-tooltip {
+            position: absolute; top: 8px;
+            background: var(--bg-tertiary); border: 1px solid var(--bg-hover);
+            border-radius: 4px; padding: 7px 12px;
+            font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-primary);
+            pointer-events: none; opacity: 0; transition: opacity 0.12s;
+            z-index: 20; white-space: nowrap; transform: translateX(-50%);
+        }
+        .tl-tooltip.visible { opacity: 1; }
+
+        /* ── Legend ─── */
+        .legend {
+            display: flex; gap: 18px; padding: 10px 16px;
+            font-family: var(--font-mono); font-size: 0.63rem; color: var(--text-muted);
+            border-top: 1px solid var(--bg-tertiary); flex-wrap: wrap; align-items: center;
+        }
+        .legend-item { display:flex; align-items:center; gap:6px; }
+        .lg-bar       { width:3px; height:14px; border-radius:1px; flex-shrink:0; }
+        .lg-bar-dashed { width:0; height:14px; border-left:2px dashed; flex-shrink:0; }
+        .lg-shade     { width:14px; height:10px; border-radius:2px; flex-shrink:0; }
+        .lg-today-bar { width:2px; height:14px; border-radius:1px; flex-shrink:0; background:var(--accent-green); box-shadow:0 0 6px rgba(135,217,108,0.6); }
+
+        /* ── Table ─── */
+        .filters {
+            padding: 12px 16px; display: flex; gap: 8px;
+            border-bottom: 1px solid var(--bg-tertiary); flex-wrap: wrap;
+        }
+        .filter-btn {
+            font-family: var(--font-mono); padding: 6px 12px;
+            border: 1px solid var(--bg-tertiary); background: var(--bg-tertiary);
+            color: var(--text-secondary); border-radius: 3px; cursor: pointer;
+            font-size: 0.7rem; transition: all 0.2s;
+        }
+        .filter-btn:hover  { background:var(--bg-hover); border-color:var(--accent-blue); }
+        .filter-btn.active { background:var(--accent-blue); color:var(--bg-primary); border-color:var(--accent-blue); }
+
+        table { width:100%; border-collapse:collapse; }
+        thead { background:var(--bg-tertiary); }
+        th {
+            font-family:var(--font-mono); text-align:left;
+            padding:10px 12px; font-weight:500; font-size:0.68rem;
+            color:var(--text-muted); text-transform:uppercase; white-space:nowrap;
+        }
+        td {
+            font-family:var(--font-mono); padding:10px 12px;
+            border-bottom:1px solid var(--bg-tertiary); font-size:0.75rem; vertical-align:top;
+        }
+        tbody tr:hover { background:var(--bg-hover); }
+        .row-overdue  { background:rgba(240,113,120,0.05); border-left:3px solid var(--accent-red); }
+        .row-overdue:hover  { background:rgba(240,113,120,0.08) !important; }
+        .row-static   { background:rgba(92,207,230,0.035); }
+        .row-deadline { background:rgba(255,204,102,0.035); }
+        .row-trigger  { background:rgba(135,217,108,0.025); }
+        .badge { display:inline-block; padding:3px 8px; border-radius:3px; font-size:0.65rem; font-weight:500; }
+        .badge-blue   { background:rgba(92,207,230,0.15);  color:var(--accent-blue); }
+        .badge-yellow { background:rgba(255,204,102,0.15); color:var(--accent-yellow); }
+        .badge-red    { background:rgba(240,113,120,0.15); color:var(--accent-red); }
+        .badge-muted  { background:rgba(92,99,112,0.20);  color:var(--text-muted); }
+
+        /* ── Triggered Chains ─── */
+        .chain { padding:14px 16px; border-bottom:1px solid var(--bg-tertiary); }
+        .chain:last-child { border-bottom:none; }
+        .chain-trigger {
+            font-family:var(--font-mono); font-size:0.8rem; font-weight:600;
+            color:var(--accent-yellow); margin-bottom:8px;
+            display:flex; align-items:center; gap:8px;
+        }
+        .chain-downstream {
+            margin-left:22px; display:flex; align-items:flex-start; gap:8px; margin-top:6px;
+        }
+        .chain-arrow { color:var(--accent-yellow); font-size:0.9rem; flex-shrink:0; }
+        .chain-event { font-family:var(--font-mono); font-size:0.75rem; color:var(--text-secondary); }
+        .chain-rule  { font-size:0.65rem; color:var(--text-muted); margin-top:2px; }
+
+        /* ── Checklist ─── */
+        .checklist-body { padding:4px 16px 12px; }
+        .checklist-item {
+            display:flex; align-items:center; gap:10px;
+            padding:9px 0; border-bottom:1px solid rgba(21,28,36,0.6);
+            font-family:var(--font-mono); font-size:0.75rem;
+            cursor:pointer; user-select:none;
+        }
+        .checklist-item:last-child { border-bottom:none; }
+        .check-box {
+            width:15px; height:15px; border:1px solid var(--text-muted);
+            border-radius:2px; display:flex; align-items:center; justify-content:center;
+            flex-shrink:0; font-size:0.6rem; transition:all 0.15s;
+        }
+        .checklist-item.done .check-box { background:var(--accent-green); border-color:var(--accent-green); color:var(--bg-primary); }
+        .checklist-item.done .check-label { color:var(--text-muted); text-decoration:line-through; }
+        .check-label { color:var(--accent-yellow); }
+
+        .toggle-btn {
+            font-family:var(--font-mono); font-size:0.7rem; padding:4px 10px;
+            background:var(--bg-tertiary); color:var(--accent-blue);
+            border:1px solid var(--bg-tertiary); border-radius:3px; cursor:pointer; transition:all 0.2s;
+        }
+        .toggle-btn:hover { background:var(--accent-blue); color:var(--bg-primary); }
+        .toggle-btn.disabled { color:var(--text-muted); cursor:default; }
+        .toggle-btn.disabled:hover { background:var(--bg-tertiary); color:var(--text-muted); }
+        .collapsible { display:none; }
+        .collapsible.open { display:block; }
+
+        /* ── Stock Chart ─── */
+        .stock-chart-wrap { padding:12px 36px 8px; }
+        #stockSvg {
+            width: 100%; height: 200px;
+            display: block; overflow: visible;
+        }
+        .stock-legend {
+            display:flex; gap:18px; padding:6px 36px 12px;
+            font-family:var(--font-mono); font-size:0.63rem; color:var(--text-muted);
+            flex-wrap:wrap; align-items:center;
+        }
+        .stock-no-data {
+            padding:24px 36px;
+            font-family:var(--font-mono); font-size:0.75rem;
+            color:var(--text-muted); text-align:center;
+        }
+        .view-tabs {
+            display:flex; gap:6px; padding:10px 16px;
+            border-bottom:1px solid var(--bg-tertiary);
+        }
+        .view-tab {
+            font-family:var(--font-mono); font-size:0.68rem; padding:4px 10px;
+            background:var(--bg-tertiary); color:var(--text-secondary);
+            border:1px solid var(--bg-tertiary); border-radius:3px; cursor:pointer;
+            transition:all 0.2s;
+        }
+        .view-tab:hover { background:var(--bg-hover); border-color:var(--accent-blue); }
+        .view-tab.active { background:var(--accent-blue); color:var(--bg-primary); border-color:var(--accent-blue); }
+        .view-tab.disabled { opacity:0.35; cursor:not-allowed; }
+        .view-tab.disabled:hover { background:var(--bg-tertiary); color:var(--text-secondary); border-color:var(--bg-tertiary); }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Alert Bar -->
+    <div class="alert-bar">
+        <span class="deal-name">Saltchuk Resources / Great Lakes Dredge & Dock</span>
+        <span class="alert-divider">|</span>
+        <span id="flagToday"   class="alert-flag flag-today"></span>
+        <span class="alert-divider">|</span>
+        <span id="flagOutside" class="alert-flag"></span>
+        <span class="alert-divider">|</span>
+        <span id="flagNextUp"  class="alert-flag flag-nextup"></span>
+    </div>
+
+    <!-- Visual Timeline -->
+    <div class="section">
+        <div class="section-header">
+            VISUAL TIMELINE
+            <span class="hdr-note">T=0 = Announce · Feb 23, 2026</span>
+        </div>
+        <div class="timeline-wrap">
+            <div class="timeline-track" id="timelineTrack">
+                <div class="tl-tooltip" id="tlTooltip"></div>
+            </div>
+        </div>
+        <div class="legend">
+            <div class="legend-item">
+                <div class="lg-bar" style="background:var(--accent-blue)"></div>
+                Announce
+            </div>
+            <div class="legend-item">
+                <div class="lg-bar" style="background:var(--accent-blue);opacity:0.4"></div>
+                NDA
+            </div>
+            <div class="legend-item">
+                <div class="lg-today-bar"></div>
+                Today
+            </div>
+            <div class="legend-item">
+                <div class="lg-bar" style="background:var(--accent-yellow)"></div>
+                Filing Deadline
+            </div>
+            <div class="legend-item">
+                <div class="lg-bar" style="background:var(--accent-red)"></div>
+                Outside Date
+            </div>
+            <div class="legend-item">
+                <div class="lg-bar-dashed" style="border-color:var(--accent-red)"></div>
+                Outside (Ext)
+            </div>
+            <div class="legend-item">
+                <div class="lg-shade" style="background:rgba(92,207,230,0.10)"></div>
+                Pre-Announce Window
+            </div>
+            <div class="legend-item">
+                <div class="lg-shade" style="background:rgba(240,113,120,0.10)"></div>
+                Outside Extension
+            </div>
+        </div>
+    </div>
+
+    <!-- Stock Chart Toggle Bar (always visible above section) -->
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px; font-family:var(--font-mono); font-size:0.72rem; color:var(--text-muted);">
+        <button class="toggle-btn" id="stockToggleBtn" onclick="toggleStockChart()">SHOW STOCK CHART</button>
+        <span id="stockStatus"></span>
+    </div>
+
+    <!-- Stock Chart (toggled) -->
+    <div class="section" id="stockSection" style="display:none">
+        <div class="section-header">
+            <span id="stockHdr">STOCK PRICES</span>
+            <span class="hdr-note" id="stockHdrNote">% change from NDA date</span>
+        </div>
+        <div class="view-tabs">
+            <button class="view-tab active" onclick="setStockView('pct',this)">% Change</button>
+            <button class="view-tab" onclick="setStockView('price',this)">Price ($)</button>
+            <button class="view-tab disabled" id="spreadTab" onclick="setStockView('spread',this)">Spread %</button>
+        </div>
+        <div class="stock-chart-wrap">
+            <svg id="stockSvg" viewBox="0 0 1000 180" preserveAspectRatio="none"></svg>
+        </div>
+        <div class="stock-legend" id="stockLegend"></div>
+    </div>
+
+    <!-- Dates Table -->
+    <div class="section">
+        <div class="section-header">DATES</div>
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterDates('all',this)">All</button>
+            <button class="filter-btn" onclick="filterDates('static',this)">Static</button>
+            <button class="filter-btn" onclick="filterDates('deadline',this)">Deadlines</button>
+            <button class="filter-btn" onclick="filterDates('triggered',this)">Triggered</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Event</th><th>Date</th><th>T+N (Announce)</th>
+                    <th>Days From Today</th><th>Days To Outside</th>
+                    <th>Status</th><th>Ref</th>
+                </tr>
+            </thead>
+            <tbody id="datesTableBody"></tbody>
+        </table>
+    </div>
+
+    <!-- Triggered Chains -->
+    <div class="section">
+        <div class="section-header">TRIGGERED DATE CHAINS</div>
+        <div id="triggeredChains"></div>
+        <div id="extensionNote"></div>
+    </div>
+
+    <!-- Checklist -->
+    <div class="section">
+        <div class="section-header">
+            ITEMS TO COLLECT
+            <span id="checkCount" style="font-size:0.7rem;color:var(--text-muted);font-weight:400"></span>
+            <button class="toggle-btn" onclick="toggleChecklist()">EXPAND</button>
+        </div>
+        <div class="checklist-body collapsible" id="checklistBody"></div>
+    </div>
+
+</div>
+<script>
+// ─── Data ────────────────────────────────────────────────────────────────────
+const DEAL  = {
+  "deal_name": "Saltchuk Resources / Great Lakes Dredge & Dock",
+  "acquirer": "Saltchuk Resources, Inc.",
+  "acquirer_ticker": "",
+  "target": "Great Lakes Dredge & Dock Corporation",
+  "target_ticker": "GLDD",
+  "signing_date": "2026-02-10",
+  "nda_date": "2025-10-01",
+  "outside_date_initial": "2026-06-10",
+  "outside_date_extended": "2026-08-10",
+  "outside_date_extension_note": null,
+  "financing_type": "debt",
+  "financing_commitment_expiry": null,
+  "offer_price_per_share": 17.0,
+  "exchange_ratio": null,
+  "requires_s4": false,
+  "is_going_private": true,
+  "schedule_13e3_required": false,
+  "static_events": [
+    {
+      "label": "Confidentiality Agreement",
+      "date": "2025-10-01",
+      "ref": null
+    },
+    {
+      "label": "Merger Agreement Signed",
+      "date": "2026-02-10",
+      "ref": null
+    },
+    {
+      "label": "Unanimously approved by the Great Lakes Dredge & Dock Board",
+      "date": "2026-02-10",
+      "ref": null
+    },
+    {
+      "label": "Outside Date (Initial)",
+      "date": "2026-06-10",
+      "ref": null
+    },
+    {
+      "label": "Outside Date (Extended)",
+      "date": "2026-08-10",
+      "ref": null
+    }
+  ],
+  "extension_note": null,
+  "deadline_events": [
+    {
+      "label": "HSR Filing Deadline",
+      "date": "2026-03-03",
+      "calculation": "+15 Business Days from Signing",
+      "ref": null
+    },
+    {
+      "label": "Proxy Statement Filing Deadline",
+      "date": null,
+      "calculation": "Date not yet disclosed",
+      "ref": null
+    },
+    {
+      "label": "HSR Act Filing Deadline",
+      "date": "2026-02-25",
+      "calculation": "Saltchuk Resources, Inc. must make all HSR Act filings within 15 Business Days after February 10, 2026, and pay all related Governmental Entity filing fees.",
+      "ref": null
+    },
+    {
+      "label": "Competing Proposal Notice",
+      "date": null,
+      "calculation": "Great Lakes Dredge & Dock Corporation must notify Saltchuk Resources, Inc. in writing within 24 hours of receipt of any Competing Proposal or proposal that would reasonably be expected to lead to a Competing Proposal.",
+      "ref": null
+    },
+    {
+      "label": "Replacement Financing Deadline",
+      "date": null,
+      "calculation": "If financing becomes unavailable, Saltchuk Resources, Inc. and Huron MergeCo., Inc. must use reasonable best efforts to secure alternative funds by the 5th Business Day before offer expiry.",
+      "ref": null
+    },
+    {
+      "label": "Company Termination Fee Payment \u2013 Recommendation Change",
+      "date": null,
+      "calculation": "Great Lakes Dredge & Dock Corporation must pay the $36,861,914 Company Termination Fee within one Business Day after termination by Saltchuk Resources under Section 7.01(e) for a Change of Company Recommendation.",
+      "ref": null
+    },
+    {
+      "label": "Company Termination Fee \u2013 Tail Period (Competing Proposal Consummation)",
+      "date": null,
+      "calculation": "If the agreement is terminated in specified circumstances and Great Lakes Dredge & Dock Corporation enters into and subsequently consummates a Competing Proposal within 12 months after termination, the $36,861,914 Company Termination Fee is payable prior to or concurrently with such consummation.",
+      "ref": null
+    },
+    {
+      "label": "Cure Period for Breach",
+      "date": null,
+      "calculation": "Either party has 30 days after written notice of breach to cure such breach before the non-breaching party may terminate, subject to the breach being curable before the Outside Date.",
+      "ref": null
+    },
+    {
+      "label": "CFIUS / Foreign Investment Law Filings",
+      "date": null,
+      "calculation": "Saltchuk Resources, Inc. and Great Lakes Dredge & Dock Corporation must make required filings under applicable Foreign Investment Laws (including CFIUS) as promptly as practicable; no specific deadline is stated.",
+      "ref": null
+    },
+    {
+      "label": "Shareholder Meeting Adjournment Limit",
+      "date": null,
+      "calculation": "Adjournments limited to 10 Business Days each, not exceeding 20 Business Days aggregate without Parent's written consent; total vote delay may not exceed 25 Business Days aggregate.",
+      "ref": null
+    },
+    {
+      "label": "Offer Price Adjustment Record Date",
+      "date": null,
+      "calculation": "If a stock dividend or stock distribution is declared with a record date between February 10, 2026 and closing, the $17.00 offer price and merger consideration are adjusted to preserve equivalent economics.",
+      "ref": null
+    }
+  ],
+  "triggered_chains": [
+    {
+      "trigger_label": "HSR Filed (actual date)",
+      "trigger_key": "hsr_filed",
+      "downstream": [
+        {
+          "label": "HSR Waiting Period Expires",
+          "rule": "+15 calendar days after HSR filed (statutory \u2014 HSR Act, not stated in merger agreement)",
+          "ref": null
+        }
+      ]
+    },
+    {
+      "trigger_label": "Schedule 13E-3 Filed (actual date)",
+      "trigger_key": "13e3_filed",
+      "downstream": [
+        {
+          "label": "SEC Review Period (13E-3)",
+          "rule": "Open-ended \u2014 SEC has 10 business days initial review; comments may follow",
+          "ref": null
+        },
+        {
+          "label": "13E-3 / Proxy Cleared by SEC",
+          "rule": "SEC staff completes review; company may mail proxy",
+          "ref": null
+        }
+      ]
+    },
+    {
+      "trigger_label": "Proxy Statement Filed (actual date)",
+      "trigger_key": "proxy_filed",
+      "downstream": [
+        {
+          "label": "SEC Proxy Review Period",
+          "rule": "Open-ended \u2014 SEC review (typically 10 business days for preliminary proxy)",
+          "ref": null
+        },
+        {
+          "label": "Proxy Mailed to Shareholders",
+          "rule": "After SEC clearance \u2014 typically \u226520 calendar days before meeting",
+          "ref": null
+        },
+        {
+          "label": "Stockholder Meeting Deadline",
+          "rule": "Date not yet disclosed",
+          "ref": null
+        }
+      ]
+    },
+    {
+      "trigger_label": "All Closing Conditions Satisfied",
+      "trigger_key": "conditions_satisfied",
+      "downstream": [
+        {
+          "label": "Closing",
+          "rule": "Date not yet disclosed",
+          "ref": null
+        }
+      ]
+    }
+  ],
+  "checklist": [
+    "HSR actual filing date (Saltchuk Resources, Inc. + GLDD)",
+    "HSR early termination granted?",
+    "Schedule 13E-3 actual filing date",
+    "SEC 13E-3 comment letter received?",
+    "Schedule 13E-3 / proxy cleared by SEC",
+    "Record date for stockholder votes",
+    "Preliminary proxy filed (PREM14A)?",
+    "Definitive proxy filed (DEFM14A)?",
+    "Proxy mailing date",
+    "Great Lakes Dredge & Dock Corporation stockholder meeting date",
+    "Debt Commitment Letter expiration date",
+    "Alternative financing secured? (if needed)",
+    "Union/works council consultations complete?",
+    "All closing conditions satisfied?",
+    "Actual closing date"
+  ]
+};
+const STOCK = {
+  "available": true,
+  "tickers": [
+    "GLDD"
+  ],
+  "series": {
+    "GLDD": []
+  }
+};
+
+// ─── Date helpers ─────────────────────────────────────────────────────────────
+function parseDate(str) {
+    if (!str) return null;
+    const [y,m,d] = str.split('-').map(Number);
+    return new Date(y, m-1, d);
+}
+function today() { const t=new Date(); t.setHours(0,0,0,0); return t; }
+function daysFromToday(s)   { if(!s) return null; return Math.round((parseDate(s)-today())/86400000); }
+function daysBetween(a,b)   { if(!a||!b) return null; return Math.round((parseDate(b)-parseDate(a))/86400000); }
+function tPlus(s)           { if(!s) return null; return Math.round((parseDate(s)-parseDate(DEAL.signing_date))/86400000); }
+function tPlusToday()       { return Math.round((today()-parseDate(DEAL.signing_date))/86400000); }
+function fmtDate(s) {
+    if(!s) return 'TBD';
+    return parseDate(s).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+}
+function fmtDays(n) {
+    if(n===null) return '—'; if(n===0) return 'TODAY';
+    return (n>0?'+':'')+n+'d';
+}
+function fmtT(n) {
+    if(n===null) return '—'; return (n>=0?'T+':'T')+n;
+}
+
+// ─── Shared timeline range (used by both timeline and stock chart) ─────────────
+let RANGE_START, RANGE_END, RANGE_SPAN;
+
+function initRange() {
+    const ndaDate  = parseDate(DEAL.nda_date);
+    const lastDate = parseDate(DEAL.outside_date_extended || DEAL.outside_date_initial);
+    RANGE_START = new Date(ndaDate);   RANGE_START.setDate(RANGE_START.getDate()-10);
+    RANGE_END   = new Date(lastDate);  RANGE_END.setDate(RANGE_END.getDate()+14);
+    RANGE_SPAN  = RANGE_END - RANGE_START;
+}
+
+function pctN(d) { return (d-RANGE_START)/RANGE_SPAN*100; }
+function pct(d)  { return pctN(d).toFixed(3)+'%'; }
+
+// ─── Alert Bar ────────────────────────────────────────────────────────────────
+function initAlertBar() {
+    document.getElementById('flagToday').textContent = fmtT(tPlusToday())+'  TODAY';
+
+    const dOut = daysFromToday(DEAL.outside_date_initial);
+    const fo   = document.getElementById('flagOutside');
+    fo.className = 'alert-flag '+(dOut<90?'flag-outside':'flag-outside-ok');
+    fo.textContent = (dOut<90?'⚠️ ':'')+'OUTSIDE: '+fmtDate(DEAL.outside_date_initial)+' ('+fmtDays(dOut)+')';
+
+    const upcoming = [
+        ...DEAL.static_events.map(e=>  ({label:e.label,date:e.date})),
+        ...DEAL.deadline_events.map(e=>({label:e.label,date:e.date})),
+    ].filter(e=>daysFromToday(e.date)>0)
+     .sort((a,b)=>daysFromToday(a.date)-daysFromToday(b.date));
+
+    const fn=document.getElementById('flagNextUp');
+    fn.textContent = upcoming.length
+        ? 'NEXT: '+upcoming[0].label+' ('+fmtDays(daysFromToday(upcoming[0].date))+')'
+        : 'NO UPCOMING DEADLINES';
+}
+
+// ─── Timeline ─────────────────────────────────────────────────────────────────
+function initTimeline() {
+    const track     = document.getElementById('timelineTrack');
+    const tooltip   = document.getElementById('tlTooltip');
+    const announce  = parseDate(DEAL.signing_date);
+    const todayDate = today();
+
+    // Track geometry — must match CSS height: 280px
+    const TRACK_H        = 280;
+    const AXIS_Y         = 140;   // 50% of 280
+    const DOT_R          = 4;
+    // Top-row labels: top:8px, estimated height ~50px → bottom edge at 58px
+    const TOP_LBL_BOTTOM = 58;
+    // Bottom-row labels: bottom:42px, estimated height ~50px → top edge at 188px
+    const BOT_LBL_TOP    = 188;
+
+    // ── Monthly gridlines ────────────────────────────────────────────────────
+    const cur = new Date(RANGE_START.getFullYear(), RANGE_START.getMonth(), 1);
+    while (cur <= RANGE_END) {
+        const p = pct(cur);
+        const gl = document.createElement('div');
+        gl.className = 'tl-grid-line'; gl.style.left = p;
+        track.appendChild(gl);
+        const ml = document.createElement('div');
+        ml.className = 'tl-month-lbl'; ml.style.left = p;
+        ml.textContent = cur.toLocaleDateString('en-US',{month:'short',year:'2-digit'});
+        track.appendChild(ml);
+        cur.setMonth(cur.getMonth()+1);
+    }
+
+    // ── Shaded bands ─────────────────────────────────────────────────────────
+    function addShade(fromDate, toDate, bg) {
+        const l = pctN(fromDate), r = pctN(toDate);
+        const s = document.createElement('div');
+        s.className='tl-shade';
+        s.style.left=l+'%'; s.style.width=(r-l)+'%'; s.style.background=bg;
+        track.insertBefore(s, track.firstChild);
+    }
+    addShade(parseDate(DEAL.nda_date), announce, 'rgba(92,207,230,0.055)');
+    if (DEAL.outside_date_extended) {
+        addShade(parseDate(DEAL.outside_date_initial), parseDate(DEAL.outside_date_extended), 'rgba(240,113,120,0.07)');
+    }
+
+    // ── TODAY: full-height dashed line + chip ─────────────────────────────────
+    // Visual 1px dashed line (pointer-events: none keeps it purely decorative)
+    const todayFull = document.createElement('div');
+    todayFull.className = 'tl-today-full';
+    todayFull.style.left = pct(todayDate);
+    track.appendChild(todayFull);
+
+    // Separate transparent hover overlay (wider hit area, no visual width)
+    const todayHover = document.createElement('div');
+    todayHover.style.cssText = 'position:absolute;top:0;bottom:0;width:13px;transform:translateX(-50%);z-index:3;cursor:crosshair;';
+    todayHover.style.left = pct(todayDate);
+    todayHover.addEventListener('mouseenter', ()=>{
+        tooltip.style.left = pct(todayDate);
+        tooltip.textContent = 'TODAY  ·  '+fmtDate(todayDate.toISOString().split('T')[0])+'  ·  '+fmtT(tPlusToday());
+        tooltip.classList.add('visible');
+    });
+    todayHover.addEventListener('mouseleave', ()=>tooltip.classList.remove('visible'));
+    track.appendChild(todayHover);
+
+    const todayChip = document.createElement('div');
+    todayChip.className = 'tl-today-chip';
+    todayChip.style.left = pct(todayDate);
+    todayChip.textContent = fmtT(tPlusToday()) + ' TODAY';
+    track.appendChild(todayChip);
+
+    // ── Helper: dot on axis + connector line + fixed-row label ───────────────
+    // row: 'top' | 'bottom'   dotColor: CSS color string
+    function addMilestone(dateStr, row, dotColor, tpLabel, nameLabel) {
+        const d   = parseDate(dateStr);
+        const p   = pct(d);
+        const tp  = Math.round((d-announce)/86400000);
+        const dtd = daysFromToday(dateStr);
+
+        // Dot on axis
+        const dot = document.createElement('div');
+        dot.className = 'tl-dot';
+        dot.style.left = p;
+        dot.style.background = dotColor;
+        dot.style.boxShadow = '0 0 6px '+dotColor+'88';
+        dot.addEventListener('mouseenter', ()=>{
+            tooltip.style.left = p;
+            tooltip.textContent = nameLabel+'  ·  '+fmtDate(dateStr)+'  ·  '+fmtT(tp)+'  ·  '+fmtDays(dtd);
+            tooltip.classList.add('visible');
+        });
+        dot.addEventListener('mouseleave', ()=>tooltip.classList.remove('visible'));
+        track.appendChild(dot);
+
+        // Connector line
+        const conn = document.createElement('div');
+        conn.className = 'tl-conn';
+        conn.style.left = p;
+        conn.style.background = dotColor;
+        if (row === 'top') {
+            conn.style.top    = TOP_LBL_BOTTOM + 'px';
+            conn.style.height = (AXIS_Y - TOP_LBL_BOTTOM - DOT_R) + 'px';
+        } else {
+            conn.style.top    = (AXIS_Y + DOT_R) + 'px';
+            conn.style.height = (BOT_LBL_TOP - AXIS_Y - DOT_R) + 'px';
+        }
+        track.appendChild(conn);
+
+        // Label (row-top or row-bottom)
+        const lbl = document.createElement('div');
+        lbl.className = 'tl-label ' + (row==='top' ? 'row-top' : 'row-bottom');
+        lbl.style.left = p;
+        lbl.innerHTML =
+            '<span class="tl-n"    style="color:'+dotColor+'">'+tpLabel   +'</span>'+
+            '<span class="tl-name" style="color:'+dotColor+'">'+nameLabel +'</span>'+
+            '<span class="tl-date">'+fmtDate(dateStr)+'</span>';
+        track.appendChild(lbl);
+    }
+
+    // ── Milestones ────────────────────────────────────────────────────────────
+    // Row assignments (no two adjacent same-row labels):
+    //   TOP:    NDA (~2%), Announce (~34%), S-4 Deadline (~43%), Outside Ext (~91%)
+    //   BOTTOM: HSR Deadline (~40%), Outside Initial (~72%)
+    const C_NDA  = 'rgba(92,207,230,0.6)';
+    const C_ANN  = '#5ccfe6';
+    const C_DL   = '#ffcc66';
+    const C_OUT  = '#f07178';
+    const C_OEXT = 'rgba(240,113,120,0.6)';
+
+    addMilestone(DEAL.nda_date,     'top',    C_NDA,  fmtT(tPlus(DEAL.nda_date)), 'NDA');
+    addMilestone(DEAL.signing_date, 'top',    C_ANN,  'T=0',                      'Announce');
+    // Deadline milestones — look up by label, skip flagged (⚠) or null-date entries
+    const hsrDl = DEAL.deadline_events.find(e => e.date && e.label && !e.label.startsWith('⚠') && e.label.includes('HSR'));
+    const regDl = DEAL.deadline_events.find(e => e.date && e.label && !e.label.startsWith('⚠') && (e.label.includes('S-4') || e.label.includes('F-4')));
+    if (hsrDl) addMilestone(hsrDl.date, 'bottom', C_DL, fmtT(tPlus(hsrDl.date)), 'HSR Deadline');
+    if (regDl) addMilestone(regDl.date, 'top',    C_DL, fmtT(tPlus(regDl.date)), regDl.label.replace(' Filing Deadline',''));
+    addMilestone(DEAL.outside_date_initial, 'bottom', C_OUT,  fmtT(tPlus(DEAL.outside_date_initial)),  'Outside Date');
+    if (DEAL.outside_date_extended) {
+        addMilestone(DEAL.outside_date_extended, 'top', C_OEXT, fmtT(tPlus(DEAL.outside_date_extended)), 'Outside (Ext)');
+    }
+}
+
+// ─── Stock Chart ──────────────────────────────────────────────────────────────
+let stockView = 'pct';
+const CHART = { W:1000, H:180, PL:52, PR:12, PT:10, PB:28 };
+
+function plotW() { return CHART.W-CHART.PL-CHART.PR; }
+function plotH() { return CHART.H-CHART.PT-CHART.PB; }
+
+function xSvg(dateStr) {
+    const d = parseDate(dateStr);
+    return CHART.PL + pctN(d)/100 * plotW();
+}
+
+function buildStockChart() {
+    const svg     = document.getElementById('stockSvg');
+    const legend  = document.getElementById('stockLegend');
+    const hdrNote = document.getElementById('stockHdrNote');
+    const hdr     = document.getElementById('stockHdr');
+    svg.innerHTML = '';
+    legend.innerHTML = '';
+
+    // Set dynamic header from tickers
+    const tickers = [DEAL.target_ticker, DEAL.acquirer_ticker].filter(Boolean);
+    if (hdr) hdr.textContent = 'STOCK PRICES' + (tickers.length ? ' — ' + tickers.join(' & ') : '');
+
+    if (!STOCK.available || !STOCK.series) {
+        svg.innerHTML = '<text x="500" y="90" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="13" fill="#5c6370">'+(STOCK.error||'No data')+'</text>';
+        return;
+    }
+
+    const thr  = (DEAL.target_ticker   ? STOCK.series[DEAL.target_ticker]   : null) || [];
+    const ceco = (DEAL.acquirer_ticker ? STOCK.series[DEAL.acquirer_ticker] : null) || [];
+    if (!thr.length && !ceco.length) {
+        svg.innerHTML = '<text x="500" y="90" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="13" fill="#5c6370">No price data returned</text>';
+        return;
+    }
+
+    // ── Normalisation per view ────────────────────────────────────────────────
+    // isTgt: true if this series is the merger target (spread only meaningful there)
+    function getY(series, base, isTgt) {
+        if (stockView === 'pct') {
+            return series.map(pt => ({ date:pt.date, y: (pt.price/base-1)*100 }));
+        } else if (stockView === 'price') {
+            return series.map(pt => ({ date:pt.date, y: pt.price }));
+        } else { // spread: (offer - target_price) / target_price × 100, from announce only
+            const ofr = DEAL.offer_price_per_share;
+            if (!ofr || !isTgt) return [];
+            return series
+                .filter(pt => pt.date >= DEAL.signing_date)
+                .map(pt => ({ date:pt.date, y: (ofr-pt.price)/pt.price*100 }));
+        }
+    }
+
+    const base_thr  = thr.length  ? thr[0].price  : 1;
+    const base_ceco = ceco.length ? ceco[0].price : 1;
+
+    const ys_thr  = getY(thr,  base_thr,  true);   // thr series is always target
+    const ys_ceco = getY(ceco, base_ceco, false);   // ceco series is always acquirer
+    const allY    = [...ys_thr.map(p=>p.y), ...ys_ceco.map(p=>p.y)].filter(v=>isFinite(v));
+    if (!allY.length) return;
+
+    const yMin = Math.min(...allY), yMax = Math.max(...allY);
+    const yPad = (yMax-yMin)*0.12 || 1;
+    const yLo  = yMin-yPad, yHi = yMax+yPad;
+
+    function ySvg(v) { return CHART.PT + (1-(v-yLo)/(yHi-yLo))*plotH(); }
+
+    const ns = 'http://www.w3.org/2000/svg';
+    function el(tag, attrs) {
+        const e = document.createElementNS(ns, tag);
+        Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));
+        return e;
+    }
+
+    // ── Monthly gridlines on chart ────────────────────────────────────────────
+    const gc = new Date(RANGE_START.getFullYear(), RANGE_START.getMonth(), 1);
+    while (gc <= RANGE_END) {
+        const x = xSvg(gc.toISOString().split('T')[0]);
+        svg.appendChild(el('line',{
+            x1:x, y1:CHART.PT, x2:x, y2:CHART.PT+plotH(),
+            stroke:'rgba(255,255,255,0.04)', 'stroke-width':'1'
+        }));
+        gc.setMonth(gc.getMonth()+1);
+    }
+
+    // ── Zero / reference line ────────────────────────────────────────────────
+    if (stockView==='pct') {
+        const y0 = ySvg(0);
+        svg.appendChild(el('line',{
+            x1:CHART.PL, y1:y0, x2:CHART.PL+plotW(), y2:y0,
+            stroke:'rgba(255,255,255,0.12)', 'stroke-width':'1', 'stroke-dasharray':'4,3'
+        }));
+    }
+
+    // ── Event markers ────────────────────────────────────────────────────────
+    const markers = [
+        { date:DEAL.signing_date,          color:'rgba(92,207,230,0.35)' },
+        { date:DEAL.outside_date_initial,  color:'rgba(240,113,120,0.3)' },
+    ];
+    markers.forEach(m=>{
+        const x = xSvg(m.date);
+        svg.appendChild(el('line',{
+            x1:x, y1:CHART.PT, x2:x, y2:CHART.PT+plotH(),
+            stroke:m.color, 'stroke-width':'1.5'
+        }));
+    });
+
+    // TODAY marker
+    const xTod = xSvg(today().toISOString().split('T')[0]);
+    svg.appendChild(el('line',{
+        x1:xTod, y1:CHART.PT, x2:xTod, y2:CHART.PT+plotH(),
+        stroke:'rgba(135,217,108,0.55)', 'stroke-width':'1.5'
+    }));
+
+    // ── Price lines ──────────────────────────────────────────────────────────
+    function makePath(points, stroke) {
+        if (!points.length) return;
+        const pts = points.map(p=>xSvg(p.date).toFixed(1)+','+ySvg(p.y).toFixed(1)).join(' ');
+        svg.appendChild(el('polyline',{
+            points:pts, fill:'none', stroke:stroke, 'stroke-width':'1.5',
+            'stroke-linejoin':'round', 'stroke-linecap':'round'
+        }));
+    }
+
+    makePath(ys_thr,  '#5ccfe6');   // THR  — blue
+    makePath(ys_ceco, '#ffcc66');   // CECO — yellow
+
+    // ── Y-axis ticks ─────────────────────────────────────────────────────────
+    const yRange = yHi-yLo;
+    const tickStep = yRange>50?10 : yRange>20?5 : yRange>8?2 : 1;
+    const yFirst = Math.ceil(yLo/tickStep)*tickStep;
+    for (let yv=yFirst; yv<=yHi; yv+=tickStep) {
+        const y = ySvg(yv);
+        svg.appendChild(el('line',{
+            x1:CHART.PL-3, y1:y, x2:CHART.PL, y2:y,
+            stroke:'rgba(92,99,112,0.6)', 'stroke-width':'1'
+        }));
+        const txt = el('text',{
+            x:CHART.PL-5, y:y+3.5, 'text-anchor':'end',
+            'font-family':'JetBrains Mono,monospace', 'font-size':'9',
+            fill:'#5c6370'
+        });
+        txt.textContent = stockView==='pct'   ? yv.toFixed(0)+'%'
+                        : stockView==='price' ? '$'+yv.toFixed(0)
+                        :                       yv.toFixed(2)+'%';
+        svg.appendChild(txt);
+    }
+
+    // ── X-axis month labels ───────────────────────────────────────────────────
+    const xc = new Date(RANGE_START.getFullYear(), RANGE_START.getMonth(), 1);
+    while (xc <= RANGE_END) {
+        const x = xSvg(xc.toISOString().split('T')[0]);
+        const txt = el('text',{
+            x:x, y:CHART.PT+plotH()+16, 'text-anchor':'middle',
+            'font-family':'JetBrains Mono,monospace', 'font-size':'9', fill:'#5c6370'
+        });
+        txt.textContent = xc.toLocaleDateString('en-US',{month:'short',year:'2-digit'});
+        svg.appendChild(txt);
+        xc.setMonth(xc.getMonth()+1);
+    }
+
+    // ── Legend ────────────────────────────────────────────────────────────────
+    hdrNote.textContent = stockView==='pct'    ? '% change from NDA date'
+                        : stockView==='price'  ? 'price ($)'
+                        : 'merger arb spread (raw %) · offer $'+DEAL.offer_price_per_share.toFixed(2)+'/'+DEAL.target_ticker+' · from announce date';
+    const tgtTick = DEAL.target_ticker   || '';
+    const acqTick = DEAL.acquirer_ticker || '';
+    legend.innerHTML = `
+        ${tgtTick ? `<div class="legend-item"><div class="lg-bar" style="background:#5ccfe6"></div>${tgtTick} — Target</div>` : ''}
+        ${acqTick ? `<div class="legend-item"><div class="lg-bar" style="background:#ffcc66"></div>${acqTick} — Acquirer</div>` : ''}
+        <div class="legend-item"><div class="lg-bar" style="background:rgba(92,207,230,0.35)"></div>Announce</div>
+        <div class="legend-item"><div class="lg-bar" style="background:rgba(240,113,120,0.3)"></div>Outside Date</div>
+        <div class="legend-item"><div class="lg-today-bar"></div>Today</div>
+    `;
+}
+
+function setStockView(view, btn) {
+    if (btn.classList.contains('disabled')) return;
+    stockView = view;
+    document.querySelectorAll('.view-tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    buildStockChart();
+}
+
+let stockBuilt = false;
+function toggleStockChart() {
+    const sec = document.getElementById('stockSection');
+    const btn = document.getElementById('stockToggleBtn');
+    const st  = document.getElementById('stockStatus');
+    const vis = sec.style.display !== 'none';
+    sec.style.display = vis ? 'none' : 'block';
+    btn.textContent   = vis ? 'SHOW STOCK CHART' : 'HIDE STOCK CHART';
+    if (!vis && !stockBuilt) {
+        stockBuilt = true;
+        if (DEAL.offer_price_per_share) {
+            document.getElementById('spreadTab').classList.remove('disabled');
+        }
+        buildStockChart();
+        const st = document.getElementById('stockStatus');
+        if (!STOCK.available) st.textContent = '⚠ '+STOCK.error;
+    }
+}
+
+// ─── Dates Table ──────────────────────────────────────────────────────────────
+function buildDatesTable(filter) {
+    const tbody=document.getElementById('datesTableBody');
+    const outsideD=DEAL.outside_date_initial;
+    tbody.innerHTML='';
+    let rows=[];
+    if (filter==='all'||filter==='static')   DEAL.static_events.forEach(e=>rows.push({...e,kind:'static'}));
+    if (filter==='all'||filter==='deadline') DEAL.deadline_events.forEach(e=>rows.push({...e,kind:'deadline'}));
+    if (filter==='all'||filter==='triggered') {
+        DEAL.triggered_chains.forEach(chain=>{
+            rows.push({label:chain.trigger_label,date:null,ref:'',kind:'trigger-head'});
+            chain.downstream.forEach(ds=>rows.push({
+                label:'  ↳ '+ds.label,date:null,ref:ds.ref,rule:ds.rule,kind:'trigger-result'
+            }));
+        });
+    }
+    rows.forEach(row=>{
+        const tr=document.createElement('tr');
+        const dtd=daysFromToday(row.date), dto=daysBetween(row.date,outsideD), tp=tPlus(row.date);
+        const isPast=row.date&&dtd<0;
+        if      (isPast&&row.kind==='deadline') tr.className='row-overdue';
+        else if (row.kind==='static')           tr.className='row-static';
+        else if (row.kind==='deadline')         tr.className='row-deadline';
+        else                                    tr.className='row-trigger';
+
+        let badge='';
+        if      (row.kind==='static')   badge=isPast?'<span class="badge badge-muted">PAST</span>':'<span class="badge badge-blue">FIXED</span>';
+        else if (row.kind==='deadline') badge=isPast?'<span class="badge badge-red">OVERDUE</span>':'<span class="badge badge-yellow">PENDING</span>';
+        else                            badge='<span class="badge badge-muted">AWAITING TRIGGER</span>';
+
+        const tpCol  =tp!==null?`<span style="color:${tp<0?'var(--text-secondary)':tp===0?'var(--accent-blue)':'var(--text-primary)'};font-weight:600">${fmtT(tp)}</span>`:'<span style="color:var(--text-muted)">—</span>';
+        const dftCol =dtd!==null?`<span style="color:${dtd<0?'var(--accent-red)':dtd===0?'var(--accent-green)':'var(--text-primary)'}">${fmtDays(dtd)}</span>`:'<span style="color:var(--text-muted)">—</span>';
+        const dtoCol =dto!==null?`<span style="color:var(--text-secondary)">${fmtDays(dto)}</span>`:'<span style="color:var(--text-muted)">—</span>';
+        const lbl    =row.label+(row.rule?`<br><span style="font-size:0.6rem;color:var(--text-muted)">${row.rule}</span>`:'')+
+                                (row.calculation?`<br><span style="font-size:0.6rem;color:var(--text-muted)">${row.calculation}</span>`:'');
+        tr.innerHTML=`<td>${lbl}</td><td>${row.date?fmtDate(row.date):'<span style="color:var(--text-muted)">TBD</span>'}</td><td>${tpCol}</td><td>${dftCol}</td><td>${dtoCol}</td><td>${badge}</td><td style="color:var(--text-muted)">${row.ref||'—'}</td>`;
+        tbody.appendChild(tr);
+    });
+}
+function filterDates(f,btn) {
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active'); buildDatesTable(f);
+}
+
+// ─── Triggered Chains ────────────────────────────────────────────────────────
+function initTriggeredChains() {
+    const c=document.getElementById('triggeredChains');
+    DEAL.triggered_chains.forEach(chain=>{
+        const div=document.createElement('div'); div.className='chain';
+        const ds=chain.downstream.map(d=>`<div class="chain-downstream"><span class="chain-arrow">→</span><div><div class="chain-event">${d.label}</div><div class="chain-rule">${d.rule} &nbsp; ${d.ref}</div></div></div>`).join('');
+        div.innerHTML=`<div class="chain-trigger">⏳ ${chain.trigger_label}</div>${ds}`;
+        c.appendChild(div);
+    });
+
+    // Outside date extension note — shown when extension exists but has no fixed date/length
+    if (DEAL.extension_note) {
+        const el=document.getElementById('extensionNote');
+        el.className='chain';
+        el.style.borderTop='1px solid var(--bg-tertiary)';
+        el.innerHTML=`<div class="chain-trigger">📋 Outside Date Extension</div>`+
+            `<div class="chain-downstream"><span class="chain-arrow">→</span>`+
+            `<div><div class="chain-event">No fixed extension length</div>`+
+            `<div class="chain-rule">${DEAL.extension_note}</div></div></div>`;
+    }
+}
+
+// ─── Checklist ───────────────────────────────────────────────────────────────
+function initChecklist() {
+    const body=document.getElementById('checklistBody');
+    const count=document.getElementById('checkCount');
+    function upd() {
+        const n=body.querySelectorAll('.checklist-item.done').length;
+        count.textContent=n+' / '+DEAL.checklist.length+' collected';
+    }
+    DEAL.checklist.forEach(item=>{
+        const div=document.createElement('div'); div.className='checklist-item';
+        div.innerHTML=`<div class="check-box"></div><span class="check-label">${item}</span>`;
+        div.addEventListener('click',()=>{
+            div.classList.toggle('done');
+            div.querySelector('.check-box').textContent=div.classList.contains('done')?'✓':'';
+            upd();
+        });
+        body.appendChild(div);
+    });
+    upd();
+}
+function toggleChecklist() {
+    const body=document.getElementById('checklistBody');
+    const btn=document.querySelector('.toggle-btn:not(#stockToggleBtn)');
+    body.classList.toggle('open');
+    btn.textContent=body.classList.contains('open')?'COLLAPSE':'EXPAND';
+}
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+initRange();
+initAlertBar();
+initTimeline();
+buildDatesTable('all');
+initTriggeredChains();
+initChecklist();
+</script>
+</body>
+</html>

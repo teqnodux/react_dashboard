@@ -1,0 +1,905 @@
+{
+  "deal_id": "dp240008_ex0201",
+  "assessment_timestamp": "20260317_185823",
+  "classification_file": "deal_classification_dp240008_ex0201_20260317_185725.json",
+  "summary": {
+    "total_clauses": 22,
+    "avg_restrictiveness": 7.5,
+    "median_restrictiveness": 8,
+    "restrictiveness_distribution": {
+      "very_permissive (0-2)": 0,
+      "moderate (3-5)": 0,
+      "restrictive (6-8)": 19,
+      "extremely_restrictive (9-10)": 3
+    },
+    "theme_distribution": {
+      "operations_and_conduct": 14,
+      "mergers_and_acquisitions": 5,
+      "dividends_and_distributions": 2,
+      "asset_dispositions": 1,
+      "debt_and_financing": 1,
+      "contracts_and_commitments": 2,
+      "capital_expenditures": 1,
+      "compensation_and_benefits": 3,
+      "litigation_and_settlements": 1,
+      "accounting_and_reporting": 1,
+      "tax_matters": 1,
+      "intellectual_property": 1,
+      "related_party_transactions": 1
+    },
+    "investigation_required": 22,
+    "priority_distribution": {
+      "urgent": 6,
+      "routine": 16,
+      "review": 0
+    },
+    "seller_favorable_count": 17,
+    "clauses_with_red_flags": 22,
+    "outlier_statistics": {
+      "total_outliers": 1,
+      "high_risk_outliers": 0,
+      "outlier_percentage": 4.545454545454546,
+      "outlier_threshold": 0.7
+    }
+  },
+  "assessed_clauses": [
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "a",
+      "clause_type": "obligation",
+      "original_text": "(a) The Company agrees that, between the date of this Agreement and the earlier of the Effective Time and the termination of this Agreement in accordance with its terms (the \"Pre-Closing Period\"), except (i) as required by applicable Law or with the prior written consent of Parent (such consent not to be unreasonably withheld, conditioned or delayed), (ii) as expressly contemplated by any other provision of this Agreement or (iii) as set forth in Section 5.01 of the Company Disclosure Schedule, the Company shall, and shall cause the Company Subsidiaries, to, use reasonable best efforts to conduct the businesses of the Company Group only in the ordinary course of business and, to the extent consistent therewith, use reasonable best efforts to: (A) preserve substantially intact the business organization, material assets and material properties and business relations of the Company Group, (B) keep available the services of its executive officers and key employees on commercially reasonable terms, (C) maintain in effect all material licenses, permits, consents, franchises and approvals and authorizations, and (D) maintain satisfactory relationships of the Company Group with any persons with which the Company Group has material business relations and with Governmental Authorities that have jurisdiction over its business and operations.",
+      "processed_text": "(a) The the Company agrees that, between the date of this Agreement and the earlier of the Effective Time and the termination of this Agreement in accordance with its terms (the \"Pre-Closing Period\"), except (i) as required by applicable Law or with the prior written consent of Parent (such consent not to be unreasonably withheld, conditioned or delayed), (ii) as expressly contemplated by any other provision of this Agreement or (iii) as set forth in Section 5.01 of the Company Disclosure Schedule, the Company shall, and shall cause the Company Subsidiaries, to, use reasonable best efforts to conduct the businesses of the Company Group only in the ordinary course of business and, to the extent consistent therewith, use reasonable best efforts to: (A) preserve substantially intact the business organization, material assets and material properties and business relations of the Company Group, (B) keep available the services of its executive officers and key employees on commercially reasonable terms, (C) maintain in effect all material licenses, permits, consents, franchises and approvals and authorizations, and (D) maintain satisfactory relationships of the Company Group with any persons with which the Company Group has material business relations and with Governmental Authorities that have jurisdiction over its business and operations.",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ],
+      "clause_index": 0,
+      "assigned_cluster": 0,
+      "similarity_score": 0.8902062799981664,
+      "cluster_category": "operations_conduct",
+      "cluster_theme": "Pre-Closing Conduct of Business and Operations Restrictions",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive",
+      "restrictiveness_score": 6,
+      "covenant_themes": [
+        "operations_and_conduct"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [
+        "Carveouts for actions required by law",
+        "Consent from Parent not to be unreasonably withheld"
+      ],
+      "red_flags": [
+        "Potential ambiguity in 'ordinary course of business'",
+        "Dependence on subjective interpretation of 'reasonable best efforts'"
+      ],
+      "investigation_priority": "routine",
+      "covenant_explanation": "This covenant restricts the Company from deviating from ordinary business operations during the Pre-Closing Period without consent from the Parent or as required by law.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_preamble",
+      "clause_type": "preamble",
+      "original_text": "Without limiting Section 5.01(a), and as an extension thereof, except as expressly contemplated by any other provision of this Agreement, as set forth in Section 5.01 of the Company Disclosure Schedule or as required by applicable Law, neither the Company nor any Company Subsidiary shall, during the Pre-Closing Period, do any of the following without the prior written consent of Parent (such consent not to be unreasonably withheld, conditioned or delayed):",
+      "processed_text": "Without limiting Section 5.01(a), and as an extension thereof, except as expressly contemplated by any other provision of this Agreement, as set forth in Section 5.01 of the Company Disclosure Schedule or as required by applicable Law, neither the Company nor any the Company Subsidiary shall, during the Pre-Closing Period, do any of the following without the prior written consent of Parent (such consent not to be unreasonably withheld, conditioned or delayed):",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ],
+      "clause_index": 1,
+      "assigned_cluster": 0,
+      "similarity_score": 0.7915906240314009,
+      "cluster_category": "operations_conduct",
+      "cluster_theme": "Pre-Closing Conduct of Business and Operations Restrictions",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive",
+      "restrictiveness_score": 7,
+      "covenant_themes": [
+        "operations_and_conduct"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [
+        "Consent of Parent not to be unreasonably withheld, conditioned or delayed"
+      ],
+      "red_flags": [
+        "Broad restrictions on business operations during Pre-Closing Period",
+        "Potential for buyer to unreasonably withhold consent"
+      ],
+      "investigation_priority": "routine",
+      "covenant_explanation": "This covenant restricts the Company and its Subsidiaries from undertaking certain business activities during the Pre-Closing Period without prior written consent from the Parent.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_i",
+      "clause_type": "prohibition",
+      "original_text": "(i) amend or otherwise change its certificate of incorporation, by-laws or other similar organizational documents (including the Company Charter and the Company Bylaws);",
+      "processed_text": "(i) amend or otherwise change its certificate of incorporation, by-laws or other similar organizational documents (including the Company Charter and the Company Bylaws);",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 2,
+      "assigned_cluster": 12,
+      "similarity_score": 0.8170673679181621,
+      "cluster_category": "operations_conduct",
+      "cluster_theme": "Restrictions on Amending Organizational and Governing Documents",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "highly_restrictive",
+      "restrictiveness_score": 7,
+      "covenant_themes": [
+        "operations_and_conduct"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [],
+      "red_flags": [
+        "Potentially limits the company's ability to adapt to changing circumstances or regulatory requirements"
+      ],
+      "investigation_priority": "routine",
+      "covenant_explanation": "This covenant restricts the company from amending its organizational documents without consent, limiting operational flexibility.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_ii",
+      "clause_type": "prohibition",
+      "original_text": "(ii) issue, grant, sell, dispose of, encumber or authorize such issuance, sale, disposition or encumbrance of, any Equity Interests of the Company or any Company Subsidiary other than the issuance of (A) any Company RSUs (including Performance Contingent RSUs and SIP Awards) in the ordinary course pursuant to the Company Stock Plans subject to the agreed upon budget set forth in Section 5.01(b)(ii) of the Company Disclosure Schedule, (B) any shares of Company Common Stock upon the exercise or settlement of Company Options or Company RSUs (including Performance Contingent RSUs and SIP Awards) in accordance with the terms of those Company Options or Company RSUs (including Performance Contingent RSUs conditions and SIP Awards), as applicable, outstanding on the date hereof or issued (or modified) after the date hereof in accordance with this Section 5.01, (C) pursuant to any offering period that is open as of the date of this Agreement under the Company ESPP and (D) any Equity Interests of any Subsidiary of the Company to the Company or any other Subsidiary of the Company;",
+      "processed_text": "(ii) issue, grant, sell, dispose of, encumber or authorize such issuance, sale, disposition or encumbrance of, any Equity Interests of the Company or any the Company Subsidiary other than the issuance of (A) any the Company RSUs (including Performance Contingent RSUs and SIP Awards) in the ordinary course pursuant to the Company Stock Plans subject to the agreed upon budget set forth in Section 5.01(b)(ii) of the Company Disclosure Schedule, (B) any shares of the Company Common Stock upon the exercise or settlement of the Company Options or the Company RSUs (including Performance Contingent RSUs and SIP Awards) in accordance with the terms of those the Company Options or the Company RSUs (including Performance Contingent RSUs conditions and SIP Awards), as applicable, outstanding on the date hereof or issued (or modified) after the date hereof in accordance with this Section 5.01, (C) pursuant to any offering period that is open as of the date of this Agreement under the Company ESPP and (D) any Equity Interests of any Subsidiary of the Company to the Company or any other Subsidiary of the Company;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 3,
+      "assigned_cluster": 26,
+      "similarity_score": 0.8298973290288786,
+      "cluster_category": "mergers_acquisitions",
+      "cluster_theme": "Prohibition on Issuing or Encumbering Capital Stock and Equity Securities",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "highly_restrictive",
+      "restrictiveness_score": 7,
+      "covenant_themes": [
+        "mergers_and_acquisitions",
+        "operations_and_conduct"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [
+        "Carveouts for RSUs and options",
+        "Permitted issuances under the ESPP"
+      ],
+      "red_flags": [
+        "Potentially broad interpretation of 'encumber'",
+        "Restrictions may limit future financing opportunities"
+      ],
+      "investigation_priority": "routine",
+      "covenant_explanation": "This covenant restricts the Company from issuing or encumbering any equity interests without specific exceptions.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_iii",
+      "clause_type": "prohibition",
+      "original_text": "(iii) declare, set aside, make or pay any dividend or other distribution, payable in cash, shares, property or otherwise, with respect to any of Equity Interests of the Company or any Company Subsidiary, except for dividends or other distributions by any direct or indirect wholly owned Company Subsidiary to the Company or any other direct or indirect wholly owned Company Subsidiary;",
+      "processed_text": "(iii) declare, set aside, make or pay any dividend or other distribution, payable in cash, shares, property or otherwise, with respect to any of Equity Interests of the Company or any the Company Subsidiary, except for dividends or other distributions by any direct or indirect wholly owned the Company Subsidiary to the Company or any other direct or indirect wholly owned the Company Subsidiary;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 4,
+      "assigned_cluster": 17,
+      "similarity_score": 0.876523686514528,
+      "cluster_category": "dividends_distributions",
+      "cluster_theme": "Prohibition on Dividends and Distributions During Interim Period",
+      "restriction_type": "ordinary_course_exception",
+      "typical_restrictiveness": "moderately_restrictive",
+      "restrictiveness_score": 8,
+      "covenant_themes": [
+        "dividends_and_distributions",
+        "operations_and_conduct"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [
+        "Dividends from wholly owned subsidiaries are permitted"
+      ],
+      "red_flags": [
+        "Prohibition on dividends may limit the company's ability to manage cash flow or return capital to shareholders"
+      ],
+      "investigation_priority": "routine",
+      "covenant_explanation": "This covenant restricts the Company and its subsidiaries from declaring or paying any dividends or distributions, except for those made by wholly owned subsidiaries to the Company or other wholly owned subsidiaries.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_iv",
+      "clause_type": "prohibition",
+      "original_text": "(iv) reclassify, combine, split, subdivide or redeem, or purchase or otherwise acquire, directly or indirectly, any Equity Interests of the Company or any Company Subsidiary, except in connection with any net exercise, net settlement or \"sell to cover\" transaction with respect to any Company Options or Company RSUs (including Performance Contingent RSUs and SIP Awards), in each case, in accordance with their terms;",
+      "processed_text": "(iv) reclassify, combine, split, subdivide or redeem, or purchase or otherwise acquire, directly or indirectly, any Equity Interests of the Company or any the Company Subsidiary, except in connection with any net exercise, net settlement or \"sell to cover\" transaction with respect to any the Company Options or the Company RSUs (including Performance Contingent RSUs and SIP Awards), in each case, in accordance with their terms;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 5,
+      "assigned_cluster": 25,
+      "similarity_score": 0.8065096207737671,
+      "cluster_category": "dividends_distributions",
+      "cluster_theme": "Prohibitions on Stock Splits, Reclassifications, and Share Repurchases",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive",
+      "restrictiveness_score": 8,
+      "covenant_themes": [
+        "dividends_and_distributions",
+        "operations_and_conduct"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [
+        "Carveout for net exercise, net settlement, or 'sell to cover' transactions regarding Company Options and RSUs"
+      ],
+      "red_flags": [
+        "Potentially overly broad restrictions on equity transactions could limit flexibility for the seller"
+      ],
+      "investigation_priority": "routine",
+      "covenant_explanation": "This covenant restricts the Company from reclassifying, combining, splitting, subdividing, redeeming, or acquiring its equity interests, with limited exceptions for certain equity compensation transactions.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_v",
+      "clause_type": "prohibition",
+      "original_text": "(v) sell, transfer, lease, sublease, license, mortgage, pledge, encumber, allow to lapse, assign, abandon, disclaim, dedicate to the public, incur any Lien on (other than a Permitted Lien) or otherwise dispose of, or authorize any of the foregoing with respect to, any of its material properties, assets, licenses, operations, rights, businesses or interests therein (but not including Intellectual Property, which is the subject of Section 5.01(b)(xvii)) except (A) as required by Contracts or Company Leases in force on the date of this Agreement, (B) such dispositions of assets no longer used in the ordinary course of business of the Company's or the applicable Company Subsidiary's business as conducted as of the date of this Agreement or (C) such dispositions among the Company and the Company Subsidiaries;",
+      "processed_text": "(v) sell, transfer, lease, sublease, license, mortgage, pledge, encumber, allow to lapse, assign, abandon, disclaim, dedicate to the public, incur any Lien on (other than a Permitted Lien) or otherwise dispose of, or authorize any of the foregoing with respect to, any of its material properties, assets, licenses, operations, rights, businesses or interests therein (but not including Intellectual Property, which is the subject of Section 5.01(b)(xvii)) except (A) as required by Contracts or the Company Leases in force on the date of this Agreement, (B) such dispositions of assets no longer used in the ordinary course of business of the Company's or the applicable the Company Subsidiary's business as conducted as of the date of this Agreement or (C) such dispositions among the Company and the Company Subsidiaries;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 6,
+      "assigned_cluster": 37,
+      "similarity_score": 0.7867954175309249,
+      "cluster_category": "asset_dispositions",
+      "cluster_theme": "Prohibitions on Sale Transfer or Encumbrance of Company Assets",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive",
+      "restrictiveness_score": 8,
+      "covenant_themes": [
+        "asset_dispositions",
+        "operations_and_conduct"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [
+        "Carveouts for dispositions among the Company and its Subsidiaries",
+        "Dispositions of assets no longer used in the ordinary course of business"
+      ],
+      "red_flags": [
+        "Broad prohibition on asset dispositions could hinder operational flexibility",
+        "Exclusion of Intellectual Property from this clause may create loopholes"
+      ],
+      "investigation_priority": "routine",
+      "covenant_explanation": "This covenant restricts the Company from selling, transferring, or encumbering its material assets without consent, except for certain specified exceptions.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_vi",
+      "clause_type": "prohibition",
+      "original_text": "(vi) acquire (including by amalgamation, merger, consolidation or acquisition of Equity Interests or assets or any other business combination) (A) any company, corporation, partnership, other business organization (or any division thereof) or (B) any real property other than such acquisitions that do not exceed $20,000,000 individually or $50,000,000 in the aggregate;",
+      "processed_text": "(vi) acquire (including by amalgamation, merger, consolidation or acquisition of Equity Interests or assets or any other business combination) (A) any company, corporation, partnership, other business organization (or any division thereof) or (B) any real property other than such acquisitions that do not exceed $20,000,000 individually or $50,000,000 in the aggregate;",
+      "definitions_used": [],
+      "parties_replaced": [],
+      "clause_index": 7,
+      "assigned_cluster": 33,
+      "similarity_score": 0.7593271344028562,
+      "cluster_category": "mergers_acquisitions",
+      "cluster_theme": "Prohibition on Acquisitions and Business Combinations During Interim Period",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive",
+      "restrictiveness_score": 6,
+      "covenant_themes": [
+        "mergers_and_acquisitions"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [
+        "Materiality thresholds of $20,000,000 individually and $50,000,000 in the aggregate allow for certain acquisitions without restriction."
+      ],
+      "red_flags": [
+        "The aggregate cap of $50,000,000 could lead to significant acquisitions that may affect the company's value or operations without buyer consent."
+      ],
+      "investigation_priority": "routine",
+      "covenant_explanation": "This covenant restricts the company from acquiring other businesses or real property exceeding specified monetary thresholds during the interim period.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_vii",
+      "clause_type": "prohibition",
+      "original_text": "(vii) (A) repurchase, prepay or incur any indebtedness for borrowed money or issue any debt securities, or issue or sell options, warrants, calls or other rights to acquire any of its debt securities, (B) make any loans, advances or capital contributions to, or investments in, any other person (other than a Company Subsidiary) or (C) assume, guarantee, endorse or otherwise become liable or responsible for the indebtedness or other obligations of another person (other than indebtedness incurred between the Company and any of its wholly owned Subsidiaries or between any of such wholly owned Subsidiaries and guarantees by the Company on behalf of any Company Subsidiary);",
+      "processed_text": "(vii) (A) repurchase, prepay or incur any indebtedness for borrowed money or issue any debt securities, or issue or sell options, warrants, calls or other rights to acquire any of its debt securities, (B) make any loans, advances or capital contributions to, or investments in, any other person (other than a the Company Subsidiary) or (C) assume, guarantee, endorse or otherwise become liable or responsible for the indebtedness or other obligations of another person (other than indebtedness incurred between the Company and any of its wholly owned Subsidiaries or between any of such wholly owned Subsidiaries and guarantees by the Company on behalf of any the Company Subsidiary);",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 8,
+      "assigned_cluster": 22,
+      "similarity_score": 0.8223894186279634,
+      "cluster_category": "debt_and_financing",
+      "cluster_theme": "Prohibitions on Incurring or Modifying Debt and Guarantees",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive",
+      "restrictiveness_score": 9,
+      "covenant_themes": [
+        "debt_and_financing"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [
+        "Exemptions for transactions between the Company and its wholly owned Subsidiaries"
+      ],
+      "red_flags": [
+        "Broad prohibitions on incurring debt could hinder operational flexibility",
+        "Potentially limits the Company's ability to respond to market conditions"
+      ],
+      "investigation_priority": "urgent",
+      "covenant_explanation": "This covenant restricts the Company from incurring new debt, making loans, or guaranteeing obligations of others, with limited exceptions.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_viii",
+      "clause_type": "prohibition",
+      "original_text": "(viii) enter into, amend, waive (including any right thereunder), renew or voluntarily terminate (other than as a result of the expiration or non-renewal of any Contract in accordance with its terms, as such terms are in effect on the date of this Agreement) any Material Contract (or any other Contract that would be deemed a Material Contract if it had been entered into or amended prior to the date of this Agreement) or any Company Lease (or any other Contract that would be deemed a Company Lease if it had been entered into or amended prior to the date of this Agreement), other than in the ordinary course of business; provided that, for purposes of this Section 5.01(b)(viii), the phrase \"other than in the ordinary course of business\" shall not be construed to permit (A) the entry into, amendment, waiver, renewal or termination of any Material Contract of the type described in Section 3.15(a)(vi) or Section 3.15(a)(vii) or (B) the taking of any action prohibited by any other subsection of this Section 5.01(b);",
+      "processed_text": "(viii) enter into, amend, waive (including any right thereunder), renew or voluntarily terminate (other than as a result of the expiration or non-renewal of any Contract in accordance with its terms, as such terms are in effect on the date of this Agreement) any Material Contract (or any other Contract that would be deemed a Material Contract if it had been entered into or amended prior to the date of this Agreement) or any the Company Lease (or any other Contract that would be deemed a the Company Lease if it had been entered into or amended prior to the date of this Agreement), other than in the ordinary course of business; provided that, for purposes of this Section 5.01(b)(viii), the phrase \"other than in the ordinary course of business\" shall not be construed to permit (A) the entry into, amendment, waiver, renewal or termination of any Material Contract of the type described in Section 3.15(a)(vi) or Section 3.15(a)(vii) or (B) the taking of any action prohibited by any other subsection of this Section 5.01(b);",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 9,
+      "assigned_cluster": 4,
+      "similarity_score": 0.7753559610230836,
+      "cluster_category": "contracts",
+      "cluster_theme": "Restrictions on Modifying, Terminating, or Entering Material Contracts",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive",
+      "restrictiveness_score": 8,
+      "covenant_themes": [
+        "contracts_and_commitments",
+        "operations_and_conduct"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [
+        "Carveout for expiration or non-renewal of contracts in accordance with their terms"
+      ],
+      "red_flags": [
+        "Broad restrictions on entering into or modifying contracts could limit operational flexibility",
+        "Potential for disputes over what constitutes 'ordinary course of business'"
+      ],
+      "investigation_priority": "urgent",
+      "covenant_explanation": "This covenant restricts the company from entering into, amending, or terminating material contracts outside of the ordinary course of business, requiring buyer consent for significant changes.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_ix",
+      "clause_type": "prohibition",
+      "original_text": "(ix) authorize, or make any commitment with respect to, capital expenditures, (A) for the twelve (12)-month period ended December 31, 2026, that in the aggregate exceed $65,000,000, and (B) for the twelve (12)-month period ended December 31, 2027, that in the aggregate exceed $45,000,000;",
+      "processed_text": "(ix) authorize, or make any commitment with respect to, capital expenditures, (A) for the twelve (12)-month period ended December 31, 2026, that in the aggregate exceed $65,000,000, and (B) for the twelve (12)-month period ended December 31, 2027, that in the aggregate exceed $45,000,000;",
+      "definitions_used": [],
+      "parties_replaced": [],
+      "clause_index": 10,
+      "assigned_cluster": 13,
+      "similarity_score": 0.7570900278555126,
+      "cluster_category": "capital_expenditures",
+      "cluster_theme": "Budget-Based Limitations on Capital Expenditures During Interim Period",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive",
+      "restrictiveness_score": 6,
+      "covenant_themes": [
+        "capital_expenditures"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [
+        "Defined aggregate limits for capital expenditures over two years"
+      ],
+      "red_flags": [
+        "Potential for significant operational constraints if capital needs exceed limits"
+      ],
+      "investigation_priority": "routine",
+      "covenant_explanation": "This covenant restricts the company from authorizing or committing to capital expenditures exceeding specified limits during the interim period.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_x",
+      "clause_type": "prohibition",
+      "original_text": "(x) except as otherwise required under any Plan in effect as of the date hereof, (A) increase the cash compensation payable or to become payable to Employee or Non-Employee Service Providers (other than in the ordinary course of business, consistent with past practice, provided that the aggregate cost is less than or equal to five percent (5%) of such cash compensation in the aggregate on a calendar year basis), (B) grant or amend any retention, severance or termination pay to, or enter into any employment, bonus, incentive, equity, change of control or severance agreement with, any Employee (or any individual who would be an Employee if employed on the date hereof) or Non-Employee Service Provider, other than any standard offer letters entered into in the ordinary course of business with any newly-hired Employee below the level of vice president (provided that such hiring is permitted by this Section 5.01) and that provide for no more than six (6) months' severance, (C) pay any annual bonus or annual incentive compensation in excess of the amount earned based on actual performance in accordance with the applicable Plan, (D) establish, adopt, enter into, terminate or materially amend any Plan, or establish, adopt or enter into any plan, agreement, program, policy, trust, fund or other arrangement that would be a Plan if it were in existence as of the date of this Agreement, for the benefit of any Employee or Non-Employee Service Provider, provided that the foregoing, either individually or in the aggregate, shall not result in a material increase in costs to the Company or any Company Subsidiary, (E) loan or advance any money or other property to any Employee or Non-Employee Service Provider or (F) establish, adopt, enter into or amend any Labor Agreement;",
+      "processed_text": "(x) except as otherwise required under any Plan in effect as of the date hereof, (A) increase the cash compensation payable or to become payable to Employee or Non-Employee Service Providers (other than in the ordinary course of business, consistent with past practice, provided that the aggregate cost is less than or equal to five percent (5%) of such cash compensation in the aggregate on a calendar year basis), (B) grant or amend any retention, severance or termination pay to, or enter into any employment, bonus, incentive, equity, change of control or severance agreement with, any Employee (or any individual who would be an Employee if employed on the date hereof) or Non-Employee Service Provider, other than any standard offer letters entered into in the ordinary course of business with any newly-hired Employee below the level of vice president (provided that such hiring is permitted by this Section 5.01) and that provide for no more than six (6) months' severance, (C) pay any annual bonus or annual incentive compensation in excess of the amount earned based on actual performance in accordance with the applicable Plan, (D) establish, adopt, enter into, terminate or materially amend any Plan, or establish, adopt or enter into any plan, agreement, program, policy, trust, fund or other arrangement that would be a Plan if it were in existence as of the date of this Agreement, for the benefit of any Employee or Non-Employee Service Provider, provided that the foregoing, either individually or in the aggregate, shall not result in a material increase in costs to the Company or any the Company Subsidiary, (E) loan or advance any money or other property to any Employee or Non-Employee Service Provider or (F) establish, adopt, enter into or amend any Labor Agreement;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 11,
+      "assigned_cluster": 27,
+      "similarity_score": 0.8741149379767914,
+      "cluster_category": "compensation_benefits",
+      "cluster_theme": "Interim Period Restrictions on Employee Compensation and Benefit Changes",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "highly_restrictive",
+      "restrictiveness_score": 8,
+      "covenant_themes": [
+        "compensation_and_benefits"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [
+        "Carveouts for ordinary course of business adjustments",
+        "Permitted hiring of new employees with limited severance agreements"
+      ],
+      "red_flags": [
+        "Potentially restrictive on future compensation adjustments",
+        "Limits on bonuses and incentive compensation may affect employee retention"
+      ],
+      "investigation_priority": "routine",
+      "covenant_explanation": "This covenant restricts the Company from making significant changes to employee compensation and benefits during the interim period pending the merger.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_xi",
+      "clause_type": "prohibition",
+      "original_text": "(xi) other than in the ordinary course of business below the level of vice president for any Employee, hire or terminate (other than for cause) the employment of any Employee (or any individual who would be an Employee if employed on the date hereof);",
+      "processed_text": "(xi) other than in the ordinary course of business below the level of vice president for any Employee, hire or terminate (other than for cause) the employment of any Employee (or any individual who would be an Employee if employed on the date hereof);",
+      "definitions_used": [],
+      "parties_replaced": [],
+      "clause_index": 12,
+      "assigned_cluster": 32,
+      "similarity_score": 0.7172309874227558,
+      "cluster_category": "compensation_benefits",
+      "cluster_theme": "Restrictions on Hiring, Terminating, and Promoting Senior Employees",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive",
+      "restrictiveness_score": 7,
+      "covenant_themes": [
+        "compensation_and_benefits",
+        "operations_and_conduct"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [
+        "Allows hiring and termination below the level of vice president"
+      ],
+      "red_flags": [
+        "Potentially limits the company's ability to adapt to changing business needs",
+        "Restricts hiring and termination decisions, which could impact operational flexibility"
+      ],
+      "investigation_priority": "routine",
+      "covenant_explanation": "This covenant restricts the hiring and termination of employees at or above the vice president level without cause, limiting the company's operational flexibility.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_xii",
+      "clause_type": "prohibition",
+      "original_text": "(xii) exercise discretion with respect to or otherwise voluntarily accelerate the lapse of restriction, achievement of performance or vesting of any equity or equity-based awards as a result of the Merger, except as expressly provided in this Agreement;",
+      "processed_text": "(xii) exercise discretion with respect to or otherwise voluntarily accelerate the lapse of restriction, achievement of performance or vesting of any equity or equity-based awards as a result of the Merger, except as expressly provided in this Agreement;",
+      "definitions_used": [],
+      "parties_replaced": [],
+      "clause_index": 13,
+      "assigned_cluster": 41,
+      "similarity_score": 0.7275179636620964,
+      "cluster_category": "compensation_benefits",
+      "cluster_theme": "Restrictions on Accelerating Vesting of Equity Awards and Compensation",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "highly_restrictive",
+      "restrictiveness_score": 7,
+      "covenant_themes": [
+        "compensation_and_benefits",
+        "mergers_and_acquisitions"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [],
+      "red_flags": [
+        "Potential for ambiguity in what constitutes 'discretion' and 'voluntarily accelerate'",
+        "Restricts the company's ability to manage equity awards during a critical transition period"
+      ],
+      "investigation_priority": "routine",
+      "covenant_explanation": "This covenant restricts the company's ability to accelerate the vesting of equity awards due to the Merger, limiting flexibility in compensation management.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_xiii",
+      "clause_type": "prohibition",
+      "original_text": "(xiii) (A) initiate, settle or propose to settle any Action, other than (1) settlements for monetary damages (net of insurance proceeds) involving not more than $5,000,000 in the aggregate and that do not (x) require any material actions or impose any material restrictions or ongoing royalty or other future payment obligations on the business or operations of the Company Group, or after the Effective Time, Parent or its Subsidiaries or (y) include the admission of wrongdoing by any member of the Company Group and (2) Transaction Litigation, which is the subject of, and shall be governed by Section 6.11 or (B) settle (or propose to settle) any investigation or inquiry by any Governmental Authority, including by entering into any consent decree or other similar agreement;",
+      "processed_text": "(xiii) (A) initiate, settle or propose to settle any Action, other than (1) settlements for monetary damages (net of insurance proceeds) involving not more than $5,000,000 in the aggregate and that do not (x) require any material actions or impose any material restrictions or ongoing royalty or other future payment obligations on the business or operations of the Company Group, or after the Effective Time, Parent or its Subsidiaries or (y) include the admission of wrongdoing by any member of the Company Group and (2) Transaction Litigation, which is the subject of, and shall be governed by Section 6.11 or (B) settle (or propose to settle) any investigation or inquiry by any Governmental Authority, including by entering into any consent decree or other similar agreement;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ],
+      "clause_index": 14,
+      "assigned_cluster": 11,
+      "similarity_score": 0.840027445698636,
+      "cluster_category": "litigation",
+      "cluster_theme": "Monetary Thresholds for Settling Legal Proceedings and Actions",
+      "restriction_type": "materiality_threshold",
+      "typical_restrictiveness": "moderately_restrictive",
+      "restrictiveness_score": 7,
+      "covenant_themes": [
+        "litigation_and_settlements"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [
+        "Monetary threshold of $5,000,000 for settlements",
+        "Exemption for settlements that do not impose material restrictions or require admission of wrongdoing"
+      ],
+      "red_flags": [
+        "Potentially high aggregate settlement limit could lead to significant liabilities",
+        "Restrictions on settling investigations by Governmental Authorities may limit operational flexibility"
+      ],
+      "investigation_priority": "routine",
+      "covenant_explanation": "This covenant restricts the Company Group's ability to initiate or settle legal actions without meeting specific monetary thresholds and conditions.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_xiv",
+      "clause_type": "prohibition",
+      "original_text": "(xiv) (A) change the Company's financial accounting policies or procedures in effect as of December 31, 2024, other than as required by Law or GAAP or (B) write up, write down or write off the book value of any of its assets, other than (1) in the ordinary course of business or (2) as may be required by Law or GAAP, as approved by the Company's independent public accountants;",
+      "processed_text": "(xiv) (A) change the Company's financial accounting policies or procedures in effect as of December 31, 2024, other than as required by Law or GAAP or (B) write up, write down or write off the book value of any of its assets, other than (1) in the ordinary course of business or (2) as may be required by Law or GAAP, as approved by the Company's independent public accountants;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 15,
+      "assigned_cluster": 9,
+      "similarity_score": 0.7676117253822612,
+      "cluster_category": "accounting",
+      "cluster_theme": "Restrictions on Changes to Accounting Policies and Asset Valuations",
+      "restriction_type": "materiality_threshold",
+      "typical_restrictiveness": "moderately_restrictive",
+      "restrictiveness_score": 7,
+      "covenant_themes": [
+        "accounting_and_reporting",
+        "operations_and_conduct"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [
+        "Carveouts for changes required by Law or GAAP",
+        "Ordinary course of business exception"
+      ],
+      "red_flags": [
+        "Potential for misinterpretation of 'ordinary course of business'",
+        "Restricts flexibility in accounting practices"
+      ],
+      "investigation_priority": "routine",
+      "covenant_explanation": "This covenant restricts the Company from changing its financial accounting policies or asset valuations outside of specified exceptions.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_xv",
+      "clause_type": "prohibition",
+      "original_text": "(xv) adopt a plan of complete or partial liquidation or resolutions providing for a complete or partial liquidation, dissolution, restructuring, recapitalization or other reorganization of the Company, any of the Company Subsidiaries;",
+      "processed_text": "(xv) adopt a plan of complete or partial liquidation or resolutions providing for a complete or partial liquidation, dissolution, restructuring, recapitalization or other reorganization of the Company, any of the Company Subsidiaries;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 16,
+      "assigned_cluster": 14,
+      "similarity_score": 0.8808894382671333,
+      "cluster_category": "mergers_acquisitions",
+      "cluster_theme": "Prohibition on Liquidation, Dissolution, Restructuring and Fundamental Corporate Changes",
+      "restriction_type": "absolute_prohibition",
+      "typical_restrictiveness": "highly_restrictive",
+      "restrictiveness_score": 9,
+      "covenant_themes": [
+        "mergers_and_acquisitions"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [],
+      "red_flags": [
+        "absolute prohibition on liquidation and restructuring could limit operational flexibility",
+        "potentially restricts the ability to respond to adverse market conditions"
+      ],
+      "investigation_priority": "urgent",
+      "covenant_explanation": "This covenant restricts the Company and its subsidiaries from adopting any plans for liquidation, dissolution, restructuring, or reorganization.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_xvi",
+      "clause_type": "prohibition",
+      "original_text": "(xvi) (A) change or adopt (or file a request to change or adopt) any material method of Tax accounting or any annual Tax accounting period, (B) make, change or rescind any material Tax election, (C) file any material Tax Return relating to the Company or any of the Company Subsidiaries that has been prepared in a manner that is inconsistent with past practices, as applicable, (D) settle or compromise any claim, investigation, audit or controversy relating to material Taxes, (E) surrender any right to claim a material Tax refund, (F) file any material amended Tax Return, (G) enter into any closing agreement with respect to any material Tax or (H) waive or extend the statute of limitations with respect to any material Tax Return other than pursuant to extensions of time to file Tax Returns obtained in the ordinary course of business;",
+      "processed_text": "(xvi) (A) change or adopt (or file a request to change or adopt) any material method of Tax accounting or any annual Tax accounting period, (B) make, change or rescind any material Tax election, (C) file any material Tax Return relating to the Company or any of the Company Subsidiaries that has been prepared in a manner that is inconsistent with past practices, as applicable, (D) settle or compromise any claim, investigation, audit or controversy relating to material Taxes, (E) surrender any right to claim a material Tax refund, (F) file any material amended Tax Return, (G) enter into any closing agreement with respect to any material Tax or (H) waive or extend the statute of limitations with respect to any material Tax Return other than pursuant to extensions of time to file Tax Returns obtained in the ordinary course of business;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 17,
+      "assigned_cluster": 23,
+      "similarity_score": 0.9089740205837695,
+      "cluster_category": "tax",
+      "cluster_theme": "Restrictions on Tax Elections, Returns, and Administrative Actions",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "highly_restrictive",
+      "restrictiveness_score": 8,
+      "covenant_themes": [
+        "tax_matters"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [
+        "materiality thresholds",
+        "ordinary course of business exception"
+      ],
+      "red_flags": [
+        "potentially broad restrictions on tax-related decisions",
+        "limits seller's flexibility in tax planning"
+      ],
+      "investigation_priority": "urgent",
+      "covenant_explanation": "This covenant restricts the Company from making significant changes to its tax accounting methods, elections, or returns without buyer consent.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_xvii",
+      "clause_type": "prohibition",
+      "original_text": "(xvii) (A) abandon, disclaim, fail to prosecute, maintain or enforce, dedicate to the public, allow to lapse, sell, assign, transfer, encumber or incur any Lien (other than Permitted Liens) on, any Owned Intellectual Property or material Licensed Intellectual Property except (1) as required by Contracts in force on the date of this Agreement or (2) such assignments, transfers or other dispositions among the Company and the Company Subsidiaries; (B) license or sublicense any Intellectual Property to any third party, other than non-exclusive licenses or non-exclusive sublicenses granted to customers or service providers in the ordinary course of business; or (C) disclose any trade secrets or confidential information to any person, other than Representatives of the Company or a Company Subsidiary that are subject to appropriate confidentiality and non-disclosure obligations, in each case in the ordinary course of business, or other than to Parent or any of its Affiliates in connection with the Transactions;",
+      "processed_text": "(xvii) (A) abandon, disclaim, fail to prosecute, maintain or enforce, dedicate to the public, allow to lapse, sell, assign, transfer, encumber or incur any Lien (other than Permitted Liens) on, any Owned Intellectual Property or material Licensed Intellectual Property except (1) as required by Contracts in force on the date of this Agreement or (2) such assignments, transfers or other dispositions among the Company and the Company Subsidiaries; (B) license or sublicense any Intellectual Property to any third party, other than non-exclusive licenses or non-exclusive sublicenses granted to customers or service providers in the ordinary course of business; or (C) disclose any trade secrets or confidential information to any person, other than Representatives of the Company or a the Company Subsidiary that are subject to appropriate confidentiality and non-disclosure obligations, in each case in the ordinary course of business, or other than to Parent or any of its Affiliates in connection with the Transactions;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ],
+      "clause_index": 18,
+      "assigned_cluster": 10,
+      "similarity_score": 0.8372115216928774,
+      "cluster_category": "intellectual_property",
+      "cluster_theme": "Restrictions on Sale, License, Abandonment of Company Intellectual Property",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "highly_restrictive",
+      "restrictiveness_score": 8,
+      "covenant_themes": [
+        "intellectual_property",
+        "operations_and_conduct"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [
+        "Carveouts for contracts in force on the date of the agreement",
+        "Permitted Liens"
+      ],
+      "red_flags": [
+        "Potentially overly broad restrictions on intellectual property management",
+        "Limitations on licensing could hinder business operations"
+      ],
+      "investigation_priority": "urgent",
+      "covenant_explanation": "This covenant restricts the Company from transferring, licensing, or disclosing its intellectual property without specific exceptions, limiting its operational flexibility.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_xviii",
+      "clause_type": "prohibition",
+      "original_text": "(xviii) enter into, amend, waive or terminate (other than terminations in accordance with their terms) any Affiliate Transaction; or",
+      "processed_text": "(xviii) enter into, amend, waive or terminate (other than terminations in accordance with their terms) any Affiliate Transaction; or",
+      "definitions_used": [],
+      "parties_replaced": [],
+      "clause_index": 19,
+      "assigned_cluster": 15,
+      "similarity_score": 0.6564225813414901,
+      "cluster_category": "operations_conduct",
+      "cluster_theme": "Restrictions on Implementing New Policies and Strategic Operational Changes",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "highly_restrictive",
+      "restrictiveness_score": 7,
+      "covenant_themes": [
+        "operations_and_conduct",
+        "related_party_transactions"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [],
+      "red_flags": [
+        "Potentially limits the company's ability to engage in necessary transactions with affiliates, which could hinder operational flexibility."
+      ],
+      "investigation_priority": "routine",
+      "covenant_explanation": "This covenant restricts the company from entering into, amending, waiving, or terminating any Affiliate Transactions without consent.",
+      "is_outlier": true,
+      "outlier_analysis": {
+        "why_unusual": "This clause is unusual because it specifically restricts actions related to Affiliate Transactions without providing clear definitions or parameters for what constitutes such transactions. Unlike typical covenants that focus on broader operational changes or strategic policies, this clause narrows its focus to a specific type of transaction, which may not align with standard practices in M&A agreements.",
+        "specific_differences": [
+          "The clause focuses solely on Affiliate Transactions, whereas benchmark patterns often encompass a wider range of operational changes and policy implementations.",
+          "It lacks clarity on the criteria for what constitutes an 'Affiliate Transaction,' which is typically defined in more detail in standard covenants.",
+          "The clause includes a specific provision about terminations in accordance with their terms, which is not commonly seen in operational conduct covenants that usually address broader operational flexibility."
+        ],
+        "comparison_to_cluster": "This clause differs from typical operations_conduct covenants as it does not address general operational policies or strategic changes but rather focuses narrowly on transactions with affiliates. Typical covenants in this cluster would allow for more comprehensive operational flexibility while outlining specific restrictions.",
+        "outlier_risk_level": "medium",
+        "requires_lawyer_review": true,
+        "lawyer_should_review_for": [
+          "The lack of clarity around what constitutes an 'Affiliate Transaction' could lead to ambiguity and potential disputes.",
+          "The implications of restricting such transactions on the company's operational flexibility and ability to respond to market changes.",
+          "Potential conflicts with other provisions in the agreement that may allow for certain transactions or operational changes."
+        ],
+        "unusual_elements": [
+          "Narrow focus on Affiliate Transactions without clear definitions.",
+          "Inclusion of termination conditions that are not typical in broader operational conduct covenants."
+        ]
+      }
+    },
+    {
+      "section_number": "Section 5.01",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "clause_id": "b_xix",
+      "clause_type": "catchall",
+      "original_text": "(xix) agree, resolve, announce an intention, enter into any formal or informal agreement or otherwise make a commitment, to do any of the foregoing.",
+      "processed_text": "(xix) agree, resolve, announce an intention, enter into any formal or informal agreement or otherwise make a commitment, to do any of the foregoing.",
+      "definitions_used": [],
+      "parties_replaced": [],
+      "clause_index": 20,
+      "assigned_cluster": 6,
+      "similarity_score": 0.7133828050087221,
+      "cluster_category": "operations_conduct",
+      "cluster_theme": "Prohibition on Agreements or Commitments to Circumvent Other Covenants",
+      "restriction_type": "absolute_prohibition",
+      "typical_restrictiveness": "highly_restrictive",
+      "restrictiveness_score": 9,
+      "covenant_themes": [
+        "operations_and_conduct",
+        "contracts_and_commitments"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [],
+      "red_flags": [
+        "overly broad language",
+        "potentially limits seller's operational flexibility"
+      ],
+      "investigation_priority": "urgent",
+      "covenant_explanation": "This covenant restricts the company from making any agreements or commitments that could circumvent other covenants in the merger agreement.",
+      "is_outlier": false
+    },
+    {
+      "section_number": "Section 5.03",
+      "section_title": "Control of Operations",
+      "clause_id": "1",
+      "clause_type": "general",
+      "original_text": "Without limiting Section 5.01 or Section 5.02, nothing contained in this Agreement shall give Parent or the Company, directly or indirectly, the right to control or direct the operations of the Company or Parent, as applicable, prior to the Closing. Prior to the Closing, each party shall exercise, consistent with and subject to the terms and conditions of this Agreement, including Section 5.01 (in the case of the Company) and or Section 5.02 (in the case of Parent and Merger Sub), control and supervision over such matters.",
+      "processed_text": "Without limiting Section 5.01 or Section 5.02, nothing contained in this Agreement shall give Parent or the Company, directly or indirectly, the right to control or direct the operations of the Company or Parent, as applicable, prior to the Closing. Prior to the Closing, each party shall exercise, consistent with and subject to the terms and conditions of this Agreement, including Section 5.01 (in the case of the Company) and or Section 5.02 (in the case of Parent and Merger Sub), control and supervision over such matters.",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "Merger Sub",
+          "standard_role": "Merger Sub"
+        },
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ],
+      "clause_index": 21,
+      "assigned_cluster": 31,
+      "similarity_score": 0.8774017099259243,
+      "cluster_category": "operations_conduct",
+      "cluster_theme": "Clarification That Buyer Has No Pre-Closing Control Rights",
+      "restriction_type": "ordinary_course_exception",
+      "typical_restrictiveness": "permissive",
+      "restrictiveness_score": 8,
+      "covenant_themes": [
+        "operations_and_conduct",
+        "mergers_and_acquisitions"
+      ],
+      "requires_investigation": true,
+      "unusual_provisions": [],
+      "seller_favorable_aspects": [
+        "Explicitly limits buyer's control prior to closing"
+      ],
+      "red_flags": [
+        "Potential for operational delays due to lack of buyer control before closing"
+      ],
+      "investigation_priority": "routine",
+      "covenant_explanation": "This covenant restricts the buyer from having any control over the operations of the company prior to the closing of the merger.",
+      "is_outlier": false
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 17239,
+    "output_tokens": 2990,
+    "estimated_cost": 0.00437985
+  }
+}

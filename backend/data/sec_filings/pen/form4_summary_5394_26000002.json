@@ -1,0 +1,32 @@
+{
+  "ticker": "PEN",
+  "issuer": "Penumbra Inc",
+  "filing_date": "02/18/26",
+  "insider_name": "Janet Leeds",
+  "insider_title": "Director",
+  "relationship": "Director",
+  "L1_headline": "+ PEN \u2013 Janet Leeds acquired 589 RSU shares. | 02/13/2026",
+  "L2_brief": "Director Janet Leeds acquired 589 shares of Penumbra common stock on 02/13/2026 at $0 per share via a restricted stock unit (RSU) award. The RSUs vest quarterly through 12/31/2026, with accelerated full vesting upon closing of the pending merger with Boston Scientific. Following the transaction, Leeds holds 6,639 shares directly, a portion of which remain subject to vesting.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "02/13/2026",
+        "shares": "589",
+        "price_per_share": "$0",
+        "total_value": "$0",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "6,639 shares (a portion subject to vesting)",
+    "ownership_type": "Direct",
+    "deal_signal": "Penumbra is subject to a pending Agreement and Plan of Merger dated January 14, 2026, with Boston Scientific Corporation and Pinehurst Merger Sub, Inc. Per the filing, the RSUs contain an acceleration provision: any unvested RSUs will fully vest upon the closing of the merger, subject to Leeds' continued service as director through that date. No discretionary purchase or sale activity is present in this filing.",
+    "pattern_notes": "This is a routine RSU grant to a director with quarterly vesting (1/4 on each of 03/31/2026, 06/30/2026, 09/30/2026, and 12/31/2026). The grant includes a merger-related acceleration clause tied to the Boston Scientific acquisition. No open-market buying or selling activity is reflected.",
+    "risks_flagged": [
+      "No 10b5-1 plan noted; transaction is a compensatory RSU award at $0 cost",
+      "RSUs contain merger-closing acceleration provision \u2014 all unvested RSUs vest upon deal close",
+      "A portion of total holdings (6,639 shares) remains subject to vesting conditions"
+    ]
+  },
+  "filing_type": "FORM 4"
+}

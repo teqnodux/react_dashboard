@@ -1,0 +1,508 @@
+{
+  "deal_id": "D085",
+  "last_updated": "2026-03-19",
+  "approvals": [
+    {
+      "id": "hsr",
+      "jurisdiction": "United States",
+      "authority_short": "HSR/FTC+DOJ",
+      "authority_full": "U.S. Federal Trade Commission / Department of Justice Antitrust Division",
+      "statute": "Hart-Scott-Rodino Antitrust Improvements Act of 1976",
+      "category": "antitrust",
+      "status": "cleared",
+      "filing_key": "hsr_filed",
+      "filed_date": "2026-02-13",
+      "cleared_date": "2026-03-15",
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "The Merger Agreement requires expiration or termination of the HSR waiting period (and any extensions or agreements with a governmental authority not to close) as a condition to closing.",
+      "source_doc": "filing 2026-01-15",
+      "source_doc_type": "filing",
+      "source_doc_url": "https://www.sec.gov/Archives/edgar/data/1321732/000095010326000523/dp240008_8k.htm",
+      "first_seen_date": "2026-03-13",
+      "linked_docs": [
+        {
+          "doc_type": "press_release",
+          "doc_date": "2026-01-14",
+          "doc_url": null,
+          "summary": "SEC, HSR, NYSE, International antitrust authorities",
+          "L1": "Press Release \u2014 D085",
+          "L2": "Regulatory bodies identified in press release",
+          "L3": null
+        },
+        {
+          "doc_type": "dma_extract",
+          "doc_date": "2026-03-17",
+          "doc_url": null,
+          "summary": "HSR Act, Antitrust Laws, Foreign antitrust and foreign investment law approvals",
+          "L1": "DMA Summary \u2014 D085",
+          "L2": "Regulatory approvals from DMA extraction",
+          "L3": null
+        },
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-17",
+          "doc_url": null,
+          "summary": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: Yes, the filing provides a comprehensive list of required approvals beyond the DMA. U.S. approvals include HSR Act clearance from DOJ/FTC, SEC effectiveness of Form S-4, and NYSE listing approval for Boston Scientific shares. Non-U.S. approvals include EU competition law clearance (su",
+          "L1": "Proxy Analysis \u2014 D085",
+          "L2": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: Yes, the filing provides a comprehensive list of required approvals beyond the DMA. U",
+          "L3": null
+        }
+      ],
+      "status_detail": "Cleared \u2014 Waiting Period Expired",
+      "status_history": [
+        {
+          "status": "Cleared \u2014 Waiting Period Expired",
+          "status_legacy": "cleared",
+          "date": "2026-03-15",
+          "source_doc": "Time-based inference",
+          "source_doc_type": "system",
+          "source_url": null,
+          "excerpt": "HSR 30-day waiting period expired on 2026-03-15 with no second request or litigation detected.",
+          "detected_at": "2026-03-19T23:44:26.221898Z"
+        }
+      ]
+    },
+    {
+      "id": "reg_other_antitrust_authorities",
+      "jurisdiction": "Multiple (unspecified other jurisdictions)",
+      "authority_short": "Other Antitrust Authorities",
+      "authority_full": "Antitrust authorities of certain other jurisdictions (unspecified)",
+      "statute": "Antitrust laws of certain other jurisdictions (unspecified)",
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_other_antitrust_authorities",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "The Merger Agreement requires all required consents, approvals, non-disapprovals and other authorizations under antitrust laws of certain other (unnamed) jurisdictions as a condition to closing, but no specific jurisdictions are identified in this filing.",
+      "source_doc": "filing 2026-01-15",
+      "source_doc_type": "filing",
+      "source_doc_url": "https://www.sec.gov/Archives/edgar/data/1321732/000095010326000523/dp240008_8k.htm",
+      "first_seen_date": "2026-03-13"
+    },
+    {
+      "id": "reg_sec",
+      "jurisdiction": "European Union",
+      "authority_short": "SEC",
+      "authority_full": "SEC",
+      "statute": "Securities Act of 1933 / Securities Exchange Act of 1934 (Form S-4)",
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_sec",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in press release",
+      "source_doc": "Press Release",
+      "source_doc_type": "press_release",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-13",
+      "linked_docs": [
+        {
+          "doc_type": "press_release",
+          "doc_date": "2026-01-14",
+          "doc_url": null,
+          "summary": "SEC, HSR, NYSE, International antitrust authorities",
+          "L1": "Press Release \u2014 D085",
+          "L2": "Regulatory bodies identified in press release",
+          "L3": null
+        },
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-17",
+          "doc_url": null,
+          "summary": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: Yes, the filing provides a comprehensive list of required approvals beyond the DMA. U.S. approvals include HSR Act clearance from DOJ/FTC, SEC effectiveness of Form S-4, and NYSE listing approval for Boston Scientific shares. Non-U.S. approvals include EU competition law clearance (su",
+          "L1": "Proxy Analysis \u2014 D085",
+          "L2": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: Yes, the filing provides a comprehensive list of required approvals beyond the DMA. U",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_nyse",
+      "jurisdiction": "United States",
+      "authority_short": "NYSE",
+      "authority_full": "NYSE",
+      "statute": "NYSE Listed Company Manual",
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_nyse",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in press release",
+      "source_doc": "Press Release",
+      "source_doc_type": "press_release",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-13",
+      "linked_docs": [
+        {
+          "doc_type": "press_release",
+          "doc_date": "2026-01-14",
+          "doc_url": null,
+          "summary": "SEC, HSR, NYSE, International antitrust authorities",
+          "L1": "Press Release \u2014 D085",
+          "L2": "Regulatory bodies identified in press release",
+          "L3": null
+        },
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-17",
+          "doc_url": null,
+          "summary": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: Yes, the filing provides a comprehensive list of required approvals beyond the DMA. U.S. approvals include HSR Act clearance from DOJ/FTC, SEC effectiveness of Form S-4, and NYSE listing approval for Boston Scientific shares. Non-U.S. approvals include EU competition law clearance (su",
+          "L1": "Proxy Analysis \u2014 D085",
+          "L2": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: Yes, the filing provides a comprehensive list of required approvals beyond the DMA. U",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_international_antitrust_authorities",
+      "jurisdiction": null,
+      "authority_short": "International antitrust authorities",
+      "authority_full": "International antitrust authorities",
+      "statute": null,
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_international_antitrust_authorities",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in press release",
+      "source_doc": "Press Release",
+      "source_doc_type": "press_release",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-13",
+      "linked_docs": [
+        {
+          "doc_type": "press_release",
+          "doc_date": "2026-01-14",
+          "doc_url": null,
+          "summary": "SEC, HSR, NYSE, International antitrust authorities",
+          "L1": "Press Release \u2014 D085",
+          "L2": "Regulatory bodies identified in press release",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_antitrust_laws",
+      "jurisdiction": null,
+      "authority_short": "Antitrust Laws",
+      "authority_full": "Antitrust Laws",
+      "statute": null,
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_antitrust_laws",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in DMA summary extraction",
+      "source_doc": "DMA Extract",
+      "source_doc_type": "dma_extract",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-17",
+      "linked_docs": [
+        {
+          "doc_type": "dma_extract",
+          "doc_date": "2026-03-17",
+          "doc_url": null,
+          "summary": "HSR Act, Antitrust Laws, Foreign antitrust and foreign investment law approvals",
+          "L1": "DMA Summary \u2014 D085",
+          "L2": "Regulatory approvals from DMA extraction",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_foreign_antitrust_and_foreign_investment_law_approvals",
+      "jurisdiction": null,
+      "authority_short": "Foreign antitrust and foreign investment law approvals",
+      "authority_full": "Foreign antitrust and foreign investment law approvals",
+      "statute": null,
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_foreign_antitrust_and_foreign_investment_law_approvals",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Identified in DMA summary extraction",
+      "source_doc": "DMA Extract",
+      "source_doc_type": "dma_extract",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-17",
+      "linked_docs": [
+        {
+          "doc_type": "dma_extract",
+          "doc_date": "2026-03-17",
+          "doc_url": null,
+          "summary": "HSR Act, Antitrust Laws, Foreign antitrust and foreign investment law approvals",
+          "L1": "DMA Summary \u2014 D085",
+          "L2": "Regulatory approvals from DMA extraction",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_ec",
+      "jurisdiction": "European Union",
+      "authority_short": "EC",
+      "authority_full": "European Commission, Directorate-General for Competition",
+      "statute": "EU Merger Regulation (Council Regulation (EC) No 139/2004)",
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_ec",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": "within 50 calendar days of January 14, 2026",
+      "conditions": null,
+      "notes": "EU competition law clearance is required and is subject to a pending referral determination; non-U.S. filings including this one must be initiated within 50 calendar days of the January 14, 2026 Merger Agreement date.",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-17",
+      "linked_docs": [
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-17",
+          "doc_url": null,
+          "summary": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: Yes, the filing provides a comprehensive list of required approvals beyond the DMA. U.S. approvals include HSR Act clearance from DOJ/FTC, SEC effectiveness of Form S-4, and NYSE listing approval for Boston Scientific shares. Non-U.S. approvals include EU competition law clearance (su",
+          "L1": "Proxy Analysis \u2014 D085",
+          "L2": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: Yes, the filing provides a comprehensive list of required approvals beyond the DMA. U",
+          "L3": null
+        }
+      ]
+    },
+    {
+      "id": "reg_various_competition_fdi_authorities",
+      "jurisdiction": "Other jurisdictions (non-U.S., non-EU)",
+      "authority_short": "Various competition/FDI authorities",
+      "authority_full": "Various foreign competition and foreign investment review authorities",
+      "statute": "Applicable competition and foreign investment laws in certain other jurisdictions",
+      "category": "other",
+      "status": "filing_intent",
+      "filing_key": "reg_various_competition_fdi_authorities",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": "within 50 calendar days of January 14, 2026",
+      "conditions": null,
+      "notes": "Competition law and foreign investment approvals are required in certain unspecified other jurisdictions; filings must be initiated within 50 calendar days of the January 14, 2026 Merger Agreement date.",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-17",
+      "linked_docs": [
+        {
+          "doc_type": "proxy",
+          "doc_date": "2026-03-17",
+          "doc_url": null,
+          "summary": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: Yes, the filing provides a comprehensive list of required approvals beyond the DMA. U.S. approvals include HSR Act clearance from DOJ/FTC, SEC effectiveness of Form S-4, and NYSE listing approval for Boston Scientific shares. Non-U.S. approvals include EU competition law clearance (su",
+          "L1": "Proxy Analysis \u2014 D085",
+          "L2": "Q: Were any updates provided on the regulatory reviews? Do they provide a more comprehensive list (than the DMA) of the required approvals? Do they provide filing dates? Have any approvals already been received?\nA: Yes, the filing provides a comprehensive list of required approvals beyond the DMA. U",
+          "L3": null
+        }
+      ]
+    }
+  ],
+  "documents_processed": [
+    {
+      "doc_type": "filing",
+      "doc_date": "2026-01-15",
+      "doc_url": "https://www.sec.gov/Archives/edgar/data/1321732/000095010326000523/dp240008_8k.htm",
+      "processed_at": "2026-03-13T18:11:20.922972Z",
+      "approvals_found": 2,
+      "additions": [
+        "hsr",
+        "reg_other_antitrust_authorities"
+      ],
+      "status_changes": []
+    },
+    {
+      "doc_type": "press_release",
+      "doc_date": "2026-01-14",
+      "doc_url": null,
+      "processed_at": "2026-03-13T18:14:25.352545Z",
+      "approvals_found": 4,
+      "additions": [
+        "reg_sec",
+        "reg_nyse",
+        "reg_international_antitrust_authorities"
+      ],
+      "status_changes": []
+    },
+    {
+      "doc_type": "filing",
+      "doc_date": "2026-01-15",
+      "doc_url": "https://www.sec.gov/Archives/edgar/data/1321732/000095010326000523/dp240008_8k.htm",
+      "processed_at": "2026-03-13T19:31:19.105597Z",
+      "approvals_found": 2,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "filing",
+      "doc_date": "2026-02-25",
+      "doc_url": "https://www.sec.gov/Archives/edgar/data/1321732/000132173226000006/pen-20260225.htm",
+      "processed_at": "2026-03-17T22:02:55.757211Z",
+      "approvals_found": 0,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "dma_extract",
+      "doc_date": "2026-03-17",
+      "doc_url": null,
+      "processed_at": "2026-03-17T22:41:17.751408Z",
+      "approvals_found": 3,
+      "additions": [
+        "reg_antitrust_laws",
+        "reg_foreign_antitrust_and_foreign_investment_law_approvals"
+      ],
+      "status_changes": []
+    },
+    {
+      "doc_type": "proxy",
+      "doc_date": "2026-03-17",
+      "doc_url": null,
+      "processed_at": "2026-03-17T22:49:42.665654Z",
+      "approvals_found": 5,
+      "additions": [
+        "reg_ec",
+        "reg_various_competition_fdi_authorities"
+      ],
+      "status_changes": [
+        "hsr: pending\u2192filed"
+      ]
+    }
+  ],
+  "change_log": [
+    {
+      "timestamp": "2026-03-13T18:11:20.922972Z",
+      "source_doc": "filing 2026-01-15",
+      "source_doc_type": "filing",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "hsr",
+          "detail": "HSR/FTC+DOJ newly required \u2014 first seen in filing"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_other_antitrust_authorities",
+          "detail": "Other Antitrust Authorities newly required \u2014 first seen in filing"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-13T18:14:25.352545Z",
+      "source_doc": "Press Release",
+      "source_doc_type": "press_release",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "reg_sec",
+          "detail": "SEC newly required \u2014 first seen in press_release"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_nyse",
+          "detail": "NYSE newly required \u2014 first seen in press_release"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_international_antitrust_authorities",
+          "detail": "International antitrust authorities newly required \u2014 first seen in press_release"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-17T22:41:17.751408Z",
+      "source_doc": "DMA Extract",
+      "source_doc_type": "dma_extract",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "reg_antitrust_laws",
+          "detail": "Antitrust Laws newly required \u2014 first seen in dma_extract"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_foreign_antitrust_and_foreign_investment_law_approvals",
+          "detail": "Foreign antitrust and foreign investment law approvals newly required \u2014 first seen in dma_extract"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-17T22:49:42.665654Z",
+      "source_doc": "Proxy Analysis",
+      "source_doc_type": "proxy",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "pending",
+          "to": "filed",
+          "detail": "HSR/DOJ+FTC status: pending \u2192 filed"
+        },
+        {
+          "type": "date_update",
+          "approval_id": "hsr",
+          "field": "filed_date",
+          "value": "2026-02-13",
+          "detail": "HSR/DOJ+FTC filed_date \u2192 2026-02-13"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_ec",
+          "detail": "EC newly required \u2014 first seen in proxy"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_various_competition_fdi_authorities",
+          "detail": "Various competition/FDI authorities newly required \u2014 first seen in proxy"
+        }
+      ]
+    }
+  ],
+  "documents_triaged": [
+    {
+      "doc_type": "OTHER",
+      "doc_date": "03/04/26",
+      "doc_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001321732&type=4&dateb=&owner=include&count=40",
+      "triaged_at": "2026-03-19T22:12:10.543674Z",
+      "relevant": false,
+      "reason": "This document is only a search results page listing Penumbra Inc filings without containing actual content about regulatory approvals, antitrust review, government clearances, shareholder votes, or deal status changes."
+    },
+    {
+      "doc_type": "10-K",
+      "doc_date": "02/25/26",
+      "doc_url": "https://www.sec.gov/Archives/edgar/data/1321732/000132173226000007/pen-20251231.htm",
+      "triaged_at": "2026-03-19T22:12:12.682728Z",
+      "relevant": false,
+      "reason": "This document is a Penumbra Inc. 10-K filing containing only financial and operational data with XML metadata tags; it contains no information about the Boston Scientific/Penumbra merger, regulatory approvals, antitrust review, or deal status."
+    },
+    {
+      "doc_type": "99.1",
+      "doc_date": "01/15/26",
+      "doc_url": "https://www.sec.gov/Archives/edgar/data/1321732/000095010326000524/dp240009_ex9902.htm",
+      "triaged_at": "2026-03-19T22:12:14.495039Z",
+      "relevant": false,
+      "reason": "The document is a press release announcing the merger agreement but contains no information about regulatory approvals, antitrust review status, government clearances, shareholder vote details, or specific closing conditions beyond general references to stockholder approval and customary closing conditions."
+    },
+    {
+      "doc_type": "SC 13G",
+      "doc_date": "02/05/26",
+      "doc_url": "https://www.sec.gov/Archives/edgar/data/1321732/000031506626000608/xslSCHEDULE_13G_X01/primary_doc.xml",
+      "triaged_at": "2026-03-19T22:12:15.567893Z",
+      "relevant": false,
+      "reason": "SC 13G filings do not contain regulatory approval information"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "ticker": "SEM",
+  "issuer": "SELECT MEDICAL HOLDINGS CORP",
+  "filing_date": "07/31/25",
+  "insider_name": "Daniel Thomas",
+  "insider_title": "Director",
+  "relationship": "Director",
+  "L1_headline": "+ SEM \u2013 Daniel Thomas acquired 14,035 restricted shares. | 07/29/25",
+  "L2_brief": "Director Daniel Thomas received a grant of 14,035 restricted stock shares at $0 cost on July 29, 2025. The shares vest in full on July 29, 2026. This is a standard director compensation grant rather than an open-market purchase, bringing his total direct holdings to 80,035 shares.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "07/29/2025",
+        "shares": "14,035",
+        "price_per_share": "$0",
+        "total_value": "$0 (restricted stock grant)",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "80,035 shares",
+    "ownership_type": "Direct",
+    "deal_signal": "N/A",
+    "pattern_notes": "This is a restricted stock grant as part of director compensation, not a discretionary open-market purchase. The grant represents approximately 17.5% of the director's total post-transaction holdings, indicating a meaningful equity stake tied to company performance. Shares vest on one-year anniversary (July 29, 2026).",
+    "risks_flagged": [
+      "Restricted stock grant with 1-year cliff vesting - not an open market transaction indicating insider sentiment"
+    ]
+  }
+}

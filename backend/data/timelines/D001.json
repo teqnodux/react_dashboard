@@ -1,0 +1,193 @@
+{
+  "deal_name": "Saltchuk Resources / Great Lakes Dredge & Dock",
+  "acquirer": "Saltchuk Resources, Inc.",
+  "acquirer_ticker": "",
+  "target": "Great Lakes Dredge & Dock Corporation",
+  "target_ticker": "GLDD",
+  "signing_date": "2026-02-10",
+  "nda_date": "2025-10-01",
+  "outside_date_initial": "2026-06-10",
+  "outside_date_extended": "2026-08-10",
+  "outside_date_extension_note": null,
+  "financing_type": "debt",
+  "financing_commitment_expiry": null,
+  "offer_price_per_share": 17.0,
+  "exchange_ratio": null,
+  "requires_s4": false,
+  "is_going_private": true,
+  "schedule_13e3_required": false,
+  "static_events": [
+    {
+      "label": "Confidentiality Agreement",
+      "date": "2025-10-01",
+      "ref": null
+    },
+    {
+      "label": "Merger Agreement Signed",
+      "date": "2026-02-10",
+      "ref": null
+    },
+    {
+      "label": "Unanimously approved by the Great Lakes Dredge & Dock Board",
+      "date": "2026-02-10",
+      "ref": null
+    },
+    {
+      "label": "Outside Date (Initial)",
+      "date": "2026-06-10",
+      "ref": null
+    },
+    {
+      "label": "Outside Date (Extended)",
+      "date": "2026-08-10",
+      "ref": null
+    }
+  ],
+  "extension_note": null,
+  "deadline_events": [
+    {
+      "label": "HSR Filing Deadline",
+      "date": "2026-03-03",
+      "calculation": "+15 Business Days from Signing",
+      "ref": null
+    },
+    {
+      "label": "Proxy Statement Filing Deadline",
+      "date": null,
+      "calculation": "Date not yet disclosed",
+      "ref": null
+    },
+    {
+      "label": "HSR Act Filing Deadline",
+      "date": "2026-02-25",
+      "calculation": "Saltchuk Resources, Inc. must make all HSR Act filings within 15 Business Days after February 10, 2026, and pay all related Governmental Entity filing fees.",
+      "ref": null
+    },
+    {
+      "label": "Competing Proposal Notice",
+      "date": null,
+      "calculation": "Great Lakes Dredge & Dock Corporation must notify Saltchuk Resources, Inc. in writing within 24 hours of receipt of any Competing Proposal or proposal that would reasonably be expected to lead to a Competing Proposal.",
+      "ref": null
+    },
+    {
+      "label": "Replacement Financing Deadline",
+      "date": null,
+      "calculation": "If financing becomes unavailable, Saltchuk Resources, Inc. and Huron MergeCo., Inc. must use reasonable best efforts to secure alternative funds by the 5th Business Day before offer expiry.",
+      "ref": null
+    },
+    {
+      "label": "Company Termination Fee Payment \u2013 Recommendation Change",
+      "date": null,
+      "calculation": "Great Lakes Dredge & Dock Corporation must pay the $36,861,914 Company Termination Fee within one Business Day after termination by Saltchuk Resources under Section 7.01(e) for a Change of Company Recommendation.",
+      "ref": null
+    },
+    {
+      "label": "Company Termination Fee \u2013 Tail Period (Competing Proposal Consummation)",
+      "date": null,
+      "calculation": "If the agreement is terminated in specified circumstances and Great Lakes Dredge & Dock Corporation enters into and subsequently consummates a Competing Proposal within 12 months after termination, the $36,861,914 Company Termination Fee is payable prior to or concurrently with such consummation.",
+      "ref": null
+    },
+    {
+      "label": "Cure Period for Breach",
+      "date": null,
+      "calculation": "Either party has 30 days after written notice of breach to cure such breach before the non-breaching party may terminate, subject to the breach being curable before the Outside Date.",
+      "ref": null
+    },
+    {
+      "label": "CFIUS / Foreign Investment Law Filings",
+      "date": null,
+      "calculation": "Saltchuk Resources, Inc. and Great Lakes Dredge & Dock Corporation must make required filings under applicable Foreign Investment Laws (including CFIUS) as promptly as practicable; no specific deadline is stated.",
+      "ref": null
+    },
+    {
+      "label": "Shareholder Meeting Adjournment Limit",
+      "date": null,
+      "calculation": "Adjournments limited to 10 Business Days each, not exceeding 20 Business Days aggregate without Parent's written consent; total vote delay may not exceed 25 Business Days aggregate.",
+      "ref": null
+    },
+    {
+      "label": "Offer Price Adjustment Record Date",
+      "date": null,
+      "calculation": "If a stock dividend or stock distribution is declared with a record date between February 10, 2026 and closing, the $17.00 offer price and merger consideration are adjusted to preserve equivalent economics.",
+      "ref": null
+    }
+  ],
+  "triggered_chains": [
+    {
+      "trigger_label": "HSR Filed (actual date)",
+      "trigger_key": "hsr_filed",
+      "downstream": [
+        {
+          "label": "HSR Waiting Period Expires",
+          "rule": "+15 calendar days after HSR filed (statutory \u2014 HSR Act, not stated in merger agreement)",
+          "ref": null
+        }
+      ]
+    },
+    {
+      "trigger_label": "Schedule 13E-3 Filed (actual date)",
+      "trigger_key": "13e3_filed",
+      "downstream": [
+        {
+          "label": "SEC Review Period (13E-3)",
+          "rule": "Open-ended \u2014 SEC has 10 business days initial review; comments may follow",
+          "ref": null
+        },
+        {
+          "label": "13E-3 / Proxy Cleared by SEC",
+          "rule": "SEC staff completes review; company may mail proxy",
+          "ref": null
+        }
+      ]
+    },
+    {
+      "trigger_label": "Proxy Statement Filed (actual date)",
+      "trigger_key": "proxy_filed",
+      "downstream": [
+        {
+          "label": "SEC Proxy Review Period",
+          "rule": "Open-ended \u2014 SEC review (typically 10 business days for preliminary proxy)",
+          "ref": null
+        },
+        {
+          "label": "Proxy Mailed to Shareholders",
+          "rule": "After SEC clearance \u2014 typically \u226520 calendar days before meeting",
+          "ref": null
+        },
+        {
+          "label": "Stockholder Meeting Deadline",
+          "rule": "Date not yet disclosed",
+          "ref": null
+        }
+      ]
+    },
+    {
+      "trigger_label": "All Closing Conditions Satisfied",
+      "trigger_key": "conditions_satisfied",
+      "downstream": [
+        {
+          "label": "Closing",
+          "rule": "Date not yet disclosed",
+          "ref": null
+        }
+      ]
+    }
+  ],
+  "checklist": [
+    "HSR actual filing date (Saltchuk Resources, Inc. + GLDD)",
+    "HSR early termination granted?",
+    "Schedule 13E-3 actual filing date",
+    "SEC 13E-3 comment letter received?",
+    "Schedule 13E-3 / proxy cleared by SEC",
+    "Record date for stockholder votes",
+    "Preliminary proxy filed (PREM14A)?",
+    "Definitive proxy filed (DEFM14A)?",
+    "Proxy mailing date",
+    "Great Lakes Dredge & Dock Corporation stockholder meeting date",
+    "Debt Commitment Letter expiration date",
+    "Alternative financing secured? (if needed)",
+    "Union/works council consultations complete?",
+    "All closing conditions satisfied?",
+    "Actual closing date"
+  ]
+}

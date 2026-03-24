@@ -1,0 +1,34 @@
+{
+  "ticker": "SEM",
+  "subject_company": "Select Medical Holdings Corp",
+  "filing_date": "02/23/26",
+  "filing_type": "SC 13D/A",
+  "filer_name": "Robert A. Ortenzio, Martin F. Jackson, Estate of Rocco A. Ortenzio",
+  "filer_type": "Individual",
+  "L1_headline": "+ SEM \u2013 Robert A. Ortenzio (group) discloses 11.3% stake with $16.00/share take-private proposal. | 02/23/26",
+  "L2_brief": "Robert A. Ortenzio (Executive Chairman and co-founder), Martin F. Jackson (Senior EVP), and the Estate of Rocco A. Ortenzio filed an amended 13D disclosing a combined beneficial ownership of approximately 15.7% of Select Medical Holdings. The amendment reports that on February 22, 2026, Ortenzio delivered a refined non-binding proposal to the Special Committee to acquire all outstanding shares not already owned by the group at $16.00 per share in cash. This is a management-led take-private attempt by company insiders.",
+  "L3_detailed": {
+    "ownership_details": {
+      "shares_held": "Robert A. Ortenzio: 14,019,735; Martin F. Jackson: 1,383,421; Estate of Rocco A. Ortenzio: 4,085,550 (with significant overlap)",
+      "percentage_owned": "Robert A. Ortenzio: 11.3%; Martin F. Jackson: 1.1%; Estate of Rocco A. Ortenzio: 3.3%",
+      "sole_voting_power": "Robert A. Ortenzio: 7,081,788; Martin F. Jackson: 1,383,421; Estate: 0",
+      "shared_voting_power": "Robert A. Ortenzio: 6,937,947; Martin F. Jackson: 2,634; Estate: 4,085,550",
+      "sole_dispositive_power": "Robert A. Ortenzio: 7,081,788; Martin F. Jackson: 1,383,421; Estate: 0",
+      "shared_dispositive_power": "Robert A. Ortenzio: 6,937,947; Martin F. Jackson: 2,634; Estate: 4,085,550"
+    },
+    "position_change": "Amendment to original Schedule 13D filed November 24, 2025; no transactions in Issuer stock within past 60 days - filing triggered by refined buyout proposal, not position change",
+    "source_of_funds": "OO (Other) - Shares acquired through compensation for roles as officers/directors and ownership prior to IPO as co-founders",
+    "purpose_of_transaction": "On February 22, 2026, Mr. Ortenzio delivered a refined non-binding proposal to the Special Committee of the Board to acquire all outstanding Shares not already owned by the Reporting Persons at a price of $16.00 per share, payable in cash. This is a management buyout (MBO) proposal to take the company private.",
+    "activist_intentions": "Active take-private proposal. The filers are seeking to acquire 100% of shares they do not already own. Robert A. Ortenzio is Executive Chairman and co-founder; Martin F. Jackson is Senior EVP of Strategic Finance and Operations. This is an insider-led buyout attempt with full intent to gain control and delist the company.",
+    "deal_implications": "This is a potential take-private transaction led by management insiders controlling approximately 11-16% of shares (depending on overlap calculation). The proposal is subject to Special Committee approval and regulatory approvals. The filing explicitly warns that discussions may be terminated at any time without prior notice and there is no assurance a definitive agreement will be reached. Key risks include Special Committee rejection, financing contingencies, and regulatory hurdles. As an insider-led deal, there may be heightened scrutiny of fairness and potential for competing bids from third parties.",
+    "related_agreements": "None explicitly mentioned. The refined proposal letter (Exhibit 99.3) is referenced but not detailed in the filing. No standstill or voting agreements disclosed.",
+    "risks_flagged": [
+      "Management buyout with potential conflicts of interest requiring Special Committee scrutiny",
+      "No definitive agreement - proposal is non-binding and may be terminated without notice",
+      "Financing contingencies not detailed in filing",
+      "Regulatory approval required",
+      "Potential for competing bids given insider proposal",
+      "Special Committee may reject proposal or negotiate higher price"
+    ]
+  }
+}

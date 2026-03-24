@@ -1,0 +1,32 @@
+{
+  "ticker": "DAWN",
+  "company": "Day One Biopharmaceuticals, Inc.",
+  "filing_date": "03/06/26",
+  "exhibit_type": "Deal Announcement",
+  "L1_headline": "+ DAWN \u2013 Servier to acquire Day One for $21.50/share. | 03/06/26",
+  "L2_brief": "Servier and Day One Biopharmaceuticals announced a definitive agreement for Servier to acquire Day One via cash tender offer at $21.50 per share, representing a total equity value of approximately $2.5 billion. The offer price represents a ~68% premium over Day One's closing price on March 5, 2026 and ~86% premium over the one-month VWAP. The transaction is expected to close in Q2 2026, subject to customary conditions including majority tender and U.S. antitrust clearance.",
+  "L3_detailed": {
+    "event": "Servier entered into a definitive merger agreement to acquire Day One Biopharmaceuticals via a cash tender offer, expanding Servier's rare oncology portfolio with Day One's pediatric low-grade glioma programs and broader oncology pipeline.",
+    "key_figures": [
+      "$21.50 per share cash consideration",
+      "Total equity value of approximately $2.5 billion",
+      "~68% premium over DAWN closing price on March 5, 2026",
+      "~86% premium over one-month VWAP as of March 5, 2026",
+      "Servier FY 2024/25 revenues of \u20ac6.9 billion"
+    ],
+    "market_impact": "Day One shareholders are offered $21.50 per share in cash. Day One's Board of Directors recommends shareholders tender their shares. Servier expects to fund the transaction through existing cash and investments.",
+    "forward_guidance": "The transaction is expected to close in Q2 2026. Upon successful completion of the tender offer, Servier will acquire remaining shares via a second-step merger at the same $21.50 per share consideration.",
+    "deal_relevance": "Structure is a cash tender offer followed by a second-step merger. Closing conditions include tender of at least a majority of outstanding Day One shares and receipt of U.S. antitrust clearance. The tender offer has not yet commenced as of the filing date; Schedule TO and Schedule 14D-9 filings are forthcoming. Goldman Sachs Bank Europe SE is advising Servier; Centerview Partners LLC is advising Day One. Baker McKenzie is Servier's legal counsel; Fenwick & West LLP is Day One's legal counsel.",
+    "risks_flagged": [
+      "Uncertainties as to timing of the offer and subsequent merger",
+      "Risk that insufficient shareholders tender their shares",
+      "Risk of competing offers or acquisition proposals",
+      "Conditions to consummation may not be satisfied or waived",
+      "Business disruption from announcement and pendency of transaction, including difficulty maintaining relationships with employees, suppliers, and business partners",
+      "Risk of stockholder litigation resulting in significant costs",
+      "U.S. antitrust clearance required",
+      "Possibility of termination of the Merger Agreement"
+    ]
+  },
+  "filing_type": "99.1"
+}

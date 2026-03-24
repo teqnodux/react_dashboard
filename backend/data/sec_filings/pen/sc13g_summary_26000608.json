@@ -1,0 +1,29 @@
+{
+  "ticker": "PEN",
+  "subject_company": "Penumbra Inc",
+  "filing_date": "02/05/26",
+  "filing_type": "SC 13G/A",
+  "filer_name": "FMR LLC",
+  "filer_type": "Mutual Fund",
+  "L1_headline": "+ PEN \u2013 FMR LLC discloses 4.7% stake. | 02/05/26",
+  "L2_brief": "FMR LLC (Fidelity) filed its 11th amendment to Schedule 13G disclosing beneficial ownership of 1,826,862 shares of Penumbra Inc common stock, representing 4.7% of the outstanding class. The filing is made under Rule 13d-1(b) as a parent holding company, with the filer certifying the shares were acquired in the ordinary course of business and not for the purpose of changing or influencing control of the issuer. Abigail P. Johnson is listed as a co-reporting person with sole dispositive power over the same shares but no voting power.",
+  "L3_detailed": {
+    "ownership_details": {
+      "shares_held": "1,826,862.09",
+      "percentage_owned": "4.7%",
+      "sole_voting_power": "1,822,618 (FMR LLC); 0 (Abigail P. Johnson)",
+      "shared_voting_power": "0",
+      "sole_dispositive_power": "1,826,862.09 (both FMR LLC and Abigail P. Johnson)",
+      "shared_dispositive_power": "0"
+    },
+    "position_change": "Decreased below 5% \u2014 this is an amendment (No. 11) and Item 5 is checked indicating ownership of 5 percent or less of the class",
+    "source_of_funds": "Not specified",
+    "purpose_of_transaction": "The filer certifies that the securities 'were acquired and are held in the ordinary course of business and were not acquired and are not held for the purpose of or with the effect of changing or influencing the control of the issuer of the securities and were not acquired and are not held in connection with or as a participant in any transaction having that purpose or effect.'",
+    "activist_intentions": "None stated. Filing is a passive Schedule 13G under Rule 13d-1(b).",
+    "deal_implications": "FMR LLC's stake has fallen below the 5% threshold. One or more other persons are known to have the right to receive dividends or proceeds from the sale of the shares, but no single other person's interest exceeds 5% of the total outstanding common stock.",
+    "related_agreements": "Exhibit 99 referenced for 13d-1(k)(1) agreement. Power of Attorney documents referenced for both FMR LLC and Abigail P. Johnson.",
+    "risks_flagged": [
+      "Large institutional holder has reduced position below 5% reporting threshold, which may reflect reduced conviction or portfolio rebalancing"
+    ]
+  }
+}

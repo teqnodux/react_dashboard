@@ -1,0 +1,27 @@
+{
+  "ticker": "ESPR",
+  "issuer": "Esperion Therapeutics, Inc.",
+  "filing_date": "12/17/25",
+  "seller_name": "Benjamin Looker",
+  "seller_relationship": "Officer",
+  "L1_headline": "+ ESPR \u2013 Benjamin Looker files to sell 6,517 shares. | 12/17/25",
+  "L2_brief": "Benjamin Looker, an officer at Esperion Therapeutics, filed to sell 6,517 shares of common stock valued at approximately $23,897. The sale is to cover tax obligations from recently vested restricted stock, representing a routine compensation-related transaction rather than discretionary selling.",
+  "L3_detailed": {
+    "proposed_sale": {
+      "shares_to_sell": "6,517",
+      "estimated_value": "$23,897.19",
+      "securities_type": "Common Stock",
+      "acquisition_date": "12/15/2025",
+      "acquisition_method": "Restricted Stock Vesting - Compensation"
+    },
+    "broker_info": "Fidelity Brokerage Services LLC, 900 Salem Street, Smithfield, RI 02917",
+    "seller_total_holdings": "Not disclosed",
+    "percentage_of_holdings": "Not calculable",
+    "deal_signal": "N/A - This appears to be a routine tax-related sale following restricted stock vesting, not indicative of any deal-related concerns. The seller has conducted similar small sales in prior months (6,267 shares in Sept, 1,248 shares in Oct) following the same pattern.",
+    "risks_flagged": [
+      "None significant - sale is explicitly for tax obligation coverage on vested equity",
+      "Small dollar value (~$24K) suggests routine compensation-related transaction",
+      "Pattern consistent with prior months' sales for same purpose"
+    ]
+  }
+}

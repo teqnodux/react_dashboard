@@ -1,0 +1,43 @@
+{
+  "ticker": "PEN",
+  "company": "Penumbra, Inc.",
+  "filing_date": "02/25/26",
+  "exhibit_type": "Earnings Release",
+  "L1_headline": "+ PEN \u2013 Q4 & FY2025 earnings; no 2026 guidance due to BSX deal. | 02/25/26",
+  "L2_brief": "Penumbra reported Q4 2025 revenue of $385.4M (+22.1% YoY) and full year 2025 revenue of $1,403.7M (+17.5% YoY), with Q4 net income of $47.3M ($1.20 diluted EPS) and full year net income of $177.7M ($4.52 diluted EPS). The company declined to provide FY2026 guidance or host a conference call due to the proposed acquisition by Boston Scientific Corporation, and reported strong growth across both thrombectomy and embolization/access product lines.",
+  "L3_detailed": {
+    "event": "Penumbra reported fourth quarter and full year 2025 financial results, noting the pending acquisition by Boston Scientific as the reason for not providing 2026 guidance or hosting an earnings call.",
+    "key_figures": [
+      "Q4 2025 revenue: $385.4M (+22.1% YoY, +20.9% constant currency)",
+      "FY 2025 revenue: $1,403.7M (+17.5% YoY, +16.9% constant currency)",
+      "Q4 2025 GAAP net income: $47.3M; diluted EPS: $1.20",
+      "FY 2025 GAAP net income: $177.7M; diluted EPS: $4.52",
+      "Q4 2025 operating income: $59.2M (15.4% margin)",
+      "FY 2025 operating income: $189.2M (13.5% margin)",
+      "Q4 2025 adjusted EBITDA: $79.1M (20.5% margin)",
+      "FY 2025 adjusted EBITDA: $266.8M (19.0% margin)",
+      "Q4 2025 gross margin: 68.0% vs 66.8% prior year",
+      "FY 2025 gross margin: 67.1% vs 63.2% prior year (2024 included $33.4M inventory impairment)",
+      "U.S. Thrombectomy Q4 revenue: $203.1M (+12.4% YoY)",
+      "U.S. Thrombectomy FY revenue: $771.5M (+19.3% YoY)",
+      "Q4 Embolization & Access revenue: $130.7M (+37.0% YoY)",
+      "FY Non-GAAP net income: $150.9M; non-GAAP diluted EPS: $3.84",
+      "Cash and equivalents: $186.9M; marketable investments: $357.9M as of 12/31/2025"
+    ],
+    "market_impact": "Penumbra delivered strong revenue growth and significant margin expansion in FY2025, with operating income rising from $9.3M in FY2024 to $189.2M in FY2025. The absence of FY2026 guidance and earnings call is due to the proposed acquisition by Boston Scientific.",
+    "forward_guidance": "No FY2026 financial guidance provided due to the proposed acquisition by Boston Scientific. The company noted gross margin may be positively impacted in the future by favorable product mix, productivity improvements, and leveraging fixed costs on higher new product volumes. Annual Report on Form 10-K expected to be filed on or before March 2, 2026.",
+    "deal_relevance": "Penumbra referenced the proposed acquisition by Boston Scientific Corporation (NYSE: BSX) as the reason for not providing FY2026 guidance and not hosting a conference call. Risk factors include the possibility that the acquisition will not be completed in the expected timeframe or at all, including the risk that required regulatory approvals will not be obtained, and potential adverse effects to the business during the pendency of the acquisition.",
+    "risks_flagged": [
+      "Risk that pending acquisition by Boston Scientific will not be completed in expected timeframe or at all",
+      "Risk that required regulatory approvals will not be obtained",
+      "Potential adverse effects during pendency of acquisition (employee departures, management distraction)",
+      "Failure to sustain or grow profitability or generate positive cash flows",
+      "Significant competition",
+      "Manufacturing difficulties",
+      "Fluctuations in foreign currency exchange rates",
+      "Potential adverse regulatory actions",
+      "Product defects or failures; unfavorable outcomes in clinical trials"
+    ]
+  },
+  "filing_type": "99.1"
+}

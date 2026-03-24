@@ -1,0 +1,51 @@
+{
+  "ticker": "HOLX",
+  "filing_date": "10/21/25",
+  "items_reported": [
+    "Item 1.01",
+    "Item 5.02",
+    "Item 8.01",
+    "Item 9.01"
+  ],
+  "L1_headline": "HOLX \u2013 Blackstone/TPG to acquire Hologic for $76+CVR. | 10/21/25",
+  "L2_brief": "Hologic entered into a definitive merger agreement with affiliates of Blackstone and TPG providing for acquisition at $76.00 per share in cash plus one CVR worth up to $3.00 based on Breast Health revenue milestones in fiscal years 2026 and 2027. The deal requires stockholder majority approval, HSR clearance, CFIUS review, and other regulatory approvals, with an outside date of July 21, 2026 (extendable by three months). A go-shop period runs until December 5, 2025, with a $540 million Company termination fee ($225 million if terminated for an Excluded Party) and a $900 million Parent termination fee; the deal is not subject to a financing condition.",
+  "L3_detailed": {
+    "event": "Hologic entered into an Agreement and Plan of Merger with Hopper Parent Inc. and Hopper Merger Sub Inc. (affiliates of Blackstone and TPG), under which Merger Sub will merge with and into Hologic, with Hologic surviving as a wholly owned subsidiary of Parent.",
+    "key_figures": [
+      "Cash consideration: $76.00 per share",
+      "CVR: up to $3.00 per share (up to $1.50 for FY2026 Breast Health revenue milestone, up to $1.50 for FY2027 milestone)",
+      "FY2026 CVR: $0.50-$1.50 linear interpolation for Breast Health revenue between $1,556,844,377 and $1,571,844,377; $1.50 if \u2265$1,571,844,377",
+      "FY2027 CVR: $0.50-$1.50 linear interpolation for Breast Health revenue between $1,651,256,283 and $1,666,256,283; $1.50 if \u2265$1,666,256,283",
+      "FY2027 catch-up mechanism if FY2026 CVR paid less than $1.50",
+      "Company termination fee: $540,000,000 (or $225,000,000 for Excluded Party prior to Cut-off Date)",
+      "Parent termination fee: $900,000,000",
+      "Debt financing: $9,500M first lien term loans, $2,000M second lien term loans, $750M revolving credit facility",
+      "Company cash and short-term investments: ~$2.2 billion as of September 27, 2025",
+      "Company debt: ~$2.5 billion as of September 27, 2025",
+      "Diluted shares outstanding: ~228 million",
+      "Outside date: July 21, 2026 (extendable by 3 months)",
+      "Go-Shop period: through December 5, 2025",
+      "Retention awards: Oberton $1,000,000; Mitchell $500,000; Verstreken $250,000"
+    ],
+    "deal_implications": "Board unanimously approved and recommends the transaction. No financing condition; equity commitments from Blackstone/TPG affiliates plus debt commitments plus company cash are stated as sufficient to fund the purchase price. Go-shop period allows solicitation of competing bids through December 5, 2025, with Excluded Parties permitted to continue discussions through ten business days after go-shop expiration.",
+    "remaining_conditions": [
+      "Adoption of merger agreement by holders of a majority of outstanding shares of Company Common Stock",
+      "HSR Act waiting period expiration or termination",
+      "Other required antitrust and foreign direct investment governmental approvals",
+      "CFIUS 30-day review period expiration",
+      "No law or order prohibiting consummation of the Merger",
+      "Accuracy of representations and warranties (subject to materiality qualifiers)",
+      "Performance of covenants in all material respects",
+      "No continuing Material Adverse Effect on the Company (Parent/Merger Sub closing condition)"
+    ],
+    "risks_flagged": [
+      "CVRs are non-tradeable and non-transferable (except in limited circumstances); no assurance milestones will be achieved",
+      "CFIUS review required",
+      "Multiple antitrust/foreign direct investment approvals required across jurisdictions",
+      "Risk of litigation relating to the proposed transaction noted in forward-looking statements",
+      "Stockholder approval required; not yet obtained",
+      "Go-shop period may yield competing proposals"
+    ]
+  },
+  "filing_type": "8-K"
+}

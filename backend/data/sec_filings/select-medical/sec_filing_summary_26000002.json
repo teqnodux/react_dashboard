@@ -1,0 +1,42 @@
+{
+  "ticker": "SEM",
+  "company": "Select Medical Holdings Corp",
+  "filing_type": "Form 3",
+  "filing_date": "01/06/26",
+  "L1_headline": "+ SEM \u2013 Exec VP initial ownership filing, 135K shares. | 01/06/26",
+  "L2_brief": "Form 3 initial beneficial ownership statement filed for John Tyler Hollenbach, newly designated Executive Vice President of Select Medical Holdings. He reports direct ownership of 135,084 shares of common stock, largely consisting of unvested restricted stock grants with vesting dates through 2029. No direct M&A implications from this routine insider disclosure.",
+  "L3_detailed": {
+    "filing_purpose": "Initial statement of beneficial ownership required under Section 16(a) following Hollenbach becoming an Executive Vice President (reporting person) effective January 1, 2026.",
+    "key_information": [
+      "John Tyler Hollenbach appointed Executive Vice President effective 01/01/2026",
+      "Total beneficial ownership of 135,084 shares of common stock (direct ownership)",
+      "130,000 of the shares are restricted stock grants subject to vesting conditions",
+      "Four separate restricted stock grants with staggered vesting through 2029",
+      "No derivative securities reported"
+    ],
+    "financial_highlights": [
+      "15,000 restricted shares vesting November 1, 2026",
+      "15,000 restricted shares vesting November 1, 2027",
+      "50,000 restricted shares vesting April 30, 2028",
+      "50,000 restricted shares vesting October 28, 2029",
+      "Special vesting of 1/3 of certain grants occurred November 5, 2024"
+    ],
+    "deal_relevance": "No direct M&A relevance. Routine executive ownership disclosure. However, substantial unvested equity (130,000 restricted shares) suggests retention incentives are in place; change-of-control provisions in equity plans could be relevant if any future deal emerges.",
+    "regulatory_mentions": "SEC Section 16(a) compliance filing",
+    "timeline_or_dates": [
+      "01/01/2026 - Event date (officer designation)",
+      "01/06/2026 - Filing date",
+      "11/01/2026 - Vesting date for 15,000 shares",
+      "11/01/2027 - Vesting date for 15,000 shares",
+      "04/30/2028 - Vesting date for 50,000 shares",
+      "10/28/2029 - Vesting date for 50,000 shares"
+    ],
+    "conditions_or_requirements": [
+      "Restricted stock vesting subject to continued employment with certain exceptions",
+      "Four-year cliff vesting structure on grants"
+    ],
+    "risks_flagged": [
+      "None identified in this filing"
+    ]
+  }
+}

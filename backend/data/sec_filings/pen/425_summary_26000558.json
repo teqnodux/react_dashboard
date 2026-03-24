@@ -1,0 +1,37 @@
+{
+  "ticker": "PEN",
+  "filer": "Penumbra, Inc.",
+  "subject_company": "Penumbra, Inc.",
+  "filing_date": "01/15/26",
+  "communication_type": "Employee Communication",
+  "L1_headline": "+ PEN \u2013 Boston Scientific to acquire Penumbra at $374/share. | 01/15/26",
+  "L2_brief": "Penumbra announced a definitive agreement to be acquired by Boston Scientific for $374 per share in a mix of cash and BSX stock. The transaction is expected to close in 2026, subject to Penumbra stockholder approval, regulatory approvals, and customary closing conditions. CEO Adam Elsesser communicated to employees that there are no immediate changes to roles or reporting structures and stated he will join the Boston Scientific Board of Directors upon closing.",
+  "L3_detailed": {
+    "deal_parties": "Boston Scientific Corporation (BSX) acquiring Penumbra, Inc. (PEN)",
+    "deal_status_update": "Definitive agreement announced on January 15, 2026. Boston Scientific will file a registration statement on Form S-4 with proxy statement/prospectus. The companies remain separate until closing.",
+    "timeline_update": "Transaction expected to close in 2026. No specific quarter or month provided. Proxy statement/prospectus has not yet been filed.",
+    "terms_update": "$374 per share of Penumbra common stock in a mix of cash and Boston Scientific stock. Unvested RSU awards will generally vest upon closing and be exchanged for a mix of cash and BSX stock. ESPP and ESPRP will continue through the end of the current purchase period.",
+    "management_tone": "CEO Adam Elsesser described the deal as a 'tremendous recognition' of Penumbra's accomplishments, expressed gratitude to employees, and stated he is 'confident that Penumbra becoming part of Boston Scientific will enable us to thrive.' He characterized the cultural alignment between the two companies as strong.",
+    "key_messages": [
+      "Penumbra will become a standalone group within Boston Scientific post-close",
+      "Adam Elsesser will join the Boston Scientific Board of Directors upon closing",
+      "No immediate changes to employee roles, reporting structures, FY26 goals, offices, manufacturing facilities, or benefit programs",
+      "Deal rationale centers on expanding global access to Penumbra's technologies through BSX's commercial footprint",
+      "Boston Scientific was attracted to Penumbra due to alignment in values and culture",
+      "Penumbra's current offices and manufacturing facilities will be maintained"
+    ],
+    "regulatory_update": "Transaction subject to required regulatory approvals and clearances; no specific regulators or jurisdictions identified in this filing.",
+    "shareholder_vote_info": "Penumbra stockholder approval is required. Boston Scientific will file a Form S-4 registration statement containing a proxy statement/prospectus. No record date, vote date, or board recommendation details provided in this filing beyond the requirement for stockholder approval.",
+    "integration_details": "Penumbra will operate as a standalone group within Boston Scientific. Integration will focus on continuity and stability for employees, customers, and patients. The company stated opportunities may emerge over time to leverage each other's strengths. No specific synergy estimates or integration timeline provided.",
+    "risks_flagged": [
+      "Completion subject to Penumbra stockholder approval",
+      "Required regulatory approvals and clearances not yet obtained",
+      "Potential litigation relating to the proposed transaction",
+      "Risk of business disruption during pendency of the transaction",
+      "Potential adverse reactions or changes to business relationships from announcement or pendency",
+      "Uncertainty as to long-term value of Boston Scientific common stock (mixed consideration)",
+      "Restrictions during pendency may limit Penumbra's ability to pursue certain business opportunities"
+    ]
+  },
+  "filing_type": "425"
+}

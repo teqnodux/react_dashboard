@@ -1,0 +1,30 @@
+{
+  "ticker": "HOLX",
+  "issuer": "HOLOGIC INC",
+  "filing_date": "03/02/26",
+  "insider_name": "Ludwig Hantson",
+  "insider_title": "Director",
+  "relationship": "Director",
+  "L1_headline": "+ HOLX \u2013 Ludwig Hantson acquired 3,190 restricted stock units. | 02/26/26",
+  "L2_brief": "Director Ludwig Hantson acquired 3,190 restricted stock units of Hologic Inc on 02/26/2026 as part of a director compensation grant. The RSUs vest on the date of the 2027 Annual Meeting of Stockholders and settle in shares of common stock on a one-for-one basis. Following the transaction, Hantson beneficially owns 16,146 shares directly, which includes 3,695 RSUs deferred under the issuer's Deferred Equity Plan.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "02/26/2026",
+        "shares": "3,190",
+        "price_per_share": "N/A",
+        "total_value": "N/A",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "16,146 shares (direct), including 3,695 RSUs with deferred settlement under the issuer's Deferred Equity Plan",
+    "ownership_type": "Direct",
+    "deal_signal": "N/A",
+    "pattern_notes": "This is a director compensation grant of restricted stock units vesting at the 2027 Annual Meeting, not an open-market purchase. The filing notes 3,695 RSUs within the total holdings have been deferred under the Deferred Equity Plan, indicating a pattern of deferring equity compensation.",
+    "risks_flagged": [
+      "No 10b5-1 plan noted; transaction is a director equity compensation grant, not a discretionary open-market transaction"
+    ]
+  },
+  "filing_type": "FORM 4"
+}

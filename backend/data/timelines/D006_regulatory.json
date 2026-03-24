@@ -1,0 +1,77 @@
+{
+  "deal_id": "D006",
+  "last_updated": "2026-02-27",
+  "approvals": [
+    {
+      "id": "hsr",
+      "jurisdiction": "United States",
+      "authority_short": "HSR / FTC+DOJ",
+      "authority_full": "Federal Trade Commission / Department of Justice",
+      "statute": "Hart-Scott-Rodino Antitrust Improvements Act",
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "hsr_filed",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "HSR pre-merger notification filing required",
+      "source_doc": "Initial Summary",
+      "source_doc_type": "summary",
+      "source_doc_url": null,
+      "first_seen_date": "2026-02-27"
+    },
+    {
+      "id": "reg_cfius",
+      "jurisdiction": "United States",
+      "authority_short": "CFIUS",
+      "authority_full": "CFIUS",
+      "statute": null,
+      "category": "foreign_investment",
+      "status": "pending",
+      "filing_key": "reg_cfius",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "CFIUS Approval is explicitly named as a Required Approval and a mutual closing condition; parties must promptly submit draft and formal CFIUS notices and make all requested submissions.",
+      "source_doc": "Initial Summary",
+      "source_doc_type": "summary",
+      "source_doc_url": null,
+      "first_seen_date": "2026-02-27"
+    }
+  ],
+  "documents_processed": [
+    {
+      "doc_type": "summary",
+      "doc_date": "2023-12-18",
+      "doc_url": null,
+      "processed_at": "2026-02-27T05:34:00.701288Z",
+      "approvals_found": 2,
+      "additions": [
+        "hsr",
+        "reg_cfius"
+      ],
+      "status_changes": []
+    }
+  ],
+  "change_log": [
+    {
+      "timestamp": "2026-02-27T05:34:00.701288Z",
+      "source_doc": "Initial Summary",
+      "source_doc_type": "summary",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "hsr",
+          "detail": "HSR / FTC+DOJ added from initial deal summary"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_cfius",
+          "detail": "CFIUS added from initial deal summary"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "deal_id": "D057",
+  
+  "dma_sections": [
+    {
+      "name": "Consideration",
+      "clauses": [
+        {
+          "topic": "Merger Consideration",
+          "concise": "$4.50 per share all-cash",
+          "fulsome": "At the effective time, each share of Eventbrite Class A and Class B common stock will be converted into the right to receive $4.50 in cash, without interest. This represents an 81% premium to the unaffected stock price.",
+          "clause_text": "Section 2.1(a): At the Effective Time, each share of Company Common Stock issued and outstanding immediately prior to the Effective Time shall be converted into the right to receive $4.50 in cash, without interest (the 'Merger Consideration')...",
+          "references": ["Section 2.1(a)", "Section 2.1(b)"]
+        },
+        {
+          "topic": "Equity Award Treatment",
+          "concise": "Options get spread, RSUs convert at $4.50, PSUs at target",
+          "fulsome": "Stock options receive the spread between merger consideration and exercise price (Black-Scholes for underwater). RSUs convert at $4.50 per share. PSUs convert based on target performance multiplied by $4.50. ESPP final period ends earlier of May 29, 2026 or one day before closing.",
+          "clause_text": "Section 2.4: Treatment of Company Equity Awards. (a) Stock Options: Each option shall be cancelled and converted into the right to receive cash equal to the product of (i) the excess, if any, of the Merger Consideration over the exercise price...",
+          "references": ["Section 2.4"]
+        }
+      ]
+    },
+    {
+      "name": "Regulatory",
+      "clauses": [
+        {
+          "topic": "HSR Filing",
+          "concise": "HSR filed Dec 31, refiling Feb 3, expires Mar 5",
+          "fulsome": "Eventbrite and Bending Spoons filed HSR Act notifications on December 31, 2025. Bending Spoons will withdraw and refile on February 3, 2026, with the HSR waiting period expiring no later than March 5, 2026, unless extended.",
+          "clause_text": "Section 6.3(a): Each of Parent and the Company shall use reasonable best efforts to file or cause to be filed, as promptly as practicable, all applications, notices, petitions and filings required to be filed by the HSR Act...",
+          "references": ["Section 6.3(a)", "Section 7.1(b)"]
+        }
+      ]
+    },
+    {
+      "name": "Termination",
+      "clauses": [
+        {
+          "topic": "Outside Date",
+          "concise": "June 1, 2026 (extendable to Sep 1 if only HSR pending)",
+          "fulsome": "Initial outside date is June 1, 2026 at 11:59 p.m. Pacific Time. Can be extended to September 1, 2026 if all conditions except HSR Act clearance are satisfied or waived at the initial outside date.",
+          "clause_text": "Section 8.1(b)(i): This Agreement may be terminated at any time prior to the Effective Time by either Parent or the Company if the Merger shall not have been consummated on or before June 1, 2026 (the 'Outside Date'); provided that the Outside Date shall be automatically extended to September 1, 2026 if...",
+          "references": ["Section 8.1(b)(i)"]
+        },
+        {
+          "topic": "Termination Fee",
+          "concise": "3.5% termination fee payable by Eventbrite",
+          "fulsome": "Eventbrite is required to pay a termination fee of approximately $21 million (3.5% of equity value) if the agreement is terminated under certain circumstances, including a superior proposal or change of board recommendation.",
+          "clause_text": "Section 8.3(a): In the event that this Agreement is terminated by Parent pursuant to Section 8.1(d)(ii) or by the Company pursuant to Section 8.1(d)(iv), the Company shall pay to Parent a fee equal to $21,000,000...",
+          "references": ["Section 8.3(a)"]
+        }
+      ]
+    }
+  ],
+  
+  "proxy_filings": [
+    {
+      "filing_type": "PREM14A",
+      "filed_date": "2026-01-15",
+      "description": "Preliminary Proxy Statement",
+      "sec_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=eventbrite",
+      "is_amendment": false,
+      "shareholder_dates": "Record date is January 16, 2026. Special meeting scheduled for February 27, 2026 at 9:00 a.m. Pacific Time, held virtually at www.virtualshareholdermeeting.com/EB2026SM.",
+      "consideration_details": "Straightforward all-cash merger at $4.50 per share for all Class A and Class B common stock. No averaging periods, proration, or spin-offs. Stock options receive spread vs exercise price (or Black-Scholes if underwater). RSUs convert at $4.50/share. PSUs convert at target performance × $4.50. ESPP final period ends earlier of May 29, 2026 or one day before closing, capped at 200,000 shares.",
+      "regulatory_updates": "HSR filed December 31, 2025. Bending Spoons will withdraw and refile February 3, 2026, with waiting period expiring no later than March 5, 2026 unless extended. Additional approvals required under competition and investment screening laws but no comprehensive list provided. No approvals received yet.",
+      "closing_guidance": "Expected first half of 2026, assuming timely satisfaction of conditions. Initial outside date is June 1, 2026 (11:59 p.m. Pacific), with potential extension to September 1, 2026 if all conditions except HSR clearance are satisfied. No prior guidance to compare — this is original timeline from December 2, 2025 announcement.",
+      "other_items": "No disclosure of union presence, collective bargaining agreements, or labor disputes at Eventbrite. Merger agreement defines 'Union' and includes labor reps/warranties, but no indication employees are unionized.",
+      "background_summary": "July 2024: Bending Spoons CEO met Eventbrite CEO at Sun Valley (no transaction discussed). July 2025: Same conference, raised potential combination (no price). Oct-Nov 2025: Targeted auction — 22 parties contacted (13 strategic, 9 financial), 7 signed NDAs, 6 got data room, only 1 IOI submitted. Final bids: Bending Spoons $4.50 all-cash vs Counterparty C $4.25 all-cash. Bending Spoons selected — highest price, no financing condition, funded via cash + credit facilities. 81% premium to unaffected price."
+    }
+  ],
+  
+  "timeline_events": [
+    {
+      "event_date": "2025-12-02",
+      "event_type": "milestone",
+      "title": "Deal Announced",
+      "description": "Bending Spoons to acquire Eventbrite for $4.50/share in all-cash deal",
+      "status": "completed"
+    },
+    {
+      "event_date": "2025-12-31",
+      "event_type": "regulatory",
+      "title": "HSR Filed",
+      "description": "Initial HSR Act notification filed",
+      "status": "completed"
+    },
+    {
+      "event_date": "2026-01-15",
+      "event_type": "filing",
+      "title": "PREM14A Filed",
+      "description": "Preliminary proxy statement filed with SEC",
+      "status": "completed"
+    },
+    {
+      "event_date": "2026-02-03",
+      "event_type": "regulatory",
+      "title": "HSR Refiling",
+      "description": "Bending Spoons withdraws and refiles HSR notification",
+      "status": "pending"
+    },
+    {
+      "event_date": "2026-02-27",
+      "event_type": "shareholder",
+      "title": "Shareholder Vote",
+      "description": "Special meeting for stockholder approval",
+      "status": "pending"
+    },
+    {
+      "event_date": "2026-03-05",
+      "event_type": "regulatory",
+      "title": "HSR Expiration",
+      "description": "HSR waiting period expires (unless extended)",
+      "status": "pending"
+    },
+    {
+      "event_date": "2026-06-01",
+      "event_type": "milestone",
+      "title": "Outside Date",
+      "description": "Initial outside date (can extend to Sep 1 if only HSR pending)",
+      "status": "pending"
+    }
+  ],
+  
+  "regulatory_events": [
+    {
+      "agency": "DOJ/FTC",
+      "event": "HSR Filed",
+      "event_date": "2025-12-31",
+      "status": "completed",
+      "notes": "Initial HSR notification"
+    },
+    {
+      "agency": "DOJ/FTC",
+      "event": "HSR Refiling",
+      "event_date": "2026-02-03",
+      "status": "pending",
+      "notes": "Withdraw and refile strategy"
+    },
+    {
+      "agency": "DOJ/FTC",
+      "event": "HSR Clearance Expected",
+      "event_date": "2026-03-05",
+      "status": "pending",
+      "notes": "30-day waiting period from refiling"
+    }
+  ]
+}

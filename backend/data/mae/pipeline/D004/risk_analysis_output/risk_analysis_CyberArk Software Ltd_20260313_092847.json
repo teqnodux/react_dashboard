@@ -1,0 +1,68 @@
+{
+  "deal_name": "CyberArk Software Ltd",
+  "analysis_timestamp": "2026-03-13T09:28:47.516188",
+  "total_clauses": 9,
+  "clauses_analyzed": 0,
+  "analysis_coverage": "0.0%",
+  "initial_risk_assessment": {
+    "typical_count": 9,
+    "atypical_count": 0,
+    "outlier_count": 0,
+    "risk_flags": [],
+    "overall_risk": "low",
+    "requires_review": false
+  },
+  "risk_summary": {
+    "final_risk_level": "low",
+    "risk_score": 0,
+    "high_risk_count": 0,
+    "medium_risk_count": 0,
+    "low_risk_count": 0,
+    "disclosure_references_count": 0,
+    "key_concerns": []
+  },
+  "investigation_report": {
+    "executive_summary": "STANDARD RISK PROFILE: Most provisions align with market standards. Only 0 items flagged for routine review.",
+    "immediate_actions_required": [
+      "Standard due diligence process",
+      "Routine review of flagged items"
+    ],
+    "key_negotiation_points": [],
+    "red_flag_summary": [],
+    "disclosure_schedule_concerns": [],
+    "unusual_provisions_detail": []
+  },
+  "negotiation_recommendations": [
+    "No significant negotiation concerns identified"
+  ],
+  "benchmark_comparison": {
+    "vs_typical_deals": {
+      "typical_rate": {
+        "this_deal": "100.0%",
+        "note": "Higher is better - most clauses match standard patterns"
+      },
+      "outlier_rate": {
+        "this_deal": "0.0%",
+        "note": "Lower is better - fewer unusual provisions"
+      }
+    },
+    "statistical_outliers": [],
+    "category_distribution": {
+      "economic": "2/9 (22.2%)",
+      "force_majeure": "2/9 (22.2%)",
+      "accounting": "1/9 (11.1%)",
+      "transaction": "3/9 (33.3%)",
+      "disclosure": "1/9 (11.1%)"
+    },
+    "risk_distribution": {}
+  },
+  "detailed_analysis": {
+    "high_risk_clauses": [],
+    "medium_risk_clauses": [],
+    "disclosure_references": [],
+    "all_analyzed_clauses": []
+  },
+  "unusual_provisions_summary": [],
+  "red_flags": [],
+  "classification_file": "classification_20260313_092846.json"
+}

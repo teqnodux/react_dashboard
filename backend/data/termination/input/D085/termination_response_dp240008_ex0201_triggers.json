@@ -1,0 +1,185 @@
+{
+  "document_id": "dp240008_ex0201",
+  "total_clauses": 9,
+  "clauses": [
+    {
+      "section_number": "Section 8.01",
+      "section_title": "Termination",
+      "clause_id": "preamble",
+      "clause_type": "preamble",
+      "trigger_type": "preamble",
+      "original_text": "This Agreement may be terminated and the Transactions may be abandoned at any time prior to the Effective Time by action taken or authorized by the Company Board or Parent Board (as applicable) of the terminating party or parties, notwithstanding any prior adoption of this Agreement by the stockholders of the Company, as follows (the date of any such termination, the \"Termination Date\"):",
+      "processed_text": "This Agreement may be terminated and the Transactions may be abandoned at any time prior to the Effective Time by action taken or authorized by the Company Board or Parent Board (as applicable) of the terminating party or parties, notwithstanding any prior adoption of this Agreement by the stockholders of the Company, as follows (the date of any such termination, the \"Termination Date\"):",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "Section 8.01",
+      "section_title": "Termination",
+      "clause_id": "a",
+      "clause_type": "trigger",
+      "trigger_type": "mutual_consent",
+      "original_text": "by mutual written consent of Parent and the Company;",
+      "processed_text": "by mutual written consent of Parent and the Company;",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "Section 8.01",
+      "section_title": "Termination",
+      "clause_id": "b",
+      "clause_type": "trigger",
+      "trigger_type": "outside_date",
+      "original_text": "by either Parent or the Company, if the Effective Time shall not have occurred on or before January 14, 2027 (the \"Initial Outside Date\"); provided, that if on the Initial Outside Date (or, if the Initial Outside Date shall have been extended pursuant to this Section 8.01(b), if on the then-scheduled Outside Date, as applicable) any of the conditions set forth in Section 7.01(b) (to the extent relating to the matters set forth in Section 7.01(c) or any Antitrust Law) or Section 7.01(c) shall not have been satisfied but all other conditions set forth in Article VII shall have been satisfied or waived (or shall then be capable of being satisfied if the Closing were to take place on such date), then either Parent or the Company may, by written notice to the other party, extend the Initial Outside Date in successive three (3)-month increments until no later than January 14, 2028 (the Initial Outside Date, as it may be extended pursuant to this Section 8.01(b), the \"Outside Date\"); provided, that the right to terminate this Agreement under this Section 8.01(b) shall not be available to any party whose failure to fulfill any agreements and covenants under this Agreement has been the principal cause of, or resulted in, the failure of the Effective Time to occur on or before such date;",
+      "processed_text": "by either Parent or the Company, if the Effective Time shall not have occurred on or before January 14, 2027 (the \"Initial Outside Date\"); provided, that if on the Initial Outside Date (or, if the Initial Outside Date shall have been extended pursuant to this Section 8.01(b), if on the then-scheduled Outside Date, as applicable) any of the conditions set forth in Section 7.01(b) (to the extent relating to the matters set forth in Section 7.01(c) or any Antitrust Law) or Section 7.01(c) shall not have been satisfied but all other conditions set forth in Article VII shall have been satisfied or waived (or shall then be capable of being satisfied if the Closing were to take place on such date), then either Parent or the Company may, by written notice to the other party, extend the Initial Outside Date in successive three (3)-month increments until no later than January 14, 2028 (the Initial Outside Date, as it may be extended pursuant to this Section 8.01(b), the \"Outside Date\"); provided, that the right to terminate this Agreement under this Section 8.01(b) shall not be available to any party whose failure to fulfill any agreements and covenants under this Agreement has been the principal cause of, or resulted in, the failure of the Effective Time to occur on or before such date;",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "Section 8.01",
+      "section_title": "Termination",
+      "clause_id": "c",
+      "clause_type": "trigger",
+      "trigger_type": "regulatory_block",
+      "original_text": "by either Parent or the Company, if any Governmental Authority of competent jurisdiction shall have enacted, issued, promulgated, enforced or entered any Law or Order permanently enjoining or otherwise prohibiting or making illegal the consummation of the Merger and such Law or Order shall have become final and nonappealable, or if there shall be adopted following the date of execution of this Agreement any Law that makes consummation of the Merger illegal or otherwise prohibited; provided, that the party seeking to terminate this Agreement pursuant to this Section 8.01(c) has fulfilled its obligations under Section 6.06;",
+      "processed_text": "by either Parent or the Company, if any Governmental Authority of competent jurisdiction shall have enacted, issued, promulgated, enforced or entered any Law or Order permanently enjoining or otherwise prohibiting or making illegal the consummation of the Merger and such Law or Order shall have become final and nonappealable, or if there shall be adopted following the date of execution of this Agreement any Law that makes consummation of the Merger illegal or otherwise prohibited; provided, that the party seeking to terminate this Agreement pursuant to this Section 8.01(c) has fulfilled its obligations under Section 6.06;",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "Section 8.01",
+      "section_title": "Termination",
+      "clause_id": "d",
+      "clause_type": "trigger",
+      "trigger_type": "shareholder_vote_failure",
+      "original_text": "by either Parent or the Company, if this Agreement shall fail to receive the Company Stockholder Approval at the Company Stockholders' Meeting (or any adjournment or postponement thereof at which a vote is taken on the Merger);",
+      "processed_text": "by either Parent or the Company, if this Agreement shall fail to receive the Company Stockholder Approval at the Company Stockholders' Meeting (or any adjournment or postponement thereof at which a vote is taken on the Merger);",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "Section 8.01",
+      "section_title": "Termination",
+      "clause_id": "e",
+      "clause_type": "trigger",
+      "trigger_type": "target_fiduciary_out",
+      "original_text": "by Parent, if, prior to the receipt of the Company Stockholder Approval, the Company Board shall have effected, and not withdrawn at least five (5) Business Days prior to the Company Stockholder Meeting, an Adverse Recommendation Change;",
+      "processed_text": "by Parent, if, prior to the receipt of the Company Stockholder Approval, the Company Board shall have effected, and not withdrawn at least five (5) Business Days prior to the Company Stockholder Meeting, an Adverse Recommendation Change;",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "Section 8.01",
+      "section_title": "Termination",
+      "clause_id": "f",
+      "clause_type": "trigger",
+      "trigger_type": "target_fiduciary_out",
+      "original_text": "by the Company, at any time prior to the time at which the Company Stockholder Approval is obtained, if the Company Board determines to enter into an Acquisition Agreement with respect to a Superior Proposal in accordance with Section 6.03; provided that, (i) the Company shall not have breached (other than a de minimis breach) Section 6.03 with respect to such Superior Proposal and (ii) prior to or substantially concurrently with, and as a condition to the effectiveness of such termination, the Company pays to Parent the Company Termination Fee;",
+      "processed_text": "by the Company, at any time prior to the time at which the Company Stockholder Approval is obtained, if the Company Board determines to enter into an Acquisition Agreement with respect to a Superior Proposal in accordance with Section 6.03; provided that, (i) the Company shall not have breached (other than a de minimis breach) Section 6.03 with respect to such Superior Proposal and (ii) prior to or substantially concurrently with, and as a condition to the effectiveness of such termination, the Company pays to Parent the Company Termination Fee;",
+      "parties_replaced": [
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "Section 8.01",
+      "section_title": "Termination",
+      "clause_id": "g",
+      "clause_type": "trigger",
+      "trigger_type": "target_breach",
+      "original_text": "by Parent, if the Company shall have breached any of its representations or warranties, or failed to perform any of its covenants or agreements set forth in this Agreement, which breach or failure to perform (i) would give rise to the failure of a condition set forth in Section 7.02(a) or Section 7.02(b) and (ii) is incapable of being cured prior to the Outside Date or, if curable by such date, is not cured within the earlier of (A) thirty (30) calendar days after written notice thereof is given by Parent to the Company and (B) the Outside Date; provided that Parent shall not have the right to terminate this Agreement pursuant to this Section 8.01(g) if Parent is then in breach of any of its representations or warranties or Parent or Merger Sub is then in breach of any of its covenants or agreements hereunder, in either case, such that any condition in Section 7.03(a) or Section 7.03(b) is not satisfied or capable of being satisfied by the Outside Date;",
+      "processed_text": "by Parent, if the Company shall have breached any of its representations or warranties, or failed to perform any of its covenants or agreements set forth in this Agreement, which breach or failure to perform (i) would give rise to the failure of a condition set forth in Section 7.02(a) or Section 7.02(b) and (ii) is incapable of being cured prior to the Outside Date or, if curable by such date, is not cured within the earlier of (A) thirty (30) calendar days after written notice thereof is given by Parent to the Company and (B) the Outside Date; provided that Parent shall not have the right to terminate this Agreement pursuant to this Section 8.01(g) if Parent is then in breach of any of its representations or warranties or Parent or Merger Sub is then in breach of any of its covenants or agreements hereunder, in either case, such that any condition in Section 7.03(a) or Section 7.03(b) is not satisfied or capable of being satisfied by the Outside Date;",
+      "parties_replaced": [
+        {
+          "term": "Merger Sub",
+          "standard_role": "Merger Sub"
+        },
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    },
+    {
+      "section_number": "Section 8.01",
+      "section_title": "Termination",
+      "clause_id": "h",
+      "clause_type": "trigger",
+      "trigger_type": "acquirer_breach",
+      "original_text": "by the Company, if Parent shall have breached any of its representations or warranties, or Parent or Merger Sub shall have failed to perform any of its covenants or agreements set forth in this Agreement, which breach or failure to perform (i) would give rise to the failure of a condition set forth in Section 7.03(a) or Section 7.03(b) and (ii) is incapable of being cured prior to the Outside Date or, if curable by such date, is not cured within the earlier of (A) thirty (30) calendar days after written notice thereof is given by the Company to Parent and (B) the Outside Date; provided that the Company shall not have the right to terminate this Agreement pursuant to this Section 8.01(h) if the Company is then in breach of any of its representations, warranties, covenants or agreements hereunder such that any condition in Section 7.02(a) or Section 7.02(b) is not satisfied or capable of being satisfied by the Outside Date.",
+      "processed_text": "by the Company, if Parent shall have breached any of its representations or warranties, or Parent or Merger Sub shall have failed to perform any of its covenants or agreements set forth in this Agreement, which breach or failure to perform (i) would give rise to the failure of a condition set forth in Section 7.03(a) or Section 7.03(b) and (ii) is incapable of being cured prior to the Outside Date or, if curable by such date, is not cured within the earlier of (A) thirty (30) calendar days after written notice thereof is given by the Company to Parent and (B) the Outside Date; provided that the Company shall not have the right to terminate this Agreement pursuant to this Section 8.01(h) if the Company is then in breach of any of its representations, warranties, covenants or agreements hereunder such that any condition in Section 7.02(a) or Section 7.02(b) is not satisfied or capable of being satisfied by the Outside Date.",
+      "parties_replaced": [
+        {
+          "term": "Merger Sub",
+          "standard_role": "Merger Sub"
+        },
+        {
+          "term": "Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ]
+    }
+  ]
+}

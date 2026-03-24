@@ -1,0 +1,95 @@
+Proxy Summary
+
+Are the shareholder vote or shareholder record dates set?
++ No, neither the shareholder record date nor the Special Meeting vote date has been set as
+of this preliminary proxy statement (PREM14A) filed February 24, 2026. Both dates appear
+as blank brackets &quot;[ ]&quot; throughout the document. The record date will determine
+stockholders entitled to vote, and the Special Meeting date will be when voting occurs.
+These dates are typically finalized and disclosed in the definitive proxy statement (DEF14A)
+that follows this preliminary filing. The company has indicated that proxy materials will be
+mailed at least 20 business days prior to the Special Meeting once the date is established.
+
+Any additional details around consideration terms, such as averaging periods, proration
+mechanisms, spin-off shares?
++ The transaction involves fixed cash consideration of $24.55 per share of Class A Common
+Stock with no averaging periods, proration mechanisms, collars, earn-outs, or spin-off
+shares. A key structural element requires all holders of OpCo Units (Class A Common Units
+of CWAN Holdings, LLC) and Class B Common Stock to exchange their holdings into Class A
+Common Stock immediately prior to and conditioned upon the merger&#39;s Effective Time,
+with each resulting Class A share receiving the same $24.55 cash consideration. Class B
+Common Stock is automatically canceled upon consummation of the OpCo Units Exchange.
+Treasury shares and shares owned by Parent or Merger Sub receive no consideration.
+Stockholders exercising appraisal rights under DGCL Section 262 receive court-determined
+fair value instead of the merger consideration
+
+Were any updates provided on the regulatory reviews? Do they provide a more
+comprehensive list (than the DMA) of the required approvals? Do they provide filing dates?
+Have any approvals already been received?
++ The filing provides a comprehensive list of required regulatory approvals beyond the DMA,
+including: HSR Act (U.S.), ACCC and FIRB approvals (Australia), SAMR (China), European
+Commission (EU), Turkish Competition Authority, and Swiss merger control. Intended filing
+dates for ACCC, SAMR, European Commission, Turkish Competition Authority, and FIRB are
+all in the first quarter of 2026. HSR Act clearance was granted with early termination
+effective February 13, 2026. Management expects all necessary regulatory approvals by
+the end of the second quarter of 2026, though no assurances are provided.
+
+Any other key items, i.e. unions?
++ The Merger Agreement includes standard definitions for labor-related terms, specifically
+defining &quot;Collective Bargaining Agreement&quot; as any contract with labor unions, trade
+unions, works councils, or employee representative bodies (excluding generally applicable
+national or industry arrangements). The agreement references the U.K. Transfer of
+Undertakings (Protection of Employment) Regulations (TUPE) and EU Directive 2022/2555
+(NIS 2), indicating potential applicability to UK and EU employees. However, the filing does
+not disclose specific information regarding existing union representation at Clearwater
+Analytics, active collective bargaining agreements, union consultation requirements, labor-
+related closing conditions, or any union position on the transaction. This absence suggests
+the Company likely has limited or no unionized workforce, or such details are addressed in
+non-provided sections of the filing.
+
+What closing timeline or expected close date has management provided, and how does this
+compare to any prior closing guidance given?
++ Management expects the transaction to close by the end of Q2 2026, contingent upon
+obtaining necessary regulatory approvals and stockholder approval. The Merger
+Agreement was executed on December 20, 2025, with regulatory filings planned for Q1
+2026 across multiple jurisdictions including Australia (ACCC, FIRB), China (SAMR), the
+European Commission, and Turkey. HSR Act early termination was granted on February 13,
+2026. No prior closing guidance exists for comparison, as this represents the initial public
+disclosure of expected timing following the merger agreement signing. The Debt
+Commitment Letter references an expiration date tied to five business days after the
+Outside Date specified in the Merger Agreement, though the specific Outside Date is not
+disclosed in the materials provided.
+
+Merger Background Analysis - Client Deliverables
+Chronological Summary
+Following a 2020 recapitalization involving Warburg Pincus, Permira, and Welsh Carson, and an
+unsuccessful 2023 market check contacting eight parties with no resulting indications, Permira
+expressed informal interest to management on August 1, 2025, followed by Warburg Pincus on
+September 25, 2025.
+1. The company conducted a targeted pre-signing market check from November 19 to
+December 14, 2025, contacting eight parties (four financial sponsors, four strategic buyers),
+with six signing NDAs and one submitting an IOI; a 32-day go-shop contacted 44 parties (20
+financial, 24 strategic) with six signing NDAs but none submitting proposals.
+3. Two parties submitted final bids: the Consortium (Warburg Pincus, Permira, Temasek, and
+Francisco Partners, all financial sponsors) at $24.25/share all-cash and Sponsor Party A
+(financial sponsor) at $20.00-$22.00/share range.
+4. The board selected the Consortium&#39;s $24.55/share bid as the highest offer with superior
+financing certainty, noting the absence of competitive alternatives and Sponsor Party A&#39;s
+inability to credibly increase its offer.
+6. The Consortium provided committed debt financing from Goldman Sachs and equity
+commitment letters from four sponsors, while Sponsor Party A lacked committed financing
+despite promising to secure it within seven days.
+7. Media reports of a potential sale transaction leaked on November 11, 2025, causing the
+stock to rise 10.2% and prompting management concerns about business disruption during
+the critical year-end client booking period.
+8. The Consortium withdrew its October 23 offer of $24.50/share on December 5 and
+December 7, 2025, citing media reports, process expansion, and market deterioration (S&amp;P
+Software &amp; Services Select Industry Index declined approximately 4%), before re-tabling at
+$24.25/share on December 14, 2025. The final accepted $24.55/share offer exceeded the
+Consortium&#39;s initial $24.50/share proposal by $0.05, though the trajectory included a
+withdrawal and down-bid before final negotiations yielded a modest up-bid.
+9. Strategic Party A (large company) declined due to the Company&#39;s size and competing
+priorities; Strategic Party B and Strategic Party D (both previously participated in 2023
+market check) withdrew citing strategic and commercial considerations; Strategic Party C
+declined, interested only in select assets; Sponsor Party B, Sponsor Party C, and Sponsor
+Party D (all financial sponsors who participated in 2020 recapitalization outreach) withdrew
+due to capital constraints and financing limitations.

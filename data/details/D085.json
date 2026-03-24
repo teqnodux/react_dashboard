@@ -1,0 +1,715 @@
+{
+  "deal_id": "D085",
+  "concise_sections": [
+    {
+      "name": "Presigning",
+      "clauses": [
+        {
+          "text": "Confidentiality Agreement dated December 19, 2025.",
+          "references": [
+            "Section 9.03",
+            "From : Confidentiality and Clean Room - Concise - 1.1"
+          ]
+        },
+        {
+          "text": "The board of directors of Penumbra, Inc. has unanimously approved the merger and recommended it to stockholders; the board of directors of Boston Scientific Corporation has unanimously authorized and approved the merger.",
+          "references": [
+            "Section 4.12; Preamble; Section 3.24",
+            "From : Board Approval - Concise - 1.2"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Consideration",
+      "clauses": [
+        {
+          "text": "Penumbra, Inc. stockholders are entitled to receive, at their election, either $374.00 in cash or 3.8721 Boston Scientific Corporation shares per Penumbra, Inc. share, with fractional shares paid in cash and any shares without election receiving Merger Consideration as determined in the agreement.",
+          "references": [
+            "Section 2.01 (a) (a)",
+            "From : Consideration Details - Concise - 2.1"
+          ]
+        },
+        {
+          "text": "Penumbra, Inc. and its subsidiaries are not permitted to pay dividends prior to closing except intra-subsidiary distributions.",
+          "references": [
+            "Section 5.01 (b) (iii)",
+            "From : Target Dividends - Concise - 2.2"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation is not permitted to declare or pay any dividends prior to closing.",
+          "references": [
+            "Section 5.02",
+            "From : Parent Dividends - Concise - 2.3"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation will allocate Cash and Stock Consideration rights among Penumbra, Inc. holders by prorating Cash Election Shares if exceeding 73.26% and allocating Shortfall Number among Non-Election and Stock Election Shares per detailed fractions.",
+          "references": [
+            "Section 2.02",
+            "From : Proration - Concise - 2.4"
+          ]
+        },
+        {
+          "text": "The agreement includes a termination fee payable by Penumbra, Inc. or Boston Scientific Corporation upon termination under specified conditions, with amounts of $525,000,000 or $900,000,000 depending on the party, but it does not describe a per-day or per-share ticking fee for deal delays.",
+          "references": [
+            "Section 8.03",
+            "From : Ticking Fees - Concise - 2.7"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Conditions &amp; Financing",
+      "clauses": [
+        {
+          "text": "Subject to the affirmative vote of the holders of a majority of all outstanding shares of Penumbra, Inc. common stock to adopt this Agreement.",
+          "references": [
+            "Section 7.01; ; Section 3.24 (b)",
+            "From : Conditions to Closing : Highlight Conditions - 3.1"
+          ]
+        },
+        {
+          "text": "The closing is conditioned on expiration of the HSR Act waiting period and receipt of all other required antitrust approvals.",
+          "references": [
+            "Section 7.01 (c)",
+            "From : Conditions to Closing : Regulatory Clearances Required - 3.2"
+          ]
+        },
+        {
+          "text": "Committed financing was not included in the merger contract.",
+          "references": [
+            "Section 4.11",
+            "From : Financing Summary : Committed Financing - Concise - 3.4"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Regulatory",
+      "clauses": [
+        {
+          "text": "The outside date is January 14, 2027, extendable by Boston Scientific Corporation or Penumbra, Inc. in three-month increments up to January 14, 2028 if certain antitrust or Section 7.01 conditions remain unmet, with termination rights restricted if a party caused delay.",
+          "references": [
+            "Section 8.01",
+            "From : Outside Date - Concise - 4.1"
+          ]
+        },
+        {
+          "text": "Parent: Boston Scientific Corporation Merger Sub: Pinehurst Merger Sub, Inc. Company: Penumbra, Inc. Boston Scientific Corporation must pay Penumbra, Inc. $900,000,000 if termination occurs due to failure to obtain a Requisite Regulatory Approval under Antitrust Laws.",
+          "references": [
+            "Section 8.03 (b) (iv)",
+            "From : RTF for Regulatory - Concise - 4.2"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation is required to proffer divestitures and remedies per Section 6.06(d) and Parent Disclosure Schedule, conditioned on consummation; Penumbra, Inc. may divest, hold separate or limit businesses only with Parent’s prior written consent.",
+          "references": [
+            "Section 6.06 (d)",
+            "From : Best Efforts : Remedy Actions - 4.3"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation is required to defend against any litigation.",
+          "references": [
+            "Section 6.06 (d)",
+            "From : Best Efforts : Litigation Commitments - 4.5"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation shall have the sole right to determine, direct, and implement the strategy and timing for obtaining antitrust and regulatory approvals, including pulling and refiling HSR filings; however, pulling and refiling more than once requires prior written consent of Penumbra, Inc., and Boston Scientific Corporation must consult in good faith with Penumbra, Inc. regarding these matters.",
+          "references": [
+            "Section 6.06 (b)",
+            "From : Best Efforts : Right to Control Strategy - 4.6"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation shall have the sole right to control timing and strategy for obtaining antitrust and regulatory approvals, including pulling/refiling HSR filings (more than once requires prior written consent of Penumbra, Inc.), and shall consult in good faith with Penumbra, Inc.",
+          "references": [
+            "Section 6.06 (b)",
+            "From : Best Efforts : Right to Control Timing - 4.7"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Competing Bid - Company",
+      "clauses": [
+        {
+          "text": "In the Pre-Closing Period, Penumbra, Inc. and its subsidiaries must not solicit, initiate, facilitate, or encourage Acquisition Proposals except as permitted, with specified notification and fiduciary duty exceptions.",
+          "references": [
+            "Section 6.03 (b)",
+            "From : Non Solicitation : Go Shop - 5.1"
+          ]
+        },
+        {
+          "text": "Penumbra, Inc. must pay Boston Scientific Corporation $525,000,000 if terminated for a superior offer.",
+          "references": [
+            "Section 8.03 (b) (i)",
+            "From : Termination for Superior Bid - Concise - 5.3"
+          ]
+        },
+        {
+          "text": "Penumbra, Inc. must reimburse Boston Scientific Corporation for all reasonable expenses incurred collecting any overdue termination fee if Penumbra, Inc. fails to pay the $525,000,000 fee triggered by specified termination events, but no reimbursement is tied solely to failure to obtain shareholder approval.",
+          "references": [
+            "Section 8.03 (f)",
+            "From : Reimbursement Expenses Identified - Concise - 5.4"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Competing Bid - Parent",
+      "clauses": [
+        {
+          "text": "Penumbra, Inc. has a four (4) calendar day right-to-negotiate any Parent Superior Proposal; and two (2) calendar days for any subsequent amended proposals.",
+          "references": [
+            "Section 6.03 (e)",
+            "From : Non Solicitation : Right To Negotiate Concise - 5.12"
+          ]
+        },
+        {
+          "text": "The Penumbra, Inc. shall pay Boston Scientific Corporation $525,000,000 as the Company Termination Fee if termination occurs upon failure to obtain shareholder approval linked to an Acquisition Proposal; Boston Scientific Corporation bears no reimbursement obligation.",
+          "references": [
+            "Section 8.03 (f)",
+            "From : Parent Reimbursement Expenses Identified - Concise - 5.14"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Other Items",
+      "clauses": [
+        {
+          "text": "Penumbra, Inc. shall use reasonable best efforts to conduct its business only in the ordinary course, and Boston Scientific Corporation must not delay or impede consummation using reasonable best efforts.",
+          "references": [
+            "Section 5.01 (a)",
+            "From : Ordinary Course Covenant - Concise - 6.2"
+          ]
+        },
+        {
+          "text": "The MAE carve-outs in the Agreement exclude events arising from changes in general economic, political, regulatory, business, financial, credit, or capital market conditions; industry- wide changes; GAAP/legal changes; disease outbreaks or pandemics; political conditions including war or terrorism; announcement or pendency of the Transactions; compliance with the Agreement; Transaction Litigation; changes in trading price/volume or ratings; and failure to meet projections. MAE carve-outs appear standard.",
+          "references": [
+            "Section 9.03",
+            "From : MAE Non Standard Carveouts - Concise - 6.3"
+          ]
+        },
+        {
+          "text": "Specific performance is available to Boston Scientific Corporation, Pinehurst Merger Sub, Inc., and Penumbra, Inc.",
+          "references": [
+            "Section 9.10",
+            "From : Specific Performance - Concise - 6.4"
+          ]
+        },
+        {
+          "text": "This Agreement shall be governed by and construed in accordance with the Laws of the State of Delaware.",
+          "references": [
+            "Section 9.11",
+            "From : Law and Jurisdiction : Governing Law - Concise - 6.5"
+          ]
+        },
+        {
+          "text": "Matters relating to this Agreement shall be governed by and construed in accordance with the Laws of the State of Delaware.",
+          "references": [
+            "Section 9.11",
+            "From : Law and Jurisdiction : Financing Jurisdiction - Concise - 6.6"
+          ]
+        }
+      ]
+    }
+  ],
+  "fulsome_sections": [
+    {
+      "name": "Party Details",
+      "clauses": [
+        {
+          "text": "Company is Penumbra, Inc., a Delaware corporation.",
+          "references": [
+            "ARTICLE Preamble",
+            "From : Party Details : Target - 1.1"
+          ]
+        },
+        {
+          "text": "Acquirer is Boston Scientific Corporation, a Delaware corporation.",
+          "references": [
+            "ARTICLE Preamble",
+            "From : Party Details : Acquirer - 1.2"
+          ]
+        },
+        {
+          "text": "The transaction is a reverse triangular merger where Pinehurst Merger Sub, Inc. merges into Penumbra, Inc., with Penumbra, Inc. surviving as the surviving corporation and becoming a wholly owned subsidiary of Boston Scientific Corporation.",
+          "references": [
+            "Section 1.01",
+            "From : Party Details : Transaction - 1.3"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation, a Delaware corporation, guarantees Pinehurst Merger Sub, Inc., its wholly owned Delaware subsidiary, under this Agreement.",
+          "references": [
+            "Section 6.07",
+            "From : Party Details : Guarantor - 1.4"
+          ]
+        },
+        {
+          "text": "Pinehurst Merger Sub, Inc., a Delaware corporation, is a wholly owned subsidiary of Boston Scientific Corporation. It is formed to merge with Penumbra, Inc., ceasing its separate existence upon merger.",
+          "references": [
+            "ARTICLE Preamble",
+            "From : Party Details : Merger Sub - 1.5"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Board Approval",
+      "clauses": [
+        {
+          "text": "The board of directors of Penumbra, Inc. unanimously approved the merger and related transactions; the board of directors of Boston Scientific Corporation unanimously authorized and approved the merger and related transactions.",
+          "references": [
+            "Section 4.12; Preamble; Section 3.24",
+            "From : Board Approval - Fulsome - 2.1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Closing",
+      "clauses": [
+        {
+          "text": "The Closing Date for the merger between Boston Scientific Corporation, Pinehurst Merger Sub, Inc., and Penumbra, Inc. is 8:00 a.m. New York time on the fifth Business Day after all Article VII conditions are satisfied or waived in writing.",
+          "references": [
+            "Section 1.02",
+            "From : Target Closing - 3.1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Consideration and Dividends",
+      "clauses": [
+        {
+          "text": "Penumbra, Inc. stockholders are entitled to receive, at their election, either $374.00 in cash or 3.8721 Boston Scientific Corporation shares per Penumbra, Inc. share, with fractional shares paid in cash and the right to receive such Merger Consideration as determined for non-election shares.",
+          "references": [
+            "Section 2.01 (a) (a)",
+            "From : Consideration Details - Fulsome - 4.1"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation must pay Penumbra, Inc. a $900,000,000 Parent Termination Fee within two Business Days after termination under specified sections, and Penumbra, Inc. must pay Boston Scientific Corporation a $525,000,000 Company Termination Fee within two Business Days after certain Acquisition Proposal events.",
+          "references": [
+            "Section 3.15 (a) (ix)",
+            "From : Contingent Payments - Fulsome - 4.2"
+          ]
+        },
+        {
+          "text": "Penumbra, Inc. and its subsidiaries are not permitted to declare, set aside, make, or pay any dividends or distributions prior to closing, except for dividends between wholly owned subsidiaries.",
+          "references": [
+            "Section 5.01 (b) (iii)",
+            "From : Target Dividends - Fulsome - 4.3"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation is not permitted to declare, set aside, or pay any dividends prior to closing except as required by law, with prior written consent of Penumbra, Inc., or as otherwise expressly allowed.",
+          "references": [
+            "Section 5.02",
+            "From : Parent Dividends - Fulsome - 4.4"
+          ]
+        },
+        {
+          "text": "The Merger Consideration payable by Boston Scientific Corporation shall be adjusted if, between January 14, 2026, and the Effective Time, the outstanding shares of Penumbra, Inc. or Boston Scientific Corporation change in number or class due to stock dividends, splits, or similar events, to preserve the same economic effect as originally contemplated.",
+          "references": [
+            "Section 2.07",
+            "From : Dividend Adjustment Mechanism - Fulsome - 4.5"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Conditions",
+      "clauses": [
+        {
+          "text": "The mutual conditions to closing the Merger among Boston Scientific Corporation, Pinehurst Merger Sub, Inc., and Penumbra, Inc. include: obtaining Penumbra, Inc.’s stockholder approval; the absence of any order from a Governmental Authority prohibiting the consummation of the Merger; expiration or termination of all applicable waiting periods under the HSR Act and receipt of all required governmental consents and approvals; effectiveness of the Form S-4 without any stop order; and approval of listing of Boston Scientific Corporation’s shares to be issued in the Merger on the New York Stock Exchange.",
+          "references": [
+            "Section 7.01",
+            "From : Conditions to Closing : Mutual Conditions List - 5.1"
+          ]
+        },
+        {
+          "text": "The Parent’s obligation to close is conditioned upon obtaining Company stockholder approval; absence of prohibitive governmental orders; expiration or termination of HSR waiting periods and receipt of all requisite regulatory approvals; effectiveness of the Form S-4 without stop orders; NYSE approval for listing Parent Shares; accuracy of specified Company representations and warranties as of the Agreement and Closing Dates without material adverse effect; the Company’s material compliance with covenants; no occurrence of a Company Material Adverse Effect since the Agreement date; and delivery of a closing officer certificate confirming satisfaction of these conditions.",
+          "references": [
+            "From : Conditions to Closing : Parent Closing Conditions - 5.2"
+          ]
+        },
+        {
+          "text": "The obligations of Penumbra, Inc. to consummate the merger with Pinehurst Merger Sub, Inc. are subject to the satisfaction or waiver of conditions including that Boston Scientific Corporation’s specified representations and warranties are true and correct as of the Closing Date, Boston Scientific Corporation and Pinehurst Merger Sub, Inc. have materially complied with their respective covenants, no Parent Material Adverse Effect has occurred since the Agreement date, and Boston Scientific Corporation delivers a Closing Date officer certificate confirming these conditions are met.",
+          "references": [
+            "Section 7.03",
+            "From : Conditions to Closing : Company Closing Conditions - 5.3"
+          ]
+        },
+        {
+          "text": "The parties are: Parent = Boston Scientific Corporation Merger Sub = Pinehurst Merger Sub, Inc. Company = Penumbra, Inc. Subject to the affirmative vote of the holders of a majority of all outstanding shares of Penumbra, Inc. common stock approving the Agreement, which is the sole required vote to approve and consummate the merger. The excerpts do not specify any voting threshold for Boston Scientific Corporation.",
+          "references": [
+            "Section 7.01",
+            "From : Conditions to Closing : Shareholder Approval - Fulsome - 5.4"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Proxy, Shareholder Vote, Dissenting Shares",
+      "clauses": [
+        {
+          "text": "Following the Agreement date and no later than 30 Business Days thereafter, Boston Scientific Corporation and Penumbra, Inc. shall jointly prepare and file the Proxy Statement/Prospectus, and Boston Scientific Corporation shall prepare and file the Form S-4.",
+          "references": [
+            "Section 6.01 (a)",
+            "From : Filing Timing - Fulsome - 6.1"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation, with Pinehurst Merger Sub, shall use reasonable best efforts to have the Form S-4 declared effective promptly after filing, including responding to SEC comments, with Pinehurst Merger Sub assisting Penumbra, Inc. as reasonably requested. The proxy statement shall be jointly prepared by Boston Scientific Corporation and Pinehurst Merger Sub within 30 Business Days of the Agreement date.",
+          "references": [
+            "Section 6.01",
+            "From : Effectiveness Efforts - Fulsome - 6.2"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation shall cause Penumbra, Inc. to call, give notice of, convene and hold the Company Stockholders&#39; Meeting as promptly as reasonably practicable following the effectiveness of the Form S-4, not initially scheduled later than thirty-five (35) days following such effectiveness.",
+          "references": [
+            "Section 6.01 (b)",
+            "From : Shareholder Meeting - Fulsome - 6.3"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation and Penumbra, Inc. shall hold the shareholder meeting no later than 35 days after Form S-4 effectiveness. Adjournments/postponements allowed if no quorum, legal requirements, supplemental disclosure, or proxy solicitation; limited to 20 Business Days total and no later than 5 Business Days before the Outside Date, without Boston Scientific Corporation’s prior written consent.",
+          "references": [
+            "Section 6.01 (b)",
+            "From : Postponement Company Shareholder Vote - Fulsome - 6.4"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation and Penumbra, Inc. shall jointly prepare and file the Proxy Statement/Prospectus and Form S-4 as promptly as reasonably practicable and no later than 30 Business Days after the Agreement date; Penumbra, Inc. shall call the Company Stockholders&#39; Meeting as promptly as reasonably practicable after Form S-4 effectiveness, scheduled no later than 35 days following effectiveness, and shall use its reasonable best efforts to solicit proxies in favor of adopting the Agreement and securing approval unless the Penumbra, Inc. Board effects an Adverse Recommendation Change.",
+          "references": [
+            "Section 6.01 (c)",
+            "From : Shareholder Vote Efforts - Fulsome - 6.5"
+          ]
+        },
+        {
+          "text": "Dissenting Shares receive Section 262 DGCL payment; Standard Delaware Section 262 appraisal rights apply.",
+          "references": [
+            "From : Cap on Dissenting Shares - Fulsome - 6.6"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Regulatory Best Efforts",
+      "clauses": [
+        {
+          "text": "Boston Scientific Corporation and Penumbra, Inc. shall use reasonable best efforts to obtain all required third-party consents, approvals, or waivers prior to Closing, with Boston Scientific Corporation providing reasonable assistance, excluding obligations to compensate third parties, litigate, or grant accommodations.",
+          "references": [
+            "Section 6.13",
+            "From : Best Effort : Efforts Standard - 7.1"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation and Penumbra, Inc. shall cooperate to make all HSR Act filings within 20 Business Days of the Agreement date and initiate regulatory processes within 50 calendar days, with Boston Scientific Corporation responsible for all filing fees.",
+          "references": [
+            "Section 6.06 (a) (i)",
+            "From : Best Effort : HSR - 7.3"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation, Penumbra, Inc., and Pinehurst Merger Sub, Inc. must cooperate to make all required foreign antitrust and foreign investment law filings and pay applicable fees.",
+          "references": [
+            "Section 6.06 (a)",
+            "From : Best Effort : Foreign Filings - 7.5"
+          ]
+        },
+        {
+          "text": "The agreement requires Boston Scientific Corporation (“Parent”) to proffer divestitures and other remedies to Governmental Authorities within ten months from the later of the date of Parent’s and Penumbra, Inc.’s (“Company”) initial filings under the HSR Act, subject to Section 6.06(d) of the Agreement and Section 6.06(d) of the Parent Disclosure Schedule. Parent and its Affiliates may be required to hold separate, sell, license, divest or otherwise dispose of businesses or assets, or take related actions, but only as set forth in Section 6.06(d) of the Parent Disclosure Schedule and conditioned upon consummation of the Transactions; otherwise, Parent is not obligated to take such actions without its prior written consent. Penumbra, Inc. may be requested to divest, hold separate, or limit its business freedom upon Parent’s request, also conditioned on closing. The excerpts do not specify any divestiture cap tied to revenue, assets, or sales for Penumbra, Inc. There are carveouts limiting Parent’s obligations and these remedy actions are not mandatory unless expressly permitted by the Parent Disclosure Schedule.",
+          "references": [
+            "Section 6.06 (d)",
+            "From : Best Effort : Remedy Actions - Fulsome - 7.6"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation shall have the sole right to determine, direct, and implement the strategy for obtaining antitrust or regulatory approvals, including the unilateral decision to pull and refile HSR filings once; any subsequent refiling requires the prior written consent of Penumbra, Inc., with good faith consultation.",
+          "references": [
+            "Section 6.06 (b)",
+            "From : Best Efforts : Right to Control Strategy - Fulsome - 7.7"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation shall have the sole right to control the timing of obtaining antitrust or regulatory approvals, including unilaterally deciding to pull and refile HSR Act filings; however, pulling and refiling more than once requires prior written consent of Penumbra, Inc., with good faith consultation obligations.",
+          "references": [
+            "Section 6.06 (b)",
+            "From : Best Efforts : Right to Control Timing - Fulsome - 7.8"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation is required to defend against any litigation.",
+          "references": [
+            "Section 6.06 (d)",
+            "From : Best Efforts : Litigation Commitments - Fulsome - 7.12"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation and Penumbra, Inc. shall use reasonable best efforts to cooperate on regulatory filings and approvals, avoid acquisitions or arrangements that could delay or impede closing, and promptly address governmental objections, without altering closing conditions.",
+          "references": [
+            "Section 6.06 (f) (g)",
+            "From : Best Efforts : Acquisition Interference - 7.13"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "No Solicitation and Confidentiality Agreement",
+      "clauses": [
+        {
+          "text": "Confidentiality Agreement dated December 19, 2025.",
+          "references": [
+            "Section 9.03",
+            "From : Confidentiality and Clean Room - Fulsome - 8.2"
+          ]
+        },
+        {
+          "text": "The Penumbra, Inc. and its subsidiaries shall not, during the Pre-Closing Period, directly or indirectly, solicit, initiate, knowingly facilitate or encourage any Acquisition Proposal, except as expressly permitted by Section 6.03.",
+          "references": [
+            "Section 6.03 (b)",
+            "From : Non Solicitation : Go Shop Fullsome - 8.3"
+          ]
+        },
+        {
+          "text": "Parent is Boston Scientific Corporation, Merger Sub is Pinehurst Merger Sub, Inc., and Company is Penumbra, Inc.; Penumbra, Inc. must promptly (within one calendar day) notify Boston Scientific Corporation in writing of Acquisition Proposals and related inquiries, disclose proposer identities and documents, and keep Boston Scientific Corporation informed of material developments.",
+          "references": [
+            "Section 6.03 (c)",
+            "From : Non Solicitation : Notice of Competing Offer - 8.4"
+          ]
+        },
+        {
+          "text": "The Penumbra, Inc. shall, in person or by telephone, keep Boston Scientific Corporation reasonably informed on a reasonably prompt basis and within one calendar day of material developments, including changes in price, consideration, or material amendments, of any Acquisition Proposal or related inquiries, offers, proposals, or requests; and shall promptly, within one calendar day, notify Boston Scientific Corporation of a Superior Proposal determination by the Penumbra, Inc. Board or its committee.",
+          "references": [
+            "Section 6.03 (c)",
+            "From : Non Solicitation : Ongoing Update - 8.5"
+          ]
+        },
+        {
+          "text": "The board of directors of Penumbra, Inc. may effect an Adverse Recommendation Change and terminate the Agreement prior to stockholder approval if it receives a written Superior Proposal not resulting from a breach of Section 6.03, determines in good faith (after consultation with outside legal counsel and financial advisors) that the Superior Proposal is superior, and that failure to act would be inconsistent with its fiduciary duties under applicable Law, following specified notice, negotiation, and determination procedures.",
+          "references": [
+            "Section 6.03 (e)",
+            "From : Non Solicitation : Adverse Change Superior Offer - 8.6"
+          ]
+        },
+        {
+          "text": "The Company Board of Penumbra, Inc. may effect an Adverse Recommendation Change if an Intervening Event occurs and it determines in good faith (after consultation with outside legal counsel) that failure to do so would likely be inconsistent with its fiduciary duties under applicable Law, following written notice to Boston Scientific Corporation, a four-day negotiation period if requested, and a good faith determination after considering any modifications.",
+          "references": [
+            "Section 6.03 (e)",
+            "From : Non Solicitation : Adverse Change Intervening Event - 8.7"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Financing",
+      "clauses": [
+        {
+          "text": "Committed financing was not included in the merger contract.",
+          "references": [
+            "Section 4.11",
+            "From : Financing Summary : Committed Financing - Fulsome - 9.1"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation and Pinehurst Merger Sub, Inc. represent they will have &quot;sufficient funds&quot; at the Effective Time to fulfill all obligations, including paying the aggregate Cash Consideration, with no financing conditions.",
+          "references": [
+            "Section 4.11",
+            "From : Financing Summary : Financing Efforts Summary - 9.2"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation and Penumbra, Inc. must promptly notify each other if they receive third-party or governmental notices, or become aware of events that could “reasonably be expected to prevent or materially delay” the merger or cause closing-condition failure, without imposing any obligation to seek substitute financing.",
+          "references": [
+            "Section 6.14",
+            "From : Financing Summary : Substitute Financing Notice And Efforts - 9.3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Termination",
+      "clauses": [
+        {
+          "text": "The outside date is January 14, 2027; Boston Scientific Corporation or Penumbra, Inc. may extend it in successive three-month increments by written notice if antitrust or Section 7.01(b) or 7.01(c) conditions remain unmet but other Article VII conditions are satisfied or waivable, with extensions no later than January 14, 2028. Termination rights are restricted if a party’s breach caused the delay.",
+          "references": [
+            "Section 8.01",
+            "From : Outside Date - Fulsome - 10.1"
+          ]
+        },
+        {
+          "text": "Boston Scientific Corporation or Penumbra, Inc. may extend the Initial Outside Date in three- month increments until January 14, 2028, and may terminate the Agreement prior to the Effective Time except that the right to terminate shall not be available to any party whose failure to fulfill any agreements and covenants under this Agreement has been the principal cause of, or resulted in, the failure of the Effective Time to occur on or before such date.",
+          "references": [
+            "Section 8.01 (b)",
+            "From : Extend or Terminate in Breach - Fulsome - 10.2"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Termination Rights",
+      "clauses": [
+        {
+          "text": "The Agreement may be terminated by either Boston Scientific Corporation or Penumbra, Inc. prior to the Effective Time: (a) by mutual written consent; (b) if the Merger has not occurred by January 14, 2027, subject to possible three-month extensions until January 14, 2028, unless the terminating party caused the delay; (c) if a final, nonappealable governmental order prohibits the Merger and the terminating party has fulfilled its obligations; (d) if Penumbra, Inc. stockholder approval is not obtained; (e) by Boston Scientific Corporation if Penumbra, Inc. effects an adverse recommendation change; (f) by Penumbra, Inc. upon entering into a superior proposal with payment of a termination fee; (g) by Boston Scientific Corporation for uncured material breaches by Penumbra, Inc.; and (h) by Penumbra, Inc. for uncured material breaches by Boston Scientific Corporation or Merger Sub, subject to specified cure periods and conditions.",
+          "references": [
+            "Section 8.01",
+            "From : Termination Mutual - Fulsome - 11.1"
+          ]
+        },
+        {
+          "text": "The Agreement may be terminated by Boston Scientific Corporation (Parent) (i) if, prior to the receipt of the Penumbra, Inc. (Company) Stockholder Approval, the Penumbra, Inc. Board of Directors (Company Board) effects and does not withdraw at least five Business Days prior to the Company Stockholder Meeting an Adverse Recommendation Change; or (ii) if Penumbra, Inc. breaches any of its representations, warranties, covenants, or agreements under the Agreement, such breach would cause failure of a condition in Sections 7.02(a) or 7.02(b), and the breach is incapable of being cured prior to the Outside Date or, if curable, is not cured within thirty calendar days after written notice from Boston Scientific Corporation or by the Outside Date, provided Boston Scientific Corporation is not then in breach preventing satisfaction of its conditions.",
+          "references": [
+            "Section 8.01 (e) (g)",
+            "From : Termination Parent - Fulsome - 11.2"
+          ]
+        },
+        {
+          "text": "The Agreement may be terminated by Penumbra, Inc. (the &quot;Company&quot;) (f) at any time before obtaining Company Stockholder Approval if the Company Board determines to enter into an Acquisition Agreement for a Superior Proposal per Section 6.03, provided the Company has not breached (other than de minimis) Section 6.03 regarding the Superior Proposal and concurrently pays Boston Scientific Corporation (the &quot;Parent&quot;) the Company Termination Fee; or (h) if Boston Scientific Corporation or Pinehurst Merger Sub, Inc. (the &quot;Merger Sub&quot;) breaches any representations, warranties, or covenants that (i) cause failure of a condition in Sections 7.03(a) or 7.03(b) and (ii) cannot be cured before the Outside Date or remain uncured thirty calendar days after notice or by the Outside Date, provided Penumbra, Inc. is not then in breach causing failure of conditions in Sections 7.02(a) or 7.02(b).",
+          "references": [
+            "Section 8.01 (f)",
+            "From : Termination Company - Fulsome - 11.3"
+          ]
+        },
+        {
+          "text": "The agreement does not require The Penumbra, Inc. or Boston Scientific Corporation to reimburse expenses specifically for termination due to failure to obtain shareholder approval. Termination fees and reimbursements apply only under specified conditions unrelated to shareholder vote failures. No reimbursement fees apply for failure to obtain shareholder approval.",
+          "references": [
+            "Section 8.03 (f)",
+            "From : Reimbursement Expenses Identified - Fusome - 11.5"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Termination Fee Amounts",
+      "clauses": [
+        {
+          "text": "The Company is Penumbra, Inc., and the Parent is Boston Scientific Corporation. Company-side termination fees are: - $525,000,000 – acquisition proposal; - $525,000,000 – recommendation change; - $525,000,000 – vote failure.",
+          "references": [
+            "Section 8.03 (b) (iv); Section 8.03 (b) (i)",
+            "From : Company Termination Fee ALL IN ONE - Concise - 12.01"
+          ]
+        },
+        {
+          "text": "Company Termination Fee of $525,000,000 is payable if Boston Scientific Corporation or Penumbra, Inc. ends the agreement after a competing Acquisition Proposal is publicly announced and Penumbra, Inc. later accepts or completes that proposal within 12 months. Company Termination Fee of $525,000,000 is payable if Boston Scientific Corporation terminates the agreement under certain specified conditions. Company Termination Fee of $525,000,000 is payable if Penumbra, Inc. terminates the agreement pursuant to a specific section. No other Company-side termination fees are mentioned in the excerpts.",
+          "references": [
+            "Section 8.03 (b) (iv); Section 8.03 (b) (i)",
+            "From : Company Termination Fee ALL IN ONE - Fulsome - 12.02"
+          ]
+        },
+        {
+          "text": "Parent = Boston Scientific Corporation; Merger Sub = Pinehurst Merger Sub, Inc.; Company = Penumbra, Inc. Parent-side termination fees: - $900,000,000 – regulatory. No other Parent termination fees with fixed amounts are specified in the excerpts.",
+          "references": [
+            "Section 8.03; ; Section 8.03 (b) (iv); Section 8.01 (d)",
+            "From : Parent Termination Fee ALL IN ONE - Concise - 12.03"
+          ]
+        },
+        {
+          "text": "Parent Termination Fee of $900,000,000 is payable if Boston Scientific Corporation terminates due to failure to obtain regulatory approvals related to Antitrust Laws by the Outside Date, with all other conditions met. Parent Termination Fee of $900,000,000 is payable if Penumbra, Inc. terminates due to breach by Boston Scientific Corporation or Merger Sub that cannot be cured by the Outside Date. No other Parent-side termination fees are explicitly mentioned in the excerpts.",
+          "references": [
+            "Section 8.03; ; Section 8.03 (b) (iv); Section 8.01 (d)",
+            "From : Parent Termination Fee ALL IN ONE - Fulsome - 12.04"
+          ]
+        },
+        {
+          "text": "In the Agreement and Plan of Merger dated January 14, 2026, Penumbra, Inc. (the &quot;Company&quot;) shall pay Boston Scientific Corporation (the &quot;Parent&quot;) a Company Termination Fee of $525,000,000 if the Agreement is validly terminated (i) by either Boston Scientific Corporation or Penumbra, Inc. pursuant to Section 8.01(b) (provided Boston Scientific Corporation is not prohibited from terminating under the second proviso therein), Section 8.01(d), or by Boston Scientific Corporation pursuant to Section 8.01(g), in connection with a publicly announced Acquisition Proposal that remains outstanding and within 12 months thereafter Penumbra, Inc. or any of its subsidiaries enters into or consummates such Acquisition Proposal; (ii) by Boston Scientific Corporation pursuant to Section 8.01(e); or (iii) by Penumbra, Inc. pursuant to Section 8.01(f), with payment due within two Business Days after the earliest of entering into, submitting for approval, or consummating the Acquisition Proposal transaction.",
+          "references": [
+            "Section 8.03 (b) (i)",
+            "From : Termination Company Shall Pay Termination - Fulsome - 12.4"
+          ]
+        },
+        {
+          "text": "In the Agreement and Plan of Merger dated January 14, 2026, between Boston Scientific Corporation (&quot;Parent&quot;), Pinehurst Merger Sub, Inc. (&quot;Merger Sub&quot;), and Penumbra, Inc. (&quot;Company&quot;), Parent must pay Penumbra, Inc. the Parent Termination Fee of $900,000,000 within two Business Days after termination if (i) the Agreement is validly terminated by Parent or Penumbra, Inc. pursuant to Section 8.01(b) or Section 8.01(c) due to a Law or Order related to a Requisite Regulatory Approval or Antitrust Laws, (ii) at termination, the conditions in Section 7.01(a) and all conditions in Section 7.02 (except those to be satisfied at Closing) are met, and (iii) one or more conditions in Section 7.01(b) or 7.01(c) have not been satisfied or waived; additionally, if either party terminates when the other would have been entitled to the Parent Termination Fee, Parent shall pay that fee to Penumbra, Inc.",
+          "references": [
+            "Section 8.03",
+            "From : Termination Parent Shall Pay Reverse Termination - Fulsome - 12.5"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ordinary Course Covenants",
+      "clauses": [
+        {
+          "text": "The Penumbra, Inc. shall, and shall cause the Company Subsidiaries, to, use reasonable best efforts to conduct the businesses of the Company Group only in the ordinary course of business and, to the extent consistent therewith, use reasonable best efforts to preserve substantially intact the business organization, material assets and material properties and business relations of the Company Group, keep available the services of its executive officers and key employees on commercially reasonable terms, maintain in effect all material licenses, permits, consents, franchises and approvals and authorizations, and maintain satisfactory relationships of the Company Group with any persons with which the Company Group has material business relations and with Governmental Authorities that have jurisdiction over its business and operations. Parent Boston Scientific Corporation is restricted from amending or otherwise changing its Charter or By-laws or taking other specified actions during the Pre-Closing Period except as required by applicable Law or with prior written consent of Penumbra, Inc., and must cooperate and assist using reasonable best efforts in regulatory filings and obtaining third-party consents.",
+          "references": [
+            "Section 5.01 (a)",
+            "From : Ordinary Course Covenant - Fulsome - 13.1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Governing Law",
+      "clauses": [
+        {
+          "text": "This Agreement shall be governed by and construed in accordance with the Laws of the State of Delaware.",
+          "references": [
+            "Section 9.11",
+            "From : Law and Jurisdiction : Governing Law - Fulsome - 14.1"
+          ]
+        },
+        {
+          "text": "The Agreement among Boston Scientific Corporation, Pinehurst Merger Sub, Inc., and Penumbra, Inc. is governed exclusively by Delaware law, with jurisdiction and exclusive venue in the Delaware Court of Chancery or U.S. District Court for the District of Delaware.",
+          "references": [
+            "Section 9.11",
+            "From : Law and Jurisdiction : MAE Interpretation Jurisdiction - 14.2"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Specific Performance",
+      "clauses": [
+        {
+          "text": "Specific performance is available to Boston Scientific Corporation, Pinehurst Merger Sub, Inc., and Penumbra, Inc. as non-breaching parties.",
+          "references": [
+            "Section 9.10",
+            "From : Specific Performance - Fulsome - 15.1"
+          ]
+        },
+        {
+          "text": "Matters relating to any suit, action or proceeding seeking to enforce any provision of, or based on any matter arising out of or in connection with, this Agreement shall be governed by and construed in accordance with the Laws of the State of Delaware.",
+          "references": [
+            "Section 9.11",
+            "From : Law and Jurisdiction : Financing Jurisdiction - Fulsome - 15.3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MAE Definitions",
+      "clauses": [
+        {
+          "text": "The Material Adverse Effect carveouts in the Agreement provide that a Company Material Adverse Effect shall not include any event, circumstance, change, condition, occurrence or effect resulting from or relating to (i)(A) a change in general economic, political, regulatory, business, financial, credit or capital market conditions, including interest or exchange rates or currency fluctuations; (B) changes generally affecting the industries in which Penumbra, Inc. or its subsidiaries operate; (C) changes in accounting requirements or GAAP or applicable Laws; (D) disease outbreaks, epidemics, pandemics (including COVID-19), natural disasters or quarantine restrictions; (E) changes in global or national political conditions, war, military action, sabotage, civil unrest, terrorism; (F) announcement or pendency of the Agreement or Transactions; or (G) compliance with the Agreement or actions requested or consented to in writing by Boston Scientific Corporation. Further carveouts include Transaction Litigation, changes in trading price or volume of shares, rating changes, analyst recommendations, or failure to meet projections or forecasts, except to the extent underlying causes may be considered.",
+          "references": [
+            "Section 9.03",
+            "From : MAE Standard Carveouts - Fulsome - 16.1"
+          ]
+        },
+        {
+          "text": "In the merger agreement among Boston Scientific Corporation, Pinehurst Merger Sub, Inc., and Penumbra, Inc., the Material Adverse Effect definition includes a carve-back whereby disproportionate impacts on Penumbra, Inc., relative to industry peers, in exceptions (A)–(E) may be considered only to the extent of such disproportionate impact.",
+          "references": [
+            "Section 9.03",
+            "From : MAE Disproportionality - Fulsome - 16.3"
+          ]
+        },
+        {
+          "text": "The underlying causes of changes in trading price or volume, ratings or analyst recommendations (clause (iii)), and failures to meet financial or operating projections or estimates (clause (iv)) may be considered in determining whether a Company Material Adverse Effect has occurred under the merger agreement among Boston Scientific Corporation, Pinehurst Merger Sub, Inc., and Penumbra, Inc.",
+          "references": [
+            "Section 9.03",
+            "From : MAE Facts or Occurances - Fulsome - 16.4"
+          ]
+        }
+      ]
+    }
+  ]
+}

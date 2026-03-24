@@ -1,0 +1,72 @@
+/* Global CSS Variables and Base Styles */
+
+:root {
+  --bg-primary: #0a0e14;
+  --bg-secondary: #0f1419;
+  --bg-tertiary: #151c24;
+  --bg-hover: #1a232e;
+
+  --text-primary: #e6e6e6;
+  --text-secondary: #8a919a;
+  --text-muted: #5c6370;
+
+  --accent-blue: #5ccfe6;
+  --accent-green: #87d96c;
+  --accent-yellow: #ffcc66;
+  --accent-orange: #f29e74;
+  --accent-red: #f07178;
+  --accent-purple: #c792ea;
+
+  --status-closing: var(--accent-green);
+  --status-review: var(--accent-yellow);
+  --status-vote: var(--accent-blue);
+  --status-pending: var(--text-secondary);
+  --status-risk: var(--accent-red);
+
+  --spread-tight: var(--accent-green);
+  --spread-mid: var(--accent-yellow);
+  --spread-wide: var(--accent-red);
+
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  --font-sans: 'IBM Plex Sans', -apple-system, sans-serif;
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  --radius-sm: 3px;
+  --radius-md: 6px;
+
+  --border: #2a3441;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+
+.dashboard {
+  margin: 0 auto;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: var(--space-xl);
+  color: var(--text-secondary);
+}
+
+.error {
+  color: var(--accent-red);
+}

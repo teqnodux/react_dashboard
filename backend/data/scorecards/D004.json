@@ -1,0 +1,368 @@
+{
+  "deal_id": "D004",
+  "generated_at": "2026-03-13T03:35:47.491551Z",
+  "sources_used": [
+    "press_release",
+    "dma_extract",
+    "proxy",
+    "covenants",
+    "termination",
+    "regulatory",
+    "mae",
+    "yfinance"
+  ],
+  "context_panels": {
+    "deal_overview": {
+      "Deal Type": "Cash + Stock",
+      "Deal Structure": "Reverse Triangular Merger",
+      "Legal Jurisdiction": "Delaware",
+      "Financial Jurisdiction": "New York",
+      "Expected Close": "2H26",
+      "Voting Threshold": "majority of outstanding shares",
+      "Financing": "Cash portion expected to be financed from Palo Alto Networks' cash on hand with no financing condition",
+      "Closest Competitors": "CRWD, S, FTNT, ZS, MSFT",
+      "Combined Overlap": "Identity security, privileged access management, and cloud security platform overlap",
+      "Target EBITDA": "-$2.9M"
+    },
+    "deal_protection": {
+      "Structure": "No-Shop",
+      "Target Break Fee": "$750M",
+      "Reverse Break Fee": "$1.0B",
+      "Outside Date": "2026-07-30 (365d / ~12mo)",
+      "Extension": "+3mo (automatic extension if all conditions to closing (excluding HSR Act or other Regulatory Law conditions) are satisfied or waived) \u2014 457d / ~15mo total"
+    }
+  },
+  "deal_identification": {
+    "deal_name": "CyberArk Software Ltd / Palo Alto Networks Inc",
+    "target": "CyberArk Software Ltd",
+    "buyer": "Palo Alto Networks Inc",
+    "announcement_date": "2025-07-30",
+    "industry": ""
+  },
+  "power_dynamics": {
+    "score": 45,
+    "max_score": 95,
+    "interpretation": "Buyer-Leaning",
+    "categories": {
+      "A": {
+        "label": "Initiation & Alternatives",
+        "subtotal": 9,
+        "max_score": 25,
+        "signals": [
+          {
+            "id": "A1",
+            "signal": "Who Initiated Contact",
+            "raw_input": "Boston Scientific's EVP Joseph Fitzgerald expressed at an October 2025 conference that Penumbra could be an 'ideal strategic fit,' and Boston Scientific's CEO Mahoney subsequently initiated a dinner on December 15, 2025 where he expressed interest in exploring an acquisition. The first written proposal was delivered by Boston Scientific on December 29, 2025.",
+            "short_answer": "BSX",
+            "score": 1,
+            "rationale": "Buyer (Boston Scientific) clearly initiated contact through an unsolicited expression of interest and CEO-level outreach, with no evidence Penumbra sought out a buyer.",
+            "estimated": false
+          },
+          {
+            "id": "A2",
+            "signal": "Time from NDA to Signing",
+            "raw_input": "The mutual NDA was executed on December 19, 2025, and the Merger Agreement was signed on January 14, 2026, representing a span of 26 days from NDA to signing.",
+            "short_answer": "26 Days",
+            "score": 1,
+            "rationale": "The 26-day NDA-to-signing timeline is well under 6 weeks, reflecting an extremely compressed bilateral negotiation with no competitive process to extend timing.",
+            "estimated": false
+          },
+          {
+            "id": "A3",
+            "signal": "Competitive Process",
+            "raw_input": "Penumbra's Board made an explicit decision not to conduct any market check or solicit other bidders across multiple meetings, citing leak risk and management distraction. Zero parties were contacted outbound; only Boston Scientific participated throughout the entire 17-day negotiation.",
+            "short_answer": "Bilateral (0 parties)",
+            "score": 1,
+            "rationale": "No alternatives were explored \u2014 the Board deliberately chose not to run a market check, resulting in a single-bidder negotiation with no competitive tension whatsoever.",
+            "estimated": false
+          },
+          {
+            "id": "A4",
+            "signal": "Target's Standalone Viability",
+            "raw_input": "Penumbra presented a Medium-Term Outlook through FY2028 and a long-range financial plan through FY2035 to the Board, suggesting a credible multi-year growth trajectory. No activist pressure, distress indicators, or strategic urgency to sell were evident; the Board repeatedly noted the proposal's attractiveness but not any standalone weakness.",
+            "short_answer": "Strong \u2014 no activist pressure",
+            "score": 5,
+            "rationale": "Penumbra appeared to be a financially healthy, growth-oriented medical device company with a long-range plan through 2035 and no signs of distress or external pressure to transact.",
+            "estimated": false
+          },
+          {
+            "id": "A5",
+            "signal": "Industry Buyer Universe",
+            "raw_input": "The Board assessed both financial sponsors and strategic buyers as unlikely to make competitive proposals, and Company A made no proposal after an introductory call. Only Boston Scientific expressed acquisition interest, and the Board concluded no other acquirer would offer a superior proposal.",
+            "short_answer": "1 realistic buyer",
+            "score": 1,
+            "rationale": "The Board's own assessment and the absence of any inbound interest beyond Boston Scientific indicate only one credible acquirer existed in the market for Penumbra at this valuation and scale.",
+            "estimated": false
+          }
+        ]
+      },
+      "B": {
+        "label": "Premium & Consideration Structure",
+        "subtotal": 7,
+        "max_score": 25,
+        "signals": [
+          {
+            "id": "B1",
+            "signal": "Headline Premium (vs. unaffected price)",
+            "raw_input": "Offer $408.83 vs unaffected $382.91",
+            "short_answer": "6.8%",
+            "score": 1,
+            "rationale": "Premium of 6.8% vs unaffected price.",
+            "estimated": false
+          },
+          {
+            "id": "B2",
+            "signal": "Premium vs. 52-Week High",
+            "raw_input": "The deal was announced on July 31, 2025 with an offer of 2.2005 PANW shares plus $45 cash per CYBR share. No explicit 52-week high price for CYBR is provided in the source materials, but the headline premium to unaffected price is only 6.8%, strongly suggesting the offer is below the 52-week high.",
+            "short_answer": "Below 52-week high",
+            "score": 1,
+            "rationale": "With a headline premium of only 6.8% to the unaffected price, the offer almost certainly falls below CYBR's 52-week high, consistent with a score of 1 under the rubric.",
+            "estimated": true
+          },
+          {
+            "id": "B3",
+            "signal": "Price Movement During Negotiation",
+            "raw_input": "The merger agreement terms from the DMA show a fixed consideration of 2.2005 PANW shares plus $45.00 cash per CYBR share. The proxy background and bid timeline provided in the source materials relate to the Penumbra/Boston Scientific transaction, not CyberArk/Palo Alto Networks, and no negotiation history for the CYBR/PANW deal is available.",
+            "short_answer": "No negotiation data available",
+            "score": 1,
+            "rationale": "No proxy background detail for the CYBR/PANW negotiation is available in the source materials; absent evidence of a price increase during negotiation, the minimum score of 1 applies by default.",
+            "estimated": true
+          },
+          {
+            "id": "B4",
+            "signal": "Cash as % of Total Consideration",
+            "raw_input": "$45.0 cash + 2.2005x stock ratio",
+            "short_answer": "11% cash",
+            "score": 3,
+            "rationale": "Cash represents 11% of total consideration.",
+            "estimated": false
+          },
+          {
+            "id": "B5",
+            "signal": "Collar or Walk-Away on Buyer Stock Price",
+            "raw_input": "The merger agreement specifies a fixed exchange ratio of 2.2005 PANW shares per CYBR share with no collar mechanism. The DMA notes a proration clause that reduces the Exchange Ratio if PANW shares to be issued exceed 19.9% of existing shares (increasing cash instead), but this is a regulatory/dilution cap, not a price-protection collar or target walk-away right tied to PANW stock price movement.",
+            "short_answer": "No collar \u2014 fixed ratio",
+            "score": 1,
+            "rationale": "The consideration is a fixed exchange ratio with no collar or walk-away right protecting CYBR shareholders against a decline in PANW's stock price, warranting a score of 1.",
+            "estimated": false
+          }
+        ]
+      },
+      "C": {
+        "label": "Protective Terms",
+        "subtotal": 17,
+        "max_score": 25,
+        "signals": [
+          {
+            "id": "C2",
+            "signal": "RTF Trigger Breadth",
+            "raw_input": "The $1B reverse termination fee is triggered only if the agreement is terminated under the Outside Date or Legal Prohibition provisions where regulatory conditions (Section 7.1(d) or 7.1(e)) are unsatisfied but all other conditions are met, plus Parent retains a unilateral termination right if regulatory conditions are not satisfied and all other conditions are satisfied (also triggers the $1B RTF).",
+            "short_answer": "Denial + conditions + End Date expiry",
+            "score": 5,
+            "rationale": "The RTF covers outright regulatory denial, burdensome conditions scenario, and Outside Date expiry due to regulatory failure, hitting all three prongs of the maximum breadth rubric.",
+            "estimated": false
+          },
+          {
+            "id": "C3",
+            "signal": "Ticking Fee / Consideration Increase",
+            "raw_input": "The merger agreement provides a fixed consideration of 2.2005 shares of Parent Common Stock plus $45.00 cash per share, with no mention of any ticking fee or consideration increase mechanism tied to delay in closing.",
+            "short_answer": "None",
+            "score": 1,
+            "rationale": "No ticking fee or consideration adjustment for delay is present in the agreement; consideration is fixed throughout the deal lifecycle.",
+            "estimated": false
+          },
+          {
+            "id": "C4",
+            "signal": "Target Board Fiduciary Out Breadth",
+            "raw_input": "The Company may terminate to accept a Superior Proposal prior to shareholder approval subject to Section 5.3 compliance (24-hour notice of Acquisition Proposals, 4-business-day match right for Parent) and payment of the $750M termination fee; board change of recommendation rights are present but details on intervening event fiduciary out are noted as absent from the provided text.",
+            "short_answer": "Standard fiduciary out",
+            "score": 3,
+            "rationale": "The fiduciary out allows termination for a Superior Proposal with standard notice and matching mechanics and a termination fee, consistent with market-standard provisions; the absence of explicit intervening event language slightly limits breadth but overall structure is standard.",
+            "estimated": false
+          },
+          {
+            "id": "C5",
+            "signal": "Match Right Duration (business days)",
+            "raw_input": "Parent is entitled to 4 business days' prior written notice before the Company can terminate for a Superior Proposal, with an extension to at least 3 business days after Parent receives any updated notification of revised terms.",
+            "short_answer": "4 business days",
+            "score": 3,
+            "rationale": "The 4-business-day match right falls squarely in the middle scoring band (4\u20135 days), reflecting a standard market match right duration.",
+            "estimated": false
+          },
+          {
+            "id": "C6",
+            "signal": "Specific Performance Right",
+            "raw_input": "The agreement explicitly allows each party to seek specific performance to enforce the terms and provisions of the agreement, with no stated limitation on the target's ability to force closing.",
+            "short_answer": "Full specific performance",
+            "score": 5,
+            "rationale": "Both parties have full specific performance rights with no carve-outs limiting the target's ability to compel closing, representing the most protective outcome for the target under this rubric.",
+            "estimated": false
+          }
+        ]
+      },
+      "D": {
+        "label": "Market Signal",
+        "subtotal": 12,
+        "max_score": 20,
+        "signals": [
+          {
+            "id": "D1",
+            "signal": "Target Stock Reaction to Announcement",
+            "raw_input": "No market data available",
+            "short_answer": "N/A",
+            "score": 3,
+            "rationale": "No market data available; defaulting to neutral.",
+            "estimated": true
+          },
+          {
+            "id": "D2",
+            "signal": "Buyer Stock Reaction to Announcement",
+            "raw_input": "No market data available",
+            "short_answer": "N/A",
+            "score": 3,
+            "rationale": "No market data available; defaulting to neutral.",
+            "estimated": true
+          },
+          {
+            "id": "D3",
+            "signal": "Current Spread as % of Deal Value",
+            "raw_input": "No market data available",
+            "short_answer": "N/A",
+            "score": 3,
+            "rationale": "No market data available; defaulting to neutral.",
+            "estimated": true
+          },
+          {
+            "id": "D4",
+            "signal": "Institutional Ownership Shift",
+            "raw_input": "No market data available",
+            "short_answer": "N/A",
+            "score": 3,
+            "rationale": "No market data available; defaulting to neutral.",
+            "estimated": true
+          }
+        ]
+      }
+    }
+  },
+  "regulatory_risk": {
+    "score": 48,
+    "max_score": 55,
+    "interpretation": "Extreme Risk",
+    "categories": {
+      "A": {
+        "label": "Structural Complexity",
+        "subtotal": 23,
+        "max_score": 25,
+        "signals": [
+          {
+            "id": "A1",
+            "signal": "Number of Required Regulatory Approvals",
+            "raw_input": "15 regulatory approvals required",
+            "short_answer": "15",
+            "score": 5,
+            "rationale": "15 regulatory approvals required.",
+            "estimated": false
+          },
+          {
+            "id": "A2",
+            "signal": "Substantive Review Agencies (vs. ministerial)",
+            "raw_input": "11 substantive agencies out of 15 total: HSR / FTC+DOJ, EC, ACCC, FIRB, SAMR, TCA, COMCO, Israeli Foreign Investment, Other Antitrust/FDI Authorities, Foreign Investment Authorities, Foreign Antitrust Authorities",
+            "short_answer": "HSR / FTC+DOJ, EC, ACCC, FIRB, SAMR, TCA, COMCO, Israeli Foreign Investment, Other Antitrust/FDI Authorities, Foreign Investment Authorities, Foreign Antitrust Authorities",
+            "score": 5,
+            "rationale": "11 agencies with substantive review authority.",
+            "estimated": false
+          },
+          {
+            "id": "A3",
+            "signal": "Cross-Border Regulatory Exposure",
+            "raw_input": "7 foreign jurisdictions: Australia, China, European Union, Israel, Multiple (unspecified), Switzerland, Turkey",
+            "short_answer": "7 foreign jurisdictions",
+            "score": 5,
+            "rationale": "7 non-US regulatory jurisdictions.",
+            "estimated": false
+          },
+          {
+            "id": "A5",
+            "signal": "Parallel vs. Sequential Dependencies",
+            "raw_input": "The merger agreement requires HSR clearance, EC, ACCC, SAMR, TCA, COMCO, Israeli, and other foreign approvals, all of which are structured as concurrent obligations with no explicit sequential dependencies between them. However, there is a notable structural dependency: the Israeli Companies Registrar filing triggers a mandatory 50-day waiting period, and the outside date extension mechanism specifically carves out regulatory conditions, meaning the automatic extension to October 2026 only activates if all non-regulatory conditions are already satisfied.",
+            "short_answer": "Mostly parallel, 1-2 dependencies",
+            "score": 3,
+            "rationale": "Approvals are largely pursued in parallel under a reasonable best efforts standard, but the Israeli 50-day post-filing lapse and the sequential dependency between non-regulatory condition satisfaction and the outside date extension create meaningful structural dependencies that elevate complexity modestly above fully parallel.",
+            "estimated": false
+          },
+          {
+            "id": "A6",
+            "signal": "HSR Filing Deadline",
+            "raw_input": "HSR Notification and Report Form to be filed within 25 business days post-agreement execution",
+            "short_answer": "25 business days",
+            "score": 5,
+            "rationale": "HSR filing required within 25 business days of agreement execution.",
+            "estimated": false
+          }
+        ]
+      },
+      "B": {
+        "label": "Agreement Structure Signals",
+        "subtotal": 25,
+        "max_score": 30,
+        "signals": [
+          {
+            "id": "B1",
+            "signal": "Outside Date Length (months from signing)",
+            "raw_input": "Announce 2025-07-30 \u2192 outside date 2026-07-30 = ~12 months",
+            "short_answer": "12 months",
+            "score": 2,
+            "rationale": "Outside date is approximately 12 months from announcement.",
+            "estimated": false
+          },
+          {
+            "id": "B2",
+            "signal": "End Date Extension Mechanics",
+            "raw_input": "The outside date automatically extends from July 30, 2026 to October 30, 2026 if all conditions excluding HSR Act or other Regulatory Law conditions are satisfied or waived, effectively tying the extension specifically to regulatory/antitrust clearance status.",
+            "short_answer": "Auto extension tied to regulatory conditions, +3 months",
+            "score": 5,
+            "rationale": "The extension is automatic and explicitly tied to a specific regulatory condition (HSR Act and other Regulatory Laws), matching the highest score criteria.",
+            "estimated": false
+          },
+          {
+            "id": "B3",
+            "signal": "RTF Existence and Size (% of TEV)",
+            "raw_input": "Parent reverse termination fee is $1,000,000,000, triggered if Parent terminates due to regulatory failure (conditions in Section 7.1(d) or 7.1(e) not met while all other conditions are satisfied). TEV is not explicitly provided but CyberArk's approximate market cap at announcement was roughly $15-16B implying RTF is approximately 6-7% of TEV.",
+            "short_answer": "$1B RTF, ~6-7% of TEV",
+            "score": 5,
+            "rationale": "The $1B reverse termination fee represents approximately 6-7% of the transaction enterprise value, exceeding the >6% threshold for the highest score.",
+            "estimated": true
+          },
+          {
+            "id": "B4",
+            "signal": "Efforts Standard",
+            "raw_input": "The agreement requires 'reasonable best efforts' for regulatory approvals, but explicitly states that neither Parent, Merger Sub, nor their subsidiaries are required to take any divestiture or remedy action without Parent's prior written consent, and no action is required that could materially reduce anticipated benefits or significantly impact Parent relative to the value of the Company \u2014 a material burdensome remedy condition (MBRC) carveout.",
+            "short_answer": "RBE with MBRC carveout",
+            "score": 3,
+            "rationale": "The efforts standard is reasonable best efforts but includes an explicit carveout protecting Parent from actions that would materially reduce anticipated benefits, which constitutes a classic MBRC carveout, scoring 3/5.",
+            "estimated": false
+          },
+          {
+            "id": "B5",
+            "signal": "Burdensome Condition Walk-Away",
+            "raw_input": "The agreement states Parent is not obligated to take any action that 'could materially reduce the anticipated benefits to the Parent or impact the Parent, the Company, or their respective Subsidiaries in a significant manner relative to the value of the Company and the Company Subsidiaries,' but the specific thresholds and definitions are referenced to parent's control and consent rather than a publicly defined MBRC standard or disclosed caps.",
+            "short_answer": "Partially hidden, no clear public criteria",
+            "score": 5,
+            "rationale": "While the burdensome condition concept exists, the criteria are subjective and tied to undisclosed parent consent rather than clearly defined, publicly disclosed thresholds, indicating it is partially to fully hidden in practice.",
+            "estimated": false
+          },
+          {
+            "id": "B6",
+            "signal": "Divestiture Caps & Remedy Commitments",
+            "raw_input": "The merger agreement explicitly states that neither Parent, Merger Sub, nor their subsidiaries are required to take any divestiture or business restriction actions without Parent's prior written consent, and no action is required that could materially reduce anticipated benefits \u2014 effectively a de minimis or no divestiture commitment.",
+            "short_answer": "No divestiture commitment required",
+            "score": 5,
+            "rationale": "Parent retains full veto over any remedy or divestiture action, with no obligation to divest anything material, aligning with the 'no divestiture commitment or de minimis cap' criterion for the highest risk score.",
+            "estimated": false
+          }
+        ]
+      }
+    }
+  }
+}

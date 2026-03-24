@@ -1,0 +1,204 @@
+{
+  "deal_id": "d809559d8k",
+  "analysis_timestamp": "20260311_003905",
+  "benchmark_info": {
+    "benchmark_clusters": 41
+  },
+  "deal_summary": {
+    "total_termination_clauses": 7,
+    "avg_similarity_to_clusters": 0.7020535865187864,
+    "clusters_matched": 7
+  },
+  "cluster_distribution": {
+    "15": 1,
+    "3": 1,
+    "7": 1,
+    "11": 1,
+    "40": 1,
+    "0": 1,
+    "9": 1
+  },
+  "trigger_category_distribution": {
+    "mutual_termination": 2,
+    "outside_date": 1,
+    "regulatory_failure": 1,
+    "breach_based": 1,
+    "fiduciary_out": 2
+  },
+  "party_distribution": {
+    "mutual": 5,
+    "seller_favorable": 1,
+    "buyer_favorable": 1
+  },
+  "classified_clauses": [
+    {
+      "clause_id": "1",
+      "clause_type": "trigger",
+      "trigger_type": "mutual_consent",
+      "original_text": "the Merger Agreement may be terminated (a) by the mutual written consent of both the Company and JHX",
+      "processed_text": "the Merger Agreement may be terminated (a) by the mutual written consent of both the Company and JHX",
+      "parties_replaced": [],
+      "clause_index": 0,
+      "assigned_cluster": 15,
+      "similarity_score": 0.6669629876701523,
+      "cluster_trigger_category": "mutual_termination",
+      "cluster_theme": "Bilateral Agreement to Abandon Transaction Before Closing",
+      "party_favored": "mutual",
+      "deal_risk_pattern": "low_walkaway_risk",
+      "deal_risk_score": null,
+      "fee_implications": "none - mutual termination typically does not trigger termination fees or break-up fees as both parties agree to walk away; represents consensual dissolution of obligations"
+    },
+    {
+      "clause_id": "2",
+      "clause_type": "trigger",
+      "trigger_type": "outside_date",
+      "original_text": "by either the Company or JHX if the consummation of the Merger does not occur on or before March 23, 2026, subject to an automatic extension for a period of three months under certain circumstances",
+      "processed_text": "by either the Company or JHX if the consummation of the Merger does not occur on or before March 23, 2026, subject to an automatic extension for a period of three months under certain circumstances",
+      "parties_replaced": [],
+      "clause_index": 1,
+      "assigned_cluster": 3,
+      "similarity_score": 0.638169248274283,
+      "cluster_trigger_category": "outside_date",
+      "cluster_theme": "Mutual Outside Date Termination with Automatic Regulatory Extensions",
+      "party_favored": "mutual",
+      "deal_risk_pattern": "low_walkaway_risk",
+      "deal_risk_score": null,
+      "fee_implications": "Termination under outside date provisions typically triggers reverse termination fees if regulatory approvals are not obtained, protecting the target from buyer's failure to secure clearances. The automatic extension mechanism reduces the likelihood of fee payment by giving additional time for regulatory resolution."
+    },
+    {
+      "clause_id": "3",
+      "clause_type": "trigger",
+      "trigger_type": "regulatory_block",
+      "original_text": "by either the Company or JHX if there exists a final and nonappealable law or order prohibiting the Merger",
+      "processed_text": "by either the Company or JHX if there exists a final and nonappealable law or order prohibiting the Merger",
+      "parties_replaced": [],
+      "clause_index": 2,
+      "assigned_cluster": 7,
+      "similarity_score": 0.7433644744888763,
+      "cluster_trigger_category": "regulatory_failure",
+      "cluster_theme": "Mutual Termination for Non-Appealable Governmental Restraint or Prohibition",
+      "party_favored": "mutual",
+      "deal_risk_pattern": "low_walkaway_risk",
+      "deal_risk_score": null,
+      "fee_implications": "Typically no termination fee payable by either party as this represents a regulatory failure outside parties' control, though reverse termination fees may apply if buyer caused the regulatory failure through breach of covenants to obtain approvals"
+    },
+    {
+      "clause_id": "4",
+      "clause_type": "trigger",
+      "trigger_type": "other",
+      "original_text": "by either the Company or JHX upon a failure to receive the Company Stockholder Approval (after a stockholder meeting is held for such purpose)",
+      "processed_text": "by either the Company or JHX upon a failure to receive the Company Stockholder Approval (after a stockholder meeting is held for such purpose)",
+      "parties_replaced": [],
+      "clause_index": 3,
+      "assigned_cluster": 11,
+      "similarity_score": 0.7025724034645265,
+      "cluster_trigger_category": "mutual_termination",
+      "cluster_theme": "Termination Right Upon Failure to Obtain Required Stockholder Approval",
+      "party_favored": "mutual",
+      "deal_risk_pattern": "moderate_walkaway_risk",
+      "deal_risk_score": null,
+      "fee_implications": "Generally no termination fee payable as this is a mutual termination right based on stockholder decision rather than party breach or fiduciary change; however, 3 instances show fee-bearing characteristics suggesting some agreements may impose fees if vote failure results from target's failure to recommend or other conduct"
+    },
+    {
+      "clause_id": "5",
+      "clause_type": "trigger",
+      "trigger_type": "breach",
+      "original_text": "by either the Company or JHX in the event of a material uncured breach by the other party of its representations, warranties, covenants or other agreements under the Merger Agreement",
+      "processed_text": "by either the Company or JHX in the event of a material uncured breach by the other party of its representations, warranties, covenants or other agreements under the Merger Agreement",
+      "parties_replaced": [],
+      "clause_index": 4,
+      "assigned_cluster": 40,
+      "similarity_score": 0.7004263035705673,
+      "cluster_trigger_category": "breach_based",
+      "cluster_theme": "Termination Rights for Material Breach with Cure Period",
+      "party_favored": "mutual",
+      "deal_risk_pattern": "moderate_walkaway_risk",
+      "deal_risk_score": null,
+      "fee_implications": "Termination under these provisions typically does not trigger termination fees unless the breach is willful or intentional. May preserve rights to specific performance or damages for material breach. The non-breaching party generally walks away without fee obligation, though the breaching party may face liability for damages."
+    },
+    {
+      "clause_id": "6",
+      "clause_type": "trigger",
+      "trigger_type": "superior_proposal",
+      "original_text": "by the Company in order to accept a Superior Proposal (as defined in the Merger Agreement)",
+      "processed_text": "by the Company in order to accept a Superior Proposal (as defined in the Merger Agreement)",
+      "parties_replaced": [],
+      "clause_index": 5,
+      "assigned_cluster": 0,
+      "similarity_score": 0.7090833384817279,
+      "cluster_trigger_category": "fiduciary_out",
+      "cluster_theme": "Target Board Termination Right to Accept Superior Proposal",
+      "party_favored": "seller_favorable",
+      "deal_risk_pattern": "moderate_walkaway_risk",
+      "deal_risk_score": null,
+      "fee_implications": "Target must pay termination fee (typically 2-4% of deal value) to the original acquirer prior to or concurrently with termination. This fee compensates the jilted buyer for deal costs and opportunity costs. 37 of 43 clauses explicitly require fee payment, and 20 indicate this may be the sole remedy available to the acquirer."
+    },
+    {
+      "clause_id": "7",
+      "clause_type": "trigger",
+      "trigger_type": "fiduciary_out",
+      "original_text": "by JHX in the event the Company Board of Directors makes an adverse recommendation change",
+      "processed_text": "by JHX in the event the Company Board of Directors makes an adverse recommendation change",
+      "parties_replaced": [],
+      "clause_index": 6,
+      "assigned_cluster": 9,
+      "similarity_score": 0.7537963496813713,
+      "cluster_trigger_category": "fiduciary_out",
+      "cluster_theme": "Fiduciary Out Termination Rights for Adverse Recommendation Changes",
+      "party_favored": "buyer_favorable",
+      "deal_risk_pattern": "moderate_walkaway_risk",
+      "deal_risk_score": null,
+      "fee_implications": "Exercise of this termination right typically triggers payment of a termination fee (reverse break fee when acquirer terminates due to target's recommendation change, or target break fee when target terminates due to acquirer's change). The fee compensates the non-breaching party for deal costs and lost opportunity."
+    }
+  ],
+  "insights": {
+    "unusual_clauses_count": 6,
+    "unusual_clause_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "low_similarity_clauses": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "type_mismatch_clauses": [],
+    "top_trigger_categories": [
+      {
+        "category": "mutual_termination",
+        "count": 2
+      },
+      {
+        "category": "fiduciary_out",
+        "count": 2
+      },
+      {
+        "category": "outside_date",
+        "count": 1
+      },
+      {
+        "category": "regulatory_failure",
+        "count": 1
+      },
+      {
+        "category": "breach_based",
+        "count": 1
+      }
+    ],
+    "party_balance": {
+      "mutual": 5,
+      "seller_favorable": 1,
+      "buyer_favorable": 1
+    },
+    "fee_bearing_triggers": 7,
+    "high_risk_trigger_count": 0,
+    "coverage_quality": "review_needed"
+  }
+}

@@ -1,0 +1,369 @@
+{
+  "company": "Esperion Therapeutics, Inc.",
+  "total_filings": 10,
+  "successful": 10,
+  "failed": 0,
+  "results": [
+    {
+      "index": 1,
+      "date": "2026-03-03",
+      "form_type": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1434868/000162828026013552/espr-20260302.htm",
+      "status": "success",
+      "ticker": "ESPR",
+      "summary": {
+        "ticker": "ESPR",
+        "filing_date": "03/03/26",
+        "items_reported": [
+          "Item 1.01",
+          "Item 7.01",
+          "Item 9.01"
+        ],
+        "L1_headline": "ESPR \u2013 Acquires Corstasis for $75M upfront plus milestones. | 03/03/26",
+        "L2_brief": "Esperion Therapeutics entered into a definitive agreement to acquire Corstasis Therapeutics for $75 million in upfront cash consideration plus up to $180 million in regulatory and commercial milestone payments, along with royalty payments on future product sales. The transaction is expected to close by May 1, 2026, subject to customary closing conditions, and adds Enbumyst to Esperion's portfolio targeting the congestive heart failure market.",
+        "L3_detailed": {
+          "event": "Esperion entered into a merger agreement to acquire Corstasis Therapeutics, with Corstasis becoming a wholly-owned subsidiary of Esperion upon closing",
+          "key_figures": [
+            "$75,000,000 upfront cash consideration (subject to customary adjustments)",
+            "Up to $180,000,000 in contingent milestone payments (regulatory approval and commercial sales)",
+            "Additional royalty and licensing-revenue-derived payments on future product sales",
+            "Outside date: May 1, 2026"
+          ],
+          "deal_implications": "This is Esperion as acquirer, not target; transaction expands pipeline into congestive heart failure with Enbumyst; standard deal structure with customary closing conditions suggests moderate closing certainty",
+          "remaining_conditions": [
+            "Customary closing conditions (not specifically enumerated)",
+            "Must close by May 1, 2026 outside date"
+          ],
+          "risks_flagged": [
+            "Forward-looking statements note risk of failure to consummate the Corstasis transaction",
+            "Risk of failure to achieve anticipated sales of Enbumyst",
+            "Contingent consideration dependent on regulatory approvals and commercial milestones"
+          ]
+        }
+      }
+    },
+    {
+      "index": 2,
+      "date": "2026-01-21",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1434868/000162828026002925/xslF345X05/wk-form4_1769033844.xml",
+      "status": "success",
+      "ticker": "ESPR",
+      "summary": {
+        "ticker": "ESPR",
+        "issuer": "Esperion Therapeutics, Inc.",
+        "filing_date": "01/21/26",
+        "insider_name": "Benjamin Looker",
+        "insider_title": "General Counsel",
+        "relationship": "Officer",
+        "L1_headline": "+ ESPR \u2013 Benjamin Looker sold 1,689 shares. | 01/20/26",
+        "L2_brief": "Benjamin Looker, General Counsel of Esperion Therapeutics, sold 1,689 shares at $2.882 per share on January 20, 2026, totaling approximately $4,868. This was a mandatory sale to cover tax obligations on vesting RSUs rather than a discretionary sale, and thus does not signal negative sentiment about the company's prospects.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Sale",
+              "date": "01/20/2026",
+              "shares": "1,689",
+              "price_per_share": "$2.882",
+              "total_value": "$4,867.70",
+              "acquired_or_disposed": "Disposed (D)"
+            }
+          ],
+          "post_transaction_holdings": "384,216 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "This is a tax-related sale tied to RSU vesting, not a discretionary disposition. The sale represents less than 0.5% of the insider's total holdings, indicating no material reduction in position.",
+          "risks_flagged": [
+            "Sale was for tax withholding on RSU vesting \u2013 not discretionary"
+          ]
+        }
+      }
+    },
+    {
+      "index": 3,
+      "date": "2026-01-20",
+      "form_type": "144",
+      "url": "https://www.sec.gov/Archives/edgar/data/1434868/000195917326000363/xsl144X01/primary_doc.xml",
+      "status": "success",
+      "ticker": "ESPR",
+      "summary": {
+        "ticker": "ESPR",
+        "issuer": "Esperion Therapeutics, Inc.",
+        "filing_date": "01/20/26",
+        "seller_name": "Benjamin Looker",
+        "seller_relationship": "Officer",
+        "L1_headline": "+ ESPR \u2013 Benjamin Looker files to sell 1,689 shares. | 01/20/26",
+        "L2_brief": "Benjamin Looker, an officer at Esperion Therapeutics, filed to sell 1,689 shares of common stock valued at approximately $4,867. The sale is to cover tax obligations from recently vested restricted stock, representing routine compensation-related selling rather than a discretionary decision.",
+        "L3_detailed": {
+          "proposed_sale": {
+            "shares_to_sell": "1,689",
+            "estimated_value": "$4,867.02",
+            "securities_type": "Common Stock",
+            "acquisition_date": "01/15/2026",
+            "acquisition_method": "Restricted Stock Vesting (Compensation)"
+          },
+          "broker_info": "Fidelity Brokerage Services LLC, 900 Salem Street, Smithfield, RI 02917",
+          "seller_total_holdings": "Not disclosed",
+          "percentage_of_holdings": "Not calculable from filing",
+          "deal_signal": "N/A - This appears to be routine tax-related selling tied to equity compensation vesting, not indicative of any deal-related concerns. The seller also sold 6,517 shares in December 2025 under similar circumstances.",
+          "risks_flagged": [
+            "Small routine sale for tax withholding purposes",
+            "Consistent with prior December 2025 sale pattern (6,517 shares for $23,897)",
+            "No material concerns indicated - filing includes standard representation that seller has no knowledge of undisclosed material adverse information"
+          ]
+        }
+      }
+    },
+    {
+      "index": 4,
+      "date": "2026-01-12",
+      "form_type": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1434868/000162828026001764/espr-20260111.htm",
+      "status": "success",
+      "ticker": "ESPR",
+      "summary": {
+        "ticker": "ESPR",
+        "filing_date": "01/12/26",
+        "items_reported": [
+          "Item 2.02",
+          "Item 9.01"
+        ],
+        "L1_headline": "ESPR \u2013 Preliminary 2025 results and 2026 guidance released. | 01/11/26",
+        "L2_brief": "Esperion Therapeutics issued preliminary 2025 results and 2026 financial guidance ahead of the J.P. Morgan Healthcare Conference. The company expects 2026 operating expenses of $210-$245 million, with R&D expenses of $40-$50 million and SG&A of $170-$195 million. This is a routine operational update with no merger or deal implications.",
+        "L3_detailed": {
+          "event": "Esperion released preliminary 2025 results and fiscal year 2026 financial guidance via press release and management presentation for the J.P. Morgan Healthcare Conference",
+          "key_figures": [
+            "2026 R&D expenses: $40-$50 million",
+            "2026 SG&A expenses: $170-$195 million",
+            "2026 total operating expenses: $210-$245 million"
+          ],
+          "deal_implications": "No merger or acquisition activity disclosed; this is a standalone operational and financial update",
+          "remaining_conditions": [],
+          "risks_flagged": [
+            "Forward-looking statements subject to uncertainties that could cause actual results to differ materially"
+          ]
+        }
+      }
+    },
+    {
+      "index": 5,
+      "date": "2025-12-18",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1434868/000162828025057944/xslF345X05/wk-form4_1766092197.xml",
+      "status": "success",
+      "ticker": "ESPR",
+      "summary": {
+        "ticker": "ESPR",
+        "issuer": "Esperion Therapeutics, Inc.",
+        "filing_date": "12/18/25",
+        "insider_name": "Sheldon L. Koenig",
+        "insider_title": "President and CEO",
+        "relationship": "Officer & Director",
+        "L1_headline": "+ ESPR \u2013 Sheldon L. Koenig sold 48,244 shares. | 12/17/25",
+        "L2_brief": "Esperion CEO and Director Sheldon Koenig disposed of 48,244 shares at $3.673 per share (~$177,200 total) on December 17, 2025. The sale was made to satisfy tax obligations on vesting restricted stock units, representing a routine administrative transaction rather than a discretionary sale. Koenig retains substantial holdings of 1,470,587 shares post-transaction.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Sale",
+              "date": "12/17/2025",
+              "shares": "48,244",
+              "price_per_share": "$3.673",
+              "total_value": "$177,200",
+              "acquired_or_disposed": "Disposed (D)"
+            }
+          ],
+          "post_transaction_holdings": "1,470,587 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "This is a tax-related sale tied to RSU vesting, not a discretionary disposal. The sold shares represent approximately 3.2% of the insider's post-transaction holdings, indicating no significant reduction in ownership stake. This is a routine administrative transaction commonly seen with equity compensation.",
+          "risks_flagged": [
+            "Sale was for tax obligation satisfaction on RSU vesting - not discretionary",
+            "No 10b5-1 plan indicated for this transaction"
+          ]
+        }
+      }
+    },
+    {
+      "index": 6,
+      "date": "2025-12-18",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1434868/000162828025057942/xslF345X05/wk-form4_1766092168.xml",
+      "status": "success",
+      "ticker": "ESPR",
+      "summary": {
+        "ticker": "ESPR",
+        "issuer": "Esperion Therapeutics, Inc.",
+        "filing_date": "12/18/25",
+        "insider_name": "Benjamin Halladay",
+        "insider_title": "Chief Financial Officer",
+        "relationship": "Officer",
+        "L1_headline": "+ ESPR \u2013 Benjamin Halladay sold 7,337 shares. | 12/17/25",
+        "L2_brief": "CFO Benjamin Halladay sold 7,337 shares of common stock at $3.667 per share (~$26,900 total) on December 17, 2025. This was a tax-related sale to cover obligations on vesting RSUs, not a discretionary sale, suggesting no negative signal about company prospects.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Sale",
+              "date": "12/17/2025",
+              "shares": "7,337",
+              "price_per_share": "$3.667",
+              "total_value": "$26,902",
+              "acquired_or_disposed": "Disposed (D)"
+            }
+          ],
+          "post_transaction_holdings": "467,525 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "This is a routine tax-withholding sale upon RSU vesting, not a discretionary disposal. The sale represents only ~1.5% of the insider's total holdings, indicating no significant reduction in ownership stake.",
+          "risks_flagged": [
+            "Sale was for tax obligation on RSU vesting - not discretionary",
+            "No 10b5-1 plan indicated for this transaction"
+          ]
+        }
+      }
+    },
+    {
+      "index": 7,
+      "date": "2025-12-18",
+      "form_type": "4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1434868/000162828025057941/xslF345X05/wk-form4_1766092146.xml",
+      "status": "success",
+      "ticker": "ESPR",
+      "summary": {
+        "ticker": "ESPR",
+        "issuer": "Esperion Therapeutics, Inc.",
+        "filing_date": "12/18/25",
+        "insider_name": "Benjamin Looker",
+        "insider_title": "General Counsel",
+        "relationship": "Officer",
+        "L1_headline": "+ ESPR \u2013 Benjamin Looker sold 6,517 shares. | 12/17/25",
+        "L2_brief": "Benjamin Looker, General Counsel of Esperion Therapeutics, sold 6,517 shares at $3.667 per share on December 17, 2025, totaling approximately $23,893. The sale was made to satisfy tax obligations on vesting restricted stock units, representing a routine non-discretionary transaction rather than a directional signal.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Sale",
+              "date": "12/17/2025",
+              "shares": "6,517",
+              "price_per_share": "$3.667",
+              "total_value": "$23,893",
+              "acquired_or_disposed": "Disposed (D)"
+            }
+          ],
+          "post_transaction_holdings": "385,905 shares",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "This is a tax-related sale triggered by RSU vesting, not a discretionary sale. The insider retains a substantial holding of 385,905 shares, indicating continued alignment with shareholders.",
+          "risks_flagged": [
+            "Sale to cover tax withholding on RSU vesting - routine/non-discretionary",
+            "Relatively small disposal (~1.7% of post-transaction holdings)"
+          ]
+        }
+      }
+    },
+    {
+      "index": 8,
+      "date": "2025-12-17",
+      "form_type": "144",
+      "url": "https://www.sec.gov/Archives/edgar/data/1434868/000195917325007814/xsl144X01/primary_doc.xml",
+      "status": "success",
+      "ticker": "ESPR",
+      "summary": {
+        "ticker": "ESPR",
+        "issuer": "Esperion Therapeutics, Inc.",
+        "filing_date": "12/17/25",
+        "seller_name": "Sheldon L. Koenig",
+        "seller_relationship": "Officer, Director",
+        "L1_headline": "+ ESPR \u2013 Sheldon L. Koenig files to sell 48,244 shares. | 12/17/25",
+        "L2_brief": "Sheldon L. Koenig, an Officer and Director of Esperion Therapeutics, filed to sell 48,244 shares of common stock valued at approximately $177,200. The sale is related to covering tax obligations from recently vested restricted stock, representing a routine compensation-related transaction rather than discretionary selling.",
+        "L3_detailed": {
+          "proposed_sale": {
+            "shares_to_sell": "48,244",
+            "estimated_value": "$177,200.21",
+            "securities_type": "Common Stock",
+            "acquisition_date": "12/15/2025",
+            "acquisition_method": "Restricted Stock Vesting (Compensation)"
+          },
+          "broker_info": "Fidelity Brokerage Services LLC, 900 Salem Street, Smithfield, RI 02917",
+          "seller_total_holdings": "Not disclosed",
+          "percentage_of_holdings": "Not calculable from filing",
+          "deal_signal": "N/A",
+          "risks_flagged": [
+            "Recent prior sale of 28,427 shares on 09/17/2025 for $79,240.27",
+            "Pattern of selling upon vesting events",
+            "Sale explicitly noted as tax-obligation related, reducing signaling concern"
+          ]
+        }
+      }
+    },
+    {
+      "index": 9,
+      "date": "2025-12-17",
+      "form_type": "144",
+      "url": "https://www.sec.gov/Archives/edgar/data/1434868/000195917325007813/xsl144X01/primary_doc.xml",
+      "status": "success",
+      "ticker": "ESPR",
+      "summary": {
+        "ticker": "ESPR",
+        "issuer": "Esperion Therapeutics, Inc.",
+        "filing_date": "12/17/25",
+        "seller_name": "Benjamin Looker",
+        "seller_relationship": "Officer",
+        "L1_headline": "+ ESPR \u2013 Benjamin Looker files to sell 6,517 shares. | 12/17/25",
+        "L2_brief": "Benjamin Looker, an officer at Esperion Therapeutics, filed to sell 6,517 shares of common stock valued at approximately $23,897. The sale is to cover tax obligations from recently vested restricted stock, representing a routine compensation-related transaction rather than discretionary selling.",
+        "L3_detailed": {
+          "proposed_sale": {
+            "shares_to_sell": "6,517",
+            "estimated_value": "$23,897.19",
+            "securities_type": "Common Stock",
+            "acquisition_date": "12/15/2025",
+            "acquisition_method": "Restricted Stock Vesting - Compensation"
+          },
+          "broker_info": "Fidelity Brokerage Services LLC, 900 Salem Street, Smithfield, RI 02917",
+          "seller_total_holdings": "Not disclosed",
+          "percentage_of_holdings": "Not calculable",
+          "deal_signal": "N/A - This appears to be a routine tax-related sale following restricted stock vesting, not indicative of any deal-related concerns. The seller has conducted similar small sales in prior months (6,267 shares in Sept, 1,248 shares in Oct) following the same pattern.",
+          "risks_flagged": [
+            "None significant - sale is explicitly for tax obligation coverage on vested equity",
+            "Small dollar value (~$24K) suggests routine compensation-related transaction",
+            "Pattern consistent with prior months' sales for same purpose"
+          ]
+        }
+      }
+    },
+    {
+      "index": 10,
+      "date": "2025-12-17",
+      "form_type": "144",
+      "url": "https://www.sec.gov/Archives/edgar/data/1434868/000195917325007812/xsl144X01/primary_doc.xml",
+      "status": "success",
+      "ticker": "ESPR",
+      "summary": {
+        "ticker": "ESPR",
+        "issuer": "Esperion Therapeutics, Inc.",
+        "filing_date": "12/17/25",
+        "seller_name": "Benjamin Halladay",
+        "seller_relationship": "Officer",
+        "L1_headline": "+ ESPR \u2013 Benjamin Halladay files to sell 7,337 shares. | 12/17/25",
+        "L2_brief": "Benjamin Halladay, an officer at Esperion Therapeutics, filed to sell 7,337 shares of common stock valued at approximately $26,906. The sale is related to tax obligations from recently vested restricted stock, representing routine compensation-related selling rather than a discretionary decision to reduce holdings.",
+        "L3_detailed": {
+          "proposed_sale": {
+            "shares_to_sell": "7,337",
+            "estimated_value": "$26,906.25",
+            "securities_type": "Common Stock",
+            "acquisition_date": "12/15/2025",
+            "acquisition_method": "Restricted Stock Vesting - Compensation"
+          },
+          "broker_info": "Fidelity Brokerage Services LLC, 900 Salem Street, Smithfield, RI 02917",
+          "seller_total_holdings": "Not disclosed",
+          "percentage_of_holdings": "Not calculable",
+          "deal_signal": "N/A",
+          "risks_flagged": [
+            "Sale appears routine - tied to tax withholding on vested equity award",
+            "Seller sold similar amount (7,046 shares) in September 2025 under same circumstances",
+            "Low dollar value sale (~$27K) suggests minimal conviction signal"
+          ]
+        }
+      }
+    }
+  ],
+  "failures": []
+}

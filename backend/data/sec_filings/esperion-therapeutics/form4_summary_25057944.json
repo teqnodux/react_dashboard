@@ -1,0 +1,30 @@
+{
+  "ticker": "ESPR",
+  "issuer": "Esperion Therapeutics, Inc.",
+  "filing_date": "12/18/25",
+  "insider_name": "Sheldon L. Koenig",
+  "insider_title": "President and CEO",
+  "relationship": "Officer & Director",
+  "L1_headline": "+ ESPR \u2013 Sheldon L. Koenig sold 48,244 shares. | 12/17/25",
+  "L2_brief": "Esperion CEO and Director Sheldon Koenig disposed of 48,244 shares at $3.673 per share (~$177,200 total) on December 17, 2025. The sale was made to satisfy tax obligations on vesting restricted stock units, representing a routine administrative transaction rather than a discretionary sale. Koenig retains substantial holdings of 1,470,587 shares post-transaction.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Sale",
+        "date": "12/17/2025",
+        "shares": "48,244",
+        "price_per_share": "$3.673",
+        "total_value": "$177,200",
+        "acquired_or_disposed": "Disposed (D)"
+      }
+    ],
+    "post_transaction_holdings": "1,470,587 shares",
+    "ownership_type": "Direct",
+    "deal_signal": "N/A",
+    "pattern_notes": "This is a tax-related sale tied to RSU vesting, not a discretionary disposal. The sold shares represent approximately 3.2% of the insider's post-transaction holdings, indicating no significant reduction in ownership stake. This is a routine administrative transaction commonly seen with equity compensation.",
+    "risks_flagged": [
+      "Sale was for tax obligation satisfaction on RSU vesting - not discretionary",
+      "No 10b5-1 plan indicated for this transaction"
+    ]
+  }
+}

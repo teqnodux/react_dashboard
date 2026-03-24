@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D085 - Covenant Analysis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0e14;
+            --bg-secondary: #0f1419;
+            --bg-tertiary: #151c24;
+            --bg-hover: #1a232e;
+            --text-primary: #e6e6e6;
+            --text-secondary: #8a919a;
+            --text-muted: #5c6370;
+            --accent-blue: #5ccfe6;
+            --accent-green: #87d96c;
+            --accent-yellow: #ffcc66;
+            --accent-red: #f07178;
+            --accent-orange: #ff8c42;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'IBM Plex Sans', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-sans); background: var(--bg-primary); color: var(--text-primary); line-height: 1.5; }
+        .container { max-width: 1600px; margin: 0 auto; padding: 16px; }
+
+        /* Alert Bar */
+        .alert-bar {
+            background: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 4px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-family: var(--font-mono);
+            flex-wrap: wrap;
+        }
+
+        .deal-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .alert-flag {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .alert-flag.outliers {
+            background: rgba(240, 113, 120, 0.2);
+            color: var(--accent-red);
+        }
+
+        .alert-flag.restrictive {
+            background: rgba(255, 140, 66, 0.2);
+            color: var(--accent-orange);
+        }
+
+        .alert-flag.provision {
+            background: rgba(255, 204, 102, 0.15);
+            color: var(--accent-yellow);
+        }
+
+        /* Executive Summary */
+        .exec-summary {
+            background: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 4px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .exec-summary h2 {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+            color: var(--accent-blue);
+        }
+
+        .exec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .exec-item {
+            background: var(--bg-tertiary);
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .exec-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .exec-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .exec-insights {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Table Section */
+        .table-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .section-header {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--bg-tertiary);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .filters {
+            padding: 12px 16px;
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid var(--bg-tertiary);
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            font-family: var(--font-mono);
+            padding: 6px 12px;
+            border: 1px solid var(--bg-tertiary);
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: var(--bg-hover);
+            border-color: var(--accent-blue);
+        }
+
+        .filter-btn.active {
+            background: var(--accent-blue);
+            color: var(--bg-primary);
+            border-color: var(--accent-blue);
+        }
+
+        .export-btn {
+            font-family: var(--font-mono);
+            padding: 6px 12px;
+            background: var(--accent-green);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            margin-left: auto;
+        }
+
+        .export-btn:hover {
+            background: var(--accent-blue);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: var(--bg-tertiary);
+        }
+
+        th {
+            font-family: var(--font-mono);
+            text-align: left;
+            padding: 10px 12px;
+            font-weight: 500;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        td {
+            font-family: var(--font-mono);
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--bg-tertiary);
+            font-size: 0.75rem;
+        }
+
+        tbody tr:hover {
+            background: var(--bg-hover);
+        }
+
+        .row-outlier {
+            background: rgba(240, 113, 120, 0.05);
+            border-left: 3px solid var(--accent-red);
+        }
+
+        .row-outlier:hover {
+            background: rgba(240, 113, 120, 0.08);
+        }
+
+        .row-highly-restrictive {
+            background: rgba(255, 140, 66, 0.05);
+            border-left: 3px solid var(--accent-orange);
+        }
+
+        .row-highly-restrictive:hover {
+            background: rgba(255, 140, 66, 0.08);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .badge-outlier {
+            background: rgba(240, 113, 120, 0.15);
+            color: var(--accent-red);
+        }
+
+        .badge-high {
+            background: rgba(255, 140, 66, 0.15);
+            color: var(--accent-orange);
+        }
+
+        .badge-medium {
+            background: rgba(255, 204, 102, 0.15);
+            color: var(--accent-yellow);
+        }
+
+        .badge-low {
+            background: rgba(135, 217, 108, 0.15);
+            color: var(--accent-green);
+        }
+
+        .expand-btn {
+            font-family: var(--font-mono);
+            padding: 4px 10px;
+            background: var(--bg-tertiary);
+            color: var(--accent-blue);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            transition: all 0.2s;
+        }
+
+        .expand-btn:hover {
+            background: var(--accent-blue);
+            color: var(--bg-primary);
+        }
+
+        .clause-detail {
+            display: none;
+            background: var(--bg-tertiary);
+            padding: 12px;
+            border-radius: 3px;
+            border-left: 3px solid var(--accent-blue);
+        }
+
+        .clause-detail.show {
+            display: block;
+        }
+
+        .detail-section {
+            margin-bottom: 12px;
+        }
+
+        .detail-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-section h4 {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .detail-section p {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .detail-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .detail-section li {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            line-height: 1.6;
+            padding-left: 12px;
+            position: relative;
+        }
+
+        .detail-section li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-red);
+        }
+
+        .full-text {
+            background: var(--bg-secondary);
+            padding: 10px;
+            border-radius: 3px;
+            font-style: italic;
+            color: var(--text-primary);
+            border: 1px solid var(--bg-tertiary);
+        }
+
+        .red-flags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        .red-flag {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            background: rgba(240, 113, 120, 0.15);
+            color: var(--accent-red);
+            border-radius: 3px;
+        }
+
+        .clickable-row { cursor: pointer; }
+        .clickable-row td { user-select: none; }
+
+        .cluster-meta {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            padding: 4px 8px;
+            background: var(--bg-primary);
+            border-radius: 3px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .text-preview {
+            color: var(--text-secondary);
+            font-size: 0.72rem;
+            line-height: 1.4;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Alert Bar -->
+        
+        <div class="alert-bar">
+            <span class="deal-name">D085</span>
+            <span class="alert-flag outliers">⚠️ 1 OUTLIER</span> <span class="alert-flag restrictive">🟠 11 HIGHLY RESTRICTIVE</span> <span class="alert-flag provision">🔴 2 HIGH RISK</span> <span class="alert-flag provision">🟡 1 MEDIUM RISK</span>
+        </div>
+        
+
+        <!-- Executive Summary -->
+        
+        <div class="exec-summary">
+            <h2>📊 Executive Summary</h2>
+            <div class="exec-grid">
+                <div class="exec-item">
+                    <div class="exec-label">Total Clauses</div>
+                    <div class="exec-value">22</div>
+                </div>
+                <div class="exec-item">
+                    <div class="exec-label">Avg Restrictiveness</div>
+                    <div class="exec-value">7.5/10</div>
+                </div>
+                <div class="exec-item">
+                    <div class="exec-label">Median Restrictiveness</div>
+                    <div class="exec-value">8.0/10</div>
+                </div>
+                <div class="exec-item">
+                    <div class="exec-label">Outliers Found</div>
+                    <div class="exec-value">1</div>
+                </div>
+                <div class="exec-item">
+                    <div class="exec-label">High-Risk Outliers</div>
+                    <div class="exec-value">0</div>
+                </div>
+                
+            <div class="exec-item">
+                <div class="exec-label">Benchmark Position</div>
+                <div class="exec-value">Middle 50%</div>
+            </div>
+            <div class="exec-item">
+                <div class="exec-label">Assessment</div>
+                <div class="exec-value" style="font-size: 0.9rem;">Similar To Benchmark</div>
+            </div>
+            
+                
+            <div class="exec-item">
+                <div class="exec-label">Provision Risk Score</div>
+                <div class="exec-value">7/30</div>
+            </div>
+            <div class="exec-item">
+                <div class="exec-label">Overall Risk</div>
+                <div class="exec-value" style="font-size: 0.9rem;">MEDIUM</div>
+            </div>
+            
+            </div>
+            <div class="exec-insights">
+                <strong>Key Insights:</strong><br>
+                • Deal contains highly restrictive covenants overall<br>• Similar To Benchmark<br>• Critical provisions flagged: regulatory_restrictions, asymmetry___carveouts
+            </div>
+        </div>
+        
+
+        <!-- Clause Analysis Table -->
+        <div class="table-section">
+            <div class="section-header">COVENANT CLAUSE ANALYSIS (22)</div>
+            <div class="filters">
+                <button class="filter-btn active" onclick="filterClauses('all')">All (22)</button>
+                <button class="filter-btn" onclick="filterClauses('outlier')">🔴 Outliers (&lt;70% sim)</button>
+                <button class="filter-btn" onclick="filterClauses('borderline')">🟡 Borderline (70–80%)</button>
+                <button class="filter-btn" onclick="filterClauses('matched')">🟢 Well Matched (&gt;80%)</button>
+                <button class="export-btn" onclick="exportData()">📥 Export JSON</button>
+            </div>
+            <table id="clauseTable">
+                <thead>
+                    <tr>
+                        <th style="width:40px">#</th>
+                        <th>Section / Covenant</th>
+                        <th>Preview</th>
+                        <th style="width:100px">Similarity</th>
+                        <th style="width:160px">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="clauseTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const clauseData = [
+  {
+    "clause_id": "a",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(a) The Company agrees that, between the date of this Agreement and the earlier of the Effective Time and the termination of this Agreement in accordance with its terms (the \"Pre-Closing Period\"), except (i) as required by applicable Law or with the prior written consent of Parent (such consent not to be unreasonably withheld, conditioned or delayed), (ii) as expressly contemplated by any other provision of this Agreement or (iii) as set forth in Section 5.01 of the Company Disclosure Schedule, the Company shall, and shall cause the Company Subsidiaries, to, use reasonable best efforts to conduct the businesses of the Company Group only in the ordinary course of business and, to the extent consistent therewith, use reasonable best efforts to: (A) preserve substantially intact the business organization, material assets and material properties and business relations of the Company Group, (B) keep available the services of its executive officers and key employees on commercially reasonable terms, (C) maintain in effect all material licenses, permits, consents, franchises and approvals and authorizations, and (D) maintain satisfactory relationships of the Company Group with any persons with which the Company Group has material business relations and with Governmental Authorities that have jurisdiction over its business and operations.",
+    "plain_english": "This covenant restricts the Company from deviating from ordinary business operations during the Pre-Closing Period without consent from the Parent or as required by law.",
+    "cluster_theme": "Pre-Closing Conduct of Business and Operations Restrictions",
+    "similarity": 0.8902062799981664,
+    "restrictiveness": 6,
+    "restrictiveness_category": "unknown",
+    "priority": "routine",
+    "is_outlier": false,
+    "themes": [
+      "operations_and_conduct"
+    ],
+    "red_flags": [
+      "Potential ambiguity in 'ordinary course of business'",
+      "Dependence on subjective interpretation of 'reasonable best efforts'"
+    ]
+  },
+  {
+    "clause_id": "b_preamble",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "Without limiting Section 5.01(a), and as an extension thereof, except as expressly contemplated by any other provision of this Agreement, as set forth in Section 5.01 of the Company Disclosure Schedule or as required by applicable Law, neither the Company nor any Company Subsidiary shall, during the Pre-Closing Period, do any of the following without the prior written consent of Parent (such consent not to be unreasonably withheld, conditioned or delayed):",
+    "plain_english": "This covenant restricts the Company and its Subsidiaries from undertaking certain business activities during the Pre-Closing Period without prior written consent from the Parent.",
+    "cluster_theme": "Pre-Closing Conduct of Business and Operations Restrictions",
+    "similarity": 0.7915906240314009,
+    "restrictiveness": 7,
+    "restrictiveness_category": "unknown",
+    "priority": "routine",
+    "is_outlier": false,
+    "themes": [
+      "operations_and_conduct"
+    ],
+    "red_flags": [
+      "Broad restrictions on business operations during Pre-Closing Period",
+      "Potential for buyer to unreasonably withhold consent"
+    ]
+  },
+  {
+    "clause_id": "b_i",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(i) amend or otherwise change its certificate of incorporation, by-laws or other similar organizational documents (including the Company Charter and the Company Bylaws);",
+    "plain_english": "This covenant restricts the company from amending its organizational documents without consent, limiting operational flexibility.",
+    "cluster_theme": "Restrictions on Amending Organizational and Governing Documents",
+    "similarity": 0.8170673679181621,
+    "restrictiveness": 7,
+    "restrictiveness_category": "unknown",
+    "priority": "routine",
+    "is_outlier": false,
+    "themes": [
+      "operations_and_conduct"
+    ],
+    "red_flags": [
+      "Potentially limits the company's ability to adapt to changing circumstances or regulatory requirements"
+    ]
+  },
+  {
+    "clause_id": "b_ii",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(ii) issue, grant, sell, dispose of, encumber or authorize such issuance, sale, disposition or encumbrance of, any Equity Interests of the Company or any Company Subsidiary other than the issuance of (A) any Company RSUs (including Performance Contingent RSUs and SIP Awards) in the ordinary course pursuant to the Company Stock Plans subject to the agreed upon budget set forth in Section 5.01(b)(ii) of the Company Disclosure Schedule, (B) any shares of Company Common Stock upon the exercise or settlement of Company Options or Company RSUs (including Performance Contingent RSUs and SIP Awards) in accordance with the terms of those Company Options or Company RSUs (including Performance Contingent RSUs conditions and SIP Awards), as applicable, outstanding on the date hereof or issued (or modified) after the date hereof in accordance with this Section 5.01, (C) pursuant to any offering period that is open as of the date of this Agreement under the Company ESPP and (D) any Equity Interests of any Subsidiary of the Company to the Company or any other Subsidiary of the Company;",
+    "plain_english": "This covenant restricts the Company from issuing or encumbering any equity interests without specific exceptions.",
+    "cluster_theme": "Prohibition on Issuing or Encumbering Capital Stock and Equity Securities",
+    "similarity": 0.8298973290288786,
+    "restrictiveness": 7,
+    "restrictiveness_category": "unknown",
+    "priority": "routine",
+    "is_outlier": false,
+    "themes": [
+      "mergers_and_acquisitions",
+      "operations_and_conduct"
+    ],
+    "red_flags": [
+      "Potentially broad interpretation of 'encumber'",
+      "Restrictions may limit future financing opportunities"
+    ]
+  },
+  {
+    "clause_id": "b_iii",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(iii) declare, set aside, make or pay any dividend or other distribution, payable in cash, shares, property or otherwise, with respect to any of Equity Interests of the Company or any Company Subsidiary, except for dividends or other distributions by any direct or indirect wholly owned Company Subsidiary to the Company or any other direct or indirect wholly owned Company Subsidiary;",
+    "plain_english": "This covenant restricts the Company and its subsidiaries from declaring or paying any dividends or distributions, except for those made by wholly owned subsidiaries to the Company or other wholly owned subsidiaries.",
+    "cluster_theme": "Prohibition on Dividends and Distributions During Interim Period",
+    "similarity": 0.876523686514528,
+    "restrictiveness": 8,
+    "restrictiveness_category": "unknown",
+    "priority": "routine",
+    "is_outlier": false,
+    "themes": [
+      "dividends_and_distributions",
+      "operations_and_conduct"
+    ],
+    "red_flags": [
+      "Prohibition on dividends may limit the company's ability to manage cash flow or return capital to shareholders"
+    ]
+  },
+  {
+    "clause_id": "b_iv",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(iv) reclassify, combine, split, subdivide or redeem, or purchase or otherwise acquire, directly or indirectly, any Equity Interests of the Company or any Company Subsidiary, except in connection with any net exercise, net settlement or \"sell to cover\" transaction with respect to any Company Options or Company RSUs (including Performance Contingent RSUs and SIP Awards), in each case, in accordance with their terms;",
+    "plain_english": "This covenant restricts the Company from reclassifying, combining, splitting, subdividing, redeeming, or acquiring its equity interests, with limited exceptions for certain equity compensation transactions.",
+    "cluster_theme": "Prohibitions on Stock Splits, Reclassifications, and Share Repurchases",
+    "similarity": 0.8065096207737671,
+    "restrictiveness": 8,
+    "restrictiveness_category": "unknown",
+    "priority": "routine",
+    "is_outlier": false,
+    "themes": [
+      "dividends_and_distributions",
+      "operations_and_conduct"
+    ],
+    "red_flags": [
+      "Potentially overly broad restrictions on equity transactions could limit flexibility for the seller"
+    ]
+  },
+  {
+    "clause_id": "b_v",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(v) sell, transfer, lease, sublease, license, mortgage, pledge, encumber, allow to lapse, assign, abandon, disclaim, dedicate to the public, incur any Lien on (other than a Permitted Lien) or otherwise dispose of, or authorize any of the foregoing with respect to, any of its material properties, assets, licenses, operations, rights, businesses or interests therein (but not including Intellectual Property, which is the subject of Section 5.01(b)(xvii)) except (A) as required by Contracts or Company Leases in force on the date of this Agreement, (B) such dispositions of assets no longer used in the ordinary course of business of the Company's or the applicable Company Subsidiary's business as conducted as of the date of this Agreement or (C) such dispositions among the Company and the Company Subsidiaries;",
+    "plain_english": "This covenant restricts the Company from selling, transferring, or encumbering its material assets without consent, except for certain specified exceptions.",
+    "cluster_theme": "Prohibitions on Sale Transfer or Encumbrance of Company Assets",
+    "similarity": 0.7867954175309249,
+    "restrictiveness": 8,
+    "restrictiveness_category": "unknown",
+    "priority": "routine",
+    "is_outlier": false,
+    "themes": [
+      "asset_dispositions",
+      "operations_and_conduct"
+    ],
+    "red_flags": [
+      "Broad prohibition on asset dispositions could hinder operational flexibility",
+      "Exclusion of Intellectual Property from this clause may create loopholes"
+    ]
+  },
+  {
+    "clause_id": "b_vi",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(vi) acquire (including by amalgamation, merger, consolidation or acquisition of Equity Interests or assets or any other business combination) (A) any company, corporation, partnership, other business organization (or any division thereof) or (B) any real property other than such acquisitions that do not exceed $20,000,000 individually or $50,000,000 in the aggregate;",
+    "plain_english": "This covenant restricts the company from acquiring other businesses or real property exceeding specified monetary thresholds during the interim period.",
+    "cluster_theme": "Prohibition on Acquisitions and Business Combinations During Interim Period",
+    "similarity": 0.7593271344028562,
+    "restrictiveness": 6,
+    "restrictiveness_category": "unknown",
+    "priority": "routine",
+    "is_outlier": false,
+    "themes": [
+      "mergers_and_acquisitions"
+    ],
+    "red_flags": [
+      "The aggregate cap of $50,000,000 could lead to significant acquisitions that may affect the company's value or operations without buyer consent."
+    ]
+  },
+  {
+    "clause_id": "b_vii",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(vii) (A) repurchase, prepay or incur any indebtedness for borrowed money or issue any debt securities, or issue or sell options, warrants, calls or other rights to acquire any of its debt securities, (B) make any loans, advances or capital contributions to, or investments in, any other person (other than a Company Subsidiary) or (C) assume, guarantee, endorse or otherwise become liable or responsible for the indebtedness or other obligations of another person (other than indebtedness incurred between the Company and any of its wholly owned Subsidiaries or between any of such wholly owned Subsidiaries and guarantees by the Company on behalf of any Company Subsidiary);",
+    "plain_english": "This covenant restricts the Company from incurring new debt, making loans, or guaranteeing obligations of others, with limited exceptions.",
+    "cluster_theme": "Prohibitions on Incurring or Modifying Debt and Guarantees",
+    "similarity": 0.8223894186279634,
+    "restrictiveness": 9,
+    "restrictiveness_category": "unknown",
+    "priority": "urgent",
+    "is_outlier": false,
+    "themes": [
+      "debt_and_financing"
+    ],
+    "red_flags": [
+      "Broad prohibitions on incurring debt could hinder operational flexibility",
+      "Potentially limits the Company's ability to respond to market conditions"
+    ]
+  },
+  {
+    "clause_id": "b_viii",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(viii) enter into, amend, waive (including any right thereunder), renew or voluntarily terminate (other than as a result of the expiration or non-renewal of any Contract in accordance with its terms, as such terms are in effect on the date of this Agreement) any Material Contract (or any other Contract that would be deemed a Material Contract if it had been entered into or amended prior to the date of this Agreement) or any Company Lease (or any other Contract that would be deemed a Company Lease if it had been entered into or amended prior to the date of this Agreement), other than in the ordinary course of business; provided that, for purposes of this Section 5.01(b)(viii), the phrase \"other than in the ordinary course of business\" shall not be construed to permit (A) the entry into, amendment, waiver, renewal or termination of any Material Contract of the type described in Section 3.15(a)(vi) or Section 3.15(a)(vii) or (B) the taking of any action prohibited by any other subsection of this Section 5.01(b);",
+    "plain_english": "This covenant restricts the company from entering into, amending, or terminating material contracts outside of the ordinary course of business, requiring buyer consent for significant changes.",
+    "cluster_theme": "Restrictions on Modifying, Terminating, or Entering Material Contracts",
+    "similarity": 0.7753559610230836,
+    "restrictiveness": 8,
+    "restrictiveness_category": "unknown",
+    "priority": "urgent",
+    "is_outlier": false,
+    "themes": [
+      "contracts_and_commitments",
+      "operations_and_conduct"
+    ],
+    "red_flags": [
+      "Broad restrictions on entering into or modifying contracts could limit operational flexibility",
+      "Potential for disputes over what constitutes 'ordinary course of business'"
+    ]
+  },
+  {
+    "clause_id": "b_ix",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(ix) authorize, or make any commitment with respect to, capital expenditures, (A) for the twelve (12)-month period ended December 31, 2026, that in the aggregate exceed $65,000,000, and (B) for the twelve (12)-month period ended December 31, 2027, that in the aggregate exceed $45,000,000;",
+    "plain_english": "This covenant restricts the company from authorizing or committing to capital expenditures exceeding specified limits during the interim period.",
+    "cluster_theme": "Budget-Based Limitations on Capital Expenditures During Interim Period",
+    "similarity": 0.7570900278555126,
+    "restrictiveness": 6,
+    "restrictiveness_category": "unknown",
+    "priority": "routine",
+    "is_outlier": false,
+    "themes": [
+      "capital_expenditures"
+    ],
+    "red_flags": [
+      "Potential for significant operational constraints if capital needs exceed limits"
+    ]
+  },
+  {
+    "clause_id": "b_x",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(x) except as otherwise required under any Plan in effect as of the date hereof, (A) increase the cash compensation payable or to become payable to Employee or Non-Employee Service Providers (other than in the ordinary course of business, consistent with past practice, provided that the aggregate cost is less than or equal to five percent (5%) of such cash compensation in the aggregate on a calendar year basis), (B) grant or amend any retention, severance or termination pay to, or enter into any employment, bonus, incentive, equity, change of control or severance agreement with, any Employee (or any individual who would be an Employee if employed on the date hereof) or Non-Employee Service Provider, other than any standard offer letters entered into in the ordinary course of business with any newly-hired Employee below the level of vice president (provided that such hiring is permitted by this Section 5.01) and that provide for no more than six (6) months' severance, (C) pay any annual bonus or annual incentive compensation in excess of the amount earned based on actual performance in accordance with the applicable Plan, (D) establish, adopt, enter into, terminate or materially amend any Plan, or establish, adopt or enter into any plan, agreement, program, policy, trust, fund or other arrangement that would be a Plan if it were in existence as of the date of this Agreement, for the benefit of any Employee or Non-Employee Service Provider, provided that the foregoing, either individually or in the aggregate, shall not result in a material increase in costs to the Company or any Company Subsidiary, (E) loan or advance any money or other property to any Employee or Non-Employee Service Provider or (F) establish, adopt, enter into or amend any Labor Agreement;",
+    "plain_english": "This covenant restricts the Company from making significant changes to employee compensation and benefits during the interim period pending the merger.",
+    "cluster_theme": "Interim Period Restrictions on Employee Compensation and Benefit Changes",
+    "similarity": 0.8741149379767914,
+    "restrictiveness": 8,
+    "restrictiveness_category": "unknown",
+    "priority": "routine",
+    "is_outlier": false,
+    "themes": [
+      "compensation_and_benefits"
+    ],
+    "red_flags": [
+      "Potentially restrictive on future compensation adjustments",
+      "Limits on bonuses and incentive compensation may affect employee retention"
+    ]
+  },
+  {
+    "clause_id": "b_xi",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(xi) other than in the ordinary course of business below the level of vice president for any Employee, hire or terminate (other than for cause) the employment of any Employee (or any individual who would be an Employee if employed on the date hereof);",
+    "plain_english": "This covenant restricts the hiring and termination of employees at or above the vice president level without cause, limiting the company's operational flexibility.",
+    "cluster_theme": "Restrictions on Hiring, Terminating, and Promoting Senior Employees",
+    "similarity": 0.7172309874227558,
+    "restrictiveness": 7,
+    "restrictiveness_category": "unknown",
+    "priority": "routine",
+    "is_outlier": false,
+    "themes": [
+      "compensation_and_benefits",
+      "operations_and_conduct"
+    ],
+    "red_flags": [
+      "Potentially limits the company's ability to adapt to changing business needs",
+      "Restricts hiring and termination decisions, which could impact operational flexibility"
+    ]
+  },
+  {
+    "clause_id": "b_xii",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(xii) exercise discretion with respect to or otherwise voluntarily accelerate the lapse of restriction, achievement of performance or vesting of any equity or equity-based awards as a result of the Merger, except as expressly provided in this Agreement;",
+    "plain_english": "This covenant restricts the company's ability to accelerate the vesting of equity awards due to the Merger, limiting flexibility in compensation management.",
+    "cluster_theme": "Restrictions on Accelerating Vesting of Equity Awards and Compensation",
+    "similarity": 0.7275179636620964,
+    "restrictiveness": 7,
+    "restrictiveness_category": "unknown",
+    "priority": "routine",
+    "is_outlier": false,
+    "themes": [
+      "compensation_and_benefits",
+      "mergers_and_acquisitions"
+    ],
+    "red_flags": [
+      "Potential for ambiguity in what constitutes 'discretion' and 'voluntarily accelerate'",
+      "Restricts the company's ability to manage equity awards during a critical transition period"
+    ]
+  },
+  {
+    "clause_id": "b_xiii",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(xiii) (A) initiate, settle or propose to settle any Action, other than (1) settlements for monetary damages (net of insurance proceeds) involving not more than $5,000,000 in the aggregate and that do not (x) require any material actions or impose any material restrictions or ongoing royalty or other future payment obligations on the business or operations of the Company Group, or after the Effective Time, Parent or its Subsidiaries or (y) include the admission of wrongdoing by any member of the Company Group and (2) Transaction Litigation, which is the subject of, and shall be governed by Section 6.11 or (B) settle (or propose to settle) any investigation or inquiry by any Governmental Authority, including by entering into any consent decree or other similar agreement;",
+    "plain_english": "This covenant restricts the Company Group's ability to initiate or settle legal actions without meeting specific monetary thresholds and conditions.",
+    "cluster_theme": "Monetary Thresholds for Settling Legal Proceedings and Actions",
+    "similarity": 0.840027445698636,
+    "restrictiveness": 7,
+    "restrictiveness_category": "unknown",
+    "priority": "routine",
+    "is_outlier": false,
+    "themes": [
+      "litigation_and_settlements"
+    ],
+    "red_flags": [
+      "Potentially high aggregate settlement limit could lead to significant liabilities",
+      "Restrictions on settling investigations by Governmental Authorities may limit operational flexibility"
+    ]
+  },
+  {
+    "clause_id": "b_xiv",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(xiv) (A) change the Company's financial accounting policies or procedures in effect as of December 31, 2024, other than as required by Law or GAAP or (B) write up, write down or write off the book value of any of its assets, other than (1) in the ordinary course of business or (2) as may be required by Law or GAAP, as approved by the Company's independent public accountants;",
+    "plain_english": "This covenant restricts the Company from changing its financial accounting policies or asset valuations outside of specified exceptions.",
+    "cluster_theme": "Restrictions on Changes to Accounting Policies and Asset Valuations",
+    "similarity": 0.7676117253822612,
+    "restrictiveness": 7,
+    "restrictiveness_category": "unknown",
+    "priority": "routine",
+    "is_outlier": false,
+    "themes": [
+      "accounting_and_reporting",
+      "operations_and_conduct"
+    ],
+    "red_flags": [
+      "Potential for misinterpretation of 'ordinary course of business'",
+      "Restricts flexibility in accounting practices"
+    ]
+  },
+  {
+    "clause_id": "b_xv",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(xv) adopt a plan of complete or partial liquidation or resolutions providing for a complete or partial liquidation, dissolution, restructuring, recapitalization or other reorganization of the Company, any of the Company Subsidiaries;",
+    "plain_english": "This covenant restricts the Company and its subsidiaries from adopting any plans for liquidation, dissolution, restructuring, or reorganization.",
+    "cluster_theme": "Prohibition on Liquidation, Dissolution, Restructuring and Fundamental Corporate Changes",
+    "similarity": 0.8808894382671333,
+    "restrictiveness": 9,
+    "restrictiveness_category": "unknown",
+    "priority": "urgent",
+    "is_outlier": false,
+    "themes": [
+      "mergers_and_acquisitions"
+    ],
+    "red_flags": [
+      "absolute prohibition on liquidation and restructuring could limit operational flexibility",
+      "potentially restricts the ability to respond to adverse market conditions"
+    ]
+  },
+  {
+    "clause_id": "b_xvi",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(xvi) (A) change or adopt (or file a request to change or adopt) any material method of Tax accounting or any annual Tax accounting period, (B) make, change or rescind any material Tax election, (C) file any material Tax Return relating to the Company or any of the Company Subsidiaries that has been prepared in a manner that is inconsistent with past practices, as applicable, (D) settle or compromise any claim, investigation, audit or controversy relating to material Taxes, (E) surrender any right to claim a material Tax refund, (F) file any material amended Tax Return, (G) enter into any closing agreement with respect to any material Tax or (H) waive or extend the statute of limitations with respect to any material Tax Return other than pursuant to extensions of time to file Tax Returns obtained in the ordinary course of business;",
+    "plain_english": "This covenant restricts the Company from making significant changes to its tax accounting methods, elections, or returns without buyer consent.",
+    "cluster_theme": "Restrictions on Tax Elections, Returns, and Administrative Actions",
+    "similarity": 0.9089740205837695,
+    "restrictiveness": 8,
+    "restrictiveness_category": "unknown",
+    "priority": "urgent",
+    "is_outlier": false,
+    "themes": [
+      "tax_matters"
+    ],
+    "red_flags": [
+      "potentially broad restrictions on tax-related decisions",
+      "limits seller's flexibility in tax planning"
+    ]
+  },
+  {
+    "clause_id": "b_xvii",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(xvii) (A) abandon, disclaim, fail to prosecute, maintain or enforce, dedicate to the public, allow to lapse, sell, assign, transfer, encumber or incur any Lien (other than Permitted Liens) on, any Owned Intellectual Property or material Licensed Intellectual Property except (1) as required by Contracts in force on the date of this Agreement or (2) such assignments, transfers or other dispositions among the Company and the Company Subsidiaries; (B) license or sublicense any Intellectual Property to any third party, other than non-exclusive licenses or non-exclusive sublicenses granted to customers or service providers in the ordinary course of business; or (C) disclose any trade secrets or confidential information to any person, other than Representatives of the Company or a Company Subsidiary that are subject to appropriate confidentiality and non-disclosure obligations, in each case in the ordinary course of business, or other than to Parent or any of its Affiliates in connection with the Transactions;",
+    "plain_english": "This covenant restricts the Company from transferring, licensing, or disclosing its intellectual property without specific exceptions, limiting its operational flexibility.",
+    "cluster_theme": "Restrictions on Sale, License, Abandonment of Company Intellectual Property",
+    "similarity": 0.8372115216928774,
+    "restrictiveness": 8,
+    "restrictiveness_category": "unknown",
+    "priority": "urgent",
+    "is_outlier": false,
+    "themes": [
+      "intellectual_property",
+      "operations_and_conduct"
+    ],
+    "red_flags": [
+      "Potentially overly broad restrictions on intellectual property management",
+      "Limitations on licensing could hinder business operations"
+    ]
+  },
+  {
+    "clause_id": "b_xviii",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(xviii) enter into, amend, waive or terminate (other than terminations in accordance with their terms) any Affiliate Transaction; or",
+    "plain_english": "This covenant restricts the company from entering into, amending, waiving, or terminating any Affiliate Transactions without consent.",
+    "cluster_theme": "Restrictions on Implementing New Policies and Strategic Operational Changes",
+    "similarity": 0.6564225813414901,
+    "restrictiveness": 7,
+    "restrictiveness_category": "unknown",
+    "priority": "routine",
+    "is_outlier": true,
+    "themes": [
+      "operations_and_conduct",
+      "related_party_transactions"
+    ],
+    "red_flags": [
+      "Potentially limits the company's ability to engage in necessary transactions with affiliates, which could hinder operational flexibility."
+    ],
+    "outlier_analysis": {
+      "why_unusual": "This clause is unusual because it specifically restricts actions related to Affiliate Transactions without providing clear definitions or parameters for what constitutes such transactions. Unlike typical covenants that focus on broader operational changes or strategic policies, this clause narrows its focus to a specific type of transaction, which may not align with standard practices in M&A agreements.",
+      "specific_differences": [
+        "The clause focuses solely on Affiliate Transactions, whereas benchmark patterns often encompass a wider range of operational changes and policy implementations.",
+        "It lacks clarity on the criteria for what constitutes an 'Affiliate Transaction,' which is typically defined in more detail in standard covenants.",
+        "The clause includes a specific provision about terminations in accordance with their terms, which is not commonly seen in operational conduct covenants that usually address broader operational flexibility."
+      ],
+      "comparison_to_cluster": "This clause differs from typical operations_conduct covenants as it does not address general operational policies or strategic changes but rather focuses narrowly on transactions with affiliates. Typical covenants in this cluster would allow for more comprehensive operational flexibility while outlining specific restrictions.",
+      "outlier_risk_level": "medium",
+      "requires_lawyer_review": true,
+      "lawyer_should_review_for": [
+        "The lack of clarity around what constitutes an 'Affiliate Transaction' could lead to ambiguity and potential disputes.",
+        "The implications of restricting such transactions on the company's operational flexibility and ability to respond to market changes.",
+        "Potential conflicts with other provisions in the agreement that may allow for certain transactions or operational changes."
+      ],
+      "unusual_elements": [
+        "Narrow focus on Affiliate Transactions without clear definitions.",
+        "Inclusion of termination conditions that are not typical in broader operational conduct covenants."
+      ]
+    }
+  },
+  {
+    "clause_id": "b_xix",
+    "section_title": "Conduct of Business by the Company Pending the Merger",
+    "section_number": "Section 5.01",
+    "text": "(xix) agree, resolve, announce an intention, enter into any formal or informal agreement or otherwise make a commitment, to do any of the foregoing.",
+    "plain_english": "This covenant restricts the company from making any agreements or commitments that could circumvent other covenants in the merger agreement.",
+    "cluster_theme": "Prohibition on Agreements or Commitments to Circumvent Other Covenants",
+    "similarity": 0.7133828050087221,
+    "restrictiveness": 9,
+    "restrictiveness_category": "unknown",
+    "priority": "urgent",
+    "is_outlier": false,
+    "themes": [
+      "operations_and_conduct",
+      "contracts_and_commitments"
+    ],
+    "red_flags": [
+      "overly broad language",
+      "potentially limits seller's operational flexibility"
+    ]
+  },
+  {
+    "clause_id": "1",
+    "section_title": "Control of Operations",
+    "section_number": "Section 5.03",
+    "text": "Without limiting Section 5.01 or Section 5.02, nothing contained in this Agreement shall give Parent or the Company, directly or indirectly, the right to control or direct the operations of the Company or Parent, as applicable, prior to the Closing. Prior to the Closing, each party shall exercise, consistent with and subject to the terms and conditions of this Agreement, including Section 5.01 (in the case of the Company) and or Section 5.02 (in the case of Parent and Merger Sub), control and supervision over such matters.",
+    "plain_english": "This covenant restricts the buyer from having any control over the operations of the company prior to the closing of the merger.",
+    "cluster_theme": "Clarification That Buyer Has No Pre-Closing Control Rights",
+    "similarity": 0.8774017099259243,
+    "restrictiveness": 8,
+    "restrictiveness_category": "unknown",
+    "priority": "routine",
+    "is_outlier": false,
+    "themes": [
+      "operations_and_conduct",
+      "mergers_and_acquisitions"
+    ],
+    "red_flags": [
+      "Potential for operational delays due to lack of buyer control before closing"
+    ]
+  }
+];
+
+        function populateTable(filter = 'all') {
+            const tbody = document.getElementById('clauseTableBody');
+            tbody.innerHTML = '';
+
+            let filtered = clauseData;
+            if (filter === 'outlier') {
+                filtered = clauseData.filter(c => c.similarity < 0.70);
+            } else if (filter === 'borderline') {
+                filtered = clauseData.filter(c => c.similarity >= 0.70 && c.similarity < 0.80);
+            } else if (filter === 'matched') {
+                filtered = clauseData.filter(c => c.similarity >= 0.80);
+            }
+
+            filtered.forEach((clause, index) => {
+                // ── Main row (click anywhere to expand) ──
+                const row = document.createElement('tr');
+                const rowClasses = ['clickable-row'];
+                if (clause.similarity < 0.70) rowClasses.push('row-outlier');
+                else if (clause.similarity < 0.80) rowClasses.push('row-highly-restrictive');
+                row.className = rowClasses.join(' ');
+                row.onclick = () => toggleDetail(index);
+
+                // Similarity badge — this is the grounded signal
+                const simPct = clause.similarity * 100;
+                const simBadge = simPct < 70 ? 'badge-outlier' :
+                                 simPct < 80 ? 'badge-medium' : 'badge-low';
+
+                const status = [];
+                if (clause.similarity < 0.70) status.push('<span class="badge badge-outlier">OUTLIER</span>');
+                else if (clause.similarity < 0.80) status.push('<span class="badge badge-medium">BORDERLINE</span>');
+                else status.push('<span class="badge badge-low">MATCHED</span>');
+
+                const preview = clause.plain_english || (clause.text ? clause.text.substring(0, 120) : '');
+
+                row.innerHTML = `
+                    <td style="color:var(--text-muted)">${index + 1}</td>
+                    <td>
+                        <div style="font-weight:500;color:var(--text-primary);margin-bottom:2px">${clause.section_title || clause.clause_id}</div>
+                        <div style="font-size:0.68rem;color:var(--text-muted)">§${clause.section_number} · id ${clause.clause_id}</div>
+                    </td>
+                    <td><div class="text-preview">${preview}</div></td>
+                    <td><span class="badge ${simBadge}">${simPct.toFixed(1)}%</span></td>
+                    <td>${status.join(' ')}</td>
+                `;
+                tbody.appendChild(row);
+
+                // ── Detail row (hidden until row clicked) ──
+                const detailRow = document.createElement('tr');
+                detailRow.className = clause.similarity < 0.70 ? 'row-outlier' : clause.similarity < 0.80 ? 'row-highly-restrictive' : '';
+                detailRow.innerHTML = `
+                    <td colspan="5">
+                        <div class="clause-detail" id="detail-${index}">
+
+                            <!-- BENCHMARK DATA (grounded) -->
+                            <div class="detail-section">
+                                <h4>Benchmark Cluster Match</h4>
+                                <p><strong>Cluster:</strong> ${clause.cluster_theme}</p>
+                                <p><strong>Similarity to nearest cluster:</strong>
+                                    <span class="badge ${simBadge}">${simPct.toFixed(1)}%</span>
+                                    ${clause.similarity < 0.70 ? ' — below 70% threshold (outlier)' :
+                                       clause.similarity < 0.80 ? ' — borderline match' : ' — good match'}
+                                </p>
+                            </div>
+
+                            <div class="detail-section">
+                                <h4>Full Text</h4>
+                                <p class="full-text">${clause.text}</p>
+                            </div>
+
+                            ${clause.is_outlier && clause.outlier_analysis ? `
+                                <div class="detail-section">
+                                    <h4>Why This Doesn't Match the Benchmark</h4>
+                                    <p>${clause.outlier_analysis.why_unusual}</p>
+                                </div>
+                                <div class="detail-section">
+                                    <h4>Specific Differences</h4>
+                                    <ul>${clause.outlier_analysis.specific_differences.map(d => `<li>${d}</li>`).join('')}</ul>
+                                </div>
+                                <div class="detail-section">
+                                    <h4>vs. Typical ${clause.cluster_theme} Clause</h4>
+                                    <p>${clause.outlier_analysis.comparison_to_cluster}</p>
+                                </div>
+                                ${clause.outlier_analysis.requires_lawyer_review ? `
+                                    <div class="detail-section">
+                                        <h4>Suggested Review Points</h4>
+                                        <ul>${clause.outlier_analysis.lawyer_should_review_for.map(item => `<li>${item}</li>`).join('')}</ul>
+                                    </div>
+                                ` : ''}
+                            ` : ''}
+
+                            <!-- LLM ASSESSMENT (uncalibrated — for reference only) -->
+                            <div class="detail-section" style="opacity:0.6;border-top:1px solid var(--bg-hover);padding-top:10px;margin-top:4px">
+                                <h4 style="color:var(--text-muted)">LLM Assessment (uncalibrated)</h4>
+                                <p style="font-size:0.72rem;color:var(--text-muted)">
+                                    Restrictiveness: ${clause.restrictiveness}/10 &nbsp;·&nbsp; Priority: ${clause.priority}
+                                    ${clause.themes && clause.themes.length > 0 ? ' &nbsp;·&nbsp; Themes: ' + clause.themes.join(', ') : ''}
+                                </p>
+                                ${clause.red_flags && clause.red_flags.length > 0 ? `
+                                    <p style="font-size:0.72rem;color:var(--text-muted);margin-top:4px">
+                                        Flags: ${clause.red_flags.join(' · ')}
+                                    </p>
+                                ` : ''}
+                            </div>
+
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(detailRow);
+            });
+        }
+
+        function toggleDetail(index) {
+            document.getElementById(`detail-${index}`).classList.toggle('show');
+        }
+
+        function filterClauses(filter) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            populateTable(filter);
+        }
+
+        function exportData() {
+            const dataStr = JSON.stringify({clauses: clauseData}, null, 2);
+            const blob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'D085_covenant_analysis.json';
+            a.click();
+        }
+
+        populateTable();
+    </script>
+</body>
+</html>

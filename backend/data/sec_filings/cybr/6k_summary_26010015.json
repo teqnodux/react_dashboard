@@ -1,0 +1,24 @@
+{
+  "ticker": "CYBR",
+  "company": "CyberArk Software Ltd.",
+  "home_country": "Israel",
+  "filing_date": "02/04/26",
+  "report_type": "Earnings",
+  "L1_headline": "+ CYBR \u2013 Record Q4 and Full Year 2025 Results. | 02/04/26",
+  "L2_brief": "CyberArk Software Ltd. filed a 6-K on February 4, 2026, announcing record fourth quarter and full year 2025 results via press release. The U.S. GAAP financial information from the consolidated balance sheets, statements of operations, and cash flows was incorporated by reference into the Company's Registration Statements on Form S-8. Specific financial figures were not included in the 6-K body itself, as details are contained in the attached Exhibit 99.1 press release.",
+  "L3_detailed": {
+    "event": "CyberArk announced record fourth quarter and full year 2025 financial results via a press release furnished as Exhibit 99.1 to this Form 6-K, dated February 4, 2026.",
+    "key_figures": [
+      "Record Q4 2025 results (specific figures in Exhibit 99.1, not reproduced in 6-K body)",
+      "Record full year 2025 results (specific figures in Exhibit 99.1, not reproduced in 6-K body)"
+    ],
+    "market_impact": "CyberArk trades on NASDAQ under ticker CYBR. The announcement of record quarterly and annual results is material information for US-listed shares. The U.S. GAAP financials were incorporated by reference into multiple Form S-8 registration statements.",
+    "deal_relevance": "N/A",
+    "regulatory_notes": "Filing made with the SEC pursuant to Rule 13a-16 of the Securities Exchange Act of 1934. The press release is furnished (not filed) under Section 18 of the Exchange Act, except for the U.S. GAAP financial statements which are incorporated by reference into Form S-8 registration statements.",
+    "cross_border_considerations": "CyberArk is incorporated in Israel with principal offices in Petach-Tikva, Israel. The company files annual reports on Form 20-F as a foreign private issuer. US investors hold ADR/ordinary shares listed on US exchanges. Reporting currency details are contained in Exhibit 99.1.",
+    "risks_flagged": [
+      "Specific financial details are in Exhibit 99.1 which was not included in the parsed text; full analysis requires review of that exhibit"
+    ]
+  },
+  "filing_type": "6-K"
+}

@@ -1,0 +1,31 @@
+{
+  "ticker": "PEN",
+  "issuer": "Penumbra Inc",
+  "filing_date": "02/18/26",
+  "insider_name": "Bridget O'Rourke",
+  "insider_title": "Director",
+  "relationship": "Director",
+  "L1_headline": "+ PEN \u2013 Bridget O'Rourke acquired 589 RSU shares. | 02/13/2026",
+  "L2_brief": "Director Bridget O'Rourke acquired 589 shares of Penumbra Inc common stock on 02/13/2026 via a restricted stock unit award at $0 per share. The RSUs vest quarterly through 12/31/2026, but will fully accelerate upon the closing of the pending merger with Boston Scientific Corporation, subject to continued service as director. Post-transaction holdings are 5,962 shares (direct), a portion of which remain subject to vesting.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "02/13/2026",
+        "shares": "589",
+        "price_per_share": "$0",
+        "total_value": "$0",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "5,962 shares (a portion subject to vesting)",
+    "ownership_type": "Direct",
+    "deal_signal": "The filing references a pending Agreement and Plan of Merger dated January 14, 2026, among Penumbra Inc, Boston Scientific Corporation, and Pinehurst Merger Sub, Inc. The RSU grant includes a provision for full acceleration of unvested RSUs upon the closing of the merger, contingent on continued service as director through the closing date. No discretionary purchase or sale was made.",
+    "pattern_notes": "This is a routine RSU grant to a director with standard quarterly vesting. The grant includes merger-related acceleration provisions consistent with the pending Boston Scientific acquisition. No open-market buying or selling activity is present.",
+    "risks_flagged": [
+      "No 10b5-1 plan noted; transaction is an RSU award, not an open-market trade",
+      "A portion of total holdings (5,962 shares) remains subject to vesting conditions"
+    ]
+  },
+  "filing_type": "FORM 4"
+}

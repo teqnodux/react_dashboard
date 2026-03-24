@@ -1,0 +1,15 @@
+label,zone,best_cluster,category,ratio,distance,threshold,num_matches,text_preview
+(i),typical,Broad Economic and Financial Market Changes Exclusion,economic,0.44,0.1241,0.2801,1,"changes in general economic conditions (including changes in interest rates, exchange rates or commo"
+(ii),typical,Broad Economic and Financial Market Changes Exclusion,economic,0.48,0.1348,0.2801,1,"changes in conditions in the financial markets, credit markets or capital markets in the United Stat"
+(iii),typical,Catastrophic External Events Beyond Party Control,force_majeure,0.54,0.1612,0.2965,2,"changes in political conditions (or the initiation, occurrence or continuation of any war, armed hos"
+(iv),typical,Catastrophic External Events Beyond Party Control,force_majeure,0.61,0.1821,0.2965,1,"earthquakes, hurricanes, tsunamis, tornadoes, floods, mudslides, wild fires or other natural disaste"
+(v),typical,Exclusion for impacts from deal announcement and execution,transaction,0.55,0.1408,0.254,1,the public announcement of the execution of this Agreement or the pendency or consummation of the Tr
+(vi),typical,Failure to Meet Financial Projections and Forecasts Exclusions,disclosure,0.8,0.1619,0.2025,1,"any failure by the Company to meet any projections, forecasts, guidance, estimates, milestones, budg"
+(vii),typical,"Changes in Law, GAAP, and Regulatory Accounting Standards",accounting,0.5,0.1462,0.2942,1,changes or proposed changes in GAAP or other accounting standards (or the interpretation thereof)
+(viii),typical,"Changes in Law, GAAP, and Regulatory Accounting Standards",accounting,0.53,0.1571,0.2942,1,changes or proposed changes in any applicable Laws or the interpretation thereof or the enforcement 
+(ix),typical,Catastrophic External Events Beyond Party Control,force_majeure,1.0,0.2956,0.2965,1,"any epidemic, pandemic or disease outbreak (including COVID-19), or any Law, directive, pronouncemen"
+(x),typical,Exclusion for impacts from deal announcement and execution,transaction,0.94,0.2378,0.254,1,"any Effect attributable to the announcement or pendency of the Transactions, including any impact on"
+(xi),typical,Actions Taken Pursuant to or Required by Agreement Terms,transaction,0.51,0.1407,0.2786,1,any actions taken or not taken by the Company or any Company Subsidiary at the written request of Pa
+(xii),outlier,"Changes in Law, GAAP, and Regulatory Accounting Standards",accounting,1.28,0.3766,0.2942,0,changes or prospective changes in the credit rating of the Company or any of its Subsidiaries
+(xiii),atypical,Exclusion for Matters Previously Disclosed in Transaction Documents,disclosure,1.09,0.268,0.2448,0,any matter disclosed in Section 3.09(b) of the Company Disclosure Schedule
+(xiv),outlier,Exclusions for Acquiror Identity and Post-Acquisition Plans,transaction,1.25,0.3086,0.2462,0,"any Effect to the extent relating to Parent, Merger Sub or any of their respective Affiliates"

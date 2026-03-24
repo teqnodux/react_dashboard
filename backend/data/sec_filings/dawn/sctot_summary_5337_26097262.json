@@ -1,0 +1,71 @@
+{
+  "filing_type": "SC TO-C",
+  "bidder": "Servier S.A.S. (via Servier Detroit Inc., a wholly owned subsidiary of Servier Pharmaceuticals LLC)",
+  "bidder_ticker": null,
+  "target": "Day One Biopharmaceuticals, Inc.",
+  "target_ticker": "DAWN",
+  "filing_date": "03/06/25",
+  "L1_headline": "+ DAWN \u2013 Servier announces planned tender offer (pre-commencement). | 03/06/25",
+  "L2_brief": "Servier S.A.S., through its subsidiary Servier Detroit Inc., has entered into a Merger Agreement dated March 6, 2026 to acquire all outstanding shares of Day One Biopharmaceuticals (DAWN) via a tender offer that has not yet commenced. This SC TO-C filing relates solely to preliminary communications made before the commencement of the tender offer. No offer price, premium, or board recommendation details are disclosed in this pre-commencement communication.",
+  "L3_detailed": {
+    "offer_terms": {
+      "offer_price": "Not disclosed in this filing",
+      "offer_type": "Unable to determine from this filing",
+      "exchange_ratio": null,
+      "premium": "Not disclosed in this filing",
+      "total_deal_value": "Not disclosed in this filing",
+      "shares_sought": "All issued and outstanding shares of common stock, $0.0001 par value per share",
+      "minimum_condition": "Not disclosed in this filing",
+      "top_up_option": "Not disclosed in this filing"
+    },
+    "timing": {
+      "offer_commenced": "Not yet commenced \u2014 this filing relates solely to preliminary communications",
+      "expiration_date": "Not yet determined",
+      "withdrawal_deadline": "Not yet determined",
+      "expected_closing": "Not disclosed in this filing",
+      "extensions": "Not disclosed in this filing"
+    },
+    "board_recommendation": "UNABLE TO DETERMINE \u2014 No board recommendation is disclosed in this pre-commencement communication. The Company is expected to file a Schedule 14D-9 solicitation/recommendation statement after the tender offer commences.",
+    "fairness_opinion": "Not disclosed in this filing",
+    "background_of_transaction": "Servier S.A.S., Servier Pharmaceuticals LLC (Parent), and Servier Detroit Inc. (Merger Sub) entered into an Agreement and Plan of Merger with Day One Biopharmaceuticals dated March 6, 2026. No further background or negotiation history is provided in this pre-commencement communication.",
+    "conditions_to_offer": [
+      "Sufficient shareholders tendering their shares (specific minimum not disclosed)",
+      "Required regulatory approvals",
+      "No injunctions or legal impediments (implied from forward-looking risk factors)",
+      "Other conditions per the Merger Agreement (not detailed in this filing)"
+    ],
+    "financing": {
+      "source": "Not disclosed in this filing",
+      "committed_financing": "Not disclosed in this filing",
+      "financing_condition": "Unable to determine from this filing"
+    },
+    "regulatory_approvals": {
+      "required": [
+        "Referenced generically \u2014 specific approvals not enumerated in this filing"
+      ],
+      "status": "Not yet filed based on pre-commencement nature of this communication",
+      "expected_timeline": "Not disclosed in this filing"
+    },
+    "deal_protections": {
+      "breakup_fee": "Not disclosed in this filing",
+      "reverse_breakup_fee": "Not disclosed in this filing",
+      "go_shop": "Not disclosed in this filing",
+      "matching_rights": "Not disclosed in this filing",
+      "force_the_vote": "Not disclosed in this filing"
+    },
+    "competing_offers": "None mentioned; forward-looking risk factors reference 'the possibility that competing offers will be made'",
+    "litigation": "Forward-looking risk factors reference 'the outcome of legal proceedings that may be instituted against the Company and/or others relating to the transaction' but no actual litigation is disclosed",
+    "dissenting_shareholders": "None mentioned in this filing",
+    "amendment_changes": "N/A \u2014 this is the initial SC TO-C (pre-commencement communication), not an amendment",
+    "risks_flagged": [
+      "Tender offer has not yet commenced \u2014 all material terms still to be disclosed in forthcoming Schedule TO and Schedule 14D-9",
+      "Risk that insufficient shareholders tender their shares",
+      "Risk of failure or delay in receiving required regulatory approvals",
+      "Possibility of competing offers",
+      "Risk of legal proceedings related to the transaction",
+      "Risk that the Merger Agreement could be terminated due to occurrence of specified events or changes",
+      "Integration risks post-acquisition",
+      "Note: Merger Agreement date states 'March 6, 2026' which may be a typographical error given the filing context \u2014 actual date may be March 6, 2025"
+    ]
+  }
+}

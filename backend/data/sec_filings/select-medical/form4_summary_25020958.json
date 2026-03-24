@@ -1,0 +1,29 @@
+{
+  "ticker": "SEM",
+  "issuer": "SELECT MEDICAL HOLDINGS CORP",
+  "filing_date": "08/04/25",
+  "insider_name": "John A. Saich",
+  "insider_title": "Executive Vice President",
+  "relationship": "Officer",
+  "L1_headline": "+ SEM \u2013 John A. Saich disposed shares for tax withholding. | 08/01/25",
+  "L2_brief": "John A. Saich, Executive Vice President of Select Medical Holdings, disposed of 21,745 shares at $12.57 per share on August 1, 2025. This was not a discretionary sale but rather a mandatory surrender of shares to cover tax withholding obligations upon the vesting of restricted stock, representing a routine compensation-related transaction.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "08/01/2025",
+        "shares": "21,745",
+        "price_per_share": "$12.57",
+        "total_value": "$273,336.65",
+        "acquired_or_disposed": "Disposed (D)"
+      }
+    ],
+    "post_transaction_holdings": "736,412 shares",
+    "ownership_type": "Direct",
+    "deal_signal": "N/A",
+    "pattern_notes": "This is a routine tax withholding transaction upon restricted stock vesting, not a discretionary sale. The disposed shares represent approximately 2.9% of post-transaction holdings, indicating a relatively small portion of total ownership used for tax purposes.",
+    "risks_flagged": [
+      "Transaction is tax withholding related (Code F), not a voluntary sale \u2014 no negative signal"
+    ]
+  }
+}

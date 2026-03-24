@@ -1,0 +1,33 @@
+{
+  "ticker": "TXNM",
+  "company": "TXNM Energy",
+  "filing_date": "05/19/25",
+  "exhibit_type": "Deal Announcement",
+  "L1_headline": "+ TXNM \u2013 Blackstone Infrastructure to acquire for $61.25/share. | 05/19/25",
+  "L2_brief": "TXNM Energy announced a definitive agreement to be acquired by Blackstone Infrastructure for $61.25 per share in cash, reflecting a total enterprise value of $11.5 billion including net debt and preferred stock. The deal represents a 23.0% premium to the unaffected 30-day VWAP as of March 5, 2025, and is expected to close in the second half of 2026, subject to shareholder and multiple regulatory approvals. Blackstone Infrastructure is also investing $400 million via a private placement of 8 million newly issued shares at $50 per share, expected to close in June 2025.",
+  "L3_detailed": {
+    "event": "Blackstone Infrastructure has entered into a definitive agreement to acquire TXNM Energy in an all-cash transaction. TXNM Energy's Board of Directors unanimously approved the deal.",
+    "key_figures": [
+      "$61.25 per share cash consideration",
+      "$11.5 billion total enterprise value (including net debt excluding securitization debt and preferred stock)",
+      "23.0% premium to unaffected 30-day VWAP as of March 5, 2025",
+      "$400 million private placement of 8 million newly issued shares at $50 per share (expected June 2025)",
+      "Additional $400 million equity issuance by TXNM Energy expected prior to closing",
+      "Blackstone Infrastructure manages $60 billion of assets under management"
+    ],
+    "market_impact": "The transaction takes TXNM Energy private under Blackstone Infrastructure's perpetual capital vehicle. The purchase price is funded entirely with equity, and Blackstone does not anticipate increasing TXNM Energy leverage levels. TXNM Energy is not affirming its previously issued 2025 Ongoing Earnings Guidance due to the equity issuances associated with the transaction and does not plan to issue revised guidance during the pending transaction.",
+    "forward_guidance": "TXNM Energy is not affirming its 2025 Ongoing Earnings Guidance and does not plan to issue revised earnings guidance during the pending transaction. Dividends are expected to continue through closing, subject to Board approval. Detailed customer commitment packages will be developed after stakeholder engagement and included in state regulatory filings in the fall of 2025.",
+    "deal_relevance": "Estimated closing in the second half of 2026. Required approvals include: TXNM Energy shareholder approval, NMPRC, PUCT, FERC, DOJ (Hart-Scott-Rodino clearance), Nuclear Regulatory Commission, and FCC. Transaction is funded entirely through equity and assumption of existing debt with no incremental debt issuance. Pat Collawn will step down as Executive Chair upon closing; Don Tarry will continue as President and CEO. TXNM Energy, PNM, and TNMP will remain locally managed and operated.",
+    "risks_flagged": [
+      "Transaction requires approvals from six regulatory bodies (NMPRC, PUCT, FERC, DOJ/HSR, NRC, FCC) plus shareholder approval",
+      "Closing not expected until second half of 2026, implying extended regulatory review period",
+      "Termination fee may be payable by TXNM Energy in certain circumstances giving rise to termination",
+      "Risk that shareholders may not approve the transaction",
+      "Potential adverse effects on ability to retain key personnel and maintain customer/supplier relationships during pendency",
+      "Risk of litigation against TXNM Energy and its directors related to the proposed transaction",
+      "TXNM Energy common stock price may fluctuate during pendency and may decline significantly if the transaction is not completed",
+      "2025 earnings guidance withdrawn and will not be updated during pending transaction"
+    ]
+  },
+  "filing_type": "99.1"
+}

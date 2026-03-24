@@ -1,0 +1,30 @@
+{
+  "ticker": "SEM",
+  "issuer": "SELECT MEDICAL HOLDINGS CORP",
+  "filing_date": "10/30/25",
+  "insider_name": "Christopher Weigl",
+  "insider_title": "Chief Accounting Officer",
+  "relationship": "Officer",
+  "L1_headline": "+ SEM \u2013 Christopher Weigl received 20,000 restricted stock grant. | 10/28/25",
+  "L2_brief": "Christopher Weigl, Chief Accounting Officer of Select Medical Holdings, received a grant of 20,000 restricted shares on October 28, 2025, at no cost. The shares vest in full on October 28, 2029 (4-year cliff vesting). This is a standard equity compensation award that increases his direct holdings to 54,254 shares.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "10/28/2025",
+        "shares": "20,000",
+        "price_per_share": "$0",
+        "total_value": "$0 (equity compensation grant)",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "54,254 shares",
+    "ownership_type": "Direct",
+    "deal_signal": "N/A",
+    "pattern_notes": "This is a restricted stock grant as part of executive compensation with a 4-year cliff vesting period (vests October 28, 2029). The grant represents approximately 37% of his total holdings, indicating meaningful equity alignment with shareholders. This is routine annual/periodic equity compensation for a CAO-level executive.",
+    "risks_flagged": [
+      "Restricted stock with 4-year cliff vesting - not immediately liquid",
+      "No 10b5-1 plan noted - this is an acquisition/grant, not a sale"
+    ]
+  }
+}

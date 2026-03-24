@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TXNM Energy Inc - MAE Analysis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0e14;
+            --bg-secondary: #0f1419;
+            --bg-tertiary: #151c24;
+            --bg-hover: #1a232e;
+            --text-primary: #e6e6e6;
+            --text-secondary: #8a919a;
+            --text-muted: #5c6370;
+            --accent-blue: #5ccfe6;
+            --accent-green: #87d96c;
+            --accent-yellow: #ffcc66;
+            --accent-red: #f07178;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'IBM Plex Sans', sans-serif;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-sans); background: var(--bg-primary); color: var(--text-primary); line-height: 1.5; }
+        .container { max-width: 1600px; margin: 0 auto; padding: 16px; }
+        
+        /* Alert Bar */
+        .alert-bar {
+            background: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 4px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-family: var(--font-mono);
+        }
+        
+        .deal-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .alert-flag {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .alert-flag.outliers {
+            background: rgba(240, 113, 120, 0.2);
+            color: var(--accent-red);
+        }
+        
+        .alert-flag.atypical {
+            background: rgba(255, 204, 102, 0.15);
+            color: var(--accent-yellow);
+        }
+        
+        .alert-flag.compliance {
+            background: rgba(255, 204, 102, 0.15);
+            color: var(--accent-yellow);
+        }
+        
+        /* Flagged Section */
+        .flagged-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+        
+        .section-header {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--bg-tertiary);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .flagged-clause {
+            padding: 16px;
+            border-bottom: 1px solid var(--bg-tertiary);
+        }
+        
+        .flagged-clause:last-child {
+            border-bottom: none;
+        }
+        
+        .clause-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .clause-id {
+            font-family: var(--font-mono);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .clause-zone {
+            font-size: 1.2rem;
+        }
+        
+        .clause-category {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            padding: 3px 8px;
+            background: var(--bg-tertiary);
+            border-radius: 3px;
+        }
+        
+        .clause-text {
+            font-family: var(--font-sans);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            font-style: italic;
+            padding-left: 12px;
+            border-left: 2px solid var(--bg-tertiary);
+        }
+        
+        .risk-item {
+            margin-bottom: 8px;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+        }
+        
+        .risk-label {
+            font-family: var(--font-mono);
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            margin-right: 8px;
+        }
+        
+        .risk-value {
+            color: var(--text-primary);
+        }
+        
+        .red-flags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 4px;
+        }
+        
+        .red-flag {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            background: rgba(240, 113, 120, 0.15);
+            color: var(--accent-red);
+            border-radius: 3px;
+        }
+        
+        /* Full Table Section */
+        .table-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 4px;
+        }
+        
+        .filters {
+            padding: 12px 16px;
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid var(--bg-tertiary);
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            font-family: var(--font-mono);
+            padding: 6px 12px;
+            border: 1px solid var(--bg-tertiary);
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            transition: all 0.2s;
+        }
+        
+        .filter-btn:hover {
+            background: var(--bg-hover);
+            border-color: var(--accent-blue);
+        }
+        
+        .filter-btn.active {
+            background: var(--accent-blue);
+            color: var(--bg-primary);
+            border-color: var(--accent-blue);
+        }
+        
+        .export-btn {
+            font-family: var(--font-mono);
+            padding: 6px 12px;
+            background: var(--accent-green);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            margin-left: auto;
+        }
+        
+        .export-btn:hover {
+            background: var(--accent-blue);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        thead {
+            background: var(--bg-tertiary);
+        }
+        
+        th {
+            font-family: var(--font-mono);
+            text-align: left;
+            padding: 10px 12px;
+            font-weight: 500;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+        
+        td {
+            font-family: var(--font-mono);
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--bg-tertiary);
+            font-size: 0.75rem;
+        }
+        
+        tbody tr:hover {
+            background: var(--bg-hover);
+        }
+        
+        /* Flagged row styling */
+        .row-flagged {
+            background: rgba(240, 113, 120, 0.05);
+            border-left: 3px solid var(--accent-red);
+        }
+        
+        .row-flagged:hover {
+            background: rgba(240, 113, 120, 0.08);
+        }
+        
+        .row-atypical {
+            background: rgba(255, 204, 102, 0.05);
+            border-left: 3px solid var(--accent-yellow);
+        }
+        
+        .row-atypical:hover {
+            background: rgba(255, 204, 102, 0.08);
+        }
+        
+        .row-typical {
+            opacity: 0.7;
+        }
+
+        .row-typical:hover {
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        tr[style*="cursor"] td {
+            user-select: none;
+        }
+        
+        .zone-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+        
+        .zone-typical {
+            background: rgba(135, 217, 108, 0.15);
+            color: var(--accent-green);
+        }
+        
+        .zone-atypical {
+            background: rgba(255, 204, 102, 0.15);
+            color: var(--accent-yellow);
+        }
+        
+        .zone-outlier {
+            background: rgba(240, 113, 120, 0.15);
+            color: var(--accent-red);
+        }
+        
+        .expand-btn {
+            font-family: var(--font-mono);
+            padding: 4px 10px;
+            background: var(--bg-tertiary);
+            color: var(--accent-blue);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            transition: all 0.2s;
+        }
+        
+        .expand-btn:hover {
+            background: var(--accent-blue);
+            color: var(--bg-primary);
+        }
+        
+        .clause-detail {
+            display: none;
+            background: var(--bg-tertiary);
+            padding: 12px;
+            border-radius: 3px;
+            border-left: 3px solid var(--accent-blue);
+        }
+        
+        .clause-detail.show {
+            display: block;
+        }
+        
+        .detail-section {
+            margin-bottom: 12px;
+        }
+        
+        .detail-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .detail-section h4 {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+        
+        .detail-section p {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+        
+        .full-text {
+            background: var(--bg-secondary);
+            padding: 10px;
+            border-radius: 3px;
+            font-style: italic;
+            color: var(--text-primary);
+            border: 1px solid var(--bg-tertiary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Alert Bar -->
+        
+        <div class="alert-bar">
+            <span class="deal-name">DEAL</span>
+            <span class="alert-flag outliers">⚠️ 2 OUTLIERS</span> <span class="alert-flag compliance">⚠️📄 DISCLOSURE (1)</span> <span class="alert-flag compliance">💰 FINANCING (1)</span>
+        </div>
+        
+        
+        <!-- Integrated Clause Table -->
+        <div class="table-section">
+            <div class="section-header">CLAUSE ANALYSIS (12)</div>
+            <div class="filters">
+                <button class="filter-btn active" onclick="filterClauses('all')">All (12)</button>
+                <button class="filter-btn" onclick="filterClauses('typical')">🟢 Typical</button>
+                <button class="filter-btn" onclick="filterClauses('atypical')">🟡 Atypical</button>
+                <button class="filter-btn" onclick="filterClauses('outlier')">🔴 Outliers</button>
+                <button class="export-btn" onclick="exportData()">📥 Export</button>
+            </div>
+            <table id="clauseTable">
+                <thead>
+                    <tr>
+                        <th>Clause</th>
+                        <th>Zone</th>
+                        <th>Category</th>
+                        <th>Cluster Match</th>
+                        <th>Ratio</th>
+                        <th>Compliance</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="clauseTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+        const clauseData = [
+  {
+    "id": "(A)",
+    "text": "change in general United States or global economic conditions, including changes in the credit, debt, financial or capital markets (including changes in interest or exchange rates), in each case in the United States or anywhere else in the world",
+    "zone": "typical",
+    "category": "economic",
+    "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+    "ratio": 0.36059955140097805,
+    "compliance": {
+      "cybersecurity": "No",
+      "tariffs": "No",
+      "countries": [],
+      "disclosure": "No"
+    }
+  },
+  {
+    "id": "(B)",
+    "text": "change that generally affects any of the industries or markets in which any Company Party operates or the economy generally",
+    "zone": "typical",
+    "category": "economic",
+    "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+    "ratio": 0.992381744757988,
+    "compliance": {
+      "cybersecurity": "No",
+      "tariffs": "No",
+      "countries": [],
+      "disclosure": "No"
+    }
+  },
+  {
+    "id": "(C)",
+    "text": "change in GAAP or other accounting standards (or the interpretation thereof)",
+    "zone": "typical",
+    "category": "accounting",
+    "cluster_name": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+    "ratio": 0.48981308831230486,
+    "compliance": {
+      "cybersecurity": "No",
+      "tariffs": "No",
+      "countries": [],
+      "disclosure": "No"
+    }
+  },
+  {
+    "id": "(D)",
+    "text": "change in applicable Laws or the interpretation or enforcement thereof, or other legal or regulatory conditions, or any change in general legal, regulatory or political conditions",
+    "zone": "typical",
+    "category": "accounting",
+    "cluster_name": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+    "ratio": 0.5639673339638677,
+    "compliance": {
+      "cybersecurity": "No",
+      "tariffs": "No",
+      "countries": [],
+      "disclosure": "No"
+    }
+  },
+  {
+    "id": "(E)",
+    "text": "geopolitical conditions, the outbreak or escalation of hostilities, any acts of war (whether or not declared), sabotage, terrorism, or military actions (including any escalation or general worsening of any such hostilities, acts of war, sabotage, terrorism or military actions) in the United States or anywhere else in the world",
+    "zone": "typical",
+    "category": "force_majeure",
+    "cluster_name": "Catastrophic External Events Beyond Party Control",
+    "ratio": 0.47976258918491316,
+    "compliance": {
+      "cybersecurity": "No",
+      "tariffs": "No",
+      "countries": [],
+      "disclosure": "No"
+    }
+  },
+  {
+    "id": "(F)",
+    "text": "earthquakes, hurricanes, tsunamis, tornadoes, floods, mudslides, wild fires, weather-related events, natural disasters, epidemics, pandemics (including COVID-19 and any COVID-19 Measures) or other force majeure events in the United States or anywhere else in the world",
+    "zone": "typical",
+    "category": "force_majeure",
+    "cluster_name": "Catastrophic External Events Beyond Party Control",
+    "ratio": 0.5906278981708848,
+    "compliance": {
+      "cybersecurity": "No",
+      "tariffs": "No",
+      "countries": [],
+      "disclosure": "No"
+    }
+  },
+  {
+    "id": "(G)",
+    "text": "Effect resulting from the announcement or pendency of, compliance with, or the taking of any action required by this Agreement or the transactions contemplated hereby (including the Merger), or the identity of, or any facts or circumstances relating to, Parent, Merger Sub or any of their respective Affiliates (it being understood that this clause (G) shall not apply to the representation and warranty set forth in Section 3.5(a)(iii) or for purposes of the definition of \"Company Material Adverse Effect\" as used in such representation and warranty)",
+    "zone": "typical",
+    "category": "transaction",
+    "cluster_name": "Exclusion for impacts from deal announcement and execution",
+    "ratio": 0.7654584873868979,
+    "compliance": {
+      "cybersecurity": "No",
+      "tariffs": "No",
+      "countries": [],
+      "disclosure": "Yes"
+    }
+  },
+  {
+    "id": "(H)",
+    "text": "failure by the Company to meet any projections, forecasts, guidance, estimates, milestones, budgets or financial or operating predictions of revenue, earnings, cash flow or cash position (it being understood that the facts or occurrences giving rise to or contributing to such failure that are not otherwise excluded from the definition of a Company Material Adverse Effect may be taken into account in determining whether there has been a Company Material Adverse Effect)",
+    "zone": "typical",
+    "category": "disclosure",
+    "cluster_name": "Failure to Meet Financial Projections and Forecasts Exclusions",
+    "ratio": 0.525149281085002,
+    "compliance": {
+      "cybersecurity": "No",
+      "tariffs": "No",
+      "countries": [],
+      "disclosure": "No"
+    }
+  },
+  {
+    "id": "(I)",
+    "text": "change in the Company's stock price or the trading volume of the Company's stock, or any change in the credit rating or ratings outlook for the Company or any of its subsidiaries (it being understood that the facts or occurrences giving rise to or contributing to such change that are not otherwise excluded from the definition of a Company Material Adverse Effect may be taken into account in determining whether there has been a Company Material Adverse Effect)",
+    "zone": "typical",
+    "category": "transaction",
+    "cluster_name": "Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks",
+    "ratio": 0.2837843194484755,
+    "compliance": {
+      "cybersecurity": "No",
+      "tariffs": "No",
+      "countries": [],
+      "disclosure": "No"
+    }
+  },
+  {
+    "id": "(J)",
+    "text": "Transaction Litigation",
+    "zone": "outlier",
+    "category": "transaction",
+    "cluster_name": "Exclusion for Stockholder Litigation Arising from Merger Transaction",
+    "ratio": 1.5140160525177957,
+    "risk_analysis": {
+      "risk_level": "low",
+      "requires_investigation": false,
+      "risk_factors": [
+        "Stockholder litigation arising from merger announcement is common and expected",
+        "Exclusion prevents buyer from using predictable transaction litigation as walk-away right"
+      ],
+      "unusual_provisions": [],
+      "disclosure_references": false,
+      "specific_company_issues": [],
+      "red_flags": [],
+      "investigation_priority": "routine",
+      "explanation": "This is a standard and expected MAE exclusion clause. Stockholder litigation following merger announcements is extremely common (occurring in 80%+ of public M&A deals), typically consisting of class action lawsuits alleging breach of fiduciary duty or inadequate disclosures. This exclusion prevents the buyer from claiming that such predictable, transaction-related litigation constitutes a Material Adverse Effect that would allow termination of the deal. The clause is labeled '(J)' and clustered as 'Exclusion for Stockholder Litigation Arising from Merger Transaction,' which is entirely standard boilerplate. There are no references to specific lawsuits, disclosure schedules, known plaintiffs, particular allegations, or settlement amounts that would suggest pre-existing or unusually serious litigation. The clause does not carve out exceptions for certain types of stockholder suits or reference any ongoing investigations. This is a seller-favorable but market-standard provision that simply acknowledges the reality that merger announcements trigger routine litigation challenges.",
+      "negotiation_impact": "This is a balanced, market-standard provision that should not materially impact negotiations. Both sophisticated parties expect this exclusion in public M&A transactions. The buyer retains protection against truly material litigation unrelated to the transaction itself. No negotiation leverage or concessions should be required regarding this clause as it reflects standard practice.",
+      "similar_to_standard": true,
+      "confidence": 10
+    },
+    "compliance": {
+      "cybersecurity": "No",
+      "tariffs": "No",
+      "countries": [],
+      "disclosure": "No"
+    }
+  },
+  {
+    "id": "(K)",
+    "text": "action taken (or omitted to be taken) by the Company or any of its subsidiaries at the written request of Parent or Merger Sub or with the prior written consent of Parent",
+    "zone": "typical",
+    "category": "transaction",
+    "cluster_name": "Actions Taken Pursuant to or Required by Agreement Terms",
+    "ratio": 0.6502772492411966,
+    "compliance": {
+      "cybersecurity": "No",
+      "tariffs": "No",
+      "countries": [],
+      "disclosure": "No"
+    }
+  },
+  {
+    "id": "(L)",
+    "text": "Effect arising out of or resulting from any action taken by Parent, Merger Sub or any of their respective Affiliates",
+    "zone": "outlier",
+    "category": "transaction",
+    "cluster_name": "Exclusions for Acquiror Identity and Post-Acquisition Plans",
+    "ratio": 1.2542469999455723,
+    "risk_analysis": {
+      "risk_level": "high",
+      "requires_investigation": true,
+      "risk_factors": [
+        "Extremely broad exclusion protecting acquiror actions without limitation",
+        "No carve-out for breaches of transaction agreements or covenants",
+        "Potential shield for destructive pre-closing actions by Parent/Merger Sub",
+        "Asymmetric risk allocation favoring acquiror",
+        "Could enable acquiror to intentionally cause MAE and avoid liability"
+      ],
+      "unusual_provisions": [
+        "Unqualified exclusion for ANY action by Parent or Merger Sub",
+        "Includes actions by 'Affiliates' without definition or limitation",
+        "No temporal limitation (covers actions before or after signing)",
+        "No exception for actions violating deal covenants or fiduciary duties",
+        "Missing standard 'requested by' or 'consented to' qualifiers"
+      ],
+      "disclosure_references": false,
+      "specific_company_issues": [],
+      "red_flags": [
+        "Could allow Parent to sabotage target's business pre-closing without MAE consequences",
+        "May permit Parent to poach key employees, customers, or suppliers",
+        "Enables Parent to take competitive actions harming target without recourse",
+        "No protection against Parent-induced regulatory issues or contract breaches",
+        "Unusually one-sided provision suggesting weak target negotiating position",
+        "Could be used to manufacture closing conditions failure while avoiding MAE"
+      ],
+      "investigation_priority": "urgent",
+      "explanation": "This MAE exclusion is HIGHLY PROBLEMATIC and represents a significant departure from market standard. Standard acquiror action exclusions typically only exclude effects arising from actions that (1) the target requested or consented to, (2) are required by the merger agreement, or (3) are taken in compliance with deal covenants. This clause contains NONE of these critical limitations. The unqualified language 'any action taken by Parent, Merger Sub or any of their respective Affiliates' creates a massive loophole that could allow the acquiror to: (a) intentionally harm the target's business through competitive actions, customer/employee poaching, or market interference; (b) cause regulatory violations or contract breaches; (c) trigger material adverse effects and then claim those effects are excluded from MAE analysis; (d) essentially control whether an MAE has occurred by choosing whether to take harmful actions. The inclusion of 'Affiliates' without definition exponentially expands this risk - Parent's entire corporate family could take destructive actions with impunity. This appears to be either: (1) a drafting error where critical limiting language was omitted, (2) evidence of extremely weak target negotiating leverage, or (3) a specific accommodation for planned post-signing actions that Parent knows will harm the target. For TXNM Energy (a regulated utility), this is particularly concerning as Parent could take actions affecting regulatory approvals, customer relationships, or operational permits that would normally constitute an MAE.",
+      "negotiation_impact": "This provision fundamentally undermines the target's MAE protection and should be a deal-breaker in current form. Target shareholders are exposed to acquiror-caused harm with no recourse. Standard market practice requires limiting this exclusion to: (1) actions expressly required or permitted by the merger agreement, (2) actions taken with target's prior written consent, and (3) possibly actions taken in compliance with regulatory requirements. The clause should also exclude from the exclusion any actions that constitute breaches of Parent's covenants or representations. If Parent refuses to narrow this language, it strongly suggests they are planning specific harmful actions post-signing. Target's board may face fiduciary duty challenges for accepting such one-sided terms. This provision could also affect financing certainty and regulatory approval processes.",
+      "similar_to_standard": false,
+      "confidence": 10
+    },
+    "compliance": {
+      "cybersecurity": "No",
+      "tariffs": "No",
+      "countries": [],
+      "disclosure": "No"
+    }
+  }
+];
+        
+        function populateTable(filter = 'all') {
+            const tbody = document.getElementById('clauseTableBody');
+            tbody.innerHTML = '';
+            const filtered = filter === 'all' ? clauseData : clauseData.filter(c => c.zone === filter);
+            
+            filtered.forEach((clause, index) => {
+                const isFlagged = clause.zone === 'outlier' || clause.zone === 'atypical';
+                const row = document.createElement('tr');
+                
+                // Add visual class for flagged rows
+                if (clause.zone === 'outlier') {
+                    row.className = 'row-flagged';
+                } else if (clause.zone === 'atypical') {
+                    row.className = 'row-atypical';
+                } else {
+                    row.className = 'row-typical';
+                }
+                
+                let compFlags = [];
+                if (clause.compliance) {
+                    if (clause.compliance.cybersecurity === 'Yes') compFlags.push('🔐');
+                    if (clause.compliance.tariffs === 'Yes') compFlags.push('📦');
+                    if (clause.compliance.countries && clause.compliance.countries.length > 0) compFlags.push('🌍');
+                    if (clause.compliance.disclosure === 'Yes') compFlags.push('📄');
+                }
+                
+                row.style.cursor = 'pointer';
+                row.onclick = () => toggleDetail(index);
+                row.innerHTML = `
+                    <td><strong>${clause.id}</strong></td>
+                    <td><span class="zone-badge zone-${clause.zone}">${clause.zone.toUpperCase()}</span></td>
+                    <td>${clause.category.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</td>
+                    <td>${clause.cluster_name}</td>
+                    <td>${clause.ratio.toFixed(2)}</td>
+                    <td>${compFlags.join(' ') || '-'}</td>
+                    <td><span class="expand-btn">${'▶'}</span></td>
+                `;
+                tbody.appendChild(row);
+                
+                // Detail row with full analysis
+                const detailRow = document.createElement('tr');
+                detailRow.className = clause.zone === 'outlier' ? 'row-flagged' : clause.zone === 'atypical' ? 'row-atypical' : 'row-typical';
+                detailRow.innerHTML = `
+                    <td colspan="7">
+                        <div class="clause-detail${''}" id="detail-${index}">
+                            <div class="detail-section">
+                                <h4>Full Text</h4>
+                                <p class="full-text">${clause.text}</p>
+                            </div>
+                            ${clause.risk_analysis ? `
+                                <div class="detail-section">
+                                    <h4>⚠️ Why Flagged</h4>
+                                    <p>${clause.risk_analysis.explanation || 'Unusual provision detected'}</p>
+                                </div>
+                                <div class="detail-section">
+                                    <h4>Risk Assessment</h4>
+                                    <p><strong>Level:</strong> ${clause.risk_analysis.risk_level?.toUpperCase() || 'N/A'}</p>
+                                    <p><strong>Priority:</strong> ${clause.risk_analysis.investigation_priority?.toUpperCase() || 'N/A'}</p>
+                                    ${clause.risk_analysis.red_flags?.length ? `
+                                        <h4 style="margin-top: 12px;">Red Flags</h4>
+                                        <div class="red-flags">${clause.risk_analysis.red_flags.map(f => `<span class="red-flag">✗ ${f}</span>`).join('')}</div>
+                                    ` : ''}
+                                </div>
+                            ` : (isFlagged ? `
+                                <div class="detail-section">
+                                    <h4>⚠️ Why Flagged</h4>
+                                    <p>Distance ratio ${clause.ratio.toFixed(2)} - differs significantly from typical cluster: ${clause.cluster_name}</p>
+                                </div>
+                            ` : '')}
+                            ${clause.compliance ? `
+                                <div class="detail-section">
+                                    <h4>Compliance Checks</h4>
+                                    <p>🔐 Cybersecurity: ${clause.compliance.cybersecurity || 'No'}</p>
+                                    <p>📦 Tariffs/Trade: ${clause.compliance.tariffs || 'No'}</p>
+                                    <p>🌍 Countries: ${clause.compliance.countries && clause.compliance.countries.length > 0 ? clause.compliance.countries.join(', ') : 'None'}</p>
+                                    <p>📄 Disclosure Schedules: ${clause.compliance.disclosure || 'No'}</p>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(detailRow);
+            });
+        }
+        
+        function toggleDetail(index) {
+            document.getElementById(`detail-${index}`).classList.toggle('show');
+        }
+        
+        function filterClauses(filter) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            populateTable(filter);
+        }
+        
+        function exportData() {
+            const dataStr = JSON.stringify({clauses: clauseData}, null, 2);
+            const blob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'TXNM Energy Inc_analysis.json';
+            a.click();
+        }
+        
+        populateTable();
+    </script>
+</body>
+</html>

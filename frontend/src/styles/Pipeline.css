@@ -1,0 +1,228 @@
+/* Pipeline Table Styles — table-specific only */
+/* Global vars and nav/header/filter styles are in GlobalVars.css and CrossDeal.css */
+
+.refresh-btn {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.refresh-btn:hover:not(:disabled) {
+  background: var(--bg-hover);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+.refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.header-timestamp {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  min-width: 140px;
+  text-align: right;
+}
+
+/* Table */
+.table-container {
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  margin: 0 var(--space-lg);
+}
+
+.deals-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  table-layout: fixed;
+}
+
+.deals-table th {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: left;
+  padding: var(--space-md);
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--bg-hover);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.deals-table td {
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--bg-tertiary);
+  vertical-align: middle;
+}
+
+/* Column widths */
+.deals-table th:nth-child(1),
+.deals-table td:nth-child(1) {
+  width: 28px;
+  max-width: 28px;
+  padding: 0 !important;
+}
+
+.deals-table th:nth-child(2),
+.deals-table td:nth-child(2) { width: 14%; }
+
+.deals-table th:nth-child(3),
+.deals-table td:nth-child(3) { width: 14%; }
+
+.deals-table th:nth-child(4),
+.deals-table td:nth-child(4) { width: 8%; text-align: right; }
+
+.deals-table th:nth-child(5),
+.deals-table td:nth-child(5) { width: 8%; text-align: right; }
+
+.deals-table th:nth-child(6),
+.deals-table td:nth-child(6) { width: 10%; text-align: right; }
+
+.deals-table th:nth-child(7),
+.deals-table td:nth-child(7) { width: 10%; text-align: right; }
+
+.deals-table th:nth-child(8),
+.deals-table td:nth-child(8) { width: 9%; text-align: center; }
+
+.deals-table th:nth-child(9),
+.deals-table td:nth-child(9) { width: 10%; text-align: center; }
+
+.deals-table th:nth-child(10),
+.deals-table td:nth-child(10) { width: 17%; }
+
+/* Category Row */
+.category-row td { padding: 0; }
+
+.category-cell {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: var(--space-sm) var(--space-md) !important;
+  background: var(--bg-primary);
+  border-top: 2px solid var(--bg-tertiary);
+  border-bottom: 1px solid var(--bg-tertiary);
+}
+
+.category-row:first-child .category-cell { border-top: none; }
+
+/* Deal Row */
+.deal-row { transition: background 0.15s ease; }
+.deal-row:hover { background: var(--bg-hover); }
+
+.deal-link {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+.deal-link:hover { color: inherit; }
+
+/* Watchlist */
+.cell-watch {
+  text-align: center;
+  padding: 0 !important;
+  width: 20px;
+  max-width: 20px;
+}
+
+.watch-star {
+  font-size: 16px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+.watch-star:hover { color: var(--accent-yellow); }
+.watch-star.watched { color: var(--accent-yellow); }
+
+/* Company cells */
+.company-primary {
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.company-ticker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Price cells */
+.cell-price, .cell-offer {
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+/* Spread cells */
+.cell-spread {
+  font-family: var(--font-mono);
+  text-align: right;
+}
+.spread-dollars { font-weight: 600; }
+.spread-pct { font-size: 11px; color: var(--text-secondary); }
+.spread-tight .spread-dollars { color: var(--spread-tight); }
+.spread-mid .spread-dollars { color: var(--spread-mid); }
+.spread-wide .spread-dollars { color: var(--spread-wide); }
+
+/* Date cell */
+.cell-close-date {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.status-pending { background: rgba(138, 145, 154, 0.15); color: var(--status-pending); }
+.status-review { background: rgba(255, 204, 102, 0.15); color: var(--status-review); }
+.status-vote { background: rgba(92, 207, 230, 0.15); color: var(--status-vote); }
+.status-closing { background: rgba(135, 217, 108, 0.15); color: var(--status-closing); }
+.status-risk { background: rgba(240, 113, 120, 0.15); color: var(--status-risk); }
+.status-completed { background: rgba(135, 217, 108, 0.15); color: var(--status-closing); }
+
+/* Milestone cell */
+.milestone-text {
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.milestone-date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}

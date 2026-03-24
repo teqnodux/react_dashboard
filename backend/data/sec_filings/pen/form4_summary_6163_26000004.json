@@ -1,0 +1,48 @@
+{
+  "ticker": "PEN",
+  "issuer": "Penumbra Inc",
+  "filing_date": "02/18/26",
+  "insider_name": "Shruthi Narayan",
+  "insider_title": "President",
+  "relationship": "Officer",
+  "L1_headline": "+ PEN \u2013 Shruthi Narayan received RSU grants and disposed of shares for tax withholding. | 02/18/26",
+  "L2_brief": "Shruthi Narayan, President of Penumbra Inc, received two RSU grants of 2,630 shares each on 02/13/2026 and 02/17/2026 at $0 cost, and had 705 shares withheld on 02/15/2026 at $339.30/share to cover tax obligations upon RSU vesting. Both RSU grants contain provisions for full accelerated vesting upon the closing of Penumbra's pending merger with Boston Scientific Corporation pursuant to the Agreement and Plan of Merger dated January 14, 2026.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "02/13/2026",
+        "shares": "2,630",
+        "price_per_share": "$0",
+        "total_value": "$0",
+        "acquired_or_disposed": "Acquired (A)"
+      },
+      {
+        "type": "Sale",
+        "date": "02/15/2026",
+        "shares": "705",
+        "price_per_share": "$339.30",
+        "total_value": "$239,206.50",
+        "acquired_or_disposed": "Disposed (D)"
+      },
+      {
+        "type": "Other",
+        "date": "02/17/2026",
+        "shares": "2,630",
+        "price_per_share": "$0",
+        "total_value": "$0",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "30,872 shares (a portion subject to vesting)",
+    "ownership_type": "Direct",
+    "deal_signal": "Penumbra Inc is subject to a pending Agreement and Plan of Merger dated January 14, 2026, with Boston Scientific Corporation and Pinehurst Merger Sub, Inc. Both RSU grants (02/13/2026 and 02/17/2026) include accelerated vesting provisions that cause all unvested RSUs to fully vest upon the closing of the merger, subject to continued service through that date. The 705-share disposition on 02/15/2026 was a tax withholding event tied to scheduled RSU vesting, not a discretionary sale.",
+    "pattern_notes": "The two RSU grants were routine equity compensation awards under the Amended and Restated 2014 Equity Incentive Plan. The 705-share disposition was a mandatory tax withholding event upon vesting, representing approximately 2.3% of total post-transaction holdings. No open-market purchases or discretionary sales were made. The issuer continued to grant equity compensation with merger-related accelerated vesting provisions during the pendency of the deal.",
+    "risks_flagged": [
+      "No 10b5-1 plan noted for these transactions",
+      "A portion of the 30,872 shares reported as post-transaction holdings remains subject to vesting conditions",
+      "RSU grants include merger-related accelerated vesting provisions tied to the Boston Scientific acquisition closing"
+    ]
+  },
+  "filing_type": "FORM 4"
+}

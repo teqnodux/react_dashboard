@@ -1,0 +1,30 @@
+{
+  "ticker": "DAWN",
+  "company": "Day One Biopharmaceuticals, Inc.",
+  "filing_date": "03/06/26",
+  "exhibit_type": "Deal Announcement",
+  "L1_headline": "+ DAWN \u2013 Servier to acquire Day One for $21.50/share. | 03/06/26",
+  "L2_brief": "Servier and Day One Biopharmaceuticals announced a definitive agreement for Servier to acquire Day One via cash tender offer at $21.50 per share, representing a total equity value of approximately $2.5 billion. The offer price represents a ~68% premium over the March 5, 2026 closing price and ~86% premium over the one-month VWAP. The transaction is expected to close in Q2 2026, subject to customary closing conditions including majority tender and U.S. antitrust clearance.",
+  "L3_detailed": {
+    "event": "Servier entered into a definitive merger agreement to acquire Day One Biopharmaceuticals via a cash tender offer followed by a second-step merger, expanding Servier's rare oncology portfolio, particularly in pediatric low-grade glioma.",
+    "key_figures": [
+      "$21.50 per share in cash",
+      "Total equity value of approximately $2.5 billion",
+      "~68% premium over March 5, 2026 closing price",
+      "~86% premium over one-month VWAP as of March 5, 2026",
+      "Servier revenues of \u20ac6.9 billion in 2024/25 financial year"
+    ],
+    "market_impact": "Day One's Board of Directors recommends that shareholders tender their shares. Servier expects to fund the transaction through existing cash and investments. The acquisition positions Servier as a leader in pediatric low-grade glioma and expands its pipeline with programs targeting adult and pediatric cancers.",
+    "forward_guidance": "Transaction expected to close in Q2 2026. Tender offer has not yet commenced as of the filing date; Servier and the Purchaser intend to file tender offer materials on Schedule TO with the SEC upon commencement.",
+    "deal_relevance": "Closing is subject to customary conditions including tender of at least a majority of Day One's outstanding shares and receipt of U.S. antitrust clearance. Upon successful completion of the tender offer, Servier will acquire remaining shares via a second-step merger at the same $21.50 per share price.",
+    "risks_flagged": [
+      "Conditions to consummation may not be satisfied or waived",
+      "Risk that competing offers or acquisition proposals may be made",
+      "Uncertainties as to how many stockholders will tender shares",
+      "Possible disruption to Day One's business and difficulty maintaining relationships with employees, suppliers, and business partners during pendency",
+      "Risk that stockholder litigation in connection with the offer or merger may result in significant costs",
+      "Uncertainties as to timing of the offer and subsequent merger"
+    ]
+  },
+  "filing_type": "99.1"
+}

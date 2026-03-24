@@ -1,0 +1,35 @@
+{
+  "ticker": "TGNA",
+  "filing_date": "11/21/25",
+  "items_reported": [
+    "Item 5.07",
+    "Item 8.01",
+    "Item 9.01"
+  ],
+  "L1_headline": "TGNA \u2013 Stockholders approve Nexstar merger agreement. | 11/18/25",
+  "L2_brief": "TEGNA stockholders approved the adoption of the merger agreement with Nexstar Media Group at a special meeting on November 18, 2025, with approximately 97.74% of votes cast in favor (133,763,880 for vs. 2,887,840 against). Approximately 84.97% of outstanding shares were represented at the meeting. Completion remains subject to customary closing conditions, including receipt of certain regulatory approvals.",
+  "L3_detailed": {
+    "event": "TEGNA held a special meeting of stockholders on November 18, 2025 to vote on the Agreement and Plan of Merger dated August 18, 2025 with Nexstar Media Group, Inc. and Teton Merger Sub, Inc. The merger proposal was approved by stockholders. A separate advisory vote on merger-related executive compensation was rejected (21,531,139 for vs. 114,148,241 against).",
+    "key_figures": [
+      "Merger proposal: 133,763,880 votes for, 2,887,840 against, 208,974 abstentions (~97.74% of votes cast in favor)",
+      "Record date shares outstanding: 161,056,789",
+      "Shares represented at meeting: 136,860,694 (~84.97% of outstanding)",
+      "Advisory compensation proposal: 21,531,139 for, 114,148,241 against, 1,181,314 abstentions (rejected)",
+      "Merger Agreement dated August 18, 2025",
+      "Record date: October 10, 2025",
+      "Proxy Statement filed October 10, 2025"
+    ],
+    "deal_implications": "Stockholder approval, a key closing condition, has been obtained. The adjournment proposal was not needed given sufficient votes. Completion remains subject to customary closing conditions including regulatory approvals.",
+    "remaining_conditions": [
+      "Receipt of certain regulatory approvals",
+      "Satisfaction of other customary closing conditions"
+    ],
+    "risks_flagged": [
+      "Failure to obtain necessary regulatory approvals could cause parties to abandon the transaction",
+      "Risk of litigation and/or regulatory actions related to the proposed transaction",
+      "Occurrence of any event, change or other circumstances that could give rise to termination of the Merger Agreement",
+      "Advisory vote on merger-related executive compensation was rejected by stockholders"
+    ]
+  },
+  "filing_type": "8-K"
+}

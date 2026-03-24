@@ -1,0 +1,32 @@
+{
+  "ticker": "PEN",
+  "issuer": "Penumbra Inc",
+  "filing_date": "02/18/26",
+  "insider_name": "Thomas Wilder",
+  "insider_title": "Director",
+  "relationship": "Director",
+  "L1_headline": "+ PEN \u2013 Thomas Wilder acquired 589 RSU shares. | 02/13/2026",
+  "L2_brief": "Director Thomas Wilder acquired 589 shares of Penumbra common stock on 02/13/2026 via a restricted stock unit (RSU) award at $0 per share. The RSUs vest quarterly through 12/31/2026, with full accelerated vesting upon the closing of the pending merger with Boston Scientific Corporation. Following the transaction, Wilder holds 589 shares directly (a portion subject to vesting) and 4,506 shares indirectly through a family trust.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "02/13/2026",
+        "shares": "589",
+        "price_per_share": "$0",
+        "total_value": "$0",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "589 shares (Direct, a portion subject to vesting) + 4,506 shares (Indirect, via Thomas and Catharine Wilder Family Trust dated March 31, 2006) = 5,095 total shares beneficially owned",
+    "ownership_type": "Direct and Indirect (through Thomas and Catharine Wilder Family Trust dated March 31, 2006)",
+    "deal_signal": "Penumbra Inc is subject to a pending merger with Boston Scientific Corporation pursuant to an Agreement and Plan of Merger dated January 14, 2026, involving merger sub Pinehurst Merger Sub, Inc. The RSU award contains an acceleration provision whereby any unvested RSUs will fully vest upon the closing of the merger, subject to continued service as director through the closing date. The standard quarterly vesting schedule runs through 12/31/2026.",
+    "pattern_notes": "This is a director RSU grant at no cost, consistent with routine director equity compensation. The 589-share direct holding represents a relatively small position compared to the 4,506 shares held indirectly through the family trust. The RSU grant was made approximately one month after the merger agreement was announced (01/14/2026).",
+    "risks_flagged": [
+      "No 10b5-1 plan noted for this transaction",
+      "RSU vesting accelerates upon merger closing, creating alignment between director compensation and deal completion",
+      "A portion of the 589 directly held shares remains subject to vesting conditions"
+    ]
+  },
+  "filing_type": "FORM 4"
+}

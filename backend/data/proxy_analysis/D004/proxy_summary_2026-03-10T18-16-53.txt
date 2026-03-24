@@ -1,0 +1,33 @@
+
+
+
+
+HOLX Merger Filing Analysis
+Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A)
+ The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties received early termination of the HSR Act waiting period on December 17, 2025, which is now reflected in both the HSR section and the closing conditions language. The Background section was also updated between the two filings. Additionally, the appraisal rights disclosure was substantially condensed, reduced by approximately 3,132 words from the preliminary version.
+Dates
+- Mailing Date: December 12, 2025 -> December 23, 2025
+- Special Meeting Date: [blank] -> February 5, 2026
+- Special Meeting Time: [blank] -> 12:00 p.m. Eastern Time
+- Record Date: [blank] -> December 22, 2025
+Consideration
+No changes.
+Financing
+No changes.
+SH Approval
+No changes.
+HSR
+- HSR - Waiting Period Early Termination: Status: Early termination received | On December 17, 2025, the parties received notice of early termination of the waiting period under the HSR Act.  [NEW]
+Other Regulatory
+No changes.
+Closing
+•	HSR Waiting Period Status:
+Was: expiration or termination of the applicable waiting period under the HSR Act relating to the merger
+Now: expiration or termination of the applicable waiting period under the HSR Act relating to the merger (which waiting period was terminated early on December 17, 2025)
+Termination & Fees
+No changes.
+Background
+•	ADDED: The following paragraph appears at the end of the "Background of the Merger" section in the later version (Definitive Proxy), immediately before the "Recommendation of the Board" section, but is absent from the earlier version (Preliminary Proxy):
+"In November 2025, following an internal review of post-market data, the Company initiated a stop ship of its Brevera Breast Biopsy System Disposable 9 Gauge Needles (the "Brevera Needles"). Based on the information available at this time, the Company expects that the stop ship could be prolonged. The Company is continuing to conduct analysis regarding the potential impact of the current stop ship on Breast Health revenue, taking into account various potential mitigating measures, and the ultimate impact of the stop ship will be based on a number of contingencies, including some that are outside of the Company's control. However, in light of the Company's inability to presently predict the duration of the stop ship, the Company believes that it will be more challenging to achieve the 2026 milestone under the CVR agreement."
+•	REMOVED: Nothing was removed.
+•	CHANGED: Nothing else was changed. All other text in both versions is identical (ignoring formatting and pagination differences).

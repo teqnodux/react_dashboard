@@ -1,0 +1,22 @@
+{
+  "ticker": "SEM",
+  "filing_date": "02/19/26",
+  "items_reported": [
+    "Item 2.02",
+    "Item 8.01",
+    "Item 9.01"
+  ],
+  "L1_headline": "SEM \u2013 Q4 2025 earnings and dividend declared. | 02/19/26",
+  "L2_brief": "Select Medical Holdings reported Q4 and full-year 2025 financial results and announced a quarterly cash dividend of $0.0625 per share. The dividend is payable March 12, 2026 to shareholders of record as of March 2, 2026. This is a routine earnings and dividend announcement with no merger-related implications.",
+  "L3_detailed": {
+    "event": "Company released Q4 and fiscal year 2025 earnings results and declared a quarterly cash dividend",
+    "key_figures": [
+      "Dividend: $0.0625 per share",
+      "Record date: March 2, 2026",
+      "Payment date: March 12, 2026"
+    ],
+    "deal_implications": "No merger or acquisition activity referenced in this filing; routine corporate disclosure",
+    "remaining_conditions": [],
+    "risks_flagged": []
+  }
+}

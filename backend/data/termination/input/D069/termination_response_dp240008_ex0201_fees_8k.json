@@ -1,0 +1,43 @@
+{
+  "company_termination_fee": {
+    "amount_usd": null,
+    "amount_text": null,
+    "triggers": [],
+    "notes": "Document text provided does not include Section 8.03 (Fees and Expenses) where termination fees would be specified. The table of contents references Section 8.03 but the full text of that section was not included in the provided excerpt."
+  },
+  "reverse_termination_fee": {
+    "amount_usd": null,
+    "amount_text": null,
+    "triggers": [],
+    "notes": "Document text provided does not include Section 8.03 (Fees and Expenses) where reverse termination fees would be specified."
+  },
+  "parent_regulatory_termination_fee": {
+    "amount_usd": null,
+    "amount_text": null,
+    "triggers": [],
+    "notes": "Document text provided does not include Section 8.03 (Fees and Expenses) where regulatory termination fees would be specified."
+  },
+  "expense_reimbursement": {
+    "amount_usd": null,
+    "amount_text": null,
+    "triggers": [],
+    "notes": "Document text provided does not include Section 8.03 (Fees and Expenses) where expense reimbursement would be specified."
+  },
+  "offer_price_per_share": {
+    "amount_usd": 374.0,
+    "amount_text": "$374.00 in cash",
+    "consideration_type": "mixed: cash election of $374.00 per share OR stock election of 3.8721 shares of Parent (Boston Scientific) common stock per share, with 73.26% maximum cash / 26.74% minimum stock proration"
+  },
+  "deal_equity_value_usd": null,
+  "deal_equity_value_text": null,
+  "outside_date_months": null,
+  "go_shop_period_days": null,
+  "specific_performance_available": null,
+  "willful_breach_carveout": null,
+  "tail_provision_months": null,
+  "sole_remedy_for_acquirer": null,
+  "notes": "Merger of Boston Scientific Corporation (Parent) acquiring Penumbra, Inc. (Company), dated January 14, 2026. Exchange ratio: 3.8721 Parent shares per Company share (stock election) or $374.00 cash per share (cash election), subject to proration (max 73.26% cash, min 26.74% stock). Termination fee provisions are in Section 8.03 which was not included in the provided document text. Deal equity value not stated in provided excerpt.",
+  "document_id": "dp240008_ex0201",
+  "extraction_source": "8k_8k",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1321732/000095010326000523/dp240008_ex0201.htm"
+}

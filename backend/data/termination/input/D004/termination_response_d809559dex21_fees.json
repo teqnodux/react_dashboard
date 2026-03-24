@@ -1,0 +1,46 @@
+{
+  "company_termination_fee": {
+    "amount_usd": 272000000,
+    "amount_text": "Termination Amount",
+    "triggers": [
+      "tail_provision",
+      "fiduciary_out",
+      "superior_proposal",
+      "adverse_recommendation_change",
+      "company_breach"
+    ],
+    "notes": "The exact dollar amount of the 'Termination Amount' is not specified in this section. Triggers include: (i) tail provision - termination by Parent for breach or by either party for certain other reasons, where an Acquisition Proposal was publicly disclosed and within 12 months a deal is consummated or definitive agreement signed (50% threshold applies); (ii) termination by Company pursuant to Section 7.1(c)(ii) (likely fiduciary out/superior proposal); (iii) termination by Parent pursuant to Section 7.1(d)(ii) (likely adverse recommendation change). Fee payable only once.",
+    "amount_type": "fixed",
+    "amount_description": "$272,000,000"
+  },
+  "reverse_termination_fee": {
+    "amount_usd": null,
+    "amount_text": null,
+    "triggers": [],
+    "notes": "No reverse termination fee is described in this section."
+  },
+  "parent_regulatory_termination_fee": {
+    "amount_usd": null,
+    "amount_text": null,
+    "triggers": [],
+    "notes": null
+  },
+  "expense_reimbursement": {
+    "amount_usd": null,
+    "amount_text": null,
+    "triggers": [],
+    "notes": "If Company fails to timely pay the Termination Amount and Merger Sub obtains a judgment, Company must pay Merger Sub's costs and expenses (including reasonable attorneys' fees) plus interest at the WSJ prime rate."
+  },
+  "offer_price_per_share": {
+    "amount_usd": null,
+    "amount_text": null,
+    "consideration_type": null
+  },
+  "specific_performance_available": null,
+  "willful_breach_carveout": true,
+  "tail_provision_months": 12,
+  "sole_remedy_for_acquirer": true,
+  "notes": "The Termination Amount is the sole and exclusive monetary remedy for Parent and Merger Sub when paid in full, except in cases of knowing and intentional breach by the Company prior to termination or fraud by the Company in making representations and warranties. The exact dollar amount of the Termination Amount is not defined in this section.",
+  "document_id": "d809559dex21",
+  "section_number": "Section 7.3"
+}

@@ -1,0 +1,370 @@
+{
+  "deal_id": "D069",
+  "generated_at": "2026-03-18T19:00:07.934571Z",
+  "sources_used": [
+    "dma_extract",
+    "proxy",
+    "termination",
+    "regulatory",
+    "mae",
+    "yfinance"
+  ],
+  "context_panels": {
+    "deal_overview": {
+      "Deal Type": "All Cash",
+      "Deal Structure": "Reverse Triangular Merger",
+      "Legal Jurisdiction": "Delaware",
+      "Industry": "Utilities - Regulated Electric",
+      "Sector": "Utilities",
+      "Target MCap": "$6.4B",
+      "Acquirer MCap": "$138.7B",
+      "Target Revenue": "$2.2B",
+      "Target EBITDA": "$864.9M",
+      "Expected Close": "3Q26",
+      "Voting Threshold": "majority of all outstanding shares of Company Common Stock entitled to vote",
+      "Financing": "Not a closing condition; Parent has received committed financing via two executed Parent Debt Commitment Letters with Wells Fargo Bank, National Association and other lenders/investors",
+      "Closest Competitors": "PNM, AEE, WEC, EVRG, NWE",
+      "Combined Overlap": "Regulated electric and gas utility operations in southwestern and midwestern U.S. markets"
+    },
+    "deal_protection": {
+      "Structure": "No-Shop",
+      "Target Break Fee": "$210M (3.1%)",
+      "Reverse Break Fee": "$350M (5.2%)",
+      "Outside Date": "2026-08-18 (456d / ~15mo)",
+      "Extension": "+4mo (Automatically extends to December 31, 2026 if before August 18, 2026, all Article VII closing conditions (excluding No Legal Restraint and Required Regulatory Approvals) are satisfied/waived or capable of being satisfied) \u2014 591d / ~19mo total"
+    }
+  },
+  "deal_identification": {
+    "deal_name": "TXNM Energy Inc / Blackstone Inc",
+    "target": "TXNM Energy Inc",
+    "buyer": "Blackstone Inc",
+    "announcement_date": "2025-05-19",
+    "industry": "Utilities - Regulated Electric"
+  },
+  "power_dynamics": {
+    "score": 69,
+    "max_score": 95,
+    "interpretation": "Target-Leaning",
+    "categories": {
+      "A": {
+        "label": "Initiation & Alternatives",
+        "subtotal": 23,
+        "max_score": 25,
+        "signals": [
+          {
+            "id": "A1",
+            "signal": "Who Initiated Contact",
+            "raw_input": "TXNM's Board conducted a targeted auction from December 2024 to April 2025, contacting five infrastructure funds proactively after the Avangrid merger termination in January 2024. The Board initiated the process and selected buyers to approach, with Blackstone being one of the contacted parties.",
+            "short_answer": "TXNM",
+            "score": 5,
+            "rationale": "Target (TXNM) initiated the process by running a targeted auction and proactively contacting five infrastructure funds, fitting the 'target initiated' criterion for a score of 5.",
+            "estimated": false
+          },
+          {
+            "id": "A2",
+            "signal": "Time from NDA to Signing",
+            "raw_input": "TXNM contacted five infrastructure funds beginning December 2024, with all five signing NDAs around that timeframe. The merger agreement was signed May 18, 2025, implying roughly 20-24 weeks from NDA execution to signing.",
+            "short_answer": "~20-24 weeks",
+            "score": 5,
+            "rationale": "The period from NDA signing (approximately December 2024) to merger agreement execution (May 18, 2025) exceeds 12 weeks, warranting the maximum score of 5.",
+            "estimated": true
+          },
+          {
+            "id": "A3",
+            "signal": "Competitive Process",
+            "raw_input": "TXNM ran a formal targeted auction contacting five infrastructure funds, all five signed NDAs, three submitted first-round bids, two submitted final bids (Blackstone at $61.25/share and Party A at $60.25/share before withdrawing), and an unsolicited bid from Party E at $60/share was also received.",
+            "short_answer": "Formal auction (5 parties)",
+            "score": 5,
+            "rationale": "TXNM conducted a formal auction with five contacted parties, multiple NDA signings, competitive bidding rounds, and two final-round bidders, clearly meeting the 'formal auction / multiple bidders' criterion for a score of 5.",
+            "estimated": false
+          },
+          {
+            "id": "A4",
+            "signal": "Target's Standalone Viability",
+            "raw_input": "TXNM's Board periodically reviewed M&A opportunities and continued reviewing strategic alternatives after the Avangrid termination, but there is no indication of distress, activist pressure, or financial deterioration. The Board proactively pursued a sale from a position of strategic choice rather than necessity.",
+            "short_answer": "Moderate standalone, strategic choice",
+            "score": 3,
+            "rationale": "TXNM shows no distress or activist pressure but also does not demonstrate a particularly strong standalone growth trajectory; the Board's proactive pursuit of a sale suggests moderate standalone viability, supporting a score of 3.",
+            "estimated": true
+          },
+          {
+            "id": "A5",
+            "signal": "Industry Buyer Universe",
+            "raw_input": "TXNM contacted five infrastructure funds, all five signed NDAs, three submitted first-round bids, and process leaks generated additional inbound inquiries from strategic and financial investors. The proxy notes strategic buyers were not pursued due to lack of interest, limiting the realistic buyer universe to infrastructure funds.",
+            "short_answer": "4+ credible buyers (infrastructure funds)",
+            "score": 5,
+            "rationale": "Five infrastructure funds engaged in the process with NDA signings and multiple bid submissions, meeting the '4+ credible buyers' threshold for a score of 5.",
+            "estimated": false
+          }
+        ]
+      },
+      "B": {
+        "label": "Premium & Consideration Structure",
+        "subtotal": 15,
+        "max_score": 25,
+        "signals": [
+          {
+            "id": "B1",
+            "signal": "Headline Premium (vs. unaffected price)",
+            "raw_input": "Offer $61.25 vs unaffected $52.88",
+            "short_answer": "15.8%",
+            "score": 3,
+            "rationale": "Premium of 15.8% vs unaffected price.",
+            "estimated": false
+          },
+          {
+            "id": "B2",
+            "signal": "Premium vs. 52-Week High",
+            "raw_input": "Offer $61.25 vs 52w high $59.52",
+            "short_answer": "2.9% above",
+            "score": 3,
+            "rationale": "Offer is 2.9% above 52-week high.",
+            "estimated": false
+          },
+          {
+            "id": "B3",
+            "signal": "Price Movement During Negotiation",
+            "raw_input": "Blackstone's initial proposal was $58.00/share on February 18, 2025, which was subsequently increased to $61.00/share on April 14, 2025, and finalized at $61.25/share on April 18, 2025, representing a $3.25/share increase from the initial bid.",
+            "short_answer": "+$3.25 (+5.6%)",
+            "score": 3,
+            "rationale": "The final price of $61.25 exceeded Blackstone's initial $58.00 proposal by $3.25, a 5.6% increase, which falls within the 1\u201310% increase range per the scoring rubric.",
+            "estimated": false
+          },
+          {
+            "id": "B4",
+            "signal": "Cash as % of Total Consideration",
+            "raw_input": "$61.25 all cash",
+            "short_answer": "100% cash",
+            "score": 5,
+            "rationale": "Cash represents 100% of total consideration.",
+            "estimated": false
+          },
+          {
+            "id": "B5",
+            "signal": "Collar or Walk-Away on Buyer Stock Price",
+            "raw_input": "The merger agreement provides for a fixed all-cash consideration of $61.25 per share with no collar, no averaging period, and no adjustment mechanism tied to any buyer stock price or other variable; the consideration is not subject to any walk-away right based on buyer stock price movements.",
+            "short_answer": "No collar \u2014 fixed $61.25 cash",
+            "score": 1,
+            "rationale": "This is a straightforward all-cash deal at a fixed price with no collar or walk-away provisions tied to buyer stock price, warranting the lowest score under the rubric.",
+            "estimated": false
+          }
+        ]
+      },
+      "C": {
+        "label": "Protective Terms",
+        "subtotal": 17,
+        "max_score": 25,
+        "signals": [
+          {
+            "id": "C2",
+            "signal": "RTF Trigger Breadth",
+            "raw_input": "The $350M reverse termination fee is payable upon termination due to: (A) No Legal Restraint solely in connection with Required Regulatory Approvals, (B) End Date expiry, or (C) Parent Terminable Breach, in each case where all other closing conditions are met; also payable upon Parent Failure to Close or Stock Purchase Agreement Termination.",
+            "short_answer": "Denial + conditions + End Date expiry",
+            "score": 5,
+            "rationale": "The RTF triggers cover the full spectrum: outright regulatory denial, burdensome conditions preventing closing, and End Date expiry \u2014 the broadest possible trigger set per the rubric.",
+            "estimated": false
+          },
+          {
+            "id": "C3",
+            "signal": "Ticking Fee / Consideration Increase",
+            "raw_input": "The merger consideration is fixed at $61.25 per share with no provision for any ticking fee, interest accrual, or consideration increase over time; regular quarterly dividends are permitted within caps but do not constitute a ticking fee.",
+            "short_answer": "None",
+            "score": 1,
+            "rationale": "No ticking fee or consideration adjustment mechanism exists in the agreement; the $61.25 per share price is static throughout the deal period.",
+            "estimated": false
+          },
+          {
+            "id": "C4",
+            "signal": "Target Board Fiduciary Out Breadth",
+            "raw_input": "The Company board may change its recommendation and terminate to accept a Superior Proposal at any time prior to obtaining the Company Requisite Vote, subject to standard notice, matching rights, and payment of the $210M termination fee; the fiduciary out follows standard market construct.",
+            "short_answer": "Standard fiduciary out",
+            "score": 3,
+            "rationale": "The fiduciary out is available pre-vote with standard conditions (Superior Proposal determination, notice, match right, fee payment), reflecting typical market terms without unusual restrictions or expansions.",
+            "estimated": false
+          },
+          {
+            "id": "C5",
+            "signal": "Match Right Duration (business days)",
+            "raw_input": "The merger agreement references Parent's right to match a Superior Proposal, but the specific number of business days for the match right period is not explicitly stated in the provided excerpts; standard market practice for utility deals is typically 4-5 business days.",
+            "short_answer": "4-5 business days (est.)",
+            "score": 3,
+            "rationale": "The match right duration is not explicitly detailed in the provided agreement excerpts; estimating standard market terms of 4-5 business days yields a mid-range score.",
+            "estimated": true
+          },
+          {
+            "id": "C6",
+            "signal": "Specific Performance Right",
+            "raw_input": "The agreement expressly provides that Parent is entitled to specific performance, and separately the Company can terminate and trigger the $350M RTF upon Parent Failure to Close after a Satisfaction Notice; the agreement also provides mutual specific performance rights under Section 9.10.",
+            "short_answer": "Full specific performance",
+            "score": 5,
+            "rationale": "Both parties have specific performance rights under Section 9.10, and the Company can force closing via the Satisfaction Notice mechanism \u2014 the target is not limited to the RTF as its sole remedy, representing the strongest protective posture.",
+            "estimated": false
+          }
+        ]
+      },
+      "D": {
+        "label": "Market Signal",
+        "subtotal": 14,
+        "max_score": 20,
+        "signals": [
+          {
+            "id": "D1",
+            "signal": "Target Stock Reaction to Announcement",
+            "raw_input": "Target moved +7.0% on announce day (prior close $51.75 \u2192 $55.37)",
+            "short_answer": "+7.0%",
+            "score": 4,
+            "rationale": "Target stock jumped +7.0% on announcement day.",
+            "estimated": false
+          },
+          {
+            "id": "D2",
+            "signal": "Buyer Stock Reaction to Announcement",
+            "raw_input": "Buyer moved -0.8% on announce day",
+            "short_answer": "-0.8%",
+            "score": 1,
+            "rationale": "Buyer stock dropped 0.8% on announcement day.",
+            "estimated": false
+          },
+          {
+            "id": "D3",
+            "signal": "Current Spread as % of Deal Value",
+            "raw_input": "Spread: 5.01% ($2.92)",
+            "short_answer": "5.0%",
+            "score": 4,
+            "rationale": "Current merger spread is 5.0%.",
+            "estimated": false
+          },
+          {
+            "id": "D4",
+            "signal": "Institutional Ownership Shift",
+            "raw_input": "106.9% held by institutions",
+            "short_answer": "106.9% institutional",
+            "score": 5,
+            "rationale": "Institutional ownership at 106.9%.",
+            "estimated": false
+          }
+        ]
+      }
+    }
+  },
+  "regulatory_risk": {
+    "score": 40,
+    "max_score": 55,
+    "interpretation": "High Risk",
+    "categories": {
+      "A": {
+        "label": "Structural Complexity",
+        "subtotal": 20,
+        "max_score": 25,
+        "signals": [
+          {
+            "id": "A1",
+            "signal": "Number of Required Regulatory Approvals",
+            "raw_input": "8 regulatory approvals required",
+            "short_answer": "8",
+            "score": 4,
+            "rationale": "8 regulatory approvals required.",
+            "estimated": false
+          },
+          {
+            "id": "A2",
+            "signal": "Substantive Review Agencies (vs. ministerial)",
+            "raw_input": "7 substantive agencies out of 8 total: HSR Act, Antitrust approvals, Other required regulatory approvals, NMPRC, PUCT, FCC, NRC",
+            "short_answer": "HSR Act, Antitrust approvals, Other required regulatory approvals, NMPRC, PUCT, FCC, NRC",
+            "score": 5,
+            "rationale": "7 agencies with substantive review authority.",
+            "estimated": false
+          },
+          {
+            "id": "A3",
+            "signal": "Cross-Border Regulatory Exposure",
+            "raw_input": "2 foreign jurisdictions: United States - New Mexico, United States - Texas",
+            "short_answer": "2 foreign jurisdictions",
+            "score": 3,
+            "rationale": "2 non-US regulatory jurisdictions.",
+            "estimated": false
+          },
+          {
+            "id": "A5",
+            "signal": "Parallel vs. Sequential Dependencies",
+            "raw_input": "The merger agreement requires HSR/antitrust clearance, NMPRC, PUCT, FCC, and NRC approvals, among others. The agreement specifies that the outside date automatically extends if all conditions except No Legal Restraint and Required Regulatory Approvals are satisfied, implying regulatory approvals are the binding critical path but does not impose any explicit sequential ordering among the individual agency approvals.",
+            "short_answer": "Mostly parallel, 1-2 dependencies",
+            "score": 3,
+            "rationale": "Most regulatory approvals (HSR, NMPRC, PUCT, FCC, NRC) appear to run concurrently with no explicit sequencing requirement, but state utility commission approvals (NMPRC, PUCT) in practice often depend on or coordinate with federal approvals, creating 1-2 soft sequential dependencies.",
+            "estimated": true
+          },
+          {
+            "id": "A6",
+            "signal": "HSR Filing Deadline",
+            "raw_input": "HSR notification within 25 Business Days after mutually agreed date; non-U.S. merger control/antitrust filings no earlier than 90 days post-signing",
+            "short_answer": "25 business days",
+            "score": 5,
+            "rationale": "HSR filing required within 25 business days of agreement execution.",
+            "estimated": false
+          }
+        ]
+      },
+      "B": {
+        "label": "Agreement Structure Signals",
+        "subtotal": 20,
+        "max_score": 30,
+        "signals": [
+          {
+            "id": "B1",
+            "signal": "Outside Date Length (months from signing)",
+            "raw_input": "Announce 2025-05-19 \u2192 outside date 2026-08-18 = ~15 months",
+            "short_answer": "15 months",
+            "score": 2,
+            "rationale": "Outside date is approximately 15 months from announcement.",
+            "estimated": false
+          },
+          {
+            "id": "B2",
+            "signal": "End Date Extension Mechanics",
+            "raw_input": "Outside Date automatically extends from August 18, 2026 to December 31, 2026 if all Article VII closing conditions (excluding No Legal Restraint and Required Regulatory Approvals) are satisfied/waived or capable of being satisfied before the initial outside date. A further extension to March 31, 2027 is available by mutual written agreement.",
+            "short_answer": "Auto extension tied to regulatory conditions, +4.5 months",
+            "score": 5,
+            "rationale": "The automatic extension is explicitly tied to regulatory approval conditions remaining unsatisfied, which matches the highest scoring criterion of an automatic extension tied to a specific agency/regulatory condition.",
+            "estimated": false
+          },
+          {
+            "id": "B3",
+            "signal": "RTF Existence and Size (% of TEV)",
+            "raw_input": "RTF $350M = 5.2% of equity value (~$6,671M)",
+            "short_answer": "$350M (5.2%)",
+            "score": 4,
+            "rationale": "Reverse termination fee is 5.2% of equity value.",
+            "estimated": false
+          },
+          {
+            "id": "B4",
+            "signal": "Efforts Standard",
+            "raw_input": "Parent and Company must use 'reasonable best efforts' to obtain all required regulatory approvals. Parent must take any structural or behavioral remedies including divestitures to secure clearance, but is not required to accept Remedy Actions that would be 'materially adverse to the business or operations of any Company Party from and after the Closing Date.'",
+            "short_answer": "RBE with MBRC carveout",
+            "score": 3,
+            "rationale": "The agreement imposes a reasonable best efforts standard but includes a carveout protecting Parent from accepting remedies materially adverse to Company operations post-closing, which constitutes a material burdensome condition carveout consistent with a score of 3.",
+            "estimated": false
+          },
+          {
+            "id": "B5",
+            "signal": "Burdensome Condition Walk-Away",
+            "raw_input": "The agreement states Parent is not required to accept any Remedy Action that 'individually or in the aggregate, would be materially adverse to the business or operations of any Company Party from and after the Closing Date.' No dollar-based or revenue-based divestiture cap is stated, and no disclosure schedule references define the MBRC further.",
+            "short_answer": "Defined publicly, qualitative standard only",
+            "score": 3,
+            "rationale": "The burdensome condition concept is publicly articulated in the merger agreement using a qualitative 'materially adverse' standard, but lacks specific quantitative thresholds or schedule-based criteria, placing it at the middle score of 3.",
+            "estimated": false
+          },
+          {
+            "id": "B6",
+            "signal": "Divestiture Caps & Remedy Commitments",
+            "raw_input": "The agreement states 'No limitations on Remedial Actions for antitrust approvals; buyer must take any structural or behavioral remedies, including divestitures, to secure clearance.' However, Parent is not required to accept remedies materially adverse to Company operations, and no explicit dollar or revenue-based divestiture cap is provided.",
+            "short_answer": "No explicit cap; MBRC carveout limits obligation",
+            "score": 3,
+            "rationale": "While the agreement broadly requires divestitures and all structural remedies, the materially adverse carveout meaningfully limits the buyer's remedy commitment without specifying a clear cap, placing this between unlimited divestiture obligation and a de minimis cap.",
+            "estimated": false
+          }
+        ]
+      }
+    }
+  }
+}

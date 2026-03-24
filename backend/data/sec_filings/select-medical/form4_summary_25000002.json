@@ -1,0 +1,30 @@
+{
+  "ticker": "SEM",
+  "issuer": "SELECT MEDICAL HOLDINGS CORP",
+  "filing_date": "10/30/25",
+  "insider_name": "John F. Duggan",
+  "insider_title": "Executive Vice President",
+  "relationship": "Officer",
+  "L1_headline": "+ SEM \u2013 John F. Duggan acquired 50,000 restricted stock shares. | 10/28/25",
+  "L2_brief": "Executive Vice President John F. Duggan received a grant of 50,000 restricted stock shares at $0 cost on October 28, 2025. The shares vest in full on October 28, 2029 (4-year cliff vesting). This is a standard equity compensation award rather than an open-market purchase, reflecting ongoing executive retention incentives.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "10/28/2025",
+        "shares": "50,000",
+        "price_per_share": "$0",
+        "total_value": "$0 (restricted stock grant)",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "199,575 shares",
+    "ownership_type": "Direct",
+    "deal_signal": "N/A",
+    "pattern_notes": "This is a restricted stock grant with a 4-year cliff vesting period (vests October 28, 2029), indicating long-term retention compensation. The grant represents approximately 25% of Duggan's total post-transaction holdings, suggesting meaningful equity alignment with shareholders.",
+    "risks_flagged": [
+      "Not an open-market purchase - equity compensation grant",
+      "4-year cliff vesting creates retention lock-up"
+    ]
+  }
+}

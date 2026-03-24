@@ -1,0 +1,37 @@
+{
+  "ticker": "PEN",
+  "filer": "Boston Scientific Corporation (BSX)",
+  "subject_company": "Penumbra, Inc.",
+  "filing_date": "01/20/26",
+  "communication_type": "Other",
+  "L1_headline": "+ PEN \u2013 BSX CEO contrasts $14.5B deal with past Guidant misstep. | 01/20/26",
+  "L2_brief": "Boston Scientific filed a Minnesota Star Tribune article from January 17, 2026 in which CEO Mike Mahoney discussed the $14.5 billion cash-and-stock acquisition of Penumbra, emphasizing the company's stronger financial position and integration experience compared to the 2006 Guidant deal. The deal is expected to close sometime in 2026, with consideration structured as 73% cash and 27% stock, and is expected to be slightly dilutive in the first full year post-close, neutral to slightly accretive in the second year, and more accretive thereafter. Analyst commentary cited in the article characterized Penumbra as a compelling acquisition that accelerates BSX sales growth and expands its total addressable market.",
+  "L3_detailed": {
+    "deal_parties": "Boston Scientific Corporation (BSX) acquiring Penumbra, Inc. (PEN)",
+    "deal_status_update": "Definitive agreement announced on January 15, 2026. BSX will file an S-4 registration statement with the SEC that will include a proxy statement/prospectus for Penumbra stockholders.",
+    "timeline_update": "Boston Scientific expects the deal to close sometime in 2026. No specific quarter or regulatory milestone dates were provided.",
+    "terms_update": "$14.5 billion total consideration, structured as 73% cash and 27% stock. Deal expected to be slightly dilutive to earnings in the first full year after close, neutral to slightly accretive in the second year, and more accretive thereafter.",
+    "management_tone": "CEO Mahoney characterized the deal as being executed from a 'position of strength,' contrasted it with the 2006 Guidant acquisition by citing a stronger balance sheet and 50 acquisitions of experience over the past 14 years. He stated the deal 'couldn't be more different' from Guidant.",
+    "key_messages": [
+      "Penumbra provides BSX re-entry into neurovascular devices, a market it exited in 2011 when it sold its neurovascular division to Stryker for $1.5 billion",
+      "BSX's stronger global footprint allows it to scale Penumbra's business in Europe, China, Japan, and the Middle East",
+      "Penumbra expects 2025 revenue of approximately $1.4 billion, growing more than 17% year-over-year",
+      "CEO Mahoney stated the company wanted to enter the neurovascular market as a leader rather than through smaller acquisitions",
+      "Negotiations were kept confidential to avoid jeopardizing the deal",
+      "J.P. Morgan analysts stated the deal may make BSX's long-range plan of sustained 10%+ organic sales growth more achievable and durable",
+      "Stifel analysts called it a 'truly compelling and exciting acquisition' and noted it appears to be an excellent operational and cultural fit"
+    ],
+    "regulatory_update": "No specific regulatory filings or approvals were discussed beyond the forward-looking statement noting that required regulatory approvals and clearances are conditions to closing.",
+    "shareholder_vote_info": "Penumbra stockholders will receive a proxy statement/prospectus. No record date or vote date disclosed. No board recommendation details provided in this communication beyond standard solicitation disclosures.",
+    "integration_details": "CEO Mahoney cited BSX's track record of approximately 50 acquisitions over 14 years and stated the team is experienced at integrating companies. Penumbra will be added as a new division. BSX plans to globalize Penumbra's portfolio and sell complementary products together. No specific synergy dollar estimates or integration timeline provided.",
+    "risks_flagged": [
+      "BSX stock dropped nearly 6% in the days following the deal announcement",
+      "Some investors may view the deal as a departure from BSX's historical M&A philosophy of smaller, product-focused acquisitions",
+      "Deal expected to be slightly dilutive in the first full year post-close",
+      "Conditions to closing include receipt of required regulatory approvals and clearances, which may not be satisfied at all or in a timely manner",
+      "Forward-looking statements cite risks including foreign currency fluctuations, changing trade and tariff policies, geopolitical events, supply chain disruptions, and potential business disruptions following announcement",
+      "Historical precedent of the Guidant acquisition causing years of legal challenges and deflated financial results"
+    ]
+  },
+  "filing_type": "425"
+}

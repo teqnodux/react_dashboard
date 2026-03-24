@@ -1,0 +1,38 @@
+{
+  "deal_id": "D004",
+  "extracted": {
+    "target": "CyberArk Software Ltd.",
+    "acquirer": "Palo Alto Networks, Inc.",
+    "offer_price_cash": 45.0,
+    "cvr_value": null,
+    "stock_exchange_ratio": 2.2005,
+    "total_consideration": null,
+    "deal_value_bn": null,
+    "deal_type": "cash+stock",
+    "premium_pct": null,
+    "undisturbed_date": null,
+    "undisturbed_reference": null,
+    "expected_close": "2H26",
+    "expected_close_date": "2026-07-30",
+    "announce_date": "2025-07-31",
+    "go_shop_days": null,
+    "diluted_shares_mm": null,
+    "cash_on_hand_bn": null,
+    "debt_bn": null,
+    "financing": "Cash portion expected to be financed from Palo Alto Networks' cash on hand with no financing condition",
+    "regulatory_bodies": [
+      "Hart-Scott-Rodino Act (HSR)",
+      "Nasdaq",
+      "Israeli Companies Registrar",
+      "Multiple antitrust and foreign investment regulatory bodies"
+    ],
+    "shareholder_approval_required": true,
+    "dividend_info": null,
+    "special_conditions": "Israeli statutory waiting periods: minimum 50 days after merger proposal filing with Companies Registrar and minimum 30 days after shareholder approval. Outside date of July 30, 2026, extendable to October 30, 2026 for regulatory approvals. CYBR termination fee of $750 million if board changes recommendation or accepts superior proposal. PANW reverse termination fee of $1 billion if deal fails due to regulatory approvals. Customary no-solicitation provisions with fiduciary out for superior proposals.",
+    "minority_investors": null,
+    "raw_summary": "Palo Alto Networks to acquire CyberArk via merger"
+  },
+  "source_text": "======================================================================\n  6-K SUMMARY (Foreign Private Issuer)\n======================================================================\n\n   Company:  CyberArk Software Ltd. (CYBR)\n   Country:  Israel\n   Type:     Deal Announcement\n   Date:     07/31/25\n\n📌 L1 | HEADLINE\n   + CYBR – Palo Alto Networks to acquire CyberArk via merger. | 07/31/25\n\n📋 L2 | BRIEF\n   CyberArk Software Ltd. entered into a definitive Agreement and Plan of Merger with Palo Alto Networks, Inc. (PANW) on July 30, 2025, under which each CYBR share will be converted into 2.2005 PANW shares plus $45.00 in cash. The transaction requires CYBR shareholder approval (simple majority), HSR clearance, other antitrust/foreign investment approvals, and Israeli statutory waiting periods, with an outside date of July 30, 2026 (extendable to October 30, 2026 for regulatory approvals). CYBR would owe a $750 million termination fee if it accepts a superior proposal or its board changes its recommendation, while PANW would owe a $1 billion reverse termination fee if the deal fails due to regulatory approvals.\n\n📊 L3 | DETAILED\n   Event:          CyberArk Software Ltd. entered into an Agreement and Plan of Merger with Palo Alto Networks, Inc. and its Israeli subsidiary Athens Strategies Ltd. Merger Sub will merge with and into CyberArk, with CyberArk surviving as a wholly owned subsidiary of PANW. Both boards unanimously approved the transaction, and CYBR's board recommends shareholder approval.\n   Key Figures:\n     • Per-share merger consideration: 2.2005 PANW shares + $45.00 cash\n     • CYBR termination fee: $750 million\n     • PANW reverse termination fee (regulatory failure): $1 billion\n     • CYBR shareholder approval threshold: simple majority of voting power represented and voting\n     • Israeli statutory waiting period: at least 50 days after merger proposal filing with Companies Registrar and at least 30 days after shareholder approval\n     • Outside date: July 30, 2026, extendable to October 30, 2026 for regulatory approvals\n     • CYBR ordinary share par value: NIS 0.01\n     • PANW common stock par value: $0.0001\n   Market Impact:  Upon completion, CYBR shares will be delisted from Nasdaq and deregistered under the Exchange Act. CYBR shareholders will receive a mix of PANW stock and cash. The cash portion is expected to be financed from cash on hand with no financing condition.\n   Deal Relevance: The merger requires CYBR shareholder approval (simple majority), HSR clearance, additional antitrust/foreign investment approvals, Nasdaq listing approval for new PANW shares, effectiveness of PANW's Form S-4, and Israeli statutory waiting periods. The outside date is July 30, 2026, extendable to October 30, 2026 for regulatory approvals. A $750 million CYBR termination fee applies if the board changes its recommendation or CYBR enters a superior proposal. A $1 billion PANW reverse termination fee applies if the deal fails due to regulatory approvals. Customary no-solicitation provisions apply with a fiduciary out for superior proposals.\n   Regulatory:     Hart-Scott-Rodino Act waiting period required. Additional approvals required under specified antitrust and foreign investment laws. Israeli Companies Registrar filing required with a 50-day statutory waiting period. Nasdaq listing approval required for PANW shares to be issued.\n   Cross-Border:   CyberArk is incorporated in Israel; Merger Sub (Athens Strategies Ltd.) is an Israeli entity. Israeli Companies Law governs the merger structure and imposes statutory waiting periods (50 days from merger proposal filing, 30 days from shareholder approval). CYBR share par value is denominated in NIS (NIS 0.01). Cash consideration of $45.00 per share is in USD. Foreign investment law approvals may be required in addition to US HSR clearance.\n   Risks:\n     • Regulatory approvals required across multiple jurisdictions including US (HSR) and foreign investment laws\n     • Israeli statutory waiting periods extend timeline beyond shareholder approval\n     • Potential for third-party superior proposals under fiduciary out provisions\n     • Risk of litigation against directors in connection with the transaction\n     • Integration risk post-closing\n     • Mixed consideration subjects CYBR shareholders to PANW stock price fluctuations between signing and closing\n     • No financing condition but cash portion dependent on PANW cash on hand\n======================================================================",
+  "extracted_at": "2026-03-10T04:08:15.192755Z",
+  "filing_date": "2025-07-31"
+}

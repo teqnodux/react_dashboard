@@ -1,0 +1,608 @@
+{
+  "deal_id": "d809559dex21",
+  "comparison_timestamp": "20260311_221729",
+  "assessment_file": "20260311_221729",
+  "benchmark_info": {
+    "total_clauses": 1458,
+    "total_deals": 29,
+    "avg_restrictiveness": 7.032786885245901
+  },
+  "restrictiveness_comparison": {
+    "benchmark_avg": 7.032786885245901,
+    "benchmark_median": 7.0,
+    "deal_avg": 7.151515151515151,
+    "deal_median": 7.0,
+    "difference_avg": 0.11872826626925015,
+    "difference_median": 0.0,
+    "category": "similar_to_benchmark",
+    "percentile_rank": "middle_50%"
+  },
+  "category_comparison": {
+    "debt_and_financing": {
+      "benchmark_count": 137,
+      "benchmark_percentage": 5.12532734754957,
+      "deal_count": 4,
+      "deal_percentage": 12.121212121212121,
+      "difference_percentage": 6.995884773662551,
+      "assessment": "more_than_benchmark"
+    },
+    "mergers_and_acquisitions": {
+      "benchmark_count": 252,
+      "benchmark_percentage": 9.427609427609427,
+      "deal_count": 5,
+      "deal_percentage": 15.151515151515152,
+      "difference_percentage": 5.723905723905725,
+      "assessment": "more_than_benchmark"
+    },
+    "tax_matters": {
+      "benchmark_count": 120,
+      "benchmark_percentage": 4.489337822671156,
+      "deal_count": 2,
+      "deal_percentage": 6.0606060606060606,
+      "difference_percentage": 1.5712682379349046,
+      "assessment": "similar_to_benchmark"
+    },
+    "other": {
+      "benchmark_count": 16,
+      "benchmark_percentage": 0.5985783763561541,
+      "deal_count": 0,
+      "deal_percentage": 0.0,
+      "difference_percentage": -0.5985783763561541,
+      "assessment": "similar_to_benchmark"
+    },
+    "litigation_and_settlements": {
+      "benchmark_count": 77,
+      "benchmark_percentage": 2.880658436213992,
+      "deal_count": 1,
+      "deal_percentage": 3.0303030303030303,
+      "difference_percentage": 0.1496445940890383,
+      "assessment": "similar_to_benchmark"
+    },
+    "accounting_and_reporting": {
+      "benchmark_count": 52,
+      "benchmark_percentage": 1.9453797231575012,
+      "deal_count": 2,
+      "deal_percentage": 6.0606060606060606,
+      "difference_percentage": 4.11522633744856,
+      "assessment": "similar_to_benchmark"
+    },
+    "dividends_and_distributions": {
+      "benchmark_count": 58,
+      "benchmark_percentage": 2.1698466142910586,
+      "deal_count": 2,
+      "deal_percentage": 6.0606060606060606,
+      "difference_percentage": 3.890759446315002,
+      "assessment": "similar_to_benchmark"
+    },
+    "contracts_and_commitments": {
+      "benchmark_count": 162,
+      "benchmark_percentage": 6.0606060606060606,
+      "deal_count": 2,
+      "deal_percentage": 6.0606060606060606,
+      "difference_percentage": 0.0,
+      "assessment": "similar_to_benchmark"
+    },
+    "compensation_and_benefits": {
+      "benchmark_count": 171,
+      "benchmark_percentage": 6.397306397306397,
+      "deal_count": 11,
+      "deal_percentage": 33.33333333333333,
+      "difference_percentage": 26.93602693602693,
+      "assessment": "significantly_more_than_benchmark"
+    },
+    "capital_expenditures": {
+      "benchmark_count": 110,
+      "benchmark_percentage": 4.11522633744856,
+      "deal_count": 1,
+      "deal_percentage": 3.0303030303030303,
+      "difference_percentage": -1.0849233071455293,
+      "assessment": "similar_to_benchmark"
+    },
+    "related_party_transactions": {
+      "benchmark_count": 18,
+      "benchmark_percentage": 0.6734006734006733,
+      "deal_count": 1,
+      "deal_percentage": 3.0303030303030303,
+      "difference_percentage": 2.356902356902357,
+      "assessment": "similar_to_benchmark"
+    },
+    "insurance": {
+      "benchmark_count": 21,
+      "benchmark_percentage": 0.7856341189674524,
+      "deal_count": 1,
+      "deal_percentage": 3.0303030303030303,
+      "difference_percentage": 2.244668911335578,
+      "assessment": "similar_to_benchmark"
+    },
+    "asset_dispositions": {
+      "benchmark_count": 67,
+      "benchmark_percentage": 2.5065469509913956,
+      "deal_count": 1,
+      "deal_percentage": 3.0303030303030303,
+      "difference_percentage": 0.5237560793116347,
+      "assessment": "similar_to_benchmark"
+    },
+    "intellectual_property": {
+      "benchmark_count": 65,
+      "benchmark_percentage": 2.431724653946876,
+      "deal_count": 1,
+      "deal_percentage": 3.0303030303030303,
+      "difference_percentage": 0.5985783763561541,
+      "assessment": "similar_to_benchmark"
+    },
+    "operations_and_conduct": {
+      "benchmark_count": 1347,
+      "benchmark_percentage": 50.39281705948373,
+      "deal_count": 25,
+      "deal_percentage": 75.75757575757575,
+      "difference_percentage": 25.364758698092018,
+      "assessment": "significantly_more_than_benchmark"
+    }
+  },
+  "priority_comparison": {
+    "urgent": {
+      "benchmark_pct": 56.89890710382514,
+      "deal_pct": 27.27272727272727,
+      "deal_count": 9
+    },
+    "routine": {
+      "benchmark_pct": 19.808743169398905,
+      "deal_pct": 72.72727272727273,
+      "deal_count": 24
+    },
+    "review": {
+      "benchmark_pct": 23.292349726775956,
+      "deal_pct": 0.0,
+      "deal_count": 0
+    }
+  },
+  "outlier_clauses": [
+    {
+      "clause_id": "preamble",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 7,
+      "similarity_to_benchmark": 0.8843653130958989,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "Potentially vague terms like 'commercially reasonable efforts'",
+        "Broad restrictions on business conduct may limit operational flexibility"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "a",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 7,
+      "similarity_to_benchmark": 0.7536736171797372,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "Potentially vague terms like 'materially adverse' could lead to disputes",
+        "Restricts amendments that could be necessary for operational flexibility"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "b",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 7,
+      "similarity_to_benchmark": 0.8815449357710886,
+      "reasons": [
+        "Contains 1 red flag(s)"
+      ],
+      "red_flags": [
+        "Broad prohibition on various forms of equity transactions could limit flexibility for the company"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "c",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 7,
+      "similarity_to_benchmark": 0.884009818458604,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "Potentially broad restrictions on capital stock transactions that could limit the company's flexibility during the merger process",
+        "The need for buyer consent for actions outside the specified exceptions may create delays"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "d",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 8,
+      "similarity_to_benchmark": 0.8981588255631164,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "Potentially limits the Company's ability to return capital to shareholders during the interim period",
+        "Could impact liquidity and operational flexibility"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "e_i",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 7,
+      "similarity_to_benchmark": 0.8458459715577431,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "Potentially limits the company's ability to adapt employee benefits in response to market conditions or employee needs",
+        "Could hinder recruitment and retention efforts if benefits cannot be adjusted"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "e_ii",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 8,
+      "similarity_to_benchmark": 0.7188935948795124,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "potentially limits ability to retain key employees",
+        "could impact morale and performance of service providers"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "e_iii",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 8,
+      "similarity_to_benchmark": 0.8058396885832337,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "Broad prohibition on increasing compensation could hinder talent retention",
+        "Potential negative impact on employee morale and performance"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "e_iv",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 8,
+      "similarity_to_benchmark": 0.8624371101580267,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "Potential for employee dissatisfaction if benefits are not accelerated post-merger",
+        "Restricts the company's ability to manage employee compensation effectively during the merger process"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "e_v",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 7,
+      "similarity_to_benchmark": 0.7230433015087957,
+      "reasons": [
+        "Contains 1 red flag(s)"
+      ],
+      "red_flags": [
+        "Potentially broad interpretation of 'similar agreements' could restrict necessary business flexibility"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "e_vi",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 7,
+      "similarity_to_benchmark": 0.6814663485441371,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "potentially limits necessary communication with employees",
+        "may create uncertainty among employees regarding their future"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "e_vii",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 7,
+      "similarity_to_benchmark": 0.729199638726368,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "potential for significant impact on funding obligations if assumptions are changed",
+        "restricts flexibility in managing benefit plans"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "f",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 7,
+      "similarity_to_benchmark": 0.8058741277679868,
+      "reasons": [
+        "Contains 1 red flag(s)"
+      ],
+      "red_flags": [
+        "The $250,000 threshold may be considered low, potentially encompassing a significant number of employees, which could hinder operational flexibility."
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "g",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 6,
+      "similarity_to_benchmark": 0.8332350723894515,
+      "reasons": [
+        "Contains 1 red flag(s)"
+      ],
+      "red_flags": [
+        "Potentially limits the Company's ability to incentivize or retain key employees through loans or advances"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "h",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 6,
+      "similarity_to_benchmark": 0.7747340782137455,
+      "reasons": [
+        "Contains 1 red flag(s)"
+      ],
+      "red_flags": [
+        "Potentially limits the company's ability to support employees or directors financially, which could affect morale or retention"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "i",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 7,
+      "similarity_to_benchmark": 0.7878965306573357,
+      "reasons": [
+        "Contains 1 red flag(s)"
+      ],
+      "red_flags": [
+        "The aggregate limit may be seen as restrictive for the buyer's future growth opportunities."
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "j",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 7,
+      "similarity_to_benchmark": 0.8759714282193354,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "High materiality thresholds ($5,000,000 individually and $25,000,000 in the aggregate) may limit buyer's ability to monitor compliance effectively",
+        "Broad language regarding encumbrance and transfer could lead to interpretation issues"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "k",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 8,
+      "similarity_to_benchmark": 0.723528370445854,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "Prohibition on settling or amending claims could limit operational flexibility",
+        "Broad definition of material Indebtedness may lead to ambiguity"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "l",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 8,
+      "similarity_to_benchmark": 0.8441299244002192,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "Broad restrictions on incurring new debt",
+        "Potential impact on operational flexibility"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "m",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 7,
+      "similarity_to_benchmark": 0.8225250042705953,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "Potentially broad interpretation of 'ordinary course of business' could lead to disputes",
+        "Restricts the ability to modify or terminate contracts which may be necessary for business operations"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "n",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 9,
+      "similarity_to_benchmark": 0.7724561705987506,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "absolute prohibition on modifications to labor agreements",
+        "no recognition of labor unions or employee groups"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "o",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 6,
+      "similarity_to_benchmark": 0.8727750767188757,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "Potentially limits flexibility in accounting practices",
+        "Material change definition may be subjective"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "p",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 6,
+      "similarity_to_benchmark": 0.8106968047175427,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "Potential for disputes over budget adherence",
+        "Risk of underinvestment if capital needs exceed budget"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "q",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 7,
+      "similarity_to_benchmark": 0.8532586331940084,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "Restrictions on settlements could limit the company's ability to resolve legal issues efficiently.",
+        "Exclusions for certain types of proceedings may create ambiguity in enforcement."
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "s",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 8,
+      "similarity_to_benchmark": 0.727611549192824,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "broad language that may limit future business flexibility",
+        "potential for interpretation issues regarding 'ordinary course of business'"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "t",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 8,
+      "similarity_to_benchmark": 0.9091825236435784,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "potential for significant operational constraints",
+        "risk of unexpected tax liabilities due to restrictions"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "u",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 7,
+      "similarity_to_benchmark": 0.7089696527138885,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "Potentially broad interpretation of actions and omissions",
+        "Risk of triggering tax implications under Section 7874"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "v",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 9,
+      "similarity_to_benchmark": 0.9215352896734382,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "absolute prohibition on mergers and consolidations",
+        "no exceptions for strategic transactions"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "w",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 7,
+      "similarity_to_benchmark": 0.6572318861139114,
+      "reasons": [
+        "Contains 1 red flag(s)"
+      ],
+      "red_flags": [
+        "The definition of 'ordinary course of business' may be subjective, potentially leading to disputes over what constitutes a material reduction."
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "x",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 7,
+      "similarity_to_benchmark": 0.6693164177086129,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "potential for significant operational constraints",
+        "risk of impacting business continuity"
+      ],
+      "unusual_provisions": []
+    },
+    {
+      "clause_id": "y",
+      "section_title": "Conduct of Business by the Company Pending the Merger",
+      "restrictiveness_score": 8,
+      "similarity_to_benchmark": 0.7186266922647925,
+      "reasons": [
+        "Contains 2 red flag(s)"
+      ],
+      "red_flags": [
+        "overly broad language that could limit normal business operations",
+        "potential for unintended consequences if interpreted too strictly"
+      ],
+      "unusual_provisions": []
+    }
+  ],
+  "key_insights": [
+    "\u2705 This deal has SIMILAR restrictiveness to benchmark (avg 7.2 vs 7.0)",
+    "\ud83d\udcca More compensation and benefits clauses than benchmark (+26.9%)",
+    "\ud83d\udcca More operations and conduct clauses than benchmark (+25.4%)",
+    "\ud83d\udcca More debt and financing clauses than benchmark (+7.0%)",
+    "\u26a0\ufe0f  31 outlier clauses detected (unusual vs benchmark)"
+  ],
+  "executive_summary": {
+    "overall_assessment": "Similar To Benchmark",
+    "percentile_rank": "Middle 50%",
+    "key_findings": [
+      "\u2705 This deal has SIMILAR restrictiveness to benchmark (avg 7.2 vs 7.0)",
+      "\ud83d\udcca More compensation and benefits clauses than benchmark (+26.9%)",
+      "\ud83d\udcca More operations and conduct clauses than benchmark (+25.4%)",
+      "\ud83d\udcca More debt and financing clauses than benchmark (+7.0%)",
+      "\u26a0\ufe0f  31 outlier clauses detected (unusual vs benchmark)"
+    ],
+    "outliers_count": 31,
+    "recommendation": "REVIEW: Multiple unusual clauses detected. Recommend detailed review even though overall restrictiveness is typical."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "deal_id": "D087",
+  "extracted": {
+    "target": "Day One Biopharmaceuticals",
+    "acquirer": "Servier",
+    "offer_price_cash": 21.5,
+    "cvr_value": null,
+    "stock_exchange_ratio": null,
+    "total_consideration": 21.5,
+    "deal_value_bn": 2.5,
+    "deal_type": "cash",
+    "premium_pct": 68.0,
+    "undisturbed_date": "2026-03-05",
+    "undisturbed_reference": "closing price on March 5, 2026; also 86% premium over one-month VWAP as of March 5, 2026",
+    "expected_close": "Q2 26",
+    "expected_close_date": "2026-05-15",
+    "announce_date": null,
+    "go_shop_days": null,
+    "diluted_shares_mm": null,
+    "cash_on_hand_bn": null,
+    "debt_bn": null,
+    "financing": "Servier expects to fund the transaction through existing cash and investments",
+    "regulatory_bodies": [
+      "SEC",
+      "U.S. antitrust authority"
+    ],
+    "shareholder_approval_required": true,
+    "dividend_info": null,
+    "special_conditions": "Tender of at least a majority of Day One's outstanding shares required; receipt of U.S. antitrust clearance required; two-step structure with second-step merger at same $21.50 per share price for any non-tendering shareholders",
+    "minority_investors": [],
+    "raw_summary": "Servier entered into a definitive merger agreement to acquire Day One Biopharmaceuticals via a cash tender offer, followed by a second-step merger for any remaining shares at the same price"
+  },
+  "source_text": "EVENT\n\nServier entered into a definitive merger agreement to acquire Day One Biopharmaceuticals via a cash tender offer, followed by a second-step merger for any remaining shares at the same price.\nKEY FIGURES\n\n$21.50 per share in cash\nTotal equity value of approximately $2.5 billion\n~68% premium over closing price on March 5, 2026\n~86% premium over one-month VWAP as of March 5, 2026\nServier FY 2024/25 revenues of \u20ac6.9 billion\nMARKET IMPACT\n\nDay One shareholders would receive $21.50 per share in cash. Day One's Board of Directors recommends shareholders tender their shares. Servier expects to fund the transaction through existing cash and investments. The acquisition expands Servier's rare oncology portfolio, particularly in pediatric low-grade glioma.\nFORWARD GUIDANCE\n\nThe transaction is expected to close in Q2 2026. The tender offer has not yet commenced; Servier and the Purchaser will file tender offer materials on Schedule TO with the SEC upon commencement.\nDEAL RELEVANCE\n\nClosing conditions include tender of at least a majority of Day One's outstanding shares and receipt of U.S. antitrust clearance. Upon successful completion of the tender offer, Servier will acquire remaining shares via a second-step merger at the same $21.50 per share price. Day One's Board recommends shareholders tender their shares.\nRISKS FLAGGED\n\nUncertainty as to timing of the offer and subsequent merger\nUncertainty as to how many stockholders will tender their shares\nRisk of competing offers or acquisition proposals\nPossibility that various closing conditions may not be satisfied or waived\nEffects of disruption from the transaction on Day One's business and relationships with employees, suppliers, and business partners\nRisk that stockholder litigation in connection with the offer or merger may result in significant costs",
+  "extracted_at": "2026-03-19T21:22:29.255368Z",
+  "filing_date": null
+}

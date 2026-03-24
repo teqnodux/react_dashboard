@@ -1,0 +1,45 @@
+{
+  "ticker": "PEN",
+  "filing_date": "01/15/26",
+  "items_reported": [
+    "Item 1.01",
+    "Item 2.02",
+    "Item 7.01",
+    "Item 9.01"
+  ],
+  "L1_headline": "PEN \u2013 Boston Scientific to acquire Penumbra in cash/stock deal. | 01/15/26",
+  "L2_brief": "Penumbra entered into a definitive merger agreement with Boston Scientific on January 14, 2026, under which PEN shareholders will receive $374.00 per share in cash (73.26% of shares) or 3.8721 BSX shares per PEN share (26.74% of shares), subject to proration. The transaction requires PEN stockholder approval (majority vote), HSR and international antitrust clearances, and SEC registration statement effectiveness, with a $525M Company termination fee and $900M Parent reverse termination fee (antitrust-related).",
+  "L3_detailed": {
+    "event": "Penumbra, Inc. entered into an Agreement and Plan of Merger with Boston Scientific Corporation and its wholly owned subsidiary Pinehurst Merger Sub, Inc., whereby Merger Sub will merge with and into Penumbra, with Penumbra surviving as a wholly owned subsidiary of Boston Scientific.",
+    "key_figures": [
+      "Cash Consideration: $374.00 per share (for 73.26% of outstanding shares)",
+      "Stock Consideration: 3.8721 BSX shares per PEN share (for 26.74% of outstanding shares)",
+      "Equity Award Cash Consideration: $274.00 per share; Equity Award Stock Consideration: 1.0353 BSX shares per PEN share",
+      "Company termination fee: $525,000,000",
+      "Parent reverse termination fee (antitrust): $900,000,000",
+      "Merger Agreement signed: January 14, 2026",
+      "Stockholder approval threshold: majority of voting power of outstanding Common Shares",
+      "Tail acquisition proposal period: 12 months post-termination"
+    ],
+    "deal_implications": "Transaction is at the definitive agreement stage. Mixed cash/stock consideration with fixed proration. No financing condition. The $900M reverse termination fee applies specifically to antitrust failure scenarios, indicating regulatory risk is a key consideration. PEN also disclosed preliminary Q4 and FY2025 financial results concurrent with the announcement.",
+    "remaining_conditions": [
+      "Penumbra stockholder approval (majority of outstanding voting power)",
+      "HSR Act waiting period expiration or termination",
+      "Antitrust approvals/clearances in certain other jurisdictions",
+      "SEC effectiveness of Parent's Form S-4 registration statement",
+      "NYSE listing approval for Parent Shares to be issued as Stock Consideration",
+      "Accuracy of representations and warranties at closing (subject to materiality qualifiers)",
+      "Material compliance with pre-closing covenants",
+      "No material adverse effect on either party",
+      "No law or order enjoining or prohibiting the Merger"
+    ],
+    "risks_flagged": [
+      "Antitrust/regulatory risk: $900M reverse termination fee specifically tied to failure to obtain antitrust clearances, suggesting meaningful regulatory scrutiny expected",
+      "Potential litigation relating to the proposed transaction against the Company or its directors noted in forward-looking statements",
+      "Proration risk: shareholders may not receive their elected form of consideration due to 73.26%/26.74% cash/stock allocation constraint",
+      "Preliminary FY2025 financial results are unaudited and subject to change",
+      "Fiduciary out provision permits Board recommendation change or termination for superior proposals (subject to $525M termination fee)"
+    ]
+  },
+  "filing_type": "8-K"
+}

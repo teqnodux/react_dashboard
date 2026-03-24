@@ -1,0 +1,4454 @@
+{
+  "deal_name": "CyberArk Software Ltd",
+  "classification_date": "2026-03-10T17:58:27.524973",
+  "results": [
+    {
+      "label": "(i)",
+      "text": "changes in general economic conditions (including changes in interest rates, exchange rates or commodity prices) or conditions in the global economy generally",
+      "best_match": {
+        "cluster_id": 16,
+        "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+        "category": "economic",
+        "distance": 0.12490660001284093,
+        "threshold": 0.28011070389239384,
+        "ratio": 0.44591869670508744,
+        "cluster_size": 156
+      },
+      "all_matches": [
+        {
+          "cluster_id": 16,
+          "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+          "category": "economic",
+          "distance": 0.12490660001284093,
+          "threshold": 0.28011070389239384,
+          "ratio": 0.44591869670508744,
+          "cluster_size": 156
+        }
+      ],
+      "zone": "typical",
+      "icon": "\ud83d\udfe2",
+      "all_clusters": [
+        {
+          "cluster_id": 16,
+          "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+          "category": "economic",
+          "distance": 0.12490660001284093,
+          "threshold": 0.28011070389239384,
+          "ratio": 0.44591869670508744,
+          "cluster_size": 156
+        },
+        {
+          "cluster_id": 5,
+          "cluster_name": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+          "category": "accounting",
+          "distance": 0.3566975309627207,
+          "threshold": 0.29419988796073404,
+          "ratio": 1.2124325860053626,
+          "cluster_size": 89
+        },
+        {
+          "cluster_id": 11,
+          "cluster_name": "Catastrophic External Events Beyond Party Control",
+          "category": "force_majeure",
+          "distance": 0.37828177067937063,
+          "threshold": 0.2964535958513296,
+          "ratio": 1.2760235530051645,
+          "cluster_size": 128
+        },
+        {
+          "cluster_id": 3,
+          "cluster_name": "Industry-Wide Commodity and Raw Material Price Changes",
+          "category": "economic",
+          "distance": 0.24329591459444155,
+          "threshold": 0.17974605545838562,
+          "ratio": 1.353553567414829,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 2,
+          "cluster_name": "Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks",
+          "category": "transaction",
+          "distance": 0.3969864941228193,
+          "threshold": 0.27919353744424974,
+          "ratio": 1.4219043096658024,
+          "cluster_size": 88
+        },
+        {
+          "cluster_id": 13,
+          "cluster_name": "Currency Fluctuations, Interest Rates, and Inflation Exclusions",
+          "category": "economic",
+          "distance": 0.2529847932146959,
+          "threshold": 0.17144308877523096,
+          "ratio": 1.4756196649394806,
+          "cluster_size": 12
+        },
+        {
+          "cluster_id": 22,
+          "cluster_name": "Industry-Specific Changes and Supply Chain Disruption Exclusions",
+          "category": "operational",
+          "distance": 0.394309053219734,
+          "threshold": 0.24114450800638879,
+          "ratio": 1.6351566804469264,
+          "cluster_size": 8
+        },
+        {
+          "cluster_id": 12,
+          "cluster_name": "Exclusions for Changes in Oil Gas and Commodity Prices",
+          "category": "economic",
+          "distance": 0.3146143138886812,
+          "threshold": 0.16817441198278407,
+          "ratio": 1.8707620866894312,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 6,
+          "cluster_name": "Actions Taken Pursuant to or Required by Agreement Terms",
+          "category": "transaction",
+          "distance": 0.5412429100164178,
+          "threshold": 0.2786018079187563,
+          "ratio": 1.9427114061451134,
+          "cluster_size": 83
+        },
+        {
+          "cluster_id": 4,
+          "cluster_name": "Exclusion for Stockholder Litigation Arising from Merger Transaction",
+          "category": "transaction",
+          "distance": 0.5664708344411731,
+          "threshold": 0.2664248473198498,
+          "ratio": 2.1261937095570915,
+          "cluster_size": 44
+        },
+        {
+          "cluster_id": 1,
+          "cluster_name": "Exclusion for Matters Previously Disclosed in Transaction Documents",
+          "category": "disclosure",
+          "distance": 0.5445334654735564,
+          "threshold": 0.24482981438660845,
+          "ratio": 2.224130532622505,
+          "cluster_size": 6
+        },
+        {
+          "cluster_id": 14,
+          "cluster_name": "Exclusion for impacts from deal announcement and execution",
+          "category": "transaction",
+          "distance": 0.5700414820850883,
+          "threshold": 0.25397381758509874,
+          "ratio": 2.2444891662664603,
+          "cluster_size": 91
+        },
+        {
+          "cluster_id": 10,
+          "cluster_name": "Exclusions for Adverse Regulatory Actions Affecting Product Candidates",
+          "category": "regulatory",
+          "distance": 0.5548558035534239,
+          "threshold": 0.24630688019239347,
+          "ratio": 2.252701195841622,
+          "cluster_size": 9
+        },
+        {
+          "cluster_id": 28,
+          "cluster_name": "Exclusions for Acquiror Identity and Post-Acquisition Plans",
+          "category": "transaction",
+          "distance": 0.5663525731622661,
+          "threshold": 0.24616708621149894,
+          "ratio": 2.3006835799147978,
+          "cluster_size": 16
+        },
+        {
+          "cluster_id": 15,
+          "cluster_name": "Failure to Meet Financial Projections and Forecasts Exclusions",
+          "category": "disclosure",
+          "distance": 0.4808871067120152,
+          "threshold": 0.20245872084405744,
+          "ratio": 2.3752353304771465,
+          "cluster_size": 106
+        },
+        {
+          "cluster_id": 0,
+          "cluster_name": "Exclusion for Failure to Obtain Transaction-Related Governmental Approvals",
+          "category": "transaction",
+          "distance": 0.5683123518496154,
+          "threshold": 0.22293322021350143,
+          "ratio": 2.549249283284685,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 8,
+          "cluster_name": "COVID-19 and Government Measures Compliance Carveouts",
+          "category": "force_majeure",
+          "distance": 0.5191115052136206,
+          "threshold": 0.16134816193521279,
+          "ratio": 3.217337582203527,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 9,
+          "cluster_name": "Governmental Antitrust Requirements Imposed as Transaction Approval Conditions",
+          "category": "regulatory",
+          "distance": 0.5628327531182621,
+          "threshold": 0.1630757680627233,
+          "ratio": 3.451357364766674,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 24,
+          "cluster_name": "International Trade Policy and Geopolitical Conflict Exclusions",
+          "category": "regulatory",
+          "distance": 0.39168915021010975,
+          "threshold": 0.1129529573262025,
+          "ratio": 3.467719300867272,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 20,
+          "cluster_name": "Employee Relations and Work Stoppage Events Exclusion",
+          "category": "operational",
+          "distance": 0.5549190904628145,
+          "threshold": 0.15960298830736316,
+          "ratio": 3.4768715570296984,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 30,
+          "cluster_name": "Exclusions for Predictable Seasonal Variations in Business Performance",
+          "category": "operational",
+          "distance": 0.4004683828410205,
+          "threshold": 0.10703883757384057,
+          "ratio": 3.741337181140051,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 7,
+          "cluster_name": "Exclusions for Disclosed or Acquiror-Related Information",
+          "category": "disclosure",
+          "distance": 0.4672173541606085,
+          "threshold": 0.11285816846319714,
+          "ratio": 4.1398629848664195,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 34,
+          "cluster_name": "Exclusion for Parent or Merger Sub Breach of Agreement",
+          "category": "transaction",
+          "distance": 0.6107858692307516,
+          "threshold": 0.13684164444092345,
+          "ratio": 4.4634502291035885,
+          "cluster_size": 13
+        },
+        {
+          "cluster_id": 19,
+          "cluster_name": "Exclusions for Actions Required or Caused by Transaction Agreements",
+          "category": "transaction",
+          "distance": 0.6266501074850697,
+          "threshold": 0.13030161180385444,
+          "ratio": 4.809227597494176,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 21,
+          "cluster_name": "Post-Signing Changes in Laws and Government Regulations",
+          "category": "regulatory",
+          "distance": 0.5694228641060182,
+          "threshold": 0.10545548545383894,
+          "ratio": 5.399651442079528,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 33,
+          "cluster_name": "Exclusion for Parent/Acquirer Financing Conditions and Costs",
+          "category": "transaction",
+          "distance": 0.5167432156248974,
+          "threshold": 0.09049408856939634,
+          "ratio": 5.710242777113861,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 25,
+          "cluster_name": "Exclusion of Deal-Related Expenses from MAE Calculation",
+          "category": "transaction",
+          "distance": 0.6077288727192076,
+          "threshold": 0.0721669512327782,
+          "ratio": 8.421152097155206,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 26,
+          "cluster_name": "Exclusions for Cyber Attacks and Digital Infrastructure Failures",
+          "category": "operational",
+          "distance": 0.5864088873548838,
+          "threshold": 0.06774116066797893,
+          "ratio": 8.656611158894385,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 17,
+          "cluster_name": "Wealth Management and Financial Services Industry Effects",
+          "category": "economic",
+          "distance": 0.5073970123414372,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 18,
+          "cluster_name": "Exclusions for Actions Taken Under Existing Franchise Agreements",
+          "category": "operational",
+          "distance": 0.6676248120500599,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 23,
+          "cluster_name": "Exclusions for Effects Arising from Acquirer's Specific Characteristics",
+          "category": "transaction",
+          "distance": 0.585419058178871,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 27,
+          "cluster_name": "MAE Exclusion for Contemplated Lease Transfer Effects",
+          "category": "transaction",
+          "distance": 0.627719745952666,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 29,
+          "cluster_name": "Broadcast Television Industry Regulatory and Business Condition Changes",
+          "category": "regulatory",
+          "distance": 0.49219227606470184,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 31,
+          "cluster_name": "Weather-Related and Natural Disaster Force Majeure Exclusions",
+          "category": "force_majeure",
+          "distance": 0.5019925963900549,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 32,
+          "cluster_name": "Metal Pricing and Supply Availability Exclusions",
+          "category": "economic",
+          "distance": 0.469580383429375,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        }
+      ]
+    },
+    {
+      "label": "(ii)",
+      "text": "changes in conditions in the financial markets, credit markets or capital markets in the United States or any other country or region in the world, including (A) changes in interest rates in the United States or any other country and changes in exchange rates for the currencies of any countries and (B) any suspension of trading in securities (whether equity, debt, derivative or hybrid securities) generally on any securities exchange or over-the-counter market operating in the United States or any other country or region in the world",
+      "best_match": {
+        "cluster_id": 16,
+        "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+        "category": "economic",
+        "distance": 0.13477338358940072,
+        "threshold": 0.28011070389239384,
+        "ratio": 0.48114328269716783,
+        "cluster_size": 156
+      },
+      "all_matches": [
+        {
+          "cluster_id": 16,
+          "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+          "category": "economic",
+          "distance": 0.13477338358940072,
+          "threshold": 0.28011070389239384,
+          "ratio": 0.48114328269716783,
+          "cluster_size": 156
+        }
+      ],
+      "zone": "typical",
+      "icon": "\ud83d\udfe2",
+      "all_clusters": [
+        {
+          "cluster_id": 16,
+          "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+          "category": "economic",
+          "distance": 0.13477338358940072,
+          "threshold": 0.28011070389239384,
+          "ratio": 0.48114328269716783,
+          "cluster_size": 156
+        },
+        {
+          "cluster_id": 11,
+          "cluster_name": "Catastrophic External Events Beyond Party Control",
+          "category": "force_majeure",
+          "distance": 0.3764888078698898,
+          "threshold": 0.2964535958513296,
+          "ratio": 1.2699755143422096,
+          "cluster_size": 128
+        },
+        {
+          "cluster_id": 2,
+          "cluster_name": "Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks",
+          "category": "transaction",
+          "distance": 0.39313020135817234,
+          "threshold": 0.27919353744424974,
+          "ratio": 1.4080920531216587,
+          "cluster_size": 88
+        },
+        {
+          "cluster_id": 5,
+          "cluster_name": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+          "category": "accounting",
+          "distance": 0.42372801516440695,
+          "threshold": 0.29419988796073404,
+          "ratio": 1.440272523900351,
+          "cluster_size": 89
+        },
+        {
+          "cluster_id": 6,
+          "cluster_name": "Actions Taken Pursuant to or Required by Agreement Terms",
+          "category": "transaction",
+          "distance": 0.5634331436514435,
+          "threshold": 0.2786018079187563,
+          "ratio": 2.022359969091613,
+          "cluster_size": 83
+        },
+        {
+          "cluster_id": 3,
+          "cluster_name": "Industry-Wide Commodity and Raw Material Price Changes",
+          "category": "economic",
+          "distance": 0.37637070399709405,
+          "threshold": 0.17974605545838562,
+          "ratio": 2.093902439401406,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 22,
+          "cluster_name": "Industry-Specific Changes and Supply Chain Disruption Exclusions",
+          "category": "operational",
+          "distance": 0.5132858354463072,
+          "threshold": 0.24114450800638879,
+          "ratio": 2.1285404328292166,
+          "cluster_size": 8
+        },
+        {
+          "cluster_id": 4,
+          "cluster_name": "Exclusion for Stockholder Litigation Arising from Merger Transaction",
+          "category": "transaction",
+          "distance": 0.5692522513691823,
+          "threshold": 0.2664248473198498,
+          "ratio": 2.136633490065514,
+          "cluster_size": 44
+        },
+        {
+          "cluster_id": 10,
+          "cluster_name": "Exclusions for Adverse Regulatory Actions Affecting Product Candidates",
+          "category": "regulatory",
+          "distance": 0.5554006280949035,
+          "threshold": 0.24630688019239347,
+          "ratio": 2.254913170355099,
+          "cluster_size": 9
+        },
+        {
+          "cluster_id": 14,
+          "cluster_name": "Exclusion for impacts from deal announcement and execution",
+          "category": "transaction",
+          "distance": 0.59445769615104,
+          "threshold": 0.25397381758509874,
+          "ratio": 2.3406259031085193,
+          "cluster_size": 91
+        },
+        {
+          "cluster_id": 1,
+          "cluster_name": "Exclusion for Matters Previously Disclosed in Transaction Documents",
+          "category": "disclosure",
+          "distance": 0.5733663973999601,
+          "threshold": 0.24482981438660845,
+          "ratio": 2.3418977743231983,
+          "cluster_size": 6
+        },
+        {
+          "cluster_id": 28,
+          "cluster_name": "Exclusions for Acquiror Identity and Post-Acquisition Plans",
+          "category": "transaction",
+          "distance": 0.5891480423069555,
+          "threshold": 0.24616708621149894,
+          "ratio": 2.393285192484174,
+          "cluster_size": 16
+        },
+        {
+          "cluster_id": 13,
+          "cluster_name": "Currency Fluctuations, Interest Rates, and Inflation Exclusions",
+          "category": "economic",
+          "distance": 0.4148173381801876,
+          "threshold": 0.17144308877523096,
+          "ratio": 2.41956290652247,
+          "cluster_size": 12
+        },
+        {
+          "cluster_id": 15,
+          "cluster_name": "Failure to Meet Financial Projections and Forecasts Exclusions",
+          "category": "disclosure",
+          "distance": 0.5168501542449928,
+          "threshold": 0.20245872084405744,
+          "ratio": 2.552866836707387,
+          "cluster_size": 106
+        },
+        {
+          "cluster_id": 0,
+          "cluster_name": "Exclusion for Failure to Obtain Transaction-Related Governmental Approvals",
+          "category": "transaction",
+          "distance": 0.5780201818346644,
+          "threshold": 0.22293322021350143,
+          "ratio": 2.5927951934713853,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 12,
+          "cluster_name": "Exclusions for Changes in Oil Gas and Commodity Prices",
+          "category": "economic",
+          "distance": 0.45517509752633434,
+          "threshold": 0.16817441198278407,
+          "ratio": 2.706565714485331,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 8,
+          "cluster_name": "COVID-19 and Government Measures Compliance Carveouts",
+          "category": "force_majeure",
+          "distance": 0.5570228231473393,
+          "threshold": 0.16134816193521279,
+          "ratio": 3.4523034936772596,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 9,
+          "cluster_name": "Governmental Antitrust Requirements Imposed as Transaction Approval Conditions",
+          "category": "regulatory",
+          "distance": 0.590245053842068,
+          "threshold": 0.1630757680627233,
+          "ratio": 3.6194528522167926,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 20,
+          "cluster_name": "Employee Relations and Work Stoppage Events Exclusion",
+          "category": "operational",
+          "distance": 0.5847782784625146,
+          "threshold": 0.15960298830736316,
+          "ratio": 3.6639556982250836,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 24,
+          "cluster_name": "International Trade Policy and Geopolitical Conflict Exclusions",
+          "category": "regulatory",
+          "distance": 0.465021839775421,
+          "threshold": 0.1129529573262025,
+          "ratio": 4.116951435210865,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 34,
+          "cluster_name": "Exclusion for Parent or Merger Sub Breach of Agreement",
+          "category": "transaction",
+          "distance": 0.5973488718427343,
+          "threshold": 0.13684164444092345,
+          "ratio": 4.365256455980537,
+          "cluster_size": 13
+        },
+        {
+          "cluster_id": 7,
+          "cluster_name": "Exclusions for Disclosed or Acquiror-Related Information",
+          "category": "disclosure",
+          "distance": 0.5283398118419956,
+          "threshold": 0.11285816846319714,
+          "ratio": 4.681449460295702,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 19,
+          "cluster_name": "Exclusions for Actions Required or Caused by Transaction Agreements",
+          "category": "transaction",
+          "distance": 0.6409262334653171,
+          "threshold": 0.13030161180385444,
+          "ratio": 4.918789757030142,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 30,
+          "cluster_name": "Exclusions for Predictable Seasonal Variations in Business Performance",
+          "category": "operational",
+          "distance": 0.5520027863395051,
+          "threshold": 0.10703883757384057,
+          "ratio": 5.1570327074853255,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 21,
+          "cluster_name": "Post-Signing Changes in Laws and Government Regulations",
+          "category": "regulatory",
+          "distance": 0.5686498249105341,
+          "threshold": 0.10545548545383894,
+          "ratio": 5.392320963326743,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 33,
+          "cluster_name": "Exclusion for Parent/Acquirer Financing Conditions and Costs",
+          "category": "transaction",
+          "distance": 0.5475582605578716,
+          "threshold": 0.09049408856939634,
+          "ratio": 6.050762753834145,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 26,
+          "cluster_name": "Exclusions for Cyber Attacks and Digital Infrastructure Failures",
+          "category": "operational",
+          "distance": 0.5697237641272427,
+          "threshold": 0.06774116066797893,
+          "ratio": 8.410304141667144,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 25,
+          "cluster_name": "Exclusion of Deal-Related Expenses from MAE Calculation",
+          "category": "transaction",
+          "distance": 0.6538478496574289,
+          "threshold": 0.0721669512327782,
+          "ratio": 9.060211613324347,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 17,
+          "cluster_name": "Wealth Management and Financial Services Industry Effects",
+          "category": "economic",
+          "distance": 0.5243078836847435,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 18,
+          "cluster_name": "Exclusions for Actions Taken Under Existing Franchise Agreements",
+          "category": "operational",
+          "distance": 0.6691059421532839,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 23,
+          "cluster_name": "Exclusions for Effects Arising from Acquirer's Specific Characteristics",
+          "category": "transaction",
+          "distance": 0.638507014297776,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 27,
+          "cluster_name": "MAE Exclusion for Contemplated Lease Transfer Effects",
+          "category": "transaction",
+          "distance": 0.646899319674088,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 29,
+          "cluster_name": "Broadcast Television Industry Regulatory and Business Condition Changes",
+          "category": "regulatory",
+          "distance": 0.5573159060295685,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 31,
+          "cluster_name": "Weather-Related and Natural Disaster Force Majeure Exclusions",
+          "category": "force_majeure",
+          "distance": 0.5925843179310364,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 32,
+          "cluster_name": "Metal Pricing and Supply Availability Exclusions",
+          "category": "economic",
+          "distance": 0.5730410199526992,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        }
+      ]
+    },
+    {
+      "label": "(iii)",
+      "text": "changes in conditions in the industries in which such Person and its Subsidiaries conduct business",
+      "best_match": {
+        "cluster_id": 16,
+        "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+        "category": "economic",
+        "distance": 0.3628983576596828,
+        "threshold": 0.28011070389239384,
+        "ratio": 1.2955533387938374,
+        "cluster_size": 156
+      },
+      "all_matches": [],
+      "zone": "outlier",
+      "icon": "\ud83d\udd34",
+      "all_clusters": [
+        {
+          "cluster_id": 16,
+          "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+          "category": "economic",
+          "distance": 0.3628983576596828,
+          "threshold": 0.28011070389239384,
+          "ratio": 1.2955533387938374,
+          "cluster_size": 156
+        },
+        {
+          "cluster_id": 22,
+          "cluster_name": "Industry-Specific Changes and Supply Chain Disruption Exclusions",
+          "category": "operational",
+          "distance": 0.34931631793533047,
+          "threshold": 0.24114450800638879,
+          "ratio": 1.4485767095557318,
+          "cluster_size": 8
+        },
+        {
+          "cluster_id": 5,
+          "cluster_name": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+          "category": "accounting",
+          "distance": 0.46175779630144975,
+          "threshold": 0.29419988796073404,
+          "ratio": 1.569537634776663,
+          "cluster_size": 89
+        },
+        {
+          "cluster_id": 11,
+          "cluster_name": "Catastrophic External Events Beyond Party Control",
+          "category": "force_majeure",
+          "distance": 0.5167535831553962,
+          "threshold": 0.2964535958513296,
+          "ratio": 1.743117946238528,
+          "cluster_size": 128
+        },
+        {
+          "cluster_id": 2,
+          "cluster_name": "Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks",
+          "category": "transaction",
+          "distance": 0.502253604748022,
+          "threshold": 0.27919353744424974,
+          "ratio": 1.7989442354062857,
+          "cluster_size": 88
+        },
+        {
+          "cluster_id": 28,
+          "cluster_name": "Exclusions for Acquiror Identity and Post-Acquisition Plans",
+          "category": "transaction",
+          "distance": 0.49119273752669956,
+          "threshold": 0.24616708621149894,
+          "ratio": 1.9953631701383603,
+          "cluster_size": 16
+        },
+        {
+          "cluster_id": 6,
+          "cluster_name": "Actions Taken Pursuant to or Required by Agreement Terms",
+          "category": "transaction",
+          "distance": 0.5721085343282474,
+          "threshold": 0.2786018079187563,
+          "ratio": 2.0534990013240737,
+          "cluster_size": 83
+        },
+        {
+          "cluster_id": 14,
+          "cluster_name": "Exclusion for impacts from deal announcement and execution",
+          "category": "transaction",
+          "distance": 0.5544333394433192,
+          "threshold": 0.25397381758509874,
+          "ratio": 2.1830334509089537,
+          "cluster_size": 91
+        },
+        {
+          "cluster_id": 4,
+          "cluster_name": "Exclusion for Stockholder Litigation Arising from Merger Transaction",
+          "category": "transaction",
+          "distance": 0.5993463997464344,
+          "threshold": 0.2664248473198498,
+          "ratio": 2.2495889770630284,
+          "cluster_size": 44
+        },
+        {
+          "cluster_id": 10,
+          "cluster_name": "Exclusions for Adverse Regulatory Actions Affecting Product Candidates",
+          "category": "regulatory",
+          "distance": 0.5673224457383654,
+          "threshold": 0.24630688019239347,
+          "ratio": 2.303315462788626,
+          "cluster_size": 9
+        },
+        {
+          "cluster_id": 1,
+          "cluster_name": "Exclusion for Matters Previously Disclosed in Transaction Documents",
+          "category": "disclosure",
+          "distance": 0.5770018278246267,
+          "threshold": 0.24482981438660845,
+          "ratio": 2.356746580355155,
+          "cluster_size": 6
+        },
+        {
+          "cluster_id": 12,
+          "cluster_name": "Exclusions for Changes in Oil Gas and Commodity Prices",
+          "category": "economic",
+          "distance": 0.3972972937672353,
+          "threshold": 0.16817441198278407,
+          "ratio": 2.3624122664267526,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 3,
+          "cluster_name": "Industry-Wide Commodity and Raw Material Price Changes",
+          "category": "economic",
+          "distance": 0.4330857400200151,
+          "threshold": 0.17974605545838562,
+          "ratio": 2.409431121676448,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 0,
+          "cluster_name": "Exclusion for Failure to Obtain Transaction-Related Governmental Approvals",
+          "category": "transaction",
+          "distance": 0.6286012266910623,
+          "threshold": 0.22293322021350143,
+          "ratio": 2.8196839667459868,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 15,
+          "cluster_name": "Failure to Meet Financial Projections and Forecasts Exclusions",
+          "category": "disclosure",
+          "distance": 0.6093705004327911,
+          "threshold": 0.20245872084405744,
+          "ratio": 3.009850590245282,
+          "cluster_size": 106
+        },
+        {
+          "cluster_id": 13,
+          "cluster_name": "Currency Fluctuations, Interest Rates, and Inflation Exclusions",
+          "category": "economic",
+          "distance": 0.5659409104786828,
+          "threshold": 0.17144308877523096,
+          "ratio": 3.3010424305913837,
+          "cluster_size": 12
+        },
+        {
+          "cluster_id": 9,
+          "cluster_name": "Governmental Antitrust Requirements Imposed as Transaction Approval Conditions",
+          "category": "regulatory",
+          "distance": 0.5699351770636496,
+          "threshold": 0.1630757680627233,
+          "ratio": 3.494910272901105,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 20,
+          "cluster_name": "Employee Relations and Work Stoppage Events Exclusion",
+          "category": "operational",
+          "distance": 0.5665009750605344,
+          "threshold": 0.15960298830736316,
+          "ratio": 3.5494383975415786,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 8,
+          "cluster_name": "COVID-19 and Government Measures Compliance Carveouts",
+          "category": "force_majeure",
+          "distance": 0.5873528065566102,
+          "threshold": 0.16134816193521279,
+          "ratio": 3.6402819809775946,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 30,
+          "cluster_name": "Exclusions for Predictable Seasonal Variations in Business Performance",
+          "category": "operational",
+          "distance": 0.4137509369369583,
+          "threshold": 0.10703883757384057,
+          "ratio": 3.8654281596764624,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 24,
+          "cluster_name": "International Trade Policy and Geopolitical Conflict Exclusions",
+          "category": "regulatory",
+          "distance": 0.49716971313254765,
+          "threshold": 0.1129529573262025,
+          "ratio": 4.401564376014931,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 34,
+          "cluster_name": "Exclusion for Parent or Merger Sub Breach of Agreement",
+          "category": "transaction",
+          "distance": 0.6114390122821141,
+          "threshold": 0.13684164444092345,
+          "ratio": 4.468223213629103,
+          "cluster_size": 13
+        },
+        {
+          "cluster_id": 19,
+          "cluster_name": "Exclusions for Actions Required or Caused by Transaction Agreements",
+          "category": "transaction",
+          "distance": 0.5929023287342319,
+          "threshold": 0.13030161180385444,
+          "ratio": 4.550230196896869,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 7,
+          "cluster_name": "Exclusions for Disclosed or Acquiror-Related Information",
+          "category": "disclosure",
+          "distance": 0.5408648577704157,
+          "threshold": 0.11285816846319714,
+          "ratio": 4.792429871363638,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 21,
+          "cluster_name": "Post-Signing Changes in Laws and Government Regulations",
+          "category": "regulatory",
+          "distance": 0.5712174688113759,
+          "threshold": 0.10545548545383894,
+          "ratio": 5.416669093628279,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 33,
+          "cluster_name": "Exclusion for Parent/Acquirer Financing Conditions and Costs",
+          "category": "transaction",
+          "distance": 0.6209856818289862,
+          "threshold": 0.09049408856939634,
+          "ratio": 6.862168475820129,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 25,
+          "cluster_name": "Exclusion of Deal-Related Expenses from MAE Calculation",
+          "category": "transaction",
+          "distance": 0.6893830912572944,
+          "threshold": 0.0721669512327782,
+          "ratio": 9.55261486706919,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 26,
+          "cluster_name": "Exclusions for Cyber Attacks and Digital Infrastructure Failures",
+          "category": "operational",
+          "distance": 0.652126485943367,
+          "threshold": 0.06774116066797893,
+          "ratio": 9.626739186528663,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 17,
+          "cluster_name": "Wealth Management and Financial Services Industry Effects",
+          "category": "economic",
+          "distance": 0.5069093637124769,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 18,
+          "cluster_name": "Exclusions for Actions Taken Under Existing Franchise Agreements",
+          "category": "operational",
+          "distance": 0.6527222404217339,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 23,
+          "cluster_name": "Exclusions for Effects Arising from Acquirer's Specific Characteristics",
+          "category": "transaction",
+          "distance": 0.5324759579046543,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 27,
+          "cluster_name": "MAE Exclusion for Contemplated Lease Transfer Effects",
+          "category": "transaction",
+          "distance": 0.6051854693467242,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 29,
+          "cluster_name": "Broadcast Television Industry Regulatory and Business Condition Changes",
+          "category": "regulatory",
+          "distance": 0.5002168078149201,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 31,
+          "cluster_name": "Weather-Related and Natural Disaster Force Majeure Exclusions",
+          "category": "force_majeure",
+          "distance": 0.6259634845832299,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 32,
+          "cluster_name": "Metal Pricing and Supply Availability Exclusions",
+          "category": "economic",
+          "distance": 0.603989203396851,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        }
+      ]
+    },
+    {
+      "label": "(iv)",
+      "text": "changes in regulatory, legislative or political conditions in the United States or any other country or region in the world",
+      "best_match": {
+        "cluster_id": 16,
+        "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+        "category": "economic",
+        "distance": 0.187416104606128,
+        "threshold": 0.28011070389239384,
+        "ratio": 0.6690786963932839,
+        "cluster_size": 156
+      },
+      "all_matches": [
+        {
+          "cluster_id": 16,
+          "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+          "category": "economic",
+          "distance": 0.187416104606128,
+          "threshold": 0.28011070389239384,
+          "ratio": 0.6690786963932839,
+          "cluster_size": 156
+        },
+        {
+          "cluster_id": 5,
+          "cluster_name": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+          "category": "accounting",
+          "distance": 0.2748002765593801,
+          "threshold": 0.29419988796073404,
+          "ratio": 0.9340597593839222,
+          "cluster_size": 89
+        }
+      ],
+      "zone": "typical",
+      "icon": "\ud83d\udfe2",
+      "all_clusters": [
+        {
+          "cluster_id": 16,
+          "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+          "category": "economic",
+          "distance": 0.187416104606128,
+          "threshold": 0.28011070389239384,
+          "ratio": 0.6690786963932839,
+          "cluster_size": 156
+        },
+        {
+          "cluster_id": 5,
+          "cluster_name": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+          "category": "accounting",
+          "distance": 0.2748002765593801,
+          "threshold": 0.29419988796073404,
+          "ratio": 0.9340597593839222,
+          "cluster_size": 89
+        },
+        {
+          "cluster_id": 11,
+          "cluster_name": "Catastrophic External Events Beyond Party Control",
+          "category": "force_majeure",
+          "distance": 0.3115161446623722,
+          "threshold": 0.2964535958513296,
+          "ratio": 1.050809128382428,
+          "cluster_size": 128
+        },
+        {
+          "cluster_id": 2,
+          "cluster_name": "Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks",
+          "category": "transaction",
+          "distance": 0.440056603066208,
+          "threshold": 0.27919353744424974,
+          "ratio": 1.5761704482650494,
+          "cluster_size": 88
+        },
+        {
+          "cluster_id": 10,
+          "cluster_name": "Exclusions for Adverse Regulatory Actions Affecting Product Candidates",
+          "category": "regulatory",
+          "distance": 0.4148930685789938,
+          "threshold": 0.24630688019239347,
+          "ratio": 1.6844558635752094,
+          "cluster_size": 9
+        },
+        {
+          "cluster_id": 6,
+          "cluster_name": "Actions Taken Pursuant to or Required by Agreement Terms",
+          "category": "transaction",
+          "distance": 0.49296399161933535,
+          "threshold": 0.2786018079187563,
+          "ratio": 1.7694213662931066,
+          "cluster_size": 83
+        },
+        {
+          "cluster_id": 22,
+          "cluster_name": "Industry-Specific Changes and Supply Chain Disruption Exclusions",
+          "category": "operational",
+          "distance": 0.4327539020473318,
+          "threshold": 0.24114450800638879,
+          "ratio": 1.7945832796485108,
+          "cluster_size": 8
+        },
+        {
+          "cluster_id": 4,
+          "cluster_name": "Exclusion for Stockholder Litigation Arising from Merger Transaction",
+          "category": "transaction",
+          "distance": 0.5032579377982876,
+          "threshold": 0.2664248473198498,
+          "ratio": 1.8889301912374328,
+          "cluster_size": 44
+        },
+        {
+          "cluster_id": 1,
+          "cluster_name": "Exclusion for Matters Previously Disclosed in Transaction Documents",
+          "category": "disclosure",
+          "distance": 0.4815979687478381,
+          "threshold": 0.24482981438660845,
+          "ratio": 1.96707239252876,
+          "cluster_size": 6
+        },
+        {
+          "cluster_id": 14,
+          "cluster_name": "Exclusion for impacts from deal announcement and execution",
+          "category": "transaction",
+          "distance": 0.5001372443192256,
+          "threshold": 0.25397381758509874,
+          "ratio": 1.9692472597166246,
+          "cluster_size": 91
+        },
+        {
+          "cluster_id": 28,
+          "cluster_name": "Exclusions for Acquiror Identity and Post-Acquisition Plans",
+          "category": "transaction",
+          "distance": 0.49938945259514744,
+          "threshold": 0.24616708621149894,
+          "ratio": 2.028660534114166,
+          "cluster_size": 16
+        },
+        {
+          "cluster_id": 0,
+          "cluster_name": "Exclusion for Failure to Obtain Transaction-Related Governmental Approvals",
+          "category": "transaction",
+          "distance": 0.47736428093554806,
+          "threshold": 0.22293322021350143,
+          "ratio": 2.1412882318677315,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 3,
+          "cluster_name": "Industry-Wide Commodity and Raw Material Price Changes",
+          "category": "economic",
+          "distance": 0.39151405319246313,
+          "threshold": 0.17974605545838562,
+          "ratio": 2.1781510152978325,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 12,
+          "cluster_name": "Exclusions for Changes in Oil Gas and Commodity Prices",
+          "category": "economic",
+          "distance": 0.4139094579277419,
+          "threshold": 0.16817441198278407,
+          "ratio": 2.46119164650395,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 13,
+          "cluster_name": "Currency Fluctuations, Interest Rates, and Inflation Exclusions",
+          "category": "economic",
+          "distance": 0.4225733779258358,
+          "threshold": 0.17144308877523096,
+          "ratio": 2.4648026406001535,
+          "cluster_size": 12
+        },
+        {
+          "cluster_id": 15,
+          "cluster_name": "Failure to Meet Financial Projections and Forecasts Exclusions",
+          "category": "disclosure",
+          "distance": 0.5286870171640649,
+          "threshold": 0.20245872084405744,
+          "ratio": 2.6113323988215984,
+          "cluster_size": 106
+        },
+        {
+          "cluster_id": 9,
+          "cluster_name": "Governmental Antitrust Requirements Imposed as Transaction Approval Conditions",
+          "category": "regulatory",
+          "distance": 0.46452024143461257,
+          "threshold": 0.1630757680627233,
+          "ratio": 2.8484933534450416,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 8,
+          "cluster_name": "COVID-19 and Government Measures Compliance Carveouts",
+          "category": "force_majeure",
+          "distance": 0.4842836495081785,
+          "threshold": 0.16134816193521279,
+          "ratio": 3.0014822834029937,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 24,
+          "cluster_name": "International Trade Policy and Geopolitical Conflict Exclusions",
+          "category": "regulatory",
+          "distance": 0.3577354087536022,
+          "threshold": 0.1129529573262025,
+          "ratio": 3.167118570614138,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 20,
+          "cluster_name": "Employee Relations and Work Stoppage Events Exclusion",
+          "category": "operational",
+          "distance": 0.5527286996372105,
+          "threshold": 0.15960298830736316,
+          "ratio": 3.463147560700847,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 34,
+          "cluster_name": "Exclusion for Parent or Merger Sub Breach of Agreement",
+          "category": "transaction",
+          "distance": 0.5516104550295335,
+          "threshold": 0.13684164444092345,
+          "ratio": 4.031013053688286,
+          "cluster_size": 13
+        },
+        {
+          "cluster_id": 21,
+          "cluster_name": "Post-Signing Changes in Laws and Government Regulations",
+          "category": "regulatory",
+          "distance": 0.4288455308877448,
+          "threshold": 0.10545548545383894,
+          "ratio": 4.0666024061447565,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 7,
+          "cluster_name": "Exclusions for Disclosed or Acquiror-Related Information",
+          "category": "disclosure",
+          "distance": 0.46454809725772395,
+          "threshold": 0.11285816846319714,
+          "ratio": 4.116211556359009,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 19,
+          "cluster_name": "Exclusions for Actions Required or Caused by Transaction Agreements",
+          "category": "transaction",
+          "distance": 0.5836453664558784,
+          "threshold": 0.13030161180385444,
+          "ratio": 4.47918761998471,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 30,
+          "cluster_name": "Exclusions for Predictable Seasonal Variations in Business Performance",
+          "category": "operational",
+          "distance": 0.4939945199756658,
+          "threshold": 0.10703883757384057,
+          "ratio": 4.615096082624071,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 33,
+          "cluster_name": "Exclusion for Parent/Acquirer Financing Conditions and Costs",
+          "category": "transaction",
+          "distance": 0.5500663542233253,
+          "threshold": 0.09049408856939634,
+          "ratio": 6.078478306364743,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 26,
+          "cluster_name": "Exclusions for Cyber Attacks and Digital Infrastructure Failures",
+          "category": "operational",
+          "distance": 0.5346339356051174,
+          "threshold": 0.06774116066797893,
+          "ratio": 7.89230551016876,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 25,
+          "cluster_name": "Exclusion of Deal-Related Expenses from MAE Calculation",
+          "category": "transaction",
+          "distance": 0.6299537004141373,
+          "threshold": 0.0721669512327782,
+          "ratio": 8.729116162635018,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 17,
+          "cluster_name": "Wealth Management and Financial Services Industry Effects",
+          "category": "economic",
+          "distance": 0.5088651619550804,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 18,
+          "cluster_name": "Exclusions for Actions Taken Under Existing Franchise Agreements",
+          "category": "operational",
+          "distance": 0.6616579136976444,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 23,
+          "cluster_name": "Exclusions for Effects Arising from Acquirer's Specific Characteristics",
+          "category": "transaction",
+          "distance": 0.5243859126012007,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 27,
+          "cluster_name": "MAE Exclusion for Contemplated Lease Transfer Effects",
+          "category": "transaction",
+          "distance": 0.5843712904903288,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 29,
+          "cluster_name": "Broadcast Television Industry Regulatory and Business Condition Changes",
+          "category": "regulatory",
+          "distance": 0.39261154581877145,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 31,
+          "cluster_name": "Weather-Related and Natural Disaster Force Majeure Exclusions",
+          "category": "force_majeure",
+          "distance": 0.5455465143094622,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 32,
+          "cluster_name": "Metal Pricing and Supply Availability Exclusions",
+          "category": "economic",
+          "distance": 0.4902932995466631,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        }
+      ]
+    },
+    {
+      "label": "(v)",
+      "text": "changes in Laws or other binding directives issued by any Governmental Authority or in GAAP or in accounting standards, or any changes in the interpretation or enforcement of any of the foregoing, or any changes in general legal, regulatory or political conditions",
+      "best_match": {
+        "cluster_id": 5,
+        "cluster_name": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+        "category": "accounting",
+        "distance": 0.1448470171677111,
+        "threshold": 0.29419988796073404,
+        "ratio": 0.4923421901066236,
+        "cluster_size": 89
+      },
+      "all_matches": [
+        {
+          "cluster_id": 5,
+          "cluster_name": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+          "category": "accounting",
+          "distance": 0.1448470171677111,
+          "threshold": 0.29419988796073404,
+          "ratio": 0.4923421901066236,
+          "cluster_size": 89
+        }
+      ],
+      "zone": "typical",
+      "icon": "\ud83d\udfe2",
+      "all_clusters": [
+        {
+          "cluster_id": 5,
+          "cluster_name": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+          "category": "accounting",
+          "distance": 0.1448470171677111,
+          "threshold": 0.29419988796073404,
+          "ratio": 0.4923421901066236,
+          "cluster_size": 89
+        },
+        {
+          "cluster_id": 16,
+          "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+          "category": "economic",
+          "distance": 0.28531776618409677,
+          "threshold": 0.28011070389239384,
+          "ratio": 1.0185893013703013,
+          "cluster_size": 156
+        },
+        {
+          "cluster_id": 11,
+          "cluster_name": "Catastrophic External Events Beyond Party Control",
+          "category": "force_majeure",
+          "distance": 0.36047020587000966,
+          "threshold": 0.2964535958513296,
+          "ratio": 1.2159414185375041,
+          "cluster_size": 128
+        },
+        {
+          "cluster_id": 2,
+          "cluster_name": "Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks",
+          "category": "transaction",
+          "distance": 0.41984908156120204,
+          "threshold": 0.27919353744424974,
+          "ratio": 1.503792263261247,
+          "cluster_size": 88
+        },
+        {
+          "cluster_id": 6,
+          "cluster_name": "Actions Taken Pursuant to or Required by Agreement Terms",
+          "category": "transaction",
+          "distance": 0.48093894088501854,
+          "threshold": 0.2786018079187563,
+          "ratio": 1.7262592245103674,
+          "cluster_size": 83
+        },
+        {
+          "cluster_id": 1,
+          "cluster_name": "Exclusion for Matters Previously Disclosed in Transaction Documents",
+          "category": "disclosure",
+          "distance": 0.4354911929540387,
+          "threshold": 0.24482981438660845,
+          "ratio": 1.7787506560224675,
+          "cluster_size": 6
+        },
+        {
+          "cluster_id": 4,
+          "cluster_name": "Exclusion for Stockholder Litigation Arising from Merger Transaction",
+          "category": "transaction",
+          "distance": 0.4757572997026396,
+          "threshold": 0.2664248473198498,
+          "ratio": 1.785709195251901,
+          "cluster_size": 44
+        },
+        {
+          "cluster_id": 14,
+          "cluster_name": "Exclusion for impacts from deal announcement and execution",
+          "category": "transaction",
+          "distance": 0.4593790095736122,
+          "threshold": 0.25397381758509874,
+          "ratio": 1.8087652260441711,
+          "cluster_size": 91
+        },
+        {
+          "cluster_id": 22,
+          "cluster_name": "Industry-Specific Changes and Supply Chain Disruption Exclusions",
+          "category": "operational",
+          "distance": 0.4483012697699531,
+          "threshold": 0.24114450800638879,
+          "ratio": 1.8590565195790234,
+          "cluster_size": 8
+        },
+        {
+          "cluster_id": 10,
+          "cluster_name": "Exclusions for Adverse Regulatory Actions Affecting Product Candidates",
+          "category": "regulatory",
+          "distance": 0.45999424251456245,
+          "threshold": 0.24630688019239347,
+          "ratio": 1.8675655432574805,
+          "cluster_size": 9
+        },
+        {
+          "cluster_id": 28,
+          "cluster_name": "Exclusions for Acquiror Identity and Post-Acquisition Plans",
+          "category": "transaction",
+          "distance": 0.49263154818400234,
+          "threshold": 0.24616708621149894,
+          "ratio": 2.001208024052204,
+          "cluster_size": 16
+        },
+        {
+          "cluster_id": 0,
+          "cluster_name": "Exclusion for Failure to Obtain Transaction-Related Governmental Approvals",
+          "category": "transaction",
+          "distance": 0.4461954174140247,
+          "threshold": 0.22293322021350143,
+          "ratio": 2.0014756750326703,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 15,
+          "cluster_name": "Failure to Meet Financial Projections and Forecasts Exclusions",
+          "category": "disclosure",
+          "distance": 0.47625293359949383,
+          "threshold": 0.20245872084405744,
+          "ratio": 2.352345859017477,
+          "cluster_size": 106
+        },
+        {
+          "cluster_id": 12,
+          "cluster_name": "Exclusions for Changes in Oil Gas and Commodity Prices",
+          "category": "economic",
+          "distance": 0.40469095734539684,
+          "threshold": 0.16817441198278407,
+          "ratio": 2.4063765264529353,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 3,
+          "cluster_name": "Industry-Wide Commodity and Raw Material Price Changes",
+          "category": "economic",
+          "distance": 0.43756849946474863,
+          "threshold": 0.17974605545838562,
+          "ratio": 2.4343705253996712,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 13,
+          "cluster_name": "Currency Fluctuations, Interest Rates, and Inflation Exclusions",
+          "category": "economic",
+          "distance": 0.44669593363349724,
+          "threshold": 0.17144308877523096,
+          "ratio": 2.60550563352912,
+          "cluster_size": 12
+        },
+        {
+          "cluster_id": 8,
+          "cluster_name": "COVID-19 and Government Measures Compliance Carveouts",
+          "category": "force_majeure",
+          "distance": 0.4260945260797976,
+          "threshold": 0.16134816193521279,
+          "ratio": 2.640839046253841,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 9,
+          "cluster_name": "Governmental Antitrust Requirements Imposed as Transaction Approval Conditions",
+          "category": "regulatory",
+          "distance": 0.444473236649779,
+          "threshold": 0.1630757680627233,
+          "ratio": 2.725562736450352,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 20,
+          "cluster_name": "Employee Relations and Work Stoppage Events Exclusion",
+          "category": "operational",
+          "distance": 0.5695473202856727,
+          "threshold": 0.15960298830736316,
+          "ratio": 3.5685254162587445,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 34,
+          "cluster_name": "Exclusion for Parent or Merger Sub Breach of Agreement",
+          "category": "transaction",
+          "distance": 0.5399623681300687,
+          "threshold": 0.13684164444092345,
+          "ratio": 3.9458921320050226,
+          "cluster_size": 13
+        },
+        {
+          "cluster_id": 7,
+          "cluster_name": "Exclusions for Disclosed or Acquiror-Related Information",
+          "category": "disclosure",
+          "distance": 0.448905659812771,
+          "threshold": 0.11285816846319714,
+          "ratio": 3.9776089398363608,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 21,
+          "cluster_name": "Post-Signing Changes in Laws and Government Regulations",
+          "category": "regulatory",
+          "distance": 0.43103130979517157,
+          "threshold": 0.10545548545383894,
+          "ratio": 4.08732943516577,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 24,
+          "cluster_name": "International Trade Policy and Geopolitical Conflict Exclusions",
+          "category": "regulatory",
+          "distance": 0.46325181533856075,
+          "threshold": 0.1129529573262025,
+          "ratio": 4.101280978422837,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 19,
+          "cluster_name": "Exclusions for Actions Required or Caused by Transaction Agreements",
+          "category": "transaction",
+          "distance": 0.5375076563656505,
+          "threshold": 0.13030161180385444,
+          "ratio": 4.125103664678924,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 30,
+          "cluster_name": "Exclusions for Predictable Seasonal Variations in Business Performance",
+          "category": "operational",
+          "distance": 0.48995138459609333,
+          "threshold": 0.10703883757384057,
+          "ratio": 4.577323480910386,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 33,
+          "cluster_name": "Exclusion for Parent/Acquirer Financing Conditions and Costs",
+          "category": "transaction",
+          "distance": 0.5427896532155441,
+          "threshold": 0.09049408856939634,
+          "ratio": 5.998067517960581,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 26,
+          "cluster_name": "Exclusions for Cyber Attacks and Digital Infrastructure Failures",
+          "category": "operational",
+          "distance": 0.5524889910158575,
+          "threshold": 0.06774116066797893,
+          "ratio": 8.15588315239803,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 25,
+          "cluster_name": "Exclusion of Deal-Related Expenses from MAE Calculation",
+          "category": "transaction",
+          "distance": 0.6105238688429344,
+          "threshold": 0.0721669512327782,
+          "ratio": 8.459881682872515,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 17,
+          "cluster_name": "Wealth Management and Financial Services Industry Effects",
+          "category": "economic",
+          "distance": 0.5548406121186081,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 18,
+          "cluster_name": "Exclusions for Actions Taken Under Existing Franchise Agreements",
+          "category": "operational",
+          "distance": 0.6050022377942117,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 23,
+          "cluster_name": "Exclusions for Effects Arising from Acquirer's Specific Characteristics",
+          "category": "transaction",
+          "distance": 0.5093653100271853,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 27,
+          "cluster_name": "MAE Exclusion for Contemplated Lease Transfer Effects",
+          "category": "transaction",
+          "distance": 0.5328010400064851,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 29,
+          "cluster_name": "Broadcast Television Industry Regulatory and Business Condition Changes",
+          "category": "regulatory",
+          "distance": 0.472002584949779,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 31,
+          "cluster_name": "Weather-Related and Natural Disaster Force Majeure Exclusions",
+          "category": "force_majeure",
+          "distance": 0.5556720239321244,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 32,
+          "cluster_name": "Metal Pricing and Supply Availability Exclusions",
+          "category": "economic",
+          "distance": 0.5582929871854603,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        }
+      ]
+    },
+    {
+      "label": "(vi)",
+      "text": "geopolitical conditions, the outbreak or escalation of hostilities, any acts of war (whether or not declared), sabotage, cyberterrorism, terrorism or military actions (including any escalation or general worsening of any such hostilities, acts of war, sabotage, cyberterrorism, terrorism or military actions) in the United States or any other country or region in the world",
+      "best_match": {
+        "cluster_id": 11,
+        "cluster_name": "Catastrophic External Events Beyond Party Control",
+        "category": "force_majeure",
+        "distance": 0.13782261502257553,
+        "threshold": 0.2964535958513296,
+        "ratio": 0.464904514403978,
+        "cluster_size": 128
+      },
+      "all_matches": [
+        {
+          "cluster_id": 11,
+          "cluster_name": "Catastrophic External Events Beyond Party Control",
+          "category": "force_majeure",
+          "distance": 0.13782261502257553,
+          "threshold": 0.2964535958513296,
+          "ratio": 0.464904514403978,
+          "cluster_size": 128
+        }
+      ],
+      "zone": "typical",
+      "icon": "\ud83d\udfe2",
+      "all_clusters": [
+        {
+          "cluster_id": 11,
+          "cluster_name": "Catastrophic External Events Beyond Party Control",
+          "category": "force_majeure",
+          "distance": 0.13782261502257553,
+          "threshold": 0.2964535958513296,
+          "ratio": 0.464904514403978,
+          "cluster_size": 128
+        },
+        {
+          "cluster_id": 16,
+          "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+          "category": "economic",
+          "distance": 0.32391860528218197,
+          "threshold": 0.28011070389239384,
+          "ratio": 1.1563949566404903,
+          "cluster_size": 156
+        },
+        {
+          "cluster_id": 5,
+          "cluster_name": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+          "category": "accounting",
+          "distance": 0.5210444068643851,
+          "threshold": 0.29419988796073404,
+          "ratio": 1.7710557623799208,
+          "cluster_size": 89
+        },
+        {
+          "cluster_id": 2,
+          "cluster_name": "Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks",
+          "category": "transaction",
+          "distance": 0.5588499912901779,
+          "threshold": 0.27919353744424974,
+          "ratio": 2.0016580484129967,
+          "cluster_size": 88
+        },
+        {
+          "cluster_id": 6,
+          "cluster_name": "Actions Taken Pursuant to or Required by Agreement Terms",
+          "category": "transaction",
+          "distance": 0.5770135296210588,
+          "threshold": 0.2786018079187563,
+          "ratio": 2.0711047567549277,
+          "cluster_size": 83
+        },
+        {
+          "cluster_id": 4,
+          "cluster_name": "Exclusion for Stockholder Litigation Arising from Merger Transaction",
+          "category": "transaction",
+          "distance": 0.5875174614353351,
+          "threshold": 0.2664248473198498,
+          "ratio": 2.2051901965810474,
+          "cluster_size": 44
+        },
+        {
+          "cluster_id": 22,
+          "cluster_name": "Industry-Specific Changes and Supply Chain Disruption Exclusions",
+          "category": "operational",
+          "distance": 0.5396160070201612,
+          "threshold": 0.24114450800638879,
+          "ratio": 2.237728785454508,
+          "cluster_size": 8
+        },
+        {
+          "cluster_id": 10,
+          "cluster_name": "Exclusions for Adverse Regulatory Actions Affecting Product Candidates",
+          "category": "regulatory",
+          "distance": 0.5809537760911081,
+          "threshold": 0.24630688019239347,
+          "ratio": 2.358658335639336,
+          "cluster_size": 9
+        },
+        {
+          "cluster_id": 14,
+          "cluster_name": "Exclusion for impacts from deal announcement and execution",
+          "category": "transaction",
+          "distance": 0.5995801679231874,
+          "threshold": 0.25397381758509874,
+          "ratio": 2.3607951938679137,
+          "cluster_size": 91
+        },
+        {
+          "cluster_id": 28,
+          "cluster_name": "Exclusions for Acquiror Identity and Post-Acquisition Plans",
+          "category": "transaction",
+          "distance": 0.5971584253406688,
+          "threshold": 0.24616708621149894,
+          "ratio": 2.425825623282591,
+          "cluster_size": 16
+        },
+        {
+          "cluster_id": 1,
+          "cluster_name": "Exclusion for Matters Previously Disclosed in Transaction Documents",
+          "category": "disclosure",
+          "distance": 0.6136105636174086,
+          "threshold": 0.24482981438660845,
+          "ratio": 2.50627385865866,
+          "cluster_size": 6
+        },
+        {
+          "cluster_id": 0,
+          "cluster_name": "Exclusion for Failure to Obtain Transaction-Related Governmental Approvals",
+          "category": "transaction",
+          "distance": 0.5926666842632542,
+          "threshold": 0.22293322021350143,
+          "ratio": 2.658494250859795,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 3,
+          "cluster_name": "Industry-Wide Commodity and Raw Material Price Changes",
+          "category": "economic",
+          "distance": 0.4935178341534382,
+          "threshold": 0.17974605545838562,
+          "ratio": 2.7456393014849567,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 15,
+          "cluster_name": "Failure to Meet Financial Projections and Forecasts Exclusions",
+          "category": "disclosure",
+          "distance": 0.5641534377093604,
+          "threshold": 0.20245872084405744,
+          "ratio": 2.7865109260662377,
+          "cluster_size": 106
+        },
+        {
+          "cluster_id": 13,
+          "cluster_name": "Currency Fluctuations, Interest Rates, and Inflation Exclusions",
+          "category": "economic",
+          "distance": 0.5427494437202245,
+          "threshold": 0.17144308877523096,
+          "ratio": 3.1657703299535838,
+          "cluster_size": 12
+        },
+        {
+          "cluster_id": 12,
+          "cluster_name": "Exclusions for Changes in Oil Gas and Commodity Prices",
+          "category": "economic",
+          "distance": 0.555577460826433,
+          "threshold": 0.16817441198278407,
+          "ratio": 3.3035790301042183,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 20,
+          "cluster_name": "Employee Relations and Work Stoppage Events Exclusion",
+          "category": "operational",
+          "distance": 0.5421216563505484,
+          "threshold": 0.15960298830736316,
+          "ratio": 3.396688634090807,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 8,
+          "cluster_name": "COVID-19 and Government Measures Compliance Carveouts",
+          "category": "force_majeure",
+          "distance": 0.588597399669124,
+          "threshold": 0.16134816193521279,
+          "ratio": 3.647995692107528,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 24,
+          "cluster_name": "International Trade Policy and Geopolitical Conflict Exclusions",
+          "category": "regulatory",
+          "distance": 0.4142264021253871,
+          "threshold": 0.1129529573262025,
+          "ratio": 3.6672470728599156,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 9,
+          "cluster_name": "Governmental Antitrust Requirements Imposed as Transaction Approval Conditions",
+          "category": "regulatory",
+          "distance": 0.618958786057684,
+          "threshold": 0.1630757680627233,
+          "ratio": 3.7955288723191285,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 34,
+          "cluster_name": "Exclusion for Parent or Merger Sub Breach of Agreement",
+          "category": "transaction",
+          "distance": 0.6270428759129534,
+          "threshold": 0.13684164444092345,
+          "ratio": 4.5822518318512095,
+          "cluster_size": 13
+        },
+        {
+          "cluster_id": 7,
+          "cluster_name": "Exclusions for Disclosed or Acquiror-Related Information",
+          "category": "disclosure",
+          "distance": 0.5520302333950735,
+          "threshold": 0.11285816846319714,
+          "ratio": 4.891362680363625,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 19,
+          "cluster_name": "Exclusions for Actions Required or Caused by Transaction Agreements",
+          "category": "transaction",
+          "distance": 0.6653850979659066,
+          "threshold": 0.13030161180385444,
+          "ratio": 5.106499365238274,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 26,
+          "cluster_name": "Exclusions for Cyber Attacks and Digital Infrastructure Failures",
+          "category": "operational",
+          "distance": 0.40689086231786786,
+          "threshold": 0.06774116066797893,
+          "ratio": 6.00655285952613,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 30,
+          "cluster_name": "Exclusions for Predictable Seasonal Variations in Business Performance",
+          "category": "operational",
+          "distance": 0.6448609051647332,
+          "threshold": 0.10703883757384057,
+          "ratio": 6.024550712444695,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 21,
+          "cluster_name": "Post-Signing Changes in Laws and Government Regulations",
+          "category": "regulatory",
+          "distance": 0.648537729966002,
+          "threshold": 0.10545548545383894,
+          "ratio": 6.149871931032802,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 33,
+          "cluster_name": "Exclusion for Parent/Acquirer Financing Conditions and Costs",
+          "category": "transaction",
+          "distance": 0.6327658086336239,
+          "threshold": 0.09049408856939634,
+          "ratio": 6.992344125863877,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 25,
+          "cluster_name": "Exclusion of Deal-Related Expenses from MAE Calculation",
+          "category": "transaction",
+          "distance": 0.6983645777174985,
+          "threshold": 0.0721669512327782,
+          "ratio": 9.677069154063162,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 17,
+          "cluster_name": "Wealth Management and Financial Services Industry Effects",
+          "category": "economic",
+          "distance": 0.5864817123801704,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 18,
+          "cluster_name": "Exclusions for Actions Taken Under Existing Franchise Agreements",
+          "category": "operational",
+          "distance": 0.6899317284850432,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 23,
+          "cluster_name": "Exclusions for Effects Arising from Acquirer's Specific Characteristics",
+          "category": "transaction",
+          "distance": 0.7096874780722755,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 27,
+          "cluster_name": "MAE Exclusion for Contemplated Lease Transfer Effects",
+          "category": "transaction",
+          "distance": 0.7575319612652542,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 29,
+          "cluster_name": "Broadcast Television Industry Regulatory and Business Condition Changes",
+          "category": "regulatory",
+          "distance": 0.6210485851463159,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 31,
+          "cluster_name": "Weather-Related and Natural Disaster Force Majeure Exclusions",
+          "category": "force_majeure",
+          "distance": 0.49871458774850275,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 32,
+          "cluster_name": "Metal Pricing and Supply Availability Exclusions",
+          "category": "economic",
+          "distance": 0.6625612890925401,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        }
+      ]
+    },
+    {
+      "label": "(vii)",
+      "text": "earthquakes, volcanic activity, hurricanes, tsunamis, tornadoes, floods, mudslides, wild fires or other natural disasters, weather conditions and other force majeure events in the United States or any other country or region in the world",
+      "best_match": {
+        "cluster_id": 11,
+        "cluster_name": "Catastrophic External Events Beyond Party Control",
+        "category": "force_majeure",
+        "distance": 0.18817018338138325,
+        "threshold": 0.2964535958513296,
+        "ratio": 0.6347373957162251,
+        "cluster_size": 128
+      },
+      "all_matches": [
+        {
+          "cluster_id": 11,
+          "cluster_name": "Catastrophic External Events Beyond Party Control",
+          "category": "force_majeure",
+          "distance": 0.18817018338138325,
+          "threshold": 0.2964535958513296,
+          "ratio": 0.6347373957162251,
+          "cluster_size": 128
+        }
+      ],
+      "zone": "typical",
+      "icon": "\ud83d\udfe2",
+      "all_clusters": [
+        {
+          "cluster_id": 11,
+          "cluster_name": "Catastrophic External Events Beyond Party Control",
+          "category": "force_majeure",
+          "distance": 0.18817018338138325,
+          "threshold": 0.2964535958513296,
+          "ratio": 0.6347373957162251,
+          "cluster_size": 128
+        },
+        {
+          "cluster_id": 16,
+          "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+          "category": "economic",
+          "distance": 0.37911952447364294,
+          "threshold": 0.28011070389239384,
+          "ratio": 1.353463181540124,
+          "cluster_size": 156
+        },
+        {
+          "cluster_id": 5,
+          "cluster_name": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+          "category": "accounting",
+          "distance": 0.48966237308955896,
+          "threshold": 0.29419988796073404,
+          "ratio": 1.664386674256357,
+          "cluster_size": 89
+        },
+        {
+          "cluster_id": 2,
+          "cluster_name": "Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks",
+          "category": "transaction",
+          "distance": 0.5160350673353986,
+          "threshold": 0.27919353744424974,
+          "ratio": 1.8483059173188854,
+          "cluster_size": 88
+        },
+        {
+          "cluster_id": 6,
+          "cluster_name": "Actions Taken Pursuant to or Required by Agreement Terms",
+          "category": "transaction",
+          "distance": 0.5489874339597156,
+          "threshold": 0.2786018079187563,
+          "ratio": 1.9705092298604434,
+          "cluster_size": 83
+        },
+        {
+          "cluster_id": 22,
+          "cluster_name": "Industry-Specific Changes and Supply Chain Disruption Exclusions",
+          "category": "operational",
+          "distance": 0.5169279802162111,
+          "threshold": 0.24114450800638879,
+          "ratio": 2.143644010348002,
+          "cluster_size": 8
+        },
+        {
+          "cluster_id": 14,
+          "cluster_name": "Exclusion for impacts from deal announcement and execution",
+          "category": "transaction",
+          "distance": 0.54787354774287,
+          "threshold": 0.25397381758509874,
+          "ratio": 2.1572048369092007,
+          "cluster_size": 91
+        },
+        {
+          "cluster_id": 1,
+          "cluster_name": "Exclusion for Matters Previously Disclosed in Transaction Documents",
+          "category": "disclosure",
+          "distance": 0.5367109812409738,
+          "threshold": 0.24482981438660845,
+          "ratio": 2.1921798314704377,
+          "cluster_size": 6
+        },
+        {
+          "cluster_id": 4,
+          "cluster_name": "Exclusion for Stockholder Litigation Arising from Merger Transaction",
+          "category": "transaction",
+          "distance": 0.5910367044368121,
+          "threshold": 0.2664248473198498,
+          "ratio": 2.2183993361822503,
+          "cluster_size": 44
+        },
+        {
+          "cluster_id": 10,
+          "cluster_name": "Exclusions for Adverse Regulatory Actions Affecting Product Candidates",
+          "category": "regulatory",
+          "distance": 0.5534372441230532,
+          "threshold": 0.24630688019239347,
+          "ratio": 2.246941878727692,
+          "cluster_size": 9
+        },
+        {
+          "cluster_id": 0,
+          "cluster_name": "Exclusion for Failure to Obtain Transaction-Related Governmental Approvals",
+          "category": "transaction",
+          "distance": 0.5414062403438944,
+          "threshold": 0.22293322021350143,
+          "ratio": 2.428557932395153,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 28,
+          "cluster_name": "Exclusions for Acquiror Identity and Post-Acquisition Plans",
+          "category": "transaction",
+          "distance": 0.6167060643723052,
+          "threshold": 0.24616708621149894,
+          "ratio": 2.5052336356715497,
+          "cluster_size": 16
+        },
+        {
+          "cluster_id": 15,
+          "cluster_name": "Failure to Meet Financial Projections and Forecasts Exclusions",
+          "category": "disclosure",
+          "distance": 0.5158412818914868,
+          "threshold": 0.20245872084405744,
+          "ratio": 2.547883735217365,
+          "cluster_size": 106
+        },
+        {
+          "cluster_id": 3,
+          "cluster_name": "Industry-Wide Commodity and Raw Material Price Changes",
+          "category": "economic",
+          "distance": 0.5048530566077845,
+          "threshold": 0.17974605545838562,
+          "ratio": 2.8087017282260573,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 12,
+          "cluster_name": "Exclusions for Changes in Oil Gas and Commodity Prices",
+          "category": "economic",
+          "distance": 0.5040917736803456,
+          "threshold": 0.16817441198278407,
+          "ratio": 2.9974344356973237,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 13,
+          "cluster_name": "Currency Fluctuations, Interest Rates, and Inflation Exclusions",
+          "category": "economic",
+          "distance": 0.5488921980807748,
+          "threshold": 0.17144308877523096,
+          "ratio": 3.2016000295024747,
+          "cluster_size": 12
+        },
+        {
+          "cluster_id": 8,
+          "cluster_name": "COVID-19 and Government Measures Compliance Carveouts",
+          "category": "force_majeure",
+          "distance": 0.5449480419763051,
+          "threshold": 0.16134816193521279,
+          "ratio": 3.377466687194873,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 9,
+          "cluster_name": "Governmental Antitrust Requirements Imposed as Transaction Approval Conditions",
+          "category": "regulatory",
+          "distance": 0.6107794245155018,
+          "threshold": 0.1630757680627233,
+          "ratio": 3.7453720547897693,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 20,
+          "cluster_name": "Employee Relations and Work Stoppage Events Exclusion",
+          "category": "operational",
+          "distance": 0.6006596544265892,
+          "threshold": 0.15960298830736316,
+          "ratio": 3.7634612033067945,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 24,
+          "cluster_name": "International Trade Policy and Geopolitical Conflict Exclusions",
+          "category": "regulatory",
+          "distance": 0.4574467016365893,
+          "threshold": 0.1129529573262025,
+          "ratio": 4.049886895085943,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 34,
+          "cluster_name": "Exclusion for Parent or Merger Sub Breach of Agreement",
+          "category": "transaction",
+          "distance": 0.6008340554737339,
+          "threshold": 0.13684164444092345,
+          "ratio": 4.390725191358855,
+          "cluster_size": 13
+        },
+        {
+          "cluster_id": 19,
+          "cluster_name": "Exclusions for Actions Required or Caused by Transaction Agreements",
+          "category": "transaction",
+          "distance": 0.6483856023887863,
+          "threshold": 0.13030161180385444,
+          "ratio": 4.976036699874548,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 7,
+          "cluster_name": "Exclusions for Disclosed or Acquiror-Related Information",
+          "category": "disclosure",
+          "distance": 0.5822980385063827,
+          "threshold": 0.11285816846319714,
+          "ratio": 5.159555984609737,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 30,
+          "cluster_name": "Exclusions for Predictable Seasonal Variations in Business Performance",
+          "category": "operational",
+          "distance": 0.5738501190886145,
+          "threshold": 0.10703883757384057,
+          "ratio": 5.361139303224822,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 21,
+          "cluster_name": "Post-Signing Changes in Laws and Government Regulations",
+          "category": "regulatory",
+          "distance": 0.5676229773308324,
+          "threshold": 0.10545548545383894,
+          "ratio": 5.382583702384057,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 33,
+          "cluster_name": "Exclusion for Parent/Acquirer Financing Conditions and Costs",
+          "category": "transaction",
+          "distance": 0.6374431180210816,
+          "threshold": 0.09049408856939634,
+          "ratio": 7.0440304786566434,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 26,
+          "cluster_name": "Exclusions for Cyber Attacks and Digital Infrastructure Failures",
+          "category": "operational",
+          "distance": 0.502994312373015,
+          "threshold": 0.06774116066797893,
+          "ratio": 7.425239063120733,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 25,
+          "cluster_name": "Exclusion of Deal-Related Expenses from MAE Calculation",
+          "category": "transaction",
+          "distance": 0.6776439384614239,
+          "threshold": 0.0721669512327782,
+          "ratio": 9.389948264208204,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 17,
+          "cluster_name": "Wealth Management and Financial Services Industry Effects",
+          "category": "economic",
+          "distance": 0.6083075006028968,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 18,
+          "cluster_name": "Exclusions for Actions Taken Under Existing Franchise Agreements",
+          "category": "operational",
+          "distance": 0.6368440074314474,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 23,
+          "cluster_name": "Exclusions for Effects Arising from Acquirer's Specific Characteristics",
+          "category": "transaction",
+          "distance": 0.7043870351376845,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 27,
+          "cluster_name": "MAE Exclusion for Contemplated Lease Transfer Effects",
+          "category": "transaction",
+          "distance": 0.725256358962129,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 29,
+          "cluster_name": "Broadcast Television Industry Regulatory and Business Condition Changes",
+          "category": "regulatory",
+          "distance": 0.6134344832027074,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 31,
+          "cluster_name": "Weather-Related and Natural Disaster Force Majeure Exclusions",
+          "category": "force_majeure",
+          "distance": 0.49818817972541396,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 32,
+          "cluster_name": "Metal Pricing and Supply Availability Exclusions",
+          "category": "economic",
+          "distance": 0.6581478046662677,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        }
+      ]
+    },
+    {
+      "label": "(viii)",
+      "text": "any pandemic, epidemic or disease outbreak (including COVID-19 (including any mutation, variation or resurgence thereof or any other coronavirus)) or any Law, directive, pronouncement or guideline issued by a Governmental Authority, the Centers for Disease Control and Prevention, the World Health Organization or industry group providing for business closures, \"sheltering-in-place,\" curfews or other restrictions that relate to, or arise out of, an epidemic, pandemic or disease outbreak (including COVID-19 (including any mutation, variation or resurgence thereof or any other coronavirus)) or any change in such Law, directive, pronouncement or guideline or interpretation thereof following the date of this Agreement",
+      "best_match": {
+        "cluster_id": 11,
+        "cluster_name": "Catastrophic External Events Beyond Party Control",
+        "category": "force_majeure",
+        "distance": 0.2869001004569469,
+        "threshold": 0.2964535958513296,
+        "ratio": 0.9677740613435712,
+        "cluster_size": 128
+      },
+      "all_matches": [
+        {
+          "cluster_id": 11,
+          "cluster_name": "Catastrophic External Events Beyond Party Control",
+          "category": "force_majeure",
+          "distance": 0.2869001004569469,
+          "threshold": 0.2964535958513296,
+          "ratio": 0.9677740613435712,
+          "cluster_size": 128
+        }
+      ],
+      "zone": "typical",
+      "icon": "\ud83d\udfe2",
+      "all_clusters": [
+        {
+          "cluster_id": 11,
+          "cluster_name": "Catastrophic External Events Beyond Party Control",
+          "category": "force_majeure",
+          "distance": 0.2869001004569469,
+          "threshold": 0.2964535958513296,
+          "ratio": 0.9677740613435712,
+          "cluster_size": 128
+        },
+        {
+          "cluster_id": 5,
+          "cluster_name": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+          "category": "accounting",
+          "distance": 0.4115210338671501,
+          "threshold": 0.29419988796073404,
+          "ratio": 1.398780389481571,
+          "cluster_size": 89
+        },
+        {
+          "cluster_id": 16,
+          "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+          "category": "economic",
+          "distance": 0.44709485187726616,
+          "threshold": 0.28011070389239384,
+          "ratio": 1.5961362620723707,
+          "cluster_size": 156
+        },
+        {
+          "cluster_id": 6,
+          "cluster_name": "Actions Taken Pursuant to or Required by Agreement Terms",
+          "category": "transaction",
+          "distance": 0.4684323729164931,
+          "threshold": 0.2786018079187563,
+          "ratio": 1.68136874780473,
+          "cluster_size": 83
+        },
+        {
+          "cluster_id": 14,
+          "cluster_name": "Exclusion for impacts from deal announcement and execution",
+          "category": "transaction",
+          "distance": 0.471227999036559,
+          "threshold": 0.25397381758509874,
+          "ratio": 1.8554196000092218,
+          "cluster_size": 91
+        },
+        {
+          "cluster_id": 4,
+          "cluster_name": "Exclusion for Stockholder Litigation Arising from Merger Transaction",
+          "category": "transaction",
+          "distance": 0.4967978623542578,
+          "threshold": 0.2664248473198498,
+          "ratio": 1.8646829203502908,
+          "cluster_size": 44
+        },
+        {
+          "cluster_id": 2,
+          "cluster_name": "Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks",
+          "category": "transaction",
+          "distance": 0.5233177600875942,
+          "threshold": 0.27919353744424974,
+          "ratio": 1.8743906641896824,
+          "cluster_size": 88
+        },
+        {
+          "cluster_id": 10,
+          "cluster_name": "Exclusions for Adverse Regulatory Actions Affecting Product Candidates",
+          "category": "regulatory",
+          "distance": 0.486661365943997,
+          "threshold": 0.24630688019239347,
+          "ratio": 1.975833421964744,
+          "cluster_size": 9
+        },
+        {
+          "cluster_id": 8,
+          "cluster_name": "COVID-19 and Government Measures Compliance Carveouts",
+          "category": "force_majeure",
+          "distance": 0.3286445871666589,
+          "threshold": 0.16134816193521279,
+          "ratio": 2.036866012137292,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 1,
+          "cluster_name": "Exclusion for Matters Previously Disclosed in Transaction Documents",
+          "category": "disclosure",
+          "distance": 0.5011313433635005,
+          "threshold": 0.24482981438660845,
+          "ratio": 2.0468558725947026,
+          "cluster_size": 6
+        },
+        {
+          "cluster_id": 22,
+          "cluster_name": "Industry-Specific Changes and Supply Chain Disruption Exclusions",
+          "category": "operational",
+          "distance": 0.4941629540493484,
+          "threshold": 0.24114450800638879,
+          "ratio": 2.049239927273219,
+          "cluster_size": 8
+        },
+        {
+          "cluster_id": 28,
+          "cluster_name": "Exclusions for Acquiror Identity and Post-Acquisition Plans",
+          "category": "transaction",
+          "distance": 0.5631512623730106,
+          "threshold": 0.24616708621149894,
+          "ratio": 2.2876789543227924,
+          "cluster_size": 16
+        },
+        {
+          "cluster_id": 0,
+          "cluster_name": "Exclusion for Failure to Obtain Transaction-Related Governmental Approvals",
+          "category": "transaction",
+          "distance": 0.5127823074278288,
+          "threshold": 0.22293322021350143,
+          "ratio": 2.3001610389727523,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 15,
+          "cluster_name": "Failure to Meet Financial Projections and Forecasts Exclusions",
+          "category": "disclosure",
+          "distance": 0.5197131153428438,
+          "threshold": 0.20245872084405744,
+          "ratio": 2.567007798805316,
+          "cluster_size": 106
+        },
+        {
+          "cluster_id": 12,
+          "cluster_name": "Exclusions for Changes in Oil Gas and Commodity Prices",
+          "category": "economic",
+          "distance": 0.4913825444808906,
+          "threshold": 0.16817441198278407,
+          "ratio": 2.9218627179216368,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 3,
+          "cluster_name": "Industry-Wide Commodity and Raw Material Price Changes",
+          "category": "economic",
+          "distance": 0.5353907357136611,
+          "threshold": 0.17974605545838562,
+          "ratio": 2.978595187239664,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 13,
+          "cluster_name": "Currency Fluctuations, Interest Rates, and Inflation Exclusions",
+          "category": "economic",
+          "distance": 0.5578908402583089,
+          "threshold": 0.17144308877523096,
+          "ratio": 3.2540876639811773,
+          "cluster_size": 12
+        },
+        {
+          "cluster_id": 9,
+          "cluster_name": "Governmental Antitrust Requirements Imposed as Transaction Approval Conditions",
+          "category": "regulatory",
+          "distance": 0.5446960500740216,
+          "threshold": 0.1630757680627233,
+          "ratio": 3.3401409451863926,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 20,
+          "cluster_name": "Employee Relations and Work Stoppage Events Exclusion",
+          "category": "operational",
+          "distance": 0.5486715369829749,
+          "threshold": 0.15960298830736316,
+          "ratio": 3.4377272180289267,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 34,
+          "cluster_name": "Exclusion for Parent or Merger Sub Breach of Agreement",
+          "category": "transaction",
+          "distance": 0.54436868545312,
+          "threshold": 0.13684164444092345,
+          "ratio": 3.9780922516473556,
+          "cluster_size": 13
+        },
+        {
+          "cluster_id": 21,
+          "cluster_name": "Post-Signing Changes in Laws and Government Regulations",
+          "category": "regulatory",
+          "distance": 0.44232029715041365,
+          "threshold": 0.10545548545383894,
+          "ratio": 4.194379223108604,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 19,
+          "cluster_name": "Exclusions for Actions Required or Caused by Transaction Agreements",
+          "category": "transaction",
+          "distance": 0.588964446109421,
+          "threshold": 0.13030161180385444,
+          "ratio": 4.52000890822441,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 24,
+          "cluster_name": "International Trade Policy and Geopolitical Conflict Exclusions",
+          "category": "regulatory",
+          "distance": 0.5345790692227168,
+          "threshold": 0.1129529573262025,
+          "ratio": 4.732758502983495,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 7,
+          "cluster_name": "Exclusions for Disclosed or Acquiror-Related Information",
+          "category": "disclosure",
+          "distance": 0.5574272736863826,
+          "threshold": 0.11285816846319714,
+          "ratio": 4.939184121778112,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 30,
+          "cluster_name": "Exclusions for Predictable Seasonal Variations in Business Performance",
+          "category": "operational",
+          "distance": 0.5427984187071484,
+          "threshold": 0.10703883757384057,
+          "ratio": 5.071041792028989,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 33,
+          "cluster_name": "Exclusion for Parent/Acquirer Financing Conditions and Costs",
+          "category": "transaction",
+          "distance": 0.659056368742734,
+          "threshold": 0.09049408856939634,
+          "ratio": 7.282866529312903,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 26,
+          "cluster_name": "Exclusions for Cyber Attacks and Digital Infrastructure Failures",
+          "category": "operational",
+          "distance": 0.5266304154475433,
+          "threshold": 0.06774116066797893,
+          "ratio": 7.774156956488053,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 25,
+          "cluster_name": "Exclusion of Deal-Related Expenses from MAE Calculation",
+          "category": "transaction",
+          "distance": 0.6081844116506026,
+          "threshold": 0.0721669512327782,
+          "ratio": 8.427464390020752,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 17,
+          "cluster_name": "Wealth Management and Financial Services Industry Effects",
+          "category": "economic",
+          "distance": 0.626321592854698,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 18,
+          "cluster_name": "Exclusions for Actions Taken Under Existing Franchise Agreements",
+          "category": "operational",
+          "distance": 0.5963211969771287,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 23,
+          "cluster_name": "Exclusions for Effects Arising from Acquirer's Specific Characteristics",
+          "category": "transaction",
+          "distance": 0.5966270900969228,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 27,
+          "cluster_name": "MAE Exclusion for Contemplated Lease Transfer Effects",
+          "category": "transaction",
+          "distance": 0.6941905443224601,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 29,
+          "cluster_name": "Broadcast Television Industry Regulatory and Business Condition Changes",
+          "category": "regulatory",
+          "distance": 0.6122322937441648,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 31,
+          "cluster_name": "Weather-Related and Natural Disaster Force Majeure Exclusions",
+          "category": "force_majeure",
+          "distance": 0.5532901141409844,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 32,
+          "cluster_name": "Metal Pricing and Supply Availability Exclusions",
+          "category": "economic",
+          "distance": 0.6270163285686277,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        }
+      ]
+    },
+    {
+      "label": "(ix)",
+      "text": "any actions taken or failure to take action, in each case, which Parent has requested or to which Parent has consented in writing",
+      "best_match": {
+        "cluster_id": 6,
+        "cluster_name": "Actions Taken Pursuant to or Required by Agreement Terms",
+        "category": "transaction",
+        "distance": 0.2461719367053985,
+        "threshold": 0.2786018079187563,
+        "ratio": 0.8835977718320668,
+        "cluster_size": 83
+      },
+      "all_matches": [
+        {
+          "cluster_id": 6,
+          "cluster_name": "Actions Taken Pursuant to or Required by Agreement Terms",
+          "category": "transaction",
+          "distance": 0.2461719367053985,
+          "threshold": 0.2786018079187563,
+          "ratio": 0.8835977718320668,
+          "cluster_size": 83
+        }
+      ],
+      "zone": "typical",
+      "icon": "\ud83d\udfe2",
+      "all_clusters": [
+        {
+          "cluster_id": 6,
+          "cluster_name": "Actions Taken Pursuant to or Required by Agreement Terms",
+          "category": "transaction",
+          "distance": 0.2461719367053985,
+          "threshold": 0.2786018079187563,
+          "ratio": 0.8835977718320668,
+          "cluster_size": 83
+        },
+        {
+          "cluster_id": 11,
+          "cluster_name": "Catastrophic External Events Beyond Party Control",
+          "category": "force_majeure",
+          "distance": 0.5867121368447619,
+          "threshold": 0.2964535958513296,
+          "ratio": 1.9791027838940294,
+          "cluster_size": 128
+        },
+        {
+          "cluster_id": 5,
+          "cluster_name": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+          "category": "accounting",
+          "distance": 0.5871095159417776,
+          "threshold": 0.29419988796073404,
+          "ratio": 1.9956143423825414,
+          "cluster_size": 89
+        },
+        {
+          "cluster_id": 4,
+          "cluster_name": "Exclusion for Stockholder Litigation Arising from Merger Transaction",
+          "category": "transaction",
+          "distance": 0.542528756535362,
+          "threshold": 0.2664248473198498,
+          "ratio": 2.03632942645189,
+          "cluster_size": 44
+        },
+        {
+          "cluster_id": 0,
+          "cluster_name": "Exclusion for Failure to Obtain Transaction-Related Governmental Approvals",
+          "category": "transaction",
+          "distance": 0.4703331507736631,
+          "threshold": 0.22293322021350143,
+          "ratio": 2.10974905544911,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 2,
+          "cluster_name": "Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks",
+          "category": "transaction",
+          "distance": 0.625569800221276,
+          "threshold": 0.27919353744424974,
+          "ratio": 2.240631376885619,
+          "cluster_size": 88
+        },
+        {
+          "cluster_id": 16,
+          "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+          "category": "economic",
+          "distance": 0.6279378609461228,
+          "threshold": 0.28011070389239384,
+          "ratio": 2.241748895063106,
+          "cluster_size": 156
+        },
+        {
+          "cluster_id": 1,
+          "cluster_name": "Exclusion for Matters Previously Disclosed in Transaction Documents",
+          "category": "disclosure",
+          "distance": 0.5560711093266022,
+          "threshold": 0.24482981438660845,
+          "ratio": 2.2712556913044732,
+          "cluster_size": 6
+        },
+        {
+          "cluster_id": 28,
+          "cluster_name": "Exclusions for Acquiror Identity and Post-Acquisition Plans",
+          "category": "transaction",
+          "distance": 0.5945632122770321,
+          "threshold": 0.24616708621149894,
+          "ratio": 2.4152831372680033,
+          "cluster_size": 16
+        },
+        {
+          "cluster_id": 10,
+          "cluster_name": "Exclusions for Adverse Regulatory Actions Affecting Product Candidates",
+          "category": "regulatory",
+          "distance": 0.6323156082120718,
+          "threshold": 0.24630688019239347,
+          "ratio": 2.5671861367338256,
+          "cluster_size": 9
+        },
+        {
+          "cluster_id": 14,
+          "cluster_name": "Exclusion for impacts from deal announcement and execution",
+          "category": "transaction",
+          "distance": 0.6582203685328794,
+          "threshold": 0.25397381758509874,
+          "ratio": 2.591685925705039,
+          "cluster_size": 91
+        },
+        {
+          "cluster_id": 22,
+          "cluster_name": "Industry-Specific Changes and Supply Chain Disruption Exclusions",
+          "category": "operational",
+          "distance": 0.6621319622760674,
+          "threshold": 0.24114450800638879,
+          "ratio": 2.7457891027670644,
+          "cluster_size": 8
+        },
+        {
+          "cluster_id": 15,
+          "cluster_name": "Failure to Meet Financial Projections and Forecasts Exclusions",
+          "category": "disclosure",
+          "distance": 0.5983513081047478,
+          "threshold": 0.20245872084405744,
+          "ratio": 2.95542373087314,
+          "cluster_size": 106
+        },
+        {
+          "cluster_id": 9,
+          "cluster_name": "Governmental Antitrust Requirements Imposed as Transaction Approval Conditions",
+          "category": "regulatory",
+          "distance": 0.5623038219176955,
+          "threshold": 0.1630757680627233,
+          "ratio": 3.448113895753159,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 13,
+          "cluster_name": "Currency Fluctuations, Interest Rates, and Inflation Exclusions",
+          "category": "economic",
+          "distance": 0.6429621182305981,
+          "threshold": 0.17144308877523096,
+          "ratio": 3.750294764424994,
+          "cluster_size": 12
+        },
+        {
+          "cluster_id": 3,
+          "cluster_name": "Industry-Wide Commodity and Raw Material Price Changes",
+          "category": "economic",
+          "distance": 0.6804741216333461,
+          "threshold": 0.17974605545838562,
+          "ratio": 3.7857527382061957,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 8,
+          "cluster_name": "COVID-19 and Government Measures Compliance Carveouts",
+          "category": "force_majeure",
+          "distance": 0.6240683106644511,
+          "threshold": 0.16134816193521279,
+          "ratio": 3.8678365044842438,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 12,
+          "cluster_name": "Exclusions for Changes in Oil Gas and Commodity Prices",
+          "category": "economic",
+          "distance": 0.6571145947059983,
+          "threshold": 0.16817441198278407,
+          "ratio": 3.907339927391967,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 20,
+          "cluster_name": "Employee Relations and Work Stoppage Events Exclusion",
+          "category": "operational",
+          "distance": 0.6507034767075296,
+          "threshold": 0.15960298830736316,
+          "ratio": 4.077013116160494,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 34,
+          "cluster_name": "Exclusion for Parent or Merger Sub Breach of Agreement",
+          "category": "transaction",
+          "distance": 0.5754680496573351,
+          "threshold": 0.13684164444092345,
+          "ratio": 4.20535760154339,
+          "cluster_size": 13
+        },
+        {
+          "cluster_id": 19,
+          "cluster_name": "Exclusions for Actions Required or Caused by Transaction Agreements",
+          "category": "transaction",
+          "distance": 0.5501979790522376,
+          "threshold": 0.13030161180385444,
+          "ratio": 4.222495573427452,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 7,
+          "cluster_name": "Exclusions for Disclosed or Acquiror-Related Information",
+          "category": "disclosure",
+          "distance": 0.5971445670232748,
+          "threshold": 0.11285816846319714,
+          "ratio": 5.291106307630738,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 24,
+          "cluster_name": "International Trade Policy and Geopolitical Conflict Exclusions",
+          "category": "regulatory",
+          "distance": 0.6177042398893364,
+          "threshold": 0.1129529573262025,
+          "ratio": 5.4686858539297685,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 30,
+          "cluster_name": "Exclusions for Predictable Seasonal Variations in Business Performance",
+          "category": "operational",
+          "distance": 0.6502110973386944,
+          "threshold": 0.10703883757384057,
+          "ratio": 6.074534365997271,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 21,
+          "cluster_name": "Post-Signing Changes in Laws and Government Regulations",
+          "category": "regulatory",
+          "distance": 0.6526326366042243,
+          "threshold": 0.10545548545383894,
+          "ratio": 6.188702596129069,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 33,
+          "cluster_name": "Exclusion for Parent/Acquirer Financing Conditions and Costs",
+          "category": "transaction",
+          "distance": 0.6725255139776759,
+          "threshold": 0.09049408856939634,
+          "ratio": 7.431706585584789,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 25,
+          "cluster_name": "Exclusion of Deal-Related Expenses from MAE Calculation",
+          "category": "transaction",
+          "distance": 0.6711975258038636,
+          "threshold": 0.0721669512327782,
+          "ratio": 9.300621882153251,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 26,
+          "cluster_name": "Exclusions for Cyber Attacks and Digital Infrastructure Failures",
+          "category": "operational",
+          "distance": 0.7032513577589441,
+          "threshold": 0.06774116066797893,
+          "ratio": 10.381448307415393,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 17,
+          "cluster_name": "Wealth Management and Financial Services Industry Effects",
+          "category": "economic",
+          "distance": 0.7269882208065224,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 18,
+          "cluster_name": "Exclusions for Actions Taken Under Existing Franchise Agreements",
+          "category": "operational",
+          "distance": 0.5926783097649946,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 23,
+          "cluster_name": "Exclusions for Effects Arising from Acquirer's Specific Characteristics",
+          "category": "transaction",
+          "distance": 0.6537932688194045,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 27,
+          "cluster_name": "MAE Exclusion for Contemplated Lease Transfer Effects",
+          "category": "transaction",
+          "distance": 0.7463229784294574,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 29,
+          "cluster_name": "Broadcast Television Industry Regulatory and Business Condition Changes",
+          "category": "regulatory",
+          "distance": 0.6948895615405486,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 31,
+          "cluster_name": "Weather-Related and Natural Disaster Force Majeure Exclusions",
+          "category": "force_majeure",
+          "distance": 0.6440845201955819,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 32,
+          "cluster_name": "Metal Pricing and Supply Availability Exclusions",
+          "category": "economic",
+          "distance": 0.7189360798127754,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        }
+      ]
+    },
+    {
+      "label": "(x)",
+      "text": "any Effect attributable to the announcement or execution of this Agreement or the pendency or consummation of the Merger or the other transactions contemplated by this Agreement (including the impact thereof on relationships, contractual or otherwise, with customers, suppliers, licensors, distributors, partners, providers, employees or regulators), including compliance with the covenants set forth herein and any actions taken or not taken pursuant to or in accordance with this Agreement, or the identity of, or any facts or circumstances relating to, Parent or any of its Affiliates",
+      "best_match": {
+        "cluster_id": 14,
+        "cluster_name": "Exclusion for impacts from deal announcement and execution",
+        "category": "transaction",
+        "distance": 0.16190396349708647,
+        "threshold": 0.25397381758509874,
+        "ratio": 0.6374828910969828,
+        "cluster_size": 91
+      },
+      "all_matches": [
+        {
+          "cluster_id": 14,
+          "cluster_name": "Exclusion for impacts from deal announcement and execution",
+          "category": "transaction",
+          "distance": 0.16190396349708647,
+          "threshold": 0.25397381758509874,
+          "ratio": 0.6374828910969828,
+          "cluster_size": 91
+        }
+      ],
+      "zone": "typical",
+      "icon": "\ud83d\udfe2",
+      "all_clusters": [
+        {
+          "cluster_id": 14,
+          "cluster_name": "Exclusion for impacts from deal announcement and execution",
+          "category": "transaction",
+          "distance": 0.16190396349708647,
+          "threshold": 0.25397381758509874,
+          "ratio": 0.6374828910969828,
+          "cluster_size": 91
+        },
+        {
+          "cluster_id": 28,
+          "cluster_name": "Exclusions for Acquiror Identity and Post-Acquisition Plans",
+          "category": "transaction",
+          "distance": 0.31415808719572746,
+          "threshold": 0.24616708621149894,
+          "ratio": 1.2761985854023263,
+          "cluster_size": 16
+        },
+        {
+          "cluster_id": 4,
+          "cluster_name": "Exclusion for Stockholder Litigation Arising from Merger Transaction",
+          "category": "transaction",
+          "distance": 0.3550346068940028,
+          "threshold": 0.2664248473198498,
+          "ratio": 1.332588196880056,
+          "cluster_size": 44
+        },
+        {
+          "cluster_id": 6,
+          "cluster_name": "Actions Taken Pursuant to or Required by Agreement Terms",
+          "category": "transaction",
+          "distance": 0.4078782381825281,
+          "threshold": 0.2786018079187563,
+          "ratio": 1.4640186337249845,
+          "cluster_size": 83
+        },
+        {
+          "cluster_id": 5,
+          "cluster_name": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+          "category": "accounting",
+          "distance": 0.47017143354090296,
+          "threshold": 0.29419988796073404,
+          "ratio": 1.5981360047412911,
+          "cluster_size": 89
+        },
+        {
+          "cluster_id": 10,
+          "cluster_name": "Exclusions for Adverse Regulatory Actions Affecting Product Candidates",
+          "category": "regulatory",
+          "distance": 0.4057982000021254,
+          "threshold": 0.24630688019239347,
+          "ratio": 1.647530916250294,
+          "cluster_size": 9
+        },
+        {
+          "cluster_id": 1,
+          "cluster_name": "Exclusion for Matters Previously Disclosed in Transaction Documents",
+          "category": "disclosure",
+          "distance": 0.40928258774761994,
+          "threshold": 0.24482981438660845,
+          "ratio": 1.6717023977370897,
+          "cluster_size": 6
+        },
+        {
+          "cluster_id": 11,
+          "cluster_name": "Catastrophic External Events Beyond Party Control",
+          "category": "force_majeure",
+          "distance": 0.5274956987779296,
+          "threshold": 0.2964535958513296,
+          "ratio": 1.779353349596295,
+          "cluster_size": 128
+        },
+        {
+          "cluster_id": 16,
+          "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+          "category": "economic",
+          "distance": 0.5342167076016477,
+          "threshold": 0.28011070389239384,
+          "ratio": 1.9071627759247294,
+          "cluster_size": 156
+        },
+        {
+          "cluster_id": 0,
+          "cluster_name": "Exclusion for Failure to Obtain Transaction-Related Governmental Approvals",
+          "category": "transaction",
+          "distance": 0.45272921469237903,
+          "threshold": 0.22293322021350143,
+          "ratio": 2.030783991092955,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 2,
+          "cluster_name": "Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks",
+          "category": "transaction",
+          "distance": 0.5675594135107173,
+          "threshold": 0.27919353744424974,
+          "ratio": 2.032852976133265,
+          "cluster_size": 88
+        },
+        {
+          "cluster_id": 34,
+          "cluster_name": "Exclusion for Parent or Merger Sub Breach of Agreement",
+          "category": "transaction",
+          "distance": 0.3165985303881571,
+          "threshold": 0.13684164444092345,
+          "ratio": 2.3136124363430706,
+          "cluster_size": 13
+        },
+        {
+          "cluster_id": 22,
+          "cluster_name": "Industry-Specific Changes and Supply Chain Disruption Exclusions",
+          "category": "operational",
+          "distance": 0.5693691525980885,
+          "threshold": 0.24114450800638879,
+          "ratio": 2.3611118383131657,
+          "cluster_size": 8
+        },
+        {
+          "cluster_id": 9,
+          "cluster_name": "Governmental Antitrust Requirements Imposed as Transaction Approval Conditions",
+          "category": "regulatory",
+          "distance": 0.39025041469769217,
+          "threshold": 0.1630757680627233,
+          "ratio": 2.393061944970214,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 15,
+          "cluster_name": "Failure to Meet Financial Projections and Forecasts Exclusions",
+          "category": "disclosure",
+          "distance": 0.5852031359875017,
+          "threshold": 0.20245872084405744,
+          "ratio": 2.89048124747489,
+          "cluster_size": 106
+        },
+        {
+          "cluster_id": 12,
+          "cluster_name": "Exclusions for Changes in Oil Gas and Commodity Prices",
+          "category": "economic",
+          "distance": 0.5236875665622244,
+          "threshold": 0.16817441198278407,
+          "ratio": 3.1139550921446597,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 3,
+          "cluster_name": "Industry-Wide Commodity and Raw Material Price Changes",
+          "category": "economic",
+          "distance": 0.5868377969342149,
+          "threshold": 0.17974605545838562,
+          "ratio": 3.2648159951976146,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 19,
+          "cluster_name": "Exclusions for Actions Required or Caused by Transaction Agreements",
+          "category": "transaction",
+          "distance": 0.44315983635902045,
+          "threshold": 0.13030161180385444,
+          "ratio": 3.401031117144718,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 13,
+          "cluster_name": "Currency Fluctuations, Interest Rates, and Inflation Exclusions",
+          "category": "economic",
+          "distance": 0.6255720247485332,
+          "threshold": 0.17144308877523096,
+          "ratio": 3.6488611423041046,
+          "cluster_size": 12
+        },
+        {
+          "cluster_id": 8,
+          "cluster_name": "COVID-19 and Government Measures Compliance Carveouts",
+          "category": "force_majeure",
+          "distance": 0.6035036482054441,
+          "threshold": 0.16134816193521279,
+          "ratio": 3.7403813031831934,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 20,
+          "cluster_name": "Employee Relations and Work Stoppage Events Exclusion",
+          "category": "operational",
+          "distance": 0.6147729398248636,
+          "threshold": 0.15960298830736316,
+          "ratio": 3.8518886541205286,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 7,
+          "cluster_name": "Exclusions for Disclosed or Acquiror-Related Information",
+          "category": "disclosure",
+          "distance": 0.48151025984017737,
+          "threshold": 0.11285816846319714,
+          "ratio": 4.266507833654921,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 21,
+          "cluster_name": "Post-Signing Changes in Laws and Government Regulations",
+          "category": "regulatory",
+          "distance": 0.4848040448056965,
+          "threshold": 0.10545548545383894,
+          "ratio": 4.597238756422111,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 24,
+          "cluster_name": "International Trade Policy and Geopolitical Conflict Exclusions",
+          "category": "regulatory",
+          "distance": 0.5608979324842345,
+          "threshold": 0.1129529573262025,
+          "ratio": 4.965765799866481,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 30,
+          "cluster_name": "Exclusions for Predictable Seasonal Variations in Business Performance",
+          "category": "operational",
+          "distance": 0.5831476872381729,
+          "threshold": 0.10703883757384057,
+          "ratio": 5.448000935509874,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 33,
+          "cluster_name": "Exclusion for Parent/Acquirer Financing Conditions and Costs",
+          "category": "transaction",
+          "distance": 0.5327435664666471,
+          "threshold": 0.09049408856939634,
+          "ratio": 5.887053783166258,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 25,
+          "cluster_name": "Exclusion of Deal-Related Expenses from MAE Calculation",
+          "category": "transaction",
+          "distance": 0.4548803637503537,
+          "threshold": 0.0721669512327782,
+          "ratio": 6.3031672528760945,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 26,
+          "cluster_name": "Exclusions for Cyber Attacks and Digital Infrastructure Failures",
+          "category": "operational",
+          "distance": 0.6153925834100404,
+          "threshold": 0.06774116066797893,
+          "ratio": 9.084470613461676,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 17,
+          "cluster_name": "Wealth Management and Financial Services Industry Effects",
+          "category": "economic",
+          "distance": 0.662466256336686,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 18,
+          "cluster_name": "Exclusions for Actions Taken Under Existing Franchise Agreements",
+          "category": "operational",
+          "distance": 0.5830353504389423,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 23,
+          "cluster_name": "Exclusions for Effects Arising from Acquirer's Specific Characteristics",
+          "category": "transaction",
+          "distance": 0.5557691606135959,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 27,
+          "cluster_name": "MAE Exclusion for Contemplated Lease Transfer Effects",
+          "category": "transaction",
+          "distance": 0.6123513361948381,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 29,
+          "cluster_name": "Broadcast Television Industry Regulatory and Business Condition Changes",
+          "category": "regulatory",
+          "distance": 0.6219783443396119,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 31,
+          "cluster_name": "Weather-Related and Natural Disaster Force Majeure Exclusions",
+          "category": "force_majeure",
+          "distance": 0.6316807646313043,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 32,
+          "cluster_name": "Metal Pricing and Supply Availability Exclusions",
+          "category": "economic",
+          "distance": 0.6857482695280482,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        }
+      ]
+    },
+    {
+      "label": "(xi)",
+      "text": "any failure by such Person to meet any projections, forecasts, guidance, estimates, milestones, budgets or financial or operating predictions of revenue, earnings, cash flow or cash position (it being understood that the facts and circumstances giving rise to such failure that are not otherwise excluded from the definition of Material Adverse Effect may be taken into account in determining whether there has been a Material Adverse Effect)",
+      "best_match": {
+        "cluster_id": 15,
+        "cluster_name": "Failure to Meet Financial Projections and Forecasts Exclusions",
+        "category": "disclosure",
+        "distance": 0.13196287322452338,
+        "threshold": 0.20245872084405744,
+        "ratio": 0.6518013779518391,
+        "cluster_size": 106
+      },
+      "all_matches": [
+        {
+          "cluster_id": 15,
+          "cluster_name": "Failure to Meet Financial Projections and Forecasts Exclusions",
+          "category": "disclosure",
+          "distance": 0.13196287322452338,
+          "threshold": 0.20245872084405744,
+          "ratio": 0.6518013779518391,
+          "cluster_size": 106
+        }
+      ],
+      "zone": "typical",
+      "icon": "\ud83d\udfe2",
+      "all_clusters": [
+        {
+          "cluster_id": 15,
+          "cluster_name": "Failure to Meet Financial Projections and Forecasts Exclusions",
+          "category": "disclosure",
+          "distance": 0.13196287322452338,
+          "threshold": 0.20245872084405744,
+          "ratio": 0.6518013779518391,
+          "cluster_size": 106
+        },
+        {
+          "cluster_id": 2,
+          "cluster_name": "Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks",
+          "category": "transaction",
+          "distance": 0.40392327962682695,
+          "threshold": 0.27919353744424974,
+          "ratio": 1.4467501050502778,
+          "cluster_size": 88
+        },
+        {
+          "cluster_id": 11,
+          "cluster_name": "Catastrophic External Events Beyond Party Control",
+          "category": "force_majeure",
+          "distance": 0.5046509273559157,
+          "threshold": 0.2964535958513296,
+          "ratio": 1.7022931562246804,
+          "cluster_size": 128
+        },
+        {
+          "cluster_id": 5,
+          "cluster_name": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+          "category": "accounting",
+          "distance": 0.5147756893318134,
+          "threshold": 0.29419988796073404,
+          "ratio": 1.7497480808032086,
+          "cluster_size": 89
+        },
+        {
+          "cluster_id": 16,
+          "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+          "category": "economic",
+          "distance": 0.5153648900635771,
+          "threshold": 0.28011070389239384,
+          "ratio": 1.8398614651354328,
+          "cluster_size": 156
+        },
+        {
+          "cluster_id": 6,
+          "cluster_name": "Actions Taken Pursuant to or Required by Agreement Terms",
+          "category": "transaction",
+          "distance": 0.54191980176144,
+          "threshold": 0.2786018079187563,
+          "ratio": 1.9451410089896848,
+          "cluster_size": 83
+        },
+        {
+          "cluster_id": 1,
+          "cluster_name": "Exclusion for Matters Previously Disclosed in Transaction Documents",
+          "category": "disclosure",
+          "distance": 0.5287579930208706,
+          "threshold": 0.24482981438660845,
+          "ratio": 2.159696090713502,
+          "cluster_size": 6
+        },
+        {
+          "cluster_id": 4,
+          "cluster_name": "Exclusion for Stockholder Litigation Arising from Merger Transaction",
+          "category": "transaction",
+          "distance": 0.5866385414702335,
+          "threshold": 0.2664248473198498,
+          "ratio": 2.2018912551574408,
+          "cluster_size": 44
+        },
+        {
+          "cluster_id": 10,
+          "cluster_name": "Exclusions for Adverse Regulatory Actions Affecting Product Candidates",
+          "category": "regulatory",
+          "distance": 0.5491745874929121,
+          "threshold": 0.24630688019239347,
+          "ratio": 2.229635595497555,
+          "cluster_size": 9
+        },
+        {
+          "cluster_id": 0,
+          "cluster_name": "Exclusion for Failure to Obtain Transaction-Related Governmental Approvals",
+          "category": "transaction",
+          "distance": 0.5041606958847951,
+          "threshold": 0.22293322021350143,
+          "ratio": 2.261487522595171,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 14,
+          "cluster_name": "Exclusion for impacts from deal announcement and execution",
+          "category": "transaction",
+          "distance": 0.5759466874767829,
+          "threshold": 0.25397381758509874,
+          "ratio": 2.267740403137426,
+          "cluster_size": 91
+        },
+        {
+          "cluster_id": 28,
+          "cluster_name": "Exclusions for Acquiror Identity and Post-Acquisition Plans",
+          "category": "transaction",
+          "distance": 0.60355213906584,
+          "threshold": 0.24616708621149894,
+          "ratio": 2.451798688258784,
+          "cluster_size": 16
+        },
+        {
+          "cluster_id": 22,
+          "cluster_name": "Industry-Specific Changes and Supply Chain Disruption Exclusions",
+          "category": "operational",
+          "distance": 0.6141958826787852,
+          "threshold": 0.24114450800638879,
+          "ratio": 2.547003403712238,
+          "cluster_size": 8
+        },
+        {
+          "cluster_id": 3,
+          "cluster_name": "Industry-Wide Commodity and Raw Material Price Changes",
+          "category": "economic",
+          "distance": 0.6099434410614198,
+          "threshold": 0.17974605545838562,
+          "ratio": 3.3933620379370857,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 13,
+          "cluster_name": "Currency Fluctuations, Interest Rates, and Inflation Exclusions",
+          "category": "economic",
+          "distance": 0.6018325780205729,
+          "threshold": 0.17144308877523096,
+          "ratio": 3.5103927625195817,
+          "cluster_size": 12
+        },
+        {
+          "cluster_id": 12,
+          "cluster_name": "Exclusions for Changes in Oil Gas and Commodity Prices",
+          "category": "economic",
+          "distance": 0.6237705894174097,
+          "threshold": 0.16817441198278407,
+          "ratio": 3.7090695431197034,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 8,
+          "cluster_name": "COVID-19 and Government Measures Compliance Carveouts",
+          "category": "force_majeure",
+          "distance": 0.615022994537752,
+          "threshold": 0.16134816193521279,
+          "ratio": 3.8117756481459413,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 20,
+          "cluster_name": "Employee Relations and Work Stoppage Events Exclusion",
+          "category": "operational",
+          "distance": 0.6234841134924876,
+          "threshold": 0.15960298830736316,
+          "ratio": 3.906468920818593,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 9,
+          "cluster_name": "Governmental Antitrust Requirements Imposed as Transaction Approval Conditions",
+          "category": "regulatory",
+          "distance": 0.6617355694841343,
+          "threshold": 0.1630757680627233,
+          "ratio": 4.0578411945888435,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 34,
+          "cluster_name": "Exclusion for Parent or Merger Sub Breach of Agreement",
+          "category": "transaction",
+          "distance": 0.5911309039616823,
+          "threshold": 0.13684164444092345,
+          "ratio": 4.319817306908221,
+          "cluster_size": 13
+        },
+        {
+          "cluster_id": 19,
+          "cluster_name": "Exclusions for Actions Required or Caused by Transaction Agreements",
+          "category": "transaction",
+          "distance": 0.6324441261641686,
+          "threshold": 0.13030161180385444,
+          "ratio": 4.853693806306856,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 7,
+          "cluster_name": "Exclusions for Disclosed or Acquiror-Related Information",
+          "category": "disclosure",
+          "distance": 0.5778894155342356,
+          "threshold": 0.11285816846319714,
+          "ratio": 5.120492591749655,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 30,
+          "cluster_name": "Exclusions for Predictable Seasonal Variations in Business Performance",
+          "category": "operational",
+          "distance": 0.5906895776847905,
+          "threshold": 0.10703883757384057,
+          "ratio": 5.518460318455011,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 24,
+          "cluster_name": "International Trade Policy and Geopolitical Conflict Exclusions",
+          "category": "regulatory",
+          "distance": 0.6273074257369833,
+          "threshold": 0.1129529573262025,
+          "ratio": 5.5537051936174695,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 21,
+          "cluster_name": "Post-Signing Changes in Laws and Government Regulations",
+          "category": "regulatory",
+          "distance": 0.6728300363223092,
+          "threshold": 0.10545548545383894,
+          "ratio": 6.380227955205111,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 33,
+          "cluster_name": "Exclusion for Parent/Acquirer Financing Conditions and Costs",
+          "category": "transaction",
+          "distance": 0.5827192625773658,
+          "threshold": 0.09049408856939634,
+          "ratio": 6.4393074927817135,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 25,
+          "cluster_name": "Exclusion of Deal-Related Expenses from MAE Calculation",
+          "category": "transaction",
+          "distance": 0.6711010470012846,
+          "threshold": 0.0721669512327782,
+          "ratio": 9.299284998705483,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 26,
+          "cluster_name": "Exclusions for Cyber Attacks and Digital Infrastructure Failures",
+          "category": "operational",
+          "distance": 0.6521489172270063,
+          "threshold": 0.06774116066797893,
+          "ratio": 9.627070318788846,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 17,
+          "cluster_name": "Wealth Management and Financial Services Industry Effects",
+          "category": "economic",
+          "distance": 0.683822530025741,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 18,
+          "cluster_name": "Exclusions for Actions Taken Under Existing Franchise Agreements",
+          "category": "operational",
+          "distance": 0.5467162134158958,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 23,
+          "cluster_name": "Exclusions for Effects Arising from Acquirer's Specific Characteristics",
+          "category": "transaction",
+          "distance": 0.6846522788798581,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 27,
+          "cluster_name": "MAE Exclusion for Contemplated Lease Transfer Effects",
+          "category": "transaction",
+          "distance": 0.7151643125148399,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 29,
+          "cluster_name": "Broadcast Television Industry Regulatory and Business Condition Changes",
+          "category": "regulatory",
+          "distance": 0.685265205289729,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 31,
+          "cluster_name": "Weather-Related and Natural Disaster Force Majeure Exclusions",
+          "category": "force_majeure",
+          "distance": 0.664504677456883,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 32,
+          "cluster_name": "Metal Pricing and Supply Availability Exclusions",
+          "category": "economic",
+          "distance": 0.7299838918950106,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        }
+      ]
+    },
+    {
+      "label": "(xii)",
+      "text": "any change in the market price or trading volume of such Person's securities or any change in the credit rating of such Person (it being understood that the facts and circumstances giving rise to such change that are not otherwise excluded from the definition of Material Adverse Effect may be taken into account in determining whether there has been a Material Adverse Effect)",
+      "best_match": {
+        "cluster_id": 2,
+        "cluster_name": "Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks",
+        "category": "transaction",
+        "distance": 0.13153576262076183,
+        "threshold": 0.27919353744424974,
+        "ratio": 0.4711275333406573,
+        "cluster_size": 88
+      },
+      "all_matches": [
+        {
+          "cluster_id": 2,
+          "cluster_name": "Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks",
+          "category": "transaction",
+          "distance": 0.13153576262076183,
+          "threshold": 0.27919353744424974,
+          "ratio": 0.4711275333406573,
+          "cluster_size": 88
+        }
+      ],
+      "zone": "typical",
+      "icon": "\ud83d\udfe2",
+      "all_clusters": [
+        {
+          "cluster_id": 2,
+          "cluster_name": "Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks",
+          "category": "transaction",
+          "distance": 0.13153576262076183,
+          "threshold": 0.27919353744424974,
+          "ratio": 0.4711275333406573,
+          "cluster_size": 88
+        },
+        {
+          "cluster_id": 16,
+          "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+          "category": "economic",
+          "distance": 0.41014900315398173,
+          "threshold": 0.28011070389239384,
+          "ratio": 1.4642389507240783,
+          "cluster_size": 156
+        },
+        {
+          "cluster_id": 5,
+          "cluster_name": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+          "category": "accounting",
+          "distance": 0.46322853513263074,
+          "threshold": 0.29419988796073404,
+          "ratio": 1.5745367489550384,
+          "cluster_size": 89
+        },
+        {
+          "cluster_id": 11,
+          "cluster_name": "Catastrophic External Events Beyond Party Control",
+          "category": "force_majeure",
+          "distance": 0.5157941800155181,
+          "threshold": 0.2964535958513296,
+          "ratio": 1.739881678730546,
+          "cluster_size": 128
+        },
+        {
+          "cluster_id": 6,
+          "cluster_name": "Actions Taken Pursuant to or Required by Agreement Terms",
+          "category": "transaction",
+          "distance": 0.5652570901170066,
+          "threshold": 0.2786018079187563,
+          "ratio": 2.0289067552707434,
+          "cluster_size": 83
+        },
+        {
+          "cluster_id": 4,
+          "cluster_name": "Exclusion for Stockholder Litigation Arising from Merger Transaction",
+          "category": "transaction",
+          "distance": 0.5484271132757941,
+          "threshold": 0.2664248473198498,
+          "ratio": 2.058468340294828,
+          "cluster_size": 44
+        },
+        {
+          "cluster_id": 15,
+          "cluster_name": "Failure to Meet Financial Projections and Forecasts Exclusions",
+          "category": "disclosure",
+          "distance": 0.4252124098238369,
+          "threshold": 0.20245872084405744,
+          "ratio": 2.100242499069003,
+          "cluster_size": 106
+        },
+        {
+          "cluster_id": 1,
+          "cluster_name": "Exclusion for Matters Previously Disclosed in Transaction Documents",
+          "category": "disclosure",
+          "distance": 0.5473243047023229,
+          "threshold": 0.24482981438660845,
+          "ratio": 2.2355296313628217,
+          "cluster_size": 6
+        },
+        {
+          "cluster_id": 28,
+          "cluster_name": "Exclusions for Acquiror Identity and Post-Acquisition Plans",
+          "category": "transaction",
+          "distance": 0.5592040848304982,
+          "threshold": 0.24616708621149894,
+          "ratio": 2.271644408018251,
+          "cluster_size": 16
+        },
+        {
+          "cluster_id": 14,
+          "cluster_name": "Exclusion for impacts from deal announcement and execution",
+          "category": "transaction",
+          "distance": 0.5812186589893522,
+          "threshold": 0.25397381758509874,
+          "ratio": 2.288498336229497,
+          "cluster_size": 91
+        },
+        {
+          "cluster_id": 10,
+          "cluster_name": "Exclusions for Adverse Regulatory Actions Affecting Product Candidates",
+          "category": "regulatory",
+          "distance": 0.5772871814993521,
+          "threshold": 0.24630688019239347,
+          "ratio": 2.3437720499257906,
+          "cluster_size": 9
+        },
+        {
+          "cluster_id": 22,
+          "cluster_name": "Industry-Specific Changes and Supply Chain Disruption Exclusions",
+          "category": "operational",
+          "distance": 0.5885315655853706,
+          "threshold": 0.24114450800638879,
+          "ratio": 2.440576277066937,
+          "cluster_size": 8
+        },
+        {
+          "cluster_id": 3,
+          "cluster_name": "Industry-Wide Commodity and Raw Material Price Changes",
+          "category": "economic",
+          "distance": 0.46636969938151007,
+          "threshold": 0.17974605545838562,
+          "ratio": 2.594603248411662,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 0,
+          "cluster_name": "Exclusion for Failure to Obtain Transaction-Related Governmental Approvals",
+          "category": "transaction",
+          "distance": 0.6076478243194086,
+          "threshold": 0.22293322021350143,
+          "ratio": 2.7256943749229876,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 13,
+          "cluster_name": "Currency Fluctuations, Interest Rates, and Inflation Exclusions",
+          "category": "economic",
+          "distance": 0.5207818997761684,
+          "threshold": 0.17144308877523096,
+          "ratio": 3.0376371745083013,
+          "cluster_size": 12
+        },
+        {
+          "cluster_id": 12,
+          "cluster_name": "Exclusions for Changes in Oil Gas and Commodity Prices",
+          "category": "economic",
+          "distance": 0.5546386222354045,
+          "threshold": 0.16817441198278407,
+          "ratio": 3.297996500752936,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 9,
+          "cluster_name": "Governmental Antitrust Requirements Imposed as Transaction Approval Conditions",
+          "category": "regulatory",
+          "distance": 0.5716585742038156,
+          "threshold": 0.1630757680627233,
+          "ratio": 3.50547834908213,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 8,
+          "cluster_name": "COVID-19 and Government Measures Compliance Carveouts",
+          "category": "force_majeure",
+          "distance": 0.5894014091990525,
+          "threshold": 0.16134816193521279,
+          "ratio": 3.652978764243492,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 20,
+          "cluster_name": "Employee Relations and Work Stoppage Events Exclusion",
+          "category": "operational",
+          "distance": 0.6626678617968988,
+          "threshold": 0.15960298830736316,
+          "ratio": 4.151976531421418,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 7,
+          "cluster_name": "Exclusions for Disclosed or Acquiror-Related Information",
+          "category": "disclosure",
+          "distance": 0.49001314155139053,
+          "threshold": 0.11285816846319714,
+          "ratio": 4.3418491388258085,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 34,
+          "cluster_name": "Exclusion for Parent or Merger Sub Breach of Agreement",
+          "category": "transaction",
+          "distance": 0.5965608914511331,
+          "threshold": 0.13684164444092345,
+          "ratio": 4.3594981183427475,
+          "cluster_size": 13
+        },
+        {
+          "cluster_id": 19,
+          "cluster_name": "Exclusions for Actions Required or Caused by Transaction Agreements",
+          "category": "transaction",
+          "distance": 0.6198616999086088,
+          "threshold": 0.13030161180385444,
+          "ratio": 4.7571299489502765,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 30,
+          "cluster_name": "Exclusions for Predictable Seasonal Variations in Business Performance",
+          "category": "operational",
+          "distance": 0.5638122097097661,
+          "threshold": 0.10703883757384057,
+          "ratio": 5.2673611045226565,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 24,
+          "cluster_name": "International Trade Policy and Geopolitical Conflict Exclusions",
+          "category": "regulatory",
+          "distance": 0.600240472377644,
+          "threshold": 0.1129529573262025,
+          "ratio": 5.314074873172019,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 21,
+          "cluster_name": "Post-Signing Changes in Laws and Government Regulations",
+          "category": "regulatory",
+          "distance": 0.5940795373207499,
+          "threshold": 0.10545548545383894,
+          "ratio": 5.6334626384209905,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 33,
+          "cluster_name": "Exclusion for Parent/Acquirer Financing Conditions and Costs",
+          "category": "transaction",
+          "distance": 0.5219661563625011,
+          "threshold": 0.09049408856939634,
+          "ratio": 5.767958599441839,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 25,
+          "cluster_name": "Exclusion of Deal-Related Expenses from MAE Calculation",
+          "category": "transaction",
+          "distance": 0.654013260508266,
+          "threshold": 0.0721669512327782,
+          "ratio": 9.062503671503492,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 26,
+          "cluster_name": "Exclusions for Cyber Attacks and Digital Infrastructure Failures",
+          "category": "operational",
+          "distance": 0.6555234517119752,
+          "threshold": 0.06774116066797893,
+          "ratio": 9.676885445245102,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 17,
+          "cluster_name": "Wealth Management and Financial Services Industry Effects",
+          "category": "economic",
+          "distance": 0.6356973208586824,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 18,
+          "cluster_name": "Exclusions for Actions Taken Under Existing Franchise Agreements",
+          "category": "operational",
+          "distance": 0.5438344845354497,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 23,
+          "cluster_name": "Exclusions for Effects Arising from Acquirer's Specific Characteristics",
+          "category": "transaction",
+          "distance": 0.5460409811147203,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 27,
+          "cluster_name": "MAE Exclusion for Contemplated Lease Transfer Effects",
+          "category": "transaction",
+          "distance": 0.6633353469560652,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 29,
+          "cluster_name": "Broadcast Television Industry Regulatory and Business Condition Changes",
+          "category": "regulatory",
+          "distance": 0.6107866897802219,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 31,
+          "cluster_name": "Weather-Related and Natural Disaster Force Majeure Exclusions",
+          "category": "force_majeure",
+          "distance": 0.6227154417993084,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 32,
+          "cluster_name": "Metal Pricing and Supply Availability Exclusions",
+          "category": "economic",
+          "distance": 0.6090988222633656,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        }
+      ]
+    },
+    {
+      "label": "(xiii)",
+      "text": "any Transaction Litigation",
+      "best_match": {
+        "cluster_id": 4,
+        "cluster_name": "Exclusion for Stockholder Litigation Arising from Merger Transaction",
+        "category": "transaction",
+        "distance": 0.30416150955847976,
+        "threshold": 0.2664248473198498,
+        "ratio": 1.141640926581169,
+        "cluster_size": 44
+      },
+      "all_matches": [],
+      "zone": "atypical",
+      "icon": "\ud83d\udfe1",
+      "all_clusters": [
+        {
+          "cluster_id": 4,
+          "cluster_name": "Exclusion for Stockholder Litigation Arising from Merger Transaction",
+          "category": "transaction",
+          "distance": 0.30416150955847976,
+          "threshold": 0.2664248473198498,
+          "ratio": 1.141640926581169,
+          "cluster_size": 44
+        },
+        {
+          "cluster_id": 5,
+          "cluster_name": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+          "category": "accounting",
+          "distance": 0.48339629297860753,
+          "threshold": 0.29419988796073404,
+          "ratio": 1.6430879574064452,
+          "cluster_size": 89
+        },
+        {
+          "cluster_id": 11,
+          "cluster_name": "Catastrophic External Events Beyond Party Control",
+          "category": "force_majeure",
+          "distance": 0.5168682066416914,
+          "threshold": 0.2964535958513296,
+          "ratio": 1.7435045952382342,
+          "cluster_size": 128
+        },
+        {
+          "cluster_id": 16,
+          "cluster_name": "Broad Economic and Financial Market Changes Exclusion",
+          "category": "economic",
+          "distance": 0.5036251078128375,
+          "threshold": 0.28011070389239384,
+          "ratio": 1.7979502418669016,
+          "cluster_size": 156
+        },
+        {
+          "cluster_id": 14,
+          "cluster_name": "Exclusion for impacts from deal announcement and execution",
+          "category": "transaction",
+          "distance": 0.4585125197961555,
+          "threshold": 0.25397381758509874,
+          "ratio": 1.8053534972852947,
+          "cluster_size": 91
+        },
+        {
+          "cluster_id": 6,
+          "cluster_name": "Actions Taken Pursuant to or Required by Agreement Terms",
+          "category": "transaction",
+          "distance": 0.5061684759905039,
+          "threshold": 0.2786018079187563,
+          "ratio": 1.8168169107434824,
+          "cluster_size": 83
+        },
+        {
+          "cluster_id": 2,
+          "cluster_name": "Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks",
+          "category": "transaction",
+          "distance": 0.5341394479449069,
+          "threshold": 0.27919353744424974,
+          "ratio": 1.9131511883636116,
+          "cluster_size": 88
+        },
+        {
+          "cluster_id": 1,
+          "cluster_name": "Exclusion for Matters Previously Disclosed in Transaction Documents",
+          "category": "disclosure",
+          "distance": 0.48506465379598795,
+          "threshold": 0.24482981438660845,
+          "ratio": 1.9812319631547282,
+          "cluster_size": 6
+        },
+        {
+          "cluster_id": 0,
+          "cluster_name": "Exclusion for Failure to Obtain Transaction-Related Governmental Approvals",
+          "category": "transaction",
+          "distance": 0.44591103536499843,
+          "threshold": 0.22293322021350143,
+          "ratio": 2.0002000372037547,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 28,
+          "cluster_name": "Exclusions for Acquiror Identity and Post-Acquisition Plans",
+          "category": "transaction",
+          "distance": 0.5258385411950626,
+          "threshold": 0.24616708621149894,
+          "ratio": 2.1361041774011933,
+          "cluster_size": 16
+        },
+        {
+          "cluster_id": 10,
+          "cluster_name": "Exclusions for Adverse Regulatory Actions Affecting Product Candidates",
+          "category": "regulatory",
+          "distance": 0.574139576045517,
+          "threshold": 0.24630688019239347,
+          "ratio": 2.3309928476096538,
+          "cluster_size": 9
+        },
+        {
+          "cluster_id": 22,
+          "cluster_name": "Industry-Specific Changes and Supply Chain Disruption Exclusions",
+          "category": "operational",
+          "distance": 0.5637617206358849,
+          "threshold": 0.24114450800638879,
+          "ratio": 2.3378584289423205,
+          "cluster_size": 8
+        },
+        {
+          "cluster_id": 9,
+          "cluster_name": "Governmental Antitrust Requirements Imposed as Transaction Approval Conditions",
+          "category": "regulatory",
+          "distance": 0.4179797378343997,
+          "threshold": 0.1630757680627233,
+          "ratio": 2.5631014515512414,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 15,
+          "cluster_name": "Failure to Meet Financial Projections and Forecasts Exclusions",
+          "category": "disclosure",
+          "distance": 0.5975396930924656,
+          "threshold": 0.20245872084405744,
+          "ratio": 2.951414938320769,
+          "cluster_size": 106
+        },
+        {
+          "cluster_id": 13,
+          "cluster_name": "Currency Fluctuations, Interest Rates, and Inflation Exclusions",
+          "category": "economic",
+          "distance": 0.5131612530483949,
+          "threshold": 0.17144308877523096,
+          "ratio": 2.9931871661573406,
+          "cluster_size": 12
+        },
+        {
+          "cluster_id": 12,
+          "cluster_name": "Exclusions for Changes in Oil Gas and Commodity Prices",
+          "category": "economic",
+          "distance": 0.5153895663755312,
+          "threshold": 0.16817441198278407,
+          "ratio": 3.0646134587245735,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 3,
+          "cluster_name": "Industry-Wide Commodity and Raw Material Price Changes",
+          "category": "economic",
+          "distance": 0.5717709027184965,
+          "threshold": 0.17974605545838562,
+          "ratio": 3.180992769273157,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 8,
+          "cluster_name": "COVID-19 and Government Measures Compliance Carveouts",
+          "category": "force_majeure",
+          "distance": 0.5556421001140945,
+          "threshold": 0.16134816193521279,
+          "ratio": 3.4437460795940473,
+          "cluster_size": 4
+        },
+        {
+          "cluster_id": 34,
+          "cluster_name": "Exclusion for Parent or Merger Sub Breach of Agreement",
+          "category": "transaction",
+          "distance": 0.5006251885351106,
+          "threshold": 0.13684164444092345,
+          "ratio": 3.658427159220802,
+          "cluster_size": 13
+        },
+        {
+          "cluster_id": 20,
+          "cluster_name": "Employee Relations and Work Stoppage Events Exclusion",
+          "category": "operational",
+          "distance": 0.6001442508960029,
+          "threshold": 0.15960298830736316,
+          "ratio": 3.7602319183413164,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 24,
+          "cluster_name": "International Trade Policy and Geopolitical Conflict Exclusions",
+          "category": "regulatory",
+          "distance": 0.5096748385616221,
+          "threshold": 0.1129529573262025,
+          "ratio": 4.512275292533569,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 19,
+          "cluster_name": "Exclusions for Actions Required or Caused by Transaction Agreements",
+          "category": "transaction",
+          "distance": 0.6019563484996671,
+          "threshold": 0.13030161180385444,
+          "ratio": 4.619715291057211,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 7,
+          "cluster_name": "Exclusions for Disclosed or Acquiror-Related Information",
+          "category": "disclosure",
+          "distance": 0.5715340315334517,
+          "threshold": 0.11285816846319714,
+          "ratio": 5.064179574381699,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 21,
+          "cluster_name": "Post-Signing Changes in Laws and Government Regulations",
+          "category": "regulatory",
+          "distance": 0.5450457188228963,
+          "threshold": 0.10545548545383894,
+          "ratio": 5.168490918013737,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 30,
+          "cluster_name": "Exclusions for Predictable Seasonal Variations in Business Performance",
+          "category": "operational",
+          "distance": 0.5843225036349611,
+          "threshold": 0.10703883757384057,
+          "ratio": 5.458976544208705,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 33,
+          "cluster_name": "Exclusion for Parent/Acquirer Financing Conditions and Costs",
+          "category": "transaction",
+          "distance": 0.5755533013563898,
+          "threshold": 0.09049408856939634,
+          "ratio": 6.360120428363901,
+          "cluster_size": 5
+        },
+        {
+          "cluster_id": 25,
+          "cluster_name": "Exclusion of Deal-Related Expenses from MAE Calculation",
+          "category": "transaction",
+          "distance": 0.5240402530652736,
+          "threshold": 0.0721669512327782,
+          "ratio": 7.261499122707218,
+          "cluster_size": 2
+        },
+        {
+          "cluster_id": 26,
+          "cluster_name": "Exclusions for Cyber Attacks and Digital Infrastructure Failures",
+          "category": "operational",
+          "distance": 0.6116005472219392,
+          "threshold": 0.06774116066797893,
+          "ratio": 9.02849229613276,
+          "cluster_size": 3
+        },
+        {
+          "cluster_id": 17,
+          "cluster_name": "Wealth Management and Financial Services Industry Effects",
+          "category": "economic",
+          "distance": 0.6323858751912301,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 18,
+          "cluster_name": "Exclusions for Actions Taken Under Existing Franchise Agreements",
+          "category": "operational",
+          "distance": 0.6321374640427198,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 23,
+          "cluster_name": "Exclusions for Effects Arising from Acquirer's Specific Characteristics",
+          "category": "transaction",
+          "distance": 0.620118371847503,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 27,
+          "cluster_name": "MAE Exclusion for Contemplated Lease Transfer Effects",
+          "category": "transaction",
+          "distance": 0.6470257891652769,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 29,
+          "cluster_name": "Broadcast Television Industry Regulatory and Business Condition Changes",
+          "category": "regulatory",
+          "distance": 0.621075711084518,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 31,
+          "cluster_name": "Weather-Related and Natural Disaster Force Majeure Exclusions",
+          "category": "force_majeure",
+          "distance": 0.6531161739678073,
+          "threshold": 0.0,
+          "ratio": Infinity,
+          "cluster_size": 1
+        },
+        {
+          "cluster_id": 32,
+          "cluster_name": "Metal Pricing and Supply Availability Exclusions",
+          "category": "economic",
+          "distance": 0.5681646431503036,
+          "threshold": -2.220446049250313e-16,
+          "ratio": Infinity,
+          "cluster_size": 1
+        }
+      ]
+    }
+  ]
+}

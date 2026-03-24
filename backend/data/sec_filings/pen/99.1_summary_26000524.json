@@ -1,0 +1,29 @@
+{
+  "ticker": "PEN",
+  "company": "Penumbra, Inc.",
+  "filing_date": "01/15/26",
+  "exhibit_type": "Earnings Release",
+  "L1_headline": "+ PEN \u2013 Preliminary Q4 & FY2025 revenue ~$383-385M. | 01/15/26",
+  "L2_brief": "Penumbra provided preliminary unaudited Q4 2025 revenue of $383.0M\u2013$384.8M, representing ~21.4%\u201322.0% year-over-year growth (~23.2%\u201323.8% excluding China). Full year 2025 revenue was $1,401.3M\u2013$1,403.1M with ~17.3%\u201317.5% growth (~24.7%\u201324.9% excluding China), and operating margin of 13.3%\u201313.6%.",
+  "L3_detailed": {
+    "event": "Penumbra announced unaudited and preliminary financial results for Q4 and full year 2025.",
+    "key_figures": [
+      "Q4 2025 revenue: $383.0M\u2013$384.8M, ~21.4%\u201322.0% YoY growth",
+      "Q4 2025 revenue growth ex-China: ~23.2%\u201323.8%",
+      "FY 2025 revenue: $1,401.3M\u2013$1,403.1M, ~17.3%\u201317.5% YoY growth",
+      "FY 2025 revenue growth ex-China: ~24.7%\u201324.9%",
+      "Q4 2025 gross margin: 67.9%\u201368.1%",
+      "FY 2025 gross margin: 67.1%",
+      "Q4 2025 income from operations: $56.9M\u2013$60.4M, operating margin 14.8%\u201315.7%",
+      "FY 2025 income from operations: $186.9M\u2013$190.4M, operating margin 13.3%\u201313.6%"
+    ],
+    "market_impact": "Strong Q4 revenue growth of ~21%\u201322% and full year growth of ~17%\u201318% demonstrate continued momentum. Excluding China, growth rates were materially higher at ~24%\u201325% for the full year, indicating robust performance in ex-China markets. Operating margins expanded with Q4 operating margin reaching 14.8%\u201315.7%.",
+    "forward_guidance": "No formal forward guidance was provided in this preliminary update. Results are unaudited and preliminary.",
+    "deal_relevance": "N/A",
+    "risks_flagged": [
+      "Results are unaudited and preliminary, subject to change",
+      "China region negatively impacted revenue growth rates, with ex-China growth approximately 7 percentage points higher than reported growth for FY 2025"
+    ]
+  },
+  "filing_type": "99.1"
+}

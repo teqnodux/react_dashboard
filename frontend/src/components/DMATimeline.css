@@ -1,0 +1,264 @@
+/* ── Core ── */
+.dma-tl { display: flex; flex-direction: column; gap: 0; }
+
+.dma-tl-loading, .dma-tl-empty {
+  padding: 40px 24px; text-align: center;
+  color: var(--text-secondary); font-family: var(--font-mono); font-size: 12px;
+}
+.dma-tl-hint { margin-top: 8px; font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); }
+.dma-tl-hint code {
+  font-family: var(--font-mono); background: rgba(255,255,255,0.06);
+  padding: 2px 6px; border-radius: 3px;
+}
+.dma-tl-generate-btn {
+  margin-top: 16px; padding: 8px 20px; background: #2d6a4f;
+  color: #fff; border: none; border-radius: 6px; cursor: pointer;
+  font-size: 11px; font-family: var(--font-mono);
+}
+.dma-tl-generate-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Alert Bar ── */
+.dma-tl-chart-wrap {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+}
+.dma-alert-bar {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 10px 14px;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px;
+  border-bottom: 1px solid var(--border);
+}
+.dma-deal-name { font-size: 15px; font-weight: 600; color: var(--text-primary); font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
+.dma-alert-div { color: var(--border); }
+.dma-flag { padding: 3px 9px; border-radius: 3px; font-size: 10px; font-weight: 500; font-family: var(--font-mono); }
+.flag-today      { background: rgba(135,217,108,0.12); color: #87d96c; }
+.flag-outside    { background: rgba(240,113,120,0.20); color: #f07178; }
+.flag-outside-ok { background: rgba(255,204,102,0.15); color: #ffcc66; }
+.flag-nextup     { background: rgba(92,207,230,0.15);  color: #5ccfe6; }
+.flag-est-close  { background: rgba(195,166,255,0.15);  color: #c3a6ff; }
+
+/* ── Source tags ── */
+.dma-source-tag {
+  display: inline-block; margin-left: 6px; padding: 1px 5px;
+  font-family: var(--font-mono); font-size: 9px; font-weight: 600;
+  letter-spacing: 0.03em; border-radius: 3px;
+  background: rgba(92,207,230,0.12); color: #5ccfe6;
+  vertical-align: middle;
+}
+
+/* ── Timeline SVG ── */
+.dma-tl-track-wrap { padding: 0 8px; overflow-x: auto; }
+.dma-tl-svg { width: 100%; height: 280px; display: block; overflow: visible; min-width: 800px; }
+
+/* Labels inside foreignObject */
+.dma-tl-lbl {
+  text-align: center; font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: rgba(10,14,20,0.92); padding: 3px 7px; border-radius: 3px;
+  white-space: nowrap; display: inline-block;
+}
+.dma-tl-lbl-t    { font-size: 9px; font-weight: 700; display: block; letter-spacing: 0.03em; }
+.dma-tl-lbl-name { font-size: 9px; font-weight: 500; display: block; }
+.dma-tl-lbl-date { font-size: 8px; color: #5c6370; display: block; font-weight: 400; }
+
+/* ── Legend ── */
+.dma-legend {
+  display: flex; gap: 18px; padding: 8px 14px;
+  font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);
+  border-top: 1px solid var(--border); flex-wrap: wrap; align-items: center;
+}
+.dma-legend-item { display: flex; align-items: center; gap: 6px; }
+.dma-lg-bar { width: 3px; height: 13px; border-radius: 1px; flex-shrink: 0; }
+.dma-lg-today { background: #87d96c; box-shadow: 0 0 5px rgba(135,217,108,0.55); }
+
+/* ── Sections ── */
+.dma-section { border-bottom: 1px solid var(--border); }
+
+.dma-section-hdr {
+  display: flex; align-items: center;
+  padding: 10px 14px;
+  font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+.dma-section-hdr-note {
+  font-size: 10px; font-weight: 400; color: var(--text-muted);
+  letter-spacing: 0; text-transform: none; margin-left: 10px;
+}
+
+/* ── Filter tabs (dates table) ── */
+.dma-filters {
+  display: flex; gap: 6px; padding: 10px 14px;
+  border-bottom: 1px solid var(--border); flex-wrap: wrap;
+  background: var(--bg-secondary);
+}
+.dma-filter-btn {
+  font-family: var(--font-mono); font-size: 10px; padding: 4px 10px;
+  background: var(--bg-tertiary); color: var(--text-secondary);
+  border: 1px solid var(--border); border-radius: 3px; cursor: pointer;
+  transition: all 0.15s;
+}
+.dma-filter-btn:hover { border-color: var(--accent-blue); background: var(--bg-hover); }
+.dma-filter-btn.active { background: var(--accent-blue); color: var(--bg-primary); border-color: var(--accent-blue); }
+
+/* ── Table ── */
+.dma-table { width: 100%; border-collapse: collapse; }
+.dma-table th {
+  padding: 8px 12px;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--text-muted); text-align: left;
+  background: var(--bg-tertiary); border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.dma-table td {
+  padding: 9px 12px;
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--bg-tertiary);
+  vertical-align: top;
+}
+.dma-table tbody tr:hover { background: var(--bg-hover); }
+
+.row-static   { background: rgba(92,207,230,0.035); border-left: 3px solid rgba(92,207,230,0.35); }
+.row-deadline { background: rgba(255,204,102,0.035); border-left: 3px solid rgba(255,204,102,0.35); }
+.row-trigger  { background: rgba(135,217,108,0.025); }
+.row-trigger-result { background: rgba(135,217,108,0.015); }
+.row-regulatory { background: rgba(255,204,102,0.04); border-left: 3px solid rgba(255,204,102,0.3); }
+.row-overdue  { background: rgba(240,113,120,0.06) !important; border-left: 3px solid #f07178 !important; }
+.row-past td  { color: var(--text-muted) !important; }
+.row-filed    { background: rgba(135,217,108,0.04) !important; border-left: 3px solid rgba(135,217,108,0.45) !important; }
+
+.mono  { font-family: var(--font-mono); }
+.muted { color: var(--text-muted) !important; }
+.ok    { color: #87d96c !important; }
+.warn  { color: #ffcc66 !important; }
+.err   { color: #f07178 !important; }
+
+/* Sub-label shown below event name */
+.dma-sub-label {
+  font-size: 9px; color: var(--text-muted);
+  display: block; margin-top: 2px;
+}
+
+/* Status badge */
+.dma-badge {
+  display: inline-block; padding: 2px 7px; border-radius: 3px;
+  font-size: 9px; font-weight: 500; font-family: var(--font-mono);
+  white-space: nowrap;
+}
+.badge-blue   { background: rgba(92,207,230,0.15);  color: #5ccfe6; }
+.badge-yellow { background: rgba(255,204,102,0.15); color: #ffcc66; }
+.badge-red    { background: rgba(240,113,120,0.15); color: #f07178; }
+.badge-muted  { background: rgba(92,99,112,0.20);  color: var(--text-muted); }
+.badge-green  { background: rgba(135,217,108,0.15); color: #87d96c; }
+
+/* Extension note */
+.dma-ext-note {
+  margin: 6px 14px 10px; padding: 7px 10px; font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary); background: rgba(255,204,102,0.06);
+  border-left: 2px solid #ffcc66; border-radius: 0 3px 3px 0;
+}
+.dma-ext-label { font-weight: 600; color: #ffcc66; margin-right: 5px; }
+
+/* ── Regulatory Approvals ── */
+.dma-reg-approvals { padding: 4px 0; }
+.dma-reg-item {
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  padding: 6px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-family: var(--font-mono); font-size: 11px;
+}
+.dma-reg-item:last-child { border-bottom: none; }
+.dma-reg-name { color: var(--text-primary); font-weight: 600; }
+.dma-reg-deadline {
+  font-size: 10px; color: #ffcc66;
+  background: rgba(255,204,102,0.08); padding: 1px 6px; border-radius: 3px;
+}
+.dma-reg-notes { font-size: 10px; color: var(--text-muted); font-style: italic; }
+
+/* ── Triggered Chains ── */
+.dma-chains { padding: 4px 0; }
+.dma-chain { border-bottom: 1px solid var(--border); padding: 12px 14px; }
+.dma-chain:last-child { border-bottom: none; }
+
+.dma-chain-trigger {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+  color: #ffcc66; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 6px;
+}
+.dma-chain-trigger.filed { color: #87d96c; }
+.dma-chain-trigger-date {
+  font-size: 10px; font-weight: 400; color: #87d96c;
+  font-family: var(--font-mono); margin-left: 4px;
+}
+.dma-chain-ds-wrap { margin-left: 22px; }
+.dma-chain-ds {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 5px 0;
+}
+.dma-chain-arrow { color: #ffcc66; flex-shrink: 0; font-size: 12px; font-family: var(--font-mono); }
+.dma-chain-ds-label { color: var(--text-secondary); font-family: var(--font-mono); font-size: 11px; }
+.dma-chain-ds-rule  { font-size: 9px; color: var(--text-muted); margin-top: 2px; font-family: var(--font-mono); }
+.dma-chain-ds-rule.date-unknown { color: #f07178; font-weight: 500; }
+.dma-chain-resolved {
+  font-size: 10px; font-weight: 600; color: #5ccfe6;
+  font-family: var(--font-mono); margin-left: 8px;
+}
+
+/* ── Checklist ── */
+.dma-checklist-right {
+  margin-left: auto; display: flex; align-items: center; gap: 10px;
+  font-size: 10px; color: var(--text-muted); font-weight: 400;
+  letter-spacing: 0; text-transform: none;
+}
+.dma-toggle-btn {
+  font-family: var(--font-mono); font-size: 10px; padding: 3px 9px;
+  background: var(--bg-tertiary); color: #5ccfe6;
+  border: 1px solid var(--border); border-radius: 3px; cursor: pointer;
+  transition: all 0.15s;
+}
+.dma-toggle-btn:hover { background: #5ccfe6; color: var(--bg-primary); }
+
+.dma-checklist { padding: 4px 14px 10px; }
+.dma-check-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-family: var(--font-mono); font-size: 11px;
+  cursor: pointer; user-select: none;
+}
+.dma-check-item:last-child { border-bottom: none; }
+.dma-check-box {
+  width: 14px; height: 14px; border: 1px solid var(--text-muted);
+  border-radius: 2px; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 9px; transition: all 0.15s;
+}
+.dma-check-item.done .dma-check-box  { background: #87d96c; border-color: #87d96c; color: var(--bg-primary); }
+.dma-check-item.done .dma-check-label { color: var(--text-muted); text-decoration: line-through; }
+.dma-check-label { color: #ffcc66; }
+
+/* ── Stock chart (kept for later use) ── */
+.dma-stock-wrap { border-bottom: 1px solid var(--border); }
+.dma-stock-chart-wrap { padding: 4px 8px 0; overflow-x: auto; }
+.dma-stock-svg { width: 100%; height: 180px; display: block; overflow: visible; min-width: 800px; }
+.dma-stock-legend {
+  display: flex; gap: 16px; padding: 4px 14px 10px;
+  font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);
+  flex-wrap: wrap; align-items: center;
+}
+.dma-stock-nodata {
+  padding: 20px; text-align: center;
+  font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);
+}
+.dma-view-tabs { display: flex; gap: 4px; margin-left: auto; }
+.dma-view-tab {
+  font-family: var(--font-mono); font-size: 10px; padding: 2px 8px;
+  background: var(--bg-tertiary); color: var(--text-secondary);
+  border: 1px solid var(--border); border-radius: 3px; cursor: pointer;
+  transition: all 0.15s;
+}
+.dma-view-tab:hover  { border-color: var(--accent-blue); }
+.dma-view-tab.active { background: var(--accent-blue); color: var(--bg-primary); border-color: var(--accent-blue); }
+.dma-view-tab.disabled { opacity: 0.35; cursor: not-allowed; }

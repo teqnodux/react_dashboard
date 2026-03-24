@@ -1,0 +1,41 @@
+{
+  "deal_id": "D069",
+  "extracted": {
+    "target": "TXNM Energy",
+    "acquirer": "Blackstone Infrastructure Partners L.P.",
+    "offer_price_cash": 61.25,
+    "cvr_value": null,
+    "stock_exchange_ratio": null,
+    "total_consideration": null,
+    "deal_value_bn": null,
+    "deal_type": "cash",
+    "premium_pct": null,
+    "undisturbed_date": null,
+    "undisturbed_reference": null,
+    "expected_close": "H2 26",
+    "expected_close_date": "2026-09-15",
+    "announce_date": null,
+    "go_shop_days": null,
+    "diluted_shares_mm": 8.0,
+    "cash_on_hand_bn": null,
+    "debt_bn": null,
+    "financing": "Committed equity and debt financing with no financing condition. $910 million 364-day revolving facility for TXNM and $1.505 billion 364-day delayed-draw term loan for TNMP. $400 million concurrent stock purchase by Troy TopCo LP at $50.00/share (8 million shares).",
+    "regulatory_bodies": [
+      "Public Utility Commission of Texas (PUCT)",
+      "New Mexico Public Regulation Commission (NMPRC)",
+      "Federal Energy Regulatory Commission (FERC)",
+      "Nuclear Regulatory Commission (NRC)",
+      "Hart-Scott-Rodino (HSR)"
+    ],
+    "shareholder_approval_required": true,
+    "dividend_info": null,
+    "special_conditions": "Change-of-control Events of Default triggered under existing credit facilities ($1.03 billion total); waivers being negotiated. TNMP must offer to prepay $1.505 billion First Mortgage Bonds within 30 days at 100% of principal plus accrued interest. If TNMP revolver waiver not obtained within 15 calendar days, Bond Repurchase Event triggered requiring repurchase at par plus accrued interest plus make-whole amount. End Date: 15-month anniversary of signing (~August 18, 2026), auto-extends to December 31, 2026, with additional 3-month mutual extension option.",
+    "minority_investors": [
+      "Troy TopCo LP"
+    ],
+    "raw_summary": "Blackstone Infrastructure Partners to acquire TXNM Energy for $61.25 per share in cash, with concurrent $400 million equity investment and committed financing, expected to close in H2 2026"
+  },
+  "source_text": "EVENT\n\nTXNM Energy entered into an Agreement and Plan of Merger with Troy ParentCo LLC (Parent) and Troy Merger Sub Inc. (Merger Sub), affiliates of Blackstone Infrastructure Partners L.P. (BIP). Merger Sub will merge with and into TXNM, with TXNM surviving as a wholly-owned subsidiary of Parent. Separately, TXNM entered into a Stock Purchase Agreement to issue 8 million shares to Troy TopCo LP at $50.00/share ($400 million aggregate). TXNM also entered into merger backstop credit facilities: a $910 million 364-day revolving facility for TXNM and a $1.505 billion 364-day delayed-draw term loan for TNMP.\nKEY FIGURES\n\nPer share merger consideration: $61.25 cash\nStock purchase: 8,000,000 shares at $50.00/share ($400 million)\nTXNM Termination Fee: $210 million plus costs and expenses\nParent Termination Fee: $350 million plus costs and expenses\nBIP Limited Guarantee on Parent Termination Fee: capped at $375 million\nBIP Share Limited Guarantee: capped at $400 million\nTXNM Merger Backstop Revolving Facility: $910 million\nTNMP Merger Backstop Term Loan: $1.505 billion\nTNMP outstanding First Mortgage Bonds subject to offer to prepay: $1.505 billion\nExisting TXNM/TNMP credit facilities triggering change of control Event of Default: $300M revolver, $500M term loan, $30.3M LC facility, $200M TNMP revolver\nInitial End Date: 15-month anniversary of signing (~August 18, 2026), auto-extends to December 31, 2026, with additional 3-month mutual extension option\nClosing expected: H2 2026\nBoard approval: unanimous\nCollawn base salary effective July 1, 2025: $1,199,000; Tarry base salary: $965,000\nDEAL IMPLICATIONS\n\nThe merger agreement is fully executed with committed equity and debt financing and no financing condition. Closing is expected in H2 2026 with an End Date framework extending potentially through March 31, 2027. The concurrent $400 million stock purchase at $50.00/share is a separate transaction not conditioned on the merger. Execution of the merger agreement triggered change-of-control Events of Default under existing TXNM and TNMP credit facilities; backstop facilities have been put in place to address potential acceleration. TNMP must offer to prepay $1.505 billion in First Mortgage Bonds within 30 days of signing.\nREMAINING CONDITIONS\n\nApproval by holders of at least a majority of outstanding TXNM common stock\nPublic Utility Commission of Texas (PUCT) approval\nNew Mexico Public Regulation Commission (NMPRC) approval\nFederal Energy Regulatory Commission (FERC) approval\nNuclear Regulatory Commission (NRC) approval\nHart-Scott-Rodino antitrust clearance\nAbsence of any material adverse effect on TXNM\nNo legal restraint prohibiting consummation\nOther customary closing conditions\nRISKS FLAGGED\n\nExecution of merger agreement triggered change-of-control Events of Default under four existing TXNM/TNMP credit facilities totaling approximately $1.03 billion; waivers are being negotiated but there is no assurance they will be obtained\nIf TNMP cannot obtain waiver of Event of Default under TNMP Revolver within 15 calendar days, a Bond Repurchase Event is triggered requiring TNMP to repurchase $1.505 billion of FMBs at par plus accrued interest plus make-whole amount\nTNMP must offer to prepay $1.505 billion in FMBs at 100% of principal plus accrued interest within 30 days of signing\nMultiple regulatory approvals required across state, federal, and nuclear regulators, creating timeline and outcome uncertainty\nNon-solicitation covenant on TXNM with limited exceptions for Superior Proposals and intervening events\nTXNM shares will be delisted from NYSE and deregistered under the Exchange Act upon closing",
+  "extracted_at": "2026-03-18T19:05:09.588461Z",
+  "filing_date": null
+}

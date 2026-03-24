@@ -1,0 +1,248 @@
+{
+  "deal_id": "d809559d8k",
+  "check_timestamp": "20260311_004017",
+  "track": "termination_specific_provisions",
+  "input_files": {
+    "fees_file": "termination_response_d809559d8k_fees_8k.json",
+    "triggers_file": "termination_response_d809559d8k_fees_8k.json"
+  },
+  "provisions_checked": {
+    "outside_date_duration": {
+      "present": true,
+      "initial_outside_date_found": "March 23, 2026",
+      "duration_months_estimate": 12,
+      "meets_18_month_standard": false,
+      "extensions_available": true,
+      "extension_mechanism": "automatic",
+      "max_extended_duration_months": 15,
+      "regulatory_extension_trigger": false,
+      "party_favored": "seller_favorable",
+      "risk_level": "medium",
+      "risk_factors": [
+        "Initial outside date is only 12 months, which is below the 18-month standard for complex deals.",
+        "Extensions are limited to automatic 3-month extensions under certain circumstances."
+      ],
+      "confidence": "high"
+    },
+    "regulatory_rtf": {
+      "present": false,
+      "has_standard_rtf": true,
+      "has_separate_regulatory_rtf": false,
+      "regulatory_rtf_triggers": [],
+      "regulatory_rtf_amount_text": "",
+      "regulatory_rtf_relationship_to_standard": "none",
+      "antitrust_specific": false,
+      "risk_level": "high",
+      "risk_factors": [
+        "No separate regulatory termination fee mentioned",
+        "Standard termination fee may not incentivize buyer to address regulatory issues",
+        "Potential for buyer to exit without significant antitrust effort"
+      ],
+      "confidence": "high"
+    },
+    "tail_provision": {
+      "present": true,
+      "tail_months": 12,
+      "meets_12_month_standard": true,
+      "is_longer_than_standard": false,
+      "tail_fee_type": "company_termination_fee",
+      "threshold_percentage": 20,
+      "party_favored": "buyer_favorable",
+      "risk_level": "low",
+      "risk_factors": [],
+      "confidence": "high"
+    },
+    "specific_performance": {
+      "present": true,
+      "target_can_force_closing": true,
+      "acquirer_can_force_closing": false,
+      "rtf_is_exclusive_remedy": false,
+      "specific_performance_conditions": [],
+      "financing_condition_for_sp": false,
+      "party_favored": "seller_favorable",
+      "risk_level": "low",
+      "risk_factors": [],
+      "confidence": "high"
+    },
+    "willful_breach": {
+      "present": false,
+      "carveout_explicit": false,
+      "survives_rtf_payment": false,
+      "survives_ctf_payment": false,
+      "definition_provided": false,
+      "fee_offset_against_damages": false,
+      "party_favored": "buyer_favorable",
+      "risk_level": "high",
+      "risk_factors": [
+        "No explicit willful breach carveout",
+        "Termination fees may cap buyer's liability",
+        "Potential for strategic breach by buyer"
+      ],
+      "confidence": "high"
+    },
+    "matching_rights": {
+      "present": false,
+      "acquirer_has_matching_rights": false,
+      "matching_window_days": 0,
+      "intervening_event_right": false,
+      "notice_required_before_acceptance": false,
+      "match_standard": "not_specified",
+      "party_favored": "unknown",
+      "risk_level": "high",
+      "risk_factors": [
+        "No matching rights exist for the acquirer before the target can accept a superior proposal.",
+        "No notice requirement for the target to inform the acquirer before accepting a superior proposal.",
+        "No intervening event provision allowing the board to change its recommendation based on new developments."
+      ],
+      "confidence": "low"
+    },
+    "financing_failure": {
+      "present": false,
+      "explicit_financing_failure_trigger": false,
+      "financing_condition_in_agreement": false,
+      "rtf_covers_financing_failure": false,
+      "buyer_financing_efforts_standard": "not specified",
+      "target_cooperation_required": false,
+      "party_favored": "buyer_favorable",
+      "risk_level": "low",
+      "risk_factors": [
+        "No explicit financing failure trigger",
+        "No financing condition in the agreement",
+        "No reverse termination fee or regulatory termination fee mentioned"
+      ],
+      "confidence": "high"
+    },
+    "unilateral_extension": {
+      "present": true,
+      "buyer_can_extend_unilaterally": false,
+      "seller_can_extend_unilaterally": false,
+      "extension_trigger": "regulatory_only",
+      "number_of_extensions_allowed": 1,
+      "extension_period_months": 3,
+      "maximum_extension_date_text": "June 23, 2026",
+      "party_favored": "unknown",
+      "risk_level": "medium",
+      "risk_factors": [
+        "Automatic extension based on regulatory conditions",
+        "No unilateral extension rights for either party",
+        "Single automatic extension period of 3 months"
+      ],
+      "confidence": "medium"
+    }
+  },
+  "risk_summary": {
+    "overall_risk_level": "medium",
+    "risk_score": 11,
+    "max_risk_score": 24,
+    "high_risk_provisions": [
+      "regulatory_rtf",
+      "willful_breach",
+      "matching_rights"
+    ],
+    "medium_risk_provisions": [
+      "outside_date_duration",
+      "unilateral_extension"
+    ],
+    "low_risk_provisions": [
+      "tail_provision",
+      "specific_performance",
+      "financing_failure"
+    ],
+    "provisions_checked": 8,
+    "provisions_present": 4,
+    "traffic_light": {
+      "outside_date_duration": {
+        "color": "yellow",
+        "risk_level": "medium",
+        "party_favored": "seller_favorable",
+        "confidence": "high",
+        "present": true,
+        "key_factors": [
+          "Initial outside date is only 12 months, which is below the 18-month standard for complex deals.",
+          "Extensions are limited to automatic 3-month extensions under certain circumstances."
+        ]
+      },
+      "regulatory_rtf": {
+        "color": "red",
+        "risk_level": "high",
+        "party_favored": "unknown",
+        "confidence": "high",
+        "present": false,
+        "key_factors": [
+          "No separate regulatory termination fee mentioned",
+          "Standard termination fee may not incentivize buyer to address regulatory issues"
+        ]
+      },
+      "tail_provision": {
+        "color": "green",
+        "risk_level": "low",
+        "party_favored": "buyer_favorable",
+        "confidence": "high",
+        "present": true,
+        "key_factors": []
+      },
+      "specific_performance": {
+        "color": "green",
+        "risk_level": "low",
+        "party_favored": "seller_favorable",
+        "confidence": "high",
+        "present": true,
+        "key_factors": []
+      },
+      "willful_breach": {
+        "color": "red",
+        "risk_level": "high",
+        "party_favored": "buyer_favorable",
+        "confidence": "high",
+        "present": false,
+        "key_factors": [
+          "No explicit willful breach carveout",
+          "Termination fees may cap buyer's liability"
+        ]
+      },
+      "matching_rights": {
+        "color": "red",
+        "risk_level": "high",
+        "party_favored": "unknown",
+        "confidence": "low",
+        "present": false,
+        "key_factors": [
+          "No matching rights exist for the acquirer before the target can accept a superior proposal.",
+          "No notice requirement for the target to inform the acquirer before accepting a superior proposal."
+        ]
+      },
+      "financing_failure": {
+        "color": "green",
+        "risk_level": "low",
+        "party_favored": "buyer_favorable",
+        "confidence": "high",
+        "present": false,
+        "key_factors": [
+          "No explicit financing failure trigger",
+          "No financing condition in the agreement"
+        ]
+      },
+      "unilateral_extension": {
+        "color": "yellow",
+        "risk_level": "medium",
+        "party_favored": "unknown",
+        "confidence": "medium",
+        "present": true,
+        "key_factors": [
+          "Automatic extension based on regulatory conditions",
+          "No unilateral extension rights for either party"
+        ]
+      }
+    },
+    "top_concerns": [
+      "No willful breach carveout \u2014 RTF caps buyer liability even for intentional breach (buyer-favorable)",
+      "Regulatory Rtf flagged HIGH risk: No separate regulatory termination fee mentioned",
+      "Willful Breach flagged HIGH risk: No explicit willful breach carveout"
+    ]
+  },
+  "token_usage": {
+    "input_tokens": 4840,
+    "output_tokens": 754,
+    "estimated_cost": 0.0011784
+  }
+}

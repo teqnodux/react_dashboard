@@ -1,0 +1,281 @@
+/* ── MilestoneLog component styles ──────────────────────────────────────────── */
+
+.ml-tab {
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  padding: 0 0 32px 0;
+}
+
+.ml-loading, .ml-empty {
+  padding: 32px 16px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.ml-hint {
+  color: var(--text-muted);
+  font-size: 11px;
+  margin-top: 8px;
+}
+
+/* ── Summary bar ──────────────────────────────────────────────────────────── */
+
+.ml-summary-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+
+.ml-chip {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+.ml-chip.chip-green  { background: rgba(135,217,108,0.15); color: #87d96c; }
+.ml-chip.chip-blue   { background: rgba(92,207,230,0.15);  color: #5ccfe6; }
+.ml-chip.chip-amber  { background: rgba(255,204,102,0.15); color: #ffcc66; }
+.ml-chip.chip-gray   { background: rgba(255,255,255,0.08); color: var(--text-secondary); }
+.ml-chip.chip-muted  { background: rgba(255,255,255,0.04); color: var(--text-muted); }
+
+/* ── Table ────────────────────────────────────────────────────────────────── */
+
+.ml-table-wrap {
+  overflow-x: auto;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin: 0;
+}
+
+.ml-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  table-layout: auto;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+
+.ml-th {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 10px 14px;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: bottom;
+}
+
+.ml-th-label {
+  min-width: 140px;
+}
+
+.ml-th-source {
+  min-width: 110px;
+}
+
+.ml-th-source-label {
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+.ml-th-source-date {
+  font-size: 9px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.ml-th-current {
+  min-width: 80px;
+  text-align: center;
+}
+
+/* ── Category separator rows ──────────────────────────────────────────────── */
+
+.ml-cat-row {
+  background: var(--bg-tertiary);
+}
+
+.ml-cat-cell {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-top: 2px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Data rows ────────────────────────────────────────────────────────────── */
+
+.ml-row {
+  transition: background 0.15s;
+  cursor: pointer;
+  user-select: none;
+}
+.ml-row:hover {
+  background: var(--bg-hover);
+}
+.ml-row-expanded {
+  background: var(--bg-tertiary);
+}
+
+.ml-td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.ml-td-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.ml-expand-icon {
+  font-size: 9px;
+  color: var(--text-muted);
+  margin-right: 8px;
+  display: inline-block;
+  width: 10px;
+}
+
+.ml-td-empty {
+  color: var(--text-muted);
+  text-align: center;
+  font-size: 12px;
+}
+
+.ml-td-obs {
+  cursor: pointer;
+}
+
+/* ── Cell content ─────────────────────────────────────────────────────────── */
+
+.ml-cell-text {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+/* ── Current status badge ─────────────────────────────────────────────────── */
+
+.ml-td-current {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.ml-current-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ── Expanded detail row ──────────────────────────────────────────────────── */
+
+.ml-detail-row {
+  background: var(--bg-tertiary);
+}
+
+.ml-detail-cell {
+  padding: 0 14px 12px 14px;
+  border-bottom: 2px solid var(--border);
+}
+
+.ml-detail-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ml-detail-item {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.ml-detail-item:last-child {
+  border-bottom: none;
+}
+
+.ml-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ml-detail-date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  min-width: 80px;
+}
+
+.ml-detail-source {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--accent-blue);
+  background: rgba(92,207,230,0.08);
+  padding: 1px 6px;
+  border-radius: 2px;
+}
+
+.ml-detail-status {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ml-detail-value {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 4px;
+  padding-left: 90px;
+}
+
+.ml-detail-excerpt {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-top: 3px;
+  padding-left: 90px;
+  max-height: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

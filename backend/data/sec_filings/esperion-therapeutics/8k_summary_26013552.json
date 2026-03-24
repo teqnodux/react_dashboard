@@ -1,0 +1,30 @@
+{
+  "ticker": "ESPR",
+  "filing_date": "03/03/26",
+  "items_reported": [
+    "Item 1.01",
+    "Item 7.01",
+    "Item 9.01"
+  ],
+  "L1_headline": "ESPR \u2013 Acquires Corstasis for $75M upfront plus milestones. | 03/03/26",
+  "L2_brief": "Esperion Therapeutics entered into a definitive agreement to acquire Corstasis Therapeutics for $75 million in upfront cash consideration plus up to $180 million in regulatory and commercial milestone payments, along with royalty payments on future product sales. The transaction is expected to close by May 1, 2026, subject to customary closing conditions, and adds Enbumyst to Esperion's portfolio targeting the congestive heart failure market.",
+  "L3_detailed": {
+    "event": "Esperion entered into a merger agreement to acquire Corstasis Therapeutics, with Corstasis becoming a wholly-owned subsidiary of Esperion upon closing",
+    "key_figures": [
+      "$75,000,000 upfront cash consideration (subject to customary adjustments)",
+      "Up to $180,000,000 in contingent milestone payments (regulatory approval and commercial sales)",
+      "Additional royalty and licensing-revenue-derived payments on future product sales",
+      "Outside date: May 1, 2026"
+    ],
+    "deal_implications": "This is Esperion as acquirer, not target; transaction expands pipeline into congestive heart failure with Enbumyst; standard deal structure with customary closing conditions suggests moderate closing certainty",
+    "remaining_conditions": [
+      "Customary closing conditions (not specifically enumerated)",
+      "Must close by May 1, 2026 outside date"
+    ],
+    "risks_flagged": [
+      "Forward-looking statements note risk of failure to consummate the Corstasis transaction",
+      "Risk of failure to achieve anticipated sales of Enbumyst",
+      "Contingent consideration dependent on regulatory approvals and commercial milestones"
+    ]
+  }
+}

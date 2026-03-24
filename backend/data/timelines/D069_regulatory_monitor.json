@@ -1,0 +1,540 @@
+{
+  "deal_id": "D069",
+  "last_updated": "2026-03-19",
+  "approvals": [
+    {
+      "id": "hsr",
+      "master_id": "hsr_filing",
+      "jurisdiction": "US",
+      "authority_short": "DOJ / FTC",
+      "authority_full": "DOJ / FTC",
+      "statute": "Premerger notification required under 15 U.S.C. \u00a7 18a if size-of-transaction (>$119.5M indexed) and size-of-person thresholds are met. Initiates a 30-day waiting period (15 days for cash tender offers).",
+      "category": "US Antitrust",
+      "status": "filed",
+      "status_detail": "Not Filed",
+      "filing_key": "reg_hsr_filing",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "HSR Act waiting period expiration or termination is one of six listed material regulatory conditions to closing. No remedies or consent decree conditions mentioned.",
+      "notes": "No specific filing dates are provided; HSR filings are expected within 25 business days after [signing]. The SEC filing provides a comprehensive list of six material regulatory approvals required for ",
+      "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+      "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "status_history": [
+        {
+          "status": "Not Filed",
+          "status_legacy": "filed",
+          "date": "2026-03-19",
+          "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+          "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+          "source_url": null,
+          "excerpt": "No specific filing dates are provided; HSR filings are expected within 25 business days after [signing]. The SEC filing provides a comprehensive list of six material regulatory approvals required for the merger: (1) HSR Act waiting period expiration/termination.",
+          "detected_at": "2026-03-20T02:29:52.064589Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "merger_agreement_signed": "2025-05-18",
+        "preliminary_proxy_filed": "2025-07-11",
+        "pipe_closed": "2025-06-02",
+        "expected_hsr_filing_deadline_approx": "2025-06-20",
+        "outside_date_initial": "2026-08-18",
+        "outside_date_extension_1": "2026-12-31",
+        "outside_date_extension_2": "2027-03-31",
+        "confidentiality_agreement_date": "2025-01-09",
+        "hsr_filing_deadline_relative": "25 Business Days after mutually agreed date (no absolute date specified)"
+      }
+    },
+    {
+      "id": "reg_ferc",
+      "master_id": "ferc_approval",
+      "jurisdiction": "US",
+      "authority_short": "Federal Energy Regulatory Commission",
+      "authority_full": "Federal Energy Regulatory Commission",
+      "statute": "FERC Section 203 authorization required for disposition of jurisdictional facilities (interstate natural gas pipelines, wholesale electric generation/transmission, hydropower). FERC applies a 'no adverse effect on competition, rates, or regulation' standard.",
+      "category": "US Federal \u2014 Sector",
+      "status": "filed",
+      "status_detail": "Not Filed",
+      "filing_key": "reg_ferc_approval",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "No FERC-specific conditions or remedies mentioned. FERC approval is referenced only generically as one of several required regulatory approvals alongside PUCT, NMPRC, NRC, and HSR antitrust clearance.",
+      "notes": "The SEC filing provides a comprehensive list of six material regulatory approvals required for the merger... (4) FERC approval under Section 203 of the Federal Power Act... No specific filing dates ar",
+      "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+      "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "status_history": [
+        {
+          "status": "Not Filed",
+          "status_legacy": "filed",
+          "date": "2026-03-19",
+          "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+          "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+          "source_url": null,
+          "excerpt": "The SEC filing provides a comprehensive list of six material regulatory approvals required for the merger... (4) FERC approval under Section 203 of the Federal Power Act... No specific filing dates are provided; HSR filings are expected within 25 business days after [signing].",
+          "detected_at": "2026-03-20T02:29:52.064589Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "merger_agreement_signed": "2025-05-18",
+        "proxy_filed": "2025-07-11",
+        "pipe_closed": "2025-06-02",
+        "merger_agreement_signing_approx": "2026-05-18",
+        "initial_end_date_approx": "2026-08-18",
+        "auto_extend_end_date": "2026-12-31",
+        "mutual_extension_end_date": "2027-03-31",
+        "closing_expected": "H2 2026",
+        "outside_date_initial": "2026-08-18",
+        "outside_date_extension_1": "2026-12-31",
+        "outside_date_extension_2": "2027-03-31",
+        "confidentiality_agreement": "2025-01-09"
+      }
+    },
+    {
+      "id": "reg_fcc",
+      "master_id": "fcc_license_transfer",
+      "jurisdiction": "US",
+      "authority_short": "Federal Communications Commission",
+      "authority_full": "Federal Communications Commission",
+      "statute": "FCC assignment or transfer of control applications required for any FCC-licensed facility or spectrum authorization. Covers broadcast (AM/FM/TV), wireless spectrum, MVPD, and common carrier telecom licenses. Applications filed on FCC Forms 314, 315, or 603.",
+      "category": "US Federal \u2014 Sector",
+      "status": "filed",
+      "status_detail": "Not Filed",
+      "filing_key": "reg_fcc_license_transfer",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "The SEC filing provides a comprehensive list of six material regulatory approvals required for the merger, including '(5) FCC approval for transfer of wireless/microwave licenses.' No specific filing ",
+      "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+      "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "status_history": [
+        {
+          "status": "Not Filed",
+          "status_legacy": "filed",
+          "date": "2026-03-19",
+          "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+          "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+          "source_url": null,
+          "excerpt": "The SEC filing provides a comprehensive list of six material regulatory approvals required for the merger, including '(5) FCC approval for transfer of wireless/microwave licenses.' No specific filing dates are provided.",
+          "detected_at": "2026-03-20T02:29:52.064589Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {}
+    },
+    {
+      "id": "reg_nrc",
+      "master_id": "nrc_license_transfer",
+      "jurisdiction": "US",
+      "authority_short": "Nuclear Regulatory Commission",
+      "authority_full": "Nuclear Regulatory Commission",
+      "statute": "NRC consent required for transfer of operating licenses for nuclear power plants and materials licenses. NRC conducts safety evaluation and antitrust review. Applications filed under 10 C.F.R. \u00a7 50.80.",
+      "category": "US Federal \u2014 Sector",
+      "status": "filed",
+      "status_detail": "Not Filed",
+      "filing_key": "reg_nrc_license_transfer",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "NRC approval is an explicit closing condition alongside PUCT, NMPRC, FERC, HSR antitrust clearance, and shareholder approval. No NRC-specific conditions or facility counts are mentioned.",
+      "notes": "The SEC filing provides a comprehensive list of six material regulatory approvals required for the merger, including '(6) NRC approval for indirect transfer of Palo Verde Nuclear Generating Station li",
+      "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+      "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "status_history": [
+        {
+          "status": "Not Filed",
+          "status_legacy": "filed",
+          "date": "2026-03-19",
+          "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+          "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+          "source_url": null,
+          "excerpt": "The SEC filing provides a comprehensive list of six material regulatory approvals required for the merger, including '(6) NRC approval for indirect transfer of Palo Verde Nuclear Generating Station licenses. No specific filing dates are provided; HSR filings are expected within 25 business days after'",
+          "detected_at": "2026-03-20T02:29:52.064589Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "merger_agreement_signed": "2025-05-18",
+        "preliminary_proxy_filed": "2025-07-11",
+        "pipe_transaction_closed": "2025-06-02",
+        "merger_agreement_signing_approx": "2026-03-19",
+        "initial_end_date_approx": "2026-08-18",
+        "auto_extend_end_date": "2026-12-31",
+        "mutual_extension_end_date": "2027-03-31",
+        "closing_expected": "H2 2026"
+      }
+    },
+    {
+      "id": "reg_state_puc",
+      "master_id": "state_puc_electric",
+      "jurisdiction": "US",
+      "authority_short": "State Public Utility / Service Commissions",
+      "authority_full": "State Public Utility / Service Commissions",
+      "statute": "State public utility commission approval required in each state where the target holds an electric utility franchise. Standard is typically 'public interest' or 'no adverse effect on ratepayers.' Texas (PUCT/ERCOT) has separate process.",
+      "category": "US State",
+      "status": "filing_intent",
+      "status_detail": "Identifying States",
+      "filing_key": "reg_state_puc_electric",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "Parent must take any structural or behavioral remedies, including divestitures, to secure antitrust clearance, but is not required to accept Remedy Actions that would be materially adverse to Company Party business post-closing. Parent has sole control over HSR filing strategy after good-faith consultation with Company. $350,000,000 reverse termination fee payable by Parent if deal fails due to regulatory approval failure.",
+      "notes": "The SEC filing provides a comprehensive list of six material regulatory approvals required for the merger: (1) HSR Act waiting period expiration/termination; (2) NMPRC approval under New Mexico Public",
+      "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+      "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "status_history": [
+        {
+          "status": "Identifying States",
+          "status_legacy": "filing_intent",
+          "date": "2026-03-19",
+          "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+          "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+          "source_url": null,
+          "excerpt": "The SEC filing provides a comprehensive list of six material regulatory approvals required for the merger: (1) HSR Act waiting period expiration/termination; (2) NMPRC approval under New Mexico Public Utility Act and Rule 450; (3) PUCT approval under PURA (with 180-day ruling timeline, extendable by 60 days). No specific filing dates are provided.",
+          "detected_at": "2026-03-20T02:29:52.064589Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "merger_agreement_signed": "2025-05-18",
+        "proxy_filed": "2025-07-11",
+        "pipe_closed": "2025-06-02",
+        "expected_close": "2026-H2",
+        "confidentiality_agreement": "2025-01-09",
+        "outside_date_initial": "2026-08-18",
+        "outside_date_extension_1": "2026-12-31",
+        "outside_date_extension_2": "2027-03-31",
+        "initial_end_date": "2026-08-18",
+        "auto_extend_end_date": "2026-12-31",
+        "mutual_extension_end_date": "2027-03-31",
+        "closing_expected": "2026-H2",
+        "tnmp_fmb_prepay_offer_deadline": "30 days from signing"
+      }
+    },
+    {
+      "id": "reg_state_puc_gas",
+      "master_id": "state_puc_gas",
+      "jurisdiction": "US",
+      "authority_short": "State Public Utility / Service Commissions",
+      "authority_full": "State Public Utility / Service Commissions",
+      "statute": "State PUC approval required for change of control of local gas distribution companies (LDCs) in each franchise state.",
+      "category": "US State",
+      "status": "filing_intent",
+      "status_detail": "Identifying States",
+      "filing_key": "reg_state_puc_gas",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "Parent must take any structural or behavioral remedies, including divestitures, to secure regulatory clearance, but is not required to accept remedies materially adverse to Company Party business or operations post-closing. Parent pays $350,000,000 reverse termination fee if deal fails due to failure to obtain required regulatory approvals.",
+      "notes": "The SEC filing provides a comprehensive list of six material regulatory approvals required for the merger: (2) NMPRC approval under New Mexico Public Utility Act and Rule 450; (3) PUCT approval under ",
+      "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+      "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "status_history": [
+        {
+          "status": "Identifying States",
+          "status_legacy": "filing_intent",
+          "date": "2026-03-19",
+          "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+          "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+          "source_url": null,
+          "excerpt": "The SEC filing provides a comprehensive list of six material regulatory approvals required for the merger: (2) NMPRC approval under New Mexico Public Utility Act and Rule 450; (3) PUCT approval under PURA (with 180-day ruling timeline, extendable by 60 days). No specific filing dates are provided.",
+          "detected_at": "2026-03-20T02:29:52.064589Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "merger_agreement_signed": "2025-05-18",
+        "proxy_filed": "2025-07-11",
+        "pipe_closed": "2025-06-02",
+        "expected_close": "2026-H2",
+        "confidentiality_agreement": "2025-01-09",
+        "outside_date_initial": "2026-08-18",
+        "outside_date_auto_extension": "2026-12-31",
+        "outside_date_mutual_extension": "2027-03-31",
+        "proxy_statement_preliminary_deadline_days": "45 days after signing",
+        "proxy_statement_sec_filing_deadline_days": "60 days after signing",
+        "outside_date_extension_1": "2026-12-31",
+        "outside_date_extension_2": "2027-03-31",
+        "proxy_statement_prep_deadline_days": "45 days after signing",
+        "proxy_statement_filing_deadline_days": "60 days after signing"
+      }
+    },
+    {
+      "id": "reg_nasdaq",
+      "master_id": "target_shareholder_vote",
+      "jurisdiction": "N/A",
+      "authority_short": "Target Board / Stockholders",
+      "authority_full": "Target Board / Stockholders",
+      "statute": "Stockholder approval required in most public company mergers. Threshold depends on merger structure and state of incorporation (typically majority of shares outstanding for Delaware long-form mergers).",
+      "category": "Shareholder & Contractual",
+      "status": "filed",
+      "status_detail": "Proxy Filed",
+      "filing_key": "reg_target_shareholder_vote",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "Merger requires approval by a majority of outstanding shares as of the record date. Six regulatory approvals required: (1) HSR Act waiting period, (2) NMPRC approval, (3) PUCT approval (180-day ruling timeline, extendable 60 days), (4) FERC Section 203 approval, (5) FCC approval for wireless/microwave license transfer, (6) NRC approval for indirect transfer of Palo Verde Nuclear Generating Station licenses. No financing condition. $350 million reverse termination fee applicable if regulatory failure. Transaction expected to close second half of 2026.",
+      "notes": "This preliminary proxy statement (PREM14A) filed July 11, 2025, contains blank date fields for both the shareholder meeting ('_____, 2025' at 9:00 a.m. Mountain Time at TXNM Corporate Headquarters in ",
+      "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+      "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "status_history": [
+        {
+          "status": "Proxy Filed",
+          "status_legacy": "filed",
+          "date": "2026-03-19",
+          "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+          "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+          "source_url": null,
+          "excerpt": "This preliminary proxy statement (PREM14A) filed July 11, 2025, contains blank date fields for both the shareholder meeting ('_____, 2025' at 9:00 a.m. Mountain Time at TXNM Corporate Headquarters in Albuquerque, NM) and the record date ('close of business on _____, 2025'). These dates will be established in the definitive proxy statement to be filed later.",
+          "detected_at": "2026-03-20T02:29:52.064589Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "proxy_filed_date": "2025-07-11",
+        "merger_agreement_signed": "2025-05-18",
+        "pipe_close_date": "2025-06-02",
+        "contractual_end_date": "2026-05-17",
+        "record_date": null,
+        "meeting_date": null,
+        "sec_clearance_date": null,
+        "initial_end_date": "2026-08-18",
+        "auto_extend_end_date": "2026-12-31",
+        "mutual_extension_end_date": "2027-03-31",
+        "closing_expected": "2026-H2",
+        "outside_date_initial": "2026-08-18",
+        "outside_date_extension_1": "2026-12-31",
+        "outside_date_extension_2": "2027-03-31"
+      }
+    },
+    {
+      "id": "reg_sec_s4_proxy",
+      "master_id": "sec_s4_proxy",
+      "jurisdiction": "US",
+      "authority_short": "Securities and Exchange Commission",
+      "authority_full": "Securities and Exchange Commission",
+      "statute": "Form S-4 registration statement required for stock-for-stock mergers; proxy statement (Schedule 14A) required for cash mergers requiring target stockholder vote. SEC staff review typically takes 30 days; comments must be resolved before effectiveness.",
+      "category": "Shareholder & Contractual",
+      "status": "pending",
+      "status_detail": "Preliminary Filing Made",
+      "filing_key": "reg_sec_s4_proxy",
+      "filed_date": "2025-07-11",
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "Six regulatory approvals required before closing: (1) HSR Act waiting period expiration/termination; (2) NMPRC approval; (3) PUCT approval (180-day timeline, extendable 60 days); (4) FERC Section 203 approval; (5) FCC approval for wireless/microwave license transfer; (6) NRC approval for indirect transfer of Palo Verde nuclear licenses. Shareholder approval required by majority of outstanding shares. No financing condition. $350 million reverse termination fee applies if merger fails due to regulatory reasons. Transaction expected to close second half of 2026.",
+      "notes": "This preliminary proxy statement (PREM14A) filed July 11, 2025, contains blank date fields for both the shareholder meeting ('_____, 2025' at 9:00 a.m. Mountain Time at TXNM Corporate Headquarters in ",
+      "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+      "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "status_history": [
+        {
+          "status": "Preliminary Filing Made",
+          "status_legacy": "pending",
+          "date": "2026-03-19",
+          "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+          "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+          "source_url": null,
+          "excerpt": "This preliminary proxy statement (PREM14A) filed July 11, 2025, contains blank date fields for both the shareholder meeting ('_____, 2025' at 9:00 a.m. Mountain Time at TXNM Corporate Headquarters in Albuquerque, NM) and the record date ('close of business on _____, 2025'). These dates will be established in the definitive proxy statement to be filed later.",
+          "detected_at": "2026-03-20T02:29:52.064589Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "filing_date": "2025-07-11",
+        "merger_agreement_date": "2025-05-18",
+        "pipe_close_date": "2025-06-02",
+        "contractual_end_date": "2026-05-17",
+        "outside_date_initial": "2026-08-18",
+        "outside_date_extension_1": "2026-12-31",
+        "outside_date_extension_2": "2027-03-31",
+        "confidentiality_agreement_date": "2025-01-09",
+        "initial_end_date": "2026-08-18",
+        "auto_extend_end_date": "2026-12-31",
+        "mutual_extension_end_date": "2027-03-31",
+        "closing_expected": "2026-H2",
+        "tnmp_fmb_prepay_offer_deadline": "30 days from signing",
+        "tnmp_revolver_waiver_deadline": "15 days from signing"
+      }
+    },
+    {
+      "id": "reg_debt_indenture_consents",
+      "master_id": "debt_indenture_consents",
+      "jurisdiction": "N/A",
+      "authority_short": "Lenders / Noteholders",
+      "authority_full": "Lenders / Noteholders",
+      "statute": "Credit agreement change of control provisions may require consent or trigger repayment obligations. Bond indentures typically contain change of control put rights (repurchase at 101%) rather than consent requirements. Lender consents may be needed for assumption of credit facilities.",
+      "category": "Shareholder & Contractual",
+      "status": "pending",
+      "status_detail": "Analysis Underway",
+      "filing_key": "reg_debt_indenture_consents",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "No financing condition in merger agreement; debt commitment letters terminate five business days after contractual end date of approximately May 17, 2026; ticking fees structured at 90-day, 180-day, and 270-day intervals suggesting multi-month closing process",
+      "notes": "The merger agreement includes no financing condition, with Blackstone providing debt commitment letters at signing and closing a $400 million PIPE investment at $50/share on June 2, 2025, fifteen days",
+      "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+      "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "status_history": [
+        {
+          "status": "Analysis Underway",
+          "status_legacy": "pending",
+          "date": "2026-03-19",
+          "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+          "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+          "source_url": null,
+          "excerpt": "The merger agreement includes no financing condition, with Blackstone providing debt commitment letters at signing and closing a $400 million PIPE investment at $50/share on June 2, 2025, fifteen days after signing.",
+          "detected_at": "2026-03-20T02:29:52.064589Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "merger_agreement_signed": "2025-05-18",
+        "pipe_transaction_closed": "2025-06-02",
+        "proxy_filed": "2025-07-11",
+        "contractual_end_date_estimated": "2026-05-17",
+        "confidentiality_agreement_date": "2025-01-09",
+        "outside_date_initial": "2026-08-18",
+        "outside_date_auto_extension": "2026-12-31",
+        "outside_date_mutual_extension": "2027-03-31",
+        "proxy_filing_deadline_from_signing": "60 days post-signing",
+        "signing_date": "2026-03-19",
+        "fmb_prepayment_offer_deadline": "2026-04-18",
+        "tnmp_revolver_waiver_deadline": "2026-04-03",
+        "initial_end_date": "2026-08-18",
+        "auto_extended_end_date": "2026-12-31",
+        "mutual_extension_end_date": "2027-03-31",
+        "closing_expected": "2026-H2"
+      }
+    }
+  ],
+  "documents_processed": [
+    {
+      "doc_type": "proxy_summary_2026-03-18T18-53-55",
+      "doc_date": "2026-03-19",
+      "doc_url": null,
+      "processed_at": "2026-03-20T02:29:52.064589Z",
+      "approvals_found": 9,
+      "additions": [
+        "hsr",
+        "reg_ferc",
+        "reg_fcc",
+        "reg_nrc",
+        "reg_state_puc",
+        "reg_state_puc_gas",
+        "reg_nasdaq",
+        "reg_sec_s4_proxy",
+        "reg_debt_indenture_consents"
+      ],
+      "status_changes": [],
+      "conflicts_created": 0,
+      "pipeline": "regulatory_monitor"
+    },
+    {
+      "doc_type": "DMA_EXTRACT",
+      "doc_date": "2026-03-19",
+      "doc_url": null,
+      "processed_at": "2026-03-20T02:31:47.165321Z",
+      "approvals_found": 7,
+      "additions": [],
+      "status_changes": [],
+      "conflicts_created": 0,
+      "pipeline": "regulatory_monitor"
+    },
+    {
+      "doc_type": "PRESS_RELEASE",
+      "doc_date": "2026-03-19",
+      "doc_url": null,
+      "processed_at": "2026-03-20T02:32:55.881609Z",
+      "approvals_found": 7,
+      "additions": [],
+      "status_changes": [],
+      "conflicts_created": 0,
+      "pipeline": "regulatory_monitor"
+    },
+    {
+      "doc_type": "DMA_SECTIONS",
+      "doc_date": "2026-03-19",
+      "doc_url": null,
+      "processed_at": "2026-03-20T02:34:54.124242Z",
+      "approvals_found": 7,
+      "additions": [],
+      "status_changes": [],
+      "conflicts_created": 0,
+      "pipeline": "regulatory_monitor"
+    }
+  ],
+  "documents_triaged": [],
+  "change_log": [
+    {
+      "timestamp": "2026-03-20T02:29:52.064589Z",
+      "source_doc": "proxy_summary_2026-03-18T18-53-55 2026-03-19",
+      "source_doc_type": "proxy_summary_2026-03-18T18-53-55",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "hsr",
+          "detail": "HSR Filing (Hart-Scott-Rodino) newly discovered from proxy_summary_2026-03-18T18-53-55"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_ferc",
+          "detail": "FERC Approval (Section 203) newly discovered from proxy_summary_2026-03-18T18-53-55"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_fcc",
+          "detail": "FCC License Transfer newly discovered from proxy_summary_2026-03-18T18-53-55"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_nrc",
+          "detail": "NRC License Transfer newly discovered from proxy_summary_2026-03-18T18-53-55"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_state_puc",
+          "detail": "State PUC / PSC \u2014 Electric Utility newly discovered from proxy_summary_2026-03-18T18-53-55"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_state_puc_gas",
+          "detail": "State PUC / PSC \u2014 Natural Gas Utility newly discovered from proxy_summary_2026-03-18T18-53-55"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_nasdaq",
+          "detail": "Target Shareholder Vote newly discovered from proxy_summary_2026-03-18T18-53-55"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_sec_s4_proxy",
+          "detail": "SEC Proxy / S-4 Registration Statement newly discovered from proxy_summary_2026-03-18T18-53-55"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_debt_indenture_consents",
+          "detail": "Debt / Indenture Change of Control Consents newly discovered from proxy_summary_2026-03-18T18-53-55"
+        }
+      ]
+    }
+  ]
+}

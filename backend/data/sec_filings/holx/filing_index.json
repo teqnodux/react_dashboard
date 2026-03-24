@@ -1,0 +1,558 @@
+{
+  "company": "holx",
+  "total_filings": 13,
+  "successful": 13,
+  "failed": 0,
+  "results": [
+    {
+      "index": 13,
+      "date": "01/30/26",
+      "form_type": "10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/859737/000085973726000008/holx-20251227.htm",
+      "status": "success",
+      "ticker": "HOLX",
+      "summary": {
+        "ticker": "HOLX",
+        "company": "Hologic, Inc.",
+        "filing_type": "10-Q",
+        "period_end_date": "12/27/25",
+        "filing_date": "01/30/26",
+        "fiscal_period": "Q1 FY 2026",
+        "L1_headline": "+ HOLX \u2013 Revenue up 2.5%, pending $76-79 merger. | 01/30/26",
+        "L2_brief": "Hologic reported Q1 2026 revenue of $1.05 billion, up 2.5% year-over-year, but net income declined to $179.1 million ($0.79 EPS) from $201.0 million ($0.87 EPS) in the prior year. The company has a definitive merger agreement with Blackstone and TPG for $76.00 per share plus up to $3.00 CVR, expected to close in the first half of calendar 2026. A voluntary recall of Brevera 9 Gauge Needles was implemented following internal review of post-market data.",
+        "L3_detailed": {
+          "financial_performance": {
+            "revenue": "$1,047.8 million, up 2.5% from $1,021.8 million in Q1 2025",
+            "net_income": "$179.1 million, down from $201.0 million in Q1 2025",
+            "eps": "Diluted EPS $0.79, down from $0.87 in Q1 2025",
+            "gross_margin": "55.9% vs 56.8% in prior year",
+            "operating_income": "Not specified",
+            "free_cash_flow": "Operating cash flow $229.9 million vs $189.3 million in Q1 2025",
+            "other_metrics": [
+              "Product revenues up 1.7% to $831.4 million",
+              "Service revenues up 6.1% to $216.4 million",
+              "Effective tax rate 22.0% vs 18.8% prior year"
+            ]
+          },
+          "segment_performance": [
+            "Product revenues increased $13.5 million or 1.7% to $831.4 million",
+            "Service and other revenues increased $12.5 million or 6.1% to $216.4 million"
+          ],
+          "guidance_and_outlook": "CVR payments contingent on achieving certain global revenue metrics for Breast Health business in fiscal 2026 and 2027. Brevera 9 Gauge Needles stop-ship may be prolonged as company re-engineers manufacturing process.",
+          "balance_sheet_highlights": {
+            "cash_and_equivalents": "$2,168.0 million, up from $1,959.5 million",
+            "total_debt": "$2,508.7 million including $1,169 million term loan and $1,350 million senior notes",
+            "net_debt": "$340.7 million net debt position",
+            "shareholders_equity": "Working capital of $2,892.1 million"
+          },
+          "risk_factors": [
+            "Timing and receipt of governmental and regulatory approvals for proposed merger",
+            "Supply chain constraints and cost inflation including $15.3 million tariff cost increase",
+            "Cybersecurity threats and targeted computer crime",
+            "Interest rate risk on variable rate debt",
+            "Foreign currency exchange rate exposure"
+          ],
+          "ma_and_deal_relevance": {
+            "pending_deals": "Definitive merger agreement with Blackstone and TPG for $76.00 per share plus up to $3.00 CVR, total up to $79.00 per share",
+            "deal_impact": "Transaction expected to close in first half of calendar 2026 subject to stockholder approval and regulatory approvals. Purported stockholder lawsuits filed challenging merger proxy disclosures.",
+            "strategic_alternatives": "Company expects to continue reviewing and evaluating potential strategic transactions",
+            "acquisition_activity": "Gynesonics acquisition completed January 2, 2025 for $340.7 million purchase price. Strategic investment in Maverix Medical LLC with 45% ownership and $27.2 million net investment."
+          },
+          "legal_and_regulatory": [
+            "BioZorb litigation settlement reached with no financial liability to company, fully covered by insurance",
+            "Voluntary field safety notice and recall of Brevera 9 Gauge Needles issued January 2026"
+          ],
+          "key_developments": [
+            "Brevera 9 Gauge Needles stop-ship implemented mid-November 2025 following internal review",
+            "Manchester manufacturing facility ceased production in mid-November 2025",
+            "Discontinuing sale of Fluoroscan Insight FD systems effective in fiscal 2026",
+            "No stock option grants in Q1 2026 pursuant to merger agreement"
+          ],
+          "capital_allocation": "New stock repurchase program authorized for up to $1.5 billion with $937.5 million remaining unused. Interest expense decreased to $27.6 million from $30.5 million due to debt refinancing."
+        }
+      },
+      "_filename": "10q_summary_26000008.json"
+    },
+    {
+      "index": 12,
+      "date": "02/03/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/2039767/000085973726000013/xslF345X05/form4a.xml",
+      "status": "success",
+      "ticker": "HOLX",
+      "summary": {
+        "ticker": "HOLX",
+        "issuer": "HOLOGIC INC",
+        "filing_date": "02/03/26",
+        "insider_name": "Diana De Walt",
+        "insider_title": "SVP, Human Resources",
+        "relationship": "Officer",
+        "L1_headline": "+ HOLX \u2013 Diana De Walt disposed of 4,416 shares (tax withholding on RSU vesting). | 01/30/2026",
+        "L2_brief": "Diana De Walt, SVP of Human Resources at Hologic Inc, disposed of 4,416 shares of common stock on 01/30/2026 at $74.93 per share via tax withholding upon settlement of restricted stock units. This is an amended filing (Form 4/A) correcting a Power of Attorney attachment error from the original filing on 02/03/2026; the transaction details are unchanged. Post-transaction direct holdings stand at 7,603 shares.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "01/30/2026",
+              "shares": "4,416",
+              "price_per_share": "$74.93",
+              "total_value": "$330,890.88",
+              "acquired_or_disposed": "Disposed (D)"
+            }
+          ],
+          "post_transaction_holdings": "7,603 shares of common stock",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "Transaction code 'F' indicates shares were withheld by the issuer to cover tax obligations upon settlement of vested restricted stock units. This is a routine, non-discretionary disposition. The filing is a Form 4/A amendment filed solely to correct an attached Power of Attorney document; no transaction data was revised from the original 02/03/2026 filing.",
+          "risks_flagged": [
+            "Disposition is non-discretionary (tax withholding on RSU vesting, transaction code F)",
+            "Shares disposed (4,416) represent approximately 37% of post-transaction holdings (7,603), though this is mechanical rather than voluntary selling"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_26000013.json"
+    },
+    {
+      "index": 11,
+      "date": "03/02/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1502917/000085973726000027/xslF345X05/form4.xml",
+      "status": "success",
+      "ticker": "HOLX",
+      "summary": {
+        "ticker": "HOLX",
+        "issuer": "HOLOGIC INC",
+        "filing_date": "03/02/26",
+        "insider_name": "Christiana Stamoulis",
+        "insider_title": "Director",
+        "relationship": "Director",
+        "L1_headline": "+ HOLX \u2013 Christiana Stamoulis acquired 3,190 restricted stock units. | 02/26/2026",
+        "L2_brief": "Director Christiana Stamoulis acquired 3,190 restricted stock units (RSUs) of Hologic Inc on 02/26/2026. The RSUs vest on the date of the 2027 Annual Meeting of Stockholders and settle one-for-one into shares of common stock. Following the transaction, Stamoulis holds 50,526 shares of common stock directly.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "02/26/2026",
+              "shares": "3,190",
+              "price_per_share": "N/A (RSU grant; no purchase price listed)",
+              "total_value": "N/A",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "50,526 shares of common stock (direct ownership)",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "This is a standard director RSU grant. The 3,190 RSUs vest on the date of the 2027 Annual Meeting of Stockholders and convert one-for-one into common stock. The grant represents approximately 6.3% of Stamoulis's post-transaction holdings of 50,526 shares. No open-market purchase or sale activity is indicated.",
+          "risks_flagged": [
+            "No 10b5-1 plan indicated; this is a non-discretionary director compensation grant",
+            "No price disclosed for the RSU award, consistent with a compensatory grant rather than an open-market transaction"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_26000027.json"
+    },
+    {
+      "index": 10,
+      "date": "03/02/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/2061422/000085973726000033/xslF345X05/form4.xml",
+      "status": "success",
+      "ticker": "HOLX",
+      "summary": {
+        "ticker": "HOLX",
+        "issuer": "HOLOGIC INC",
+        "filing_date": "03/02/26",
+        "insider_name": "Anne M. Liddy",
+        "insider_title": "General Counsel",
+        "relationship": "Officer",
+        "L1_headline": "+ HOLX \u2013 Anne M. Liddy disposed of 185 shares (tax withholding on RSU vesting). | 02/27/2026",
+        "L2_brief": "Anne M. Liddy, General Counsel of Hologic Inc, had 185 shares of common stock withheld on 02/27/2026 at $75.36 per share to cover tax obligations upon the settlement of restricted stock units. Following the transaction, Liddy directly holds 28,052 shares of common stock.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "02/27/2026",
+              "shares": "185",
+              "price_per_share": "$75.36",
+              "total_value": "$13,941.60",
+              "acquired_or_disposed": "Disposed (D)"
+            }
+          ],
+          "post_transaction_holdings": "28,052 shares of common stock",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "This is a routine tax withholding disposition associated with the vesting and settlement of restricted stock units (RSUs). Transaction code 'F' indicates shares withheld by the issuer to satisfy tax obligations, not a discretionary sale. The 185 shares disposed represent a small fraction (approximately 0.66%) of Liddy's total direct holdings of 28,052 shares.",
+          "risks_flagged": [
+            "Transaction is a mandatory tax withholding (code F), not a discretionary sale"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_26000033.json"
+    },
+    {
+      "index": 9,
+      "date": "03/02/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1994116/000085973726000025/xslF345X05/form4.xml",
+      "status": "success",
+      "ticker": "HOLX",
+      "summary": {
+        "ticker": "HOLX",
+        "issuer": "HOLOGIC INC",
+        "filing_date": "03/02/26",
+        "insider_name": "Nanaz Mohtashami",
+        "insider_title": "Director",
+        "relationship": "Director",
+        "L1_headline": "+ HOLX \u2013 Nanaz Mohtashami acquired 3,190 restricted stock units. | 02/26/2026",
+        "L2_brief": "Director Nanaz Mohtashami acquired 3,190 restricted stock units (RSUs) in Hologic Inc on 02/26/2026. The RSUs vest on the date of the 2027 Annual Meeting of Stockholders and settle one-for-one into shares of common stock. Following the transaction, Mohtashami holds 7,371 shares of common stock directly.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "02/26/2026",
+              "shares": "3,190",
+              "price_per_share": "N/A",
+              "total_value": "N/A",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "7,371 shares of common stock (direct)",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "This is a grant of restricted stock units as part of director compensation, vesting at the 2027 Annual Meeting of Stockholders. No price was reported for the transaction, consistent with a compensation award rather than an open-market purchase. Prior to the grant, Mohtashami held approximately 4,181 shares directly.",
+          "risks_flagged": [
+            "No 10b5-1 plan indicated",
+            "Transaction is a director compensation RSU grant, not a discretionary open-market transaction"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_26000025.json"
+    },
+    {
+      "index": 8,
+      "date": "03/02/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1491435/000085973726000019/xslF345X05/form4.xml",
+      "status": "success",
+      "ticker": "HOLX",
+      "summary": {
+        "ticker": "HOLX",
+        "issuer": "HOLOGIC INC",
+        "filing_date": "03/02/26",
+        "insider_name": "Ludwig Hantson",
+        "insider_title": "Director",
+        "relationship": "Director",
+        "L1_headline": "+ HOLX \u2013 Ludwig Hantson acquired 3,190 restricted stock units. | 02/26/26",
+        "L2_brief": "Director Ludwig Hantson acquired 3,190 restricted stock units of Hologic Inc on 02/26/2026 as part of a director compensation grant. The RSUs vest on the date of the 2027 Annual Meeting of Stockholders and settle in shares of common stock on a one-for-one basis. Following the transaction, Hantson beneficially owns 16,146 shares directly, which includes 3,695 RSUs deferred under the issuer's Deferred Equity Plan.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "02/26/2026",
+              "shares": "3,190",
+              "price_per_share": "N/A",
+              "total_value": "N/A",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "16,146 shares (direct), including 3,695 RSUs with deferred settlement under the issuer's Deferred Equity Plan",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "This is a director compensation grant of restricted stock units vesting at the 2027 Annual Meeting, not an open-market purchase. The filing notes 3,695 RSUs within the total holdings have been deferred under the Deferred Equity Plan, indicating a pattern of deferring equity compensation.",
+          "risks_flagged": [
+            "No 10b5-1 plan noted; transaction is a director equity compensation grant, not a discretionary open-market transaction"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_26000019.json"
+    },
+    {
+      "index": 7,
+      "date": "10/21/25",
+      "form_type": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/859737/000119312525244423/d72397d8k.htm",
+      "status": "success",
+      "ticker": "HOLX",
+      "summary": {
+        "ticker": "HOLX",
+        "filing_date": "10/21/25",
+        "items_reported": [
+          "Item 1.01",
+          "Item 5.02",
+          "Item 8.01",
+          "Item 9.01"
+        ],
+        "L1_headline": "HOLX \u2013 Blackstone/TPG to acquire Hologic for $76+CVR. | 10/21/25",
+        "L2_brief": "Hologic entered into a definitive merger agreement with affiliates of Blackstone and TPG providing for acquisition at $76.00 per share in cash plus one CVR worth up to $3.00 based on Breast Health revenue milestones in fiscal years 2026 and 2027. The deal requires stockholder majority approval, HSR clearance, CFIUS review, and other regulatory approvals, with an outside date of July 21, 2026 (extendable by three months). A go-shop period runs until December 5, 2025, with a $540 million Company termination fee ($225 million if terminated for an Excluded Party) and a $900 million Parent termination fee; the deal is not subject to a financing condition.",
+        "L3_detailed": {
+          "event": "Hologic entered into an Agreement and Plan of Merger with Hopper Parent Inc. and Hopper Merger Sub Inc. (affiliates of Blackstone and TPG), under which Merger Sub will merge with and into Hologic, with Hologic surviving as a wholly owned subsidiary of Parent.",
+          "key_figures": [
+            "Cash consideration: $76.00 per share",
+            "CVR: up to $3.00 per share (up to $1.50 for FY2026 Breast Health revenue milestone, up to $1.50 for FY2027 milestone)",
+            "FY2026 CVR: $0.50-$1.50 linear interpolation for Breast Health revenue between $1,556,844,377 and $1,571,844,377; $1.50 if \u2265$1,571,844,377",
+            "FY2027 CVR: $0.50-$1.50 linear interpolation for Breast Health revenue between $1,651,256,283 and $1,666,256,283; $1.50 if \u2265$1,666,256,283",
+            "FY2027 catch-up mechanism if FY2026 CVR paid less than $1.50",
+            "Company termination fee: $540,000,000 (or $225,000,000 for Excluded Party prior to Cut-off Date)",
+            "Parent termination fee: $900,000,000",
+            "Debt financing: $9,500M first lien term loans, $2,000M second lien term loans, $750M revolving credit facility",
+            "Company cash and short-term investments: ~$2.2 billion as of September 27, 2025",
+            "Company debt: ~$2.5 billion as of September 27, 2025",
+            "Diluted shares outstanding: ~228 million",
+            "Outside date: July 21, 2026 (extendable by 3 months)",
+            "Go-Shop period: through December 5, 2025",
+            "Retention awards: Oberton $1,000,000; Mitchell $500,000; Verstreken $250,000"
+          ],
+          "deal_implications": "Board unanimously approved and recommends the transaction. No financing condition; equity commitments from Blackstone/TPG affiliates plus debt commitments plus company cash are stated as sufficient to fund the purchase price. Go-shop period allows solicitation of competing bids through December 5, 2025, with Excluded Parties permitted to continue discussions through ten business days after go-shop expiration.",
+          "remaining_conditions": [
+            "Adoption of merger agreement by holders of a majority of outstanding shares of Company Common Stock",
+            "HSR Act waiting period expiration or termination",
+            "Other required antitrust and foreign direct investment governmental approvals",
+            "CFIUS 30-day review period expiration",
+            "No law or order prohibiting consummation of the Merger",
+            "Accuracy of representations and warranties (subject to materiality qualifiers)",
+            "Performance of covenants in all material respects",
+            "No continuing Material Adverse Effect on the Company (Parent/Merger Sub closing condition)"
+          ],
+          "risks_flagged": [
+            "CVRs are non-tradeable and non-transferable (except in limited circumstances); no assurance milestones will be achieved",
+            "CFIUS review required",
+            "Multiple antitrust/foreign direct investment approvals required across jurisdictions",
+            "Risk of litigation relating to the proposed transaction noted in forward-looking statements",
+            "Stockholder approval required; not yet obtained",
+            "Go-shop period may yield competing proposals"
+          ]
+        },
+        "filing_type": "8-K"
+      },
+      "_filename": "8k_summary_25244423.json"
+    },
+    {
+      "index": 6,
+      "date": "03/02/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1400563/000085973726000017/xslF345X05/form4.xml",
+      "status": "success",
+      "ticker": "HOLX",
+      "summary": {
+        "ticker": "HOLX",
+        "issuer": "HOLOGIC INC",
+        "filing_date": "03/02/26",
+        "insider_name": "Charles J Dockendorff",
+        "insider_title": "Director",
+        "relationship": "Director",
+        "L1_headline": "+ HOLX \u2013 Charles J Dockendorff acquired 3,190 restricted stock units. | 02/26/2026",
+        "L2_brief": "Director Charles J Dockendorff acquired 3,190 restricted stock units (RSUs) of Hologic Inc on 02/26/2026, which vest on the date of the 2027 Annual Meeting of Stockholders and settle into common stock on a one-for-one basis. Following the transaction, Dockendorff holds 6,626 shares directly and 15,370 shares indirectly through a revocable trust.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "02/26/2026",
+              "shares": "3,190",
+              "price_per_share": "N/A (RSU grant)",
+              "total_value": "N/A (RSU grant)",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "6,626 shares (Direct) + 15,370 shares (Indirect, via Revocable Trust) = 21,996 total shares beneficially owned",
+          "ownership_type": "Direct and Indirect (Revocable Trust)",
+          "deal_signal": "N/A",
+          "pattern_notes": "This is a director RSU grant, consistent with routine annual equity compensation for board service. The RSUs vest at the 2027 Annual Meeting and settle in common stock on a one-for-one basis. No discretionary open-market purchase or sale activity reported in this filing.",
+          "risks_flagged": [
+            "No 10b5-1 plan noted; transaction is a compensation-related RSU grant, not a discretionary trade",
+            "No price reported for the acquisition, consistent with an equity award rather than an open-market transaction"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_26000017.json"
+    },
+    {
+      "index": 5,
+      "date": "02/03/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/2039767/000085973726000011/xslF345X05/form4.xml",
+      "status": "success",
+      "ticker": "HOLX",
+      "summary": {
+        "ticker": "HOLX",
+        "issuer": "HOLOGIC INC",
+        "filing_date": "02/03/26",
+        "insider_name": "Diana De Walt",
+        "insider_title": "SVP, Human Resources",
+        "relationship": "Officer",
+        "L1_headline": "+ HOLX \u2013 Diana De Walt disposed of 4,416 shares (tax withholding on RSU vesting). | 01/30/2026",
+        "L2_brief": "Diana De Walt, SVP of Human Resources at Hologic, disposed of 4,416 shares of common stock on 01/30/2026 at $74.93 per share (~$330,891 total value) via tax withholding upon settlement of vesting restricted stock units. Following the transaction, De Walt holds 7,603 shares directly.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Other",
+              "date": "01/30/2026",
+              "shares": "4,416",
+              "price_per_share": "$74.93",
+              "total_value": "$330,891.88",
+              "acquired_or_disposed": "Disposed (D)"
+            }
+          ],
+          "post_transaction_holdings": "7,603 shares of common stock",
+          "ownership_type": "Direct",
+          "deal_signal": "N/A",
+          "pattern_notes": "Transaction was a mandatory tax withholding upon settlement of restricted stock units (transaction code F), not a discretionary sale. Shares withheld (4,416) represent a significant portion relative to post-transaction holdings (7,603), indicating a substantial RSU vesting event.",
+          "risks_flagged": [
+            "No 10b5-1 plan noted; transaction code F indicates shares withheld for tax obligations \u2014 non-discretionary",
+            "Disposed shares (4,416) represent approximately 37% of pre-transaction holdings (estimated ~12,019 pre-transaction)"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_26000011.json"
+    },
+    {
+      "index": 4,
+      "date": "01/29/26",
+      "form_type": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/859737/000114036126002796/ef20064189_8k.htm",
+      "status": "success",
+      "ticker": "HOLX",
+      "summary": {
+        "ticker": "HOLX",
+        "filing_date": "01/29/26",
+        "items_reported": [
+          "Item 2.02",
+          "Item 9.01"
+        ],
+        "L1_headline": "HOLX \u2013 Q1 FY2026 earnings released amid pending Blackstone/TPG acquisition. | 01/29/26",
+        "L2_brief": "Hologic reported Q1 FY2026 financial results for the quarter ended December 27, 2025. The filing references the pending acquisition by affiliates of Blackstone Inc. and TPG Capital, for which a Definitive Proxy Statement was filed with the SEC on December 23, 2025 and mailed to stockholders. No changes to deal terms or timeline were disclosed in this filing.",
+        "L3_detailed": {
+          "event": "Hologic issued a press release announcing financial results for Q1 FY2026 (quarter ended December 27, 2025). The 8-K also includes standard disclosure language regarding the proposed acquisition by Blackstone and TPG affiliates.",
+          "key_figures": [
+            "Q1 FY2026 quarter ended December 27, 2025",
+            "Definitive Proxy Statement filed with SEC on December 23, 2025"
+          ],
+          "deal_implications": "The filing does not disclose any changes to the proposed Blackstone/TPG acquisition terms, timeline, or conditions. Hologic continues to operate and report earnings while the transaction is pending. The stockholder vote date was not specified in this filing.",
+          "remaining_conditions": [
+            "Stockholder approval (Definitive Proxy Statement filed and mailed; vote date not specified in this filing)",
+            "Regulatory approvals (not detailed in this filing)",
+            "Other customary closing conditions (not detailed in this filing)"
+          ],
+          "risks_flagged": [
+            "Filing contains forward-looking statements with cautionary language noting actual results could differ materially from those expressed or implied"
+          ]
+        },
+        "filing_type": "8-K"
+      },
+      "_filename": "8k_summary_26002796.json"
+    },
+    {
+      "index": 3,
+      "date": "11/14/25",
+      "form_type": "SC 13G",
+      "url": "https://www.sec.gov/Archives/edgar/data/859737/000189761225000517/xslSCHEDULE_13G_X01/primary_doc.xml",
+      "status": "success",
+      "ticker": "HOLX",
+      "summary": {
+        "ticker": "HOLX",
+        "subject_company": "Hologic Inc",
+        "filing_date": "11/14/25",
+        "filing_type": "SC 13G/A",
+        "filer_name": "T. Rowe Price Investment Management, Inc.",
+        "filer_type": "Mutual Fund",
+        "L1_headline": "+ HOLX \u2013 T. Rowe Price Investment Management discloses 9.7% stake. | 11/14/25",
+        "L2_brief": "T. Rowe Price Investment Management, Inc. filed Amendment No. 4 to its Schedule 13G disclosing beneficial ownership of 21,550,364 shares of Hologic Inc common stock, representing 9.7% of the class. The filing is made under Rule 13d-1(b)(1)(ii)(E) as a registered investment adviser, and the filer certifies the shares were acquired in the ordinary course of business and not for the purpose of changing or influencing control of the issuer.",
+        "L3_detailed": {
+          "ownership_details": {
+            "shares_held": "21,550,364",
+            "percentage_owned": "9.7%",
+            "sole_voting_power": "21,306,933",
+            "shared_voting_power": "0",
+            "sole_dispositive_power": "21,549,648",
+            "shared_dispositive_power": "0"
+          },
+          "position_change": "Amendment No. 4; prior position percentage not disclosed in this filing",
+          "source_of_funds": "Not disclosed",
+          "purpose_of_transaction": "Shares acquired and held in the ordinary course of business. Per Item 10 certification: 'the securities referred to above were acquired and are held in the ordinary course of business and were not acquired and are not held for the purpose of or with the effect of changing or influencing the control of the issuer of the securities and were not acquired and are not held in connection with or as a participant in any transaction having that purpose or effect.'",
+          "activist_intentions": "None stated. Filed under Rule 13d-1(b) as a passive investment adviser. Filer expressly denies beneficial ownership is held for the purpose of influencing control.",
+          "deal_implications": "T. Rowe Price holds a 9.7% passive stake, making it a significant shareholder whose vote would be material in any future transaction requiring shareholder approval.",
+          "related_agreements": "None disclosed",
+          "risks_flagged": [
+            "Large passive holder whose position could be material in any shareholder vote on a potential transaction"
+          ]
+        }
+      },
+      "_filename": "sc13g_summary_25000517.json"
+    },
+    {
+      "index": 2,
+      "date": "11/07/25",
+      "form_type": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/859737/000114036125041153/ef20058329_8k.htm",
+      "status": "success",
+      "ticker": "HOLX",
+      "summary": {
+        "ticker": "HOLX",
+        "filing_date": "11/07/25",
+        "items_reported": [
+          "Item 5.02",
+          "Item 9.01"
+        ],
+        "L1_headline": "HOLX \u2013 Approved revised RSU Award Agreement form. | 11/07/25",
+        "L2_brief": "On November 4, 2025, Hologic's Compensation Committee approved a revised form of Restricted Stock Unit Award Agreement for fiscal 2026. This is a routine compensatory arrangement filing with no merger or deal-related implications.",
+        "L3_detailed": {
+          "event": "The Compensation Committee of Hologic's Board of Directors approved a revised form of RSU Award Agreement, effective for fiscal 2026.",
+          "key_figures": [
+            "Date of committee approval: November 4, 2025",
+            "Filing date: November 7, 2025",
+            "Agreement adopted for fiscal 2026"
+          ],
+          "deal_implications": "No merger or acquisition activity disclosed. This filing relates solely to executive compensation arrangements.",
+          "remaining_conditions": [],
+          "risks_flagged": []
+        },
+        "filing_type": "8-K"
+      },
+      "_filename": "8k_summary_25041153.json"
+    },
+    {
+      "index": 1,
+      "date": "11/03/25",
+      "form_type": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/859737/000114036125040182/ef20058177_8k.htm",
+      "status": "success",
+      "ticker": "HOLX",
+      "summary": {
+        "ticker": "HOLX",
+        "filing_date": "11/03/25",
+        "items_reported": [
+          "Item 2.02",
+          "Item 9.01"
+        ],
+        "L1_headline": "HOLX \u2013 Q4 earnings released amid pending Blackstone/TPG acquisition. | 11/03/25",
+        "L2_brief": "Hologic reported financial results for Q4 ended September 27, 2025. The filing includes soliciting material language related to the proposed acquisition of Hologic by affiliates of Blackstone Inc. and TPG Capital, noting that a definitive proxy statement will be filed with the SEC. No specific deal terms, vote dates, or financial figures from the earnings release were included in the 8-K text itself.",
+        "L3_detailed": {
+          "event": "Hologic issued a press release announcing Q4 FY2025 financial results. The 8-K was simultaneously filed as soliciting material under Rule 14a-12 in connection with the proposed acquisition by Blackstone and TPG Capital affiliates.",
+          "key_figures": [
+            "Q4 fiscal year ended September 27, 2025",
+            "No specific deal price, vote percentages, or financial figures disclosed in the 8-K body (earnings details are in Exhibit 99.1)"
+          ],
+          "deal_implications": "The filing confirms the proposed Blackstone/TPG acquisition is still pending. Hologic stated it will file a proxy statement with the SEC and mail a definitive proxy to stockholders. No changes to deal status or timeline were disclosed in this filing.",
+          "remaining_conditions": [
+            "Proxy statement to be filed with the SEC",
+            "Stockholder vote (proxy solicitation in progress)",
+            "Regulatory approvals (not specifically addressed in this filing)"
+          ],
+          "risks_flagged": [
+            "Forward-looking statements cautionary language referenced regarding risks that could cause actual results to differ materially",
+            "No litigation or specific regulatory issues mentioned in this filing"
+          ]
+        },
+        "filing_type": "8-K"
+      },
+      "_filename": "8k_summary_25040182.json"
+    }
+  ],
+  "failures": []
+}

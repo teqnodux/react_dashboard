@@ -1,0 +1,250 @@
+{
+  "deal_id": "a05192025txnmex21",
+  "check_timestamp": "20260318_145758",
+  "track": "termination_specific_provisions",
+  "input_files": {
+    "fees_file": "termination_response_a05192025txnmex21_fees.json",
+    "triggers_file": "termination_response_a05192025txnmex21_triggers.json"
+  },
+  "provisions_checked": {
+    "outside_date_duration": {
+      "present": true,
+      "initial_outside_date_found": "August 18, 2026",
+      "duration_months_estimate": 24,
+      "meets_18_month_standard": true,
+      "extensions_available": true,
+      "extension_mechanism": "mutual",
+      "max_extended_duration_months": 27,
+      "regulatory_extension_trigger": true,
+      "party_favored": "mutual",
+      "risk_level": "low",
+      "risk_factors": [
+        "Initial outside date is 24 months from signing, with potential for mutual extensions up to 27 months.",
+        "Regulatory delays can trigger extensions, providing flexibility for both parties."
+      ],
+      "confidence": "high"
+    },
+    "regulatory_rtf": {
+      "present": true,
+      "has_standard_rtf": true,
+      "has_separate_regulatory_rtf": true,
+      "regulatory_rtf_triggers": [
+        "termination due to No Legal Restraint (regulatory)",
+        "Parent Terminable Breach where all other closing conditions are satisfied",
+        "termination by Company for Parent Failure to Close"
+      ],
+      "regulatory_rtf_amount_text": "$350,000,000",
+      "regulatory_rtf_relationship_to_standard": "same",
+      "antitrust_specific": true,
+      "risk_level": "medium",
+      "risk_factors": [
+        "Regulatory RTF is the same amount as the standard RTF",
+        "Potential for limited incentive for buyer to resolve regulatory issues due to high termination fee",
+        "Regulatory RTF may not sufficiently incentivize proactive antitrust compliance efforts"
+      ],
+      "confidence": "medium"
+    },
+    "tail_provision": {
+      "present": true,
+      "tail_months": 12,
+      "meets_12_month_standard": true,
+      "is_longer_than_standard": false,
+      "tail_fee_type": "company_termination_fee",
+      "threshold_percentage": 0,
+      "party_favored": "buyer_favorable",
+      "risk_level": "low",
+      "risk_factors": [],
+      "confidence": "high"
+    },
+    "specific_performance": {
+      "present": true,
+      "target_can_force_closing": true,
+      "acquirer_can_force_closing": false,
+      "rtf_is_exclusive_remedy": false,
+      "specific_performance_conditions": [
+        "All conditions to closing set forth in Article VII (other than those conditions that by their nature are to be satisfied at the Closing) have been satisfied or waived",
+        "Conditions that by their nature are to be satisfied at the Closing are capable of being satisfied at the Closing",
+        "Parent and Merger Sub fail to consummate the Closing on the date that the Closing should have occurred",
+        "Company has given irrevocable written notice to Parent and Merger Sub that it is prepared, willing and able to consummate the Closing"
+      ],
+      "financing_condition_for_sp": false,
+      "party_favored": "seller_favorable",
+      "risk_level": "medium",
+      "risk_factors": [
+        "Specific performance is available but contingent on multiple conditions being met",
+        "RTF is not the exclusive remedy, allowing for specific performance as an option for the seller"
+      ],
+      "confidence": "medium"
+    },
+    "willful_breach": {
+      "present": true,
+      "carveout_explicit": true,
+      "survives_rtf_payment": true,
+      "survives_ctf_payment": true,
+      "definition_provided": false,
+      "fee_offset_against_damages": true,
+      "party_favored": "seller_favorable",
+      "risk_level": "medium",
+      "risk_factors": [
+        "Willful breach liability survives termination and payment of fees",
+        "Explicit carveout for willful breach exists",
+        "Termination fees can offset damages awarded for willful breach"
+      ],
+      "confidence": "high"
+    },
+    "matching_rights": {
+      "present": true,
+      "acquirer_has_matching_rights": true,
+      "matching_window_days": 3,
+      "intervening_event_right": true,
+      "notice_required_before_acceptance": true,
+      "match_standard": "equally_favorable",
+      "party_favored": "buyer_favorable",
+      "risk_level": "medium",
+      "risk_factors": [
+        "3-day matching window is relatively short",
+        "Equally favorable standard may allow for some flexibility in proposals"
+      ],
+      "confidence": "medium"
+    },
+    "financing_failure": {
+      "present": false,
+      "explicit_financing_failure_trigger": false,
+      "financing_condition_in_agreement": false,
+      "rtf_covers_financing_failure": false,
+      "buyer_financing_efforts_standard": "unknown",
+      "target_cooperation_required": false,
+      "party_favored": "buyer_favorable",
+      "risk_level": "low",
+      "risk_factors": [],
+      "confidence": "high"
+    },
+    "unilateral_extension": {
+      "present": true,
+      "buyer_can_extend_unilaterally": false,
+      "seller_can_extend_unilaterally": false,
+      "extension_trigger": "none",
+      "number_of_extensions_allowed": 0,
+      "extension_period_months": 0,
+      "maximum_extension_date_text": "December 31, 2026",
+      "party_favored": "unknown",
+      "risk_level": "medium",
+      "risk_factors": [
+        "No unilateral extension rights for either party",
+        "Extensions require mutual agreement",
+        "Automatic extension occurs under specific conditions"
+      ],
+      "confidence": "high"
+    }
+  },
+  "risk_summary": {
+    "overall_risk_level": "medium",
+    "risk_score": 5,
+    "max_risk_score": 24,
+    "high_risk_provisions": [],
+    "medium_risk_provisions": [
+      "regulatory_rtf",
+      "specific_performance",
+      "willful_breach",
+      "matching_rights",
+      "unilateral_extension"
+    ],
+    "low_risk_provisions": [
+      "outside_date_duration",
+      "tail_provision",
+      "financing_failure"
+    ],
+    "provisions_checked": 8,
+    "provisions_present": 7,
+    "traffic_light": {
+      "outside_date_duration": {
+        "color": "green",
+        "risk_level": "low",
+        "party_favored": "mutual",
+        "confidence": "high",
+        "present": true,
+        "key_factors": [
+          "Initial outside date is 24 months from signing, with potential for mutual extensions up to 27 months.",
+          "Regulatory delays can trigger extensions, providing flexibility for both parties."
+        ]
+      },
+      "regulatory_rtf": {
+        "color": "yellow",
+        "risk_level": "medium",
+        "party_favored": "unknown",
+        "confidence": "medium",
+        "present": true,
+        "key_factors": [
+          "Regulatory RTF is the same amount as the standard RTF",
+          "Potential for limited incentive for buyer to resolve regulatory issues due to high termination fee"
+        ]
+      },
+      "tail_provision": {
+        "color": "green",
+        "risk_level": "low",
+        "party_favored": "buyer_favorable",
+        "confidence": "high",
+        "present": true,
+        "key_factors": []
+      },
+      "specific_performance": {
+        "color": "yellow",
+        "risk_level": "medium",
+        "party_favored": "seller_favorable",
+        "confidence": "medium",
+        "present": true,
+        "key_factors": [
+          "Specific performance is available but contingent on multiple conditions being met",
+          "RTF is not the exclusive remedy, allowing for specific performance as an option for the seller"
+        ]
+      },
+      "willful_breach": {
+        "color": "yellow",
+        "risk_level": "medium",
+        "party_favored": "seller_favorable",
+        "confidence": "high",
+        "present": true,
+        "key_factors": [
+          "Willful breach liability survives termination and payment of fees",
+          "Explicit carveout for willful breach exists"
+        ]
+      },
+      "matching_rights": {
+        "color": "yellow",
+        "risk_level": "medium",
+        "party_favored": "buyer_favorable",
+        "confidence": "medium",
+        "present": true,
+        "key_factors": [
+          "3-day matching window is relatively short",
+          "Equally favorable standard may allow for some flexibility in proposals"
+        ]
+      },
+      "financing_failure": {
+        "color": "green",
+        "risk_level": "low",
+        "party_favored": "buyer_favorable",
+        "confidence": "high",
+        "present": false,
+        "key_factors": []
+      },
+      "unilateral_extension": {
+        "color": "yellow",
+        "risk_level": "medium",
+        "party_favored": "unknown",
+        "confidence": "high",
+        "present": true,
+        "key_factors": [
+          "No unilateral extension rights for either party",
+          "Extensions require mutual agreement"
+        ]
+      }
+    },
+    "top_concerns": []
+  },
+  "token_usage": {
+    "input_tokens": 23120,
+    "output_tokens": 890,
+    "estimated_cost": 0.004002
+  }
+}

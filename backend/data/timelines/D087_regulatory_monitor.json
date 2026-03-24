@@ -1,0 +1,459 @@
+{
+  "deal_id": "D087",
+  "last_updated": "2026-03-19",
+  "approvals": [
+    {
+      "id": "hsr",
+      "master_id": "hsr_filing",
+      "jurisdiction": "US",
+      "authority_short": "DOJ / FTC",
+      "authority_full": "DOJ / FTC",
+      "statute": "Premerger notification required under 15 U.S.C. \u00a7 18a if size-of-transaction (>$119.5M indexed) and size-of-person thresholds are met. Initiates a 30-day waiting period (15 days for cash tender offers).",
+      "category": "US Antitrust",
+      "status": "filed",
+      "status_detail": "Not Filed",
+      "filing_key": "reg_hsr_filing",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "Servier Pharmaceuticals LLC has no obligation to accept any structural or behavioral antitrust remedies, including no divestitures, hold-separate arrangements, contract changes, or conduct commitments. Day One Biopharmaceuticals, Inc. cannot propose or consent to any divestiture or structural relief without Servier Pharmaceuticals LLC's prior written consent. Servier Pharmaceuticals LLC may pull-and-refile once per jurisdiction unilaterally; any waiting-period extension or delay agreement otherwise requires mutual written consent.",
+      "notes": "Servier Pharmaceuticals LLC and Day One Biopharmaceuticals, Inc. must file HSR Notification and Report Forms with the FTC/DOJ ASAP, no later than 15 BD post-Agreement Date (subject to timely informati",
+      "source_doc": "DMA_EXTRACT 2026-03-19",
+      "source_doc_type": "DMA_EXTRACT",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "status_history": [
+        {
+          "status": "Not Filed",
+          "status_legacy": "filed",
+          "date": "2026-03-19",
+          "source_doc": "DMA_EXTRACT 2026-03-19",
+          "source_doc_type": "DMA_EXTRACT",
+          "source_url": null,
+          "excerpt": "Servier Pharmaceuticals LLC and Day One Biopharmaceuticals, Inc. must file HSR Notification and Report Forms with the FTC/DOJ ASAP, no later than 15 BD post-Agreement Date (subject to timely information). Closing is conditioned on expiration or termination of the HSR Act waiting period and all other required antitrust approvals.",
+          "detected_at": "2026-03-20T02:22:41.959696Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "agreement_date": "2026-02-06",
+        "hsr_filing_deadline": "2026-02-27",
+        "outside_date": "2026-12-06",
+        "outside_date_extended": "2027-05-05",
+        "expected_close": "2026-06-30",
+        "hsr_filing_deadline_from_agreement": "15 business days post-Agreement Date (Agreement Date appears to be approximately 2026-03-06 based on merger consideration adjustment reference, implying filing deadline approximately 2026-03-27)",
+        "confidentiality_agreement_date": "2026-02-06"
+      }
+    },
+    {
+      "id": "reg_doj",
+      "master_id": "doj_clearance",
+      "jurisdiction": "US",
+      "authority_short": "US Department of Justice \u2014 Antitrust Division",
+      "authority_full": "US Department of Justice \u2014 Antitrust Division",
+      "statute": "DOJ substantive antitrust review. DOJ and FTC divide merger review jurisdiction; DOJ typically reviews tech, defense, telecom, banking, and agriculture. May result in clearance letter, consent decree, or litigation.",
+      "category": "US Antitrust",
+      "status": "under_review",
+      "status_detail": "Under Review",
+      "filing_key": "reg_doj_clearance",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "Servier Pharmaceuticals LLC explicitly has no obligation to accept any structural or behavioral antitrust remedies (no divestitures, holds-separate, contract changes, or conduct commitments). Day One Biopharmaceuticals, Inc. may not propose, negotiate, or agree to any divestiture, sale, disposition, hold-separate order, or other structural or conduct relief without Servier Pharmaceuticals LLC's prior written consent. Servier Pharmaceuticals LLC may pull-and-refile HSR once per jurisdiction unilaterally; any other waiting-period extension requires mutual written consent.",
+      "notes": "Servier Pharmaceuticals LLC and Day One Biopharmaceuticals, Inc. must file HSR Notification and Report Forms with the FTC/DOJ ASAP, no later than 15 BD post-Agreement Date (subject to timely informati",
+      "source_doc": "DMA_EXTRACT 2026-03-19",
+      "source_doc_type": "DMA_EXTRACT",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "status_history": [
+        {
+          "status": "Under Review",
+          "status_legacy": "under_review",
+          "date": "2026-03-19",
+          "source_doc": "DMA_EXTRACT 2026-03-19",
+          "source_doc_type": "DMA_EXTRACT",
+          "source_url": null,
+          "excerpt": "Servier Pharmaceuticals LLC and Day One Biopharmaceuticals, Inc. must file HSR Notification and Report Forms with the FTC/DOJ ASAP, no later than 15 BD post-Agreement Date (subject to timely information). Closing is conditioned on expiration or termination of the HSR Act waiting period and all other required antitrust approvals.",
+          "detected_at": "2026-03-20T02:22:41.959696Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "confidentiality_agreement_date": "2026-02-06",
+        "outside_date_initial": "2026-12-06",
+        "outside_date_extended": "2027-05-05",
+        "stock_split_reference_date": "2026-03-06",
+        "outside_date": "2026-12-06",
+        "agreement_date_reference": "2026-03-06"
+      }
+    },
+    {
+      "id": "reg_ftc",
+      "master_id": "ftc_clearance",
+      "jurisdiction": "US",
+      "authority_short": "Federal Trade Commission",
+      "authority_full": "Federal Trade Commission",
+      "statute": "FTC substantive antitrust review. FTC typically reviews pharma, healthcare, consumer goods, and retail sectors. May issue consent order, accept divestitures, or issue administrative complaint and seek preliminary injunction.",
+      "category": "US Antitrust",
+      "status": "under_review",
+      "status_detail": "Under Review",
+      "filing_key": "reg_ftc_clearance",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "Servier Pharmaceuticals LLC has no obligation to accept any structural or behavioral antitrust remedies, including no divestitures, holds-separate, contract changes, or conduct commitments. Day One Biopharmaceuticals, Inc. cannot propose, negotiate, or agree to any divestiture or conduct relief without Servier Pharmaceuticals LLC's prior written consent.",
+      "notes": "Servier Pharmaceuticals LLC and Day One Biopharmaceuticals, Inc. must file HSR Notification and Report Forms with the FTC/DOJ ASAP, no later than 15 BD post-Agreement Date (subject to timely informati",
+      "source_doc": "DMA_EXTRACT 2026-03-19",
+      "source_doc_type": "DMA_EXTRACT",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "status_history": [
+        {
+          "status": "Under Review",
+          "status_legacy": "under_review",
+          "date": "2026-03-19",
+          "source_doc": "DMA_EXTRACT 2026-03-19",
+          "source_doc_type": "DMA_EXTRACT",
+          "source_url": null,
+          "excerpt": "Servier Pharmaceuticals LLC and Day One Biopharmaceuticals, Inc. must file HSR Notification and Report Forms with the FTC/DOJ ASAP, no later than 15 BD post-Agreement Date (subject to timely information). Servier Pharmaceuticals LLC may pull-and-refile once per jurisdiction in its sole discretion.",
+          "detected_at": "2026-03-20T02:22:41.959696Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "confidentiality_agreement_date": "2026-02-06",
+        "outside_date_initial": "2026-12-06",
+        "outside_date_extended": "2027-05-05",
+        "stock_split_reference_date": "2026-03-06",
+        "expected_close": "2026-Q2",
+        "agreement_date_reference": "2026-03-06",
+        "outside_date": "2026-12-06",
+        "document_date": "2026-03-19"
+      }
+    },
+    {
+      "id": "reg_cfius",
+      "master_id": "cfius_review",
+      "jurisdiction": "US",
+      "authority_short": "Committee on Foreign Investment in the United States (Treasury)",
+      "authority_full": "Committee on Foreign Investment in the United States (Treasury)",
+      "statute": "Interagency review under 50 U.S.C. \u00a7 4565 (FIRRMA). Mandatory declaration required for TID US businesses (critical technology, critical infrastructure, sensitive personal data) acquired by foreign persons. Voluntary notice available for any covered transaction.",
+      "category": "US National Security",
+      "status": "filed",
+      "status_detail": "Not Filed",
+      "filing_key": "reg_cfius_review",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "Closing conditions cited: (1) tender of at least a majority of Day One outstanding shares; (2) receipt of U.S. antitrust clearance. No CFIUS-related conditions mentioned.",
+      "notes": "HSR filing due within 15 business days; CFIUS not addressed in excerpts. Servier Pharmaceuticals LLC and Day One Biopharmaceuticals, Inc. must file HSR Notification and Report Forms with the FTC/DOJ A",
+      "source_doc": "DMA_EXTRACT 2026-03-19",
+      "source_doc_type": "DMA_EXTRACT",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "status_history": [
+        {
+          "status": "Not Filed",
+          "status_legacy": "filed",
+          "date": "2026-03-19",
+          "source_doc": "DMA_EXTRACT 2026-03-19",
+          "source_doc_type": "DMA_EXTRACT",
+          "source_url": null,
+          "excerpt": "HSR filing due within 15 business days; CFIUS not addressed in excerpts. Servier Pharmaceuticals LLC and Day One Biopharmaceuticals, Inc. must file HSR Notification and Report Forms with the FTC/DOJ ASAP, no later than 15 BD post-Agreement Date.",
+          "detected_at": "2026-03-20T02:22:41.959696Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "confidentiality_agreement_date": "2026-02-06",
+        "outside_date": "2026-12-06",
+        "outside_date_extended": "2027-05-05",
+        "record_date_adjustment_reference": "2026-03-06",
+        "announcement_date": "2026-03-19",
+        "expected_close": "2026-Q2"
+      }
+    },
+    {
+      "id": "reg_fda",
+      "master_id": "fda_hhs_cms",
+      "jurisdiction": "US",
+      "authority_short": "FDA / HHS / CMS",
+      "authority_full": "FDA / HHS / CMS",
+      "statute": "FDA marketing authorizations (NDA, BLA, 510(k)) transfer with the legal entity but manufacturing site changes require FDA notification. CMS Change of Ownership (CHOW) required for each Medicare/Medicaid provider number. May require state-level CHOW in parallel.",
+      "category": "US Federal \u2014 Sector",
+      "status": "filed",
+      "status_detail": "Not Filed",
+      "filing_key": "reg_fda_hhs_cms",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "Closing conditioned on: (1) expiration or termination of HSR Act waiting period and all required antitrust approvals; (2) absence of any governmental judgment or legal restraint prohibiting the merger; (3) Servier Detroit Inc. having irrevocably accepted for payment all validly tendered Day One shares. Servier Pharmaceuticals LLC has no obligation to accept structural or behavioral antitrust remedies (no divestitures, hold-separates, contract changes, or conduct commitments). Outside Date is December 6, 2026, auto-extending to May 5, 2027 upon satisfaction/waiver of specified Exhibit A conditions.",
+      "notes": "Closing is conditioned on expiration or termination of the HSR Act waiting period and all other required antitrust approvals. The excerpts do not address CMS CHOW applications, FDA manufacturing site ",
+      "source_doc": "DMA_EXTRACT 2026-03-19",
+      "source_doc_type": "DMA_EXTRACT",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "status_history": [
+        {
+          "status": "Not Filed",
+          "status_legacy": "filed",
+          "date": "2026-03-19",
+          "source_doc": "DMA_EXTRACT 2026-03-19",
+          "source_doc_type": "DMA_EXTRACT",
+          "source_url": null,
+          "excerpt": "Closing is conditioned on expiration or termination of the HSR Act waiting period and all other required antitrust approvals. The excerpts do not address CMS CHOW applications, FDA manufacturing site notifications, or any healthcare regulatory filings.",
+          "detected_at": "2026-03-20T02:22:41.959696Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "confidentiality_agreement_date": "2026-02-06",
+        "hsr_filing_deadline": "2026-02-27",
+        "outside_date_primary": "2026-12-06",
+        "outside_date_extended": "2027-05-05",
+        "stock_split_adjustment_reference_date": "2026-03-06",
+        "expected_close": "2026-Q2",
+        "press_release_date": "2026-03-19"
+      }
+    },
+    {
+      "id": "reg_nasdaq",
+      "master_id": "target_shareholder_vote",
+      "jurisdiction": "N/A",
+      "authority_short": "Target Board / Stockholders",
+      "authority_full": "Target Board / Stockholders",
+      "statute": "Stockholder approval required in most public company mergers. Threshold depends on merger structure and state of incorporation (typically majority of shares outstanding for Delaware long-form mergers).",
+      "category": "Shareholder & Contractual",
+      "status": "filed",
+      "status_detail": "Proxy Filed",
+      "filing_key": "reg_target_shareholder_vote",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "Closing conditions include: (1) tender of at least a majority of Day One's outstanding shares, (2) receipt of U.S. antitrust clearance, and (3) other customary closing conditions. Transaction expected to close Q2 2026.",
+      "notes": "",
+      "source_doc": "DMA_EXTRACT 2026-03-19",
+      "source_doc_type": "DMA_EXTRACT",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "status_history": [
+        {
+          "status": "Proxy Filed",
+          "status_legacy": "filed",
+          "date": "2026-03-19",
+          "source_doc": "DMA_EXTRACT 2026-03-19",
+          "source_doc_type": "DMA_EXTRACT",
+          "source_url": null,
+          "excerpt": null,
+          "detected_at": "2026-03-20T02:22:41.959696Z"
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "conflict_23c5ac41",
+          "detected_at": "2026-03-20T02:23:27.167753Z",
+          "current_status": "Proxy Filed",
+          "conflicting_claim": "Current tracking status is 'Proxy Filed' but this document reveals the transaction is structured as a cash tender offer (Schedule TO), not a proxy/S-4 shareholder vote process. No proxy has been filed; instead, Schedule TO tender offer materials have not yet been filed. The approval milestone being tracked may be miscategorized \u2014 the closing trigger is a majority tender of shares, not a stockholder meeting vote. The status framework (Proxy Filed through Vote Obtained) may be inapplicable to this deal structure.",
+          "source_doc": "PRESS_RELEASE 2026-03-19",
+          "source_doc_type": "PRESS_RELEASE",
+          "source_url": null,
+          "excerpt": "The tender offer has not yet commenced; Servier and the Purchaser will file tender offer materials on Schedule TO with the SEC upon commencement.",
+          "resolved": false,
+          "resolution": null,
+          "resolved_at": null
+        },
+        {
+          "id": "conflict_bb4e02fc",
+          "detected_at": "2026-03-20T02:25:21.056938Z",
+          "current_status": "Proxy Filed",
+          "conflicting_claim": "CONFLICT: The current tracked status is 'Proxy Filed' within a 'Target Shareholder Vote' approval workstream, but this document makes clear that NO stockholder vote or proxy is required for this transaction. The merger is structured as a tender offer under DGCL Section 251(h), with the back-end merger occurring automatically without a vote after offer closing. The entire 'Target Shareholder Vote' workstream tracking (including status progression from Proxy Filed through Vote Obtained) is inapplicable to this deal structure. The 'Proxy Filed' status and all downstream statuses in the progression are not relevant milestones for this transaction.",
+          "source_doc": "DMA_SECTIONS 2026-03-19",
+          "source_doc_type": "DMA_SECTIONS",
+          "source_url": null,
+          "excerpt": "Assuming the Transactions are consummated in accordance with Section 251(h) of the DGCL and assuming the accuracy of the representations and warranties set forth in Section 5.08, no stockholder votes or consents are needed. Servier Pharmaceuticals LLC, Servier Detroit Inc. and Day One Biopharmaceuticals, Inc. agree to take all necessary and appropriate action to cause the Merger to become, and that the Merger shall become, effective as soon as practicable following the consummation of the Offer,",
+          "resolved": false,
+          "resolution": null,
+          "resolved_at": null
+        }
+      ],
+      "tracker_fields": {
+        "confidentiality_agreement_date": "2026-02-06",
+        "outside_date": "2026-12-06",
+        "outside_date_extended": "2027-05-05",
+        "agreement_date_reference": "2026-03-06"
+      }
+    },
+    {
+      "id": "reg_sec_s4_proxy",
+      "master_id": "sec_s4_proxy",
+      "jurisdiction": "US",
+      "authority_short": "Securities and Exchange Commission",
+      "authority_full": "Securities and Exchange Commission",
+      "statute": "Form S-4 registration statement required for stock-for-stock mergers; proxy statement (Schedule 14A) required for cash mergers requiring target stockholder vote. SEC staff review typically takes 30 days; comments must be resolved before effectiveness.",
+      "category": "Shareholder & Contractual",
+      "status": "filed",
+      "status_detail": "Not Filed",
+      "filing_key": "reg_sec_s4_proxy",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "Closing conditioned on: (1) expiration or termination of HSR Act waiting period and all required foreign antitrust approvals; (2) absence of any governmental judgment or legal restraint prohibiting the merger; (3) Servier Detroit Inc. having irrevocably accepted for payment all shares validly tendered in the cash tender offer. Outside Date is December 6, 2026, automatically extending to May 5, 2027 if specified Exhibit A conditions are satisfied or waived. No stockholder vote condition. No financing condition. Servier has no obligation to accept structural or behavioral antitrust remedies (no divestitures, hold-separates, or conduct commitments).",
+      "notes": "Assuming the Transactions are consummated in accordance with Section 251(h) of the DGCL and assuming the accuracy of the representations and warranties set forth in Section 5.08, no stockholder votes ",
+      "source_doc": "DMA_EXTRACT 2026-03-19",
+      "source_doc_type": "DMA_EXTRACT",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "status_history": [
+        {
+          "status": "Not Filed",
+          "status_legacy": "filed",
+          "date": "2026-03-19",
+          "source_doc": "DMA_EXTRACT 2026-03-19",
+          "source_doc_type": "DMA_EXTRACT",
+          "source_url": null,
+          "excerpt": "Assuming the Transactions are consummated in accordance with Section 251(h) of the DGCL and assuming the accuracy of the representations and warranties set forth in Section 5.08, no stockholder votes or consents are needed to authorize or adopt this Agreement or for consummation of the Transactions. Servier Pharmaceuticals LLC, Servier Detroit Inc. and Day One Biopharmaceuticals, Inc. agree to take all necessary and appropriate action to cause the Merger to become, and that the Merger shall beco",
+          "detected_at": "2026-03-20T02:22:41.959696Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {
+        "confidentiality_agreement_date": "2026-02-06",
+        "outside_date": "2026-12-06",
+        "outside_date_extension": "2027-05-05",
+        "hsr_filing_deadline": "15 business days after Agreement Date (exact date not stated)",
+        "merger_consideration_adjustment_reference_date": "2026-03-06",
+        "outside_date_extended": "2027-05-05",
+        "agreement_date_reference": "2026-03-06"
+      }
+    },
+    {
+      "id": "reg_debt_indenture_consents",
+      "master_id": "debt_indenture_consents",
+      "jurisdiction": "N/A",
+      "authority_short": "Lenders / Noteholders",
+      "authority_full": "Lenders / Noteholders",
+      "statute": "Credit agreement change of control provisions may require consent or trigger repayment obligations. Bond indentures typically contain change of control put rights (repurchase at 101%) rather than consent requirements. Lender consents may be needed for assumption of credit facilities.",
+      "category": "Shareholder & Contractual",
+      "status": "pending",
+      "status_detail": "Analysis Underway",
+      "filing_key": "reg_debt_indenture_consents",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": "No debt/indenture consent conditions are referenced. The merger closing conditions cited relate to absence of governmental legal restraints and completion of the tender offer for common stock (Section 8.01), plus HSR/antitrust clearances (Section 7.02). Financing is represented as already available with no financing condition.",
+      "notes": "Committed financing was not included in the merger contract. Servier Pharmaceuticals LLC and Servier Detroit Inc. jointly and severally represent they 'will have\u2026all of the funds necessary' through cl",
+      "source_doc": "DMA_EXTRACT 2026-03-19",
+      "source_doc_type": "DMA_EXTRACT",
+      "source_doc_url": null,
+      "first_seen_date": "2026-03-19",
+      "status_history": [
+        {
+          "status": "Analysis Underway",
+          "status_legacy": "pending",
+          "date": "2026-03-19",
+          "source_doc": "DMA_EXTRACT 2026-03-19",
+          "source_doc_type": "DMA_EXTRACT",
+          "source_url": null,
+          "excerpt": "Committed financing was not included in the merger contract. Servier Pharmaceuticals LLC and Servier Detroit Inc. jointly and severally represent they 'will have\u2026all of the funds necessary' through closing to buy shares, pay fees/expenses and amounts under Sections 3.10\u20133.11, and their obligations are not conditioned on 'ability to obtain financing.'",
+          "detected_at": "2026-03-20T02:22:41.959696Z"
+        }
+      ],
+      "conflicts": [],
+      "tracker_fields": {}
+    }
+  ],
+  "documents_processed": [
+    {
+      "doc_type": "DMA_EXTRACT",
+      "doc_date": "2026-03-19",
+      "doc_url": null,
+      "processed_at": "2026-03-20T02:22:41.959696Z",
+      "approvals_found": 8,
+      "additions": [
+        "hsr",
+        "reg_doj",
+        "reg_ftc",
+        "reg_cfius",
+        "reg_fda",
+        "reg_nasdaq",
+        "reg_sec_s4_proxy",
+        "reg_debt_indenture_consents"
+      ],
+      "status_changes": [],
+      "conflicts_created": 0,
+      "pipeline": "regulatory_monitor"
+    },
+    {
+      "doc_type": "PRESS_RELEASE",
+      "doc_date": "2026-03-19",
+      "doc_url": null,
+      "processed_at": "2026-03-20T02:23:27.167753Z",
+      "approvals_found": 6,
+      "additions": [],
+      "status_changes": [],
+      "conflicts_created": 1,
+      "pipeline": "regulatory_monitor"
+    },
+    {
+      "doc_type": "DMA_SECTIONS",
+      "doc_date": "2026-03-19",
+      "doc_url": null,
+      "processed_at": "2026-03-20T02:25:21.056938Z",
+      "approvals_found": 8,
+      "additions": [],
+      "status_changes": [],
+      "conflicts_created": 1,
+      "pipeline": "regulatory_monitor"
+    }
+  ],
+  "documents_triaged": [],
+  "change_log": [
+    {
+      "timestamp": "2026-03-20T02:22:41.959696Z",
+      "source_doc": "DMA_EXTRACT 2026-03-19",
+      "source_doc_type": "DMA_EXTRACT",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "hsr",
+          "detail": "HSR Filing (Hart-Scott-Rodino) newly discovered from DMA_EXTRACT"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_doj",
+          "detail": "DOJ Antitrust Division Clearance newly discovered from DMA_EXTRACT"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_ftc",
+          "detail": "FTC Clearance newly discovered from DMA_EXTRACT"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_cfius",
+          "detail": "CFIUS Review newly discovered from DMA_EXTRACT"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_fda",
+          "detail": "FDA / HHS / CMS Approvals newly discovered from DMA_EXTRACT"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_nasdaq",
+          "detail": "Target Shareholder Vote newly discovered from DMA_EXTRACT"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_sec_s4_proxy",
+          "detail": "SEC Proxy / S-4 Registration Statement newly discovered from DMA_EXTRACT"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_debt_indenture_consents",
+          "detail": "Debt / Indenture Change of Control Consents newly discovered from DMA_EXTRACT"
+        }
+      ]
+    }
+  ]
+}

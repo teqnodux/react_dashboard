@@ -1,0 +1,29 @@
+{
+  "ticker": "SEM",
+  "issuer": "SELECT MEDICAL HOLDINGS CORP",
+  "filing_date": "08/04/25",
+  "insider_name": "Martin F. Jackson",
+  "insider_title": "Executive Vice President",
+  "relationship": "Officer",
+  "L1_headline": "+ SEM \u2013 Martin F. Jackson disposed 29,460 shares (tax withholding). | 08/01/25",
+  "L2_brief": "Executive Vice President Martin F. Jackson disposed of 29,460 shares of common stock at $12.57 per share on August 1, 2025, totaling approximately $370,313. This was a mandatory surrender of shares to cover tax withholding obligations upon vesting of restricted stock, not a discretionary sale, and therefore does not signal bearish sentiment.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "08/01/2025",
+        "shares": "29,460",
+        "price_per_share": "$12.57",
+        "total_value": "$370,313.22",
+        "acquired_or_disposed": "Disposed (D)"
+      }
+    ],
+    "post_transaction_holdings": "1,393,957 total (1,383,421 direct + 10,536 indirect through children)",
+    "ownership_type": "Direct and Indirect (through children)",
+    "deal_signal": "N/A",
+    "pattern_notes": "Transaction code 'F' indicates this was a mandatory tax withholding disposition upon restricted stock vesting, not a voluntary sale. The insider retains substantial holdings of over 1.39 million shares, demonstrating continued significant alignment with shareholders.",
+    "risks_flagged": [
+      "Transaction was mandatory tax withholding (Code F), not discretionary selling"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ticker": "PEN",
+  "issuer": "Penumbra Inc",
+  "filing_date": "02/18/26",
+  "insider_name": "Surbhi Sarna",
+  "insider_title": "Director",
+  "relationship": "Director",
+  "L1_headline": "+ PEN \u2013 Surbhi Sarna acquired 589 RSU shares. | 02/13/2026",
+  "L2_brief": "Penumbra Inc director Surbhi Sarna acquired 589 shares of common stock on 02/13/2026 at $0 per share via a restricted stock unit (RSU) grant. The RSUs vest quarterly through 12/31/2026, with accelerated full vesting upon closing of the pending merger with Boston Scientific Corporation. Post-transaction holdings total 4,293 shares (direct), a portion of which remain subject to vesting.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "02/13/2026",
+        "shares": "589",
+        "price_per_share": "$0",
+        "total_value": "$0",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "4,293 shares (a portion subject to vesting)",
+    "ownership_type": "Direct",
+    "deal_signal": "The filing references a pending merger: per the Agreement and Plan of Merger dated January 14, 2026, among Penumbra Inc, Boston Scientific Corporation, and Pinehurst Merger Sub, Inc., any unvested RSUs will fully vest upon the closing of the merger, subject to continued service as director through the closing date. The RSU grant itself is a standard director compensation award with merger-related acceleration provisions.",
+    "pattern_notes": "This is a scheduled RSU grant to a director, vesting quarterly (1/4 on each of 03/31/2026, 06/30/2026, 09/30/2026, and 12/31/2026). The grant includes an acceleration clause tied to the pending Boston Scientific merger closing. No open-market purchase activity is indicated.",
+    "risks_flagged": [
+      "No 10b5-1 plan noted; transaction is an RSU award at $0 price, not a discretionary open-market trade",
+      "A portion of the 4,293 post-transaction shares remains subject to vesting conditions",
+      "RSU vesting acceleration is contingent on pending merger closing with Boston Scientific"
+    ]
+  },
+  "filing_type": "FORM 4"
+}

@@ -1,0 +1,35 @@
+{
+  "ticker": "SEM",
+  "subject_company": "Select Medical Holdings Corp",
+  "filing_date": "11/24/25",
+  "filing_type": "SC 13D",
+  "filer_name": "Robert A. Ortenzio, Martin F. Jackson, and Estate of Rocco A. Ortenzio",
+  "filer_type": "Individual",
+  "L1_headline": "+ SEM \u2013 Ortenzio family/insiders disclose 15.7% stake with $16.00-$16.20 go-private proposal. | 11/24/25",
+  "L2_brief": "Executive Chairman Robert A. Ortenzio (11.3%), SVP Martin F. Jackson (1.1%), and the Estate of Rocco A. Ortenzio (3.3%) filed a Schedule 13D converting from 13G following submission of a non-binding go-private proposal to acquire all outstanding shares not already owned by the group at $16.00-$16.20 per share in cash. The filing group, consisting of company founders and senior executives, collectively controls approximately 15.7% of Select Medical and is seeking to take the company private, subject to Board approval, customary due diligence, and regulatory approvals.",
+  "L3_detailed": {
+    "ownership_details": {
+      "shares_held": "Robert A. Ortenzio: 14,019,735; Martin F. Jackson: 1,383,421; Estate of Rocco A. Ortenzio: 4,085,550 (significant overlap due to shared holdings)",
+      "percentage_owned": "Robert A. Ortenzio: 11.3%; Martin F. Jackson: 1.1%; Estate of Rocco A. Ortenzio: 3.3%",
+      "sole_voting_power": "Robert A. Ortenzio: 7,081,788; Martin F. Jackson: 1,383,421; Estate: 0",
+      "shared_voting_power": "Robert A. Ortenzio: 6,937,947; Martin F. Jackson: 2,634; Estate: 4,085,550",
+      "sole_dispositive_power": "Robert A. Ortenzio: 7,081,788; Martin F. Jackson: 1,383,421; Estate: 0",
+      "shared_dispositive_power": "Robert A. Ortenzio: 6,937,947; Martin F. Jackson: 2,634; Estate: 4,085,550"
+    },
+    "position_change": "Conversion from Schedule 13G to 13D due to submission of go-private proposal; no transactions in the past 60 days reported",
+    "source_of_funds": "OO (Other) - Shares acquired as compensation for officer/director roles and shares owned prior to IPO as co-founders",
+    "purpose_of_transaction": "On November 24, 2025, the Reporting Persons submitted a non-binding proposal to acquire all outstanding shares not already owned by them at $16.00-$16.20 per share in cash. The proposal is subject to customary due diligence, Board approval, and regulatory approvals. Filing states: 'Mr. Ortenzio delivered a non-binding proposal (the \"Proposal Letter\") to the Board to offer to acquire all such Shares at a price of $16.00 to $16.20 per share, payable in cash.'",
+    "activist_intentions": "Active go-private proposal submitted. As Executive Chairman and senior executives, the filers 'regularly engage in discussions with management of the Issuer, the Board, other shareholders of the Issuer and other relevant parties, which discussions may include matters ranging from the operations and conduct of the Issuer's business to considering or exploring extraordinary corporate transactions.' If the transaction is not consummated, filers reserve the right to engage in any actions under Item 4(a)-(j) of Schedule 13D including acquiring additional shares or selling existing holdings.",
+    "deal_implications": "This is a management-led buyout (MBO) proposal. The insider group controlling ~15.7% of shares is seeking to take the company private. Key considerations: (1) Board must form special committee to evaluate; (2) Transaction requires approval from unaffiliated shareholders; (3) Offer price of $16.00-$16.20 will be scrutinized for fairness; (4) Financing sources referenced but not detailed ('certain other financing sources'); (5) No assurance given that definitive agreement will be reached or transaction consummated.",
+    "related_agreements": "Joint Filing Agreement dated November 24, 2025 among the Reporting Persons (Exhibit 99.1); Proposal Letter dated November 24, 2025 (Exhibit 99.2). Robert A. Ortenzio has shared voting/dispositive power over multiple family trusts and foundations including Rocco A. Ortenzio Revocable Trust (4,028,767 shares) and various family trusts.",
+    "risks_flagged": [
+      "Management buyout creates inherent conflicts of interest requiring special committee review",
+      "Deal uncertainty - filing explicitly states 'no assurance' discussions will result in definitive agreement",
+      "Subject to completion of customary due diligence by the buyer group",
+      "Regulatory approval risk",
+      "Financing not fully detailed - references 'certain other financing sources'",
+      "If deal fails, insiders may acquire additional shares or sell existing holdings",
+      "Potential for competing bids given public disclosure of go-private interest"
+    ]
+  }
+}

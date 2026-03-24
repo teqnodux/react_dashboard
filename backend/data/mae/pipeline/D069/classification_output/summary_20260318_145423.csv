@@ -1,0 +1,13 @@
+label,zone,best_cluster,category,ratio,distance,threshold,num_matches,text_preview
+(A),typical,Broad Economic and Financial Market Changes Exclusion,economic,0.36,0.101,0.2801,1,"change in general United States or global economic conditions, including changes in the credit, debt"
+(B),typical,Broad Economic and Financial Market Changes Exclusion,economic,0.99,0.278,0.2801,1,change that generally affects any of the industries or markets in which any Company Party operates o
+(C),typical,"Changes in Law, GAAP, and Regulatory Accounting Standards",accounting,0.49,0.1441,0.2942,1,change in GAAP or other accounting standards (or the interpretation thereof)
+(D),typical,"Changes in Law, GAAP, and Regulatory Accounting Standards",accounting,0.56,0.1659,0.2942,2,"change in applicable Laws or the interpretation or enforcement thereof, or other legal or regulatory"
+(E),typical,Catastrophic External Events Beyond Party Control,force_majeure,0.48,0.1422,0.2965,1,"geopolitical conditions, the outbreak or escalation of hostilities, any acts of war (whether or not "
+(F),typical,Catastrophic External Events Beyond Party Control,force_majeure,0.59,0.1751,0.2965,1,"earthquakes, hurricanes, tsunamis, tornadoes, floods, mudslides, wild fires, weather-related events,"
+(G),typical,Exclusion for impacts from deal announcement and execution,transaction,0.77,0.1944,0.254,1,"Effect resulting from the announcement or pendency of, compliance with, or the taking of any action "
+(H),typical,Failure to Meet Financial Projections and Forecasts Exclusions,disclosure,0.53,0.1063,0.2025,1,"failure by the Company to meet any projections, forecasts, guidance, estimates, milestones, budgets "
+(I),typical,Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks,transaction,0.28,0.0792,0.2792,1,"change in the Company's stock price or the trading volume of the Company's stock, or any change in t"
+(J),outlier,Exclusion for Stockholder Litigation Arising from Merger Transaction,transaction,1.51,0.4034,0.2664,0,Transaction Litigation
+(K),typical,Actions Taken Pursuant to or Required by Agreement Terms,transaction,0.65,0.1812,0.2786,1,action taken (or omitted to be taken) by the Company or any of its subsidiaries at the written reque
+(L),outlier,Exclusions for Acquiror Identity and Post-Acquisition Plans,transaction,1.25,0.3088,0.2462,0,"Effect arising out of or resulting from any action taken by Parent, Merger Sub or any of their respe"

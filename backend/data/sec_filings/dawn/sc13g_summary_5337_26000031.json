@@ -1,0 +1,29 @@
+{
+  "ticker": "DAWN",
+  "subject_company": "Day One Biopharmaceuticals, Inc.",
+  "filing_date": "03/19/26",
+  "filing_type": "SC 13G",
+  "filer_name": "Glazer Capital, LLC / Paul J. Glazer",
+  "filer_type": "Hedge Fund",
+  "L1_headline": "+ DAWN \u2013 Glazer Capital discloses 5.4% stake. | 03/19/26",
+  "L2_brief": "Glazer Capital, LLC and its Managing Member Paul J. Glazer filed a Schedule 13G disclosing beneficial ownership of 5,615,390 shares of Day One Biopharmaceuticals common stock, representing approximately 5.4% of shares outstanding. The shares are held through Glazer Funds managed by Glazer Capital, with all voting and dispositive power shared. The filing certifies the securities were not acquired for the purpose of changing or influencing control of the issuer.",
+  "L3_detailed": {
+    "ownership_details": {
+      "shares_held": "5,615,390",
+      "percentage_owned": "5.4% (5.44% per Item 4)",
+      "sole_voting_power": "0",
+      "shared_voting_power": "5,615,390",
+      "sole_dispositive_power": "0",
+      "shared_dispositive_power": "5,615,390"
+    },
+    "position_change": "New position (initial Schedule 13G filing triggered by event date 03/12/2026)",
+    "source_of_funds": "Not specified in filing",
+    "purpose_of_transaction": "Passive investment. The filing includes the Item 10 certification stating: \"the securities referred to above were not acquired and are not held for the purpose of or with the effect of changing or influencing the control of the issuer of the securities and were not acquired and are not held in connection with or as a participant in any transaction having that purpose or effect.\"",
+    "activist_intentions": "None stated. Filed under Rule 13d-1(b) as an investment adviser, indicating passive intent.",
+    "deal_implications": "Glazer Capital is a merger arbitrage-focused fund. Glazer Capital Enhanced Master Fund, Ltd. holds more than 5% of the outstanding shares and has the right to receive proceeds from the sale of such shares. This represents a significant passive block that could be relevant to any pending or future transaction vote.",
+    "related_agreements": "None disclosed.",
+    "risks_flagged": [
+      "Large merger-arb oriented fund accumulating a 5.4% passive stake may indicate market expectation of a transaction or position in connection with a pending deal"
+    ]
+  }
+}

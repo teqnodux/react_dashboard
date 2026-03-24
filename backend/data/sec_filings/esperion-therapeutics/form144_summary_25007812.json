@@ -1,0 +1,27 @@
+{
+  "ticker": "ESPR",
+  "issuer": "Esperion Therapeutics, Inc.",
+  "filing_date": "12/17/25",
+  "seller_name": "Benjamin Halladay",
+  "seller_relationship": "Officer",
+  "L1_headline": "+ ESPR \u2013 Benjamin Halladay files to sell 7,337 shares. | 12/17/25",
+  "L2_brief": "Benjamin Halladay, an officer at Esperion Therapeutics, filed to sell 7,337 shares of common stock valued at approximately $26,906. The sale is related to tax obligations from recently vested restricted stock, representing routine compensation-related selling rather than a discretionary decision to reduce holdings.",
+  "L3_detailed": {
+    "proposed_sale": {
+      "shares_to_sell": "7,337",
+      "estimated_value": "$26,906.25",
+      "securities_type": "Common Stock",
+      "acquisition_date": "12/15/2025",
+      "acquisition_method": "Restricted Stock Vesting - Compensation"
+    },
+    "broker_info": "Fidelity Brokerage Services LLC, 900 Salem Street, Smithfield, RI 02917",
+    "seller_total_holdings": "Not disclosed",
+    "percentage_of_holdings": "Not calculable",
+    "deal_signal": "N/A",
+    "risks_flagged": [
+      "Sale appears routine - tied to tax withholding on vested equity award",
+      "Seller sold similar amount (7,046 shares) in September 2025 under same circumstances",
+      "Low dollar value sale (~$27K) suggests minimal conviction signal"
+    ]
+  }
+}

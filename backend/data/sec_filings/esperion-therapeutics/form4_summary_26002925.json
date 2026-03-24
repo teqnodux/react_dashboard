@@ -1,0 +1,29 @@
+{
+  "ticker": "ESPR",
+  "issuer": "Esperion Therapeutics, Inc.",
+  "filing_date": "01/21/26",
+  "insider_name": "Benjamin Looker",
+  "insider_title": "General Counsel",
+  "relationship": "Officer",
+  "L1_headline": "+ ESPR \u2013 Benjamin Looker sold 1,689 shares. | 01/20/26",
+  "L2_brief": "Benjamin Looker, General Counsel of Esperion Therapeutics, sold 1,689 shares at $2.882 per share on January 20, 2026, totaling approximately $4,868. This was a mandatory sale to cover tax obligations on vesting RSUs rather than a discretionary sale, and thus does not signal negative sentiment about the company's prospects.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Sale",
+        "date": "01/20/2026",
+        "shares": "1,689",
+        "price_per_share": "$2.882",
+        "total_value": "$4,867.70",
+        "acquired_or_disposed": "Disposed (D)"
+      }
+    ],
+    "post_transaction_holdings": "384,216 shares",
+    "ownership_type": "Direct",
+    "deal_signal": "N/A",
+    "pattern_notes": "This is a tax-related sale tied to RSU vesting, not a discretionary disposition. The sale represents less than 0.5% of the insider's total holdings, indicating no material reduction in position.",
+    "risks_flagged": [
+      "Sale was for tax withholding on RSU vesting \u2013 not discretionary"
+    ]
+  }
+}

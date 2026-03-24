@@ -1,0 +1,180 @@
+{
+  "deal_id": "tm266533d1_ex2-1",
+  "check_timestamp": "20260221_184156",
+  "track": "specific_provisions",
+  "provisions_checked": {
+    "ordinary_course_(highest_risk)": {
+      "present": false,
+      "language_found": "",
+      "section_reference": "Interim Operations",
+      "materiality_qualifier": false,
+      "past_practice_language": false,
+      "carveouts": {
+        "required_by_law": false,
+        "pandemic_flexibility": false,
+        "industry_disruption": false,
+        "disclosed_actions": false
+      },
+      "preserve_relationships_language": false,
+      "risk_level": "high",
+      "risk_factors": [
+        "No 'ordinary course of business' language present",
+        "No 'consistent with past practice' language present",
+        "No language regarding preserving relationships",
+        "No exceptions for required by law",
+        "No flexibility for pandemic or force majeure",
+        "No industry-wide disruption carveouts",
+        "No disclosed actions carveouts"
+      ],
+      "confidence": "low"
+    },
+    "parent_consent_rights": {
+      "present": false,
+      "consent_areas": {
+        "debt_incurrence": false,
+        "senior_management": false,
+        "capex": false,
+        "material_contracts": false,
+        "pricing_changes": false,
+        "litigation_settlement": false
+      },
+      "consent_standard": "unknown",
+      "time_bound": false,
+      "response_timeframe": "",
+      "thresholds": [],
+      "risk_level": "low",
+      "risk_factors": [],
+      "confidence": "low"
+    },
+    "no_shop___go_shop": {
+      "present": false,
+      "no_shop_language": false,
+      "no_solicitation_language": false,
+      "fiduciary_out_present": false,
+      "fiduciary_out_scope": "",
+      "matching_rights": false,
+      "matching_timeframe": "",
+      "go_shop_period": false,
+      "go_shop_duration": "",
+      "information_restrictions": false,
+      "risk_level": "low",
+      "risk_factors": [],
+      "confidence": "high"
+    },
+    "unusually_restrictive": {
+      "present": false,
+      "restrictions_found": {
+        "hiring_freeze": false,
+        "customer_discount_limits": false,
+        "inventory_restrictions": false,
+        "strategic_initiative_limits": false
+      },
+      "industry_context_flexibility": true,
+      "cyclical_business_considerations": true,
+      "risk_level": "low",
+      "risk_factors": [],
+      "confidence": "high"
+    },
+    "mae_linked_covenants": {
+      "present": false,
+      "mae_language_in_covenants": false,
+      "language_found": "",
+      "mae_carveouts_narrow": false,
+      "operating_covenants_strict": false,
+      "litigation_risk_setup": false,
+      "risk_level": "low",
+      "risk_factors": [],
+      "confidence": "high"
+    },
+    "financing_cooperation": {
+      "present": false,
+      "buyer_needs_financing": false,
+      "target_must_assist": false,
+      "cooperation_burden": "unknown",
+      "financing_condition_linked": false,
+      "buyer_efforts_standard": "unknown",
+      "risk_level": "low",
+      "risk_factors": [],
+      "confidence": "high"
+    },
+    "regulatory_restrictions": {
+      "present": false,
+      "integration_planning_restrictions": false,
+      "gun_jumping_limitations": false,
+      "information_sharing_protocols": false,
+      "regulatory_coordination_weak": false,
+      "risk_level": "low",
+      "risk_factors": [],
+      "confidence": "high"
+    },
+    "working_capital_constraints": {
+      "present": false,
+      "specific_wc_levels": false,
+      "inventory_standards": false,
+      "capex_ranges": false,
+      "seasonal_business_risk": true,
+      "thresholds_found": [],
+      "risk_level": "high",
+      "risk_factors": [
+        "lack of specific working capital levels",
+        "absence of inventory standards",
+        "no defined CapEx ranges"
+      ],
+      "confidence": "low"
+    },
+    "employee_restrictions": {
+      "present": false,
+      "restrictions_found": {
+        "retention_bonus_limits": false,
+        "raise_restrictions": false,
+        "severance_limitations": false,
+        "union_agreement_restrictions": false
+      },
+      "tight_labor_market_risk": true,
+      "risk_level": "medium",
+      "risk_factors": [
+        "Tight labor market conditions",
+        "Potential for employee turnover",
+        "Impact on operational continuity"
+      ],
+      "confidence": "medium"
+    },
+    "asymmetry___carveouts": {
+      "present": true,
+      "target_heavily_restricted": true,
+      "buyer_lightly_restricted": true,
+      "leverage_imbalance": true,
+      "weak_buyer_commitment_signals": true,
+      "specific_asymmetries": [
+        "Target is subject to extensive operational restrictions during the interim period, limiting its ability to make strategic decisions.",
+        "Buyer has minimal operational obligations, allowing for greater flexibility and control over the transaction process."
+      ],
+      "risk_level": "high",
+      "risk_factors": [
+        "Imbalance in operational flexibility between buyer and target.",
+        "Potential for buyer to exploit target's restrictions for favorable terms.",
+        "Weak buyer commitment may lead to lack of investment in target's operations."
+      ],
+      "confidence": "medium"
+    }
+  },
+  "risk_summary": {
+    "overall_risk_level": "low",
+    "risk_score": 3,
+    "high_risk_provisions": [
+      "asymmetry___carveouts"
+    ],
+    "medium_risk_provisions": [],
+    "low_risk_provisions": [],
+    "provisions_checked": 10,
+    "provisions_present": 1,
+    "top_concerns": [
+      "\u26a0\ufe0f  Asymmetry   Carveouts flagged as high risk"
+    ]
+  },
+  "token_usage": {
+    "input_tokens": 4014,
+    "output_tokens": 814,
+    "estimated_cost": 0.0010905
+  }
+}

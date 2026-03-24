@@ -1,0 +1,86 @@
+{
+  "deal_id": "D024",
+  "last_updated": "2026-02-27",
+  "approvals": [
+    {
+      "id": "hsr",
+      "jurisdiction": "United States",
+      "authority_short": "HSR / FTC+DOJ",
+      "authority_full": "Federal Trade Commission / Department of Justice",
+      "statute": "Hart-Scott-Rodino Antitrust Improvements Act",
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "hsr_filed",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "HSR pre-merger notification filing required",
+      "source_doc": "Initial Summary",
+      "source_doc_type": "summary",
+      "source_doc_url": null,
+      "first_seen_date": "2026-02-27"
+    },
+    {
+      "id": "hsr",
+      "jurisdiction": "United States",
+      "authority_short": "HSR Act",
+      "authority_full": "HSR Act",
+      "statute": null,
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "hsr_filed",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "HSR filing must be submitted as soon as reasonably practicable post-agreement and clearance is a condition to closing.",
+      "source_doc": "Initial Summary",
+      "source_doc_type": "summary",
+      "source_doc_url": null,
+      "first_seen_date": "2026-02-27"
+    }
+  ],
+  "documents_processed": [
+    {
+      "doc_type": "summary",
+      "doc_date": "2025-07-18",
+      "doc_url": null,
+      "processed_at": "2026-02-27T05:42:18.158191Z",
+      "approvals_found": 2,
+      "additions": [
+        "hsr",
+        "hsr"
+      ],
+      "status_changes": []
+    },
+    {
+      "doc_type": "PREM14A",
+      "doc_date": "2025-08-28",
+      "doc_url": "https://www.sec.gov/Archives/edgar/data/892553/000119312525191284/d52397dprem14a.htm",
+      "processed_at": "2026-02-27T05:58:58.265793Z",
+      "approvals_found": 0,
+      "additions": [],
+      "status_changes": []
+    }
+  ],
+  "change_log": [
+    {
+      "timestamp": "2026-02-27T05:42:18.158191Z",
+      "source_doc": "Initial Summary",
+      "source_doc_type": "summary",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "hsr",
+          "detail": "HSR / FTC+DOJ added from initial deal summary"
+        },
+        {
+          "type": "added",
+          "approval_id": "hsr",
+          "detail": "HSR Act added from initial deal summary"
+        }
+      ]
+    }
+  ]
+}

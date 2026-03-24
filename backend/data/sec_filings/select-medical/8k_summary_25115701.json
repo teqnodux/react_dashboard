@@ -1,0 +1,31 @@
+{
+  "ticker": "SEM",
+  "filing_date": "11/25/25",
+  "items_reported": [
+    "Item 7.01",
+    "Item 9.01"
+  ],
+  "L1_headline": "SEM \u2013 Executive Chairman submits take-private proposal. | 11/24/25",
+  "L2_brief": "Select Medical disclosed a non-binding indication of interest from Executive Chairman Robert Ortenzio to take the company private, submitted to the Board on November 24, 2025. The proposal was filed via Schedule 13D by Ortenzio, the Estate of Rocco A. Ortenzio, and Mr. Jackson as a group. This represents an early-stage potential transaction with no binding agreement or definitive terms disclosed.",
+  "L3_detailed": {
+    "event": "Executive Chairman Robert A. Ortenzio submitted a non-binding indication of interest to the Board of Directors to take Select Medical Holdings Corporation private",
+    "key_figures": [
+      "Non-binding proposal date: November 24, 2025",
+      "No price or valuation disclosed in 8-K"
+    ],
+    "deal_implications": "Very early stage - non-binding indication of interest only; Board will need to evaluate proposal; no certainty of transaction occurring; potential for competing bids or Board rejection",
+    "remaining_conditions": [
+      "Board evaluation and response to proposal",
+      "Negotiation of definitive terms and price",
+      "Financing arrangements",
+      "Due diligence",
+      "Shareholder approval if deal proceeds",
+      "Regulatory approvals"
+    ],
+    "risks_flagged": [
+      "Non-binding nature of proposal creates significant uncertainty",
+      "Insider/management-led buyout may raise conflicts of interest and special committee requirements",
+      "No disclosed financing commitments"
+    ]
+  }
+}

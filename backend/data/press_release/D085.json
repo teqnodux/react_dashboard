@@ -1,0 +1,38 @@
+{
+  "deal_id": "D085",
+  "extracted": {
+    "target": "Penumbra, Inc.",
+    "acquirer": "Boston Scientific Corporation",
+    "offer_price_cash": 374.0,
+    "cvr_value": null,
+    "stock_exchange_ratio": 3.8721,
+    "total_consideration": null,
+    "deal_value_bn": null,
+    "deal_type": "cash+stock",
+    "premium_pct": null,
+    "undisturbed_date": null,
+    "undisturbed_reference": null,
+    "expected_close": "1H26 or 2H26",
+    "expected_close_date": null,
+    "announce_date": "2026-01-14",
+    "go_shop_days": null,
+    "diluted_shares_mm": null,
+    "cash_on_hand_bn": null,
+    "debt_bn": null,
+    "financing": "No financing condition; mixed cash/stock consideration removes funding risk",
+    "regulatory_bodies": [
+      "SEC",
+      "HSR",
+      "NYSE",
+      "International antitrust authorities"
+    ],
+    "shareholder_approval_required": true,
+    "dividend_info": null,
+    "special_conditions": "Proration mechanism: 73.26% of shares receive $374.00 cash per share, 26.74% receive 3.8721 BSX shares per PEN share, subject to proration. Equity awards: $274.00 cash or 1.0353 BSX shares per PEN share. Reverse termination fee: $900M (antitrust-related failure by Parent). Termination fee: $525M (Company termination under specified circumstances). Fiduciary out provision allows PEN Board to change recommendation or terminate for superior proposal (subject to $525M termination fee).",
+    "minority_investors": [],
+    "raw_summary": "Boston Scientific to acquire Penumbra in cash/stock deal"
+  },
+  "source_text": "======================================================================\n  8-K SUMMARY\n======================================================================\n\n📌 L1 | HEADLINE\n   PEN – Boston Scientific to acquire Penumbra in cash/stock deal. | 01/15/26\n\n📋 L2 | BRIEF\n   Penumbra entered into a definitive merger agreement with Boston Scientific on January 14, 2026, under which PEN shareholders will receive $374.00 per share in cash (73.26% of shares) or 3.8721 BSX shares per PEN share (26.74% of shares), subject to proration. The transaction requires PEN stockholder approval (majority vote), HSR and international antitrust clearances, and SEC effectiveness of a Form S-4 registration statement; Parent owes a $900M reverse termination fee for antitrust-related failure, while the Company owes a $525M termination fee under specified circumstances.\n\n📊 L3 | DETAILED\n   Event:       Penumbra, Inc. (PEN) entered into an Agreement and Plan of Merger with Boston Scientific Corporation (BSX) and its wholly owned subsidiary Pinehurst Merger Sub, Inc., pursuant to which Merger Sub will merge with and into PEN, with PEN surviving as a wholly owned subsidiary of BSX.\n   Key Figures:\n     • Cash consideration: $374.00 per share (for 73.26% of outstanding shares)\n     • Stock consideration: 3.8721 BSX shares per PEN share (for 26.74% of outstanding shares)\n     • Equity Award Cash Consideration: $274.00 per share; Equity Award Stock Consideration: 1.0353 BSX shares per PEN share\n     • Company termination fee: $525,000,000\n     • Parent reverse termination fee (antitrust-related): $900,000,000\n     • Merger Agreement signed: January 14, 2026\n     • No financing condition\n   Deal Impact: The merger agreement has been executed with a mixed cash/stock structure subject to proration. The absence of a financing condition removes funding risk. The large $900M reverse break fee provides protection to PEN shareholders against antitrust-related deal failure. Timeline depends on SEC registration statement effectiveness, stockholder vote, and antitrust clearances across multiple jurisdictions.\n   Remaining Conditions:\n     • PEN stockholder approval (majority of outstanding voting power)\n     • HSR Act waiting period expiration or termination\n     • Antitrust consents/approvals in certain other jurisdictions\n     • Effectiveness of BSX Form S-4 registration statement with the SEC\n     • NYSE listing approval for BSX shares to be issued as stock consideration\n     • No law or order enjoining or prohibiting the Merger\n     • Accuracy of representations and warranties (subject to materiality qualifiers)\n     • Material compliance with pre-closing covenants\n     • Absence of material adverse effect on either party\n   Risks:\n     • Antitrust regulatory risk across multiple jurisdictions (HSR and international)\n     • Potential litigation relating to the proposed transaction against PEN or its directors (noted in forward-looking statements)\n     • Proration mechanism means individual shareholders may not receive their elected form of consideration\n     • Fiduciary out provision permits the PEN Board to change recommendation or terminate for a superior proposal (subject to $525M termination fee)\n     • Preliminary Q4/FY2025 financial results disclosed but unaudited; actual results may differ",
+  "extracted_at": "2026-03-13T18:14:25.350085Z",
+  "filing_date": "2026-01-14"
+}

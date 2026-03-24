@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thermon Group Holdings, Inc. — Termination Analysis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0e14;
+            --bg-secondary: #0f1419;
+            --bg-tertiary: #151c24;
+            --bg-hover: #1a232e;
+            --text-primary: #e6e6e6;
+            --text-secondary: #8a919a;
+            --text-muted: #5c6370;
+            --accent-blue: #5ccfe6;
+            --accent-green: #87d96c;
+            --accent-yellow: #ffcc66;
+            --accent-red: #f07178;
+            --accent-orange: #ff8c42;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'IBM Plex Sans', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-sans); background: var(--bg-primary); color: var(--text-primary); line-height: 1.5; }
+        .container { max-width: 1600px; margin: 0 auto; padding: 16px; }
+
+        /* Header */
+        .header {
+            background: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 4px;
+            padding: 14px 20px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-family: var(--font-mono);
+        }
+        .deal-id { font-size: 1.15rem; font-weight: 600; color: var(--text-primary); }
+        .deal-meta { font-size: 0.72rem; color: var(--text-muted); margin-top: 3px; }
+        .deal-type-label {
+            margin-left: auto;
+            padding: 5px 14px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: rgba(92,207,230,0.12);
+            color: var(--accent-blue);
+            border: 1px solid rgba(92,207,230,0.3);
+            white-space: nowrap;
+        }
+
+        /* Section */
+        .section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 4px;
+            margin-bottom: 14px;
+            overflow: hidden;
+        }
+        .section-header {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--bg-tertiary);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-blue);
+        }
+        .section-body { padding: 14px 16px; }
+
+        /* Guide table */
+        .guide-table { width: 100%; border-collapse: collapse; }
+        .guide-table th {
+            font-family: var(--font-mono);
+            text-align: left;
+            padding: 8px 12px;
+            font-weight: 500;
+            font-size: 0.67rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            background: var(--bg-tertiary);
+        }
+        .guide-table td {
+            font-family: var(--font-mono);
+            padding: 9px 12px;
+            border-bottom: 1px solid var(--bg-tertiary);
+            font-size: 0.76rem;
+            vertical-align: top;
+        }
+        .guide-table tbody tr:last-child td { border-bottom: none; }
+        .guide-note { font-size: 0.68rem; color: var(--text-muted); margin-top: 2px; }
+        .guide-notes-cell { max-width: 180px; white-space: normal; word-wrap: break-word; }
+        .fee-summary {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+        .fee-summary-item {
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            padding: 7px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 120px;
+        }
+        .fee-summary-label {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .fee-summary-amount {
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+        .fee-summary-pct {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-top: 1px;
+        }
+
+        /* Structural terms cards */
+        .terms-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .term-card {
+            background: var(--bg-tertiary);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 4px;
+            padding: 12px 14px;
+        }
+        .term-label {
+            font-family: var(--font-mono);
+            font-size: 0.67rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        .term-value {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .term-sub {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            margin-top: 3px;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 2px 7px;
+            border-radius: 3px;
+            font-size: 0.68rem;
+            font-weight: 500;
+            font-family: var(--font-mono);
+        }
+        .badge-red    { background: rgba(240,113,120,0.15); color: var(--accent-red); }
+        .badge-yellow { background: rgba(255,204,102,0.15); color: var(--accent-yellow); }
+        .badge-green  { background: rgba(135,217,108,0.15); color: var(--accent-green); }
+        .badge-blue   { background: rgba(92,207,230,0.15);  color: var(--accent-blue); }
+        .badge-muted  { background: rgba(92,99,112,0.2);    color: var(--text-muted); }
+
+        /* Clause audit cards */
+        .audit-missing {
+            background: rgba(240,113,120,0.07);
+            border: 1px solid rgba(240,113,120,0.25);
+            border-radius: 4px;
+            padding: 10px 14px;
+            margin-bottom: 12px;
+        }
+        .audit-missing-title {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--accent-red);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+        .audit-missing-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .audit-missing-list li {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            padding: 2px 8px;
+            background: rgba(240,113,120,0.1);
+            border: 1px solid rgba(240,113,120,0.2);
+            border-radius: 3px;
+            color: var(--accent-red);
+        }
+        .audit-signals {
+            background: rgba(92,207,230,0.06);
+            border: 1px solid rgba(92,207,230,0.2);
+            border-radius: 4px;
+            padding: 10px 14px;
+            margin-bottom: 12px;
+        }
+        .audit-signals-title {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .signal-item { margin-bottom: 8px; }
+        .signal-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+        .signal-explanation { font-size: 0.76rem; color: var(--text-secondary); margin-top: 2px; }
+        /* Clause audit rows */
+        .audit-row {
+            display: grid;
+            grid-template-columns: 160px 1fr 70px 110px 20px;
+            align-items: center;
+            padding: 9px 16px;
+            border-bottom: 1px solid var(--bg-tertiary);
+            cursor: pointer;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            gap: 12px;
+        }
+        .audit-row:hover { background: var(--bg-hover); }
+        .audit-row:last-child { border-bottom: none; }
+        .audit-row.non-standard { border-left: 3px solid var(--accent-yellow); }
+        .audit-row.standard     { border-left: 3px solid transparent; }
+        .audit-trigger { font-weight: 600; }
+        .audit-theme   { color: var(--text-secondary); font-size: 0.72rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .audit-chevron { color: var(--text-muted); font-size: 0.65rem; text-align: right; transition: transform 0.15s; }
+        .audit-chevron.open { transform: rotate(90deg); }
+        .audit-detail {
+            display: none;
+            background: var(--bg-tertiary);
+            padding: 12px 16px 12px 20px;
+            border-bottom: 1px solid var(--bg-tertiary);
+            border-left: 3px solid var(--accent-yellow);
+        }
+        .audit-detail.show { display: block; }
+        .detail-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; margin-top: 8px; }
+        .detail-label:first-child { margin-top: 0; }
+        .detail-text { font-size: 0.74rem; color: var(--text-secondary); line-height: 1.55; font-family: var(--font-mono); }
+
+        /* Missing provisions */
+        .missing-prov-section {
+            padding: 14px 16px;
+            border-top: 1px solid var(--bg-tertiary);
+        }
+        .missing-prov-title {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        .missing-prov-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 8px;
+        }
+        .missing-prov-card {
+            background: var(--bg-primary);
+            border: 1px solid rgba(255,204,102,0.2);
+            border-left: 3px solid var(--accent-yellow);
+            border-radius: 4px;
+            padding: 9px 12px;
+        }
+        .missing-prov-name {
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            font-weight: 600;
+            color: var(--accent-yellow);
+            margin-bottom: 3px;
+        }
+        .missing-prov-desc { font-size: 0.70rem; color: var(--text-secondary); }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 1. HEADER -->
+    <div class="header">
+        <div>
+            <div class="deal-id">Thermon Group Holdings, Inc.</div><div class="deal-meta">tm267070d1_ex2-1 &middot; Termination Analysis &middot; 20260224_124226</div>
+        </div>
+        <div class="deal-type-label">Merger of Equals</div>
+    </div>
+
+    <!-- 2. TERMINATION GUIDE -->
+    <div class="section">
+        <div class="section-header">Termination Guide &mdash; What Happens in Each Scenario</div>
+        <div class="section-body">
+        <div class="fee-summary">        <div class="fee-summary-item">
+                <div class="fee-summary-label" style="color:var(--text-secondary)">Deal Equity Value</div>
+                <div class="fee-summary-amount" style="color:var(--text-primary)">$329M</div>
+            </div>        <div class="fee-summary-item">
+                <div class="fee-summary-label" style="color:var(--accent-yellow)">CTF</div>
+                <div class="fee-summary-amount" style="color:var(--text-primary)">$75M</div>
+                <div class="fee-summary-pct">22.7% of deal value</div>
+            </div>        <div class="fee-summary-item">
+                <div class="fee-summary-label" style="color:var(--accent-blue)">RTF</div>
+                <div class="fee-summary-amount" style="color:var(--text-primary)">$105M</div>
+                <div class="fee-summary-pct" style="color:var(--accent-blue)">31.9% of deal value</div>
+            </div></div>
+            <table class="guide-table">
+                <thead>
+                    <tr>
+                        <th>Trigger</th>
+                        <th>Who Invokes</th>
+                        <th>Fee</th>
+                        <th>Direction</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Mutual Consent</td>
+                    <td>Either party</td>
+                    <td><span style="font-size:0.9rem;font-weight:600;color:var(--text-muted)">None</span></td>
+                    <td>None</td>
+                    <td class="guide-notes-cell"></td>
+                </tr>
+                <tr>
+                    <td>Outside Date</td>
+                    <td>Either party</td>
+                    <td><span style="font-size:0.9rem;font-weight:600;color:var(--text-muted)">None</span></td>
+                    <td>None</td>
+                    <td class="guide-notes-cell"></td>
+                </tr>
+                <tr>
+                    <td>Regulatory Block</td>
+                    <td>Either party</td>
+                    <td><span style="font-size:0.9rem;font-weight:600;color:var(--text-muted)">None</span></td>
+                    <td>None</td>
+                    <td class="guide-notes-cell"></td>
+                </tr>
+                <tr>
+                    <td>Shareholder Vote Failure</td>
+                    <td>Either party</td>
+                    <td><span style="font-size:0.9rem;font-weight:600;color:var(--text-muted)">None</span></td>
+                    <td>None</td>
+                    <td class="guide-notes-cell"></td>
+                </tr>
+                <tr>
+                    <td>Target Breach</td>
+                    <td>Parent (acquirer)</td>
+                    <td><span style="font-size:0.9rem;font-weight:600;color:var(--accent-yellow)">$75M</span></td>
+                    <td>Company &rarr; Parent</td>
+                    <td class="guide-notes-cell"><div class="guide-note">Tail: 12 mo</div></td>
+                </tr>
+                <tr>
+                    <td>Target Fiduciary Out</td>
+                    <td>Company (target)</td>
+                    <td><span style="font-size:0.9rem;font-weight:600;color:var(--accent-yellow)">$75M</span></td>
+                    <td>Company &rarr; Parent</td>
+                    <td class="guide-notes-cell"><div class="guide-note">Tail: 12 mo</div></td>
+                </tr>
+                <tr>
+                    <td>Acquirer Fiduciary Out</td>
+                    <td>Parent (acquirer)</td>
+                    <td><span style="font-size:0.9rem;font-weight:600;color:var(--accent-blue)">$105M</span></td>
+                    <td>Parent &rarr; Company</td>
+                    <td class="guide-notes-cell"></td>
+                </tr>
+                <tr>
+                    <td>Acquirer Breach</td>
+                    <td>Company (target)</td>
+                    <td><span style="font-size:0.9rem;font-weight:600;color:var(--accent-blue)">$105M</span></td>
+                    <td>Parent &rarr; Company</td>
+                    <td class="guide-notes-cell"></td>
+                </tr>
+                </tbody>
+            </table>
+            <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+                
+                <div style="background:var(--bg-tertiary);border-radius:4px;padding:9px 14px">
+                    <div style="font-size:0.88rem;font-weight:600;color:var(--text-primary);margin-bottom:2px">Acquirer Reimbursement Expenses</div>
+                    <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:6px">Company reimburses acquirer for documented out-of-pocket costs</div>
+                    <div style="font-size:0.72rem;color:var(--text-muted);font-style:italic">Not present in this agreement</div>
+                </div>
+                
+                <div style="background:var(--bg-tertiary);border-radius:4px;padding:9px 14px">
+                    <div style="font-size:0.88rem;font-weight:600;color:var(--text-primary);margin-bottom:2px">Target Reimbursement Expenses</div>
+                    <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:6px">Acquirer reimburses target for documented out-of-pocket costs</div>
+                    <div style="font-size:0.72rem;color:var(--text-muted);font-style:italic">Not present in this agreement</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. STRUCTURAL TERMS -->
+    <div class="section">
+        <div class="section-header">Structural Terms</div>
+        <div class="section-body">
+            <div class="terms-row">
+                <div class="term-card">
+                    <div class="term-label">Tail Provision</div>
+                    <div class="term-value" style="color:var(--accent-green)">12 months</div>
+                    
+                </div>
+                <div class="term-card">
+                    <div class="term-label">Specific Performance</div>
+                    <div class="term-value" style="color:var(--text-muted)">Not Specified</div>
+                    
+                </div>
+                <div class="term-card">
+                    <div class="term-label">Willful Breach</div>
+                    <div class="term-value" style="color:var(--accent-green)">Survives Fee Payment</div>
+                    <div class="term-sub">Willful breach exposes party to additional damages</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-label">Sole Remedy</div>
+                    <div class="term-value" style="color:var(--text-muted)">Not Specified</div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. CLAUSE AUDIT + MISSING PROVISIONS -->
+    <div class="section">
+        <div class="section-header">Clause Audit</div>
+        <div class="section-body" style="padding:0">
+        <div class="audit-signals" style="border-radius:0;border:none;border-bottom:1px solid var(--bg-tertiary);margin:0;padding:0">
+                <div class="audit-signals-title" style="padding:8px 16px 0">Notable Signals</div>
+            <div class="signal-item" style="padding:10px 16px;border-bottom:1px solid var(--bg-tertiary)">
+                    <div class="signal-label">Merger of Equals &mdash; Acquirer Fiduciary Out</div>
+                    <div class="signal-explanation">Parent requires its own stockholder approval and has a fiduciary out. This is characteristic of a stock-for-stock merger between two public companies, not a traditional acquisition where only the target votes.</div>
+                </div>        </div>
+        <div class="audit-row standard" onclick="toggleDetail(0)" id="row-0">
+            <div class="audit-trigger">Mutual Consent</div>
+            <div class="audit-theme">Bilateral Termination by Mutual Written Consent Anytime</div>
+            <div><span class="badge badge-green">99.0%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-0">&#9654;</div>
+        </div>        <div class="audit-row standard" onclick="toggleDetail(1)" id="row-1">
+            <div class="audit-trigger">Outside Date</div>
+            <div class="audit-theme">Mutual Outside Date Termination with Automatic Regulatory Extensions</div>
+            <div><span class="badge badge-green">88.8%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-1">&#9654;</div>
+        </div>        <div class="audit-row standard" onclick="toggleDetail(2)" id="row-2">
+            <div class="audit-trigger">Regulatory Block</div>
+            <div class="audit-theme">Permanent Legal Restraint Preventing Merger Consummation Termination Rights</div>
+            <div><span class="badge badge-green">88.4%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-2">&#9654;</div>
+        </div>        <div class="audit-row standard" onclick="toggleDetail(3)" id="row-3">
+            <div class="audit-trigger">Shareholder Vote Failure</div>
+            <div class="audit-theme">Termination Right Upon Failure to Obtain Stockholder Approval</div>
+            <div><span class="badge badge-green">92.4%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-3">&#9654;</div>
+        </div>        <div class="audit-row standard" onclick="toggleDetail(4)" id="row-4">
+            <div class="audit-trigger">Shareholder Vote Failure</div>
+            <div class="audit-theme">Termination Right Upon Failure to Obtain Stockholder Approval</div>
+            <div><span class="badge badge-green">90.4%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-4">&#9654;</div>
+        </div>        <div class="audit-row standard" onclick="toggleDetail(5)" id="row-5">
+            <div class="audit-trigger">Target Breach</div>
+            <div class="audit-theme">Termination Rights for Material Breach with Cure Period</div>
+            <div><span class="badge badge-green">87.3%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-5">&#9654;</div>
+        </div>        <div class="audit-row standard" onclick="toggleDetail(6)" id="row-6">
+            <div class="audit-trigger">Target Fiduciary Out</div>
+            <div class="audit-theme">Acquirer Termination Right for Adverse Recommendation Change Events</div>
+            <div><span class="badge badge-green">82.6%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-6">&#9654;</div>
+        </div>        <div class="audit-row non-standard" onclick="toggleDetail(7)" id="row-7">
+            <div class="audit-trigger">Target Breach</div>
+            <div class="audit-theme">Acquirer Termination Rights for Target's No-Shop Covenant Violations</div>
+            <div><span class="badge badge-yellow">70.4%</span></div>
+            <div><span class="badge badge-yellow">Non-Standard</span></div>
+            <div class="audit-chevron" id="chev-7">&#9654;</div>
+        </div>        <div class="audit-row standard" onclick="toggleDetail(8)" id="row-8">
+            <div class="audit-trigger">Acquirer Fiduciary Out</div>
+            <div class="audit-theme">Target Board Termination Right to Accept Superior Proposal</div>
+            <div><span class="badge badge-green">92.1%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-8">&#9654;</div>
+        </div>        <div class="audit-row standard" onclick="toggleDetail(9)" id="row-9">
+            <div class="audit-trigger">Acquirer Breach</div>
+            <div class="audit-theme">Termination Rights for Material Breach with Cure Period</div>
+            <div><span class="badge badge-green">86.1%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-9">&#9654;</div>
+        </div>        <div class="audit-row standard" onclick="toggleDetail(10)" id="row-10">
+            <div class="audit-trigger">Acquirer Fiduciary Out</div>
+            <div class="audit-theme">Acquirer Termination Right for Adverse Recommendation Change Events</div>
+            <div><span class="badge badge-green">83.3%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-10">&#9654;</div>
+        </div>        <div class="audit-row non-standard" onclick="toggleDetail(11)" id="row-11">
+            <div class="audit-trigger">Acquirer Breach</div>
+            <div class="audit-theme">Acquirer Termination Rights for Target's No-Shop Covenant Violations</div>
+            <div><span class="badge badge-yellow">70.8%</span></div>
+            <div><span class="badge badge-yellow">Non-Standard</span></div>
+            <div class="audit-chevron" id="chev-11">&#9654;</div>
+        </div>        <div class="audit-row standard" onclick="toggleDetail(12)" id="row-12">
+            <div class="audit-trigger">Target Fiduciary Out</div>
+            <div class="audit-theme">Target Board Termination Right to Accept Superior Proposal</div>
+            <div><span class="badge badge-green">93.0%</span></div>
+            <div><span class="badge badge-green">Standard</span></div>
+            <div class="audit-chevron" id="chev-12">&#9654;</div>
+        </div>
+        <script>
+        const auditDetails = [{"idx": 0, "why_flagged": "", "original": "by mutual written consent of Parent and the Company;"}, {"idx": 1, "why_flagged": "", "original": "if the Mergers shall not have been consummated on or before August 24, 2026 (such date, the \"Initial Outside Date\", and the Initial Outside Date, as it may be extended pursuant to this Section 7.1(b)(i), the \"Outside Date\"); provided, however, that if, as of the Initial Outside Date, the conditions set forth in Section 6.1(b) and Section 6.1(c) (in each case, to the extent relating to any Antitrust Laws, including the expiration or termination of the waiting period under the HSR Act (including any extension thereof)) shall not have been satisfied or waived, but all of the other conditions set \u2026"}, {"idx": 2, "why_flagged": "", "original": "if any court of competent jurisdiction shall have issued a judgment, order, injunction or decree permanently prohibiting or making illegal the consummation of the Mergers, and such judgment, order, injunction or decree shall have become final and nonappealable or any material Law shall have been enacted or promulgated after the date hereof in any jurisdiction material to the Company and its Subsidiaries, taken as a whole, or to Parent and its Subsidiaries, taken as a whole, that, in any such case, prohibits or makes illegal the consummation of the Mergers and such Law shall have become final a\u2026"}, {"idx": 3, "why_flagged": "", "original": "if the Company Stockholder Approval shall not have been obtained at the Company Stockholders Meeting duly convened therefor or at any adjournment or postponement thereof at which a vote on the adoption of this Agreement was taken; provided, that the right to terminate this Agreement pursuant to this Section 7.1(b)(iii) shall not be available to the Company if the Company's failure to fulfill in any material respect any of its obligations under this Agreement has been a principal cause of, or a principal factor that resulted in, the failure to obtain the Company Stockholder Approval; or"}, {"idx": 4, "why_flagged": "", "original": "if the Parent Stockholder Approval shall not have been obtained at the Parent Stockholders Meeting duly convened therefor or at any adjournment or postponement thereof at which a vote on the Stock Issuance was taken; provided, that the right to terminate this Agreement pursuant to this Section 7.1(b)(iv) shall not be available to Parent if Parent's failure to fulfill in any material respect any of its obligations under this Agreement has been a principal cause of, or a principal factor that resulted in, the failure to obtain the Parent Stockholder Approval;"}, {"idx": 5, "why_flagged": "", "original": "if the Company shall have breached or failed to perform any of its representations, warranties, covenants or agreements set forth in this Agreement (other than with respect to a Company Material No-Shop Breach, as to which Section 7.1(c)(iii) will apply), or if any representation or warranty of the Company shall have become untrue, which breach or failure to perform or to be true, either individually or in the aggregate, if occurring or continuing at the Effective Time (A) would result in the failure of any of the conditions set forth in Section 6.1 or Section 6.2 and (B) cannot be or has not \u2026"}, {"idx": 6, "why_flagged": "", "original": "if (A) a Company Adverse Recommendation Change shall have occurred, (B) the Company shall, within ten (10) Business Days of a tender or exchange offer relating to securities of the Company having been commenced, fail to publicly recommend against such tender or exchange offer (it being understood and agreed that, if accurate, the Company shall be permitted to solely disclose in such announcement a factual statement that the Company continues to negotiate with the Person that made such tender offer or exchange offer (provided, that such announcement does not otherwise include any other statemen\u2026"}, {"idx": 7, "why_flagged": "Similarity to closest benchmark cluster is 70.4%, below the 80% threshold. Best match was 'Acquirer Termination Rights for Target's No-Shop Covenant Violations'. The clause language differs enough from any benchmark Target Breach clause to fall outside standard range.", "original": "at any time prior to the receipt of the Company Stockholder Approval, if the Company commits a Willful and Material Breach of Section 5.2(a) (it being understood and agreed that the Company shall not be deemed to have committed a Willful and Material Breach of its obligation to use reasonable best efforts to cause the Representatives of the Company and its Subsidiaries to take or not take the actions contemplated by Section 5.2(a) unless an officer or director of the Company (A) knowingly encouraged, facilitated or otherwise participated in a material breach of Section 5.2(a) by the applicable\u2026"}, {"idx": 8, "why_flagged": "", "original": "at any time prior to the receipt of the Parent Stockholder Approval, in order to enter into a definitive Alternative Acquisition Agreement to effect a Parent Superior Proposal in compliance with Section 5.3(c); provided, that substantially concurrently with (but in no event prior to) such termination, Parent pays the Company the Parent Termination Fee pursuant to Section 7.3;"}, {"idx": 9, "why_flagged": "", "original": "if any Parent Party shall have breached or failed to perform any of its representations, warranties, covenants or agreements set forth in this Agreement (other than a Parent Material No-Shop Breach, as to which Section 7.1(d)(iii) will apply), or if any representation or warranty of the Parent Parties shall have become untrue, which breach or failure to perform or to be true, either individually or in the aggregate, if occurring or continuing at the Effective Time (A) would result in the failure of any of the conditions set forth in Section 6.1 or Section 6.3 and (B) cannot be or has not been \u2026"}, {"idx": 10, "why_flagged": "", "original": "if (A) a Parent Adverse Recommendation Change shall have occurred, (B) Parent shall, within ten (10) Business Days of a tender or exchange offer relating to securities of Parent having been commenced, fail to publicly recommend against such tender or exchange offer (it being understood and agreed that, if accurate, Parent shall be permitted to solely disclose in such announcement a factual statement that Parent continues to negotiate with the Person that made such tender offer or exchange offer (provided, that such announcement does not otherwise include any other statement that would reasonab\u2026"}, {"idx": 11, "why_flagged": "Similarity to closest benchmark cluster is 70.8%, below the 80% threshold. Best match was 'Acquirer Termination Rights for Target's No-Shop Covenant Violations'. The clause language differs enough from any benchmark Acquirer Breach clause to fall outside standard range.", "original": "at any time prior to the receipt of the Parent Stockholder Approval, if Parent commits a Willful and Material Breach of Section 5.3(a) (it being understood and agreed that Parent shall not be deemed to have committed a Willful and Material Breach of its obligation to use reasonable best efforts to cause the Representatives of Parent and its Subsidiaries to take or not take the actions contemplated by Section 5.3(a) unless an officer or director of Parent (A) knowingly encouraged, facilitated or otherwise participated in a material breach of Section 5.3(a) by the applicable Representative or (B\u2026"}, {"idx": 12, "why_flagged": "", "original": "at any time prior to the receipt of the Company Stockholder Approval in order to enter into a definitive Alternative Acquisition Agreement to effect a Company Superior Proposal in compliance with Section 5.2(c); provided, that substantially concurrently with (but in no event prior to) such termination, the Company pays Parent the Company Termination Fee pursuant to Section 7.3."}];
+        function toggleDetail(i) {
+            const existing = document.getElementById('detail-' + i);
+            const chev = document.getElementById('chev-' + i);
+            if (existing) {
+                existing.classList.toggle('show');
+                chev.classList.toggle('open');
+                return;
+            }
+            const d = auditDetails.find(x => x.idx === i);
+            if (!d) return;
+            const row = document.getElementById('row-' + i);
+            const div = document.createElement('div');
+            div.id = 'detail-' + i;
+            div.className = 'audit-detail show';
+            let html = '';
+            if (d.why_flagged) {
+                html += '<div class="detail-label">Why Flagged</div>';
+                html += '<div class="detail-text">' + d.why_flagged + '</div>';
+            }
+            if (d.original) {
+                html += '<div class="detail-label">Clause Text</div>';
+                html += '<div class="detail-text" style="font-style:italic">' + d.original + '</div>';
+            }
+            div.innerHTML = html || '<div class="detail-text" style="color:var(--text-muted)">Standard — no flags.</div>';
+            row.insertAdjacentElement('afterend', div);
+            chev.classList.add('open');
+        }
+        </script>
+        <div class="missing-prov-section">
+            <div class="missing-prov-title">Provisions Not Present in this Document</div>
+            <div class="missing-prov-grid">
+            <div class="missing-prov-card">
+                    <div class="missing-prov-name">Financing Failure Trigger</div>
+                    <div class="missing-prov-desc">Termination right if the acquirer cannot obtain the debt financing needed to close.</div>
+                </div>            </div>
+        </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

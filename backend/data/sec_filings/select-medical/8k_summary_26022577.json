@@ -1,0 +1,37 @@
+{
+  "ticker": "SEM",
+  "filing_date": "03/03/26",
+  "items_reported": [
+    "Item 1.01",
+    "Item 7.01",
+    "Item 9.01"
+  ],
+  "L1_headline": "SEM \u2013 Announces $16.50 per share merger agreement. | 03/02/26",
+  "L2_brief": "Select Medical Holdings Corporation entered into a definitive merger agreement with Stallion Intermediate Corporation (backed by WCAS XIV) to be acquired for $16.50 per share in cash. The deal requires both majority stockholder approval and a separate majority-of-the-minority vote, with an outside date of December 1, 2026 (extendable to March 1, 2027). Company termination fee is $66.5M and reverse termination fee is $133M, with committed equity and debt financing in place.",
+  "L3_detailed": {
+    "event": "Select Medical entered into Agreement and Plan of Merger with Stallion Intermediate Corporation (Parent) and Stallion MergerSub Corporation to be taken private",
+    "key_figures": [
+      "$16.50 per share cash merger consideration",
+      "$66,504,813 company termination fee",
+      "$133,009,627 reverse termination fee (Parent)",
+      "Outside Date: December 1, 2026 (extendable to March 1, 2027)",
+      "Equity financing from WCAS XIV, L.P."
+    ],
+    "deal_implications": "Transaction has board and special committee unanimous approval. No financing condition exists as committed equity and debt financing secured. Deal structure includes rollover shares for certain holders, indicating management/insider participation in go-private transaction.",
+    "remaining_conditions": [
+      "Majority approval of outstanding shares entitled to vote",
+      "Majority-of-the-minority vote (excluding Parent, Merger Sub, Rollover Holders and affiliates)",
+      "HSR Act waiting period expiration or termination",
+      "Healthcare regulatory approvals",
+      "No Material Adverse Effect on the Company",
+      "Customary representations and warranties accuracy",
+      "NYSE delisting and SEC deregistration"
+    ],
+    "risks_flagged": [
+      "Dual voting requirement including majority-of-the-minority creates additional approval hurdle",
+      "Healthcare regulatory approvals required beyond standard HSR clearance",
+      "Forward-looking statements warn of potential litigation related to the proposed merger",
+      "Rollover Holders deemed participants in solicitation - potential conflicts of interest"
+    ]
+  }
+}

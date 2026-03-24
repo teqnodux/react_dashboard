@@ -1,0 +1,10 @@
+label,zone,best_cluster,category,ratio,distance,threshold,num_matches,text_preview
+(i),typical,Broad Economic and Financial Market Changes Exclusion,economic,0.38,0.1073,0.2801,1,"any change in general United States or global economic conditions, including changes in the credit, "
+(ii),typical,Broad Economic and Financial Market Changes Exclusion,economic,0.87,0.2434,0.2801,1,any change that generally affects any of the industries or markets in which the Company and its Subs
+(iii),typical,Catastrophic External Events Beyond Party Control,force_majeure,0.75,0.2209,0.2965,1,any change in political conditions (or the escalation of any such change in political conditions exi
+(iv),typical,"Changes in Law, GAAP, and Regulatory Accounting Standards",accounting,0.3,0.0888,0.2942,1,any change in applicable Law or GAAP or other applicable accounting standards (or the interpretation
+(v),typical,Exclusion for impacts from deal announcement and execution,transaction,0.77,0.1959,0.254,1,any change arising from or relating to the announcement or pendency of the transactions contemplated
+(vi),typical,Failure to Meet Financial Projections and Forecasts Exclusions,disclosure,0.86,0.1743,0.2025,1,"any failure by the Company or Parent, as applicable, to meet any projections, forecasts, guidance, e"
+(vii),typical,Actions Taken Pursuant to or Required by Agreement Terms,transaction,0.62,0.1736,0.2786,1,any Effect arising from or relating to the taking of any action contemplated or permitted by this Ag
+(viii),typical,Catastrophic External Events Beyond Party Control,force_majeure,0.57,0.1681,0.2965,1,"any hurricane, tornado, flood, earthquake, tsunami, other natural disaster, pandemic (including COVI"
+(ix),typical,Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks,transaction,0.67,0.1858,0.2792,1,"any change in the Company's stock price or the trading volume of the Company's stock, or Parent's sh"

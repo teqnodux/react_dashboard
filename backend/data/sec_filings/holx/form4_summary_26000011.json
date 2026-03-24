@@ -1,0 +1,31 @@
+{
+  "ticker": "HOLX",
+  "issuer": "HOLOGIC INC",
+  "filing_date": "02/03/26",
+  "insider_name": "Diana De Walt",
+  "insider_title": "SVP, Human Resources",
+  "relationship": "Officer",
+  "L1_headline": "+ HOLX \u2013 Diana De Walt disposed of 4,416 shares (tax withholding on RSU vesting). | 01/30/2026",
+  "L2_brief": "Diana De Walt, SVP of Human Resources at Hologic, disposed of 4,416 shares of common stock on 01/30/2026 at $74.93 per share (~$330,891 total value) via tax withholding upon settlement of vesting restricted stock units. Following the transaction, De Walt holds 7,603 shares directly.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "01/30/2026",
+        "shares": "4,416",
+        "price_per_share": "$74.93",
+        "total_value": "$330,891.88",
+        "acquired_or_disposed": "Disposed (D)"
+      }
+    ],
+    "post_transaction_holdings": "7,603 shares of common stock",
+    "ownership_type": "Direct",
+    "deal_signal": "N/A",
+    "pattern_notes": "Transaction was a mandatory tax withholding upon settlement of restricted stock units (transaction code F), not a discretionary sale. Shares withheld (4,416) represent a significant portion relative to post-transaction holdings (7,603), indicating a substantial RSU vesting event.",
+    "risks_flagged": [
+      "No 10b5-1 plan noted; transaction code F indicates shares withheld for tax obligations \u2014 non-discretionary",
+      "Disposed shares (4,416) represent approximately 37% of pre-transaction holdings (estimated ~12,019 pre-transaction)"
+    ]
+  },
+  "filing_type": "FORM 4"
+}

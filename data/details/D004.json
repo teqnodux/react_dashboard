@@ -1,0 +1,653 @@
+{
+  "deal_id": "D004",
+  "dma_sections": [],
+  "timeline_events": [
+    {
+      "event_date": "2022-10-14",
+      "event_type": "milestone",
+      "title": "Deal Announced",
+      "description": "Kroger announces $24.6B merger agreement with Albertsons",
+      "status": "completed"
+    },
+    {
+      "event_date": "2022-11-15",
+      "event_type": "regulatory",
+      "title": "HSR Filing",
+      "description": "Hart-Scott-Rodino premerger notification filed",
+      "status": "completed"
+    },
+    {
+      "event_date": "2023-12-06",
+      "event_type": "regulatory",
+      "title": "FTC Second Request",
+      "description": "FTC issues second request for additional information",
+      "status": "completed"
+    },
+    {
+      "event_date": "2024-02-26",
+      "event_type": "court",
+      "title": "FTC Files Lawsuit",
+      "description": "FTC files complaint seeking to block the merger",
+      "status": "completed"
+    },
+    {
+      "event_date": "2024-09-09",
+      "event_type": "milestone",
+      "title": "Expanded Divestiture",
+      "description": "Parties announce expanded divestiture to C&S: 579 stores",
+      "status": "completed"
+    },
+    {
+      "event_date": "2024-10-15",
+      "event_type": "court",
+      "title": "State AGs Intervene",
+      "description": "9 state attorneys general join FTC lawsuit",
+      "status": "completed"
+    },
+    {
+      "event_date": "2026-02-15",
+      "event_type": "court",
+      "title": "Preliminary Injunction Hearing",
+      "description": "Court hearing on FTC request for preliminary injunction",
+      "status": "pending"
+    },
+    {
+      "event_date": "2026-04-15",
+      "event_type": "milestone",
+      "title": "Outside Date",
+      "description": "Agreement terminable if not closed by this date",
+      "status": "pending"
+    }
+  ],
+  "regulatory_events": [
+    {
+      "agency": "FTC",
+      "event": "HSR Filed",
+      "event_date": "2022-11-15",
+      "status": "completed",
+      "notes": "Initial 30-day waiting period"
+    },
+    {
+      "agency": "FTC",
+      "event": "Second Request Issued",
+      "event_date": "2023-12-06",
+      "status": "completed",
+      "notes": "Extended review, substantial production required"
+    },
+    {
+      "agency": "FTC",
+      "event": "Lawsuit Filed",
+      "event_date": "2024-02-26",
+      "status": "at_risk",
+      "notes": "Seeking preliminary injunction to block merger"
+    },
+    {
+      "agency": "FTC",
+      "event": "Divestiture Package Expanded",
+      "event_date": "2024-09-09",
+      "status": "pending",
+      "notes": "579 stores to C&S Wholesale Grocers"
+    },
+    {
+      "agency": "State AGs",
+      "event": "Intervention Filed",
+      "event_date": "2024-10-15",
+      "status": "at_risk",
+      "notes": "CO, WA, IL, AZ, MD, NV, NM, OR, WY"
+    },
+    {
+      "agency": "FTC",
+      "event": "Preliminary Injunction Hearing",
+      "event_date": "2026-02-15",
+      "status": "pending",
+      "notes": "Critical hearing for deal fate"
+    }
+  ],
+  "concise_sections": [
+    {
+      "name": "Presigning",
+      "clauses": [
+        {
+          "text": "Confidentiality Agreement dated June 25, 2025.",
+          "references": [
+            "Definition > Confidentiality Agreement"
+          ]
+        },
+        {
+          "text": "The merger has been unanimously approved by both the board of the Target Company and the board of the Parent Company.",
+          "references": [
+            "ARTICLE Preamble"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Consideration",
+      "clauses": [
+        {
+          "text": "Company stockholders are entitled to receive 2.2005 shares of Parent Common Stock and $45.00 in cash per each Company share.",
+          "references": [
+            "Section 2.1 (a) (i)"
+          ]
+        },
+        {
+          "text": "The Company is not permitted to authorize, declare, or pay any dividends on its outstanding share capital or other equity interests prior to closing.",
+          "references": [
+            "Section 5.1"
+          ]
+        },
+        {
+          "text": "The parent company is not permitted to authorize, declare, set aside, make or pay any dividends on its outstanding shares of capital stock or other equity interests prior to closing.",
+          "references": [
+            "Section 5.2"
+          ]
+        },
+        {
+          "text": "The proration clause stipulates that if the aggregate number of shares of Parent Common Stock to be issued exceeds 19.9% of the existing shares, the Exchange Ratio will be reduced and the Cash Consideration increased.",
+          "references": [
+            "Section 2.6 (b)"
+          ]
+        },
+        {
+          "text": "The merger agreement includes a collar mechanism, where if the aggregate number of shares of Parent Common Stock to be issued exceeds 19.9% of the existing shares, the Exchange Ratio will be reduced and the Cash Consideration will be increased to maintain balance.",
+          "references": [
+            "Section 2.6 (b)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Conditions & Financing",
+      "clauses": [
+        {
+          "text": "Subject to the satisfaction of conditions on or prior to the closing date, the merger requires approval from both the target and parent company shareholders.",
+          "references": [
+            "Section 7.1 (a)"
+          ]
+        },
+        {
+          "text": "The transaction's closing is contingent upon the timely filing and subsequent clearance of a Notification and Report Form under the HSR Act, along with obtaining all other required antitrust approvals.",
+          "references": [
+            "Section 6.2 (a)"
+          ]
+        },
+        {
+          "text": "Committed financing was not included in the merger contract.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "name": "Regulatory",
+      "clauses": [
+        {
+          "text": "The outside date is July 30, 2026. It automatically extends until October 30, 2026 if all conditions to closing, excluding those related to the HSR Act or other Regulatory Law, are satisfied or waived. The outside date also automatically extends to a specified date if all conditions in Article VII are satisfied but the closing would occur after the outside date. Termination due to breach is restricted if the breaching party's actions or failures have caused the transactions to not be consummated by the outside date.",
+          "references": [
+            "Section 8.1"
+          ]
+        },
+        {
+          "text": "The agreement stipulates that neither the Parent, Merger Sub, nor their respective Subsidiaries are required to take any action, including divestiture or other remedy actions, without the prior written consent of the Parent. This includes any action that could materially reduce the anticipated benefits to the Parent or impact the Parent, the Company, or their respective Subsidiaries in a significant manner relative to the value of the Company and the Company Subsidiaries. However, the Company or its Subsidiaries may consent to such actions if requested by the Parent and if the actions are only binding if the Closing occurs.",
+          "references": [
+            "Section 6.2 (a)"
+          ]
+        },
+        {
+          "text": "Parent holds the right to control and direct all communications and strategy for obtaining regulatory approvals under the HSR Act and other Regulatory Laws. However, Parent is obligated to consider in good faith the views and comments of the Company and its outside counsel regarding such communications and strategies.",
+          "references": [
+            "Section 6.2 (b)"
+          ]
+        },
+        {
+          "text": "Parent retains the right to control and direct all communications and strategy for obtaining regulatory approvals under the HSR Act and other Regulatory Laws. However, Parent is obligated to consider in good faith the views and comments of the Company and its outside counsel regarding such communications and strategies.",
+          "references": [
+            "Section 6.2 (b)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Competing Bid",
+      "clauses": [
+        {
+          "text": "The Company shall provide Parent with four (4) Business Days' prior written notice...and the applicable four (4)-Business Day period...shall be extended until at least three (3) Business Days after the time that Parent receives notification.",
+          "references": [
+            "Section 5.3 (e)"
+          ]
+        },
+        {
+          "text": "Upon termination of the merger agreement due to a superior proposal as per Section 8.1(h), the Company is obligated to pay a termination fee to the Parent. The specific amount of the fee is not explicitly stated in the provided clauses.",
+          "references": [
+            "Section 8.2 (b) (iii)"
+          ]
+        },
+        {
+          "text": "The agreement stipulates that if termination occurs under Article VIII, the Parent is obligated to reimburse the Company and its Subsidiaries for all reasonable and documented out-of-pocket costs incurred in connection with actions required or requested by the Parent, excluding those arising from the Indemnity Exceptions. However, the agreement does not specify that this reimbursement obligation is tied to a failure to obtain shareholder approval.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "name": "Other Items",
+      "clauses": [
+        {
+          "text": "The Company shall use reasonable best efforts to conduct its business in all material respects in the ordinary course of business consistent with past practice, and Parent shall use reasonable best efforts to conduct its business in all material respects in the ordinary course of business consistent with past practice.",
+          "references": [
+            "Section 5.1"
+          ]
+        },
+        {
+          "text": "MAE carve-outs appear standard",
+          "references": [
+            "Definition > Company Material Adverse Effect"
+          ]
+        },
+        {
+          "text": "The contract allows each party to seek specific performance to enforce the terms and provisions of the agreement.",
+          "references": [
+            "Section 9.12"
+          ]
+        },
+        {
+          "text": "This Agreement shall be governed by, and construed in accordance with, the laws of the State of Delaware.",
+          "references": [
+            "Section 9.9 (a)"
+          ]
+        },
+        {
+          "text": "The clause specifies that any action or claim against any Financing Source Party shall be governed by the Laws of the State of New York.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "name": "Regulatory Best Efforts",
+      "clauses": [
+        {
+          "text": "Both Parent and Company are prohibited from making acquisitions or entering agreements that could materially delay obtaining required approvals or lengthen the HSR review for the existing merger.",
+          "references": [
+            "Not applicable as no relevant section was found."
+          ]
+        }
+      ]
+    }
+  ],
+  "fulsome_sections": [
+    {
+      "name": "Party Details",
+      "clauses": [
+        {
+          "text": "Company is CyberArk Software Ltd., a company organized under the laws of the State of Israel.",
+          "references": [
+            "ARTICLE Preamble"
+          ]
+        },
+        {
+          "text": "Acquirer is Palo Alto Networks, Inc., a Delaware corporation.",
+          "references": [
+            "ARTICLE Preamble"
+          ]
+        },
+        {
+          "text": "The transaction is a reverse triangular merger, where Merger Sub will merge into the Company, which will continue as the surviving entity. Post-merger, Merger Sub will cease to exist, and all its properties, rights, and liabilities will vest in the surviving Company.",
+          "references": [
+            "Section 1.2; Section 1.1"
+          ]
+        },
+        {
+          "text": "Athens Strategies Ltd., incorporated under Israeli law, is a wholly-owned subsidiary of the parent company. This relationship positions Athens Strategies Ltd. as the merger sub in this context.",
+          "references": [
+            "ARTICLE Preamble"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Board Approval",
+      "clauses": [
+        {
+          "text": "The merger has been unanimously approved by both the board of the Target Company and the board of the Parent Company.",
+          "references": [
+            "ARTICLE Preamble"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Closing",
+      "clauses": [
+        {
+          "text": "The target date for the merger agreement is set for 5 business days after the satisfaction or waiver of the conditions outlined in Article VII.",
+          "references": [
+            "Section 1.3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Consideration and Dividends",
+      "clauses": [
+        {
+          "text": "Company stockholders are entitled to receive 2.2005 shares of Parent Common Stock and $45.00 in cash per Company share.",
+          "references": [
+            "Section 2.1 (a) (i)"
+          ]
+        },
+        {
+          "text": "The Company is not permitted to authorize, declare, or pay any dividends on its outstanding share capital or other equity interests prior to closing.",
+          "references": [
+            "Section 5.1"
+          ]
+        },
+        {
+          "text": "The Parent is not allowed to pay dividends prior to the closing of the merger.",
+          "references": [
+            "Section 5.2"
+          ]
+        },
+        {
+          "text": "The merger agreement does not contain a dividend adjustment mechanism, but it does stipulate that the parent company may pay regular quarterly dividends not exceeding $0.41 per share before closing.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "name": "Conditions",
+      "clauses": [
+        {
+          "text": "Mutual conditions include: obtaining company shareholder approval, approval for listing the shares of Parent Common Stock on Nasdaq, effectiveness of the Registration Statement under the Securities Act without any stop order, completion of all regulatory filings, registrations, waiting periods, and approvals, absence of any law or order from a governmental entity prohibiting the merger, and a lapse of at least fifty days post the filing of the Merger Proposal with the Companies Registrar and thirty days after securing company shareholder approval.",
+          "references": [
+            "Section 7.1"
+          ]
+        },
+        {
+          "text": "The closing of the merger is contingent upon the Company's representations and warranties being accurate, the Company's compliance with its obligations under the Agreement, no occurrence of a Material Adverse Effect post-agreement, and the Parent's receipt of a certificate from the Company's CEO or CFO confirming the satisfaction of these conditions.",
+          "references": [
+            "Section 7.2"
+          ]
+        },
+        {
+          "text": "The closing of the merger is contingent upon the accuracy of Parent and Merger Sub's representations and warranties, their compliance with obligations, covenants, and agreements, the absence of any Parent Material Adverse Effect, and the receipt of a certificate from Parent's CEO or CFO confirming the satisfaction of these conditions.",
+          "references": [
+            "Section 7.3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Proxy, Shareholder Vote, Dissenting Shares",
+      "clauses": [
+        {
+          "text": "After executing the Agreement, the Company, with Parent's cooperation, will promptly prepare and furnish a Proxy Statement/Prospectus to the SEC, and Parent, with the Company's cooperation, will promptly prepare and file a Registration Statement.",
+          "references": [
+            "Section 5.4 (a)"
+          ]
+        },
+        {
+          "text": "Subject to the satisfaction of conditions on or prior to the closing date, the merger shall proceed only upon obtaining approval from both the target company's shareholders and the parent company's shareholders, as per the thresholds specified in the agreement.",
+          "references": [
+            "Section 7.1 (a)"
+          ]
+        },
+        {
+          "text": "The Parties are required to use their reasonable best efforts to ensure no Takeover Statute applies to the Merger or other Transactions, and to have the Joint Proxy Statement/Prospectus cleared by the SEC, the Registration Statement declared effective, and the Form F-4 declared effective as promptly as practicable after filing. The Company is responsible for responding to SEC comments and mailing the definitive Proxy Statement within 10 Business Days after SEC clearance.",
+          "references": [
+            "Section 6.5"
+          ]
+        },
+        {
+          "text": "The Company shall hold a meeting for shareholder approval as soon as reasonably practicable, but no later than forty-five (45) days following the effectiveness of the Registration Statement.",
+          "references": [
+            "Section 5.4 (b)"
+          ]
+        },
+        {
+          "text": "The Company may adjourn or postpone the Shareholders Meeting without Parent's consent after consultation with Parent, or if there are insufficient votes to constitute a quorum or obtain Shareholder Approval. Any adjournment or postponement for quorum or approval purposes shall be for no more than ten Business Days and the Company can effect no more than two such adjournments or postponements. No postponement requiring a change to the record date is permitted. If requested by Parent, the Company shall effect an adjournment or postponement for up to ten Business Days, with Parent allowed one such request.",
+          "references": [
+            "Section 5.4 (c)"
+          ]
+        },
+        {
+          "text": "The clause states that the Company shall use its reasonable best efforts to solicit proxies from the Company Shareholders for the approval of the Agreement, the Transactions, the Merger, and the Company's 2024 Share Incentive Plan, and to secure the Company Shareholder Approval and the approval of the Company's 2024 Share Incentive Plan.",
+          "references": [
+            "Section 5.4 (b)"
+          ]
+        },
+        {
+          "text": "The agreement does not detail handling dissenting shares. Standard Delaware Section 262 appraisal rights apply.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "name": "Regulatory Best Efforts",
+      "clauses": [
+        {
+          "text": "The Regulatory Efforts Standard mandates each party to use reasonable best efforts to expedite the merger under applicable law.",
+          "references": [
+            "Section 6.2 (a)"
+          ]
+        },
+        {
+          "text": "Each party must file a Notification and Report Form under the HSR Act within 25 business days post-agreement execution, providing additional information as requested to expedite waiting period termination.",
+          "references": [
+            "Section 6.2 (a)"
+          ]
+        },
+        {
+          "text": "The parties are obligated to promptly make all necessary or advisable foreign filings and provide any additional information requested under non-U.S. Regulatory Laws.",
+          "references": [
+            "Section 6.2 (a)"
+          ]
+        },
+        {
+          "text": "The agreement stipulates that neither the Parent, Merger Sub, nor their respective Subsidiaries are obligated to take any action, including divestiture or business restrictions, that could materially reduce the anticipated benefits of the transaction or significantly impact the value of the Company and its Subsidiaries. Any such action would require the prior written consent of the Parent.",
+          "references": [
+            "Section 6.2 (a)"
+          ]
+        },
+        {
+          "text": "Parent has the right to control and direct all communications and strategy for obtaining approvals under the HSR Act and other Regulatory Laws. However, Parent is obligated to consider in good faith the views and comments of the Company and its outside counsel regarding such communications and strategies.",
+          "references": [
+            "Section 6.2 (b)"
+          ]
+        },
+        {
+          "text": "Parent shall have the right to control the timing for obtaining antitrust or regulatory approvals under the HSR Act and other Regulatory Laws. However, Parent is obligated to consider in good faith the views and comments of the Company and its outside counsel regarding such timing.",
+          "references": [
+            "Section 6.2 (b)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "No Solicitation and Confidentiality Agreement",
+      "clauses": [
+        {
+          "text": "The Company shall provide Parent with four (4) Business Days' prior written notice...and the applicable four (4)-Business Day period...shall be extended until at least three (3) Business Days after the time that Parent receives notification.",
+          "references": [
+            "Section 5.3 (e)"
+          ]
+        },
+        {
+          "text": "Confidentiality Agreement dated June 25, 2025.",
+          "references": [
+            "Definition > Confidentiality Agreement"
+          ]
+        },
+        {
+          "text": "The Company must notify Parent within 24 hours of receiving any Acquisition Proposal or inquiries that could reasonably lead to such a proposal.",
+          "references": [
+            "Section 5.3 (c)"
+          ]
+        },
+        {
+          "text": "The Company must notify Parent within 24 hours of receiving any Acquisition Proposal or related inquiries, and promptly update Parent on the status and material terms.",
+          "references": [
+            "Section 5.3 (c)"
+          ]
+        },
+        {
+          "text": "The text provided does not contain any details regarding an adverse board recommendation with regard to a superior offer.",
+          "references": []
+        },
+        {
+          "text": "The text provided does not contain any details regarding an adverse board recommendation with regard to an intervening event.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "name": "Financing",
+      "clauses": [
+        {
+          "text": "Committed financing was not included in the merger contract.",
+          "references": []
+        },
+        {
+          "text": "The acquirer is required to make significant efforts to secure financing for the merger, with the company providing necessary cooperation and financial information. However, securing such financing is not a prerequisite for the acquirer to finalize the merger.",
+          "references": [
+            "Section 6.13 (a)"
+          ]
+        },
+        {
+          "text": "The clause stipulates that the Parent must strive to secure the Debt Financing. If any part of this financing becomes unavailable, the Parent is obligated to promptly seek alternative debt financing under comparable terms and conditions, and notify the company.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "name": "Termination",
+      "clauses": [
+        {
+          "text": "The outside date is July 30, 2026. It automatically extends until October 30, 2026 if all conditions to closing, excluding those related to the HSR Act or other Regulatory Law, are satisfied or waived. The outside date also automatically extends to a specified date if all conditions in Article VII are satisfied but the closing would occur after the outside date. Termination is restricted for any party whose action or failure to fulfill obligations has caused a material breach.",
+          "references": [
+            "Section 8.1"
+          ]
+        },
+        {
+          "text": "The right to terminate this Agreement under Section 8.1(d) is not available to any Party whose action or failure to fulfill any obligation has proximately caused the failure of the Transactions to be consummated by the Outside Date and constitutes a material breach of this Agreement.",
+          "references": [
+            "Section 8.1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Termination Rights",
+      "clauses": [
+        {
+          "text": "The merger agreement can be mutually terminated by the Parent and the Company under the following conditions: (i) if the closing has not occurred by July 30, 2026; (ii) if a governmental entity issues a final, non-appealable order, injunction, decree, or ruling that permanently restrains, enjoins, or otherwise prohibits the transactions; or (iii) if the proposal to approve the agreement and the merger is not approved at the Company Shareholders Meeting, including any adjournments or postponements thereof.",
+          "references": [
+            "Section 8.1"
+          ]
+        },
+        {
+          "text": "The parent can terminate the agreement if the company breaches its obligations, covenants, or agreements, or if any of the company's representations and warranties are breached or become inaccurate, in a way that would fail a condition in Section 7.2(a), 7.2(b), or 7.2(c). This is only applicable if the breach cannot be cured by the Outside Date or, if curable, is not cured within 30 days of written notice from the parent. However, the parent cannot terminate the agreement if it or the Merger Sub is in breach of any of its own obligations. Additionally, the parent can terminate the agreement if, prior to obtaining company shareholder approval, the company board effects a Change of Recommendation or materially breaches Section 5.3.",
+          "references": [
+            "Section 8.1"
+          ]
+        },
+        {
+          "text": "The company can terminate the agreement if (i) Parent and/or Merger Sub breach their obligations, covenants, or agreements, or if their representations and warranties are breached or inaccurate, in a way that would fail a condition in Section 7.3(a) or 7.3(b), and such breach or inaccuracy cannot be cured by the Outside Date or is not cured within 30 days of written notice, unless the company is also in breach of its obligations, which would fail a condition in Section 7.2(a), 7.2(b), or 7.2(c); or (ii) prior to obtaining Company Shareholder Approval, the company can terminate to enter into a definitive agreement for a Superior Proposal, provided it complies with Section 5.3 and pays the Company Termination Fee.",
+          "references": [
+            "Section 8.1"
+          ]
+        },
+        {
+          "text": "The agreement stipulates that if termination occurs under Article VIII, the Parent is obligated to reimburse the Company and its Subsidiaries for all reasonable and documented out-of-pocket costs incurred in connection with actions required or requested by the Parent, excluding those arising from the Indemnity Exceptions. The agreement does not specify the amount of reimbursement or explicitly link this obligation to a failure to obtain shareholder approval.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "name": "Termination Fee Amounts",
+      "clauses": [
+        {
+          "text": "Company Termination Fee is equal to seven hundred fifty million dollars ($750,000,000).",
+          "references": [
+            "Section 8.2 (b) (i)"
+          ]
+        },
+        {
+          "text": "Parent Termination Fee is equal to one billion dollars ($1,000,000,000) in cash.",
+          "references": [
+            "Section 8.1"
+          ]
+        },
+        {
+          "text": "The Company is obligated to pay a termination fee if the Agreement is terminated under several circumstances: if the Company or Parent terminates the Agreement due to an Outside Date (Section 8.1(d)) or lack of Company Shareholder Approval (Section 8.1(g)), or if Parent terminates due to a Company Breach (Section 8.1(c)) following an Acquisition Proposal; if Parent terminates due to a Change of Recommendation (Section 8.1(e)); or if the Company terminates to pursue a Superior Proposal (Section 8.1(h)). The fee is payable prior to or concurrently with termination for a Superior Proposal, within three business days for a Change of Recommendation, and within three business days of completing a transaction following failure to receive the Required Company Stockholder vote.",
+          "references": [
+            "Section 8.2 (b)"
+          ]
+        },
+        {
+          "text": "The Parent is obligated to pay a reverse termination fee of $1,000,000,000 if the Agreement is terminated under Section 8.1(d) (Outside Date) or Section 8.1(f) (Legal Prohibition), provided the termination is related to a Regulatory Law. This obligation arises if, at the time of termination, the conditions in Section 7.1(d) (Government Consents) or Section 7.1(e) (Legal Prohibition) are not met, but all other conditions in Sections 7.1 and 7.2 are satisfied or waived, except those to be satisfied at Closing. The fee is payable within two business days following such termination.",
+          "references": [
+            "Section 8.2 (b) (iv)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ordinary Course Covenants",
+      "clauses": [
+        {
+          "text": "The Company shall use reasonable best efforts to conduct its business in all material respects in the ordinary course of business consistent with past practice, except as set forth in the Company Disclosure Letter, as specifically permitted or required by this Agreement, as required by applicable Law, or as consented to in writing by Parent; Parent shall use reasonable best efforts to conduct its business in all material respects in the ordinary course of business consistent with past practice, except as set forth in Section 5.2 of the Parent Disclosure Letter, as specifically permitted or required by this Agreement, as required by applicable Law, as consented to in writing by the Company, or in response to any Emergency Event directly impacting Parent or any Parent Subsidiary.",
+          "references": [
+            "Section 5.1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Governing Law",
+      "clauses": [
+        {
+          "text": "This Agreement shall be governed by, and construed in accordance with, the laws of the State of Delaware.",
+          "references": [
+            "Section 9.9 (a)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Specific Performance",
+      "clauses": [
+        {
+          "text": "The contract allows for specific performance for each party involved in the agreement.",
+          "references": [
+            "Section 9.12"
+          ]
+        },
+        {
+          "text": "The clause specifies that any action or claim against any Financing Source Party shall be governed by the Laws of the State of New York.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "name": "MAE Definitions",
+      "clauses": [
+        {
+          "text": "The Material Adverse Effect (MAE) carveouts in the merger agreement, as outlined in the Standard MAE Carveout List and Text, include changes in economic, industry, political, regulatory, and legislative conditions [(a), (b), (c)]; changes in GAAP or applicable Law [(d), (e)]; failure to meet financial projections or budgets [(f)]; acts of terrorism, war, natural disasters, and other emergency events [(g), (h)]; effects of the execution, delivery, and announcement of the Agreement [(i)]; and any action or inaction requested by the Parent [(j)]. These carveouts are not considered to have a material adverse effect on the company's financial condition, business, or operations.",
+          "references": [
+            "Definition > Company Material Adverse Effect"
+          ]
+        },
+        {
+          "text": "The disproportionality clause in the merger agreement, referencing clauses (a), (b), (c), (d), (e), (g), and (h), stipulates that only the incremental disproportionate adverse effect is considered when determining if a Company Material Adverse Effect exists, relative to other industry and relevant geographic counterparts.",
+          "references": [
+            "Definition > Company Material Adverse Effect"
+          ]
+        },
+        {
+          "text": "The underlying facts or occurrences contributing to a failure, which are not otherwise excluded, may be considered in determining if a Company Material Adverse Effect has occurred, specifically under clause (f) pertaining to financial performance failures.",
+          "references": [
+            "Definition > Company Material Adverse Effect"
+          ]
+        }
+      ]
+    }
+  ]
+}

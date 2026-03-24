@@ -1,0 +1,179 @@
+{
+  "company": "TEGNA INC",
+  "total_filings": 3,
+  "successful": 3,
+  "failed": 0,
+  "results": [
+    {
+      "index": 3,
+      "date": "11/21/25",
+      "form_type": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/39899/000110465925115057/tm2531511d1_8k.htm",
+      "status": "success",
+      "ticker": "TGNA",
+      "summary": {
+        "ticker": "TGNA",
+        "filing_date": "11/21/25",
+        "items_reported": [
+          "Item 5.07",
+          "Item 8.01",
+          "Item 9.01"
+        ],
+        "L1_headline": "TGNA \u2013 Stockholders approve Nexstar merger agreement. | 11/18/25",
+        "L2_brief": "TEGNA stockholders voted overwhelmingly to adopt the merger agreement with Nexstar Media Group at a special meeting on November 18, 2025, with approximately 97.7% of votes cast in favor. The advisory vote on merger-related executive compensation was rejected. Completion of the merger remains subject to customary closing conditions, including receipt of certain regulatory approvals.",
+        "L3_detailed": {
+          "event": "TEGNA held a special meeting of stockholders on November 18, 2025 to vote on the adoption of the Agreement and Plan of Merger dated August 18, 2025, among TEGNA, Nexstar Media Group, Inc., and Teton Merger Sub, Inc.",
+          "key_figures": [
+            "161,056,789 shares of common stock outstanding as of record date October 10, 2025",
+            "136,860,694 shares present at the meeting (~84.97% of outstanding shares), constituting a quorum",
+            "Merger proposal: 133,763,880 votes For, 2,887,840 Against, 208,974 Abstain (~97.7% of votes cast in favor)",
+            "Advisory compensation proposal: 21,531,139 For, 114,148,241 Against, 1,181,314 Abstain (rejected)",
+            "Merger Agreement dated August 18, 2025"
+          ],
+          "deal_implications": "Stockholder approval, a key condition precedent, has been obtained. The adjournment proposal was not needed and was not presented. The deal now depends on remaining closing conditions including regulatory approvals.",
+          "remaining_conditions": [
+            "Receipt of certain regulatory approvals",
+            "Satisfaction of other customary closing conditions"
+          ],
+          "risks_flagged": [
+            "Timing, receipt, and terms of required governmental or regulatory approvals that could reduce anticipated benefits or cause abandonment of the transaction",
+            "Risk of litigation and/or regulatory actions related to the proposed transaction",
+            "Occurrence of events that could give rise to termination of the Merger Agreement",
+            "Failure to obtain necessary regulatory approvals in the anticipated timeframe or at all"
+          ]
+        },
+        "filing_type": "8-K"
+      },
+      "_filename": "8k_summary_25115057.json"
+    },
+    {
+      "index": 2,
+      "date": "03/02/26",
+      "form_type": "10-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/39899/000119312526084392/tgna-20251231.htm",
+      "status": "success",
+      "ticker": "TGNA",
+      "summary": {
+        "ticker": "TGNA",
+        "company": "TEGNA Inc.",
+        "filing_type": "10-K/A",
+        "period_end_date": "12/31/25",
+        "filing_date": "03/02/26",
+        "fiscal_period": "FY 2025",
+        "L1_headline": "+ TGNA \u2013 Revenue down 13%, merger pending regulatory approval. | 03/02/26",
+        "L2_brief": "TEGNA reported 2025 revenue of $2.7 billion, down 13% year-over-year, with operating income declining 44% to $443 million primarily due to a 90% drop in political advertising revenue. The company's pending $22.00 per share cash merger with Nexstar Media Group, approved by stockholders in November 2025, is expected to close in the second half of 2026 subject to regulatory approvals.",
+        "L3_detailed": {
+          "financial_performance": {
+            "revenue": "$2.71 billion, down 13% from $3.10 billion in 2024",
+            "net_income": "$219.9 million, down 63% from $599.8 million in 2024",
+            "eps": "Diluted EPS of $1.34, down 62% from $3.53 in 2024",
+            "gross_margin": "Not specified",
+            "operating_income": "$443.0 million, down 44% from $784.8 million in 2024",
+            "free_cash_flow": "$282.6 million (operating cash flow of $326.0 million minus capex of $43.4 million)",
+            "other_metrics": [
+              "Adjusted EBITDA of $578.9 million, down 38%",
+              "Leverage ratio of 2.78x",
+              "Effective tax rate of 24.0%"
+            ]
+          },
+          "segment_performance": [
+            "Distribution revenue $1.47 billion, down 1%",
+            "AMS revenue $1.17 billion, down 4%",
+            "Political revenue $38.8 million, down 90% from $373.2 million"
+          ],
+          "guidance_and_outlook": "Merger with Nexstar expected to close by second half of 2026. Company plans to continue paying quarterly dividend of 12.5 cents per share through merger closing. Management believes existing cash and borrowing capacity will be sufficient for next twelve months and beyond.",
+          "balance_sheet_highlights": {
+            "cash_and_equivalents": "$291.2 million, down from $693.2 million",
+            "total_debt": "$2.53 billion",
+            "net_debt": "Approximately $2.24 billion",
+            "shareholders_equity": "Not specified"
+          },
+          "risk_factors": [
+            "Merger closing conditions may not be satisfied",
+            "Ongoing challenges in television advertising market",
+            "Cord-cutting reducing MVPD subscribers and distribution revenue",
+            "Cybersecurity threats and IT system failures",
+            "Competition from streaming platforms and digital media"
+          ],
+          "ma_and_deal_relevance": {
+            "pending_deals": "Merger agreement with Nexstar Media Group for $22.00 per share in cash, entered August 18, 2025",
+            "deal_impact": "Stockholders approved merger on November 18, 2025. Three stockholder complaints filed challenging the merger as of March 2, 2026",
+            "strategic_alternatives": "No strategic review or activism mentioned",
+            "acquisition_activity": "Premion redeemed Gray Media's ownership interest for $20.8 million in 2025"
+          },
+          "legal_and_regulatory": [
+            "Three stockholder complaints filed challenging the Nexstar merger",
+            "Merger subject to FCC approvals and Hart-Scott-Rodino antitrust clearance"
+          ],
+          "key_developments": [
+            "Operates 64 TV stations reaching 39% of U.S. TV households",
+            "Retired $550 million of debt scheduled to mature in March 2026",
+            "Broadcasting in both ATSC 1.0 and ATSC 3.0 formats on 23 primary channels",
+            "Expanded Sales Development Representative Academy from 6 to 20 participants",
+            "FCC eliminated Top Four Restriction in October 2025"
+          ],
+          "capital_allocation": "Paid $80.5 million in dividends in 2025, retired $550 million in debt, capex of $43.4 million"
+        }
+      },
+      "_filename": "10k_summary_26084392.json"
+    },
+    {
+      "index": 1,
+      "date": "03/03/26",
+      "form_type": "FORM 4",
+      "url": "https://www.sec.gov/Archives/edgar/data/2004177/000121465926002771/xslF345X05/marketforms-72397.xml",
+      "status": "success",
+      "ticker": "TGNA",
+      "summary": {
+        "ticker": "TGNA",
+        "issuer": "TEGNA INC",
+        "filing_date": "03/03/26",
+        "insider_name": "Julie Heskett",
+        "insider_title": "SVP and CFO",
+        "relationship": "Officer",
+        "L1_headline": "+ TGNA \u2013 Julie Heskett exercised performance shares and acquired restricted stock units. | 03/03/26",
+        "L2_brief": "Julie Heskett, SVP and CFO of TEGNA INC, converted 12,080.934 vested 2023 Performance Shares into common stock on 02/27/2026, with 3,883.102 shares withheld at $20.95 to cover tax obligations. On 03/01/2026, she was granted 75,911 restricted stock units vesting over four years. Post-transaction direct holdings total 117,227.774 shares of common stock plus 75,911 RSUs and 10,590.27 shares held indirectly through a 401(k) plan.",
+        "L3_detailed": {
+          "transactions": [
+            {
+              "type": "Conversion",
+              "date": "02/27/2026",
+              "shares": "12,080.934",
+              "price_per_share": "$0",
+              "total_value": "$0 (vesting of 2023 Performance Shares into common stock)",
+              "acquired_or_disposed": "Acquired (A)"
+            },
+            {
+              "type": "Sale",
+              "date": "02/27/2026",
+              "shares": "3,883.102",
+              "price_per_share": "$20.95",
+              "total_value": "$81,350.99",
+              "acquired_or_disposed": "Disposed (D)"
+            },
+            {
+              "type": "Other",
+              "date": "03/01/2026",
+              "shares": "75,911 RSUs",
+              "price_per_share": "$0",
+              "total_value": "$0 (new RSU grant)",
+              "acquired_or_disposed": "Acquired (A)"
+            }
+          ],
+          "post_transaction_holdings": "117,227.774 shares of common stock (Direct) + 75,911 RSUs (Direct) + 10,590.27 shares (Indirect, via 401(k) Plan)",
+          "ownership_type": "Direct and Indirect (401(k) Plan)",
+          "deal_signal": "N/A",
+          "pattern_notes": "The disposition of 3,883.102 shares was solely for tax withholding upon vesting of performance shares, not an open-market sale. The 75,911 RSU grant vests in four equal annual installments beginning 02/28/2027 through 02/28/2030, with a change-in-control acceleration provision noted. This is a routine annual compensation cycle event (performance share vesting and new RSU grant).",
+          "risks_flagged": [
+            "No 10b5-1 plan indicated for these transactions",
+            "Share withholding for tax was mandatory, not a discretionary sale",
+            "RSU vesting schedule includes change-in-control acceleration provision"
+          ]
+        },
+        "filing_type": "FORM 4"
+      },
+      "_filename": "form4_summary_26002771.json"
+    }
+  ],
+  "failures": []
+}

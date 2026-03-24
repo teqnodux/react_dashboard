@@ -1,0 +1,41 @@
+Tooltip,Field Name,Display Value,Source Type,Specific Source,Status,Notes
+Consideration Details,Cash,deal.offer_price or $0.00,Deal Model,Deal.offer_price,REAL,Only shows if deal_type='cash'
+Consideration Details,ACI Divs,$0.05,PLACEHOLDER,Hardcoded,MISSING,Need acquirer dividend data
+Consideration Details,Stock,deal.offer_price or 0.00,Deal Model,Deal.offer_price,REAL,Only shows if deal_type='stock'
+Consideration Details,Number,2,PLACEHOLDER,Hardcoded,MISSING,Need exchange ratio
+Consideration Details,Other,$0,PLACEHOLDER,Hardcoded,MISSING,Need other consideration field
+Consideration Details,Total,$0.10,PLACEHOLDER,Hardcoded,MISSING,Should sum all consideration
+Consideration Details,CVR,$0,PLACEHOLDER,Hardcoded,MISSING,Need CVR value field
+Consideration Details,KR Divs,n/a,PLACEHOLDER,Hardcoded,MISSING,Need acquirer (KR) dividend data
+Consideration Details,Proration,n/a,PLACEHOLDER,Hardcoded,MISSING,Need proration details from DMA
+Consideration Details,Collar,n/a,PLACEHOLDER,Hardcoded,MISSING,Need collar details from DMA
+Trading Details,Target Bid,dealQuotes.target_quote.bid,yfinance,Live Quotes API /api/deals/{id}/quotes,REAL,Fallback: $21.00
+Trading Details,Target Last,dealQuotes.target_quote.current_price,yfinance + Deal Model,API then Deal.current_price,REAL,Uses deal.current_price as fallback
+Trading Details,Target Ask,dealQuotes.target_quote.ask,yfinance,Live Quotes API,REAL,Fallback: $21.12
+Trading Details,Spread Bid,offer_price - bid,CALCULATION,deal.offer_price - dealQuotes.target_quote.bid,REAL,Calculated in tooltip
+Trading Details,Spread Last,deal.gross_spread_dollars,Deal Model,Deal.gross_spread_dollars,REAL,Backend calculation
+Trading Details,Spread Ask,offer_price - ask,CALCULATION,deal.offer_price - dealQuotes.target_quote.ask,REAL,Calculated in tooltip
+Trading Details,Vol (mm),volume * price / 1M,CALCULATION,dealQuotes.target_quote.volume * price / 1000000,REAL,Calculated in tooltip
+Trading Details,Vol (shares),dealQuotes.target_quote.volume,yfinance,Live Quotes API,REAL,Fallback: 1301329
+Trading Details,30-day Vol,6040076,PLACEHOLDER,Hardcoded,MISSING,Need yfinance history avg_volume
+Timing Details,Announcement Date,deal.announce_date,Deal Model,Deal.announce_date,REAL,ISO date from database
+Timing Details,Closing Guidance,2H25,PLACEHOLDER,Hardcoded,MISSING,Need guidance field (from DMA or filings)
+Timing Details,Our Est. Close,deal.expected_close,Deal Model,Deal.expected_close,REAL,ISO date from database
+Timing Details,HSR Filed,11/20/23,PLACEHOLDER,Hardcoded,MISSING,Should come from DealDetail.regulatory_timeline
+Timing Details,FTC Second Request Issued,12/20/23,PLACEHOLDER,Hardcoded,MISSING,Should come from DealDetail.regulatory_timeline
+Timing Details,Timing Agreement Entered,12/20/24,PLACEHOLDER,Hardcoded,MISSING,Should come from DealDetail.regulatory_timeline
+Timing Details,Timing Agreement Expired,3/20/24,PLACEHOLDER,Hardcoded,MISSING,Should come from DealDetail.regulatory_timeline
+Timing Details,FTC Lawsuit Filed,3/15/24,PLACEHOLDER,Hardcoded,MISSING,Should come from DealDetail.regulatory_timeline
+Timing Details,Companies' Response Filed,3/29/24,PLACEHOLDER,Hardcoded,MISSING,Should come from DealDetail.regulatory_timeline
+Timing Details,Deadline for Depositions,9/30/24,PLACEHOLDER,Hardcoded,MISSING,Should come from DealDetail.regulatory_timeline
+Downsides Detail,Undisturbed,deal.unaffected_price,Deal Model,Deal.unaffected_price,REAL,Pre-announcement price
+Downsides Detail,Downside Est,$15.00,PLACEHOLDER,Hardcoded,MISSING,Need downside analysis calculation
+Downsides Detail,Peers Used,n/a,PLACEHOLDER,Hardcoded,MISSING,Need comparable companies analysis
+Downsides Detail,Index Used,SPY,PLACEHOLDER,Hardcoded,MISSING,Need index correlation data
+Downsides Detail,Implied EV/EBITDA,5x,PLACEHOLDER,Hardcoded,MISSING,Need valuation multiples
+Downsides Detail,Historical EV/EBITDA,5.4x,PLACEHOLDER,Hardcoded,MISSING,Need historical multiples
+Downsides Detail,Deal Spread (calc),deal.gross_spread_dollars,Deal Model,Deal.gross_spread_dollars,REAL,Backend calculation
+Downsides Detail,Total Spread (calc),offer_price - 15.00,CALCULATION,Uses hardcoded downside $15.00,PARTIAL,Need real downside_estimate
+Downsides Detail,Downside Estimate (calc),$15.00,PLACEHOLDER,Hardcoded,MISSING,Same as Downside Est above
+Downsides Detail,Undisturbed Price (calc),deal.unaffected_price,Deal Model,Deal.unaffected_price,REAL,Same as Undisturbed above
+Downsides Detail,Calculation Method,SPY Beta-adjusted move...,PLACEHOLDER,Hardcoded text,MISSING,Need actual methodology used

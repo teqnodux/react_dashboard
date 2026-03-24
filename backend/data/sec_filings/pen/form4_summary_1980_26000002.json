@@ -1,0 +1,48 @@
+{
+  "ticker": "PEN",
+  "issuer": "Penumbra Inc",
+  "filing_date": "02/18/26",
+  "insider_name": "Johanna Roberts",
+  "insider_title": "EVP, Gen. Counsel & Secretary",
+  "relationship": "Officer",
+  "L1_headline": "+ PEN \u2013 Johanna Roberts acquired RSUs and disposed of shares for tax withholding. | 02/18/26",
+  "L2_brief": "Johanna Roberts, EVP, General Counsel & Secretary of Penumbra Inc, was granted two separate RSU awards of 2,630 shares each on 02/13/2026 and 02/17/2026 at $0 cost, and had 482 shares withheld on 02/15/2026 at $339.30 per share to satisfy tax obligations upon RSU vesting. Post-transaction direct holdings total 67,484 shares, a portion of which remain subject to vesting. Both RSU grants contain provisions for full accelerated vesting upon the closing of the pending merger with Boston Scientific Corporation under the Agreement and Plan of Merger dated January 14, 2026.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "02/13/2026",
+        "shares": "2,630",
+        "price_per_share": "$0",
+        "total_value": "$0",
+        "acquired_or_disposed": "Acquired (A)"
+      },
+      {
+        "type": "Other",
+        "date": "02/15/2026",
+        "shares": "482",
+        "price_per_share": "$339.30",
+        "total_value": "$163,542.60",
+        "acquired_or_disposed": "Disposed (D)"
+      },
+      {
+        "type": "Other",
+        "date": "02/17/2026",
+        "shares": "2,630",
+        "price_per_share": "$0",
+        "total_value": "$0",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "67,484 shares (a portion subject to vesting)",
+    "ownership_type": "Direct",
+    "deal_signal": "Penumbra Inc is subject to a pending Agreement and Plan of Merger dated January 14, 2026, with Boston Scientific Corporation and Pinehurst Merger Sub, Inc. Both RSU grants (02/13/2026 and 02/17/2026) explicitly include merger acceleration provisions: all unvested RSUs will fully vest upon the closing of the merger, subject to the insider's continued service through the closing date. The issuer continued to grant equity compensation with merger-acceleration clauses during the pendency of the deal. No open-market purchases or discretionary sales were reported.",
+    "pattern_notes": "The two RSU grants of identical size (2,630 shares each) were issued four days apart. The 482-share disposition on 02/15/2026 was solely for tax withholding upon vesting of a prior RSU tranche, not a discretionary sale. No open-market buying or selling activity is present in this filing.",
+    "risks_flagged": [
+      "No 10b5-1 plan noted; transactions consist of RSU grants and mandatory tax withholding dispositions",
+      "A portion of post-transaction holdings remains subject to vesting conditions",
+      "Both RSU grants contain accelerated vesting provisions tied to the closing of the pending Boston Scientific merger, which could result in material additional vesting if the deal closes"
+    ]
+  },
+  "filing_type": "FORM 4"
+}

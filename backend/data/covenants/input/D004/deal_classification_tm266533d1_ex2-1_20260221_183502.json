@@ -1,0 +1,654 @@
+{
+  "deal_id": "tm266533d1_ex2-1",
+  "analysis_timestamp": "20260221_183502",
+  "benchmark_info": {
+    "benchmark_clusters": 43,
+    "benchmark_clauses": 1448
+  },
+  "deal_summary": {
+    "total_clauses": 26,
+    "avg_similarity_to_clusters": 0.8065695112621225,
+    "clusters_matched": 23,
+    "section_titles": [
+      "Interim Operations"
+    ]
+  },
+  "cluster_distribution": {
+    "0": 3,
+    "12": 1,
+    "14": 1,
+    "33": 1,
+    "37": 1,
+    "26": 1,
+    "42": 1,
+    "15": 1,
+    "3": 1,
+    "17": 1,
+    "25": 1,
+    "22": 1,
+    "13": 1,
+    "4": 2,
+    "11": 1,
+    "9": 1,
+    "23": 1,
+    "10": 1,
+    "27": 1,
+    "21": 1,
+    "38": 1,
+    "6": 1,
+    "31": 1
+  },
+  "category_distribution": {
+    "operations_conduct": 7,
+    "mergers_acquisitions": 3,
+    "asset_dispositions": 2,
+    "debt_and_financing": 2,
+    "dividends_distributions": 2,
+    "capital_expenditures": 1,
+    "contracts": 2,
+    "litigation": 1,
+    "accounting": 1,
+    "tax": 1,
+    "intellectual_property": 1,
+    "compensation_benefits": 2,
+    "related_party": 1
+  },
+  "classified_clauses": [
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "a",
+      "clause_type": "obligation",
+      "original_text": "From and after the date of this Agreement until the earlier of the Effective Time and the termination of this Agreement pursuant to Article VIII, except (the following exceptions set forth in clauses (i) through (iv), the \"Interim Covenant Exceptions\") (i) as otherwise required or expressly contemplated by this Agreement, (ii) as may be required by a Governmental Entity or required by applicable Law or Order, (iii) as may be consented to in writing by Parent (which consent shall not be unreasonably withheld, conditioned or delayed), or (iv) as otherwise set forth in Section 6.1(a) of the Company Disclosure Schedule, the Company shall, and shall cause each of its Subsidiaries to, use commercially reasonable efforts to conduct its business in the ordinary course of business and use commercially reasonable efforts to preserve intact its business organization, keep available the services of its and their present officers and key employees, and maintain its existing business relationships and goodwill, including with material customers, suppliers and other business partners; provided, however, that no action or failure to take an action with respect to matters specifically addressed by the provisions of Section 6.1(b) shall constitute a breach of this Section 6.1(a) unless such action or failure to take action would constitute a breach of such provision of Section 6.1(b).",
+      "processed_text": "From and after the date of this Agreement until the earlier of the Effective Time and the termination of this Agreement pursuant to Article VIII, except (the following exceptions set forth in clauses (i) through (iv), the \"Interim Covenant Exceptions\") (i) as otherwise required or expressly contemplated by this Agreement, (ii) as may be required by a Governmental Entity or required by applicable Law or Order, (iii) as may be consented to in writing by Parent (which consent shall not be unreasonably withheld, conditioned or delayed), or (iv) as otherwise set forth in Section 6.1(a) of the Company Disclosure Schedule, the Company shall, and shall cause each of its Subsidiaries to, use commercially reasonable efforts to conduct its business in the ordinary course of business and use commercially reasonable efforts to preserve intact its business organization, keep available the services of its and their present officers and key employees, and maintain its existing business relationships and goodwill, including with material customers, suppliers and other business partners; provided, however, that no action or failure to take an action with respect to matters specifically addressed by the provisions of Section 6.1(b) shall constitute a breach of this Section 6.1(a) unless such action or failure to take action would constitute a breach of such provision of Section 6.1(b).",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ],
+      "clause_index": 0,
+      "assigned_cluster": 0,
+      "similarity_score": 0.8636531056422319,
+      "cluster_category": "operations_conduct",
+      "cluster_theme": "Pre-Closing Conduct of Business and Operations Restrictions",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_preamble",
+      "clause_type": "preamble",
+      "original_text": "From the date of this Agreement until the earlier of the Effective Time and the termination of this Agreement pursuant to Article VIII, other than pursuant to any Interim Covenant Exception, the Company shall not, and shall cause its Subsidiaries not to:",
+      "processed_text": "From the date of this Agreement until the earlier of the Effective Time and the termination of this Agreement pursuant to Article VIII, other than pursuant to any Interim Covenant Exception, the Company shall not, and shall cause its Subsidiaries not to:",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 1,
+      "assigned_cluster": 0,
+      "similarity_score": 0.7236546558220553,
+      "cluster_category": "operations_conduct",
+      "cluster_theme": "Pre-Closing Conduct of Business and Operations Restrictions",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_i",
+      "clause_type": "prohibition",
+      "original_text": "(i) adopt any (A) change in the Company's Organizational Documents (except for ministerial amendments) or (B) material changes to the Organizational Documents of any of the Company's Subsidiaries that, in the case of this clause (B), would be adverse to Parent;",
+      "processed_text": "(i) adopt any (A) change in the Company's Organizational Documents (except for ministerial amendments) or (B) material changes to the Organizational Documents of any of the Company's Subsidiaries that, in the case of this clause (B), would be adverse to Parent;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ],
+      "clause_index": 2,
+      "assigned_cluster": 12,
+      "similarity_score": 0.7213072625303653,
+      "cluster_category": "operations_conduct",
+      "cluster_theme": "Restrictions on Amending Organizational and Governing Documents",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "highly_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_ii",
+      "clause_type": "prohibition",
+      "original_text": "(ii) adopt a plan of complete or partial liquidation, dissolution, restructuring, recapitalization or other reorganization, except for any such plan solely among or between the Company and any of its Wholly Owned Subsidiaries or among or between any of the Company's Wholly Owned Subsidiaries, in each case, to the extent such actions would not reasonably be expected to result in any material Taxes;",
+      "processed_text": "(ii) adopt a plan of complete or partial liquidation, dissolution, restructuring, recapitalization or other reorganization, except for any such plan solely among or between the Company and any of its Wholly Owned Subsidiaries or among or between any of the Company's Wholly Owned Subsidiaries, in each case, to the extent such actions would not reasonably be expected to result in any material Taxes;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 3,
+      "assigned_cluster": 14,
+      "similarity_score": 0.8326822860243799,
+      "cluster_category": "mergers_acquisitions",
+      "cluster_theme": "Prohibition on Liquidation, Dissolution, Restructuring and Fundamental Corporate Changes",
+      "restriction_type": "absolute_prohibition",
+      "typical_restrictiveness": "highly_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_iii",
+      "clause_type": "prohibition",
+      "original_text": "(iii) acquire, directly or indirectly, by merger, consolidation, acquisition of equity interests or assets or otherwise, any Person or its business, other than (A) transactions among the Company and its Wholly Owned Subsidiaries or among the Company's Wholly Owned Subsidiaries, in each case, to the extent such transactions would not reasonably be expected to result in any material Taxes or (B) acquisitions of inventory or other goods in the ordinary course of business;",
+      "processed_text": "(iii) acquire, directly or indirectly, by merger, consolidation, acquisition of equity interests or assets or otherwise, any Person or its business, other than (A) transactions among the Company and its Wholly Owned Subsidiaries or among the Company's Wholly Owned Subsidiaries, in each case, to the extent such transactions would not reasonably be expected to result in any material Taxes or (B) acquisitions of inventory or other goods in the ordinary course of business;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 4,
+      "assigned_cluster": 33,
+      "similarity_score": 0.7509532167748991,
+      "cluster_category": "mergers_acquisitions",
+      "cluster_theme": "Prohibition on Acquisitions and Business Combinations During Interim Period",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_iv",
+      "clause_type": "prohibition",
+      "original_text": "(iv) transfer, sell, lease, license, divest, cancel or otherwise dispose of, or incur, permit or suffer to exist the creation of any material Encumbrance (other than a Permitted Encumbrance) upon, any assets (excluding any equity interests of the Company or any of its Subsidiaries, which are subject to Section 6.1(b)(v), and excluding any Intellectual Property Rights, which are subject to Section 6.1(b)(xviii)), except (A) sales of inventory or other goods or licenses made in the ordinary course of business consistent with past practice, (B) sales of obsolete assets or (C) as expressly required pursuant to the terms of the Company Material Contracts in effect prior to the date of this Agreement and made available to Parent prior to the date of this Agreement;",
+      "processed_text": "(iv) transfer, sell, lease, license, divest, cancel or otherwise dispose of, or incur, permit or suffer to exist the creation of any material Encumbrance (other than a Permitted Encumbrance) upon, any assets (excluding any equity interests of the Company or any of its Subsidiaries, which are subject to Section 6.1(b)(v), and excluding any Intellectual Property Rights, which are subject to Section 6.1(b)(xviii)), except (A) sales of inventory or other goods or licenses made in the ordinary course of business consistent with past practice, (B) sales of obsolete assets or (C) as expressly required pursuant to the terms of the Company Material Contracts in effect prior to the date of this Agreement and made available to Parent prior to the date of this Agreement;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ],
+      "clause_index": 5,
+      "assigned_cluster": 37,
+      "similarity_score": 0.7820203252201513,
+      "cluster_category": "asset_dispositions",
+      "cluster_theme": "Prohibitions on Sale Transfer or Encumbrance of Company Assets",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_v",
+      "clause_type": "prohibition",
+      "original_text": "(v) issue, sell, divest, grant, transfer, lease, license, guarantee, Encumber (other than with Permitted Encumbrances of the type described in clause (j) of the definition thereof) or otherwise enter into any Contract or other agreement with respect to the voting of, any equity interests of the Company or any of its Subsidiaries, securities convertible or exchangeable into or exercisable for any such equity interests, or any options, warrants or other rights of any kind to acquire any such equity interests or such convertible or exchangeable securities, other than any (A) such transaction among or between the Company and any of its Wholly Owned Subsidiaries or among or between the Company's Wholly Owned Subsidiaries, (B) issuance in respect of Company Equity Awards outstanding as of the date of this Agreement in accordance with their terms as of the date of this Agreement or (C) issuance in respect of Company Equity Awards granted after the date hereof under the Stock Plans without violation of this Agreement pursuant to the form award agreements previously provided to Parent;",
+      "processed_text": "(v) issue, sell, divest, grant, transfer, lease, license, guarantee, Encumber (other than with Permitted Encumbrances of the type described in clause (j) of the definition thereof) or otherwise enter into any Contract or other agreement with respect to the voting of, any equity interests of the Company or any of its Subsidiaries, securities convertible or exchangeable into or exercisable for any such equity interests, or any options, warrants or other rights of any kind to acquire any such equity interests or such convertible or exchangeable securities, other than any (A) such transaction among or between the Company and any of its Wholly Owned Subsidiaries or among or between the Company's Wholly Owned Subsidiaries, (B) issuance in respect of Company Equity Awards outstanding as of the date of this Agreement in accordance with their terms as of the date of this Agreement or (C) issuance in respect of Company Equity Awards granted after the date hereof under the Stock Plans without violation of this Agreement pursuant to the form award agreements previously provided to Parent;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ],
+      "clause_index": 6,
+      "assigned_cluster": 26,
+      "similarity_score": 0.8373313136908398,
+      "cluster_category": "mergers_acquisitions",
+      "cluster_theme": "Prohibition on Issuing or Encumbering Capital Stock and Equity Securities",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "highly_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_vi",
+      "clause_type": "prohibition",
+      "original_text": "(vi) amend, modify, extend, renew or terminate any material Lease, and shall not enter into any material new lease, sublease, license or other agreement for the use or occupancy of any real property, other than in the ordinary course of business consistent with past practice;",
+      "processed_text": "(vi) amend, modify, extend, renew or terminate any material Lease, and shall not enter into any material new lease, sublease, license or other agreement for the use or occupancy of any real property, other than in the ordinary course of business consistent with past practice;",
+      "definitions_used": [],
+      "parties_replaced": [],
+      "clause_index": 7,
+      "assigned_cluster": 42,
+      "similarity_score": 0.6834578896170526,
+      "cluster_category": "asset_dispositions",
+      "cluster_theme": "Restrictions on Real Property Transactions and Equity Acquisitions",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "highly_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_vii",
+      "clause_type": "prohibition",
+      "original_text": "(vii) purchase any real property or sell any Owned Real Property;",
+      "processed_text": "(vii) purchase any real property or sell any Owned Real Property;",
+      "definitions_used": [],
+      "parties_replaced": [],
+      "clause_index": 8,
+      "assigned_cluster": 15,
+      "similarity_score": 0.6829732122527378,
+      "cluster_category": "operations_conduct",
+      "cluster_theme": "Restrictions on Implementing New Policies and Strategic Operational Changes",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "highly_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_viii",
+      "clause_type": "prohibition",
+      "original_text": "(viii) make any loans, advances, guarantees or capital contributions to or investments in, or otherwise extend any Indebtedness to, any Person (other than to or from the Company and any of its Wholly Owned Subsidiaries or among any of its Wholly Owned Subsidiaries), other than (A) guarantees made by the Company or its Subsidiaries in the ordinary course of business consistent with past practice in connection with the acquisition of goods and services or (B) advances of reimbursable business expenses to employees in the ordinary course of business consistent with past practice;",
+      "processed_text": "(viii) make any loans, advances, guarantees or capital contributions to or investments in, or otherwise extend any Indebtedness to, any Person (other than to or from the Company and any of its Wholly Owned Subsidiaries or among any of its Wholly Owned Subsidiaries), other than (A) guarantees made by the Company or its Subsidiaries in the ordinary course of business consistent with past practice in connection with the acquisition of goods and services or (B) advances of reimbursable business expenses to employees in the ordinary course of business consistent with past practice;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 9,
+      "assigned_cluster": 3,
+      "similarity_score": 0.8698337065979197,
+      "cluster_category": "debt_and_financing",
+      "cluster_theme": "Prohibitions on Making Loans, Advances, and Capital Contributions to Third Parties",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_ix",
+      "clause_type": "prohibition",
+      "original_text": "(ix) declare, set aside, make or pay any dividend or other distribution, payable in cash, stock, property or otherwise, with respect to any of its capital stock or other equity interests (including with respect to the Company Shares), except for dividends paid by any Wholly Owned Subsidiary to the Company or to any other Wholly Owned Subsidiary of the Company;",
+      "processed_text": "(ix) declare, set aside, make or pay any dividend or other distribution, payable in cash, stock, property or otherwise, with respect to any of its capital stock or other equity interests (including with respect to the Company Shares), except for dividends paid by any Wholly Owned Subsidiary to the Company or to any other Wholly Owned Subsidiary of the Company;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 10,
+      "assigned_cluster": 17,
+      "similarity_score": 0.8920234319610589,
+      "cluster_category": "dividends_distributions",
+      "cluster_theme": "Prohibition on Dividends and Distributions During Interim Period",
+      "restriction_type": "ordinary_course_exception",
+      "typical_restrictiveness": "moderately_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_x",
+      "clause_type": "prohibition",
+      "original_text": "(x) reclassify, split, combine, subdivide or redeem, purchase or otherwise acquire, directly or indirectly, any of its capital stock or other equity interests or securities convertible or exchangeable into or exercisable for any shares of its capital stock or other equity interests (including with respect to the Company Shares), other than any such transactions solely between or among the Company and its Wholly Owned Subsidiaries;",
+      "processed_text": "(x) reclassify, split, combine, subdivide or redeem, purchase or otherwise acquire, directly or indirectly, any of its capital stock or other equity interests or securities convertible or exchangeable into or exercisable for any shares of its capital stock or other equity interests (including with respect to the Company Shares), other than any such transactions solely between or among the Company and its Wholly Owned Subsidiaries;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 11,
+      "assigned_cluster": 25,
+      "similarity_score": 0.8381162965976819,
+      "cluster_category": "dividends_distributions",
+      "cluster_theme": "Prohibitions on Stock Splits, Reclassifications, and Share Repurchases",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_xi",
+      "clause_type": "prohibition",
+      "original_text": "(xi) (A) create, incur, assume or guarantee any Indebtedness of the type described in clauses (a), (b), (c), (d), (e), (f) or (g) of the definition thereof in excess of $15,000,000 in principal amount outstanding at any one time, except for incurrences of Indebtedness and guarantees under the Company Credit Agreement (including any requests for increases to the commitment amounts thereunder, provided, that the aggregate amount of any such increases after the date of this Agreement and prior to the Closing Date shall not exceed $10,000,000) in the ordinary course of business or guarantees of Indebtedness of the Company's Wholly Owned Subsidiaries otherwise incurred in compliance with this Section 6.1(b), (B) prepay, redeem, repurchase, defease, satisfy, discharge, cancel or otherwise terminate any such Indebtedness of the Company or any of its Subsidiaries, other than payments of Indebtedness under the Company Credit Agreement, except in each case of clause (A) and (B) for any such transactions solely between or among the Company and its Wholly Owned Subsidiaries, or (C) create, assume, incur or guarantee any obligations, liabilities or undertakings in respect of interest rate and currency obligation swaps, hedges or similar arrangements or in respect of annuity insurance products created or entered into in the ordinary course of business consistent with past practice;",
+      "processed_text": "(xi) (A) create, incur, assume or guarantee any Indebtedness of the type described in clauses (a), (b), (c), (d), (e), (f) or (g) of the definition thereof in excess of $15,000,000 in principal amount outstanding at any one time, except for incurrences of Indebtedness and guarantees under the Company Credit Agreement (including any requests for increases to the commitment amounts thereunder, provided, that the aggregate amount of any such increases after the date of this Agreement and prior to the Closing Date shall not exceed $10,000,000) in the ordinary course of business or guarantees of Indebtedness of the Company's Wholly Owned Subsidiaries otherwise incurred in compliance with this Section 6.1(b), (B) prepay, redeem, repurchase, defease, satisfy, discharge, cancel or otherwise terminate any such Indebtedness of the Company or any of its Subsidiaries, other than payments of Indebtedness under the Company Credit Agreement, except in each case of clause (A) and (B) for any such transactions solely between or among the Company and its Wholly Owned Subsidiaries, or (C) create, assume, incur or guarantee any obligations, liabilities or undertakings in respect of interest rate and currency obligation swaps, hedges or similar arrangements or in respect of annuity insurance products created or entered into in the ordinary course of business consistent with past practice;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 12,
+      "assigned_cluster": 22,
+      "similarity_score": 0.8188076488394963,
+      "cluster_category": "debt_and_financing",
+      "cluster_theme": "Prohibitions on Incurring or Modifying Debt and Guarantees",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_xii",
+      "clause_type": "prohibition",
+      "original_text": "(xii) make or commit to make any, capital expenditures in excess of $10,000,000 in the aggregate, except (A) as contemplated by the Company's capital budget made available to Parent on or prior to the date of this Agreement or (B) to the extent reasonably necessary in connection with an emergency, including as it relates to protecting human health and safety;",
+      "processed_text": "(xii) make or commit to make any, capital expenditures in excess of $10,000,000 in the aggregate, except (A) as contemplated by the Company's capital budget made available to Parent on or prior to the date of this Agreement or (B) to the extent reasonably necessary in connection with an emergency, including as it relates to protecting human health and safety;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ],
+      "clause_index": 13,
+      "assigned_cluster": 13,
+      "similarity_score": 0.8233487514386476,
+      "cluster_category": "capital_expenditures",
+      "cluster_theme": "Budget-Based Limitations on Capital Expenditures During Interim Period",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_xiii",
+      "clause_type": "prohibition",
+      "original_text": "(xiii) (A) enter into any Contract that would have been a Company Material Contract had it been entered into prior to the date of this Agreement, other than Contracts in the ordinary course of business consistent with past practice (including in connection with the expiration or renewal of any such Company Material Contract) provided, that such Contract shall not include any provision referred to in Section 4.11(a)(ix)(A) and Section 4.11(a)(ix)(E) or (B) take any action set forth on Section 6.1(b)(xiii)(B) of the Company Disclosure Schedule.",
+      "processed_text": "(xiii) (A) enter into any Contract that would have been a Company Material Contract had it been entered into prior to the date of this Agreement, other than Contracts in the ordinary course of business consistent with past practice (including in connection with the expiration or renewal of any such Company Material Contract) provided, that such Contract shall not include any provision referred to in Section 4.11(a)(ix)(A) and Section 4.11(a)(ix)(E) or (B) take any action set forth on Section 6.1(b)(xiii)(B) of the Company Disclosure Schedule.",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 14,
+      "assigned_cluster": 4,
+      "similarity_score": 0.7391351239506696,
+      "cluster_category": "contracts",
+      "cluster_theme": "Restrictions on Modifying, Terminating, or Entering Material Contracts",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_xiv",
+      "clause_type": "prohibition",
+      "original_text": "(xiv) other than with respect to Company Material Contracts related to Indebtedness, which shall be governed by Section 6.1(b)(viii), Section 6.1(b)(xi) and Section 6.13, terminate, materially modify, materially amend or waive any material right under any Company Material Contract, other than in the ordinary course of business consistent with past practice (including in connection with the expiration or renewal of any such Company Material Contract);",
+      "processed_text": "(xiv) other than with respect to Company Material Contracts related to Indebtedness, which shall be governed by Section 6.1(b)(viii), Section 6.1(b)(xi) and Section 6.13, terminate, materially modify, materially amend or waive any material right under any Company Material Contract, other than in the ordinary course of business consistent with past practice (including in connection with the expiration or renewal of any such Company Material Contract);",
+      "definitions_used": [],
+      "parties_replaced": [],
+      "clause_index": 15,
+      "assigned_cluster": 4,
+      "similarity_score": 0.7827824231054655,
+      "cluster_category": "contracts",
+      "cluster_theme": "Restrictions on Modifying, Terminating, or Entering Material Contracts",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_xv",
+      "clause_type": "prohibition",
+      "original_text": "(xv) other than with respect to Transaction Litigation, or any Tax claim, audit, assessment or dispute, which shall be governed exclusively by Section 6.16 and Section 6.1(b)(xvii), respectively, (A) settle, waive, release, assign, compromise or enter into any Contract with respect to any Proceeding other than any compromise or settlement that (A) is for an amount net of insurance in excess of $2,500,000 individually or $5,000,000 in the aggregate, (B) does not impose injunctive relief or other non-monetary obligation on the Company or any of its Subsidiaries (other than customary confidentiality and de minimis contractual obligations in the applicable compromise or settlement agreement that are incidental to an award of monetary damages thereunder), (C) does not involve any criminal liability or the admission of wrongdoing by the Company, any of its Subsidiaries or any of their respective officers or directors and (D) does not provide for the license of any material Intellectual Property Rights or the termination or modification or amendment of any license of material Intellectual Property Rights, or (B) take any action set forth on Section 6.1(b)(xv)(B) of the Company Disclosure Schedule;",
+      "processed_text": "(xv) other than with respect to Transaction Litigation, or any Tax claim, audit, assessment or dispute, which shall be governed exclusively by Section 6.16 and Section 6.1(b)(xvii), respectively, (A) settle, waive, release, assign, compromise or enter into any Contract with respect to any Proceeding other than any compromise or settlement that (A) is for an amount net of insurance in excess of $2,500,000 individually or $5,000,000 in the aggregate, (B) does not impose injunctive relief or other non-monetary obligation on the Company or any of its Subsidiaries (other than customary confidentiality and de minimis contractual obligations in the applicable compromise or settlement agreement that are incidental to an award of monetary damages thereunder), (C) does not involve any criminal liability or the admission of wrongdoing by the Company, any of its Subsidiaries or any of their respective officers or directors and (D) does not provide for the license of any material Intellectual Property Rights or the termination or modification or amendment of any license of material Intellectual Property Rights, or (B) take any action set forth on Section 6.1(b)(xv)(B) of the Company Disclosure Schedule;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 16,
+      "assigned_cluster": 11,
+      "similarity_score": 0.8190456755983675,
+      "cluster_category": "litigation",
+      "cluster_theme": "Monetary Thresholds for Settling Legal Proceedings and Actions",
+      "restriction_type": "materiality_threshold",
+      "typical_restrictiveness": "moderately_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_xvi",
+      "clause_type": "prohibition",
+      "original_text": "(xvi) make any material changes with respect to any financial accounting policies or procedures, except as required by changes in GAAP, applicable Law or SEC rule or policy;",
+      "processed_text": "(xvi) make any material changes with respect to any financial accounting policies or procedures, except as required by changes in GAAP, applicable Law or SEC rule or policy;",
+      "definitions_used": [],
+      "parties_replaced": [],
+      "clause_index": 17,
+      "assigned_cluster": 9,
+      "similarity_score": 0.8528725546023224,
+      "cluster_category": "accounting",
+      "cluster_theme": "Restrictions on Changes to Accounting Policies and Asset Valuations",
+      "restriction_type": "materiality_threshold",
+      "typical_restrictiveness": "moderately_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_xvii",
+      "clause_type": "prohibition",
+      "original_text": "(xvii) (A) make (except in the ordinary course of business consistent with past practice), change or revoke any material Tax election, (B) change any material Tax accounting method, (C) file any amended Tax Return, (D) enter into any closing agreement (or any other agreement with any Governmental Entity) with respect to Taxes or any Tax allocation or sharing agreement (other than any commercial agreement entered into in the ordinary course of business consistent with past practice that does not relate primarily to Taxes), (E) settle or pay any income or other material Tax claim, audit, assessment or dispute, (F) extend or waive the application of any statute of limitations regarding the assessment or collection of any Tax (other than with respect to customary automatically granted extensions of time within which to file Tax Returns) or initiate any voluntary disclosure or similar program, (G) file any income or other material Tax Return in a manner inconsistent with past practices or (H) surrender any right to claim a refund of a material amount of Taxes;",
+      "processed_text": "(xvii) (A) make (except in the ordinary course of business consistent with past practice), change or revoke any material Tax election, (B) change any material Tax accounting method, (C) file any amended Tax Return, (D) enter into any closing agreement (or any other agreement with any Governmental Entity) with respect to Taxes or any Tax allocation or sharing agreement (other than any commercial agreement entered into in the ordinary course of business consistent with past practice that does not relate primarily to Taxes), (E) settle or pay any income or other material Tax claim, audit, assessment or dispute, (F) extend or waive the application of any statute of limitations regarding the assessment or collection of any Tax (other than with respect to customary automatically granted extensions of time within which to file Tax Returns) or initiate any voluntary disclosure or similar program, (G) file any income or other material Tax Return in a manner inconsistent with past practices or (H) surrender any right to claim a refund of a material amount of Taxes;",
+      "definitions_used": [],
+      "parties_replaced": [],
+      "clause_index": 18,
+      "assigned_cluster": 23,
+      "similarity_score": 0.8842503513401224,
+      "cluster_category": "tax",
+      "cluster_theme": "Restrictions on Tax Elections, Returns, and Administrative Actions",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "highly_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_xviii",
+      "clause_type": "prohibition",
+      "original_text": "(xviii) (A) sell, assign, transfer or grant any license to any material Owned IPR (other than non-exclusive licenses granted in the ordinary course of business consistent with past practice), (B) cancel, abandon or otherwise allow to lapse or expire any material Registered Owned IPR, other than expirations or abandonment of any such Registered Owned IPR at the end of the applicable statutory term, (C) disclose any Trade Secret or other material confidential information included in Owned IPR (other than, in each case of the foregoing in this clause (C), (1) pursuant to non-disclosure agreements or other Contracts in effect as of the date of this Agreement, (2) to the Company's or its Subsidiaries' Representatives, consultants or contractors who are bound by confidentiality obligations or (3) as required by applicable Law) or (D) disclose, distribute, escrow, or make available, or grant any rights with respect to, any source code or other technology included in the Company Software;",
+      "processed_text": "(xviii) (A) sell, assign, transfer or grant any license to any material Owned IPR (other than non-exclusive licenses granted in the ordinary course of business consistent with past practice), (B) cancel, abandon or otherwise allow to lapse or expire any material Registered Owned IPR, other than expirations or abandonment of any such Registered Owned IPR at the end of the applicable statutory term, (C) disclose any Trade Secret or other material confidential information included in Owned IPR (other than, in each case of the foregoing in this clause (C), (1) pursuant to non-disclosure agreements or other Contracts in effect as of the date of this Agreement, (2) to the Company's or its Subsidiaries' Representatives, consultants or contractors who are bound by confidentiality obligations or (3) as required by applicable Law) or (D) disclose, distribute, escrow, or make available, or grant any rights with respect to, any source code or other technology included in the Company Software;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 19,
+      "assigned_cluster": 10,
+      "similarity_score": 0.7873915690207618,
+      "cluster_category": "intellectual_property",
+      "cluster_theme": "Restrictions on Sale, License, Abandonment of Company Intellectual Property",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "highly_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_xix",
+      "clause_type": "prohibition",
+      "original_text": "(xix) except as required pursuant to the terms of any Company Benefit Plan in effect as of the date of this Agreement, (A) increase in any manner the compensation or consulting fees, bonus, pension, welfare, fringe or other benefits, severance or termination pay of any current or former employee, officer, director or other individual service provider of the Company or its Subsidiaries, (B) become a party to, establish, adopt, amend, modify, commence participation in or terminate any Company Benefit Plan or any plan, policy, program, contract, agreement or arrangement that would have been a Company Benefit Plan had it been entered into prior to the date of this Agreement, (C) grant any new awards, or amend or modify the terms of any outstanding awards, under any Company Benefit Plan or otherwise, (D) take any action to accelerate the vesting or lapsing of restrictions or payment, or fund or in any other way secure the payment of, compensation or benefits under any Company Benefit Plan or otherwise, (E) materially change any actuarial or other assumptions used to calculate funding obligations with respect to any Company Benefit Plan that is required by applicable Law to be funded or change the manner in which contributions to such plans are made or the basis on which such contributions are determined, except as may be required by GAAP or (F) terminate the employment or service of any employee, officer, director or other individual service provider or Third Party Worker of the Company or its Subsidiaries with an annual salary or wage rate or consulting fees in excess of $200,000 other than for cause;",
+      "processed_text": "(xix) except as required pursuant to the terms of any Company Benefit Plan in effect as of the date of this Agreement, (A) increase in any manner the compensation or consulting fees, bonus, pension, welfare, fringe or other benefits, severance or termination pay of any current or former employee, officer, director or other individual service provider of the Company or its Subsidiaries, (B) become a party to, establish, adopt, amend, modify, commence participation in or terminate any Company Benefit Plan or any plan, policy, program, contract, agreement or arrangement that would have been a Company Benefit Plan had it been entered into prior to the date of this Agreement, (C) grant any new awards, or amend or modify the terms of any outstanding awards, under any Company Benefit Plan or otherwise, (D) take any action to accelerate the vesting or lapsing of restrictions or payment, or fund or in any other way secure the payment of, compensation or benefits under any Company Benefit Plan or otherwise, (E) materially change any actuarial or other assumptions used to calculate funding obligations with respect to any Company Benefit Plan that is required by applicable Law to be funded or change the manner in which contributions to such plans are made or the basis on which such contributions are determined, except as may be required by GAAP or (F) terminate the employment or service of any employee, officer, director or other individual service provider or Third Party Worker of the Company or its Subsidiaries with an annual salary or wage rate or consulting fees in excess of $200,000 other than for cause;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 20,
+      "assigned_cluster": 27,
+      "similarity_score": 0.8753591562842185,
+      "cluster_category": "compensation_benefits",
+      "cluster_theme": "Interim Period Restrictions on Employee Compensation and Benefit Changes",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "highly_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_xx",
+      "clause_type": "prohibition",
+      "original_text": "(xx) (A) become a party to, establish, adopt, amend, commence participation in or terminate any Labor Agreement or recognize or certify any labor union, labor organization, works council or similar organization as the bargaining unit of any employees of the Company or any of its Subsidiaries, (B) implement or announce any employee layoffs, furloughs, plant closings or other similar actions that would trigger notice obligations under the WARN Act, (C) waive or release any noncompetition, nonsolicitation, nondisclosure or other restrictive covenant obligation of any current or former employee or independent contractor of the Company or any of its Subsidiaries;",
+      "processed_text": "(xx) (A) become a party to, establish, adopt, amend, commence participation in or terminate any Labor Agreement or recognize or certify any labor union, labor organization, works council or similar organization as the bargaining unit of any employees of the Company or any of its Subsidiaries, (B) implement or announce any employee layoffs, furloughs, plant closings or other similar actions that would trigger notice obligations under the WARN Act, (C) waive or release any noncompetition, nonsolicitation, nondisclosure or other restrictive covenant obligation of any current or former employee or independent contractor of the Company or any of its Subsidiaries;",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 21,
+      "assigned_cluster": 21,
+      "similarity_score": 0.7004429026224708,
+      "cluster_category": "compensation_benefits",
+      "cluster_theme": "Prohibition on Mass Layoffs and Plant Closings Triggering WARN",
+      "restriction_type": "absolute_prohibition",
+      "typical_restrictiveness": "highly_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_xxi",
+      "clause_type": "prohibition",
+      "original_text": "(xxi) enter into any transactions or Contracts with any affiliate or other Person that would be required to be disclosed by the Company under Item 404 of Regulation S-K of the SEC; or",
+      "processed_text": "(xxi) enter into any transactions or Contracts with any affiliate or other Person that would be required to be disclosed by the Company under Item 404 of Regulation S-K of the SEC; or",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        }
+      ],
+      "clause_index": 22,
+      "assigned_cluster": 38,
+      "similarity_score": 0.8934269857686208,
+      "cluster_category": "related_party",
+      "cluster_theme": "Prohibition on Affiliate and Related Party Transactions During Interim Period",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "highly_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "b_xxii",
+      "clause_type": "catchall",
+      "original_text": "(xxii) agree, authorize or commit to do any of the foregoing.",
+      "processed_text": "(xxii) agree, authorize or commit to do any of the foregoing.",
+      "definitions_used": [],
+      "parties_replaced": [],
+      "clause_index": 23,
+      "assigned_cluster": 6,
+      "similarity_score": 0.8554048664197426,
+      "cluster_category": "operations_conduct",
+      "cluster_theme": "Prohibition on Agreements or Commitments to Circumvent Other Covenants",
+      "restriction_type": "absolute_prohibition",
+      "typical_restrictiveness": "highly_restrictive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "c",
+      "clause_type": "carveout",
+      "original_text": "Nothing set forth in this Agreement shall give Parent, directly or indirectly, the right to control or direct the Company's or its Subsidiaries' operations prior to the Effective Time. Prior to the Effective Time, the Company and its Subsidiaries shall exercise, consistent with the terms and conditions of this Agreement, complete control and supervision over their respective operations.",
+      "processed_text": "Nothing set forth in this Agreement shall give Parent, directly or indirectly, the right to control or direct the Company's or its Subsidiaries' operations prior to the Effective Time. Prior to the Effective Time, the Company and its Subsidiaries shall exercise, consistent with the terms and conditions of this Agreement, complete control and supervision over their respective operations.",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "the Company",
+          "standard_role": "the Company"
+        },
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ],
+      "clause_index": 24,
+      "assigned_cluster": 31,
+      "similarity_score": 0.9382746759283375,
+      "cluster_category": "operations_conduct",
+      "cluster_theme": "Clarification That Buyer Has No Pre-Closing Control Rights",
+      "restriction_type": "ordinary_course_exception",
+      "typical_restrictiveness": "permissive"
+    },
+    {
+      "section_number": "6.1",
+      "section_title": "Interim Operations",
+      "clause_id": "d",
+      "clause_type": "prohibition",
+      "original_text": "From and after the execution and delivery of this Agreement, until the earlier of the Effective Time and the termination of this Agreement pursuant to Article VIII, Parent shall not, and shall cause its Subsidiaries and controlled Affiliates not to, directly or indirectly (whether by merger, consolidation or otherwise), acquire, purchase, lease or license or otherwise enter into a transaction with (or agree to acquire, purchase, lease, or license or otherwise enter into a transaction with) any Person if doing so would reasonably be expected to prevent or materially delay the obtaining of any authorization, consent, Order or approval of any Governmental Entity or the expiration or termination of any applicable waiting period necessary to consummate the Transactions.",
+      "processed_text": "From and after the execution and delivery of this Agreement, until the earlier of the Effective Time and the termination of this Agreement pursuant to Article VIII, Parent shall not, and shall cause its Subsidiaries and controlled Affiliates not to, directly or indirectly (whether by merger, consolidation or otherwise), acquire, purchase, lease or license or otherwise enter into a transaction with (or agree to acquire, purchase, lease, or license or otherwise enter into a transaction with) any Person if doing so would reasonably be expected to prevent or materially delay the obtaining of any authorization, consent, Order or approval of any Governmental Entity or the expiration or termination of any applicable waiting period necessary to consummate the Transactions.",
+      "definitions_used": [],
+      "parties_replaced": [
+        {
+          "term": "Parent",
+          "standard_role": "Parent"
+        }
+      ],
+      "clause_index": 25,
+      "assigned_cluster": 0,
+      "similarity_score": 0.7222579051645696,
+      "cluster_category": "operations_conduct",
+      "cluster_theme": "Pre-Closing Conduct of Business and Operations Restrictions",
+      "restriction_type": "mixed",
+      "typical_restrictiveness": "moderately_restrictive"
+    }
+  ],
+  "insights": {
+    "unusual_clauses_count": 2,
+    "unusual_clause_indices": [
+      7,
+      8
+    ],
+    "top_covenant_categories": [
+      {
+        "category": "operations_conduct",
+        "count": 7
+      },
+      {
+        "category": "mergers_acquisitions",
+        "count": 3
+      },
+      {
+        "category": "asset_dispositions",
+        "count": 2
+      },
+      {
+        "category": "debt_and_financing",
+        "count": 2
+      },
+      {
+        "category": "dividends_distributions",
+        "count": 2
+      }
+    ],
+    "coverage_quality": "good"
+  }
+}

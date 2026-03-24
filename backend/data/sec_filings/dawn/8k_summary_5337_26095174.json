@@ -1,0 +1,40 @@
+{
+  "ticker": "DAWN",
+  "filing_date": "03/06/26",
+  "items_reported": [
+    "Item 1.01",
+    "Item 8.01",
+    "Item 9.01"
+  ],
+  "L1_headline": "DAWN \u2013 Servier to acquire via $21.50 cash tender offer. | 03/06/26",
+  "L2_brief": "Day One Biopharmaceuticals entered into a definitive merger agreement with Servier Pharmaceuticals LLC under which Servier will acquire all outstanding DAWN shares at $21.50 per share in cash via tender offer followed by a back-end merger under DGCL Section 251(h). The offer must commence within 15 business days and is subject to a majority tender condition, HSR clearance, and other customary conditions, with an outside date of December 6, 2026 (extendable by 150 days for regulatory approval). The Company termination fee is $87.7 million, and no financing condition applies.",
+  "L3_detailed": {
+    "event": "Day One Biopharmaceuticals signed an Agreement and Plan of Merger with Servier Pharmaceuticals LLC (Parent), Servier Detroit Inc. (Merger Sub), and Servier S.A.S. (Guarantor). Merger Sub will commence a cash tender offer for all outstanding DAWN shares, followed by a short-form merger under DGCL Section 251(h) without a stockholder vote.",
+    "key_figures": [
+      "Offer price: $21.50 per share in cash",
+      "Company termination fee: $87.7 million",
+      "Offer must commence within 15 business days of March 6, 2026",
+      "Offer period: 20 business days from commencement",
+      "Outside date: December 6, 2026, extendable by 150 days for regulatory approval",
+      "Minimum tender condition: majority of outstanding shares"
+    ],
+    "deal_implications": "The Board unanimously approved the transaction and recommends stockholders tender their shares. The merger will be effected under DGCL Section 251(h), requiring no stockholder vote post-tender. No financing condition exists; Servier S.A.S. guarantees all payment obligations. The tender offer has not yet commenced.",
+    "remaining_conditions": [
+      "Majority of outstanding shares tendered in the Offer",
+      "Expiration or termination of HSR Act waiting period",
+      "Accuracy of Company representations and warranties (subject to MAE standard)",
+      "Company compliance with covenants in all material respects",
+      "Other conditions set forth in Exhibit A to the Merger Agreement",
+      "Commencement and completion of the tender offer",
+      "Filing of Schedule TO and Schedule 14D-9 with the SEC"
+    ],
+    "risks_flagged": [
+      "Competing offers or superior proposals could emerge; Company has fiduciary-out provisions for Superior Company Proposals",
+      "Potential stockholder litigation in connection with the Offer or Merger",
+      "Regulatory approval (HSR) not yet obtained; outside date extension of 150 days if regulatory approval is delayed",
+      "Customary non-solicitation restrictions with exceptions for unsolicited Superior Company Proposals",
+      "Risk that sufficient shares may not be tendered to satisfy the majority condition"
+    ]
+  },
+  "filing_type": "8-K"
+}

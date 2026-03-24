@@ -1,0 +1,23 @@
+{
+  "ticker": "ESPR",
+  "filing_date": "01/12/26",
+  "items_reported": [
+    "Item 2.02",
+    "Item 9.01"
+  ],
+  "L1_headline": "ESPR \u2013 Preliminary 2025 results and 2026 guidance released. | 01/11/26",
+  "L2_brief": "Esperion Therapeutics issued preliminary 2025 results and 2026 financial guidance ahead of the J.P. Morgan Healthcare Conference. The company expects 2026 operating expenses of $210-$245 million, with R&D expenses of $40-$50 million and SG&A of $170-$195 million. This is a routine operational update with no merger or deal implications.",
+  "L3_detailed": {
+    "event": "Esperion released preliminary 2025 results and fiscal year 2026 financial guidance via press release and management presentation for the J.P. Morgan Healthcare Conference",
+    "key_figures": [
+      "2026 R&D expenses: $40-$50 million",
+      "2026 SG&A expenses: $170-$195 million",
+      "2026 total operating expenses: $210-$245 million"
+    ],
+    "deal_implications": "No merger or acquisition activity disclosed; this is a standalone operational and financial update",
+    "remaining_conditions": [],
+    "risks_flagged": [
+      "Forward-looking statements subject to uncertainties that could cause actual results to differ materially"
+    ]
+  }
+}

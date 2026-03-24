@@ -1,0 +1,31 @@
+{
+  "ticker": "HOLX",
+  "issuer": "HOLOGIC INC",
+  "filing_date": "02/03/26",
+  "insider_name": "Diana De Walt",
+  "insider_title": "SVP, Human Resources",
+  "relationship": "Officer",
+  "L1_headline": "+ HOLX \u2013 Diana De Walt disposed of 4,416 shares (tax withholding on RSU vesting). | 01/30/2026",
+  "L2_brief": "Diana De Walt, SVP of Human Resources at Hologic Inc, disposed of 4,416 shares of common stock on 01/30/2026 at $74.93 per share via tax withholding upon settlement of restricted stock units. This is an amended filing (Form 4/A) correcting a Power of Attorney attachment error from the original filing on 02/03/2026; the transaction details are unchanged. Post-transaction direct holdings stand at 7,603 shares.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "01/30/2026",
+        "shares": "4,416",
+        "price_per_share": "$74.93",
+        "total_value": "$330,890.88",
+        "acquired_or_disposed": "Disposed (D)"
+      }
+    ],
+    "post_transaction_holdings": "7,603 shares of common stock",
+    "ownership_type": "Direct",
+    "deal_signal": "N/A",
+    "pattern_notes": "Transaction code 'F' indicates shares were withheld by the issuer to cover tax obligations upon settlement of vested restricted stock units. This is a routine, non-discretionary disposition. The filing is a Form 4/A amendment filed solely to correct an attached Power of Attorney document; no transaction data was revised from the original 02/03/2026 filing.",
+    "risks_flagged": [
+      "Disposition is non-discretionary (tax withholding on RSU vesting, transaction code F)",
+      "Shares disposed (4,416) represent approximately 37% of post-transaction holdings (7,603), though this is mechanical rather than voluntary selling"
+    ]
+  },
+  "filing_type": "FORM 4"
+}

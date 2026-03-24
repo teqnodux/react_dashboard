@@ -1,0 +1,31 @@
+Nexstar Media Group, Inc. / TEGNA Inc. (HOLX)
+Filing: FY25 10-K
+
+Key Excerpts
+ 1. [TIMING + REGULATORY]   LEGAL LANGUAGE
+Section: Item 1. Business
+The Merger has been approved by the boards of directors of both companies and by the stockholders of TEGNA and is anticipated to close by the second half of 2026, subject to (i) FCC consent, (ii) receipt of other regulatory approvals including expiration or termination of the applicable waiting period under the Hart-Scott-Rodino Antitrust Improvements Act of 1976, as amended and (iii) satisfaction of other customary closing conditions. The Merger does not require approval of Nexstar stockholders and is not subject to any financing condition.
+
+ 2. [REGULATORY]   LEGAL LANGUAGE
+Section: Item 7. Management's Discussion and Analysis
+As a television broadcaster, the Company is highly regulated, and its operations require that it retain or renew a variety of government approvals and comply with changing federal regulations. In a July 2025 decision on appeal of the FCC's 2018 quadrennial review order, a federal court of appeals vacated the "top four" portion of the local television ownership rule, which had generally prohibited common ownership of two of the top four highest-rated stations in a DMA. The court also vacated the December 2023 rule prohibiting certain "top four" combinations involving LPTV stations or digital multicast streams.
+
+ 3. [REGULATORY]   LEGAL LANGUAGE
+Section: Item 7. Management's Discussion and Analysis
+The FCC has not yet issued an order repealing the "top four" portion of the duopoly rule and the "top four" rule concerning LPTV stations and digital multicasts. Moreover, the FCC's 2022 quadrennial media ownership review and an FCC proceeding to review the current national limit on television ownership are currently pending. The FCC could reinstitute earlier television ownership restrictions or impose other limitations in these or any future reviews.
+
+ 4. [TIMING]   LEGAL LANGUAGE
+Section: Note 1: Organization and Business Operations
+All vested and unvested time-based and performance-based equity-based awards of TEGNA that are granted prior to August 18, 2025 and outstanding immediately prior to the effective time of the Merger will vest in full and will be converted into the right to receive the Merger Consideration. Each TEGNA time-based and performance-based restricted stock unit granted on or after August 18, 2025 will convert into a time-based restricted stock unit award based on the Merger Consideration and the terms of the Merger Agreement, with total grant date value capped at $35.1 million.
+
+ 5. [TIMING + REGULATORY]   LEGAL LANGUAGE
+Section: Item 1A. Risk Factors
+The completion of the Merger is subject to the satisfaction (or waiver by all parties, to the extent permissible) of a number of conditions as specified in the Merger Agreement. These closing conditions include, among other things, (i) the absence of any order, writ, injunction, judgment, decree or ruling by a court of competent jurisdiction in the United States, (ii)(x) the expiration or termination of the waiting period applicable to the Merger under the Hart-Scott-Rodino Antitrust Improvements Act of 1976, as amended, and (y) the grant by the FCC of applications required to be filed with the FCC, (iii) the accuracy of the representations and warranties contained in the Merger Agreement (subject to certain materiality qualifiers), (iv) the performance and compliance in all material respects by the parties of their respective covenants, and (v) the absence of a Company Material Adverse Effect.
+
+ 6. [TIMING + REGULATORY]   LEGAL LANGUAGE
+Section: Item 1A. Risk Factors
+The failure to satisfy all of the required conditions could delay the completion of the Merger for a significant period of time or prevent it from occurring at all. If the Merger Agreement is terminated by either party under certain circumstances, including because certain required regulatory clearances are not obtained on or before November 18, 2026, Nexstar will be required to pay TEGNA a termination fee of $125 million.
+
+ 7. [TIMING]   LEGAL LANGUAGE
+Section: Note 11: Commitments and Contingencies
+On August 18, 2025, Nexstar entered into the Merger Agreement with TEGNA. The transaction is anticipated to close by the second half of 2026, subject to the satisfaction of certain customary conditions, including receipt of regulatory approvals. The agreement contains certain termination rights for both parties, including termination fees under certain circumstances.

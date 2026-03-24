@@ -1,0 +1,253 @@
+{
+  "deal_id": "D051",
+  "last_updated": "2026-02-26",
+  "approvals": [
+    {
+      "id": "hsr",
+      "jurisdiction": "United States",
+      "authority_short": "HSR / FTC+DOJ",
+      "authority_full": "Federal Trade Commission / Department of Justice",
+      "statute": "Hart-Scott-Rodino Antitrust Improvements Act",
+      "category": "antitrust",
+      "status": "cleared",
+      "filing_key": "hsr_filed",
+      "filed_date": null,
+      "cleared_date": "2026-02-13",
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "HSR pre-merger notification filing required",
+      "source_doc": "Initial Summary",
+      "source_doc_type": "summary",
+      "source_doc_url": null,
+      "first_seen_date": "2026-02-26"
+    },
+    {
+      "id": "reg_accc",
+      "jurisdiction": "Australia",
+      "authority_short": "ACCC",
+      "authority_full": "Australian Competition and Consumer Commission",
+      "statute": "Competition and Consumer Act 2010 (Cth), Section 50",
+      "category": "antitrust",
+      "status": "filing_intent",
+      "filing_key": "reg_accc",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": "Q1 2026",
+      "conditions": null,
+      "notes": "Parties intend to file an application for confidential pre-assessment with the ACCC in Q1 2026 to satisfy Section 50 of the CCA, which prohibits acquisitions that would substantially lessen competition in any Australian market.",
+      "source_doc": "PREM14A 2026-02-24",
+      "source_doc_type": "PREM14A",
+      "source_doc_url": "https://www.sec.gov/Archives/edgar/data/1866368/000119312526067016/d49219dprem14a.htm",
+      "first_seen_date": "2026-02-26"
+    },
+    {
+      "id": "reg_samr",
+      "jurisdiction": "China",
+      "authority_short": "SAMR",
+      "authority_full": "State Administration for Market Regulation",
+      "statute": "Anti-Monopoly Law of the People's Republic of China (enacted August 1, 2008)",
+      "category": "antitrust",
+      "status": "filing_intent",
+      "filing_key": "reg_samr",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": "Q1 2026",
+      "conditions": null,
+      "notes": "Parties intend to file a merger control application with SAMR in Q1 2026 pursuant to China's Anti-Monopoly Law.",
+      "source_doc": "PREM14A 2026-02-24",
+      "source_doc_type": "PREM14A",
+      "source_doc_url": "https://www.sec.gov/Archives/edgar/data/1866368/000119312526067016/d49219dprem14a.htm",
+      "first_seen_date": "2026-02-26"
+    },
+    {
+      "id": "reg_ec",
+      "jurisdiction": "European Union",
+      "authority_short": "EC",
+      "authority_full": "European Commission",
+      "statute": "Council Regulation (EC) No. 139/2004",
+      "category": "antitrust",
+      "status": "filing_intent",
+      "filing_key": "reg_ec",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": "Q1 2026",
+      "conditions": null,
+      "notes": "Parties intend to file a merger notification with the European Commission in Q1 2026 seeking a declaration that the transaction is compatible with the internal market under the EU Merger Regulation.",
+      "source_doc": "PREM14A 2026-02-24",
+      "source_doc_type": "PREM14A",
+      "source_doc_url": "https://www.sec.gov/Archives/edgar/data/1866368/000119312526067016/d49219dprem14a.htm",
+      "first_seen_date": "2026-02-26"
+    },
+    {
+      "id": "reg_comco",
+      "jurisdiction": "Switzerland",
+      "authority_short": "COMCO",
+      "authority_full": "Swiss Competition Commission",
+      "statute": "Swiss merger control laws",
+      "category": "antitrust",
+      "status": "pending",
+      "filing_key": "reg_comco",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": null,
+      "conditions": null,
+      "notes": "Consummation of the Merger is subject to merger control clearance in Switzerland, though no specific filing timeline or additional details are provided beyond its mention as a required approval.",
+      "source_doc": "PREM14A 2026-02-24",
+      "source_doc_type": "PREM14A",
+      "source_doc_url": "https://www.sec.gov/Archives/edgar/data/1866368/000119312526067016/d49219dprem14a.htm",
+      "first_seen_date": "2026-02-26"
+    },
+    {
+      "id": "reg_tca",
+      "jurisdiction": "Turkey",
+      "authority_short": "TCA",
+      "authority_full": "Turkish Competition Authority",
+      "statute": "Law on Protection of Competition No. 4054 (dated December 13, 1994)",
+      "category": "antitrust",
+      "status": "filing_intent",
+      "filing_key": "reg_tca",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": "Q1 2026",
+      "conditions": null,
+      "notes": "Parties intend to file a notification with the Turkish Competition Authority in Q1 2026; the Merger cannot be completed until the TCA approves it under Turkish Competition Law No. 4054.",
+      "source_doc": "PREM14A 2026-02-24",
+      "source_doc_type": "PREM14A",
+      "source_doc_url": "https://www.sec.gov/Archives/edgar/data/1866368/000119312526067016/d49219dprem14a.htm",
+      "first_seen_date": "2026-02-26"
+    },
+    {
+      "id": "reg_firb",
+      "jurisdiction": "Australia",
+      "authority_short": "FIRB",
+      "authority_full": "Foreign Investment Review Board",
+      "statute": "Foreign Acquisitions and Takeovers Act 1975 (Australia), as amended",
+      "category": "foreign_investment",
+      "status": "filing_intent",
+      "filing_key": "reg_firb",
+      "filed_date": null,
+      "cleared_date": null,
+      "expected_filing_period": "Q1 2026",
+      "conditions": null,
+      "notes": "Parties intend to submit a FIRB application in Q1 2026 for approval by the Australian Treasurer, as required for foreign persons acquiring Australian companies or assets under the Foreign Acquisitions and Takeovers Act 1975.",
+      "source_doc": "PREM14A 2026-02-24",
+      "source_doc_type": "PREM14A",
+      "source_doc_url": "https://www.sec.gov/Archives/edgar/data/1866368/000119312526067016/d49219dprem14a.htm",
+      "first_seen_date": "2026-02-26"
+    }
+  ],
+  "documents_processed": [
+    {
+      "doc_type": "summary",
+      "doc_date": "2025-12-20",
+      "doc_url": null,
+      "processed_at": "2026-02-26T05:21:13.757406Z",
+      "approvals_found": 1,
+      "additions": [
+        "hsr"
+      ],
+      "status_changes": []
+    },
+    {
+      "doc_type": "PREM14A",
+      "doc_date": "2026-02-25",
+      "doc_url": "https://www.sec.gov/Archives/edgar/data/1866368/000119312526067016/d49219dprem14a.htm",
+      "processed_at": "2026-02-26T05:49:04.001955Z",
+      "approvals_found": 0,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "PREM14A",
+      "doc_date": "2026-02-26",
+      "doc_url": "https://www.sec.gov/Archives/edgar/data/1866368/000119312526067016/d49219dprem14a.htm",
+      "processed_at": "2026-02-26T05:53:03.721280Z",
+      "approvals_found": 0,
+      "additions": [],
+      "status_changes": []
+    },
+    {
+      "doc_type": "PREM14A",
+      "doc_date": "2026-02-24",
+      "doc_url": "https://www.sec.gov/Archives/edgar/data/1866368/000119312526067016/d49219dprem14a.htm",
+      "processed_at": "2026-02-26T12:00:12.906623Z",
+      "approvals_found": 7,
+      "additions": [
+        "reg_accc",
+        "reg_samr",
+        "reg_ec",
+        "reg_comco",
+        "reg_tca",
+        "reg_firb"
+      ],
+      "status_changes": [
+        "hsr: pending\u2192cleared"
+      ]
+    }
+  ],
+  "change_log": [
+    {
+      "timestamp": "2026-02-26T05:21:13.757406Z",
+      "source_doc": "Initial Summary",
+      "source_doc_type": "summary",
+      "changes": [
+        {
+          "type": "added",
+          "approval_id": "hsr",
+          "detail": "HSR / FTC+DOJ added from initial deal summary"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-02-26T12:00:12.906623Z",
+      "source_doc": "PREM14A 2026-02-24",
+      "source_doc_type": "PREM14A",
+      "changes": [
+        {
+          "type": "status_change",
+          "approval_id": "hsr",
+          "from": "pending",
+          "to": "cleared",
+          "detail": "HSR/FTC+DOJ status: pending \u2192 cleared"
+        },
+        {
+          "type": "date_update",
+          "approval_id": "hsr",
+          "field": "cleared_date",
+          "value": "2026-02-13",
+          "detail": "HSR/FTC+DOJ cleared_date \u2192 2026-02-13"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_accc",
+          "detail": "ACCC newly required \u2014 first seen in PREM14A"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_samr",
+          "detail": "SAMR newly required \u2014 first seen in PREM14A"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_ec",
+          "detail": "EC newly required \u2014 first seen in PREM14A"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_comco",
+          "detail": "COMCO newly required \u2014 first seen in PREM14A"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_tca",
+          "detail": "TCA newly required \u2014 first seen in PREM14A"
+        },
+        {
+          "type": "added",
+          "approval_id": "reg_firb",
+          "detail": "FIRB newly required \u2014 first seen in PREM14A"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "company_termination_fee": {
+    "amount_usd": 210000000,
+    "amount_text": "$210,000,000",
+    "triggers": [
+      "superior_proposal",
+      "adverse_recommendation_change",
+      "tail_provision",
+      "company_breach"
+    ],
+    "notes": "Payable on or prior to termination date for Superior Proposal termination; within 2 Business Days for Company Change of Recommendation termination. Tail provision: 12 months after termination if Acquisition Proposal was made/known and Company enters into or consummates deal with third party. Any expense reimbursement previously paid under Section 8.3 is credited against the Company Termination Fee."
+  },
+  "reverse_termination_fee": {
+    "amount_usd": 350000000,
+    "amount_text": "$350,000,000",
+    "triggers": [
+      "regulatory_block",
+      "acquirer_breach",
+      "acquirer_walkaway"
+    ],
+    "notes": "Referred to as 'Parent Termination Fee'. Triggered by: (i) termination due to No Legal Restraint (regulatory), End Date, or Parent Terminable Breach where all other closing conditions are satisfied; or (ii) termination by Company for Parent Failure to Close or Stock Purchase Agreement Termination. Payable within 2 Business Days of termination. Subject to Liability Limitation cap. Sole and exclusive remedy once actually paid, except for specific performance rights under Section 9.10."
+  },
+  "parent_regulatory_termination_fee": {
+    "amount_usd": null,
+    "amount_text": null,
+    "triggers": [],
+    "notes": "No separate regulatory termination fee. Regulatory failure is covered under the standard Parent Termination Fee of $350,000,000."
+  },
+  "expense_reimbursement": {
+    "amount_usd": null,
+    "amount_text": null,
+    "triggers": [],
+    "notes": "No fixed expense reimbursement amount specified. Section 8.2(e) provides for reimbursement of reasonable actual out-of-pocket costs and expenses (including attorneys' fees) if a party fails to pay a termination fee and the other party obtains a judgment. Section 8.3 (Expenses) also referenced but not reproduced. Any expenses paid under Section 8.3 are credited against the Company Termination Fee."
+  },
+  "offer_price_per_share": {
+    "amount_usd": null,
+    "amount_text": null,
+    "consideration_type": null
+  },
+  "specific_performance_available": true,
+  "willful_breach_carveout": true,
+  "tail_provision_months": 12,
+  "sole_remedy_for_acquirer": true,
+  "notes": "The agreement includes a 'Liability Limitation' cap on Parent and Merger Sub's aggregate liability (defined elsewhere in the agreement). Willful breach liability survives termination for both parties, but Parent/Merger Sub liability is capped at the Liability Limitation. The Company acknowledges Parent retains specific performance rights under Section 9.10 even after Company Termination Fee is paid, but Parent cannot receive both specific performance resulting in Closing and the Company Termination Fee. Once the Parent Termination Fee is actually paid, it is the sole and exclusive remedy of the Company against Parent and Merger Sub.",
+  "document_id": "a05192025txnmex21",
+  "section_number": "SECTION 8.2"
+}

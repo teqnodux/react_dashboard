@@ -1,0 +1,11 @@
+label,zone,best_cluster,category,ratio,distance,threshold,num_matches,text_preview
+(i),typical,Broad Economic and Financial Market Changes Exclusion,economic,0.34,0.0962,0.2801,1,"change in general United States or global economic conditions, including changes in the credit, debt"
+(ii),atypical,Broad Economic and Financial Market Changes Exclusion,economic,1.15,0.3233,0.2801,0,change that generally affects any of the industries or markets in which such Person or any of its Su
+(iii),typical,Catastrophic External Events Beyond Party Control,force_majeure,1.0,0.2953,0.2965,1,change in political conditions (or the escalation of any such change in political conditions) in the
+(iv),typical,Catastrophic External Events Beyond Party Control,force_majeure,0.68,0.2007,0.2965,1,"change in conditions (or the escalation of any such change in conditions) due to acts of terrorism, "
+(v),typical,Catastrophic External Events Beyond Party Control,force_majeure,0.55,0.1636,0.2965,1,"earthquakes, hurricanes, tsunamis, tornadoes, floods, mudslides, wild fires or other natural disaste"
+(vi),typical,"Changes in Law, GAAP, and Regulatory Accounting Standards",accounting,0.92,0.2716,0.2942,1,"adoption, implementation, promulgation, repeal, modification, reinterpretation or proposal of any ru"
+(vii),typical,Exclusion for impacts from deal announcement and execution,transaction,0.8,0.2031,0.254,1,"Effect arising out of, relating to or resulting from the announcement or pendency of this Agreement "
+(viii),typical,Failure to Meet Financial Projections and Forecasts Exclusions,disclosure,0.65,0.1321,0.2025,1,"failure by such Person to meet any projections, forecasts, guidance, estimates, milestones, budgets "
+(ix),typical,Actions Taken Pursuant to or Required by Agreement Terms,transaction,0.76,0.2117,0.2786,1,"Effect arising out of, relating to or resulting from any action taken (or omitted to be taken) by su"
+(x),typical,Actions Taken Pursuant to or Required by Agreement Terms,transaction,0.88,0.246,0.2786,1,"Effect arising out of, relating to or resulting from any action taken (or omitted to be taken) by su"

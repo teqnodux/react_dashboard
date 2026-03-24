@@ -1,0 +1,257 @@
+/* ── DocumentSelector ─────────────────────────────────────────────────────── */
+
+.docselector {
+  background: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 8px;
+}
+
+.docselector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.docselector-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e0e0e0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.docselector-subtitle {
+  font-size: 12px;
+  color: #888;
+}
+
+/* ── Filters ── */
+
+.docselector-filters {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.ds-filter {
+  padding: 4px 10px;
+  font-size: 11px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: transparent;
+  color: #aaa;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.ds-filter:hover { border-color: #555; color: #ddd; }
+.ds-filter.active { border-color: #5ccfe6; color: #5ccfe6; background: rgba(92, 207, 230, 0.08); }
+
+.ds-show-processed {
+  font-size: 11px;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.ds-show-processed input { cursor: pointer; }
+
+/* ── Document list ── */
+
+.docselector-list {
+  max-height: 280px;
+  overflow-y: auto;
+  border: 1px solid #2a2a4a;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.ds-empty {
+  padding: 20px;
+  text-align: center;
+  color: #666;
+  font-size: 13px;
+}
+
+.ds-doc {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid #1e1e3a;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.ds-doc:hover { background: rgba(92, 207, 230, 0.04); }
+.ds-doc.ds-selected { background: rgba(92, 207, 230, 0.08); }
+.ds-doc.ds-processed { opacity: 0.5; cursor: default; }
+
+.ds-doc-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 280px;
+}
+
+.ds-checkbox { cursor: pointer; }
+.ds-check-done { color: #4caf50; font-size: 14px; width: 16px; text-align: center; }
+
+.ds-doc-type {
+  font-size: 11px;
+  font-weight: 600;
+  color: #5ccfe6;
+  background: rgba(92, 207, 230, 0.1);
+  padding: 2px 6px;
+  border-radius: 3px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.ds-doc-date { font-size: 12px; color: #aaa; min-width: 80px; }
+.ds-doc-ticker { font-size: 11px; color: #888; }
+.ds-doc-desc { font-size: 12px; color: #777; flex: 1; }
+
+/* ── Results ── */
+
+.ds-result {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 3px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.ds-result-completed { background: rgba(76, 175, 80, 0.1); color: #81c784; }
+.ds-result-irrelevant { background: rgba(158, 158, 158, 0.1); color: #999; }
+.ds-result-no_approvals_found { background: rgba(255, 152, 0, 0.1); color: #ffb74d; }
+.ds-result-error { background: rgba(244, 67, 54, 0.1); color: #ef5350; }
+
+/* ── Actions ── */
+
+.docselector-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.ds-select-all {
+  padding: 6px 12px;
+  font-size: 12px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background: transparent;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.ds-select-all:hover { border-color: #666; color: #ddd; }
+
+.ds-process-btn {
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  background: #1976d2;
+  color: white;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.ds-process-btn:hover:not(:disabled) { background: #1565c0; }
+.ds-process-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Manual URL ── */
+
+.docselector-manual {
+  border-top: 1px solid #2a2a4a;
+  padding-top: 10px;
+}
+
+.ds-manual-label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.ds-manual-row {
+  display: flex;
+  gap: 6px;
+}
+
+.ds-manual-url {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 12px;
+  background: #0d0d1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #ddd;
+}
+
+.ds-manual-date {
+  width: 130px;
+  padding: 6px 8px;
+  font-size: 12px;
+  background: #0d0d1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #ddd;
+}
+
+.ds-manual-type {
+  width: 110px;
+  padding: 6px 8px;
+  font-size: 12px;
+  background: #0d0d1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #ddd;
+}
+
+.ds-manual-btn {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  background: #1976d2;
+  color: white;
+  cursor: pointer;
+}
+
+.ds-manual-btn:hover:not(:disabled) { background: #1565c0; }
+.ds-manual-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Result summary ── */
+
+.ds-result-summary {
+  margin-top: 8px;
+  padding: 10px;
+  background: rgba(25, 118, 210, 0.05);
+  border: 1px solid #2a2a4a;
+  border-radius: 4px;
+}
+
+.ds-result-section { margin-bottom: 8px; }
+.ds-result-label { font-size: 11px; font-weight: 600; color: #aaa; margin-bottom: 4px; text-transform: uppercase; }
+.ds-result-change { font-size: 12px; color: #ddd; margin-left: 8px; }
+.ds-from { color: #ffb74d; }
+.ds-to { color: #81c784; }
+.ds-jump-badge { font-size: 9px; background: #ff9800; color: #000; padding: 1px 4px; border-radius: 2px; margin-left: 4px; font-weight: 700; }
+.ds-result-conflicts { border-left: 2px solid #ef5350; padding-left: 8px; }
+.ds-result-conflict { font-size: 12px; color: #ef5350; margin-left: 8px; }
+.ds-result-nochange { font-size: 12px; color: #888; }
+
+.docselector-loading { padding: 20px; text-align: center; color: #888; font-size: 13px; }
+.docselector-manual-result { margin-top: 8px; }

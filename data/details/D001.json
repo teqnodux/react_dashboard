@@ -1,0 +1,631 @@
+{
+  "deal_id": "D001",
+  "concise_sections": [
+    {
+      "name": "Presigning",
+      "clauses": [
+        {
+          "text": "Confidentiality Agreement dated October 1, 2025.",
+          "references": [
+            "References: Definition > Confidentiality Agreement; Section 8.04"
+          ]
+        },
+        {
+          "text": "Merger has been unanimously approved by the Great Lakes Dredge & Dock Corporation board; Saltchuk Resources, Inc. board approval is not described as unanimous.",
+          "references": [
+            "References: Preamble; Section 3.04 (b)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Consideration",
+      "clauses": [
+        {
+          "text": "Great Lakes Dredge & Dock Corporation stockholders are entitled to receive $17.00 in cash per share of Great Lakes Dredge & Dock Corporation common stock (other than shares cancelled under Section 2.01(a)(ii) and Dissenting Shares, which receive no payment or appraisal rights, respectively).",
+          "references": [
+            "Section 2.01(a)",
+            "References: Section 2.01"
+          ]
+        },
+        {
+          "text": "Great Lakes Dredge & Dock Corporation is not permitted to pay dividends prior to closing, except with Saltchuk Resources, Inc.’s prior written consent (or as otherwise permitted by specified exceptions).",
+          "references": [
+            "References: Section 5.01 (d)"
+          ]
+        },
+        {
+          "text": "Not stated in the excerpts whether Saltchuk Resources, Inc. may pay dividends pre-closing.",
+          "references": [
+            "References: Section 5.01 (d)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Conditions & Financing",
+      "clauses": [
+        {
+          "text": "Subject to written consent by Saltchuk Resources, Inc., as sole stockholder of Huron MergeCo., Inc.",
+          "references": [
+            "References: Section 5.14; ; Section 6.01 (b)"
+          ]
+        },
+        {
+          "text": "Closing requires expiration or termination of the HSR Act waiting period and compliance with Foreign Investment Laws.",
+          "references": [
+            "References: Section 5.05 (a) (ii)"
+          ]
+        },
+        {
+          "text": "Saltchuk Resources, Inc. has received committed financing under the Debt Commitment Letter from the Lenders (not named).",
+          "references": [
+            "References: Section 5.16 (a)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Regulatory",
+      "clauses": [
+        {
+          "text": "Outside Date is June 10, 2026; automatically extends to August 10, 2026 upon specified antitrust-judgment condition.",
+          "references": [
+            "References: Section 7.01 (b)"
+          ]
+        },
+        {
+          "text": "Saltchuk Resources, Inc. must accept operational restrictions/hold-separates/divestitures of its or Great Lakes Dredge & Dock Corporation’s assets, except if not Closing-conditioned or materially adverse. No divestiture cap.",
+          "references": [
+            "References: Section 5.05 (b)"
+          ]
+        },
+        {
+          "text": "Section 5.05(a)(iii) shall not require Saltchuk Resources, Inc. or any of its affiliates to litigate any challenge.",
+          "references": [
+            "Section 5.05(a)",
+            "References: Section 5.13; Section 5.05 (a) (iii)"
+          ]
+        },
+        {
+          "text": "Saltchuk Resources, Inc. controls regulatory approval strategy/process and defense, after consulting Great Lakes Dredge & Dock Corporation and considering its views in good faith; no pull/refile or timing-agreement consent rights stated.",
+          "references": [
+            "References: Section 5.05 (d)"
+          ]
+        },
+        {
+          "text": "Saltchuk Resources, Inc. controls regulatory approval strategy/process and defense, subject to Section 5.05 consultation/cooperation and good-faith consideration of Great Lakes Dredge & Dock Corporation’s views; no pull/refile or timing-agreement limits stated.",
+          "references": [
+            "Section 5.05",
+            "References: Section 5.05 (d)"
+          ]
+        },
+        {
+          "text": "Upon any FTC warning letter regarding the Transactions, Saltchuk Resources, Inc., Huron MergeCo., Inc., and Great Lakes Dredge & Dock Corporation must promptly notify and update each other and cooperate in responses, but any closing-condition impact is not stated.",
+          "references": [
+            "References: Section 5.05 (d)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Competing Bid - Company",
+      "clauses": [
+        {
+          "text": "Great Lakes Dredge & Dock Corporation must pay Saltchuk Resources, Inc. $36,861,914 upon superior-offer termination.",
+          "references": []
+        },
+        {
+          "text": "No reimbursement fees apply for failure to obtain shareholder approval. Section 7.02 only requires Great Lakes Dredge & Dock Corporation to pay Saltchuk Resources, Inc. $36,861,914 in specified terminations.",
+          "references": [
+            "Section 7.02",
+            "References: Section 7.02 (c)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Competing Bid - Parent",
+      "clauses": [
+        {
+          "text": "No reimbursement fees apply for failure to obtain shareholder approval. Saltchuk Resources, Inc. only reimburses Great Lakes Dredge & Dock Corporation documented, reasonable out-of-pocket expenses for financing cooperation (Sections 5.16(d)/5.18).",
+          "references": [
+            "References: Section 5.16 (d)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Other Items",
+      "clauses": [
+        {
+          "text": "Great Lakes Dredge & Dock Corporation will, and will cause each Company Subsidiary to, use reasonable best efforts to (i) conduct its business and operations in all material respects in the ordinary course of business consistent with past practice.",
+          "references": [
+            "References: Section 5.01"
+          ]
+        },
+        {
+          "text": "MAE carve-outs appear standard and include Nasdaq trading suspension and effects relating to ship fuel prices, piracy, and dredging/shipping conflicts, with a disproportionate-impact carve-back.",
+          "references": [
+            "References: Definition > Company Material Adverse Effect"
+          ]
+        },
+        {
+          "text": "The parties are entitled to specific performance.",
+          "references": [
+            "References: Section 8.10"
+          ]
+        },
+        {
+          "text": "This Agreement shall be governed by the Laws of Delaware.",
+          "references": [
+            "References: Section 8.08 (a)"
+          ]
+        },
+        {
+          "text": "Any right or obligation with respect to any Debt Financing Source shall be governed by and construed in accordance with the Law of the State of New York.",
+          "references": [
+            "References: Section 8.11 (b)"
+          ]
+        }
+      ]
+    }
+  ],
+  "fulsome_sections": [
+    {
+      "name": "Party Details",
+      "clauses": [
+        {
+          "text": "Company is Great Lakes Dredge & Dock Corporation, a Delaware corporation.",
+          "references": [
+            "References: Preamble"
+          ]
+        },
+        {
+          "text": "Acquirer is Saltchuk Resources, Inc., a Washington corporation.",
+          "references": [
+            "References: ARTICLE Preamble"
+          ]
+        },
+        {
+          "text": "Transaction structure: Reverse triangular merger. Surviving entity: Great Lakes Dredge & Dock Corporation. Supporting language: Section 1.03 states “Huron MergeCo., Inc. … shall be merged with and into Great Lakes Dredge & Dock Corporation… [and] Great Lakes Dredge & Dock Corporation shall continue as the surviving corporation.”",
+          "references": [
+            "Section 1.03",
+            "References: Section 1.03"
+          ]
+        },
+        {
+          "text": "The guarantor is a subsidiary of Parent, incorporated under its jurisdiction of formation, and guarantees the Notes with Parent.",
+          "references": [
+            "References: Label : Indenture"
+          ]
+        },
+        {
+          "text": "The Merger Sub is Huron MergeCo., Inc., a Delaware corporation and a wholly owned subsidiary of Saltchuk Resources, Inc., the Parent.",
+          "references": [
+            "References: Preamble"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Board Approval",
+      "clauses": [
+        {
+          "text": "The merger has been unanimously approved by the board of directors of Great Lakes Dredge & Dock Corporation; Saltchuk Resources, Inc. board approval is not described as unanimous in the excerpts.",
+          "references": [
+            "References: Preamble; Section 3.04 (b)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Closing",
+      "clauses": [
+        {
+          "text": "The Closing occurs as soon as practicable on the same Business Day as Acceptance Time, or later agreed; otherwise first Business Day conditions satisfied/waived.",
+          "references": [
+            "References: Section 1.04"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Consideration and Dividends",
+      "clauses": [
+        {
+          "text": "Great Lakes Dredge & Dock Corporation stockholders are entitled to receive $17.00 in cash per share of Great Lakes Dredge & Dock Corporation common stock (other than shares cancelled under Section 2.01(a)(ii) and Dissenting Shares, which receive no payment or appraisal rights, respectively).",
+          "references": [
+            "Section 2.01(a)",
+            "References: Section 2.01"
+          ]
+        },
+        {
+          "text": "A contingent payment exists: Great Lakes Dredge & Dock Corporation must pay Saltchuk Resources, Inc. (or its designee) a $36,861,914 Company Termination Fee upon specified agreement termination events, including if a publicly disclosed Competing Proposal is later consummated within 12 months after termination (with percentages changed to 50% for that provision).",
+          "references": [
+            "References: Section 3.20 (b) (v)"
+          ]
+        },
+        {
+          "text": "Great Lakes Dredge & Dock Corporation is not permitted to pay dividends prior to closing, except with Saltchuk Resources, Inc.’s prior written consent (or as otherwise permitted by specified exceptions).",
+          "references": [
+            "References: Section 5.01 (d)"
+          ]
+        },
+        {
+          "text": "The excerpts do not address whether Saltchuk Resources, Inc. is permitted to pay dividends prior to closing.",
+          "references": [
+            "References: Section 5.01 (d)"
+          ]
+        },
+        {
+          "text": "If a stock dividend or stock distribution is declared with a record date between February 10, 2026 and closing, the $17.00 offer price and merger consideration are appropriately adjusted to preserve equivalent economics.",
+          "references": [
+            "References: Section 2.01 (b)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Conditions",
+      "clauses": [
+        {
+          "text": "Mutual conditions include: (i) no Governmental Entity of competent jurisdiction shall have issued or entered into any Judgment that remains in effect and enjoins or prohibits consummation of the merger of Huron MergeCo., Inc. with and into Great Lakes Dredge & Dock Corporation, and (ii) the tender offer by Huron MergeCo., Inc. (a wholly owned subsidiary of Saltchuk Resources, Inc.) for shares of Great Lakes Dredge & Dock Corporation shall have closed (Offer Closing).",
+          "references": [
+            "References: Section 6.01"
+          ]
+        },
+        {
+          "text": "Saltchuk Resources, Inc.’s obligation (together with Huron MergeCo., Inc. and Great Lakes Dredge & Dock Corporation) to consummate the merger is conditioned on (i) the absence of any effective governmental judgment or injunction from a competent jurisdiction restraining or prohibiting the merger and (ii) the prior occurrence of the tender offer closing.",
+          "references": [
+            "References: Section 6.01 (a) (b)"
+          ]
+        },
+        {
+          "text": "Under Section 6.01, Great Lakes Dredge & Dock Corporation’s and Saltchuk Resources, Inc.’s (and Huron MergeCo., Inc.’s) obligation to consummate the merger is conditioned on (i) the absence of any effective governmental judgment or injunction from a competent authority restraining or prohibiting the merger and (ii) the prior occurrence of the tender offer closing.",
+          "references": [
+            "Section 6.01",
+            "References: Section 6.01"
+          ]
+        },
+        {
+          "text": "Subject to target shareholder approval and parent shareholder approval, but the required voting thresholds are not specified in the provided excerpts.",
+          "references": [
+            "References: Section 6.01 (b)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Proxy, Shareholder Vote, Dissenting Shares",
+      "clauses": [
+        {
+          "text": "As promptly as practicable, the parties shall jointly prepare and file the Joint Proxy Statement/Prospectus in preliminary form and Parent shall prepare and file a Registration Statement on Form F-4.",
+          "references": [
+            "References: Not found"
+          ]
+        },
+        {
+          "text": "No efforts standard or timing deadlines for the proxy statement are stated; the clause only states: “Concurrently with the Closing, the Company shall file a certificate of merger… with the Secretary of State of the State of Delaware.”",
+          "references": []
+        },
+        {
+          "text": "Not found.",
+          "references": []
+        },
+        {
+          "text": "Company shall not adjourn or postpone without Parent’s prior written consent, unless insufficient affirmative votes for quorum/Company Stockholder Approval; vote may be delayed no more than 25 Business Days aggregate; no record date change. Adjournments: 10 Business Days each, not exceeding 20 Business Days aggregate without Parent’s written consent.",
+          "references": []
+        },
+        {
+          "text": "Shareholder Meeting Efforts Answer: Not found; Shareholder Meeting Efforts Text: (blank).",
+          "references": []
+        },
+        {
+          "text": "No dissenting shares handling or Section 262 appraisal rights in provided excerpt (Section 5.14).",
+          "references": [
+            "Section 262",
+            "Section 5.14",
+            "References: Section 5.14"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Regulatory Best Efforts",
+      "clauses": [
+        {
+          "text": "Saltchuk Resources, Inc., Huron MergeCo., Inc. and Great Lakes Dredge & Dock Corporation shall use RBE to prevent/mitigate Takeover Statutes and obtain approvals to close ASAP.",
+          "references": [
+            "References: Section 5.08"
+          ]
+        },
+        {
+          "text": "Saltchuk Resources, Inc. must make all HSR Act filings within 15 Business Days after February 10, 2026, and pay all HSR-related Governmental Entity filing fees.",
+          "references": [
+            "References: Section 5.05 (a) (ii)"
+          ]
+        },
+        {
+          "text": "Saltchuk Resources, Inc. and Great Lakes Dredge & Dock Corporation must, as promptly as practicable, make any required filings under applicable Foreign Investment Laws (incl. CFIUS), but no CFIUS-specific deadline is stated.",
+          "references": [
+            "References: Section 5.05 (a) (ii)"
+          ]
+        },
+        {
+          "text": "Saltchuk Resources, Inc., Huron MergeCo., Inc., and Great Lakes Dredge & Dock Corporation must make all non-U.S. Antitrust Law/Foreign Investment Law filings with relevant Governmental Entities.",
+          "references": [
+            "References: Section 5.05 (a) (ii)"
+          ]
+        },
+        {
+          "text": "Saltchuk Resources, Inc. is required to take remedy actions involving its own business: it must “promptly take (and shall cause each of its affiliates to take) any and all actions necessary or reasonably advisable” to obtain antitrust/foreign investment approvals, including “accepting operational restrictions or limitations on, and committing to or effecting…hold separate orders…[and] the sale, license, divestiture, disposition or holding separate of, such assets or businesses of Saltchuk Resources, Inc., Huron MergeCo., Inc., Great Lakes Dredge & Dock Corporation, the Surviving Corporation or any of their respective affiliates” (each, a “Remedial Action”). However, “nothing…shall require Saltchuk Resources, Inc. or any of its affiliates or Great Lakes Dredge & Dock Corporation or any [subsidiary] to take…any Remedial Action that (i) is not conditioned upon the Closing or (ii) would…reasonably be expected to have a material adverse effect on the business…of Saltchuk Resources, Inc. and its subsidiaries after giving effect to the Transactions,” with that pro forma size “deemed” to be the size of Great Lakes Dredge & Dock Corporation pre-closing. There is no divestiture cap stated in dollars/revenue/assets/sales for Great Lakes Dredge & Dock Corporation in the excerpts.",
+          "references": [
+            "References: Section 5.05 (b)"
+          ]
+        },
+        {
+          "text": "Saltchuk Resources, Inc. has the right (subject to its obligations under Section 5.05) to determine, direct and control the strategy and process for obtaining Governmental Entity approvals and to respond to/defend related proceedings, while consulting/cooperating with Great Lakes Dredge & Dock Corporation and considering its views in good faith.",
+          "references": [
+            "Section 5.05",
+            "References: Section 5.05 (d)"
+          ]
+        },
+        {
+          "text": "Saltchuk Resources, Inc. controls timing for obtaining Governmental Entity approvals to the extent timing is part of the “strategy and process” for seeking approval under Section 5.05, subject to its Section 5.05 obligations to act “as promptly as practicable” and to consult/cooperate with Great Lakes Dredge & Dock Corporation.",
+          "references": [
+            "Section 5.05",
+            "References: Section 5.05 (d)"
+          ]
+        },
+        {
+          "text": "Saltchuk Resources, Inc. is required to defend against any litigation.",
+          "references": [
+            "References: Section 5.05 (a) (iii)"
+          ]
+        },
+        {
+          "text": "The excerpts contain no regulatory “best efforts” covenant; Great Lakes Dredge & Dock Corporation must cease competing-deal talks, withdraw data-room access, and seek return/destruction of confidential information, which does not change closing conditions.",
+          "references": [
+            "References: Section 5.03 (a) (i)"
+          ]
+        },
+        {
+          "text": "Upon any FTC warning letter or other FTC communication regarding the transaction, Saltchuk Resources, Inc., Huron MergeCo., Inc., and Great Lakes Dredge & Dock Corporation must promptly notify and update each other and cooperate in responses; closing-condition impact is not stated.",
+          "references": [
+            "References: Section 5.05 (d)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "No Solicitation and Confidentiality Agreement",
+      "clauses": [
+        {
+          "text": "Confidentiality Agreement dated October 1, 2025.",
+          "references": [
+            "References: Section 8.04"
+          ]
+        },
+        {
+          "text": "From and after February 10, 2026, Great Lakes Dredge & Dock Corporation shall promptly (but in any event within twenty-four (24 hours)) advise Saltchuk Resources, Inc. in writing of receipt.",
+          "references": [
+            "References: Section 5.03 (c)"
+          ]
+        },
+        {
+          "text": "From and after the date of this Agreement, Great Lakes Dredge & Dock Corporation shall promptly (but in any event within twenty-four (24 hours)) (i) advise Saltchuk Resources, Inc. in writing of the receipt of any Competing Proposal, or any proposal that would reasonably be expected to lead to a Competing Proposal specifying the material terms and conditions thereof (including a copy of any such Competing Proposal or proposal received in writing) and the identity of the party making such Competing Proposal or proposal, (ii) keep Saltchuk Resources, Inc. informed of all material developments or changes to material terms of any such Competing Proposal, inquiry or request and (iii) provide Saltchuk Resources, Inc. with copies of any draft agreements, letters of intent, memoranda of understanding or other similar agreements to be entered into by Great Lakes Dredge & Dock Corporation or any Company Subsidiary with the person proposing such Competing Proposal with respect to any such Competing Proposal or proposal, including any revisions thereto that are received from such person or its Representatives or delivered by or on behalf of Great Lakes Dredge & Dock Corporation to such person or any of its Representatives.",
+          "references": [
+            "References: Section 5.03 (c)"
+          ]
+        },
+        {
+          "text": "“at any time prior to the Acceptance Time and in response to a Superior Proposal received…after the execution…[Great Lakes Dredge & Dock Corporation] Board…may make a Change of Company Recommendation…only if: (i)-(iv).”",
+          "references": [
+            "References: Section 5.03 (e)"
+          ]
+        },
+        {
+          "text": "Great Lakes Dredge & Dock Corporation board of directors (or a committee thereof) may effect a Change of Company Recommendation “in response to an Intervening Event”.",
+          "references": [
+            "References: Section 5.03 (e)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Financing",
+      "clauses": [
+        {
+          "text": "Saltchuk Resources, Inc. has received committed financing pursuant to the executed Debt Commitment Letter from the financial institutions and other lenders party thereto (the “Lenders”).",
+          "references": [
+            "References: Section 5.16 (a)"
+          ]
+        },
+        {
+          "text": "Saltchuk Resources, Inc. and Huron MergeCo., Inc. must use “reasonable best efforts” to obtain Financing by the Acceptance Time, execute “Definitive Debt Financing Agreements,” satisfy/waive conditions, enforce rights, and secure non-worse “Replacement Financing” if unavailable.",
+          "references": [
+            "References: Section 5.16"
+          ]
+        },
+        {
+          "text": "If Saltchuk Resources, Inc. financing becomes unavailable, Saltchuk Resources, Inc. and Huron MergeCo., Inc. must use “reasonable best efforts” to secure alternative funds by the 5th Business Day before offer expiry, and promptly provide Great Lakes Dredge & Dock Corporation copies and status updates (including drafts) upon request.",
+          "references": [
+            "References: Section 5.16"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Termination",
+      "clauses": [
+        {
+          "text": "Saltchuk Resources, Inc. is “Parent,” Huron MergeCo., Inc. is “Sub,” and Great Lakes Dredge & Dock Corporation is the “Company.” The Outside Date is June 10, 2026. It automatically extends to August 10, 2026 if, on June 10, 2026, the Annex II clause (b) and/or clause (c)(i) antitrust-judgment condition is unsatisfied or waivable but not waived.",
+          "references": [
+            "References: Section 7.01 (b)"
+          ]
+        },
+        {
+          "text": "provided further that the right to terminate this Agreement under this Section 7.01(b) shall not be available to any party if the failure of such party to perform any of its obligations under this Agreement, including Section 5.05, primarily caused or resulted in the failure of the Acceptance Time to occur or the Offer or the Merger to be consummated on or before the Outside Date (it being understood that Saltchuk Resources, Inc. and Huron MergeCo., Inc. shall be deemed a single party for purposes of the foregoing proviso);",
+          "references": [
+            "Section 7.01(b)",
+            "Section 5.05",
+            "References: Section 7.01 (b)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Termination Rights",
+      "clauses": [
+        {
+          "text": "Saltchuk Resources, Inc. and Great Lakes Dredge & Dock Corporation may terminate the Agreement at any time prior to the Acceptance Time (i) by mutual written consent, (ii) by either party if the Acceptance Time has not occurred by June 10, 2026 (automatically extended to six months after the Agreement date if specified antitrust-judgment-related conditions are unsatisfied/unwaived), (iii) by either party upon Offer Termination, or (iv) by either party upon a final, non-appealable Judgment permanently enjoining/prohibiting the Offer or Merger, in each case subject to “no-termination” limitations where the terminating party’s failure to perform (including Section 5.05) primarily caused the relevant failure or Judgment (with Saltchuk Resources, Inc. and Huron MergeCo., Inc. treated as one party).",
+          "references": [
+            "Section 5.05",
+            "References: Section 7.01"
+          ]
+        },
+        {
+          "text": "This Agreement may be terminated by Saltchuk Resources, Inc. pursuant to Section 7.01(e) following any Change of Company Recommendation, or pursuant to Section 7.01(g) if (i)(A) Great Lakes Dredge & Dock Corporation breaches or its representations and warranties are inaccurate, or (B) Great Lakes Dredge & Dock Corporation fails to perform its covenants and agreements, in either case such that the conditions in clauses (c)(ii), (c)(iii) or (c)(v) of Annex II would not be satisfied, (ii) Saltchuk Resources, Inc. delivers written notice of the breach/inaccuracy/failure, and (iii) the issue is incurable before the Outside Date or 30 days elapse after notice without cure, provided Saltchuk Resources, Inc. may not terminate under Section 7.01(g) if its or Huron MergeCo., Inc.’s breach/failure has prevented or would reasonably be expected to prevent or materially delay consummation of the Transactions.",
+          "references": [
+            "Section 7.01(g)",
+            "Section 7.01(e)",
+            "References: Section 7.01"
+          ]
+        },
+        {
+          "text": "Great Lakes Dredge & Dock Corporation may terminate this Agreement pursuant to Section 7.01(f) to enter into an Alternative Acquisition Agreement providing for a Superior Proposal under Section 5.03(e), provided that substantially concurrently with such termination it pays Saltchuk Resources, Inc. the $36,861,914 Company Termination Fee in accordance with Section 7.02, and pursuant to Section 7.01(h) if (i)(A) there is a breach or inaccuracy of any representations or warranties of Saltchuk Resources, Inc. or Huron MergeCo., Inc. or (B) Saltchuk Resources, Inc. or Huron MergeCo., Inc. fails to perform its covenants and agreements, in either case preventing or reasonably expected to prevent consummation of the Offer or the Merger, (ii) Great Lakes Dredge & Dock Corporation delivers written notice, and (iii) the breach is incurable before the Outside Date or remains uncured 30 days after notice, subject to the proviso that Great Lakes Dredge & Dock Corporation is not then in material breach causing Annex II (c)(ii) or (c)(iii) to fail.",
+          "references": [
+            "Section 7.01(f)",
+            "Section 7.02",
+            "Section 5.03(e)",
+            "Section 7.01(h)",
+            "References: Section 7.01"
+          ]
+        },
+        {
+          "text": "No reimbursement fees apply for failure to obtain shareholder approval. The excerpts contain no termination right tied to a shareholder vote failure, and no expense reimbursement/termination fee triggered by such a failure. Great Lakes Dredge & Dock Corporation’s $36,861,914 termination fee is triggered by other specified terminations.",
+          "references": [
+            "References: Section 7.02 (c)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Termination Fee Amounts",
+      "clauses": [
+        {
+          "text": "$36,861,914 – superior offer\n$36,861,914 – recommendation change\n$36,861,914 – acquisition proposal",
+          "references": [
+            "References: Section 7.02 (b) (i);"
+          ]
+        },
+        {
+          "text": "Company Termination Fee of $36,861,914 is payable if Great Lakes Dredge & Dock Corporation terminates to enter into an Alternative Acquisition Agreement for a Superior Proposal, or if Saltchuk Resources, Inc. terminates after a Change of Company Recommendation, or if Great Lakes Dredge & Dock Corporation terminates in circumstances where Saltchuk Resources, Inc. could have terminated after a Change of Company Recommendation. Company Termination Fee of $36,861,914 is payable if the agreement is terminated in the specified ways, a Competing Proposal is publicly disclosed and not withdrawn before termination, and within 12 months Great Lakes Dredge & Dock Corporation signs and later closes that Competing Proposal.",
+          "references": [
+            "References: Section 7.02 (b) (i);"
+          ]
+        },
+        {
+          "text": "Parent-side termination fees are not stated in the excerpts (only Great Lakes Dredge & Dock Corporation pays Saltchuk Resources, Inc. $36,861,914).",
+          "references": [
+            "References: Section 7.02 (b); ; Section 7.02 (b) (i); Section 7.02"
+          ]
+        },
+        {
+          "text": "Parent Termination Fee of $36,861,914 is payable if Great Lakes Dredge & Dock Corporation terminates to enter into an Alternative Acquisition Agreement for a Superior Proposal, or if Saltchuk Resources, Inc. terminates following a Change of Company Recommendation, or if Great Lakes Dredge & Dock Corporation terminates in circumstances where Saltchuk Resources, Inc. could have terminated for that Change of Company Recommendation.",
+          "references": [
+            "References: Section 7.02 (b); ; Section 7.02 (b) (i); Section 7.02"
+          ]
+        },
+        {
+          "text": "Pursuant to Section 7.02(b), Great Lakes Dredge & Dock Corporation must pay Saltchuk Resources, Inc. (or its designee) a $36,861,914 “Company Termination Fee” upon a valid termination (i) by Saltchuk Resources, Inc. under Section 7.01(e) (payable within one (1) Business Day after termination) or by Great Lakes Dredge & Dock Corporation under Section 7.01(f) or under Section 7.01(c) in circumstances where Saltchuk Resources, Inc. could have terminated under Section 7.01(e) (payable prior to or substantially concurrently with such termination), or (ii) if the Agreement is terminated as specified in Section 7.02(b)(ii)(A) and, before termination, a publicly disclosed (and not withdrawn) Competing Proposal exists and, within twelve (12) months after termination, Great Lakes Dredge & Dock Corporation enters into a definitive agreement for any such Competing Proposal that is subsequently consummated, in which case the fee is payable prior to or substantially concurrently with consummation (with “Competing Proposal” modified to 50% thresholds for this purpose).",
+          "references": [
+            "Section 7.01(c)",
+            "Section 7.01(f)",
+            "Section 7.01(e)",
+            "Section 7.02(b)",
+            "References: Section 7.02 (b)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ordinary Course Covenants",
+      "clauses": [
+        {
+          "text": "Great Lakes Dredge & Dock Corporation will, and will cause each Company Subsidiary to, use reasonable best efforts to (i) conduct its business and operations in all material respects in the ordinary course of business consistent with past practice.",
+          "references": [
+            "References: Section 5.01"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Governing Law",
+      "clauses": [
+        {
+          "text": "Except as provided in Section 8.11, this Agreement shall be governed by, and construed in accordance with, the Laws of the State of Delaware.",
+          "references": [
+            "Section 8.11",
+            "References: Section 8.08 (a)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Specific Performance",
+      "clauses": [
+        {
+          "text": "The parties, Saltchuk Resources, Inc., Huron MergeCo., Inc., and Great Lakes Dredge & Dock Corporation, are entitled to specific performance.",
+          "references": [
+            "References: Section 8.10"
+          ]
+        },
+        {
+          "text": "Any right or obligation with respect to any Debt Financing Source shall be governed by and construed in accordance with the Law of the State of New York.",
+          "references": [
+            "References: Section 8.11 (b)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MAE Definitions",
+      "clauses": [
+        {
+          "text": "Provided, however, solely in the case of clause (a), that none of the following, and no Effect relating to or arising out of or resulting from the following, shall constitute or be taken into account in determining whether there has been, a “Company Material Adverse Effect”: (i) the entry into or the announcement or pendency of this Agreement or the Transactions, the performance by the Company of this Agreement or the consummation of the Transactions…; (ii) any I-2 Effect affecting the economy…; (iii) the suspension of trading…; (iv) any development or change in applicable Law, GAAP…; (v) any action taken…; (vi) the commencement… of any armed hostilities…; (vii) any actions or claims…; (viii) acts of God…; (ix) any changes in the market price…; (x) any failure… to meet… projections…; (xi) any Effect relating to… ship fuel, piracy…; provided, that any Effect set forth in clauses (ii), (iii), (iv), (vi), (viii) and (xi)… may be taken into account… to the extent… disproportionate adverse effect… (provided, that only the incremental disproportionate adverse effects… may be taken into account…).",
+          "references": [
+            "References: Definition > Company Material Adverse Effect"
+          ]
+        },
+        {
+          "text": "MAE carve-outs appear standard but include “the suspension of trading in securities generally on the Nasdaq” and “any Effect relating to or affecting the price of ship fuel, piracy…developments affecting dredging or shipping.”",
+          "references": [
+            "References: Definition > Company Material Adverse Effect"
+          ]
+        },
+        {
+          "text": "Under the “Company Material Adverse Effect” definition, Effects in clauses (ii), (iii), (iv), (vi), (viii) and (xi) are excluded unless they disproportionately adversely affect Great Lakes Dredge & Dock Corporation and its Subsidiaries versus similarly situated industry peers, counting only the incremental disproportionate impact.",
+          "references": [
+            "References: Definition > Company Material Adverse Effect"
+          ]
+        },
+        {
+          "text": "Effects in clauses (i)–(xi) are generally excluded from Company MAE, but for clauses (ii), (iii), (iv), (vi), (viii) and (xi), underlying Effects may be considered to the extent they cause incremental disproportionate adverse impact versus similarly situated businesses.",
+          "references": [
+            "References: material_adverse_effect > mae_carveback"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "concise_section_count": 7,
+    "concise_clause_count": 22,
+    "fulsome_section_count": 16,
+    "fulsome_clause_count": 59,
+    "source_file": "D001_DMA.docx",
+    "format": "separate_views"
+  }
+}

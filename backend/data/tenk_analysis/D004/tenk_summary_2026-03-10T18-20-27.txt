@@ -1,0 +1,47 @@
+10-K Summary: Clearwater Analytics Holdings, Inc.
+Company: Clearwater Analytics Holdings, Inc. (CWAN)    Period: FY 2025
+Period End: 12/31/25    Filing Date: 02/18/26
+L1 — Headline
++ CWAN – Strong revenue growth amid pending $8.4B acquisition. | 02/18/26
+L2 — Brief
+CWAN reported 61.9% revenue growth to $731.4 million in 2025, driven by major acquisitions of Enfusion and Beacon Platform totaling $1.9 billion. The company agreed to be acquired by an investor group for $8.4 billion at $24.55 per share in December 2025, with closing expected in Q2 2026. Despite strong revenue and free cash flow growth, the company posted a net loss due to acquisition-related costs.
+L3 — Detailed
+Financial Performance
+Revenue: $731.4 million in 2025, up 61.9% from $451.8 million in 2024
+Net Income: Net loss of $40.3 million in 2025 vs net income of $427.6 million in 2024
+EPS: Basic EPS of $(0.14) in 2025 vs $1.93 in 2024; Diluted EPS of $(0.14) in 2025 vs $1.68 in 2024
+Gross Margin: Gross profit of $492.1 million in 2025 vs $328.8 million in 2024
+Operating Income: Loss from operations of $7.7 million in 2025 vs income from operations of $12.2 million in 2024
+Free Cash Flow: $164.3 million in 2025 vs $69.0 million in 2024
+Other Financial Metrics
+•	Assets on platform: over $10 trillion as of December 31, 2025 vs $8.8 trillion in 2024
+•	Equity-based compensation expense of $127.9 million vs $103.2 million in 2024
+Segment Performance
+•	Revenue derived from fees based on assets under management stated in basis points
+•	Platform assets grew from $8.8 trillion to over $10 trillion
+Guidance & Outlook
+Revenue expected to be recognized in future periods of $76.0 million related to remaining performance obligations. Estimated future amortization expense of intangible assets totaling $687.6 million over multiple years.
+Balance Sheet
+Cash & Equivalents: $91.2 million vs $177.4 million in 2024
+Total Debt: $822.6 million vs $45.9 million in 2024
+Net Debt: $731.4 million (calculated from cash and total debt)
+Shareholders' Equity: Total assets of $3.03 billion as of December 31, 2025 vs $1.17 billion in 2024
+Risk Factors
+•	AUM market price risk - revenue fluctuates based on value of assets clients maintain on platform
+•	Interest rate risk - debt under 2025 Credit Agreement indexed to SOFR with $8.4 million annual impact per 100 basis points change
+•	Inflation risk - operations in India impacted by rising inflation
+•	Deferred tax asset realizability subject to sustainability of current taxable income levels
+•	Fair value measurements for acquired intangible assets dependent on projected revenue growth rates
+M&A & Deal Relevance
+Pending Deals: Merger Agreement entered December 20, 2025 to be acquired by Investor Group for $8.4 billion at $24.55 per share
+Deal Impact: Merger expected to close in second quarter of 2026 subject to stockholder approval and regulatory approvals. Share repurchase program suspended in November 2025 due to pending merger.
+Strategic Alternatives: Not specified
+Acquisition Activity: Completed acquisitions of Enfusion Inc. for $1.4 billion and Beacon Platform Inc. for $488 million in April 2025. Acquisition of Bistro asset from Blackstone completed March 31, 2025 for $112.7 million.
+Key Developments
+•	Entered into $800 million term loan and $200 million revolving credit facility in April 2025
+•	Class C and Class D common stock converted to Class B and Class A common stock respectively in June 2025
+•	Tax Receivable Agreement amended and settled with no further payment obligations
+•	Goodwill increased from $71.0 million to $1.27 billion primarily from acquisitions
+•	Intangible assets increased from $30.9 million to $687.6 million due to acquisitions
+Capital Allocation
+Share repurchase program authorized for up to $100 million, with $18.1 million repurchased in 2025 before suspension. Capital expenditures of $11.6 million in 2025 vs $5.3 million in 2024.

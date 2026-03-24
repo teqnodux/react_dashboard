@@ -1,0 +1,198 @@
+{
+  "deal_id": "d809559dex21",
+  "check_timestamp": "20260311_221748",
+  "track": "specific_provisions",
+  "provisions_checked": {
+    "ordinary_course_(highest_risk)": {
+      "present": false,
+      "language_found": "",
+      "section_reference": "",
+      "materiality_qualifier": false,
+      "past_practice_language": false,
+      "carveouts": {
+        "required_by_law": false,
+        "pandemic_flexibility": false,
+        "industry_disruption": false,
+        "disclosed_actions": false
+      },
+      "preserve_relationships_language": false,
+      "risk_level": "high",
+      "risk_factors": [
+        "No specific 'ordinary course of business' language identified",
+        "No 'consistent with past practice' language identified",
+        "No language regarding preserving relationships",
+        "No exceptions for required by law",
+        "No flexibility for pandemic or force majeure",
+        "No industry-wide disruption carveouts",
+        "No disclosed actions carveouts"
+      ],
+      "confidence": "high"
+    },
+    "parent_consent_rights": {
+      "present": true,
+      "consent_areas": {
+        "debt_incurrence": true,
+        "senior_management": true,
+        "capex": true,
+        "material_contracts": true,
+        "pricing_changes": true,
+        "litigation_settlement": true
+      },
+      "consent_standard": "not_unreasonably_withheld",
+      "time_bound": true,
+      "response_timeframe": "3 business days",
+      "thresholds": [
+        "CapEx above $1 million",
+        "Material contracts over $500,000"
+      ],
+      "risk_level": "medium",
+      "risk_factors": [
+        "Consent required for multiple key business decisions",
+        "Standard of consent is not unreasonably withheld",
+        "Time-bound response reduces risk of delays"
+      ],
+      "confidence": "medium"
+    },
+    "no_shop___go_shop": {
+      "present": false,
+      "no_shop_language": false,
+      "no_solicitation_language": false,
+      "fiduciary_out_present": false,
+      "fiduciary_out_scope": "",
+      "matching_rights": false,
+      "matching_timeframe": "",
+      "go_shop_period": false,
+      "go_shop_duration": "",
+      "information_restrictions": false,
+      "risk_level": "low",
+      "risk_factors": [],
+      "confidence": "high"
+    },
+    "unusually_restrictive": {
+      "present": false,
+      "restrictions_found": {
+        "hiring_freeze": false,
+        "customer_discount_limits": false,
+        "inventory_restrictions": false,
+        "strategic_initiative_limits": false
+      },
+      "industry_context_flexibility": true,
+      "cyclical_business_considerations": true,
+      "risk_level": "low",
+      "risk_factors": [],
+      "confidence": "high"
+    },
+    "mae_linked_covenants": {
+      "present": false,
+      "mae_language_in_covenants": false,
+      "language_found": "",
+      "mae_carveouts_narrow": false,
+      "operating_covenants_strict": false,
+      "litigation_risk_setup": false,
+      "risk_level": "low",
+      "risk_factors": [],
+      "confidence": "high"
+    },
+    "financing_cooperation": {
+      "present": true,
+      "buyer_needs_financing": true,
+      "target_must_assist": true,
+      "cooperation_burden": "reasonable",
+      "financing_condition_linked": true,
+      "buyer_efforts_standard": "reasonable best efforts",
+      "risk_level": "high",
+      "risk_factors": [
+        "Dependence on external financing",
+        "Potential delays in closing",
+        "Target's cooperation may not guarantee financing success",
+        "Market conditions affecting financing availability"
+      ],
+      "confidence": "medium"
+    },
+    "regulatory_restrictions": {
+      "present": false,
+      "integration_planning_restrictions": false,
+      "gun_jumping_limitations": false,
+      "information_sharing_protocols": false,
+      "regulatory_coordination_weak": false,
+      "risk_level": "low",
+      "risk_factors": [],
+      "confidence": "high"
+    },
+    "working_capital_constraints": {
+      "present": false,
+      "specific_wc_levels": false,
+      "inventory_standards": false,
+      "capex_ranges": false,
+      "seasonal_business_risk": true,
+      "thresholds_found": [],
+      "risk_level": "high",
+      "risk_factors": [
+        "lack of specific working capital requirements",
+        "absence of inventory standards",
+        "no defined CapEx ranges",
+        "potential impact on liquidity during seasonal fluctuations"
+      ],
+      "confidence": "low"
+    },
+    "employee_restrictions": {
+      "present": false,
+      "restrictions_found": {
+        "retention_bonus_limits": false,
+        "raise_restrictions": false,
+        "severance_limitations": false,
+        "union_agreement_restrictions": false
+      },
+      "tight_labor_market_risk": true,
+      "risk_level": "high",
+      "risk_factors": [
+        "Tight labor market conditions",
+        "Potential for employee turnover",
+        "Increased competition for talent"
+      ],
+      "confidence": "medium"
+    },
+    "asymmetry___carveouts": {
+      "present": true,
+      "target_heavily_restricted": true,
+      "buyer_lightly_restricted": true,
+      "leverage_imbalance": true,
+      "weak_buyer_commitment_signals": true,
+      "specific_asymmetries": [
+        "Target is heavily restricted in its business conduct pending the merger, limiting its operational flexibility.",
+        "Buyer has minimal obligations regarding its conduct, allowing it to operate freely without similar restrictions.",
+        "The imbalance in restrictions creates a leverage advantage for the buyer, potentially leading to unfavorable terms for the target."
+      ],
+      "risk_level": "high",
+      "risk_factors": [
+        "Potential for buyer to exploit target's restrictions to negotiate lower purchase price or less favorable terms.",
+        "Target's inability to adapt to market changes due to heavy restrictions may lead to decreased valuation.",
+        "Weak buyer commitment signals may indicate a lack of genuine interest, increasing the risk of deal failure."
+      ],
+      "confidence": "medium"
+    }
+  },
+  "risk_summary": {
+    "overall_risk_level": "medium",
+    "risk_score": 7,
+    "high_risk_provisions": [
+      "financing_cooperation",
+      "asymmetry___carveouts"
+    ],
+    "medium_risk_provisions": [
+      "parent_consent_rights"
+    ],
+    "low_risk_provisions": [],
+    "provisions_checked": 10,
+    "provisions_present": 3,
+    "top_concerns": [
+      "\u26a0\ufe0f  Financing Cooperation flagged as high risk",
+      "\u26a0\ufe0f  Asymmetry   Carveouts flagged as high risk"
+    ]
+  },
+  "token_usage": {
+    "input_tokens": 6674,
+    "output_tokens": 935,
+    "estimated_cost": 0.0015620999999999999
+  }
+}

@@ -1,0 +1,612 @@
+{
+  "deal_id": "D069",
+  "concise_sections": [
+    {
+      "name": "Presigning",
+      "clauses": [
+        {
+          "text": "Confidentiality Agreement dated January 9, 2025.",
+          "references": [
+            "Section 9.5; Section 6.6"
+          ]
+        },
+        {
+          "text": "The merger has been unanimously approved by the board of directors of TXNM Energy, Inc.; Troy ParentCo LLC approval is by its manager and is not described as unanimous.",
+          "references": [
+            "ARTICLE Preamble; Section 3.4 (b); ARTICLE IV REPRESENTATIONS AND WARRANTIES REGARDING PARENT AND MERGER SUB > Section SECTION 4.4 Authority; ARTICLE Preamble; Preamble"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Consideration",
+      "clauses": [
+        {
+          "text": "The Company stockholders are entitled to receive $61.25 in cash per share of the Company.",
+          "references": [
+            "ARTICLE II EFFECT OF THE MERGER ON THE CAPITAL STOCK OF THE CONSTITUENT CORPORATIONS > Section SECTION 2.1 Effect on Capital Stock; Section SECTION 2.2 Treatment of Restricted Stock Rights and Performance Shares; Section SECTION 2.3 Dissenting Shares; Section SECTION 2.5 Adjustments"
+          ]
+        },
+        {
+          "text": "Dividends are generally prohibited, except regular quarterly cash dividends within the specified cap and past practice, and a stub-period dividend immediately prior to the Effective Time.",
+          "references": [
+            "ARTICLE V CONDUCT OF BUSINESS PENDING THE MERGER > Section SECTION 5.1 Conduct of Business of the Company Pending the Merger > (c) > (viii)"
+          ]
+        },
+        {
+          "text": "Parent dividend payments prior to closing are not addressed or permitted by this clause.",
+          "references": [
+            "ARTICLE ARTICLE VI ADDITIONAL AGREEMENTS > Section SECTION 6.14 Dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Conditions & Financing",
+      "clauses": [
+        {
+          "text": "Subject to majority of all outstanding shares of Company Common Stock entitled to vote.",
+          "references": [
+            "Section 7.1 (a); ARTICLE IV REPRESENTATIONS AND WARRANTIES REGARDING PARENT AND MERGER SUB > Section SECTION 4.10 Vote/Approval Required; Section 4.10; Section 3.4 (a)"
+          ]
+        },
+        {
+          "text": "Subject to expiration or termination of the HSR Act waiting period and all other required antitrust approvals.",
+          "references": [
+            "Section 6.4 (c)"
+          ]
+        },
+        {
+          "text": "Parent has received committed financing via two executed Parent Debt Commitment Letters with lenders/investors, and Wells Fargo Bank, National Association.",
+          "references": [
+            "ARTICLE ARTICLE IV REPRESENTATIONS AND WARRANTIES REGARDING PARENT AND MERGER SUB > Section SECTION 4.12 Parent Financing"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Regulatory",
+      "clauses": [
+        {
+          "text": "Outside Date is August 18, 2026; automatically extends to December 31, 2026; then mutually extends to March 31, 2027.",
+          "references": [
+            "Section 8.1"
+          ]
+        },
+        {
+          "text": "Parent must pay the Company a $350,000,000 reverse termination fee upon termination due to failure to obtain required regulatory approval.",
+          "references": [
+            "ARTICLE ARTICLE VIII TERMINATION, AMENDMENT AND WAIVER > Section SECTION 8.2 Effect of Termination > (c)"
+          ]
+        },
+        {
+          "text": "No limitations on Remedial Actions for antitrust approvals; buyer must take any structural or behavioral remedies, including divestitures, to secure clearance. No separate CFIUS standard or unusual proffer deadline.",
+          "references": [
+            "ARTICLE ARTICLE VI ADDITIONAL AGREEMENTS > Section SECTION 6.4 Regulatory Approvals; Reasonable Best Efforts > (e); Section 6.4; Section 9.10; Section 6.4 (d)"
+          ]
+        },
+        {
+          "text": "Parent shall defend through litigation on the merits, including appeals, any Proceeding seeking to prevent, prohibit, impede, interfere with or delay Closing.",
+          "references": [
+            "ARTICLE ARTICLE VI ADDITIONAL AGREEMENTS > Section SECTION 6.4 Regulatory Approvals; Reasonable Best Efforts; Section 6.4 (d) (i); Section 6.11"
+          ]
+        },
+        {
+          "text": "Parent, after good-faith consultation with the Company, shall have sole control over strategy for coordinating HSR filings, obtaining approvals, and resolving any HSR Act investigation or inquiry.",
+          "references": [
+            "Section 6.4 (b)"
+          ]
+        },
+        {
+          "text": "Parent, after good-faith consultation with the Company, has sole control over strategy for coordinating HSR filings, obtaining necessary approvals, and resolving any investigation or inquiry by any Governmental Entity under the HSR Act.",
+          "references": [
+            "Section 6.4 (b)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Competing Bid - Company",
+      "clauses": [
+        {
+          "text": "Yes—Company pays Parent a $210,000,000 termination fee upon termination for a Superior Proposal.",
+          "references": [
+            "Section 8.2 (b) (i)"
+          ]
+        },
+        {
+          "text": "No reimbursement fees apply for failure to obtain shareholder approval.",
+          "references": [
+            "ARTICLE ARTICLE VIII TERMINATION, AMENDMENT AND WAIVER > Section SECTION 8.2 Effect of Termination > (b)(ii)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Competing Bid - Parent",
+      "clauses": [
+        {
+          "text": "Yes. If terminated to accept a Superior Proposal, the Company must pay Parent a $210,000,000 termination fee (within two business days).",
+          "references": [
+            "Section 8.2; ARTICLE ARTICLE VIII TERMINATION, AMENDMENT AND WAIVER > Section SECTION 8.2 Effect of Termination"
+          ]
+        },
+        {
+          "text": "No reimbursement fees apply for failure to obtain shareholder approval.",
+          "references": [
+            "ARTICLE ARTICLE VI ADDITIONAL AGREEMENTS > Section SECTION 6.19 Parent Debt Financing Cooperation > (c)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Other Items",
+      "clauses": [
+        {
+          "text": "the Company shall, and shall cause each of its subsidiaries to, conduct their respective businesses in the ordinary course",
+          "references": [
+            "Section 5.1 (a)"
+          ]
+        },
+        {
+          "text": "MAE carve-outs appear standard and include tariff policies, cyber/ransomware attacks, TNMP Bonds refinancing interest-rate increases, and a lender-consent exception (Existing Lenders’ consent to signing) that can be considered.",
+          "references": [
+            "Definition > Company Material Adverse Effect"
+          ]
+        },
+        {
+          "text": "Parent is entitled to specific performance under this Agreement.",
+          "references": [
+            "ARTICLE ARTICLE IX GENERAL PROVISIONS > Section SECTION 9.10 Specific Performance"
+          ]
+        },
+        {
+          "text": "This Agreement shall be governed by the Laws of Delaware.",
+          "references": [
+            "Section 9.7"
+          ]
+        },
+        {
+          "text": "Any action involving the Parent Debt Financing Entities shall be subject to the exclusive jurisdiction.",
+          "references": [
+            "Section 9.15 (a)"
+          ]
+        }
+      ]
+    }
+  ],
+  "fulsome_sections": [
+    {
+      "name": "Party Details",
+      "clauses": [
+        {
+          "text": "Company is TXNM Energy, Inc., a New Mexico corporation.",
+          "references": [
+            "ARTICLE Preamble"
+          ]
+        },
+        {
+          "text": "Acquirer is Troy ParentCo LLC, a Delaware limited liability company.",
+          "references": [
+            "ARTICLE Preamble"
+          ]
+        },
+        {
+          "text": "Transaction structure: Reverse triangular merger. Surviving entity: the Company. Supporting language: “Merger Sub merges into the Company; the Company survives as the Surviving Corporation and a direct subsidiary of Parent,” with Company stockholders receiving $61.25 per share.",
+          "references": [
+            "Section 1.2; ARTICLE ARTICLE I THE MERGER > Section SECTION 1.2 The Merger; ARTICLE II EFFECT OF THE MERGER ON THE CAPITAL STOCK OF THE CONSTITUENT CORPORATIONS > Section SECTION 2.1 Effect on Capital Stock; ARTICLE VI ADDITIONAL AGREEMENTS > Section SECTION 6.15 Further Assistance"
+          ]
+        },
+        {
+          "text": "The guarantor is Sponsor, which delivered an executed Guarantee to the Company and guarantees Parent’s obligations under the Agreement.",
+          "references": [
+            "ARTICLE ARTICLE IV REPRESENTATIONS AND WARRANTIES REGARDING PARENT AND MERGER SUB > Section SECTION 4.13 Guarantee"
+          ]
+        },
+        {
+          "text": "Troy Merger Sub Inc. is a New Mexico corporation and a direct subsidiary of Troy ParentCo LLC (a Delaware limited liability company). The excerpts do not state Troy Merger Sub Inc.’s incorporation date.",
+          "references": [
+            "ARTICLE Preamble"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Board Approval",
+      "clauses": [
+        {
+          "text": "The merger has been unanimously approved by the board of directors of TXNM Energy, Inc.; Troy ParentCo LLC approval is by its manager, and unanimity is not described.",
+          "references": [
+            "ARTICLE Preamble; Section 3.4 (b); ARTICLE IV REPRESENTATIONS AND WARRANTIES REGARDING PARENT AND MERGER SUB > Section SECTION 4.4 Authority; ARTICLE Preamble; Preamble"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Closing",
+      "clauses": [
+        {
+          "text": "The target date is the 10th Business Day after Article VII conditions are satisfied or waived.",
+          "references": [
+            "Section 1.3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Consideration and Dividends",
+      "clauses": [
+        {
+          "text": "The Company stockholders are entitled to receive $61.25 in cash per share of the Company’s common stock (excluding cancelled shares and dissenting shares).",
+          "references": [
+            "ARTICLE II EFFECT OF THE MERGER ON THE CAPITAL STOCK OF THE CONSTITUENT CORPORATIONS > Section SECTION 2.1 Effect on Capital Stock; Section SECTION 2.2 Treatment of Restricted Stock Rights and Performance Shares; Section SECTION 2.3 Dissenting Shares; Section SECTION 2.5 Adjustments"
+          ]
+        },
+        {
+          "text": "The merger agreement includes a contingent payment: if the agreement is terminated by the Company for a Superior Proposal or by Parent due to a Company Change of Recommendation, the Company must pay Parent a $210,000,000 Company Termination Fee at or before termination (Superior Proposal) or within two business days (Change of Recommendation).",
+          "references": [
+            "ARTICLE ARTICLE VIII TERMINATION, AMENDMENT AND WAIVER > Section SECTION 8.2 Effect of Termination"
+          ]
+        },
+        {
+          "text": "Dividends are generally prohibited, except regular quarterly cash dividends within the specified cap and past practice, and a stub-period dividend immediately prior to the Effective Time.",
+          "references": [
+            "ARTICLE V CONDUCT OF BUSINESS PENDING THE MERGER > Section SECTION 5.1 Conduct of Business of the Company Pending the Merger > (c) > (viii)"
+          ]
+        },
+        {
+          "text": "The clause does not state that the Parent is permitted to pay dividends prior to closing.",
+          "references": [
+            "ARTICLE ARTICLE VI ADDITIONAL AGREEMENTS > Section SECTION 6.14 Dividend"
+          ]
+        },
+        {
+          "text": "If Closing occurs after the dividend record date but before payment, the Final Quarterly Dividend is paid from the Exchange Fund after Closing; Per Share Merger Consideration remains $61.25.",
+          "references": [
+            "Section 6.14"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Conditions",
+      "clauses": [
+        {
+          "text": "Mutual conditions include: receipt of the requisite Company shareholder approval, the absence of any injunction or other legal restraint prohibiting consummation of the transaction, and obtaining all required regulatory approvals (including any applicable antitrust or other governmental clearances) necessary to close the merger.",
+          "references": [
+            "Section 7.1"
+          ]
+        },
+        {
+          "text": "Parent’s obligation to close is conditioned on the Company’s reps and warranties being accurate at closing (subject to specified materiality and MAE qualifiers, with certain fundamental reps true in all material respects and the no‑MAE rep true in all respects), the Company’s material performance of its covenants, the absence of any Company Material Adverse Effect since signing, and delivery of an officer’s closing certificate confirming satisfaction of the reps/warranties and covenant compliance conditions.",
+          "references": [
+            "Section 7.2"
+          ]
+        },
+        {
+          "text": "Company’s obligation to consummate the Closing is conditioned on (i) Parent’s and Merger Sub’s representations and warranties being true and correct in all respects at the Effective Time, (ii) Parent and Merger Sub having performed and complied in all material respects with their pre-Effective Time covenants and obligations under the agreement, and (iii) delivery to the Company of an officer’s closing certificate from Parent confirming satisfaction of the foregoing conditions.",
+          "references": [
+            "ARTICLE ARTICLE VII CONDITIONS OF MERGER > Section SECTION 7.3 Conditions to Obligations of the Company"
+          ]
+        },
+        {
+          "text": "Subject to this Agreement having been duly adopted and approved by holders of shares of Company Common Stock constituting the Company Requisite Vote, being the affirmative vote of a majority of all of the outstanding shares of Company Common Stock entitled to vote thereon at the Company Shareholders Meeting (or any adjournment or postponement thereof).",
+          "references": [
+            "Section 7.1 (a)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Proxy, Shareholder Vote, Dissenting Shares",
+      "clauses": [
+        {
+          "text": "As promptly as practicable after the date of this Agreement and in any event within forty-five (45) days, the Company shall prepare and provide the Proxy Statement in preliminary form, and within sixty (60) days, shall file it with the SEC.",
+          "references": [
+            "Section 6.2 (a)"
+          ]
+        },
+        {
+          "text": "During the Interim Period, each of Parent and the Company shall cooperate and promptly prepare and file all necessary documentation, and shall use reasonable best efforts to take or cause to be taken all actions.",
+          "references": [
+            "Section 6.4 (a)"
+          ]
+        },
+        {
+          "text": "The Company shall promptly following receipt of confirmation from the SEC that the SEC has no further comments on, or will not review, the Proxy Statement, convene and hold a meeting.",
+          "references": [
+            "ARTICLE ARTICLE VI ADDITIONAL AGREEMENTS > Section SECTION 6.3 Company Shareholders Meeting"
+          ]
+        },
+        {
+          "text": "Promptly following SEC confirmation of no further comments, call, notice, convene and hold; may postpone/recess/adjourn up to 30 days aggregate (excluding Law-required) to solicit proxies for Requisite Vote or if insufficient shares for quorum.",
+          "references": [
+            "Section 6.3"
+          ]
+        },
+        {
+          "text": "The company must use reasonable best efforts to obtain the Company Requisite Vote for approval of the Merger and “use its reasonable best efforts to obtain the Company Requisite Vote.”",
+          "references": [
+            "Section 6.3"
+          ]
+        },
+        {
+          "text": "Standard Delaware Section 262 appraisal rights apply; cap on dissenting shares: not found.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "name": "Regulatory Best Efforts",
+      "clauses": [
+        {
+          "text": "Parent and Co shall use RBE to obtain all req’d regulatory approvals and consummate Merger.",
+          "references": [
+            "Section 6.4"
+          ]
+        },
+        {
+          "text": "Parent, Merger Sub, and the Company must use reasonable best efforts to file any required HSR notification within 25 Business Days after a mutually agreed date.",
+          "references": [
+            "ARTICLE ARTICLE VI ADDITIONAL AGREEMENTS > Section SECTION 6.4 Regulatory Approvals; Reasonable Best Efforts > (c) In furtherance of the foregoing covenants: (i)"
+          ]
+        },
+        {
+          "text": "Other than HSR, the parties must prepare and file required non-U.S. merger control/antitrust filings and pay related fees, no earlier than 90 days post-signing.",
+          "references": [
+            "ARTICLE ARTICLE VI ADDITIONAL AGREEMENTS > Section SECTION 6.4 Regulatory Approvals; Reasonable Best Efforts > (c) > (i)"
+          ]
+        },
+        {
+          "text": "Parent is not required to accept any Remedy Action in connection with any Required Regulatory Approvals that, “individually or in the aggregate, would be [materially adverse to] the business or operations of any Company Party from and after the Closing Date,” and the Company may not, without Parent’s prior written consent, “propos[e], negotiat[e], commit[] to, effect[] or accept[]” any such measures, including “the sale, divestiture, licensing or disposition of any assets or businesses of (A) Parent or (B) the Company … by consent decree, hold separate order or otherwise.” In addition, Parent must not (and must cause its Affiliates not to) enter into “any new commercial activities or businesses unrelated to the Merger” or acquire any asset/business/Person if it “would reasonably be expected to materially delay or prevent obtaining any Consent or Filing” under Section 6.4. No dollar- or revenue-based divestiture cap on the Company is stated in the provided text.",
+          "references": [
+            "Section 6.4"
+          ]
+        },
+        {
+          "text": "Parent, after having consulted the Company in good faith, shall have sole control over the strategy for coordinating any filings, obtaining any necessary approvals, and resolving any investigation or other inquiry of any such agency or other Governmental Entity under the HSR Act.",
+          "references": [
+            "Section 6.4 (b)"
+          ]
+        },
+        {
+          "text": "Parent, after having consulted the Company in good faith, shall have sole control over the timing of coordinating any HSR Act filings, obtaining any necessary approvals, and resolving any investigation or other inquiry by any Governmental Entity under the HSR Act, subject only to the good-faith consultation requirement.",
+          "references": [
+            "Section 6.4 (b)"
+          ]
+        },
+        {
+          "text": "[Party] is required to defend against any litigation.",
+          "references": [
+            "ARTICLE ARTICLE VI ADDITIONAL AGREEMENTS > Section SECTION 6.4 Regulatory Approvals; Reasonable Best Efforts"
+          ]
+        },
+        {
+          "text": "Parent must ensure it and its affiliates avoid unrelated activities or acquisitions that could materially delay or prevent required regulatory consents or filings; no addressed letter procedure is provided, and closing conditions are unaffected.",
+          "references": [
+            "ARTICLE ARTICLE VI ADDITIONAL AGREEMENTS > Section SECTION 6.4 Regulatory Approvals; Reasonable Best Efforts > (d)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "No Solicitation and Confidentiality Agreement",
+      "clauses": [
+        {
+          "text": "Confidentiality Agreement dated January 9, 2025.",
+          "references": [
+            "Section 9.5"
+          ]
+        },
+        {
+          "text": "The Company shall keep Parent informed in all material respects on a reasonably prompt basis of the current status and material terms of any such Acquisition Proposal and promptly, and no later than 24 hours after any material change, deliver a summary of such material changes.",
+          "references": [
+            "Section 6.1 (a)"
+          ]
+        },
+        {
+          "text": "The Company shall keep Parent informed in all material respects on a reasonably prompt basis of the current status and material terms of any such Acquisition Proposal.",
+          "references": [
+            "ARTICLE ARTICLE VI ADDITIONAL AGREEMENTS > Section SECTION 6.1 Company No Solicitation > (a)"
+          ]
+        },
+        {
+          "text": "“at any time prior to obtaining the Company Requisite Vote… the Company Board of Directors determines in good faith, after consultation with its financial advisor and outside legal counsel… constitutes a Superior Proposal”",
+          "references": [
+            "Section 6.1 (d)"
+          ]
+        },
+        {
+          "text": "Notwithstanding anything in this Section 6.1 to the contrary, at any time prior to obtaining the Company Requisite Vote.",
+          "references": [
+            "Section 6.1 (d)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Financing",
+      "clauses": [
+        {
+          "text": "Parent has received committed financing pursuant to two executed Parent Debt Commitment Letters between Merger Sub and the lenders/investors, with Wells Fargo Bank, National Association referenced in connection with the TXNM Backstop Facility and the TNMP Backstop Facility.",
+          "references": [
+            "ARTICLE ARTICLE IV REPRESENTATIONS AND WARRANTIES REGARDING PARENT AND MERGER SUB > Section SECTION 4.12 Parent Financing"
+          ]
+        },
+        {
+          "text": "Parent and Merger Sub must use “reasonable best efforts” (and cause Affiliates/Representatives) to keep the Equity Commitment Letter effective, comply with it, and consummate Equity and Parent Debt Financing by Closing, subject to Sections 7.1–7.2.",
+          "references": [
+            "Section 6.18 (c)"
+          ]
+        },
+        {
+          "text": "If Parent believes it “may not be able to obtain” any Parent Debt Financing as contemplated, it must “promptly notify” the Company in writing and use “reasonable best efforts” to secure “Parent Alternative Financing” replacing the unavailable amount “as promptly as practicable.”",
+          "references": [
+            "Section 6.18"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Termination",
+      "clauses": [
+        {
+          "text": "Outside Date is August 18, 2026; it automatically extends to December 31, 2026 if, before August 18, 2026, all Article VII closing conditions are satisfied/waived or capable of being satisfied (excluding No Legal Restraint and Required Regulatory Approvals); it may then extend to March 31, 2027 by mutual written agreement of Parent and the Company.",
+          "references": [
+            "Section 8.1"
+          ]
+        },
+        {
+          "text": "provided, further, that the right to terminate this Agreement pursuant to this Section 8.1(c) shall not be available to a Party if the failure of the Effective Time to occur on or before the End Date was due to the breach of this Agreement by such Party (or, in the case of Parent, Merger Sub) seeking to terminate this Agreement (it being understood that deemed compliance with Section 6.4 pursuant to Section 6.4(f) shall not constitute a breach under this Section 8.1(c));",
+          "references": [
+            "Section 8.1 (c)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Termination Rights",
+      "clauses": [
+        {
+          "text": "This Agreement may be terminated (a) by mutual written consent of Parent and the Company, or by either Parent or the Company (b) if the Section 7.1(b) no‑Legal‑Restraint condition is not satisfied due to a Legal Restraint that has become final and nonappealable, provided the terminating party (and, for Parent, Merger Sub) did not cause such restraint by breach (with deemed compliance under Section 6.4(f) not constituting breach) and has complied in all material respects with Section 6.4 (with deemed compliance constituting compliance), (c) if the Effective Time has not occurred by 5:00 p.m. NYC time on August 18, 2026 (subject to the automatic and mutually agreed extensions described, and excluding termination by a breaching party, with deemed compliance under Section 6.4(f) not constituting breach), or (f) if the Company Requisite Vote is not obtained at the duly convened Company Shareholders Meeting (or any adjournment/postponement) at which adoption and approval of this Agreement is voted.",
+          "references": [
+            "ARTICLE VIII TERMINATION, AMENDMENT AND WAIVER > Section SECTION 8.1 Termination"
+          ]
+        },
+        {
+          "text": "Agreement may be terminated by Parent (i) if the Company breaches any representation or warranty or fails to perform any covenant or agreement such that the conditions in Section 7.2(a) or Section 7.2(b) would not be satisfied and cannot be satisfied by the End Date, provided that if curable the termination is effective only if not cured within the “Company Cure Period” (the earlier of three (3) Business Days prior to the End Date and thirty (30) days after the Company’s receipt of Parent’s written notice, so long as the Company uses reasonable best efforts to cure), and further provided Parent has no such right if Parent or Merger Sub is then in breach causing failure of Section 7.3(a) or Section 7.3(b); or (ii) prior to obtaining the Company Requisite Vote, the Company makes a Company Change of Recommendation in compliance with Section 6.1.",
+          "references": [
+            "ARTICLE ARTICLE VIII TERMINATION, AMENDMENT AND WAIVER > Section SECTION 8.1 Termination > (e)(i) and (e)(ii)"
+          ]
+        },
+        {
+          "text": "Agreement may be terminated by the Company by written notice (i) if Parent or Merger Sub breaches any representation or warranty or fails to perform any covenant or agreement such that the conditions in Section 7.3(a) or 7.3(b) would not be satisfied and cannot be satisfied by the End Date, provided that if curable the termination is effective only if not cured within the “Parent Cure Period” (until the earlier of (A) three Business Days before the End Date and (B) 30 days after Parent’s receipt of Company’s notice, so long as Parent/Merger Sub uses reasonable best efforts to cure); (ii) prior to the Company Requisite Vote, in accordance with Section 6.1(d), to enter a definitive agreement for a Superior Proposal (with payment of the Company Termination Fee as specified in Section 8.2(b)(i)); (iii) if all Article VII conditions (other than Closing conditions) are satisfied/waived, Closing conditions are capable of satisfaction, Parent/Merger Sub fail to close when required, and fail to close by close of business on the 2nd Business Day after receiving a Satisfaction Notice; or (iv) if the Company terminates the Stock Purchase Agreement under Article IX thereof.",
+          "references": [
+            "Section 8.1 (d) (g)"
+          ]
+        },
+        {
+          "text": "No reimbursement fees apply for failure to obtain shareholder approval.",
+          "references": [
+            "ARTICLE ARTICLE VIII TERMINATION, AMENDMENT AND WAIVER > Section SECTION 8.2 Effect of Termination > (b)(ii)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Termination Fee Amounts",
+      "clauses": [
+        {
+          "text": "$1,000,000 – superior offer",
+          "references": [
+            "Section 8.2 (b) (i); Section 8.1 (c) (i) (b) (c) (d) (i) (c) (i) (c) (i) (c) (i) (c) (b) (1) (2) (ii) (d) (iii) (g) (2); Section 8.1 (f)"
+          ]
+        },
+        {
+          "text": "Please provide the excerpt text that mentions the Company-side termination fees, so I can identify each exact dollar amount and the specific stated triggers.",
+          "references": [
+            "Section 8.2 (b) (i); Section 8.1 (c) (i) (b) (c) (d) (i) (c) (i) (c) (i) (c) (i) (c) (b) (1) (2) (ii) (d) (iii) (g) (2); Section 8.1 (f)"
+          ]
+        },
+        {
+          "text": "$[AMOUNT] – other",
+          "references": [
+            "Section 8.2 (b) (i); ARTICLE ARTICLE VIII TERMINATION, AMENDMENT AND WAIVER > Section SECTION 8.2 Effect of Termination > (c); Section 8.2; ; ARTICLE ARTICLE VIII TERMINATION, AMENDMENT AND WAIVER > Section SECTION 8.2 Effect of Termination"
+          ]
+        },
+        {
+          "text": "Please provide the excerpt text (or an image of it). I can’t identify the Parent-side termination fee amounts or their exact triggers without the excerpt.",
+          "references": [
+            "Section 8.2 (b) (i); ARTICLE ARTICLE VIII TERMINATION, AMENDMENT AND WAIVER > Section SECTION 8.2 Effect of Termination > (c); Section 8.2; ; ARTICLE ARTICLE VIII TERMINATION, AMENDMENT AND WAIVER > Section SECTION 8.2 Effect of Termination"
+          ]
+        },
+        {
+          "text": "Under Section 8.2(b)(i), the Company must pay Parent a $210,000,000 Company Termination Fee if the Agreement is terminated by the Company pursuant to Section 8.1(d)(ii) (Superior Proposal) (payable on or prior to the termination date) or by the Company pursuant to Section 8.1(e)(ii) (Company Change of Recommendation) (payable as promptly as reasonably practicable); under Section 8.2(b)(ii), if (A) the Agreement is terminated by the Company pursuant to Section 8.1(f) (No Company Requisite Vote) or by Parent pursuant to Section 8.1(e)(i) (Company Terminable Breach), (B) after signing and before such termination an Acquisition Proposal was made or became publicly known, and (C) within 12 months after termination the Company enters into a definitive agreement for, or consummates, an Acquisition Proposal, then the Company must pay the Company Termination Fee within two Business Days after the earlier of signing such definitive agreement or consummation.",
+          "references": [
+            "ARTICLE VIII TERMINATION, AMENDMENT AND WAIVER > Section SECTION 8.2 Effect of Termination"
+          ]
+        },
+        {
+          "text": "8.2(c)(i) Parent must pay the $350,000,000 Parent Termination Fee (by wire transfer of immediately available funds within two (2) Business Days after termination) if the Agreement is terminated (A) by the Company under Section 8.1(b) (No Legal Restraint) solely in connection with Required Regulatory Approvals, (B) by Parent or the Company under Section 8.1(c) (End Date), or (C) by the Company under Section 8.1(d)(i) (Parent Terminable Breach), in each case provided that, at the time of termination, all other Closing conditions in Sections 7.1 and 7.2 have been satisfied or waived, or if terminated by the Company under (A) Section 8.1(d)(iii) (Parent Failure to Close) or (B) Section 8.1(g) (Stock Purchase Agreement Termination).",
+          "references": [
+            "ARTICLE ARTICLE VIII TERMINATION, AMENDMENT AND WAIVER > Section SECTION 8.2 Effect of Termination"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ordinary Course Covenants",
+      "clauses": [
+        {
+          "text": "the Company shall, and shall cause each of its subsidiaries to, (i) conduct their respective businesses in the ordinary course of business consistent with past practice and in substantially the same manner as heretofore conducted.",
+          "references": [
+            "Section 5.1 (a)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Governing Law",
+      "clauses": [
+        {
+          "text": "This Agreement shall be governed by, and construed in accordance with, the Laws of the State of Delaware.",
+          "references": [
+            "Section 9.7"
+          ]
+        },
+        {
+          "text": "MAE interpretation is governed by Delaware law, except fiduciary duties (New Mexico) and merger mechanics (NMBCA).",
+          "references": [
+            "Section 9.7"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Specific Performance",
+      "clauses": [
+        {
+          "text": "Parent shall be entitled to an injunction, specific performance and other equitable relief.",
+          "references": [
+            "ARTICLE ARTICLE IX GENERAL PROVISIONS > Section SECTION 9.10 Specific Performance"
+          ]
+        },
+        {
+          "text": "Any action involving the Parent Debt Financing Entities shall be subject to the exclusive jurisdiction of any federal or state court in the Borough of Manhattan, New York, New York.",
+          "references": [
+            "Section 9.15 (a)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MAE Definitions",
+      "clauses": [
+        {
+          "text": "provided, that with respect to clause (ii) only, no events, developments, changes, circumstances, effects or occurrences relating to, arising out of or in connection with or resulting from any of the following shall be deemed, either alone or in combination, to constitute or contribute to a Company Material Adverse Effect and no event, development, change, circumstance, effect or occurrence relating to, arising out of or in connection with or resulting from any of the following shall be taken into account when determining whether a Company Material Adverse Effect has occurred or may, would or could occur: (A) general changes or developments in the legislative or political condition, or in the economy or the financial, debt, capital, credit, commodities or securities markets, in each such case, in the United States or elsewhere in the world, including as a result of changes in geopolitical conditions, tariff policies, interest rates or inflation, (B) any change affecting any industry in which the Company Parties operate, including electric and renewable power generating, transmission or distribution industries (including, in each case, any changes in operations thereof) or any change affecting retail markets for electric power, capacity or fuel or related products, (C) any changes in the national, regional, state, provincial or local electric generation, transmission or distribution systems or increases or decreases in planned spending with respect thereto, (D) the entry into this Agreement or the public announcement of the Merger or other transactions contemplated hereby, including any impact thereof on relationships, contractual or otherwise, with customers, suppliers, regulators, lenders, partners or employees of the Company Parties, (E) the identity of Parent or any of its Affiliates as the acquiror of the Company, (F) any action taken or omitted to be taken by the Company at the express written request of or with the express written consent of Parent, (G) any actions required to be undertaken by the Company in accordance with, subject to and consistent with Section 6.4 of this Agreement to obtain any Consent or make any Filing required for the consummation of the Merger and the other transactions contemplated herein or, in connection therewith, any written proposal or commitment made by any Party or its Affiliates to any Governmental Entity in accordance with, subject to and consistent with Section 6.4 or imposed by any Governmental Entity, in each case, in order to obtain the Required Regulatory Approvals, (H) changes after the date hereof, in any applicable Laws or applicable binding accounting regulations or principles or interpretation or enforcement thereof by any Governmental Entity, (I) any hurricane, tornado, fire, wildfire, earthquake, flood, tsunami or other natural disaster or weather-related event, act of God, pandemic or epidemic, including the COVID-19 virus, outbreak or escalation of hostilities or war (whether or not declared), military actions or any act of sabotage, cyber attacks, ransomware attacks, terrorism, or national or international political or social conditions, (J) any change in the market price or trading volume of the shares of the Company or the credit rating of the Company Parties, (K) any failure by the Company to meet any published analyst estimates or expectations of the Company’s revenue, earnings or other financial performance or results of operations for any period, in and of itself, or any failure by the Company to meet its internal or published projections, budgets, plans or forecasts of its revenues, earnings or other financial performance or results of operations, in and of itself, (L) any litigation or claim threatened or initiated by shareholders, ratepayers, customers or suppliers of the Company Parties (each in their capacity as such) against the Company Parties or any of their respective officers or directors (in each case, in their capacity as such), in each case, arising out of the execution of this Agreement or the transactions contemplated thereby and (M) any increase in interest rates payable arising from the refinancing of the TNMP Bonds, in each case, in accordance with the express terms of this Agreement",
+          "references": [
+            "Definition > Company Material Adverse Effect"
+          ]
+        },
+        {
+          "text": "MAE carve-outs appear standard but include “the identity of Parent or any of its Affiliates as the acquiror of the Company” and “any increase in interest rates payable arising from the refinancing of the TNMP Bonds”.",
+          "references": [
+            "Definition > Company Material Adverse Effect"
+          ]
+        },
+        {
+          "text": "Under the Company Material Adverse Effect definition (Section 9.3(f)), for carveouts (A), (B), (C), (H) and (I), only impacts disproportionately affecting TXNM Energy, Inc. (and its subsidiaries/JVs) versus U.S. industry participants count, and then only the incremental disproportionate impact.",
+          "references": [
+            "Definition > Company Material Adverse Effect"
+          ]
+        },
+        {
+          "text": "Section 9.3(f) provides a carve-back for clauses (J) and (K) such that the underlying facts, events, or circumstances causing the stock price/trading volume or credit rating change (J), or the failure to meet estimates/projections (K), may be considered in determining a Company MAE.",
+          "references": [
+            "Section 9.3 (f)"
+          ]
+        }
+      ]
+    }
+  ]
+}

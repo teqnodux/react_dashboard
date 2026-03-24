@@ -1,0 +1,185 @@
+{
+  "deal_name": "Servier Pharmaceuticals / Day One Biopharmaceuticals",
+  "acquirer": "Servier Pharmaceuticals LLC",
+  "acquirer_ticker": "",
+  "target": "Day One Biopharmaceuticals, Inc.",
+  "target_ticker": "DAWN",
+  "signing_date": "2026-03-06",
+  "announce_date": null,
+  "nda_date": "2026-02-06",
+  "outside_date_initial": "2026-12-06",
+  "outside_date_extensions": [
+    {
+      "date": "2027-05-05",
+      "extension_months": null,
+      "auto": true,
+      "condition": "if specified Exhibit A Offer conditions (excluding listed exceptions) are satisfied or waived as of the initial outside date",
+      "note": "The outside date automatically extends by 150 days (to May 5, 2027) if, on December 6, 2026, the specified Exhibit A Offer conditions (excluding listed exceptions) are satisfied or waived; no party action is required to effectuate the extension."
+    }
+  ],
+  "estimated_close_start": null,
+  "estimated_close_end": null,
+  "financing_type": "cash",
+  "financing_commitment_expiry": null,
+  "offer_price_per_share": 21.5,
+  "exchange_ratio": null,
+  "requires_s4": false,
+  "is_going_private": false,
+  "schedule_13e3_required": false,
+  "majority_of_minority_required": false,
+  "regulatory_approvals": [
+    {
+      "name": "HSR Act (FTC/DOJ)",
+      "filing_days": 15,
+      "filing_days_type": "business",
+      "required": true,
+      "notes": "HSR Notification and Report Forms must be filed with the FTC and DOJ as soon as practicable, no later than 15 business days after the Agreement Date, subject to timely information availability."
+    }
+  ],
+  "static_events": [
+    {
+      "label": "Confidentiality Agreement",
+      "date": "2026-02-06",
+      "ref": null
+    },
+    {
+      "label": "Merger Agreement Signed",
+      "date": "2026-03-06",
+      "ref": null
+    },
+    {
+      "label": "Outside Date (Initial)",
+      "date": "2026-12-06",
+      "ref": null
+    },
+    {
+      "label": "Outside Date (Extended)",
+      "date": "2027-05-05",
+      "ref": null,
+      "note": "The outside date automatically extends by 150 days (to May 5, 2027) if, on December 6, 2026, the specified Exhibit A Offer conditions (excluding listed exceptions) are satisfied or waived; no party action is required to effectuate the extension."
+    }
+  ],
+  "deadline_events": [
+    {
+      "label": "HSR Filing",
+      "date": "2026-03-27",
+      "calculation": "+15 Business Days from Signing",
+      "trigger_key": "hsr_filed",
+      "ref": null
+    },
+    {
+      "label": "Proxy Statement",
+      "date": null,
+      "calculation": "Date not yet disclosed",
+      "trigger_key": "proxy_filed",
+      "ref": null
+    },
+    {
+      "label": "HSR Act (FTC/DOJ) Clearance",
+      "date": "2026-03-27",
+      "calculation": "+15 Business Days from Signing",
+      "trigger_key": "reg_hsr_act_ftc_doj",
+      "ref": null,
+      "notes": "HSR Notification and Report Forms must be filed with the FTC and DOJ as soon as practicable, no later than 15 business days after the Agreement Date, subject to timely information availability."
+    }
+  ],
+  "triggered_chains": [
+    {
+      "trigger_label": "HSR Filed (actual date)",
+      "trigger_key": "hsr_filed",
+      "downstream": [
+        {
+          "label": "HSR Waiting Period Expires",
+          "rule": "+15 calendar days after HSR filed (statutory \u2014 HSR Act, not stated in merger agreement)",
+          "calc_days": 15,
+          "calc_days_type": "calendar",
+          "calc_from": "trigger",
+          "ref": null
+        }
+      ]
+    },
+    {
+      "trigger_label": "HSR Act (FTC/DOJ) \u2014 Filing / Notification (actual date)",
+      "trigger_key": "reg_hsr_act_ftc_doj",
+      "downstream": [
+        {
+          "label": "Waiting Period / Review",
+          "rule": "Open-ended \u2014 statutory review period applies",
+          "calc_days": null,
+          "calc_days_type": null,
+          "calc_from": "trigger",
+          "ref": null
+        },
+        {
+          "label": "Clearance Obtained",
+          "rule": "HSR Notification and Report Forms must be filed with the FTC and DOJ as soon as practicable, no later than 15 business days after the Agreement Date, subject to timely information availability.",
+          "calc_days": null,
+          "calc_days_type": null,
+          "calc_from": "prev",
+          "ref": null
+        }
+      ]
+    },
+    {
+      "trigger_label": "Proxy Statement Filed (actual date)",
+      "trigger_key": "proxy_filed",
+      "downstream": [
+        {
+          "label": "SEC Proxy Review Period",
+          "rule": "Open-ended \u2014 SEC review (typically 10 business days for preliminary proxy)",
+          "calc_days": 10,
+          "calc_days_type": "business",
+          "calc_from": "trigger",
+          "ref": null
+        },
+        {
+          "label": "Proxy Mailed to Shareholders",
+          "rule": "After SEC clearance \u2014 typically \u226520 calendar days before meeting",
+          "calc_days": 20,
+          "calc_days_type": "calendar",
+          "calc_from": "prev",
+          "ref": null
+        },
+        {
+          "label": "Stockholder Meeting Deadline",
+          "rule": "Date not yet disclosed",
+          "calc_days": null,
+          "calc_days_type": "calendar",
+          "calc_from": "prev",
+          "ref": null
+        }
+      ]
+    },
+    {
+      "trigger_label": "All Closing Conditions Satisfied",
+      "trigger_key": "conditions_satisfied",
+      "downstream": [
+        {
+          "label": "Closing",
+          "rule": "+2 Business Days after all conditions satisfied / waived",
+          "calc_days": 2,
+          "calc_days_type": "business",
+          "calc_from": "trigger",
+          "ref": null
+        }
+      ]
+    }
+  ],
+  "checklist": [
+    "HSR actual filing date (Servier Pharmaceuticals LLC + DAWN)",
+    "HSR early termination granted?",
+    "HSR Act (FTC/DOJ) \u2014 filing / notification date",
+    "HSR Act (FTC/DOJ) \u2014 clearance received?",
+    "Preliminary proxy filed (PREM14A)?",
+    "Definitive proxy filed (DEFM14A)?",
+    "Proxy mailing date",
+    "Record date for stockholder votes",
+    "Day One Biopharmaceuticals, Inc. stockholder meeting date (vote)",
+    "All closing conditions satisfied?",
+    "Actual closing date"
+  ],
+  "_meta": {
+    "extracted_at": "2026-03-19T21:37:51.880483Z",
+    "filing_date": "2026-03-06"
+  }
+}

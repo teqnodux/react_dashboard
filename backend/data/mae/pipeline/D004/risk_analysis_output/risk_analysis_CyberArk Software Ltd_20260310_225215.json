@@ -1,0 +1,104 @@
+{
+  "deal_name": "CyberArk Software Ltd",
+  "analysis_timestamp": "2026-03-10T22:52:15.032245",
+  "total_clauses": 10,
+  "clauses_analyzed": 1,
+  "analysis_coverage": "10.0%",
+  "initial_risk_assessment": {
+    "typical_count": 9,
+    "atypical_count": 1,
+    "outlier_count": 0,
+    "risk_flags": [
+      {
+        "clause_id": "(ii)",
+        "reason": "ATYPICAL: Broad Economic and Financial Market Changes Exclusion",
+        "ratio": 1.15418266030029
+      }
+    ],
+    "overall_risk": "low",
+    "requires_review": true
+  },
+  "risk_summary": {
+    "final_risk_level": "low",
+    "risk_score": 0.0,
+    "high_risk_count": 0,
+    "medium_risk_count": 0,
+    "low_risk_count": 1,
+    "disclosure_references_count": 0,
+    "key_concerns": []
+  },
+  "investigation_report": {
+    "executive_summary": "STANDARD RISK PROFILE: Most provisions align with market standards. Only 0 items flagged for routine review.",
+    "immediate_actions_required": [
+      "Standard due diligence process",
+      "Routine review of flagged items"
+    ],
+    "key_negotiation_points": [],
+    "red_flag_summary": [],
+    "disclosure_schedule_concerns": [],
+    "unusual_provisions_detail": []
+  },
+  "negotiation_recommendations": [
+    "No significant negotiation concerns identified"
+  ],
+  "benchmark_comparison": {
+    "vs_typical_deals": {
+      "typical_rate": {
+        "this_deal": "90.0%",
+        "note": "Higher is better - most clauses match standard patterns"
+      },
+      "outlier_rate": {
+        "this_deal": "0.0%",
+        "note": "Lower is better - fewer unusual provisions"
+      }
+    },
+    "statistical_outliers": [],
+    "category_distribution": {
+      "economic": "2/10 (20.0%)",
+      "force_majeure": "3/10 (30.0%)",
+      "accounting": "1/10 (10.0%)",
+      "transaction": "3/10 (30.0%)",
+      "disclosure": "1/10 (10.0%)"
+    },
+    "risk_distribution": {
+      "low": 1
+    }
+  },
+  "detailed_analysis": {
+    "high_risk_clauses": [],
+    "medium_risk_clauses": [],
+    "disclosure_references": [],
+    "all_analyzed_clauses": [
+      {
+        "clause_id": "(ii)",
+        "label": "(ii)",
+        "text": "change that generally affects any of the industries or markets in which such Person or any of its Subsidiaries operates or in which their products are sold or distributed",
+        "text_preview": "change that generally affects any of the industries or markets in which such Person or any of its Su...",
+        "cluster_match": "Broad Economic and Financial Market Changes Exclusion",
+        "cluster_category": "economic",
+        "distance_ratio": 1.15418266030029,
+        "zone": "atypical",
+        "risk_analysis": {
+          "risk_level": "low",
+          "requires_investigation": false,
+          "risk_factors": [
+            "Standard industry-wide effects exclusion",
+            "Broadly applicable to any industry or market where target operates"
+          ],
+          "unusual_provisions": [],
+          "disclosure_references": false,
+          "specific_company_issues": [],
+          "red_flags": [],
+          "investigation_priority": "routine",
+          "explanation": "This is a standard, boilerplate MAE exclusion clause that carves out changes generally affecting the industries or markets in which the target company operates. The language 'generally affects' is typical and creates a high bar - the change must affect the industry broadly, not just the target company specifically. This protects the buyer from the seller claiming an MAE when industry-wide headwinds impact the target. The clause covers both operational industries and distribution/sales markets, which is comprehensive but standard. No references to disclosure schedules, specific known issues, ongoing matters, or company-specific problems. The language is generic and would appear in most M&A agreements across sectors. For CyberArk (cybersecurity software), this would exclude things like general slowdowns in enterprise software spending, cybersecurity market consolidation, or shifts in cloud adoption rates - all industry-wide phenomena.",
+          "negotiation_impact": "This is a seller-favorable but standard provision that likely faced minimal negotiation resistance. It's part of the typical MAE exclusion framework that balances buyer and seller interests. The buyer retains protection against company-specific underperformance while accepting industry-wide risks. No indication this was heavily negotiated or tailored to specific CyberArk circumstances. The clause would typically be paired with a 'disproportionate effect' carve-back allowing the buyer to claim an MAE if the target is disproportionately affected compared to industry peers.",
+          "similar_to_standard": true,
+          "confidence": 10
+        }
+      }
+    ]
+  },
+  "unusual_provisions_summary": [],
+  "red_flags": [],
+  "classification_file": "classification_20260310_225159.json"
+}

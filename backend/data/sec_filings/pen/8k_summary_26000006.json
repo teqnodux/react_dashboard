@@ -1,0 +1,22 @@
+{
+  "ticker": "PEN",
+  "filing_date": "02/25/26",
+  "items_reported": [
+    "Item 2.02",
+    "Item 9.01"
+  ],
+  "L1_headline": "PEN \u2013 Q4 and FY2025 earnings results announced. | 02/25/26",
+  "L2_brief": "Penumbra, Inc. issued a press release on February 25, 2026 announcing financial results for Q4 and full year ended December 31, 2025. The filing furnishes the press release as Exhibit 99.1 but does not include specific financial figures in the 8-K text itself. No merger or deal-related information is referenced in this filing.",
+  "L3_detailed": {
+    "event": "Penumbra reported Q4 and full-year 2025 financial results via press release furnished as Exhibit 99.1.",
+    "key_figures": [
+      "Reporting period: Q4 and fiscal year ended December 31, 2025",
+      "Press release date: February 25, 2026",
+      "Specific financial figures not included in the 8-K body; contained in Exhibit 99.1"
+    ],
+    "deal_implications": "No merger or acquisition transaction is referenced in this filing. This is a standard earnings results disclosure.",
+    "remaining_conditions": [],
+    "risks_flagged": []
+  },
+  "filing_type": "8-K"
+}

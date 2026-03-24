@@ -1,0 +1,137 @@
+{
+  "deal_name": "CyberArk Software Ltd",
+  "analysis_timestamp": "2026-03-10T17:58:55.437430",
+  "total_clauses": 13,
+  "clauses_analyzed": 2,
+  "analysis_coverage": "15.4%",
+  "initial_risk_assessment": {
+    "typical_count": 11,
+    "atypical_count": 1,
+    "outlier_count": 1,
+    "risk_flags": [
+      {
+        "clause_id": "(iii)",
+        "reason": "OUTLIER: Broad Economic and Financial Market Changes Exclusion",
+        "ratio": 1.2955533387938374
+      },
+      {
+        "clause_id": "(xiii)",
+        "reason": "ATYPICAL: Exclusion for Stockholder Litigation Arising from Merger Transaction",
+        "ratio": 1.141640926581169
+      }
+    ],
+    "overall_risk": "medium",
+    "requires_review": true
+  },
+  "risk_summary": {
+    "final_risk_level": "low",
+    "risk_score": 0.0,
+    "high_risk_count": 0,
+    "medium_risk_count": 0,
+    "low_risk_count": 2,
+    "disclosure_references_count": 0,
+    "key_concerns": []
+  },
+  "investigation_report": {
+    "executive_summary": "STANDARD RISK PROFILE: Most provisions align with market standards. Only 0 items flagged for routine review.",
+    "immediate_actions_required": [
+      "Standard due diligence process",
+      "Routine review of flagged items"
+    ],
+    "key_negotiation_points": [],
+    "red_flag_summary": [],
+    "disclosure_schedule_concerns": [],
+    "unusual_provisions_detail": []
+  },
+  "negotiation_recommendations": [
+    "No significant negotiation concerns identified"
+  ],
+  "benchmark_comparison": {
+    "vs_typical_deals": {
+      "typical_rate": {
+        "this_deal": "84.6%",
+        "note": "Higher is better - most clauses match standard patterns"
+      },
+      "outlier_rate": {
+        "this_deal": "7.7%",
+        "note": "Lower is better - fewer unusual provisions"
+      }
+    },
+    "statistical_outliers": [],
+    "category_distribution": {
+      "economic": "4/13 (30.8%)",
+      "accounting": "1/13 (7.7%)",
+      "force_majeure": "3/13 (23.1%)",
+      "transaction": "4/13 (30.8%)",
+      "disclosure": "1/13 (7.7%)"
+    },
+    "risk_distribution": {
+      "low": 2
+    }
+  },
+  "detailed_analysis": {
+    "high_risk_clauses": [],
+    "medium_risk_clauses": [],
+    "disclosure_references": [],
+    "all_analyzed_clauses": [
+      {
+        "clause_id": "(iii)",
+        "label": "(iii)",
+        "text": "changes in conditions in the industries in which such Person and its Subsidiaries conduct business",
+        "text_preview": "changes in conditions in the industries in which such Person and its Subsidiaries conduct business",
+        "cluster_match": "Broad Economic and Financial Market Changes Exclusion",
+        "cluster_category": "economic",
+        "distance_ratio": 1.2955533387938374,
+        "zone": "outlier",
+        "risk_analysis": {
+          "risk_level": "low",
+          "requires_investigation": false,
+          "risk_factors": [
+            "Standard industry-wide conditions exclusion",
+            "No disproportionate impact carve-back visible in this clause fragment"
+          ],
+          "unusual_provisions": [],
+          "disclosure_references": false,
+          "specific_company_issues": [],
+          "red_flags": [],
+          "investigation_priority": "routine",
+          "explanation": "This is a standard MAE exclusion clause that carves out changes in industry conditions from the definition of Material Adverse Effect. The language 'changes in conditions in the industries in which such Person and its Subsidiaries conduct business' is boilerplate and appears in the vast majority of M&A agreements. It protects the seller (CyberArsk) from buyer termination rights based on industry-wide downturns affecting the cybersecurity/software sector. The clause is appropriately broad and does not reference any specific industry issues, regulatory changes, or company-specific problems. The key risk consideration is whether the full MAE definition includes a 'disproportionate impact' carve-back that would require the buyer to close even during industry downturns unless CyberArk is disproportionately affected compared to peers. Without seeing that carve-back language, this clause alone presents minimal risk. The reference to 'such Person and its Subsidiaries' is standard drafting to ensure the exclusion applies to the target's entire corporate family.",
+          "negotiation_impact": "This is a seller-favorable provision that is market standard and would be expected in any sophisticated M&A transaction. From the buyer's perspective, the critical negotiation point would be ensuring a 'disproportionate effect' exception exists elsewhere in the MAE definition, which would allow the buyer to invoke MAE protections if CyberArk is hit significantly harder than competitors by industry changes. The absence of such carve-back language would be unusual and concerning for the buyer. This clause alone would not be a material negotiation point as it represents baseline market practice.",
+          "similar_to_standard": true,
+          "confidence": 9
+        }
+      },
+      {
+        "clause_id": "(xiii)",
+        "label": "(xiii)",
+        "text": "any Transaction Litigation",
+        "text_preview": "any Transaction Litigation",
+        "cluster_match": "Exclusion for Stockholder Litigation Arising from Merger Transaction",
+        "cluster_category": "transaction",
+        "distance_ratio": 1.141640926581169,
+        "zone": "atypical",
+        "risk_analysis": {
+          "risk_level": "low",
+          "requires_investigation": false,
+          "risk_factors": [
+            "Blanket exclusion for all stockholder litigation arising from the transaction",
+            "No limitation on scope or magnitude of litigation costs",
+            "Could theoretically exclude meritorious claims that reveal material issues"
+          ],
+          "unusual_provisions": [],
+          "disclosure_references": false,
+          "specific_company_issues": [],
+          "red_flags": [],
+          "investigation_priority": "routine",
+          "explanation": "This is a STANDARD and EXPECTED MAE exclusion clause. 'Transaction Litigation' refers to stockholder lawsuits challenging the merger itself - typically class actions or derivative suits alleging breach of fiduciary duty, inadequate consideration, or flawed deal process. Such litigation is virtually automatic in public M&A transactions (occurring in 90%+ of deals historically). The exclusion recognizes that: (1) these suits are a predictable consequence of announcing the deal, not a change in the target's business; (2) they're typically settled for disclosure supplements and attorneys' fees; (3) allowing them to trigger MAE would give buyers an escape hatch in nearly every deal. This is market-standard protective language for sellers. The clause does NOT reference any specific litigation, parties, claims, or disclosure schedules that would suggest known material issues. It's a categorical exclusion for a well-understood deal phenomenon. No investigation needed unless: (a) there's unusual volume/substance to actual filings, (b) claims raise legitimate valuation concerns, or (c) litigation reveals previously undisclosed material facts.",
+          "negotiation_impact": "This is seller-favorable but market-standard language that buyers routinely accept. It was likely non-controversial in negotiations. Buyers accept this because transaction litigation is predictable noise, not signal about business quality. The buyer retains protection against actual material adverse effects on the business - this only carves out the litigation about the deal process itself. No indication this was a contested point or that CyberArk had unusual litigation exposure requiring special protection.",
+          "similar_to_standard": true,
+          "confidence": 10
+        }
+      }
+    ]
+  },
+  "unusual_provisions_summary": [],
+  "red_flags": [],
+  "classification_file": "classification_20260310_175827.json"
+}

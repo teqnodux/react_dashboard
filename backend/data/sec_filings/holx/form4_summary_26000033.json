@@ -1,0 +1,30 @@
+{
+  "ticker": "HOLX",
+  "issuer": "HOLOGIC INC",
+  "filing_date": "03/02/26",
+  "insider_name": "Anne M. Liddy",
+  "insider_title": "General Counsel",
+  "relationship": "Officer",
+  "L1_headline": "+ HOLX \u2013 Anne M. Liddy disposed of 185 shares (tax withholding on RSU vesting). | 02/27/2026",
+  "L2_brief": "Anne M. Liddy, General Counsel of Hologic Inc, had 185 shares of common stock withheld on 02/27/2026 at $75.36 per share to cover tax obligations upon the settlement of restricted stock units. Following the transaction, Liddy directly holds 28,052 shares of common stock.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "02/27/2026",
+        "shares": "185",
+        "price_per_share": "$75.36",
+        "total_value": "$13,941.60",
+        "acquired_or_disposed": "Disposed (D)"
+      }
+    ],
+    "post_transaction_holdings": "28,052 shares of common stock",
+    "ownership_type": "Direct",
+    "deal_signal": "N/A",
+    "pattern_notes": "This is a routine tax withholding disposition associated with the vesting and settlement of restricted stock units (RSUs). Transaction code 'F' indicates shares withheld by the issuer to satisfy tax obligations, not a discretionary sale. The 185 shares disposed represent a small fraction (approximately 0.66%) of Liddy's total direct holdings of 28,052 shares.",
+    "risks_flagged": [
+      "Transaction is a mandatory tax withholding (code F), not a discretionary sale"
+    ]
+  },
+  "filing_type": "FORM 4"
+}

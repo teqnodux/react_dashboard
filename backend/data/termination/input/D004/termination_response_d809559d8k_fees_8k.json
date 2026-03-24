@@ -1,0 +1,47 @@
+{
+  "company_termination_fee": {
+    "amount_usd": 272000000,
+    "amount_text": "$272 million",
+    "triggers": [
+      "superior_proposal",
+      "fiduciary_out",
+      "adverse_recommendation_change"
+    ],
+    "notes": "Payable by the Company following termination to accept a Superior Proposal and under certain other circumstances."
+  },
+  "reverse_termination_fee": {
+    "amount_usd": null,
+    "amount_text": null,
+    "triggers": [],
+    "notes": null
+  },
+  "parent_regulatory_termination_fee": {
+    "amount_usd": null,
+    "amount_text": null,
+    "triggers": [],
+    "notes": null
+  },
+  "expense_reimbursement": {
+    "amount_usd": null,
+    "amount_text": null,
+    "triggers": [],
+    "notes": null
+  },
+  "offer_price_per_share": {
+    "amount_usd": 26.45,
+    "amount_text": "$26.45 in cash plus 1.0340 JHX shares per share of Company Common Stock",
+    "consideration_type": "mixed (cash and stock)"
+  },
+  "deal_equity_value_usd": null,
+  "deal_equity_value_text": null,
+  "outside_date_months": 12,
+  "go_shop_period_days": null,
+  "specific_performance_available": null,
+  "willful_breach_carveout": null,
+  "tail_provision_months": null,
+  "sole_remedy_for_acquirer": null,
+  "notes": "Outside date is March 23, 2026 (12 months), subject to automatic 3-month extension under certain circumstances. Merger consideration is $26.45 cash plus 1.0340 JHX shares per Company share. No reverse termination fee or regulatory termination fee explicitly mentioned in the 8-K.",
+  "document_id": "d809559d8k",
+  "extraction_source": "8k_8k",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1782754/000119312525060788/d809559d8k.htm"
+}

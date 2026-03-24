@@ -1,0 +1,30 @@
+{
+  "ticker": "SEM",
+  "issuer": "SELECT MEDICAL HOLDINGS CORP",
+  "filing_date": "07/31/25",
+  "insider_name": "Katherine R Davisson",
+  "insider_title": "Director",
+  "relationship": "Director",
+  "L1_headline": "+ SEM \u2013 Katherine R Davisson acquired restricted stock grant. | 07/29/25",
+  "L2_brief": "Director Katherine R Davisson received a grant of 14,035 restricted shares of Select Medical Holdings on July 29, 2025, at $0 cost as part of director compensation. The shares vest on July 29, 2026, bringing her total direct holdings to 60,035 shares. This is a routine equity compensation award rather than an open-market purchase.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "07/29/2025",
+        "shares": "14,035",
+        "price_per_share": "$0",
+        "total_value": "$0",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "60,035 shares",
+    "ownership_type": "Direct",
+    "deal_signal": "N/A",
+    "pattern_notes": "Standard annual director equity compensation grant. Restricted stock vests in one year (July 29, 2026). This represents approximately 23% of her post-transaction holdings, indicating a meaningful portion of her ownership is in unvested restricted stock.",
+    "risks_flagged": [
+      "Not an open-market purchase - compensation grant with no cash outlay",
+      "Shares subject to one-year vesting cliff"
+    ]
+  }
+}

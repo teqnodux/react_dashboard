@@ -1,0 +1,47 @@
+========================================================================
+  HOLX -- Hologic, Inc.
+  Changes: Preliminary Proxy (PREM14A) -> Definitive Proxy (DEFM14A)
+  Generated: March 05, 2026 - 10:13 AM
+========================================================================
+
+The Definitive Proxy sets the special meeting for February 5, 2026 at 12:00 p.m. Eastern Time, with a record date of December 22, 2025 and a mailing date of December 23, 2025. On the regulatory front, the parties filed their HSR notifications with the FTC and DOJ on November 19, 2025, and early termination of the HSR waiting period was granted on December 17, 2025, a material development that is now reflected in the closing conditions section. The Background section was also updated between the two filings, likely to incorporate these intervening developments. The appraisal/dissenter carve-out language was clarified to specify that excluded shares are those held by stockholders who did not vote in favor of the merger agreement or the merger.
+
+Dates
+- Mailing Date: December 12, 2025 -> December 23, 2025
+- Special Meeting Date: [   ] -> February 5, 2026
+- Special Meeting Time: [   ] -> 12:00 p.m. Eastern Time
+- Record Date: [   ] -> December 22, 2025
+
+Consideration
+- Excluded Shares — Appraisal/Dissenter Carve-Out:
+    Was: Clause (c): shares owned by Company [text truncated/incomplete]
+    Now: Clause (c): shares owned by Company stockholders who did not vote in favor of the merger agreement or the merger (or consent thereto in writing)
+
+Financing
+No changes.
+
+SH Approval
+No changes.
+
+HSR
+- Hsr - Filing Date: Filed: November 19, 2025 (parties filed HSR notifications with FTC and DOJ)  [NEW]
+- Hsr - Waiting Period Status: Early termination granted: December 17, 2025  [NEW]
+
+Other Regulatory
+No changes.
+
+Closing
+- Hsr Waiting Period Status:
+    Was: expiration or termination of the applicable waiting period under the HSR Act relating to the merger
+    Now: expiration or termination of the applicable waiting period under the HSR Act relating to the merger (which waiting period was terminated early on December 17, 2025)
+
+Termination & Fees
+No changes.
+
+BACKGROUND
+- ADDED: The following paragraph appears in the later version (DEFM14A) but not in the earlier version (PREM14A), inserted after the paragraph about the go-shop period expiring on December 5, 2025:
+"In November 2025, following an internal review of post-market data, the Company initiated a stop ship of its Brevera Breast Biopsy System Disposable 9 Gauge Needles (the "Brevera Needles"). Based on the information available at this time, the Company expects that the stop ship could be prolonged. The Company is continuing to conduct analysis regarding the potential impact of the current stop ship on Breast Health revenue, taking into account various potential mitigating measures, and the ultimate impact of the stop ship will be based on a number of contingencies, including some that are outside of the Company's control. However, in light of the Company's inability to presently predict the duration of the stop ship, the Company believes that it will be more challenging to achieve the 2026 milestone under the CVR agreement."
+- REMOVED: Nothing removed.
+- CHANGED: Nothing changed.
+
+========================================================================

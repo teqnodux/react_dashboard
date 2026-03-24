@@ -1,0 +1,32 @@
+{
+  "events": {
+    "reg_hsr_act": {
+      "date": null,
+      "source": null
+    },
+    "s4_effective": {
+      "date": null,
+      "source": null
+    },
+    "conditions_satisfied": {
+      "date": null,
+      "source": null
+    },
+    "s4_filed": {
+      "date": "2026-02-27",
+      "source": "SEC filing summary"
+    },
+    "hsr_filed": {
+      "date": "2026-02-13",
+      "source": "Proxy analysis"
+    },
+    "proxy_filed": {
+      "date": "2026-02-27",
+      "source": "Proxy analysis"
+    },
+    "reg_hsr_filing": {
+      "date": "2026-03-15",
+      "source": "HSR waiting period expiration"
+    }
+  }
+}

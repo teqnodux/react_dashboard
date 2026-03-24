@@ -1,0 +1,23 @@
+{
+  "ticker": "CYBR",
+  "company": "CyberArk Software Ltd.",
+  "filing_date": "02/11/26",
+  "L1_headline": "+ CYBR \u2013 deregisters all remaining unsold shares across 15 S-8 registration statements following acquisition by Palo Alto Networks. | 02/11/26",
+  "L2_brief": "CyberArk Software Ltd. filed Post-Effective Amendment No. 1 to 15 existing S-8 registration statements to deregister all remaining unsold ordinary shares previously registered under its 2001 Stock Option Plans, 2011 Share Option Plan, 2014 Share Incentive Plan, 2020 Employee Share Purchase Plan, and 2024 Share Incentive Plan. The deregistration follows the completion on February 11, 2026 of CyberArk's merger with a wholly owned subsidiary of Palo Alto Networks, Inc. (PANW), pursuant to a Merger Agreement dated July 30, 2025, resulting in CyberArk becoming a wholly owned subsidiary of PANW. All offerings of CyberArk securities under these registration statements have been terminated.",
+  "L3_detailed": {
+    "shares_registered": "Deregistration of all remaining unsold shares across 15 S-8 filings that originally registered a combined total of approximately 18,531,136 ordinary shares (1,951,230 + 2,467,885 + 224,000 + 219,358 + 610,027 + 3,311,644 + 1,200,000 + 1,300,000 + 50,000 + 125,000 + 1,225,000 + 1,100,000 + 200,000 + 1,100,000 + 150,000 + 1,786,992 + 1,480,000 + 30,000). The exact number of shares remaining unsold and now being deregistered is not specified.",
+    "plan_name": "Cyber-Ark Software Ltd. 2001 Section 102 Stock Option Plan; Cyber-Ark Software Ltd. 2001 Stock Option Plan; Cyber-Ark Software Ltd. 2011 Share Option Plan; CyberArk Software Ltd. 2014 Share Incentive Plan; CyberArk Software Ltd. 2020 Employee Share Purchase Plan; CyberArk Software Ltd. 2024 Share Incentive Plan",
+    "plan_type": "Omnibus Plan",
+    "securities_type": "Ordinary shares, par value NIS 0.01 per share",
+    "offering_price_basis": "N/A \u2014 this filing deregisters securities; no new offering",
+    "dilution_impact": "N/A \u2014 shares are being removed from registration, not offered; no additional dilution",
+    "deal_context": "On February 11, 2026, Palo Alto Networks, Inc. (PANW) completed its acquisition of CyberArk Software Ltd. pursuant to the Merger Agreement dated July 30, 2025. Athens Strategies Ltd., a wholly owned Israeli subsidiary of PANW, merged with and into CyberArk, with CyberArk surviving as a wholly owned subsidiary of PANW. As a result, CyberArk terminated all offerings of its securities under the 15 Registration Statements and is deregistering all remaining unsold shares. The agent for service is Bruce Byrd, EVP and General Counsel of Palo Alto Networks, and the filing is signed from Santa Clara, California (PANW headquarters). Legal counsel is Wachtell, Lipton, Rosen & Katz.",
+    "plan_details": "All six CyberArk equity compensation plans are referenced. No new plan terms are disclosed in this filing as it solely effects deregistration. The 15 original S-8 filings span from November 2014 through March 2025.",
+    "risks_flagged": [
+      "Post-merger deregistration filing confirms deal closure \u2014 CyberArk ordinary shares are no longer being offered under any employee benefit plan",
+      "The exact number of shares that remained unsold (and are now deregistered) is not disclosed in the filing",
+      "All CyberArk standalone equity compensation plans have been terminated as a consequence of the merger"
+    ]
+  },
+  "filing_type": "S-8"
+}

@@ -1,0 +1,32 @@
+{
+  "ticker": "PEN",
+  "issuer": "Penumbra Inc",
+  "filing_date": "02/18/26",
+  "insider_name": "Arani Bose",
+  "insider_title": "Director",
+  "relationship": "Director",
+  "L1_headline": "+ PEN \u2013 Arani Bose acquired 589 RSU shares. | 02/13/2026",
+  "L2_brief": "Director Arani Bose acquired 589 shares of Penumbra Inc common stock on 02/13/2026 at $0 per share via a restricted stock unit (RSU) award. The RSUs vest quarterly through 12/31/2026, with accelerated full vesting upon closing of the pending merger with Boston Scientific Corporation. Post-transaction direct holdings total 1,147 shares, with an additional 258,462 shares held indirectly through Bose Family Holdings II, LLC.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "02/13/2026",
+        "shares": "589",
+        "price_per_share": "$0",
+        "total_value": "$0",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "1,147 shares (Direct, a portion subject to vesting) + 258,462 shares (Indirect, through Bose Family Holdings II, LLC)",
+    "ownership_type": "Direct and Indirect (through Bose Family Holdings II, LLC)",
+    "deal_signal": "Penumbra Inc is subject to a pending Agreement and Plan of Merger dated January 14, 2026, with Boston Scientific Corporation and Pinehurst Merger Sub, Inc. Per the filing, the RSUs granted to Dr. Bose will fully accelerate and vest upon the closing of that merger, subject to continued service as director through the closing date. No discretionary purchase or sale activity by the insider is reflected in this filing.",
+    "pattern_notes": "This transaction is a standard RSU award to a director with quarterly vesting. The grant includes a merger-related acceleration provision tied to the pending Boston Scientific acquisition. No open-market buying or selling activity is present.",
+    "risks_flagged": [
+      "No 10b5-1 plan noted for this transaction",
+      "RSU award at $0 cost \u2014 no capital deployed by insider",
+      "RSU vesting acceleration clause tied to pending merger closing"
+    ]
+  },
+  "filing_type": "FORM 4"
+}

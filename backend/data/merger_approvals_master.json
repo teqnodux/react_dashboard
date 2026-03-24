@@ -1,0 +1,2555 @@
+{
+  "schema_version": "1.0",
+  "description": "Master merger regulatory approval reference file. Used to scope applicable approvals from deal documents and track progress to closing.",
+  "usage": {
+    "scoping_phase": "For each approval, use scoping.trigger_question and scoping.signals_in_document to ask whether it applies to this deal. Look for signals in the merger agreement, proxy statement, or other deal documents.",
+    "monitoring_phase": "Once an approval is confirmed applicable, use monitoring.key_questions to query subsequent documents (press releases, SEC filings, regulatory dockets, news) for status updates.",
+    "deal_tracker": "The deal_tracker_fields list defines the fields to populate in a deal-level tracker JSON for each applicable approval."
+  },
+  "total_approvals": 37,
+  "categories": [
+    "International \u2014 Major",
+    "International \u2014 National Security",
+    "Sector-Specific",
+    "Shareholder & Contractual",
+    "US Antitrust",
+    "US Federal \u2014 Sector",
+    "US National Security",
+    "US State"
+  ],
+  "approvals": [
+    {
+      "id": "hsr_filing",
+      "category": "US Antitrust",
+      "subcategory": null,
+      "name": "HSR Filing (Hart-Scott-Rodino)",
+      "authority": "DOJ / FTC",
+      "jurisdiction": "US",
+      "jurisdiction_type": "federal",
+      "trigger_type": "mandatory_if_thresholds",
+      "description": "Premerger notification required under 15 U.S.C. \u00a7 18a if size-of-transaction (>$119.5M indexed) and size-of-person thresholds are met. Initiates a 30-day waiting period (15 days for cash tender offers).",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Do the parties meet the HSR size-of-transaction threshold (currently $119.5M, indexed annually) and at least one size-of-person threshold? Is any HSR exemption claimed (e.g., foreign issuer, certain real estate, ordinary course)?",
+        "signals_in_document": [
+          "Regulatory approval covenants referencing HSR",
+          "Outside date set 12\u201318 months out (signals expectation of extended review)",
+          "Transaction value disclosed in recitals \u2014 compare to current HSR threshold",
+          "Any claim of HSR exemption in representations or disclosure schedules",
+          "Reference to DOJ or FTC as the reviewing agency"
+        ],
+        "threshold_details": {
+          "size_of_transaction_usd_M": 119.5,
+          "size_of_person_larger_usd_M": 239.0,
+          "size_of_person_smaller_usd_M": 23.9,
+          "note": "Thresholds indexed annually by FTC; verify current year threshold"
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has the HSR notification been filed with DOJ/FTC?",
+          "What is the waiting period expiration date?",
+          "Has a Second Request been issued? If so, what is the substantial compliance deadline?",
+          "Has either agency granted early termination?",
+          "Has the waiting period been terminated or expired?"
+        ],
+        "typical_timeline": "30 days initial waiting period; Second Request adds 30 days after substantial compliance",
+        "closing_trigger": "Waiting period expired or terminated without challenge, or Second Request complied with and additional period elapsed",
+        "status_states": [
+          "Not Filed",
+          "Filed \u2014 Waiting Period Running",
+          "Second Request Issued",
+          "Second Request Complied",
+          "Cleared",
+          "Challenged"
+        ]
+      },
+      "deal_tracker_fields": [
+        "filing_date",
+        "waiting_period_end",
+        "second_request_issued",
+        "second_request_compliance_date",
+        "clearance_date",
+        "notes"
+      ]
+    },
+    {
+      "id": "doj_clearance",
+      "category": "US Antitrust",
+      "subcategory": null,
+      "name": "DOJ Antitrust Division Clearance",
+      "authority": "US Department of Justice \u2014 Antitrust Division",
+      "jurisdiction": "US",
+      "jurisdiction_type": "federal",
+      "trigger_type": "conditional_on_hsr",
+      "description": "DOJ substantive antitrust review. DOJ and FTC divide merger review jurisdiction; DOJ typically reviews tech, defense, telecom, banking, and agriculture. May result in clearance letter, consent decree, or litigation.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Is DOJ the designated reviewing agency (vs. FTC)? What are the horizontal product and geographic market overlaps? Does the target operate in sectors DOJ typically reviews (tech, defense, banking, telecom, agriculture)?",
+        "signals_in_document": [
+          "Recitals or covenants specifically naming DOJ",
+          "Industry sector suggesting DOJ jurisdiction",
+          "Market share data or competitive overlap disclosure",
+          "Any reference to consent decree, divestiture, or behavioral remedy discussions"
+        ],
+        "threshold_details": null
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has DOJ issued a clearance letter?",
+          "Has a Second Request been issued?",
+          "Are divestiture or consent decree negotiations underway?",
+          "Has DOJ filed a complaint to block the transaction?",
+          "Has a consent decree been entered with the court?"
+        ],
+        "typical_timeline": "Concurrent with HSR; Second Request adds 6\u201318+ months",
+        "closing_trigger": "DOJ clearance letter received, or consent decree entered and approved by court",
+        "status_states": [
+          "Under Review",
+          "Second Request Issued",
+          "Negotiations Ongoing",
+          "Consent Decree Agreed",
+          "Cleared",
+          "Litigation Filed"
+        ]
+      },
+      "deal_tracker_fields": [
+        "review_agency_confirmed",
+        "second_request_date",
+        "consent_decree_signed",
+        "clearance_date",
+        "remedy_description",
+        "notes"
+      ]
+    },
+    {
+      "id": "ftc_clearance",
+      "category": "US Antitrust",
+      "subcategory": null,
+      "name": "FTC Clearance",
+      "authority": "Federal Trade Commission",
+      "jurisdiction": "US",
+      "jurisdiction_type": "federal",
+      "trigger_type": "conditional_on_hsr",
+      "description": "FTC substantive antitrust review. FTC typically reviews pharma, healthcare, consumer goods, and retail sectors. May issue consent order, accept divestitures, or issue administrative complaint and seek preliminary injunction.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Is FTC the designated reviewing agency? Does the target operate in pharma, healthcare, consumer goods, retail, or technology sectors where FTC has primary jurisdiction?",
+        "signals_in_document": [
+          "Recitals or covenants specifically naming FTC",
+          "Pharma, healthcare, consumer goods, or retail sector target",
+          "Any reference to consent order, FTC divestitures, or pull-and-refile"
+        ],
+        "threshold_details": null
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has FTC issued a clearance?",
+          "Has FTC requested a pull-and-refile of the HSR notification?",
+          "Has FTC issued an administrative complaint or sought a TRO?",
+          "Are consent order negotiations underway?",
+          "Has FTC voted to approve a consent order?"
+        ],
+        "typical_timeline": "Concurrent with HSR waiting period",
+        "closing_trigger": "FTC clearance issued or consent order accepted",
+        "status_states": [
+          "Under Review",
+          "Pull-and-Refile Requested",
+          "Consent Order Negotiations",
+          "Consent Order Approved",
+          "Cleared",
+          "Complaint Filed"
+        ]
+      },
+      "deal_tracker_fields": [
+        "review_agency_confirmed",
+        "pull_refile_date",
+        "consent_order_date",
+        "clearance_date",
+        "remedy_description",
+        "notes"
+      ]
+    },
+    {
+      "id": "cfius_review",
+      "category": "US National Security",
+      "subcategory": null,
+      "name": "CFIUS Review",
+      "authority": "Committee on Foreign Investment in the United States (Treasury)",
+      "jurisdiction": "US",
+      "jurisdiction_type": "federal",
+      "trigger_type": "mandatory_if_foreign_buyer",
+      "description": "Interagency review under 50 U.S.C. \u00a7 4565 (FIRRMA). Mandatory declaration required for TID US businesses (critical technology, critical infrastructure, sensitive personal data) acquired by foreign persons. Voluntary notice available for any covered transaction.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Is any acquiror, co-investor, or financing party a non-US person or entity? Is the target a TID US business (critical technology, critical infrastructure, or sensitive personal data)? Is the target near a military installation (real estate rules)?",
+        "signals_in_document": [
+          "Non-US acquiror nationality, domicile, or parent company",
+          "Sovereign wealth fund, state-owned enterprise, or government-affiliated investor",
+          "Target in technology, defense, semiconductor, AI, biotech, telecom, financial data, or critical infrastructure sectors",
+          "CFIUS referenced in regulatory approval covenants",
+          "Mandatory vs. voluntary filing election noted",
+          "Any reference to mitigation, NSA, or CFIUS conditions"
+        ],
+        "threshold_details": {
+          "mandatory_declaration_triggers": [
+            "TID US business: critical technology (any % acquired by foreign person from covered countries)",
+            "TID US business: critical infrastructure (substantial interest acquired)",
+            "TID US business: sensitive personal data (substantial interest acquired)",
+            "Real estate near military installations"
+          ],
+          "note": "Mandatory declaration must be filed 30 days before closing; voluntary notice 45-day review period"
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has a mandatory declaration or voluntary notice been filed with CFIUS?",
+          "Has CFIUS accepted the filing and started the review clock?",
+          "Has CFIUS issued a letter of assent (for declarations) or a written notice clearing the transaction?",
+          "Has CFIUS opened a 45-day investigation following the initial review?",
+          "Is a mitigation agreement (NSA or other) being negotiated?",
+          "Has CFIUS referred the transaction to the President for action?"
+        ],
+        "typical_timeline": "Declaration: 30-day assessment; Voluntary notice: 45-day review + 45-day investigation if opened",
+        "closing_trigger": "CFIUS letter of assent or clearance notice received; or mitigation agreement executed",
+        "status_states": [
+          "Not Filed",
+          "Declaration Filed",
+          "Notice Filed",
+          "Under Review",
+          "Investigation Opened",
+          "Mitigation Negotiations",
+          "Cleared",
+          "Cleared with Conditions",
+          "Referred to President"
+        ]
+      },
+      "deal_tracker_fields": [
+        "filing_type",
+        "filing_date",
+        "review_period_end",
+        "investigation_opened",
+        "investigation_end",
+        "mitigation_agreement",
+        "clearance_date",
+        "notes"
+      ]
+    },
+    {
+      "id": "cfius_mitigation",
+      "category": "US National Security",
+      "subcategory": null,
+      "name": "CFIUS Mitigation / National Security Agreement",
+      "authority": "Committee on Foreign Investment in the United States (Treasury)",
+      "jurisdiction": "US",
+      "jurisdiction_type": "federal",
+      "trigger_type": "conditional_on_cfius",
+      "description": "National Security Agreement (NSA), Special Security Agreement (SSA), or other mitigation measures imposed as conditions to CFIUS approval. May include board observer restrictions, data security requirements, US-person-only access controls, government access rights.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Has CFIUS flagged national security concerns? Are mitigation measures referenced in the merger agreement covenants or conditions?",
+        "signals_in_document": [
+          "Reference to 'mitigation,' 'NSA,' 'SSA,' or CFIUS conditions in covenants",
+          "Requirement to maintain US-person boards or security officers",
+          "Any obligation to maintain physical or logical separation of certain assets"
+        ],
+        "threshold_details": null
+      },
+      "monitoring": {
+        "key_questions": [
+          "What specific mitigation terms has CFIUS proposed?",
+          "Has the NSA or other mitigation agreement been executed?",
+          "Have all closing conditions tied to CFIUS mitigation been satisfied?"
+        ],
+        "typical_timeline": "Negotiated concurrently with CFIUS investigation; can add weeks to months",
+        "closing_trigger": "NSA or mitigation agreement fully executed and CFIUS clearance issued",
+        "status_states": [
+          "Not Applicable",
+          "Negotiations Ongoing",
+          "Agreement Executed",
+          "Cleared with Conditions"
+        ]
+      },
+      "deal_tracker_fields": [
+        "mitigation_type",
+        "negotiation_start",
+        "agreement_executed",
+        "key_conditions",
+        "notes"
+      ]
+    },
+    {
+      "id": "foci_dcsa",
+      "category": "US National Security",
+      "subcategory": null,
+      "name": "FOCI Mitigation (DCSA)",
+      "authority": "Defense Counterintelligence and Security Agency",
+      "jurisdiction": "US",
+      "jurisdiction_type": "federal",
+      "trigger_type": "sector_specific",
+      "description": "Foreign Ownership, Control or Influence mitigation required when a cleared defense contractor (holding DoD facility security clearance) is acquired by a foreign person. May require proxy agreement, Special Security Agreement (SSA), or voting trust.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Does the target hold a DoD Facility Security Clearance (FCL)? Does it perform work on classified government contracts?",
+        "signals_in_document": [
+          "Target described as defense contractor with classified programs",
+          "Facility security clearance (FCL) referenced in representations",
+          "DCSA or DSS referenced in regulatory covenants",
+          "Any reference to classified contracts in the government contracts schedule"
+        ],
+        "threshold_details": null
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has DCSA been notified of the pending transaction?",
+          "Is a proxy agreement, SSA, or voting trust being established?",
+          "Have cleared personnel been identified for the board of directors under the arrangement?",
+          "Has DCSA approved the FOCI mitigation plan?"
+        ],
+        "typical_timeline": "3\u201312 months; highly deal-specific",
+        "closing_trigger": "DCSA approval of FOCI mitigation instrument",
+        "status_states": [
+          "DCSA Notified",
+          "Mitigation Plan Proposed",
+          "SSA/Proxy Negotiation",
+          "Approved",
+          "Not Applicable"
+        ]
+      },
+      "deal_tracker_fields": [
+        "dcsa_notified_date",
+        "mitigation_type",
+        "approval_date",
+        "notes"
+      ]
+    },
+    {
+      "id": "fcc_license_transfer",
+      "category": "US Federal \u2014 Sector",
+      "subcategory": "Telecom / Broadcast",
+      "name": "FCC License Transfer",
+      "authority": "Federal Communications Commission",
+      "jurisdiction": "US",
+      "jurisdiction_type": "federal",
+      "trigger_type": "sector_specific",
+      "description": "FCC assignment or transfer of control applications required for any FCC-licensed facility or spectrum authorization. Covers broadcast (AM/FM/TV), wireless spectrum, MVPD, and common carrier telecom licenses. Applications filed on FCC Forms 314, 315, or 603.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Does the target hold any FCC licenses: broadcast stations (AM/FM/TV), wireless spectrum (700 MHz, AWS, CBRS, mmWave), MVPD, common carrier telecom, or earth station licenses?",
+        "signals_in_document": [
+          "Target described as broadcaster, wireless carrier, cable/MVPD, or telecom company",
+          "FCC licenses listed in intellectual property or regulatory representations",
+          "FCC approval specifically named in regulatory covenant",
+          "Team Telecom review referenced alongside FCC",
+          "Any foreign ownership above 25% threshold noted"
+        ],
+        "threshold_details": {
+          "foreign_ownership_limit": "25% direct, 50% indirect for common carrier licenses (Section 310(b))",
+          "forms": {
+            "broadcast_assignment": "FCC Form 314/315",
+            "spectrum_transfer": "FCC Form 603"
+          }
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Have FCC assignment/transfer applications been filed for each license?",
+          "Has the FCC Media Bureau or Wireless Bureau placed applications on public notice?",
+          "Has the public comment/petition-to-deny period run?",
+          "Has FCC issued a grant order? Any conditions imposed?",
+          "Is Team Telecom conducting a parallel review due to foreign ownership?"
+        ],
+        "typical_timeline": "60\u2013180 days for routine transfers; longer if petitions to deny filed or foreign ownership issues",
+        "closing_trigger": "FCC consent order issued; all licenses transferred",
+        "status_states": [
+          "Not Filed",
+          "Applications Filed",
+          "On Public Notice",
+          "Under Review",
+          "Granted",
+          "Granted with Conditions",
+          "Petition to Deny Pending"
+        ]
+      },
+      "deal_tracker_fields": [
+        "licenses_count",
+        "applications_filed_date",
+        "public_notice_date",
+        "comment_period_end",
+        "grant_date",
+        "conditions",
+        "notes"
+      ]
+    },
+    {
+      "id": "ferc_approval",
+      "category": "US Federal \u2014 Sector",
+      "subcategory": "Energy",
+      "name": "FERC Approval (Section 203)",
+      "authority": "Federal Energy Regulatory Commission",
+      "jurisdiction": "US",
+      "jurisdiction_type": "federal",
+      "trigger_type": "sector_specific",
+      "description": "FERC Section 203 authorization required for disposition of jurisdictional facilities (interstate natural gas pipelines, wholesale electric generation/transmission, hydropower). FERC applies a 'no adverse effect on competition, rates, or regulation' standard.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Does the target own or operate FERC-jurisdictional assets: interstate natural gas pipelines (NGA Section 7), wholesale power generation or transmission (FPA Section 203), or FERC-licensed hydropower projects?",
+        "signals_in_document": [
+          "Target described as electric utility, power generator, gas pipeline, or LDC",
+          "FERC approval referenced in regulatory covenants",
+          "Section 203 or Section 7 cited",
+          "PJM, MISO, CAISO, or other RTO membership referenced",
+          "FERC market-based rate authorization referenced in representations"
+        ],
+        "threshold_details": null
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has the FERC Section 203 application been filed?",
+          "Has FERC accepted the application and set a comment period?",
+          "Has FERC issued a deficiency letter requesting additional information?",
+          "Has FERC issued a consent order? Any conditions or behavioral commitments required?",
+          "Have related FERC filings been made (market-based rate amendments, reactive power studies)?"
+        ],
+        "typical_timeline": "3\u20136 months for uncontested; 12+ months if contested or market power issues",
+        "closing_trigger": "FERC Section 203 authorization order issued",
+        "status_states": [
+          "Not Filed",
+          "Application Filed",
+          "Deficiency Letter Issued",
+          "Under Review",
+          "Authorized",
+          "Authorized with Conditions",
+          "Contested"
+        ]
+      },
+      "deal_tracker_fields": [
+        "application_filed_date",
+        "comment_period_end",
+        "ferc_order_date",
+        "conditions",
+        "notes"
+      ]
+    },
+    {
+      "id": "federal_banking_regulators",
+      "category": "US Federal \u2014 Sector",
+      "subcategory": "Banking",
+      "name": "Federal Banking Regulators (FDIC / OCC / Federal Reserve)",
+      "authority": "FDIC / OCC / Board of Governors of the Federal Reserve",
+      "jurisdiction": "US",
+      "jurisdiction_type": "federal",
+      "trigger_type": "sector_specific",
+      "description": "Bank Merger Act approval required for mergers involving FDIC-insured institutions. OCC approves national bank mergers; FDIC approves state nonmember bank mergers; Federal Reserve approves bank holding company acquisitions under BHCA.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Is the target or acquiror a bank, savings institution, thrift, or bank holding company? Which federal regulator is primary (OCC for national banks; FDIC for state nonmember banks; Federal Reserve for BHCs)?",
+        "signals_in_document": [
+          "Target described as bank, savings bank, thrift, or bank holding company",
+          "Federal Reserve, OCC, or FDIC specifically named in regulatory covenants",
+          "CRA rating referenced in representations",
+          "BHC Act or Bank Merger Act cited"
+        ],
+        "threshold_details": null
+      },
+      "monitoring": {
+        "key_questions": [
+          "Have applications been filed with the appropriate primary federal regulator?",
+          "Has the public comment period run?",
+          "Any CRA concerns or community group opposition filed?",
+          "Has the Federal Reserve, OCC, or FDIC issued approval orders?",
+          "Are any state banking approvals also required?"
+        ],
+        "typical_timeline": "3\u20139 months",
+        "closing_trigger": "All applicable federal banking approvals received; state approvals also cleared",
+        "status_states": [
+          "Not Filed",
+          "Applications Filed",
+          "Comment Period Open",
+          "Under Review",
+          "Approved",
+          "Approved with Conditions",
+          "Denied"
+        ]
+      },
+      "deal_tracker_fields": [
+        "primary_regulator",
+        "application_filed_date",
+        "comment_period_end",
+        "approval_date",
+        "conditions",
+        "notes"
+      ]
+    },
+    {
+      "id": "nrc_license_transfer",
+      "category": "US Federal \u2014 Sector",
+      "subcategory": "Nuclear",
+      "name": "NRC License Transfer",
+      "authority": "Nuclear Regulatory Commission",
+      "jurisdiction": "US",
+      "jurisdiction_type": "federal",
+      "trigger_type": "sector_specific",
+      "description": "NRC consent required for transfer of operating licenses for nuclear power plants and materials licenses. NRC conducts safety evaluation and antitrust review. Applications filed under 10 C.F.R. \u00a7 50.80.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Does the target own or operate nuclear power plants or hold NRC materials licenses?",
+        "signals_in_document": [
+          "Target described as nuclear power plant operator or owner",
+          "NRC referenced in regulatory approval covenants",
+          "Nuclear Operating License (COL or OL) listed in regulatory representations"
+        ],
+        "threshold_details": null
+      },
+      "monitoring": {
+        "key_questions": [
+          "Have NRC license transfer applications been filed?",
+          "Has NRC published notice and opened the public comment period?",
+          "Is NRC conducting an antitrust review alongside the safety evaluation?",
+          "Has NRC issued a Safety Evaluation Report?",
+          "Has NRC issued a consent order for the license transfer?"
+        ],
+        "typical_timeline": "6\u201324 months",
+        "closing_trigger": "NRC consent order issued for each nuclear facility",
+        "status_states": [
+          "Not Filed",
+          "Application Filed",
+          "Safety Evaluation Underway",
+          "Antitrust Review Underway",
+          "Approved",
+          "Approved with Conditions"
+        ]
+      },
+      "deal_tracker_fields": [
+        "facilities_count",
+        "application_filed_date",
+        "nrc_consent_date",
+        "conditions",
+        "notes"
+      ]
+    },
+    {
+      "id": "sec_finra_broker_dealer",
+      "category": "US Federal \u2014 Sector",
+      "subcategory": "Financial Services",
+      "name": "SEC / FINRA Broker-Dealer & Investment Adviser",
+      "authority": "SEC / FINRA",
+      "jurisdiction": "US",
+      "jurisdiction_type": "federal",
+      "trigger_type": "sector_specific",
+      "description": "FINRA MC-400 membership continuance application required for change of control of broker-dealer. SEC Form ADV amendment required for registered investment adviser. Separate approval for futures commission merchants (CFTC/NFA).",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Is the target a FINRA member broker-dealer or SEC-registered investment adviser?",
+        "signals_in_document": [
+          "Target described as asset manager, broker-dealer, RIA, investment bank, or wealth manager",
+          "FINRA membership or SEC registration referenced in representations",
+          "FINRA MC-400 or Form ADV amendment referenced in regulatory covenants"
+        ],
+        "threshold_details": null
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has FINRA MC-400 application been filed?",
+          "Has FINRA issued a membership continuance approval?",
+          "Has Form ADV been amended to reflect the change of ownership?",
+          "Has SEC acknowledged the ADV amendment without further inquiry?",
+          "Are any state investment adviser registrations also requiring amendment?"
+        ],
+        "typical_timeline": "60\u2013180 days for FINRA; Form ADV amendment effective upon filing",
+        "closing_trigger": "FINRA membership continuance approved; Form ADV updated",
+        "status_states": [
+          "Not Filed",
+          "MC-400 Filed",
+          "ADV Amended",
+          "FINRA Approved",
+          "SEC Acknowledged",
+          "Complete"
+        ]
+      },
+      "deal_tracker_fields": [
+        "finra_mc400_filed",
+        "finra_approval_date",
+        "adv_amendment_date",
+        "notes"
+      ]
+    },
+    {
+      "id": "fda_hhs_cms",
+      "category": "US Federal \u2014 Sector",
+      "subcategory": "Healthcare",
+      "name": "FDA / HHS / CMS Approvals",
+      "authority": "FDA / HHS / CMS",
+      "jurisdiction": "US",
+      "jurisdiction_type": "federal",
+      "trigger_type": "sector_specific",
+      "description": "FDA marketing authorizations (NDA, BLA, 510(k)) transfer with the legal entity but manufacturing site changes require FDA notification. CMS Change of Ownership (CHOW) required for each Medicare/Medicaid provider number. May require state-level CHOW in parallel.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Does the target hold FDA marketing authorizations, manufacturing registrations, or CMS provider numbers?",
+        "signals_in_document": [
+          "Target in pharma, biotech, medical device, or healthcare services sector",
+          "FDA approvals, INDs, NDAs, BLAs, or 510(k)s listed in representations",
+          "Medicare/Medicaid provider numbers referenced",
+          "CMS CHOW obligation referenced in covenants"
+        ],
+        "threshold_details": null
+      },
+      "monitoring": {
+        "key_questions": [
+          "Have CMS CHOW applications been filed for each provider number?",
+          "Has FDA been notified of any manufacturing site ownership changes?",
+          "Are any FDA supplement filings required for the transaction?",
+          "Have state CHOW applications been filed in parallel?",
+          "Have CMS provider agreements been accepted under new ownership?"
+        ],
+        "typical_timeline": "CMS CHOW: 2\u20136 months per provider; FDA notifications: concurrent with closing",
+        "closing_trigger": "All CMS CHOW approvals received; FDA notifications filed",
+        "status_states": [
+          "Not Filed",
+          "CHOW Applications Filed",
+          "CMS Approvals Pending",
+          "FDA Notified",
+          "Complete"
+        ]
+      },
+      "deal_tracker_fields": [
+        "cms_chow_applications_count",
+        "cms_approvals_received",
+        "fda_notifications_filed",
+        "notes"
+      ]
+    },
+    {
+      "id": "state_puc_electric",
+      "category": "US State",
+      "subcategory": "Utility \u2014 Electric",
+      "name": "State PUC / PSC \u2014 Electric Utility",
+      "authority": "State Public Utility / Service Commissions",
+      "jurisdiction": "US",
+      "jurisdiction_type": "state",
+      "trigger_type": "sector_specific",
+      "description": "State public utility commission approval required in each state where the target holds an electric utility franchise. Standard is typically 'public interest' or 'no adverse effect on ratepayers.' Texas (PUCT/ERCOT) has separate process.",
+      "applicable_states": [
+        "Alabama",
+        "Alaska",
+        "Arizona",
+        "Arkansas",
+        "California",
+        "Colorado",
+        "Connecticut",
+        "Delaware",
+        "Florida",
+        "Georgia",
+        "Hawaii",
+        "Idaho",
+        "Illinois",
+        "Indiana",
+        "Iowa",
+        "Kansas",
+        "Kentucky",
+        "Louisiana",
+        "Maine",
+        "Maryland",
+        "Massachusetts",
+        "Michigan",
+        "Minnesota",
+        "Mississippi",
+        "Missouri",
+        "Montana",
+        "Nebraska",
+        "Nevada",
+        "New Hampshire",
+        "New Jersey",
+        "New Mexico",
+        "New York",
+        "North Carolina",
+        "North Dakota",
+        "Ohio",
+        "Oklahoma",
+        "Oregon",
+        "Pennsylvania",
+        "Rhode Island",
+        "South Carolina",
+        "South Dakota",
+        "Tennessee",
+        "Utah",
+        "Vermont",
+        "Virginia",
+        "Washington",
+        "West Virginia",
+        "Wisconsin",
+        "Wyoming",
+        "District of Columbia"
+      ],
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Does the target hold electric utility franchises or distribution rights in any state? Which states?",
+        "signals_in_document": [
+          "Target described as electric utility or electric distribution company (EDC)",
+          "State PUC approvals listed in regulatory covenants with specific state names",
+          "Certificate of Public Convenience and Necessity (CPCN) referenced in representations",
+          "Rate case history or rate base referenced"
+        ],
+        "threshold_details": null
+      },
+      "monitoring": {
+        "key_questions": [
+          "Which specific states require PUC/PSC approval?",
+          "Have applications been filed in all required states?",
+          "Which states have opened evidentiary hearings?",
+          "Any state public advocate or consumer counsel opposing?",
+          "Which states have issued approval orders? Any conditions imposed (rate freezes, capital commitments)?"
+        ],
+        "typical_timeline": "6\u201324 months per state; longest state is usually critical path",
+        "closing_trigger": "All required state PUC approvals received",
+        "status_states": [
+          "Identifying States",
+          "Applications Filed",
+          "Evidentiary Hearings",
+          "Partial Approvals",
+          "All Approved",
+          "Contested in State(s)"
+        ]
+      },
+      "deal_tracker_fields": [
+        "applicable_states",
+        "applications_filed_by_state",
+        "approval_status_by_state",
+        "conditions_by_state",
+        "notes"
+      ]
+    },
+    {
+      "id": "state_puc_gas",
+      "category": "US State",
+      "subcategory": "Utility \u2014 Gas",
+      "name": "State PUC / PSC \u2014 Natural Gas Utility",
+      "authority": "State Public Utility / Service Commissions",
+      "jurisdiction": "US",
+      "jurisdiction_type": "state",
+      "trigger_type": "sector_specific",
+      "description": "State PUC approval required for change of control of local gas distribution companies (LDCs) in each franchise state.",
+      "applicable_states": [
+        "Alabama",
+        "Alaska",
+        "Arizona",
+        "Arkansas",
+        "California",
+        "Colorado",
+        "Connecticut",
+        "Delaware",
+        "Florida",
+        "Georgia",
+        "Hawaii",
+        "Idaho",
+        "Illinois",
+        "Indiana",
+        "Iowa",
+        "Kansas",
+        "Kentucky",
+        "Louisiana",
+        "Maine",
+        "Maryland",
+        "Massachusetts",
+        "Michigan",
+        "Minnesota",
+        "Mississippi",
+        "Missouri",
+        "Montana",
+        "Nebraska",
+        "Nevada",
+        "New Hampshire",
+        "New Jersey",
+        "New Mexico",
+        "New York",
+        "North Carolina",
+        "North Dakota",
+        "Ohio",
+        "Oklahoma",
+        "Oregon",
+        "Pennsylvania",
+        "Rhode Island",
+        "South Carolina",
+        "South Dakota",
+        "Tennessee",
+        "Texas",
+        "Utah",
+        "Vermont",
+        "Virginia",
+        "Washington",
+        "West Virginia",
+        "Wisconsin",
+        "Wyoming",
+        "District of Columbia"
+      ],
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Does the target own or operate local natural gas distribution companies (LDCs) or gas utility franchises?",
+        "signals_in_document": [
+          "Target described as natural gas utility or LDC",
+          "State gas PUC approvals listed",
+          "Gas distribution franchise referenced in representations"
+        ],
+        "threshold_details": null
+      },
+      "monitoring": {
+        "key_questions": [
+          "Which states require gas PUC approval?",
+          "Have applications been filed in all required states?",
+          "Any state with evidentiary hearing or contested proceeding?",
+          "What conditions are being proposed in each state?"
+        ],
+        "typical_timeline": "6\u201318 months per state",
+        "closing_trigger": "All required state gas PUC approvals received",
+        "status_states": [
+          "Identifying States",
+          "Applications Filed",
+          "Hearings Ongoing",
+          "Approved",
+          "Approved with Conditions"
+        ]
+      },
+      "deal_tracker_fields": [
+        "applicable_states",
+        "applications_filed_by_state",
+        "approval_status_by_state",
+        "notes"
+      ]
+    },
+    {
+      "id": "state_puc_telecom",
+      "category": "US State",
+      "subcategory": "Utility \u2014 Telecom",
+      "name": "State PUC \u2014 Telecom (CLEC/ILEC)",
+      "authority": "State Public Utility Commissions",
+      "jurisdiction": "US",
+      "jurisdiction_type": "state",
+      "trigger_type": "sector_specific",
+      "description": "State PUC approval required for transfer of CLEC or ILEC certificates of authority in states where the target holds them. Most active in states with significant landline or regulated telecom operations.",
+      "applicable_states": [
+        "California",
+        "New York",
+        "Illinois",
+        "Florida",
+        "Texas",
+        "Pennsylvania",
+        "Ohio",
+        "Michigan",
+        "Georgia",
+        "New Jersey",
+        "North Carolina",
+        "Virginia",
+        "Massachusetts",
+        "Washington",
+        "Arizona",
+        "Minnesota",
+        "Colorado",
+        "Indiana"
+      ],
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Does the target hold state certificates of authority as a CLEC or ILEC? In which states?",
+        "signals_in_document": [
+          "Target described as CLEC, ILEC, or telecom carrier",
+          "State telecom PUC approvals referenced",
+          "Local exchange certificates listed in regulatory representations"
+        ],
+        "threshold_details": null
+      },
+      "monitoring": {
+        "key_questions": [
+          "Which states require telecom PUC approval?",
+          "Have applications been filed in all relevant states?",
+          "Any state ordering conditions (build-out commitments, service quality requirements)?"
+        ],
+        "typical_timeline": "3\u201312 months per state",
+        "closing_trigger": "All state telecom transfer approvals received",
+        "status_states": [
+          "Identifying States",
+          "Applications Filed",
+          "Under Review",
+          "Approved",
+          "Approved with Conditions"
+        ]
+      },
+      "deal_tracker_fields": [
+        "applicable_states",
+        "applications_filed_by_state",
+        "approval_status_by_state",
+        "notes"
+      ]
+    },
+    {
+      "id": "state_insurance_form_a",
+      "category": "US State",
+      "subcategory": "Insurance",
+      "name": "State Insurance Commissioner \u2014 Form A (Domicile State)",
+      "authority": "State Department of Insurance \u2014 Domicile State",
+      "jurisdiction": "US",
+      "jurisdiction_type": "state",
+      "trigger_type": "sector_specific",
+      "description": "Acquisition-of-control filing (Form A) required in the target insurer's state of domicile under the Insurance Holding Company System Regulatory Act. Typically requires a public hearing and 60-day review period.",
+      "applicable_states": [
+        "Alabama",
+        "Alaska",
+        "Arizona",
+        "Arkansas",
+        "California",
+        "Colorado",
+        "Connecticut",
+        "Delaware",
+        "Florida",
+        "Georgia",
+        "Hawaii",
+        "Idaho",
+        "Illinois",
+        "Indiana",
+        "Iowa",
+        "Kansas",
+        "Kentucky",
+        "Louisiana",
+        "Maine",
+        "Maryland",
+        "Massachusetts",
+        "Michigan",
+        "Minnesota",
+        "Mississippi",
+        "Missouri",
+        "Montana",
+        "Nebraska",
+        "Nevada",
+        "New Hampshire",
+        "New Jersey",
+        "New Mexico",
+        "New York",
+        "North Carolina",
+        "North Dakota",
+        "Ohio",
+        "Oklahoma",
+        "Oregon",
+        "Pennsylvania",
+        "Rhode Island",
+        "South Carolina",
+        "South Dakota",
+        "Tennessee",
+        "Texas",
+        "Utah",
+        "Vermont",
+        "Virginia",
+        "Washington",
+        "West Virginia",
+        "Wisconsin",
+        "Wyoming",
+        "District of Columbia"
+      ],
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Is the target or any target subsidiary an insurance company? What is the state of domicile?",
+        "signals_in_document": [
+          "Target described as insurer, reinsurer, or insurance holding company",
+          "State of domicile identified in representations",
+          "Form A filing obligation referenced in covenants",
+          "Insurance holding company act or Model Act cited"
+        ],
+        "threshold_details": {
+          "ownership_threshold": "10% acquisition of voting securities triggers Form A in most states"
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has Form A been filed in the domicile state?",
+          "Has the Insurance Commissioner scheduled a public hearing?",
+          "Has the commissioner retained an independent financial examiner or actuary?",
+          "Has the commissioner issued an order approving or disapproving the acquisition?"
+        ],
+        "typical_timeline": "60\u2013180 days from filing",
+        "closing_trigger": "Domicile state Insurance Commissioner approval order issued",
+        "status_states": [
+          "Not Filed",
+          "Form A Filed",
+          "Hearing Scheduled",
+          "Under Review",
+          "Approved",
+          "Approved with Conditions",
+          "Disapproved"
+        ]
+      },
+      "deal_tracker_fields": [
+        "domicile_state",
+        "form_a_filed_date",
+        "hearing_date",
+        "approval_date",
+        "conditions",
+        "notes"
+      ]
+    },
+    {
+      "id": "state_insurance_form_e",
+      "category": "US State",
+      "subcategory": "Insurance",
+      "name": "State Insurance Commissioner \u2014 Form E (Non-Domicile States)",
+      "authority": "State Departments of Insurance \u2014 All Licensed States",
+      "jurisdiction": "US",
+      "jurisdiction_type": "state",
+      "trigger_type": "sector_specific",
+      "description": "Pre-acquisition notification (Form E) required in all states (other than domicile) where the target insurer holds a certificate of authority. Form E is notice-based but some states have review rights. Can be a 50-state process for national carriers.",
+      "applicable_states": [
+        "Alabama",
+        "Alaska",
+        "Arizona",
+        "Arkansas",
+        "California",
+        "Colorado",
+        "Connecticut",
+        "Delaware",
+        "Florida",
+        "Georgia",
+        "Hawaii",
+        "Idaho",
+        "Illinois",
+        "Indiana",
+        "Iowa",
+        "Kansas",
+        "Kentucky",
+        "Louisiana",
+        "Maine",
+        "Maryland",
+        "Massachusetts",
+        "Michigan",
+        "Minnesota",
+        "Mississippi",
+        "Missouri",
+        "Montana",
+        "Nebraska",
+        "Nevada",
+        "New Hampshire",
+        "New Jersey",
+        "New Mexico",
+        "New York",
+        "North Carolina",
+        "North Dakota",
+        "Ohio",
+        "Oklahoma",
+        "Oregon",
+        "Pennsylvania",
+        "Rhode Island",
+        "South Carolina",
+        "South Dakota",
+        "Tennessee",
+        "Texas",
+        "Utah",
+        "Vermont",
+        "Virginia",
+        "Washington",
+        "West Virginia",
+        "Wisconsin",
+        "Wyoming",
+        "District of Columbia"
+      ],
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "In how many states does the target insurance company hold certificates of authority? Form E must be filed in each non-domicile licensed state.",
+        "signals_in_document": [
+          "Target is a national or multi-state insurer",
+          "Insurance licensing schedule identifies all licensed states",
+          "Form E or multi-state filing obligation referenced in covenants"
+        ],
+        "threshold_details": null
+      },
+      "monitoring": {
+        "key_questions": [
+          "In which non-domicile states has Form E been filed?",
+          "Have all states acknowledged receipt?",
+          "Has any non-domicile state asserted review rights or raised concerns?"
+        ],
+        "typical_timeline": "30 days notice period per state; typically run in parallel",
+        "closing_trigger": "Form E filings complete in all licensed states; no state objection unresolved",
+        "status_states": [
+          "Identifying States",
+          "Filings In Progress",
+          "All Filed",
+          "Complete"
+        ]
+      },
+      "deal_tracker_fields": [
+        "total_licensed_states",
+        "form_e_filed_count",
+        "form_e_complete_date",
+        "notes"
+      ]
+    },
+    {
+      "id": "state_ag_antitrust",
+      "category": "US State",
+      "subcategory": "Antitrust",
+      "name": "State AG Antitrust Review",
+      "authority": "State Attorneys General",
+      "jurisdiction": "US",
+      "jurisdiction_type": "state",
+      "trigger_type": "conditional",
+      "description": "State attorneys general can independently investigate and challenge mergers under state antitrust law. Can seek injunctions in state or federal court. Most active AGs: California (DOJ), New York (AG), Texas (AG), Illinois (AG), Colorado (AG), Massachusetts (AG).",
+      "applicable_states": [
+        "Alabama",
+        "Alaska",
+        "Arizona",
+        "Arkansas",
+        "California",
+        "Colorado",
+        "Connecticut",
+        "Delaware",
+        "Florida",
+        "Georgia",
+        "Hawaii",
+        "Idaho",
+        "Illinois",
+        "Indiana",
+        "Iowa",
+        "Kansas",
+        "Kentucky",
+        "Louisiana",
+        "Maine",
+        "Maryland",
+        "Massachusetts",
+        "Michigan",
+        "Minnesota",
+        "Mississippi",
+        "Missouri",
+        "Montana",
+        "Nebraska",
+        "Nevada",
+        "New Hampshire",
+        "New Jersey",
+        "New Mexico",
+        "New York",
+        "North Carolina",
+        "North Dakota",
+        "Ohio",
+        "Oklahoma",
+        "Oregon",
+        "Pennsylvania",
+        "Rhode Island",
+        "South Carolina",
+        "South Dakota",
+        "Tennessee",
+        "Texas",
+        "Utah",
+        "Vermont",
+        "Virginia",
+        "Washington",
+        "West Virginia",
+        "Wisconsin",
+        "Wyoming",
+        "District of Columbia"
+      ],
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Does the deal have significant geographic concentration or consumer-facing market presence in large states with active AG offices? Has any state AG issued an HSR access letter?",
+        "signals_in_document": [
+          "Geographic revenue concentration in CA, NY, TX, IL, CO referenced",
+          "Consumer-facing business with retail, healthcare, or media exposure",
+          "Any reference to state AG inquiry, CID, or multistate investigation in disclosure schedules",
+          "Outside date extended to allow state AG review"
+        ],
+        "threshold_details": {
+          "most_active_states": [
+            "California",
+            "New York",
+            "Texas",
+            "Illinois",
+            "Colorado",
+            "Massachusetts",
+            "Washington",
+            "Pennsylvania",
+            "Florida",
+            "Ohio",
+            "Michigan",
+            "Virginia"
+          ]
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Have any state AGs issued Civil Investigative Demands (CIDs)?",
+          "Are any states participating in a multistate AG working group?",
+          "Has any AG filed a lawsuit or motion for preliminary injunction?",
+          "Have any states entered into consent agreements alongside or separate from federal agencies?"
+        ],
+        "typical_timeline": "Concurrent with federal review; state litigation can continue post-federal clearance",
+        "closing_trigger": "No pending state AG challenge; any state consent agreements executed",
+        "status_states": [
+          "Monitoring",
+          "CIDs Issued",
+          "Multistate Investigation",
+          "Lawsuit Filed",
+          "Settled",
+          "Cleared"
+        ]
+      },
+      "deal_tracker_fields": [
+        "states_with_active_review",
+        "cid_issued_by_state",
+        "litigation_status",
+        "settlement_terms",
+        "notes"
+      ]
+    },
+    {
+      "id": "state_pre_merger_notification",
+      "category": "US State",
+      "subcategory": "Antitrust",
+      "name": "State Pre-Merger Notification",
+      "authority": "State AG Offices (CA, NY, and others)",
+      "jurisdiction": "US",
+      "jurisdiction_type": "state",
+      "trigger_type": "conditional",
+      "description": "Independent state pre-merger filing requirements beyond federal HSR. California (Cal. Corp. Code \u00a7 1110) and New York (GBL \u00a7 343) have their own requirements, as do several other states.",
+      "applicable_states": [
+        "California",
+        "New York",
+        "Illinois",
+        "Hawaii",
+        "Maryland",
+        "Minnesota",
+        "New Mexico",
+        "North Carolina",
+        "West Virginia",
+        "Wisconsin"
+      ],
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Do the parties have sufficient California or New York nexus to trigger state-level pre-merger notification? Are there other state-specific filing requirements?",
+        "signals_in_document": [
+          "California or New York revenues or assets above state thresholds",
+          "State pre-merger notification referenced in regulatory covenants"
+        ],
+        "threshold_details": {
+          "states_with_requirements": [
+            "California",
+            "New York",
+            "Illinois",
+            "Hawaii",
+            "Maryland",
+            "Minnesota",
+            "New Mexico",
+            "North Carolina",
+            "West Virginia",
+            "Wisconsin"
+          ]
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Have state pre-merger notifications been filed in all applicable states?",
+          "Have applicable waiting periods elapsed?"
+        ],
+        "typical_timeline": "Concurrent with HSR",
+        "closing_trigger": "All state pre-merger waiting periods elapsed",
+        "status_states": [
+          "Not Filed",
+          "Filed",
+          "Waiting Period Running",
+          "Complete"
+        ]
+      },
+      "deal_tracker_fields": [
+        "applicable_states",
+        "filing_dates_by_state",
+        "waiting_period_end_by_state",
+        "notes"
+      ]
+    },
+    {
+      "id": "state_health_con_copa",
+      "category": "US State",
+      "subcategory": "Healthcare",
+      "name": "State CON / COPA (Hospital & Healthcare)",
+      "authority": "State Health Departments",
+      "jurisdiction": "US",
+      "jurisdiction_type": "state",
+      "trigger_type": "sector_specific",
+      "description": "Certificate of Need (CON) required in ~35 states for hospital acquisitions and capital expenditures. Certificate of Public Advantage (COPA) available in some states to allow otherwise anticompetitive hospital mergers with regulatory oversight.",
+      "applicable_states": [
+        "Alabama",
+        "Alaska",
+        "Arkansas",
+        "Connecticut",
+        "Delaware",
+        "District of Columbia",
+        "Florida",
+        "Georgia",
+        "Hawaii",
+        "Illinois",
+        "Iowa",
+        "Kentucky",
+        "Maine",
+        "Maryland",
+        "Massachusetts",
+        "Michigan",
+        "Mississippi",
+        "Missouri",
+        "Montana",
+        "Nevada",
+        "New Hampshire",
+        "New York",
+        "North Carolina",
+        "Ohio",
+        "Oregon",
+        "Rhode Island",
+        "South Carolina",
+        "Tennessee",
+        "Vermont",
+        "Virginia",
+        "Washington",
+        "West Virginia"
+      ],
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Does the target operate licensed hospitals or inpatient facilities in CON states? Is a COPA being sought as an alternative to antitrust clearance?",
+        "signals_in_document": [
+          "Target described as hospital system or health system",
+          "CON or COPA referenced in regulatory covenants",
+          "Specific CON states listed in approval schedule"
+        ],
+        "threshold_details": {
+          "con_states": [
+            "Alabama",
+            "Alaska",
+            "Arkansas",
+            "Connecticut",
+            "Delaware",
+            "District of Columbia",
+            "Florida",
+            "Georgia",
+            "Hawaii",
+            "Illinois",
+            "Iowa",
+            "Kentucky",
+            "Maine",
+            "Maryland",
+            "Massachusetts",
+            "Michigan",
+            "Mississippi",
+            "Missouri",
+            "Montana",
+            "Nevada",
+            "New Hampshire",
+            "New York",
+            "North Carolina",
+            "Ohio",
+            "Oregon",
+            "Rhode Island",
+            "South Carolina",
+            "Tennessee",
+            "Vermont",
+            "Virginia",
+            "Washington",
+            "West Virginia"
+          ]
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Have CON applications been filed in all required states?",
+          "Has any state health department scheduled a public evidentiary hearing?",
+          "Is a COPA being pursued in any state as an antitrust shield?",
+          "Have CON approvals been issued? Any conditions (charity care, service commitments)?"
+        ],
+        "typical_timeline": "3\u201318 months per state",
+        "closing_trigger": "All required CON approvals received",
+        "status_states": [
+          "Identifying States",
+          "Applications Filed",
+          "Hearings Scheduled",
+          "Approved",
+          "Approved with Conditions",
+          "Denied"
+        ]
+      },
+      "deal_tracker_fields": [
+        "applicable_states",
+        "applications_filed_by_state",
+        "approval_status_by_state",
+        "conditions_by_state",
+        "notes"
+      ]
+    },
+    {
+      "id": "state_gaming_commission",
+      "category": "US State",
+      "subcategory": "Gaming",
+      "name": "State Gaming Commission Approvals",
+      "authority": "State Gaming Commissions / Control Boards",
+      "jurisdiction": "US",
+      "jurisdiction_type": "state",
+      "trigger_type": "sector_specific",
+      "description": "Gaming license change of control applications required in each state where the target holds casino, gaming device, or lottery concession licenses. Each state has its own suitability review and background investigation requirements.",
+      "applicable_states": [
+        "Nevada",
+        "New Jersey",
+        "Pennsylvania",
+        "Michigan",
+        "Illinois",
+        "Indiana",
+        "Iowa",
+        "Mississippi",
+        "Louisiana",
+        "Missouri",
+        "Colorado",
+        "Maryland",
+        "Massachusetts",
+        "Ohio",
+        "Arkansas",
+        "Virginia",
+        "Connecticut",
+        "Delaware",
+        "Rhode Island",
+        "New York",
+        "Kansas",
+        "Maine",
+        "Montana",
+        "South Dakota",
+        "Wyoming",
+        "New Hampshire",
+        "West Virginia",
+        "Arizona",
+        "Washington",
+        "New Mexico",
+        "Florida"
+      ],
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Does the target hold gaming licenses in any state? Which states?",
+        "signals_in_document": [
+          "Target described as casino operator, gaming company, or lottery concessionaire",
+          "State gaming license schedule in representations",
+          "Gaming commission approvals referenced in regulatory covenants"
+        ],
+        "threshold_details": {
+          "gaming_states": [
+            "Nevada",
+            "New Jersey",
+            "Pennsylvania",
+            "Michigan",
+            "Illinois",
+            "Indiana",
+            "Iowa",
+            "Mississippi",
+            "Louisiana",
+            "Missouri",
+            "Colorado",
+            "Maryland",
+            "Massachusetts",
+            "Ohio",
+            "Arkansas",
+            "Virginia",
+            "Connecticut",
+            "Delaware",
+            "Rhode Island",
+            "New York",
+            "Kansas",
+            "Maine",
+            "Montana",
+            "South Dakota",
+            "Wyoming",
+            "New Hampshire",
+            "West Virginia",
+            "Arizona",
+            "Washington",
+            "New Mexico",
+            "Florida"
+          ]
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Have change-of-control applications been filed with each state gaming commission?",
+          "Has suitability review / background investigation been initiated for acquiror principals?",
+          "Which states have completed review and issued approval?",
+          "Any state imposing conditions (local hiring, capital investment commitments)?"
+        ],
+        "typical_timeline": "3\u201324 months; Nevada and New Jersey most intensive",
+        "closing_trigger": "All required state gaming approvals received",
+        "status_states": [
+          "Identifying States",
+          "Applications Filed",
+          "Background Investigations",
+          "Hearings",
+          "Approved",
+          "Approved with Conditions",
+          "Denied"
+        ]
+      },
+      "deal_tracker_fields": [
+        "applicable_states",
+        "applications_filed_by_state",
+        "approval_status_by_state",
+        "notes"
+      ]
+    },
+    {
+      "id": "state_cannabis_regulators",
+      "category": "US State",
+      "subcategory": "Cannabis",
+      "name": "State Cannabis Regulators",
+      "authority": "State Cannabis Control Commissions / Departments",
+      "jurisdiction": "US",
+      "jurisdiction_type": "state",
+      "trigger_type": "sector_specific",
+      "description": "Cannabis license transfer or change of control approval required in each state where the target holds cannabis licenses (cultivation, manufacturing, dispensary). Often requires local approval in addition to state approval.",
+      "applicable_states": [
+        "California",
+        "Colorado",
+        "Illinois",
+        "Michigan",
+        "Massachusetts",
+        "Nevada",
+        "Washington",
+        "Oregon",
+        "Arizona",
+        "New Jersey",
+        "New York",
+        "Connecticut",
+        "Virginia",
+        "Maryland",
+        "Missouri",
+        "Montana",
+        "New Mexico",
+        "Alaska",
+        "Maine",
+        "Vermont",
+        "Rhode Island",
+        "Delaware",
+        "Minnesota",
+        "Ohio",
+        "Hawaii",
+        "North Dakota",
+        "Oklahoma",
+        "Pennsylvania",
+        "Florida",
+        "West Virginia",
+        "Arkansas",
+        "New Hampshire",
+        "Louisiana",
+        "South Dakota"
+      ],
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Does the target hold cannabis licenses in any state? Which states and license types?",
+        "signals_in_document": [
+          "Target described as cannabis operator, MSO, dispensary chain, or grower",
+          "Cannabis license schedule in representations",
+          "State cannabis regulator approvals referenced in covenants",
+          "Local approval obligations noted"
+        ],
+        "threshold_details": {
+          "cannabis_states": [
+            "California",
+            "Colorado",
+            "Illinois",
+            "Michigan",
+            "Massachusetts",
+            "Nevada",
+            "Washington",
+            "Oregon",
+            "Arizona",
+            "New Jersey",
+            "New York",
+            "Connecticut",
+            "Virginia",
+            "Maryland",
+            "Missouri",
+            "Montana",
+            "New Mexico",
+            "Alaska",
+            "Maine",
+            "Vermont",
+            "Rhode Island",
+            "Delaware",
+            "Minnesota",
+            "Ohio",
+            "Hawaii",
+            "North Dakota",
+            "Oklahoma",
+            "Pennsylvania",
+            "Florida",
+            "West Virginia",
+            "Arkansas",
+            "New Hampshire",
+            "Louisiana",
+            "South Dakota"
+          ]
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Have license transfer applications been filed in each applicable state?",
+          "Are any states under a moratorium on license transfers?",
+          "Have local approvals been obtained where required?",
+          "Which states have completed transfer approvals?"
+        ],
+        "typical_timeline": "3\u201312 months per state",
+        "closing_trigger": "All required state cannabis transfer approvals received",
+        "status_states": [
+          "Identifying States",
+          "Applications Filed",
+          "Under Review",
+          "Approved",
+          "Moratorium Issue"
+        ]
+      },
+      "deal_tracker_fields": [
+        "applicable_states",
+        "applications_filed_by_state",
+        "approval_status_by_state",
+        "notes"
+      ]
+    },
+    {
+      "id": "eu_ec_merger",
+      "category": "International \u2014 Major",
+      "subcategory": "Antitrust",
+      "name": "EU \u2014 European Commission Merger Review (Phase I / II)",
+      "authority": "European Commission \u2014 DG Competition",
+      "jurisdiction": "EU",
+      "jurisdiction_type": "supranational",
+      "trigger_type": "mandatory_if_thresholds",
+      "description": "EC merger review under EU Merger Regulation (EUMR) 139/2004. One-stop-shop for EU-wide transactions. Phase I: 25 working days. Phase II: additional 90 working days. Can be extended for remedies. Member state referrals possible under Article 9 (to national CA) or Article 22 (from national CAs to EC).",
+      "applicable_states": null,
+      "applicable_countries": [
+        "All EU Member States"
+      ],
+      "scoping": {
+        "trigger_question": "Do the parties have combined worldwide turnover exceeding \u20ac5 billion AND each of at least two parties has EU-wide turnover exceeding \u20ac250 million? Or do they meet the alternative two-thirds rule thresholds?",
+        "signals_in_document": [
+          "EC merger filing referenced in regulatory covenants",
+          "EU revenues of each party disclosed",
+          "One-stop-shop analysis referenced; member state filings waived",
+          "Outside date allowing 18\u201324 months for EC process"
+        ],
+        "threshold_details": {
+          "primary_thresholds": {
+            "combined_worldwide_EUR_B": 5.0,
+            "each_party_EU_EUR_M": 250
+          },
+          "alternative_thresholds": {
+            "combined_worldwide_EUR_B": 2.5,
+            "combined_3_member_states_EUR_M": 100,
+            "each_party_3_member_states_EUR_M": 25,
+            "each_party_EU_EUR_M": 100
+          }
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has the Form CO (or short-form CO) been submitted to DG Comp?",
+          "Has the Phase I 25-working-day clock started?",
+          "Has EC issued a Phase I clearance decision?",
+          "Has EC opened a Phase II investigation? What are the theories of harm?",
+          "Has EC issued a Statement of Objections?",
+          "What remedies are being discussed? Structural (divestitures) vs. behavioral?",
+          "What is the current Phase II deadline (potentially extended for remedies)?"
+        ],
+        "typical_timeline": "Phase I: 25 working days (~5 weeks); Phase II: 90 additional working days (~18 weeks); extensions possible",
+        "closing_trigger": "EC clearance decision issued (Phase I or Phase II)",
+        "status_states": [
+          "Pre-Filing",
+          "Form CO Filed",
+          "Phase I Under Review",
+          "Phase I Cleared",
+          "Phase II Opened",
+          "Statement of Objections",
+          "Remedies Proposed",
+          "Phase II Cleared",
+          "Phase II Cleared with Conditions",
+          "Prohibited"
+        ]
+      },
+      "deal_tracker_fields": [
+        "form_co_filed_date",
+        "phase1_start",
+        "phase1_deadline",
+        "phase2_opened",
+        "phase2_deadline",
+        "remedies_proposed",
+        "clearance_date",
+        "notes"
+      ]
+    },
+    {
+      "id": "uk_cma",
+      "category": "International \u2014 Major",
+      "subcategory": "Antitrust",
+      "name": "UK \u2014 CMA Merger Review",
+      "authority": "Competition and Markets Authority",
+      "jurisdiction": "UK",
+      "jurisdiction_type": "national",
+      "trigger_type": "mandatory_or_voluntary",
+      "description": "Post-Brexit, UK merger control is entirely separate from EU. Mandatory filing if UK turnover of target exceeds \u00a370M OR combined share of supply in UK exceeds 25%. CMA has broad jurisdiction to investigate even below thresholds. Phase 1: 40 working days. Phase 2: 24 weeks.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United Kingdom"
+      ],
+      "scoping": {
+        "trigger_question": "Does the target have UK turnover above \u00a370M? Or would the combined entity have a 25%+ share of supply in any UK market?",
+        "signals_in_document": [
+          "UK revenues of target disclosed",
+          "CMA filing referenced in regulatory covenants",
+          "UK market share data noted in competitive analysis",
+          "Parallel EU and UK filing obligations both referenced"
+        ],
+        "threshold_details": {
+          "uk_turnover_threshold_GBP_M": 70,
+          "share_of_supply_threshold_pct": 25
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has a voluntary or mandatory notification been made to CMA?",
+          "Has CMA opened a Phase 1 investigation?",
+          "Has CMA issued an Enforcement Order (hold-separate)?",
+          "Has CMA cleared in Phase 1 or referred to Phase 2?",
+          "Is a Phase 2 inquiry group appointed?",
+          "Has CMA issued provisional or final findings?",
+          "Any remedies being negotiated (UILs in Phase 1 or remedies order in Phase 2)?"
+        ],
+        "typical_timeline": "Phase 1: 40 working days; Phase 2: 24 weeks",
+        "closing_trigger": "CMA Phase 1 clearance or Phase 2 final report with no adverse findings",
+        "status_states": [
+          "Pre-Notification",
+          "Phase 1 Opened",
+          "Enforcement Order Issued",
+          "Phase 1 Cleared",
+          "Phase 2 Referred",
+          "Phase 2 Provisional Findings",
+          "Phase 2 Final Report",
+          "Cleared",
+          "Cleared with Remedies",
+          "Prohibited"
+        ]
+      },
+      "deal_tracker_fields": [
+        "notification_date",
+        "phase1_start",
+        "phase1_decision_date",
+        "phase2_referred",
+        "phase2_deadline",
+        "remedies_proposed",
+        "clearance_date",
+        "notes"
+      ]
+    },
+    {
+      "id": "uk_nsia",
+      "category": "International \u2014 National Security",
+      "subcategory": "National Security",
+      "name": "UK \u2014 National Security and Investment Act (NSIA)",
+      "authority": "Investment Security Unit (Cabinet Office / BEIS)",
+      "jurisdiction": "UK",
+      "jurisdiction_type": "national",
+      "trigger_type": "mandatory_if_sector",
+      "description": "Mandatory notification for acquisitions of 25%+ of shares/voting rights in entities operating in 17 sensitive sectors. Voluntary notification available for other transactions. The ISU can call in any transaction. UK NSIA is separate from and parallel to CMA review.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United Kingdom"
+      ],
+      "scoping": {
+        "trigger_question": "Does the target carry on activities in any of the 17 NSIA mandatory sectors? Is the acquiror acquiring 25%+ of shares or voting rights?",
+        "signals_in_document": [
+          "UK NSIA or Investment Security Unit referenced in regulatory covenants",
+          "Target operates in any NSIA sector: advanced materials, AI, civil nuclear, communications, computing hardware, critical suppliers (defence/emergency services), cryptographic authentication, data infrastructure, defence, energy, military and dual-use, quantum technologies, robotics, satellites and space, suppliers to emergency services, synthetic biology, transport"
+        ],
+        "threshold_details": {
+          "mandatory_notification_sectors": [
+            "Advanced materials",
+            "Artificial intelligence",
+            "Civil nuclear",
+            "Communications",
+            "Computing hardware",
+            "Critical suppliers to emergency services",
+            "Cryptographic authentication",
+            "Data infrastructure",
+            "Defence",
+            "Energy",
+            "Military and dual-use technologies",
+            "Quantum technologies",
+            "Robotics",
+            "Satellites and space technologies",
+            "Suppliers to the emergency services",
+            "Synthetic biology",
+            "Transport"
+          ],
+          "trigger_threshold": "25% or more of shares or voting rights"
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has an NSIA mandatory or voluntary notification been filed with the Investment Security Unit?",
+          "Has the ISU issued a call-in notice?",
+          "Has the ISU cleared the transaction or issued a final order?",
+          "Are any conditions (asset access restrictions, board composition) being imposed?"
+        ],
+        "typical_timeline": "30-day initial review; 30-day assessment if called in; 45-day further review possible",
+        "closing_trigger": "ISU clearance notice received or mandatory period elapsed without call-in",
+        "status_states": [
+          "Not Filed",
+          "Notification Filed",
+          "Call-In Notice Issued",
+          "Assessment Underway",
+          "Cleared",
+          "Cleared with Conditions",
+          "Final Order (Blocked)"
+        ]
+      },
+      "deal_tracker_fields": [
+        "notification_date",
+        "call_in_date",
+        "assessment_deadline",
+        "clearance_date",
+        "conditions",
+        "notes"
+      ]
+    },
+    {
+      "id": "china_samr",
+      "category": "International \u2014 Major",
+      "subcategory": "Antitrust",
+      "name": "China \u2014 SAMR Merger Filing",
+      "authority": "State Administration for Market Regulation",
+      "jurisdiction": "China",
+      "jurisdiction_type": "national",
+      "trigger_type": "mandatory_if_thresholds",
+      "description": "Suspensory pre-merger notification to SAMR required above thresholds. Three-phase review: Phase I (30 days), Phase II (90 days), Phase III (60 days). SAMR has historically been a significant approval for global deals with China operations.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "China"
+      ],
+      "scoping": {
+        "trigger_question": "Do the combined parties have global revenues exceeding RMB 10 billion AND each of at least two parties has China revenues exceeding RMB 400 million?",
+        "signals_in_document": [
+          "China revenues disclosed by each party",
+          "SAMR filing referenced in regulatory covenants",
+          "China nexus for both parties confirmed",
+          "Outside date set to accommodate SAMR timeline"
+        ],
+        "threshold_details": {
+          "combined_global_RMB_B": 10,
+          "each_party_China_RMB_M": 400
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has the SAMR pre-merger filing been accepted?",
+          "Is SAMR in Phase I (30 days), Phase II (90 days), or Phase III extended review (60 days)?",
+          "Has SAMR requested additional information or documentation?",
+          "Has SAMR proposed conditions (structural remedies, behavioral commitments)?",
+          "Has SAMR issued an unconditional or conditional approval decision?"
+        ],
+        "typical_timeline": "Phase I: 30 days; Phase II: 90 days; Phase III: 60 days; total max ~180 days",
+        "closing_trigger": "SAMR unconditional or conditional approval decision issued",
+        "status_states": [
+          "Not Filed",
+          "Filing Accepted \u2014 Phase I",
+          "Phase II",
+          "Phase III",
+          "Approved",
+          "Approved with Conditions",
+          "Blocked"
+        ]
+      },
+      "deal_tracker_fields": [
+        "filing_accepted_date",
+        "phase1_end",
+        "phase2_start",
+        "phase2_end",
+        "approval_date",
+        "conditions",
+        "notes"
+      ]
+    },
+    {
+      "id": "canada_competition_bureau",
+      "category": "International \u2014 Major",
+      "subcategory": "Antitrust",
+      "name": "Canada \u2014 Competition Bureau Pre-Merger Notification",
+      "authority": "Competition Bureau Canada",
+      "jurisdiction": "Canada",
+      "jurisdiction_type": "national",
+      "trigger_type": "mandatory_if_thresholds",
+      "description": "Pre-merger notification required under the Competition Act if size-of-parties and size-of-transaction thresholds are met. 30-day initial waiting period. Bureau may issue Supplementary Information Request (SIR), adding 30 days after compliance.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "Canada"
+      ],
+      "scoping": {
+        "trigger_question": "Do the parties have combined Canadian assets or revenues (in Canada) exceeding CAD $400 million AND the transaction value exceeds CAD $93 million (indexed)?",
+        "signals_in_document": [
+          "Canadian revenues or assets of each party disclosed",
+          "Competition Bureau filing referenced in covenants",
+          "ICA review referenced alongside Competition Bureau"
+        ],
+        "threshold_details": {
+          "size_of_parties_CAD_M": 400,
+          "size_of_transaction_CAD_M": 93,
+          "note": "Transaction threshold indexed annually"
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has pre-merger notification been filed with the Competition Bureau?",
+          "Has the 30-day initial waiting period started?",
+          "Has the Bureau issued a Supplementary Information Request (SIR)?",
+          "Has the Bureau issued a No-Action Letter?",
+          "Has the Bureau issued a Consent Agreement or applied to the Competition Tribunal?"
+        ],
+        "typical_timeline": "30 days initial; SIR adds 30 days after compliance",
+        "closing_trigger": "No-Action Letter received or waiting period expired",
+        "status_states": [
+          "Not Filed",
+          "Filed \u2014 Waiting Period Running",
+          "SIR Issued",
+          "SIR Complied",
+          "No-Action Letter",
+          "Consent Agreement",
+          "Tribunal Challenge"
+        ]
+      },
+      "deal_tracker_fields": [
+        "filing_date",
+        "waiting_period_end",
+        "sir_issued_date",
+        "sir_compliance_date",
+        "no_action_date",
+        "notes"
+      ]
+    },
+    {
+      "id": "canada_ica",
+      "category": "International \u2014 National Security",
+      "subcategory": "National Security",
+      "name": "Canada \u2014 Investment Canada Act (ICA)",
+      "authority": "Innovation, Science and Economic Development Canada (ISED)",
+      "jurisdiction": "Canada",
+      "jurisdiction_type": "national",
+      "trigger_type": "mandatory_if_thresholds",
+      "description": "Two-stage review: (1) Net Benefit review for large direct acquisitions by WTO investors (threshold ~CAD $1.287B for non-SOE; lower for SOE and cultural industries); (2) National Security review applies to any foreign investment regardless of size.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "Canada"
+      ],
+      "scoping": {
+        "trigger_question": "Is the acquiror non-Canadian? Does the transaction meet the ICA review threshold? Does the target operate in a sensitive sector triggering national security review?",
+        "signals_in_document": [
+          "Acquiror nationality and ICA threshold analysis referenced",
+          "ICA national security or net benefit review referenced in regulatory covenants",
+          "Canadian assets or enterprise value referenced for threshold determination",
+          "Target sector sensitivity (defence, critical minerals, AI, health data)"
+        ],
+        "threshold_details": {
+          "net_benefit_threshold_wto_investor_CAD_B": 1.287,
+          "soe_threshold_lower": true,
+          "cultural_industry_lower": true,
+          "national_security_applies": "Any foreign investment, no threshold"
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has an ICA application or notification been filed?",
+          "Has the Minister issued a net benefit approval?",
+          "Has a national security review been ordered?",
+          "Has the Governor in Council issued a national security decision?"
+        ],
+        "typical_timeline": "Net benefit: 45 days initial + 30-day extensions; National security: up to 200 days",
+        "closing_trigger": "ICA approval received; no national security order",
+        "status_states": [
+          "Not Filed",
+          "Application Filed",
+          "Net Benefit Review",
+          "National Security Review",
+          "Approved",
+          "Approved with Undertakings",
+          "Blocked"
+        ]
+      },
+      "deal_tracker_fields": [
+        "application_filed_date",
+        "net_benefit_approval_date",
+        "national_security_order",
+        "clearance_date",
+        "undertakings",
+        "notes"
+      ]
+    },
+    {
+      "id": "brazil_cade",
+      "category": "International \u2014 Major",
+      "subcategory": "Antitrust",
+      "name": "Brazil \u2014 CADE Pre-Merger Filing",
+      "authority": "Conselho Administrativo de Defesa Econ\u00f4mica (CADE)",
+      "jurisdiction": "Brazil",
+      "jurisdiction_type": "national",
+      "trigger_type": "mandatory_if_thresholds",
+      "description": "Suspensory pre-merger notification required. CADE's Superintend\u00eancia-Geral (SG) conducts initial review; referred to Tribunal for complex cases. Fast-track (30 days) for non-horizontal transactions; ordinary review up to 240 days.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "Brazil"
+      ],
+      "scoping": {
+        "trigger_question": "Does at least one party have Brazil revenues above BRL 750 million AND at least one other party have Brazil revenues above BRL 75 million?",
+        "signals_in_document": [
+          "Brazil revenues of each party disclosed",
+          "CADE filing referenced in regulatory covenants",
+          "Suspensory nature \u2014 no closing until CADE approval"
+        ],
+        "threshold_details": {
+          "larger_party_Brazil_BRL_M": 750,
+          "smaller_party_Brazil_BRL_M": 75
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has the CADE pre-merger filing been submitted and accepted?",
+          "Is CADE using fast-track (30 days) or ordinary review (up to 240 days)?",
+          "Has CADE's SG referred the case to the Tribunal?",
+          "What remedies or conditions are being proposed?",
+          "Has CADE issued a final approval decision?"
+        ],
+        "typical_timeline": "Fast-track: 30 days; Ordinary: up to 240 days",
+        "closing_trigger": "CADE approval decision (unconditional or conditional)",
+        "status_states": [
+          "Not Filed",
+          "Filed \u2014 Fast Track",
+          "Filed \u2014 Ordinary",
+          "SG Review",
+          "Referred to Tribunal",
+          "Approved",
+          "Approved with Conditions",
+          "Blocked"
+        ]
+      },
+      "deal_tracker_fields": [
+        "filing_date",
+        "review_track",
+        "sg_decision_date",
+        "tribunal_decision_date",
+        "approval_date",
+        "conditions",
+        "notes"
+      ]
+    },
+    {
+      "id": "germany_bkarta",
+      "category": "International \u2014 Major",
+      "subcategory": "Antitrust",
+      "name": "Germany \u2014 Bundeskartellamt (BKartA)",
+      "authority": "Bundeskartellamt (Federal Cartel Office)",
+      "jurisdiction": "Germany",
+      "jurisdiction_type": "national",
+      "trigger_type": "mandatory_if_thresholds",
+      "description": "Pre-merger notification required if German thresholds met independently of EC jurisdiction. Phase I: 1 month. Phase II: 4 months. BKartA has strong consumer welfare and market structure focus.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "Germany"
+      ],
+      "scoping": {
+        "trigger_question": "Do the parties have combined worldwide revenues exceeding \u20ac500 million AND at least one party with Germany revenues exceeding \u20ac25 million AND at least one other party with Germany revenues exceeding \u20ac5 million? Is EC jurisdiction absent (two-thirds rule applies)?",
+        "signals_in_document": [
+          "German revenues disclosed",
+          "BKartA filing referenced in covenants",
+          "EC one-stop-shop analysis \u2014 if EC has jurisdiction, BKartA generally does not"
+        ],
+        "threshold_details": {
+          "combined_worldwide_EUR_M": 500,
+          "party1_germany_EUR_M": 25,
+          "party2_germany_EUR_M": 5,
+          "note": "Also applies regardless of revenue if transaction value > \u20ac400M and target has significant German operations"
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has BKartA filing been submitted?",
+          "Is BKartA in Phase I (1 month) or Phase II (4 months)?",
+          "Has BKartA issued a Statement of Objections?",
+          "Are structural or behavioral remedies being negotiated?",
+          "Has BKartA issued a clearance decision?"
+        ],
+        "typical_timeline": "Phase I: 1 month; Phase II: 4 months",
+        "closing_trigger": "BKartA clearance decision issued",
+        "status_states": [
+          "Not Filed",
+          "Phase I",
+          "Phase II",
+          "Statement of Objections",
+          "Remedies Proposed",
+          "Cleared",
+          "Cleared with Conditions",
+          "Prohibited"
+        ]
+      },
+      "deal_tracker_fields": [
+        "filing_date",
+        "phase1_deadline",
+        "phase2_start",
+        "phase2_deadline",
+        "clearance_date",
+        "conditions",
+        "notes"
+      ]
+    },
+    {
+      "id": "target_shareholder_vote",
+      "category": "Shareholder & Contractual",
+      "subcategory": "Corporate",
+      "name": "Target Shareholder Vote",
+      "authority": "Target Board / Stockholders",
+      "jurisdiction": "N/A",
+      "jurisdiction_type": "corporate",
+      "trigger_type": "mandatory_public_company",
+      "description": "Stockholder approval required in most public company mergers. Threshold depends on merger structure and state of incorporation (typically majority of shares outstanding for Delaware long-form mergers).",
+      "applicable_states": [
+        "Alabama",
+        "Alaska",
+        "Arizona",
+        "Arkansas",
+        "California",
+        "Colorado",
+        "Connecticut",
+        "Delaware",
+        "Florida",
+        "Georgia",
+        "Hawaii",
+        "Idaho",
+        "Illinois",
+        "Indiana",
+        "Iowa",
+        "Kansas",
+        "Kentucky",
+        "Louisiana",
+        "Maine",
+        "Maryland",
+        "Massachusetts",
+        "Michigan",
+        "Minnesota",
+        "Mississippi",
+        "Missouri",
+        "Montana",
+        "Nebraska",
+        "Nevada",
+        "New Hampshire",
+        "New Jersey",
+        "New Mexico",
+        "New York",
+        "North Carolina",
+        "North Dakota",
+        "Ohio",
+        "Oklahoma",
+        "Oregon",
+        "Pennsylvania",
+        "Rhode Island",
+        "South Carolina",
+        "South Dakota",
+        "Tennessee",
+        "Texas",
+        "Utah",
+        "Vermont",
+        "Virginia",
+        "Washington",
+        "West Virginia",
+        "Wisconsin",
+        "Wyoming",
+        "District of Columbia"
+      ],
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Is the target a public company? What vote threshold is required under the merger agreement and applicable state law? Is any controlling stockholder providing a written consent?",
+        "signals_in_document": [
+          "Stockholder approval condition in merger agreement",
+          "Record date and meeting date obligations",
+          "Required vote threshold specified (majority of outstanding shares, or supermajority)",
+          "No-shop and force-the-vote provisions",
+          "Any written consent in lieu of meeting (controlling stockholder)"
+        ],
+        "threshold_details": {
+          "typical_threshold": "Majority of shares outstanding (Delaware); check target charter for supermajority"
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has the proxy statement / definitive proxy been filed and mailed?",
+          "Has SEC declared the registration statement effective (if S-4)?",
+          "Has a record date been set?",
+          "What is the meeting date?",
+          "What is the preliminary proxy vote count?",
+          "Have any significant stockholders announced their voting intention (for/against)?",
+          "Has any stockholder filed an appraisal demand?"
+        ],
+        "typical_timeline": "SEC proxy review: 30 days; stockholder meeting: 60\u201390 days after effectiveness",
+        "closing_trigger": "Stockholder vote obtained at duly convened meeting",
+        "status_states": [
+          "Proxy Filed",
+          "SEC Comment Period",
+          "Proxy Effective",
+          "Meeting Scheduled",
+          "Vote Obtained",
+          "Vote Failed"
+        ]
+      },
+      "deal_tracker_fields": [
+        "proxy_filed_date",
+        "sec_clearance_date",
+        "record_date",
+        "meeting_date",
+        "vote_result",
+        "votes_for_pct",
+        "notes"
+      ]
+    },
+    {
+      "id": "sec_s4_proxy",
+      "category": "Shareholder & Contractual",
+      "subcategory": "Corporate",
+      "name": "SEC Proxy / S-4 Registration Statement",
+      "authority": "Securities and Exchange Commission",
+      "jurisdiction": "US",
+      "jurisdiction_type": "federal",
+      "trigger_type": "mandatory_public_company",
+      "description": "Form S-4 registration statement required for stock-for-stock mergers; proxy statement (Schedule 14A) required for cash mergers requiring target stockholder vote. SEC staff review typically takes 30 days; comments must be resolved before effectiveness.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Is the acquiror issuing registered shares as merger consideration (requiring S-4)? Or is this a cash deal requiring only a proxy statement?",
+        "signals_in_document": [
+          "Stock consideration referenced (S-4 required)",
+          "Cash consideration with target shareholder vote (proxy required)",
+          "SEC filing obligation and effectiveness condition referenced in covenants"
+        ],
+        "threshold_details": null
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has the S-4 or preliminary proxy been filed with the SEC?",
+          "Has SEC issued comments? Have comments been resolved?",
+          "Has the S-4 been declared effective by the SEC?",
+          "Has the definitive proxy been mailed to stockholders?"
+        ],
+        "typical_timeline": "30 days for initial SEC review; 10 days for second review; effectiveness within days after final comment resolution",
+        "closing_trigger": "S-4 declared effective or definitive proxy filed and mailed",
+        "status_states": [
+          "Not Filed",
+          "Preliminary Filing Made",
+          "SEC Comments Received",
+          "Comments Resolved",
+          "Effective / Definitive Filed",
+          "Mailed to Stockholders"
+        ]
+      },
+      "deal_tracker_fields": [
+        "filing_date",
+        "sec_comment_date",
+        "amendment_filed_date",
+        "effective_date",
+        "mailing_date",
+        "notes"
+      ]
+    },
+    {
+      "id": "debt_indenture_consents",
+      "category": "Shareholder & Contractual",
+      "subcategory": "Contractual",
+      "name": "Debt / Indenture Change of Control Consents",
+      "authority": "Lenders / Noteholders",
+      "jurisdiction": "N/A",
+      "jurisdiction_type": "contractual",
+      "trigger_type": "deal_specific",
+      "description": "Credit agreement change of control provisions may require consent or trigger repayment obligations. Bond indentures typically contain change of control put rights (repurchase at 101%) rather than consent requirements. Lender consents may be needed for assumption of credit facilities.",
+      "applicable_states": null,
+      "applicable_countries": null,
+      "scoping": {
+        "trigger_question": "Do the target's credit facilities or indentures contain change of control provisions triggered by the merger? Are there repayment obligations, consent requirements, or put rights?",
+        "signals_in_document": [
+          "Target debt schedule and credit agreement/indenture representations",
+          "Change of control definition in listed debt instruments",
+          "Debt assumption or refinancing covenant in merger agreement",
+          "Consent solicitation or tender offer for notes referenced"
+        ],
+        "threshold_details": null
+      },
+      "monitoring": {
+        "key_questions": [
+          "Have consent solicitation materials been distributed to lenders/noteholders?",
+          "What is the required consent threshold and what has been obtained?",
+          "Is a tender offer for notes being launched alongside the consent solicitation?",
+          "Has the acquiror arranged replacement financing?",
+          "Have all required lender consents been obtained?"
+        ],
+        "typical_timeline": "Consent solicitations typically run 2\u20134 weeks",
+        "closing_trigger": "Required debt consents obtained or refinancing arranged",
+        "status_states": [
+          "Analysis Underway",
+          "Consent Solicitation Launched",
+          "Consents Obtained",
+          "Refinancing Arranged",
+          "Complete"
+        ]
+      },
+      "deal_tracker_fields": [
+        "debt_instruments_reviewed",
+        "consent_solicitation_launch_date",
+        "consent_threshold_required",
+        "consents_obtained_pct",
+        "refinancing_committed",
+        "notes"
+      ]
+    },
+    {
+      "id": "government_contract_novation",
+      "category": "Shareholder & Contractual",
+      "subcategory": "Federal Contracts",
+      "name": "Government Contract Novation (FAR Part 42)",
+      "authority": "Federal Agency Contracting Officers",
+      "jurisdiction": "US",
+      "jurisdiction_type": "federal",
+      "trigger_type": "deal_specific",
+      "description": "FAR Part 42.12 novation agreement required for each federal prime contract when the government contractor is acquired (assets or stock). Must be submitted to each cognizant contracting officer with supporting documentation. Assignment without novation is void.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Does the target have US federal prime contracts? Are novation agreements required (vs. change of name agreements)?",
+        "signals_in_document": [
+          "Target described as government contractor",
+          "List of material government contracts in representations",
+          "FAR novation obligation referenced in covenants",
+          "Any CPSR (Contractor Purchasing System Review) or consent to subcontract obligations noted"
+        ],
+        "threshold_details": {
+          "note": "Asset deals require novation; stock deals may require change-of-name agreements only for certain contracts"
+        }
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has a list of prime contracts requiring novation been compiled?",
+          "Have novation applications been submitted to each contracting officer?",
+          "Which agencies have executed novation agreements?",
+          "Are any classified contract novations requiring DCSA involvement?"
+        ],
+        "typical_timeline": "3\u201312 months; varies by agency and contract complexity",
+        "closing_trigger": "All required novation agreements executed by contracting agencies",
+        "status_states": [
+          "List Compiled",
+          "Applications Submitted",
+          "Partial Novations Executed",
+          "All Novations Executed"
+        ]
+      },
+      "deal_tracker_fields": [
+        "total_contracts_requiring_novation",
+        "applications_submitted_date",
+        "novations_executed_count",
+        "outstanding_agencies",
+        "notes"
+      ]
+    },
+    {
+      "id": "itar_ear_transfer",
+      "category": "Sector-Specific",
+      "subcategory": "Defense / Export",
+      "name": "ITAR / EAR License Transfer (DDTC / BIS)",
+      "authority": "Directorate of Defense Trade Controls (State) / Bureau of Industry and Security (Commerce)",
+      "jurisdiction": "US",
+      "jurisdiction_type": "federal",
+      "trigger_type": "sector_specific",
+      "description": "ITAR-controlled defense articles (22 C.F.R. Parts 120\u2013130) require DDTC notification of change of ownership. EAR-controlled dual-use items (15 C.F.R. Parts 730\u2013774) require BIS review of export license transfers. Commodity Jurisdiction determinations may be needed.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Does the target manufacture, export, or broker ITAR-controlled defense articles or EAR dual-use items? Does the target hold active export licenses from DDTC or BIS?",
+        "signals_in_document": [
+          "Target described as defense contractor, aerospace company, or advanced technology company",
+          "ITAR compliance program or export control section referenced in representations",
+          "DDTC registration or active export licenses listed",
+          "Commodity Jurisdiction determinations referenced"
+        ],
+        "threshold_details": null
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has DDTC been notified of the pending change of control?",
+          "Have active ITAR export licenses been transferred or amended?",
+          "Have BIS export licenses been transferred?",
+          "Are any Commodity Jurisdiction determinations needed post-closing?",
+          "Have ITAR Technical Assistance Agreements (TAAs) been amended?"
+        ],
+        "typical_timeline": "DDTC notification: concurrent with closing; license amendments: 60\u2013180 days",
+        "closing_trigger": "DDTC notification submitted; material export licenses transferred or amended",
+        "status_states": [
+          "DDTC Notified",
+          "License Review Underway",
+          "Licenses Transferred",
+          "TAAs Amended",
+          "Complete"
+        ]
+      },
+      "deal_tracker_fields": [
+        "ddtc_notification_date",
+        "bis_review_date",
+        "licenses_transferred_date",
+        "outstanding_items",
+        "notes"
+      ]
+    },
+    {
+      "id": "dea_registration",
+      "category": "Sector-Specific",
+      "subcategory": "Healthcare / Pharma",
+      "name": "DEA Registration Transfer",
+      "authority": "Drug Enforcement Administration",
+      "jurisdiction": "US",
+      "jurisdiction_type": "federal",
+      "trigger_type": "sector_specific",
+      "description": "DEA controlled substance registrations cannot be assigned or transferred automatically. Each DEA registration number requires a separate transfer of registration application. Applies to manufacturers, distributors, researchers, and dispensers of Schedule I\u2013V substances.",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Does the target hold DEA registrations for manufacturing, distribution, or dispensing of controlled substances?",
+        "signals_in_document": [
+          "Target in pharma, specialty pharma, or healthcare distribution sector",
+          "DEA registrations listed in representations",
+          "DEA transfer obligation referenced in covenants"
+        ],
+        "threshold_details": null
+      },
+      "monitoring": {
+        "key_questions": [
+          "Have DEA transfer of registration applications been filed for each registration number?",
+          "Has DEA acknowledged and processed transfers?",
+          "Can the acquiror operate under existing DEA registrations during the transfer process?"
+        ],
+        "typical_timeline": "30\u201390 days per registration",
+        "closing_trigger": "All DEA registration transfers approved",
+        "status_states": [
+          "Registrations Identified",
+          "Applications Filed",
+          "Transfers Approved",
+          "Complete"
+        ]
+      },
+      "deal_tracker_fields": [
+        "registration_count",
+        "applications_filed_date",
+        "transfers_approved_date",
+        "notes"
+      ]
+    },
+    {
+      "id": "dcsa_facility_clearance",
+      "category": "Sector-Specific",
+      "subcategory": "Defense",
+      "name": "DCSA Facility Security Clearance (FCL)",
+      "authority": "Defense Counterintelligence and Security Agency",
+      "jurisdiction": "US",
+      "jurisdiction_type": "federal",
+      "trigger_type": "sector_specific",
+      "description": "DCSA must be notified of any transaction that would result in a change of ownership of a cleared defense contractor. Classified contracts cannot proceed without maintaining FCL. May require FOCI mitigation (see separate entry).",
+      "applicable_states": null,
+      "applicable_countries": [
+        "United States"
+      ],
+      "scoping": {
+        "trigger_question": "Does the target hold a DCSA facility security clearance (FCL) and perform work on classified programs?",
+        "signals_in_document": [
+          "Target described as cleared defense contractor",
+          "FCL or classified program participation referenced in representations",
+          "DCSA or FOCI mitigation referenced in covenants"
+        ],
+        "threshold_details": null
+      },
+      "monitoring": {
+        "key_questions": [
+          "Has DCSA been notified of the pending transaction?",
+          "Will the FCL be maintained, surrendered, or transferred?",
+          "If foreign buyer, is FOCI mitigation required? (See foci_dcsa entry)"
+        ],
+        "typical_timeline": "Concurrent with closing notification",
+        "closing_trigger": "DCSA notification accepted; FCL continuity confirmed",
+        "status_states": [
+          "DCSA Notified",
+          "FCL Review",
+          "FCL Maintained",
+          "FOCI Mitigation Required"
+        ]
+      },
+      "deal_tracker_fields": [
+        "dcsa_notified_date",
+        "fcl_status",
+        "foci_mitigation_required",
+        "notes"
+      ]
+    }
+  ]
+}

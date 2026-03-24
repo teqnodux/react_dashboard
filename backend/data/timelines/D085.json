@@ -1,0 +1,276 @@
+{
+  "deal_name": "Boston Scientific / Penumbra",
+  "acquirer": "Boston Scientific Corporation",
+  "acquirer_ticker": "BSX",
+  "target": "Penumbra, Inc.",
+  "target_ticker": "PEN",
+  "signing_date": "2026-01-14",
+  "announce_date": null,
+  "nda_date": "2025-12-19",
+  "outside_date_initial": "2027-01-14",
+  "outside_date_extensions": [
+    {
+      "date": "2027-04-14",
+      "extension_months": 3,
+      "auto": false,
+      "condition": "if antitrust or Section 7.01(b) or 7.01(c) conditions remain unmet",
+      "note": "Either Boston Scientific Corporation or Penumbra, Inc. may extend the outside date by three months by written notice if antitrust or Section 7.01(b)/(c) conditions remain unmet but all other Article VII conditions are satisfied or waivable, up to a maximum of January 14, 2028."
+    },
+    {
+      "date": "2027-07-14",
+      "extension_months": 3,
+      "auto": false,
+      "condition": "if antitrust or Section 7.01(b) or 7.01(c) conditions remain unmet",
+      "note": "Second successive three-month extension available by written notice under the same conditions, subject to the January 14, 2028 cap."
+    },
+    {
+      "date": "2027-10-14",
+      "extension_months": 3,
+      "auto": false,
+      "condition": "if antitrust or Section 7.01(b) or 7.01(c) conditions remain unmet",
+      "note": "Third successive three-month extension available by written notice under the same conditions, subject to the January 14, 2028 cap."
+    },
+    {
+      "date": "2028-01-14",
+      "extension_months": 3,
+      "auto": false,
+      "condition": "if antitrust or Section 7.01(b) or 7.01(c) conditions remain unmet",
+      "note": "Fourth successive three-month extension available by written notice under the same conditions, this being the maximum extended outside date of January 14, 2028."
+    }
+  ],
+  "estimated_close_start": null,
+  "estimated_close_end": null,
+  "financing_type": "cash",
+  "financing_commitment_expiry": null,
+  "offer_price_per_share": 374.0,
+  "exchange_ratio": 3.8721,
+  "requires_s4": true,
+  "is_going_private": false,
+  "schedule_13e3_required": false,
+  "majority_of_minority_required": false,
+  "regulatory_approvals": [
+    {
+      "name": "HSR Act",
+      "filing_days": 20,
+      "filing_days_type": "business",
+      "required": true,
+      "notes": "Expiration or termination of all applicable waiting periods under the HSR Act is an explicit closing condition, with filings required within 20 business days of signing."
+    }
+  ],
+  "static_events": [
+    {
+      "label": "Confidentiality Agreement",
+      "date": "2025-12-19",
+      "ref": null
+    },
+    {
+      "label": "Merger Agreement Signed",
+      "date": "2026-01-14",
+      "ref": null
+    },
+    {
+      "label": "Outside Date (Initial)",
+      "date": "2027-01-14",
+      "ref": null
+    },
+    {
+      "label": "Outside Date (Ext. 1)",
+      "date": "2027-04-14",
+      "ref": null,
+      "note": "Either Boston Scientific Corporation or Penumbra, Inc. may extend the outside date by three months by written notice if antitrust or Section 7.01(b)/(c) conditions remain unmet but all other Article VII conditions are satisfied or waivable, up to a maximum of January 14, 2028."
+    },
+    {
+      "label": "Outside Date (Ext. 2)",
+      "date": "2027-07-14",
+      "ref": null,
+      "note": "Second successive three-month extension available by written notice under the same conditions, subject to the January 14, 2028 cap."
+    },
+    {
+      "label": "Outside Date (Ext. 3)",
+      "date": "2027-10-14",
+      "ref": null,
+      "note": "Third successive three-month extension available by written notice under the same conditions, subject to the January 14, 2028 cap."
+    },
+    {
+      "label": "Outside Date (Ext. 4)",
+      "date": "2028-01-14",
+      "ref": null,
+      "note": "Fourth successive three-month extension available by written notice under the same conditions, this being the maximum extended outside date of January 14, 2028."
+    }
+  ],
+  "deadline_events": [
+    {
+      "label": "HSR Filing",
+      "date": "2026-02-11",
+      "calculation": "+20 Business Days from Signing",
+      "trigger_key": "hsr_filed",
+      "ref": null
+    },
+    {
+      "label": "Proxy Statement",
+      "date": "2026-02-25",
+      "calculation": "+30 Business Days from Signing",
+      "trigger_key": "proxy_filed",
+      "ref": null
+    },
+    {
+      "label": "S-4 Filing",
+      "date": "2026-02-25",
+      "calculation": "+30 Business Days from Signing",
+      "trigger_key": "s4_filed",
+      "ref": null
+    },
+    {
+      "label": "HSR Act Clearance",
+      "date": "2026-02-11",
+      "calculation": "+20 Business Days from Signing",
+      "trigger_key": "reg_hsr_act",
+      "ref": null,
+      "notes": "Expiration or termination of all applicable waiting periods under the HSR Act is an explicit closing condition, with filings required within 20 business days of signing."
+    },
+    {
+      "label": "Regulatory process initiation",
+      "date": "2026-03-05",
+      "calculation": "Boston Scientific Corporation and Penumbra, Inc. must initiate regulatory processes within 50 calendar days of the Agreement date per Section 6.06(a)(i).",
+      "ref": null
+    },
+    {
+      "label": "Divestiture remedy deadline",
+      "date": null,
+      "calculation": "Boston Scientific Corporation must proffer divestitures and other remedies to Governmental Authorities within ten months from the later of the date of the parties' initial filings under the HSR Act.",
+      "ref": null
+    }
+  ],
+  "triggered_chains": [
+    {
+      "trigger_label": "HSR Filed (actual date)",
+      "trigger_key": "hsr_filed",
+      "downstream": [
+        {
+          "label": "HSR Waiting Period Expires",
+          "rule": "+30 calendar days after HSR filed (statutory \u2014 HSR Act, not stated in merger agreement)",
+          "calc_days": 30,
+          "calc_days_type": "calendar",
+          "calc_from": "trigger",
+          "ref": null
+        }
+      ]
+    },
+    {
+      "trigger_label": "HSR Act \u2014 Filing / Notification (actual date)",
+      "trigger_key": "reg_hsr_act",
+      "downstream": [
+        {
+          "label": "Waiting Period / Review",
+          "rule": "Open-ended \u2014 statutory review period applies",
+          "calc_days": null,
+          "calc_days_type": null,
+          "calc_from": "trigger",
+          "ref": null
+        },
+        {
+          "label": "Clearance Obtained",
+          "rule": "Expiration or termination of all applicable waiting periods under the HSR Act is an explicit closing condition, with filings required within 20 business days of signing.",
+          "calc_days": null,
+          "calc_days_type": null,
+          "calc_from": "prev",
+          "ref": null
+        }
+      ]
+    },
+    {
+      "trigger_label": "Proxy Statement Filed (actual date)",
+      "trigger_key": "proxy_filed",
+      "downstream": [
+        {
+          "label": "SEC Proxy Review Period",
+          "rule": "Open-ended \u2014 SEC review (typically 10 business days for preliminary proxy)",
+          "calc_days": 10,
+          "calc_days_type": "business",
+          "calc_from": "trigger",
+          "ref": null
+        },
+        {
+          "label": "Proxy Mailed to Shareholders",
+          "rule": "After SEC clearance \u2014 typically \u226520 calendar days before meeting",
+          "calc_days": 20,
+          "calc_days_type": "calendar",
+          "calc_from": "prev",
+          "ref": null
+        },
+        {
+          "label": "Stockholder Meeting Deadline",
+          "rule": "Date not yet disclosed",
+          "calc_days": null,
+          "calc_days_type": "calendar",
+          "calc_from": "prev",
+          "ref": null
+        }
+      ]
+    },
+    {
+      "trigger_label": "S-4 Filed (actual date)",
+      "trigger_key": "s4_filed",
+      "downstream": [
+        {
+          "label": "SEC Review Window Opens",
+          "rule": "Open-ended \u2014 SEC review period (not stated in merger agreement)",
+          "calc_days": null,
+          "calc_days_type": null,
+          "calc_from": "trigger",
+          "ref": null
+        }
+      ]
+    },
+    {
+      "trigger_label": "S-4 Declared Effective",
+      "trigger_key": "s4_effective",
+      "downstream": [
+        {
+          "label": "Stockholder Meeting Deadline",
+          "rule": "+35 calendar days after S-4 effective",
+          "calc_days": 35,
+          "calc_days_type": "calendar",
+          "calc_from": "trigger",
+          "ref": null
+        }
+      ]
+    },
+    {
+      "trigger_label": "All Closing Conditions Satisfied",
+      "trigger_key": "conditions_satisfied",
+      "downstream": [
+        {
+          "label": "Closing",
+          "rule": "+5 Business Days after all conditions satisfied / waived",
+          "calc_days": 5,
+          "calc_days_type": "business",
+          "calc_from": "trigger",
+          "ref": null
+        }
+      ]
+    }
+  ],
+  "checklist": [
+    "HSR actual filing date (BSX + PEN)",
+    "HSR early termination granted?",
+    "HSR Act \u2014 filing / notification date",
+    "HSR Act \u2014 clearance received?",
+    "S-4 actual filing date",
+    "SEC S-4 comment letter received?",
+    "S-4 declared effective date",
+    "Preliminary proxy filed (PREM14A)?",
+    "Definitive proxy filed (DEFM14A)?",
+    "Proxy mailing date",
+    "Record date for stockholder votes",
+    "Boston Scientific Corporation stockholder meeting date",
+    "Penumbra, Inc. stockholder meeting date (vote)",
+    "Nasdaq/NYSE listing approval date",
+    "All closing conditions satisfied?",
+    "Actual closing date"
+  ],
+  "_meta": {
+    "extracted_at": "2026-03-18T02:55:53.959705Z",
+    "filing_date": "2026-01-14"
+  }
+}

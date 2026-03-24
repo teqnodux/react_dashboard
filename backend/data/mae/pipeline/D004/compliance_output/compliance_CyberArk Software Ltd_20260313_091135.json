@@ -1,0 +1,299 @@
+{
+  "deal_name": "CyberArk Software Ltd",
+  "analysis_timestamp": "2026-03-13T09:11:35.316008",
+  "total_clauses": 10,
+  "compliance_summary": {
+    "cybersecurity": {
+      "count": 0,
+      "clauses": []
+    },
+    "tariffs_trade": {
+      "count": 0,
+      "clauses": []
+    },
+    "countries_regions": {
+      "count": 0,
+      "clauses": [],
+      "countries_found": []
+    },
+    "geographic_changes": {
+      "count": 0,
+      "clauses": []
+    },
+    "disclosure_schedules": {
+      "count": 1,
+      "clauses": [
+        {
+          "clause_id": "(x)",
+          "details": "Company Disclosure Letter and Parent Disclosure Letter"
+        }
+      ]
+    },
+    "financing": {
+      "count": 1,
+      "clauses": [
+        {
+          "clause_id": "(i)",
+          "details": "credit, debt, financial or capital markets"
+        }
+      ]
+    },
+    "regulatory_products": {
+      "count": 0,
+      "clauses": []
+    }
+  },
+  "detailed_results": [
+    {
+      "clause_id": "(i)",
+      "text": "change in general United States or global economic conditions, including changes in the credit, debt, financial or capital markets (including changes in interest or exchange rates), in each case in the United States or anywhere else in the world",
+      "text_preview": "change in general United States or global economic conditions, including changes in the credit, debt...",
+      "zone": "typical",
+      "cluster_match": "Broad Economic and Financial Market Changes Exclusion",
+      "category": "economic",
+      "compliance": {
+        "cybersecurity_mentioned": "No",
+        "cybersecurity_details": null,
+        "tariffs_trade_mentioned": "No",
+        "tariffs_trade_details": null,
+        "countries_regions_mentioned": "No",
+        "countries_list": null,
+        "countries_details": null,
+        "geographic_changes_mentioned": "No",
+        "geographic_changes_details": null,
+        "disclosure_schedules_referenced": "No",
+        "disclosure_schedules_details": null,
+        "financing_mentioned": "Yes",
+        "financing_details": "credit, debt, financial or capital markets",
+        "regulatory_products_mentioned": "No",
+        "regulatory_products_details": null
+      }
+    },
+    {
+      "clause_id": "(ii)",
+      "text": "change that generally affects any of the industries or markets in which the Company and its Subsidiaries, or Parent and its Subsidiaries, as applicable, operate",
+      "text_preview": "change that generally affects any of the industries or markets in which the Company and its Subsidia...",
+      "zone": "typical",
+      "cluster_match": "Broad Economic and Financial Market Changes Exclusion",
+      "category": "economic",
+      "compliance": {
+        "cybersecurity_mentioned": "No",
+        "cybersecurity_details": null,
+        "tariffs_trade_mentioned": "No",
+        "tariffs_trade_details": null,
+        "countries_regions_mentioned": "No",
+        "countries_list": null,
+        "countries_details": null,
+        "geographic_changes_mentioned": "No",
+        "geographic_changes_details": null,
+        "disclosure_schedules_referenced": "No",
+        "disclosure_schedules_details": null,
+        "financing_mentioned": "No",
+        "financing_details": null,
+        "regulatory_products_mentioned": "No",
+        "regulatory_products_details": null
+      }
+    },
+    {
+      "clause_id": "(iii)",
+      "text": "change in political conditions (or the escalation of any such change in political conditions existing as of the date of this Agreement) or any hostilities, war, police action, acts of terrorism or military conflicts (or the escalation of any such hostilities, war, police action, acts of terrorism or military conflicts existing as of the date of this Agreement) or any governmental or other response or reaction to any of the foregoing, in each case whether or not involving the United States",
+      "text_preview": "change in political conditions (or the escalation of any such change in political conditions existin...",
+      "zone": "typical",
+      "cluster_match": "Catastrophic External Events Beyond Party Control",
+      "category": "force_majeure",
+      "compliance": {
+        "cybersecurity_mentioned": "No",
+        "cybersecurity_details": null,
+        "tariffs_trade_mentioned": "No",
+        "tariffs_trade_details": null,
+        "countries_regions_mentioned": "No",
+        "countries_list": null,
+        "countries_details": null,
+        "geographic_changes_mentioned": "No",
+        "geographic_changes_details": null,
+        "disclosure_schedules_referenced": "No",
+        "disclosure_schedules_details": null,
+        "financing_mentioned": "No",
+        "financing_details": null,
+        "regulatory_products_mentioned": "No",
+        "regulatory_products_details": null
+      }
+    },
+    {
+      "clause_id": "(iv)",
+      "text": "earthquakes, hurricanes, tsunamis, tornadoes, floods, mudslides, wild fires or other natural disasters, weather conditions, pandemics, epidemics or disease outbreaks (including COVID-19 and any evolutions or mutations thereof or related health protection measures)",
+      "text_preview": "earthquakes, hurricanes, tsunamis, tornadoes, floods, mudslides, wild fires or other natural disaste...",
+      "zone": "typical",
+      "cluster_match": "Catastrophic External Events Beyond Party Control",
+      "category": "force_majeure",
+      "compliance": {
+        "cybersecurity_mentioned": "No",
+        "cybersecurity_details": null,
+        "tariffs_trade_mentioned": "No",
+        "tariffs_trade_details": null,
+        "countries_regions_mentioned": "No",
+        "countries_list": null,
+        "countries_details": null,
+        "geographic_changes_mentioned": "No",
+        "geographic_changes_details": null,
+        "disclosure_schedules_referenced": "No",
+        "disclosure_schedules_details": null,
+        "financing_mentioned": "No",
+        "financing_details": null,
+        "regulatory_products_mentioned": "No",
+        "regulatory_products_details": null
+      }
+    },
+    {
+      "clause_id": "(v)",
+      "text": "change in applicable Law or GAAP or other applicable accounting standards (or the interpretation thereof)",
+      "text_preview": "change in applicable Law or GAAP or other applicable accounting standards (or the interpretation the...",
+      "zone": "typical",
+      "cluster_match": "Changes in Law, GAAP, and Regulatory Accounting Standards",
+      "category": "accounting",
+      "compliance": {
+        "cybersecurity_mentioned": "No",
+        "cybersecurity_details": null,
+        "tariffs_trade_mentioned": "No",
+        "tariffs_trade_details": null,
+        "countries_regions_mentioned": "No",
+        "countries_list": null,
+        "countries_details": null,
+        "geographic_changes_mentioned": "No",
+        "geographic_changes_details": null,
+        "disclosure_schedules_referenced": "No",
+        "disclosure_schedules_details": null,
+        "financing_mentioned": "No",
+        "financing_details": null,
+        "regulatory_products_mentioned": "No",
+        "regulatory_products_details": null
+      }
+    },
+    {
+      "clause_id": "(vi)",
+      "text": "announcement or pendency of this Agreement or the transactions contemplated by this Agreement, including the impact thereof on relationships, contractual or otherwise, with customers, suppliers, licensors, distributors, partners, providers and employees (provided that the exception in this clause (vi) shall not apply to any representation or warranty to the extent the purpose of such representation or warranty is to address the consequences resulting from the execution and delivery of this Agreement or the consummation of the transactions contemplated hereby or by their terms are intended to be measured without regard to the announcement or pendency of this Agreement or the transactions contemplated by this Agreement)",
+      "text_preview": "announcement or pendency of this Agreement or the transactions contemplated by this Agreement, inclu...",
+      "zone": "typical",
+      "cluster_match": "Exclusion for impacts from deal announcement and execution",
+      "category": "transaction",
+      "compliance": {
+        "cybersecurity_mentioned": "No",
+        "cybersecurity_details": null,
+        "tariffs_trade_mentioned": "No",
+        "tariffs_trade_details": null,
+        "countries_regions_mentioned": "No",
+        "countries_list": null,
+        "countries_details": null,
+        "geographic_changes_mentioned": "No",
+        "geographic_changes_details": null,
+        "disclosure_schedules_referenced": "No",
+        "disclosure_schedules_details": null,
+        "financing_mentioned": "No",
+        "financing_details": null,
+        "regulatory_products_mentioned": "No",
+        "regulatory_products_details": null
+      }
+    },
+    {
+      "clause_id": "(vii)",
+      "text": "failure by the Company or Parent, as applicable, to meet any projections, forecasts, guidance, estimates, milestones, budgets or financial or operating predictions of revenue, earnings, cash flow or cash position (provided that the exception in this clause (vii) shall not prevent a determination that any Effect underlying such failure to meet projections, forecasts, guidance, estimates, milestones, budgets or financial or operating predictions has resulted in a Material Adverse Effect (to the extent such Effect is not otherwise excluded from this definition of Material Adverse Effect))",
+      "text_preview": "failure by the Company or Parent, as applicable, to meet any projections, forecasts, guidance, estim...",
+      "zone": "typical",
+      "cluster_match": "Failure to Meet Financial Projections and Forecasts Exclusions",
+      "category": "disclosure",
+      "compliance": {
+        "cybersecurity_mentioned": "No",
+        "cybersecurity_details": null,
+        "tariffs_trade_mentioned": "No",
+        "tariffs_trade_details": null,
+        "countries_regions_mentioned": "No",
+        "countries_list": null,
+        "countries_details": null,
+        "geographic_changes_mentioned": "No",
+        "geographic_changes_details": null,
+        "disclosure_schedules_referenced": "No",
+        "disclosure_schedules_details": null,
+        "financing_mentioned": "No",
+        "financing_details": null,
+        "regulatory_products_mentioned": "No",
+        "regulatory_products_details": null
+      }
+    },
+    {
+      "clause_id": "(viii)",
+      "text": "change in the Company's stock price or the trading volume of the Company's stock, or any change in the credit rating of the Company or Parent, as applicable (provided that the exception in this clause (viii) shall not prevent a determination that any Effect underlying such change has resulted in a Material Adverse Effect (to the extent such Effect is not otherwise excluded from this definition of Material Adverse Effect))",
+      "text_preview": "change in the Company's stock price or the trading volume of the Company's stock, or any change in t...",
+      "zone": "typical",
+      "cluster_match": "Market Price and Trading Volume Exclusions with Underlying Cause Carvebacks",
+      "category": "transaction",
+      "compliance": {
+        "cybersecurity_mentioned": "No",
+        "cybersecurity_details": null,
+        "tariffs_trade_mentioned": "No",
+        "tariffs_trade_details": null,
+        "countries_regions_mentioned": "No",
+        "countries_list": null,
+        "countries_details": null,
+        "geographic_changes_mentioned": "No",
+        "geographic_changes_details": null,
+        "disclosure_schedules_referenced": "No",
+        "disclosure_schedules_details": null,
+        "financing_mentioned": "No",
+        "financing_details": null,
+        "regulatory_products_mentioned": "No",
+        "regulatory_products_details": null
+      }
+    },
+    {
+      "clause_id": "(ix)",
+      "text": "action taken (or omitted to be taken) by the Company or any of its Subsidiaries, or Parent or any of its Subsidiaries, as applicable, that is required to be taken (or omitted to be taken) pursuant to this Agreement or taken (or omitted to be taken) at the written request of, or with the prior written consent of, Parent or the Company, as applicable",
+      "text_preview": "action taken (or omitted to be taken) by the Company or any of its Subsidiaries, or Parent or any of...",
+      "zone": "typical",
+      "cluster_match": "Actions Taken Pursuant to or Required by Agreement Terms",
+      "category": "transaction",
+      "compliance": {
+        "cybersecurity_mentioned": "No",
+        "cybersecurity_details": null,
+        "tariffs_trade_mentioned": "No",
+        "tariffs_trade_details": null,
+        "countries_regions_mentioned": "No",
+        "countries_list": null,
+        "countries_details": null,
+        "geographic_changes_mentioned": "No",
+        "geographic_changes_details": null,
+        "disclosure_schedules_referenced": "No",
+        "disclosure_schedules_details": null,
+        "financing_mentioned": "No",
+        "financing_details": null,
+        "regulatory_products_mentioned": "No",
+        "regulatory_products_details": null
+      }
+    },
+    {
+      "clause_id": "(x)",
+      "text": "matter disclosed in the Company Disclosure Letter or the Parent Disclosure Letter, as applicable",
+      "text_preview": "matter disclosed in the Company Disclosure Letter or the Parent Disclosure Letter, as applicable",
+      "zone": "typical",
+      "cluster_match": "Exclusion for Matters Previously Disclosed in Transaction Documents",
+      "category": "disclosure",
+      "compliance": {
+        "cybersecurity_mentioned": "No",
+        "cybersecurity_details": null,
+        "tariffs_trade_mentioned": "No",
+        "tariffs_trade_details": null,
+        "countries_regions_mentioned": "No",
+        "countries_list": null,
+        "countries_details": null,
+        "geographic_changes_mentioned": "No",
+        "geographic_changes_details": null,
+        "disclosure_schedules_referenced": "Yes",
+        "disclosure_schedules_details": "Company Disclosure Letter and Parent Disclosure Letter",
+        "financing_mentioned": "No",
+        "financing_details": null,
+        "regulatory_products_mentioned": "No",
+        "regulatory_products_details": null
+      }
+    }
+  ],
+  "classification_file": "classification_20260313_091057.json"
+}

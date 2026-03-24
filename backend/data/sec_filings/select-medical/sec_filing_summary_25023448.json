@@ -1,0 +1,40 @@
+{
+  "ticker": "SEM",
+  "company": "Select Medical Holdings Corp",
+  "filing_type": "Form 3",
+  "filing_date": "09/02/25",
+  "L1_headline": "+ SEM \u2013 New EVP files initial beneficial ownership statement. | 09/02/25",
+  "L2_brief": "Form 3 initial ownership filing for John F. Duggan, newly appointed Executive Vice President of Select Medical Holdings Corp. Duggan beneficially owns 149,575 shares of common stock, consisting entirely of restricted stock grants from 2021-2024 with vesting dates through April 2028. No direct M&A implications but indicates executive leadership changes.",
+  "L3_detailed": {
+    "filing_purpose": "Initial statement of beneficial ownership required under Section 16(a) upon becoming an officer (Executive Vice President) effective September 1, 2025",
+    "key_information": [
+      "John F. Duggan appointed Executive Vice President effective 09/01/2025",
+      "Beneficially owns 149,575 shares of common stock (all restricted stock)",
+      "Holdings consist of four restricted stock grants: 25,000 shares each from 2021-2023, plus 50,000 shares from 2024",
+      "All grants subject to special vesting of 1/3 of shares on November 5, 2024",
+      "No derivative securities reported"
+    ],
+    "financial_highlights": [
+      "Total shares beneficially owned: 149,575 shares",
+      "2021 grant: 25,000 restricted shares",
+      "2022 grant: 25,000 restricted shares",
+      "2023 grant: 25,000 restricted shares",
+      "2024 grant: 50,000 restricted shares"
+    ],
+    "deal_relevance": "No direct M&A relevance. However, executive appointments and insider ownership positions are monitored for potential signals of corporate activity. The multi-year vesting schedule suggests long-term retention focus rather than near-term transaction preparation.",
+    "regulatory_mentions": "Standard Section 16(a) Securities Exchange Act compliance filing",
+    "timeline_or_dates": [
+      "09/01/2025 - Event date (appointment as EVP)",
+      "11/05/2024 - Special vesting date (1/3 of all grants)",
+      "11/01/2025 - Full vesting of 2021 grant",
+      "11/01/2026 - Full vesting of 2022 grant",
+      "11/01/2027 - Full vesting of 2023 grant",
+      "04/30/2028 - Full vesting of 2024 grant"
+    ],
+    "conditions_or_requirements": [
+      "Restricted stock vesting subject to continued employment with certain exceptions",
+      "Four-year vesting period from grant date for each award"
+    ],
+    "risks_flagged": []
+  }
+}

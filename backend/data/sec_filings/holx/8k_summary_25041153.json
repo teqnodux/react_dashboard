@@ -1,0 +1,22 @@
+{
+  "ticker": "HOLX",
+  "filing_date": "11/07/25",
+  "items_reported": [
+    "Item 5.02",
+    "Item 9.01"
+  ],
+  "L1_headline": "HOLX \u2013 Approved revised RSU Award Agreement form. | 11/07/25",
+  "L2_brief": "On November 4, 2025, Hologic's Compensation Committee approved a revised form of Restricted Stock Unit Award Agreement for fiscal 2026. This is a routine compensatory arrangement filing with no merger or deal-related implications.",
+  "L3_detailed": {
+    "event": "The Compensation Committee of Hologic's Board of Directors approved a revised form of RSU Award Agreement, effective for fiscal 2026.",
+    "key_figures": [
+      "Date of committee approval: November 4, 2025",
+      "Filing date: November 7, 2025",
+      "Agreement adopted for fiscal 2026"
+    ],
+    "deal_implications": "No merger or acquisition activity disclosed. This filing relates solely to executive compensation arrangements.",
+    "remaining_conditions": [],
+    "risks_flagged": []
+  },
+  "filing_type": "8-K"
+}

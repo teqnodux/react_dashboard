@@ -1,0 +1,20 @@
+{
+  "events": {
+    "hsr_filed": {
+      "date": null,
+      "source": null
+    },
+    "reg_cfius": {
+      "date": null,
+      "source": null
+    },
+    "proxy_filed": {
+      "date": null,
+      "source": null
+    },
+    "conditions_satisfied": {
+      "date": null,
+      "source": null
+    }
+  }
+}

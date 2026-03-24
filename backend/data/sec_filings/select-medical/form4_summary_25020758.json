@@ -1,0 +1,30 @@
+{
+  "ticker": "SEM",
+  "issuer": "SELECT MEDICAL HOLDINGS CORP",
+  "filing_date": "07/31/25",
+  "insider_name": "James S. Ely III",
+  "insider_title": "Director",
+  "relationship": "Director",
+  "L1_headline": "+ SEM \u2013 James S. Ely III acquired 14,035 restricted stock shares. | 07/29/25",
+  "L2_brief": "Director James S. Ely III received a grant of 14,035 restricted stock shares at $0 cost as part of director compensation. The shares vest on July 29, 2026, bringing his total direct holdings to 161,674 shares. This is a routine director equity grant rather than a discretionary open-market purchase.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "07/29/2025",
+        "shares": "14,035",
+        "price_per_share": "$0",
+        "total_value": "$0 (restricted stock grant)",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "161,674 shares",
+    "ownership_type": "Direct",
+    "deal_signal": "N/A",
+    "pattern_notes": "Routine annual director compensation grant of restricted stock with 1-year cliff vesting (vests July 29, 2026). Not a discretionary open-market purchase indicating conviction.",
+    "risks_flagged": [
+      "Grant is restricted stock subject to vesting conditions",
+      "Not an open-market purchase - limited signal value for sentiment analysis"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ticker": "PEN",
+  "issuer": "Penumbra Inc",
+  "filing_date": "02/18/26",
+  "insider_name": "Harpreet Grewal",
+  "insider_title": "Director",
+  "relationship": "Director",
+  "L1_headline": "+ PEN \u2013 Harpreet Grewal acquired 589 RSU shares. | 02/13/2026",
+  "L2_brief": "Director Harpreet Grewal acquired 589 shares of Penumbra Inc common stock on 02/13/2026 at $0 per share via a restricted stock unit (RSU) grant. The RSUs vest quarterly through 12/31/2026 but will fully accelerate upon the closing of Penumbra's pending merger with Boston Scientific Corporation. Post-transaction holdings are 8,819 shares (direct), a portion of which remain subject to vesting.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "02/13/2026",
+        "shares": "589",
+        "price_per_share": "$0",
+        "total_value": "$0",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "8,819 shares (a portion subject to vesting)",
+    "ownership_type": "Direct",
+    "deal_signal": "Penumbra Inc is subject to a pending Agreement and Plan of Merger dated 01/14/2026 with Boston Scientific Corporation and Pinehurst Merger Sub, Inc. Per the filing, the RSUs contain a merger acceleration provision: any unvested RSUs will fully vest upon the Closing of the merger, subject to continued service as director through that date. This is a standard equity acceleration clause in the merger agreement; no discretionary trading activity is present in this filing.",
+    "pattern_notes": "This is a routine annual/periodic RSU grant to a director with quarterly vesting (1/4 on each of 03/31/2026, 06/30/2026, 09/30/2026, and 12/31/2026). No open-market purchases or sales were reported. The grant represents approximately 6.7% of post-transaction holdings.",
+    "risks_flagged": [
+      "No 10b5-1 plan noted; transaction is an RSU grant, not an open-market trade",
+      "Merger acceleration clause: unvested RSUs fully vest upon closing of Boston Scientific merger",
+      "A portion of total holdings (8,819 shares) remains subject to vesting conditions"
+    ]
+  },
+  "filing_type": "FORM 4"
+}

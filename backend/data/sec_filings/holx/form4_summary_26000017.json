@@ -1,0 +1,31 @@
+{
+  "ticker": "HOLX",
+  "issuer": "HOLOGIC INC",
+  "filing_date": "03/02/26",
+  "insider_name": "Charles J Dockendorff",
+  "insider_title": "Director",
+  "relationship": "Director",
+  "L1_headline": "+ HOLX \u2013 Charles J Dockendorff acquired 3,190 restricted stock units. | 02/26/2026",
+  "L2_brief": "Director Charles J Dockendorff acquired 3,190 restricted stock units (RSUs) of Hologic Inc on 02/26/2026, which vest on the date of the 2027 Annual Meeting of Stockholders and settle into common stock on a one-for-one basis. Following the transaction, Dockendorff holds 6,626 shares directly and 15,370 shares indirectly through a revocable trust.",
+  "L3_detailed": {
+    "transactions": [
+      {
+        "type": "Other",
+        "date": "02/26/2026",
+        "shares": "3,190",
+        "price_per_share": "N/A (RSU grant)",
+        "total_value": "N/A (RSU grant)",
+        "acquired_or_disposed": "Acquired (A)"
+      }
+    ],
+    "post_transaction_holdings": "6,626 shares (Direct) + 15,370 shares (Indirect, via Revocable Trust) = 21,996 total shares beneficially owned",
+    "ownership_type": "Direct and Indirect (Revocable Trust)",
+    "deal_signal": "N/A",
+    "pattern_notes": "This is a director RSU grant, consistent with routine annual equity compensation for board service. The RSUs vest at the 2027 Annual Meeting and settle in common stock on a one-for-one basis. No discretionary open-market purchase or sale activity reported in this filing.",
+    "risks_flagged": [
+      "No 10b5-1 plan noted; transaction is a compensation-related RSU grant, not a discretionary trade",
+      "No price reported for the acquisition, consistent with an equity award rather than an open-market transaction"
+    ]
+  },
+  "filing_type": "FORM 4"
+}
