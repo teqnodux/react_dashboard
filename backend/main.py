@@ -1,5 +1,5 @@
 """
-FastAPI backend for Merger Arbitrage Dashboard
+
 Wraps existing Python logic and serves data to React frontend
 """
 

@@ -53,10 +53,10 @@ ANTHROPIC_API_KEY_TEST=your_test_key_here
 Start backend:
 
 ```bash
-uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn main:app --host 0.0.0.0 --port 8080 --reload
 ```
 
-Backend will be available at `http://localhost:8000`.
+Backend will be available at `http://localhost:8080`.
 
 ## 3) Frontend Setup (React + Vite)
 
@@ -70,7 +70,7 @@ npm install
 Create `frontend/.env`:
 
 ```env
-VITE_API_BASE_URL=http://localhost:8000
+VITE_API_BASE_URL=http://localhost:8080
 ```
 
 Start frontend:
