@@ -12,6 +12,7 @@ from typing import Optional, Dict
 import sys
 from pathlib import Path
 import time
+import os
 
 from timeline_processor import get_timeline_path, get_timeline_json_path, find_docx, build_timeline, build_timeline_from_text, TIMELINES_DIR, INPUT_DIR
 from covenant_processor import get_covenant_path, find_covenant_inputs, build_covenant_dashboard
@@ -344,10 +345,19 @@ def _enrich_from_dma_extract(deal: dict, deal_id: str) -> dict:
 
 app = FastAPI(title="Merger Arb Dashboard API")
 
-# CORS - allow React dev server
+# CORS - allow local dev plus configured production origins
+_default_origins = [
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "http://localhost:3000",
+]
+_env_origins = [o.strip() for o in os.getenv("CORS_ORIGINS", "").split(",") if o.strip()]
+_allowed_origins = _default_origins + _env_origins
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:5174", "http://localhost:3000"],
+    allow_origins=_allowed_origins,
+    allow_origin_regex=r"https://.*\.onrender\.com",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
