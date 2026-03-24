@@ -3,6 +3,24 @@ FastAPI backend for Merger Arbitrage Dashboard
 Wraps existing Python logic and serves data to React frontend
 """
 
+import threading
+from approval_master import (
+    get_all_approvals as _master_all,
+    get_approval as _master_get,
+)
+from regulatory_monitor import (
+    triage_document as _mon_triage,
+    run_monitoring_pipeline as _mon_pipeline,
+    backfill_master_ids as _mon_backfill,
+    resolve_conflict as _mon_resolve_conflict,
+    load_monitor_regulatory as _load_mon_reg,
+    save_monitor_regulatory as _save_mon_reg,
+)
+from generate_regulatory import (
+    load_regulatory, save_regulatory, process_edgar_filing, manual_update as _reg_manual_update,
+    seed_from_timeline_json, compute_deadlines as _reg_compute_deadlines,
+    check_time_based_transitions as _reg_check_time_transitions,
+)
 from fastapi import FastAPI, HTTPException, Body, Request
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
@@ -22,6 +40,8 @@ from sec_processor import get_company_slugs, get_filing_index, get_all_filing_in
 import json
 
 _DATA_DIR = Path(__file__).parent / "data"
+
+# Auto deploy check comment:
 
 # Yahoo Finance for live prices
 try:
@@ -82,9 +102,9 @@ def _resolve_downstream(trigger_date_str: str, downstream: list) -> list:
     prev_date = trigger_date
     for raw in downstream:
         item = dict(raw)
-        calc_days      = item.get("calc_days")
+        calc_days = item.get("calc_days")
         calc_days_type = item.get("calc_days_type", "calendar")
-        calc_from      = item.get("calc_from", "trigger")
+        calc_from = item.get("calc_from", "trigger")
         base = trigger_date if calc_from == "trigger" else prev_date
         if calc_days and base:
             if calc_days_type == "business":
@@ -109,7 +129,7 @@ def _merge_tracking(deal: dict, deal_id: str) -> dict:
     for ev in deal.get("deadline_events", []):
         tk = ev.get("trigger_key")
         if tk and tk in events and events[tk].get("date"):
-            ev["filed_date"]   = events[tk]["date"]
+            ev["filed_date"] = events[tk]["date"]
             ev["filed_source"] = events[tk].get("source")
 
     # Inject trigger_date + resolve downstream dates for triggered_chains
@@ -117,7 +137,8 @@ def _merge_tracking(deal: dict, deal_id: str) -> dict:
         tk = chain.get("trigger_key")
         if tk and tk in events and events[tk].get("date"):
             chain["trigger_date"] = events[tk]["date"]
-            chain["downstream"]   = _resolve_downstream(events[tk]["date"], chain["downstream"])
+            chain["downstream"] = _resolve_downstream(
+                events[tk]["date"], chain["downstream"])
 
     return deal
 
@@ -130,8 +151,10 @@ def _parse_expected_close_range(ec_text, ec_date):
     t = ec_text.upper().strip()
 
     yr_match = re.search(r'20\d{2}', t)
-    yr2_match = re.search(r'(\d{2})\s*$', t)  # 2-digit year at end, e.g. "2H26", "Q2 26"
-    year = yr_match.group() if yr_match else ("20" + yr2_match.group(1)) if yr2_match else None
+    # 2-digit year at end, e.g. "2H26", "Q2 26"
+    yr2_match = re.search(r'(\d{2})\s*$', t)
+    year = yr_match.group() if yr_match else (
+        "20" + yr2_match.group(1)) if yr2_match else None
     if not year:
         return (ec_date, None) if ec_date else (None, None)
 
@@ -149,12 +172,14 @@ def _parse_expected_close_range(ec_text, ec_date):
     #   "3Q26" → "Q3 26", "1H26" → "1H 26", "H2 26" → "2H 26"
     t = re.sub(r'\b(\d)Q\s*(\d{2,4})\b', r'Q\1 \2', t)    # 3Q26 → Q3 26
     t = re.sub(r'\bH([12])\s', r'\g<1>H ', t)              # H2 26 → 2H 26
-    t = re.sub(r'\b([12]H)(\d{2,4})\b', r'\1 \2', t)      # 1H26 → 1H 26, 2H26 → 2H 26
+    # 1H26 → 1H 26, 2H26 → 2H 26
+    t = re.sub(r'\b([12]H)(\d{2,4})\b', r'\1 \2', t)
 
     # Re-extract year after normalization
     yr_match2 = re.search(r'20\d{2}', t)
     yr2_match2 = re.search(r'(\d{2})\s*$', t)
-    year = yr_match2.group() if yr_match2 else ("20" + yr2_match2.group(1)) if yr2_match2 else year
+    year = yr_match2.group() if yr_match2 else (
+        "20" + yr2_match2.group(1)) if yr2_match2 else year
     # Rebuild periods with potentially updated year
     _PERIODS = {
         "1H": (f"{year}-01-01", f"{year}-06-30"),
@@ -203,7 +228,8 @@ def _enrich_from_sources(deal: dict, deal_id: str) -> dict:
                 ext_dates.append(ext["date"])
         if deal.get("outside_date_extended"):
             ext_dates.append(deal["outside_date_extended"])
-        latest_outside = max(ext_dates) if ext_dates else deal["outside_date_initial"]
+        latest_outside = max(
+            ext_dates) if ext_dates else deal["outside_date_initial"]
 
         if deal["estimated_close_end"] > latest_outside:
             deal["estimated_close_end"] = latest_outside
@@ -270,7 +296,8 @@ def _enrich_from_press_release(deal: dict, deal_id: str) -> dict:
 
     # 2. Estimated close range
     if not deal.get("estimated_close_start") and pr.get("expected_close"):
-        start, end = _parse_expected_close_range(pr["expected_close"], pr.get("expected_close_date"))
+        start, end = _parse_expected_close_range(
+            pr["expected_close"], pr.get("expected_close_date"))
         if start:
             deal["estimated_close_start"] = start
             deal["estimated_close_end"] = end
@@ -319,7 +346,8 @@ def _enrich_from_dma_extract(deal: dict, deal_id: str) -> dict:
 
     # Expected close from DMA extract (if not already filled by PR)
     if not deal.get("estimated_close_start") and dma.get("expected_close"):
-        start, end = _parse_expected_close_range(dma["expected_close"], dma.get("expected_close_date"))
+        start, end = _parse_expected_close_range(
+            dma["expected_close"], dma.get("expected_close_date"))
         if start:
             deal["estimated_close_start"] = start
             deal["estimated_close_end"] = end
@@ -351,7 +379,8 @@ _default_origins = [
     "http://localhost:5174",
     "http://localhost:3000",
 ]
-_env_origins = [o.strip() for o in os.getenv("CORS_ORIGINS", "").split(",") if o.strip()]
+_env_origins = [o.strip() for o in os.getenv(
+    "CORS_ORIGINS", "").split(",") if o.strip()]
 _allowed_origins = _default_origins + _env_origins
 
 app.add_middleware(
@@ -377,7 +406,8 @@ async def auto_process_docx():
     for docx_path in sorted(INPUT_DIR.glob("*.docx")):
         match = re.match(r'^(D\d+)', docx_path.stem, re.IGNORECASE)
         if not match:
-            print(f"[startup] Skipping {docx_path.name} — no deal ID prefix found")
+            print(
+                f"[startup] Skipping {docx_path.name} — no deal ID prefix found")
             continue
         deal_id = match.group(1).upper()
         json_path = TIMELINES_DIR / f"{deal_id}.json"
@@ -463,12 +493,12 @@ def deal_to_dict(deal: Deal) -> dict:
         "deal_value_bn": deal.deal_value_bn,
         "deal_type": deal.deal_type,
         "category": deal.category.value if hasattr(deal.category, 'value') else str(deal.category),
-        
+
         # Pricing
         "offer_price": deal.offer_price,
         "current_price": deal.current_price,
         "unaffected_price": deal.unaffected_price,
-        
+
         # Costs
         "borrow_rate_annual": deal.borrow_rate_annual,
         "dividend_expected": deal.dividend_expected,
@@ -484,13 +514,13 @@ def deal_to_dict(deal: Deal) -> dict:
         "announce_date": deal.announce_date.isoformat(),
         "expected_close": deal.expected_close.isoformat(),
         "outside_date": deal.outside_date.isoformat() if deal.outside_date else None,
-        
+
         # Status
         "status": deal.status,
         "regulatory_bodies": deal.regulatory_bodies,
         "next_milestone": deal.next_milestone,
         "next_milestone_date": deal.next_milestone_date.isoformat() if deal.next_milestone_date else None,
-        
+
         # Calculated fields
         "gross_spread_dollars": deal.gross_spread_dollars,
         "gross_spread_pct": deal.gross_spread_pct,
@@ -500,7 +530,7 @@ def deal_to_dict(deal: Deal) -> dict:
         "net_spread_pct": deal.net_spread_pct,
         "annualized_gross": deal.annualized_gross,
         "annualized_net": deal.annualized_net,
-        
+
         "notes": deal.notes,
     }
 
@@ -521,12 +551,13 @@ def root():
 def get_all_deals():
     """Get all deals with calculated spreads"""
     deals = get_deals()
-    
+
     # Calculate summary stats
     total_value = sum(d.deal_value_bn for d in deals)
     at_risk_count = sum(1 for d in deals if d.status == "at_risk")
-    avg_gross = sum(d.gross_spread_pct for d in deals) / len(deals) if deals else 0
-    
+    avg_gross = sum(d.gross_spread_pct for d in deals) / \
+        len(deals) if deals else 0
+
     return {
         "deals": [deal_to_dict(d) for d in deals],
         "summary": {
@@ -543,13 +574,14 @@ def get_deal_detail(deal_id: str):
     """Get detailed information for a single deal"""
     deals = get_deals()
     deal = next((d for d in deals if d.id == deal_id), None)
-    
+
     if not deal:
-        raise HTTPException(status_code=404, detail=f"Deal {deal_id} not found")
-    
+        raise HTTPException(
+            status_code=404, detail=f"Deal {deal_id} not found")
+
     # Extended detail with all nested data
     detail = deal_to_dict(deal)
-    
+
     # Add DMA sections (old format for backwards compatibility)
     detail["dma_sections"] = [
         {
@@ -584,7 +616,7 @@ def get_deal_detail(deal_id: str):
         }
         for event in deal.timeline_events
     ]
-    
+
     # Add regulatory events
     detail["regulatory_timeline"] = [
         {
@@ -680,14 +712,18 @@ def get_deal_detail(deal_id: str):
 
             # Fetch CIK fields from deals collection to determine target vs acquirer role
             try:
-                _deal_doc = _db["deals"].find_one({"_id": ObjectId(deal_id)}, {"cik": 1, "acquirer_cik": 1})
-                target_cik   = str(_deal_doc.get("cik", "")).lstrip("0") if _deal_doc else ""
-                acquirer_cik = str(_deal_doc.get("acquirer_cik", "")).lstrip("0") if _deal_doc else ""
+                _deal_doc = _db["deals"].find_one({"_id": ObjectId(deal_id)}, {
+                                                  "cik": 1, "acquirer_cik": 1})
+                target_cik = str(_deal_doc.get("cik", "")).lstrip(
+                    "0") if _deal_doc else ""
+                acquirer_cik = str(_deal_doc.get("acquirer_cik", "")).lstrip(
+                    "0") if _deal_doc else ""
             except Exception:
                 target_cik = acquirer_cik = ""
 
             # Fetch all sec_filing_summary records for this deal
-            sec_docs = list(_db["sec_filing_summary"].find({"deal_id": deal_id}))
+            sec_docs = list(
+                _db["sec_filing_summary"].find({"deal_id": deal_id}))
             _client.close()
 
             seen_urls = set()
@@ -700,10 +736,10 @@ def get_deal_detail(deal_id: str):
                 # Determine role by matching CIK
                 doc_cik = str(doc.get("cik_number", "")).lstrip("0")
                 if doc_cik and acquirer_cik and doc_cik == acquirer_cik:
-                    role   = "acquirer"
+                    role = "acquirer"
                     ticker = deal.acquirer_ticker
                 else:
-                    role   = "target"
+                    role = "target"
                     ticker = deal.target_ticker
 
                 filing_date = doc.get("filing_date")
@@ -731,7 +767,8 @@ def get_deal_detail(deal_id: str):
 
             use_static = False  # MongoDB succeeded
         except Exception as e:
-            print(f"[sec_filings] MongoDB fetch failed: {e} — falling back to local files")
+            print(
+                f"[sec_filings] MongoDB fetch failed: {e} — falling back to local files")
             use_static = True
 
     if use_static:
@@ -797,19 +834,22 @@ def refresh_data():
 def refresh_prices():
     """Fetch current prices from Yahoo Finance and update deals"""
     if not YFINANCE_AVAILABLE:
-        raise HTTPException(status_code=501, detail="yfinance library not available. Install with: pip install yfinance")
+        raise HTTPException(
+            status_code=501, detail="yfinance library not available. Install with: pip install yfinance")
 
     deals = get_deals()
     updated_count = 0
     errors = []
 
     # Collect all tickers to fetch
-    tickers_to_fetch = [d.target_ticker for d in deals if d.target_ticker and d.target_ticker != "N/A"]
+    tickers_to_fetch = [
+        d.target_ticker for d in deals if d.target_ticker and d.target_ticker != "N/A"]
 
     # Fetch prices in batch (more efficient and less likely to hit rate limits)
     try:
         tickers_str = " ".join(tickers_to_fetch)
-        data = yf.download(tickers_str, period="1d", progress=False, threads=False)
+        data = yf.download(tickers_str, period="1d",
+                           progress=False, threads=False)
 
         # Update deals with fetched prices
         for deal in deals:
@@ -823,7 +863,8 @@ def refresh_prices():
                 else:
                     price = data['Close'][deal.target_ticker].iloc[-1] if deal.target_ticker in data['Close'].columns else None
 
-                if price and price > 0 and not (isinstance(price, float) and price != price):  # Check for NaN
+                # Check for NaN
+                if price and price > 0 and not (isinstance(price, float) and price != price):
                     deal.current_price = float(price)
                     updated_count += 1
                 else:
@@ -948,7 +989,8 @@ def take_spread_snapshot():
             threads=False,
         )
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"yfinance download failed: {e}")
+        raise HTTPException(
+            status_code=500, detail=f"yfinance download failed: {e}")
 
     if hist_df.empty:
         return {"message": "No price data returned from yfinance", "updated": 0, "backfilled": 0}
@@ -987,7 +1029,8 @@ def take_spread_snapshot():
 
         new_points = []
         for idx, row in hist_df.iterrows():
-            day_str = idx.date().isoformat() if hasattr(idx, 'date') else str(idx)[:10]
+            day_str = idx.date().isoformat() if hasattr(
+                idx, 'date') else str(idx)[:10]
 
             if day_str in existing_dates:
                 continue
@@ -1006,7 +1049,8 @@ def take_spread_snapshot():
                 offer_value = d.get("offer_price", 0)
 
             spread_dollars = offer_value - target_price
-            spread_pct = (spread_dollars / target_price * 100) if target_price else 0
+            spread_pct = (spread_dollars / target_price *
+                          100) if target_price else 0
 
             point = {
                 "date": day_str,
@@ -1065,7 +1109,8 @@ def get_dma_timeline_data(deal_id: str):
     """Return structured deal data merged with tracking layer and all document sources."""
     path = get_timeline_json_path(deal_id)
     if not path:
-        raise HTTPException(status_code=404, detail=f"No DMA timeline data for {deal_id}")
+        raise HTTPException(
+            status_code=404, detail=f"No DMA timeline data for {deal_id}")
     deal = json.loads(path.read_text())
     deal = _merge_tracking(deal, deal_id)
     deal = _enrich_from_sources(deal, deal_id)
@@ -1080,9 +1125,10 @@ def update_tracking(deal_id: str, body: Dict[str, dict] = Body(...)):
     Called by the SEC scraper or by the frontend for manual entry.
     """
     if not get_timeline_json_path(deal_id):
-        raise HTTPException(status_code=404, detail=f"No DMA timeline data for {deal_id}")
+        raise HTTPException(
+            status_code=404, detail=f"No DMA timeline data for {deal_id}")
     tracking = _load_tracking(deal_id)
-    events   = tracking.setdefault("events", {})
+    events = tracking.setdefault("events", {})
     for event_key, event_data in body.items():
         if event_key not in events:
             events[event_key] = {}
@@ -1095,22 +1141,18 @@ def update_tracking(deal_id: str, body: Dict[str, dict] = Body(...)):
 def get_tracking(deal_id: str):
     """Return current tracking state for a deal."""
     if not get_timeline_json_path(deal_id):
-        raise HTTPException(status_code=404, detail=f"No DMA timeline data for {deal_id}")
+        raise HTTPException(
+            status_code=404, detail=f"No DMA timeline data for {deal_id}")
     return _load_tracking(deal_id)
 
 
 # ── Regulatory endpoints ──────────────────────────────────────────────────────
 
-from generate_regulatory import (
-    load_regulatory, save_regulatory, process_edgar_filing, manual_update as _reg_manual_update,
-    seed_from_timeline_json, compute_deadlines as _reg_compute_deadlines,
-    check_time_based_transitions as _reg_check_time_transitions,
-)
-
 
 class EdisonFilingRequest(BaseModel):
     url:      str
-    doc_date: Optional[str] = None  # YYYY-MM-DD; if omitted, auto-detected from EDGAR
+    # YYYY-MM-DD; if omitted, auto-detected from EDGAR
+    doc_date: Optional[str] = None
 
 
 @app.get("/api/deals/{deal_id}/regulatory")
@@ -1169,19 +1211,6 @@ def update_regulatory_approval(deal_id: str, approval_id: str, body: Dict = Body
 
 # ── Regulatory Monitoring Pipeline endpoints ─────────────────────────────────
 
-from regulatory_monitor import (
-    triage_document as _mon_triage,
-    run_monitoring_pipeline as _mon_pipeline,
-    backfill_master_ids as _mon_backfill,
-    resolve_conflict as _mon_resolve_conflict,
-    load_monitor_regulatory as _load_mon_reg,
-    save_monitor_regulatory as _save_mon_reg,
-)
-from approval_master import (
-    get_all_approvals as _master_all,
-    get_approval as _master_get,
-)
-
 
 @app.get("/api/regulatory/master-approvals")
 def get_master_approvals():
@@ -1195,7 +1224,8 @@ def get_master_approval_detail(master_id: str):
     """Return a single approval type definition."""
     ap = _master_get(master_id)
     if not ap:
-        raise HTTPException(status_code=404, detail=f"Master approval '{master_id}' not found")
+        raise HTTPException(
+            status_code=404, detail=f"Master approval '{master_id}' not found")
     return ap
 
 
@@ -1225,13 +1255,14 @@ def _read_file_as_text(fp: Path) -> str:
         ext = data["extracted"]
         # Pull out key regulatory fields as structured context
         for key in ("regulatory_approvals_required", "regulatory_filing_deadlines",
-                     "conditions_to_closing", "specific_termination_triggers",
-                     "outside_date", "outside_date_extension"):
+                    "conditions_to_closing", "specific_termination_triggers",
+                    "outside_date", "outside_date_extension"):
             val = ext.get(key)
             if val:
                 label = key.replace("_", " ").title()
                 if isinstance(val, list):
-                    parts.append(f"{label}:\n" + "\n".join(f"- {v}" for v in val))
+                    parts.append(f"{label}:\n" +
+                                 "\n".join(f"- {v}" for v in val))
                 else:
                     parts.append(f"{label}: {val}")
     # DMA sections (details JSON): concise_sections / fulsome_sections with clauses
@@ -1242,13 +1273,16 @@ def _read_file_as_text(fp: Path) -> str:
                     name = sec.get("name", "") or sec.get("title", "")
                     clauses = sec.get("clauses", [])
                     if clauses:
-                        clause_texts = [c.get("text", "") for c in clauses if isinstance(c, dict) and c.get("text")]
+                        clause_texts = [c.get("text", "") for c in clauses if isinstance(
+                            c, dict) and c.get("text")]
                         if clause_texts:
-                            parts.append(f"## {name}\n" + "\n".join(f"- {t}" for t in clause_texts))
+                            parts.append(
+                                f"## {name}\n" + "\n".join(f"- {t}" for t in clause_texts))
                     else:
                         text = sec.get("text", "") or sec.get("content", "")
                         if name or text:
-                            parts.append(f"## {name}\n{text}" if name else text)
+                            parts.append(
+                                f"## {name}\n{text}" if name else text)
     if parts:
         return "\n\n".join(parts)
     # Fallback: return raw JSON
@@ -1270,7 +1304,8 @@ def triage_for_regulatory(deal_id: str, body: MonitorRequest):
             if not body.doc_type or body.doc_type == "filing":
                 body.doc_type = detected_type
         except Exception as e:
-            raise HTTPException(status_code=400, detail=f"Could not fetch URL: {e}")
+            raise HTTPException(
+                status_code=400, detail=f"Could not fetch URL: {e}")
 
     # Get deal context
     deal_context = _get_deal_context(deal_id)
@@ -1301,7 +1336,8 @@ def monitor_document(deal_id: str, body: MonitorRequest):
         if fp.exists() and fp.is_file():
             text = _read_file_as_text(fp)
         else:
-            raise HTTPException(status_code=400, detail=f"File not found: {body.file_path}")
+            raise HTTPException(
+                status_code=400, detail=f"File not found: {body.file_path}")
 
     if body.doc_url and not text:
         try:
@@ -1310,10 +1346,12 @@ def monitor_document(deal_id: str, body: MonitorRequest):
             if not doc_type or doc_type == "filing":
                 doc_type = detected_type
         except Exception as e:
-            raise HTTPException(status_code=400, detail=f"Could not fetch URL: {e}")
+            raise HTTPException(
+                status_code=400, detail=f"Could not fetch URL: {e}")
 
     if not text:
-        raise HTTPException(status_code=400, detail="No document text provided. Supply doc_url, file_path, or doc_text.")
+        raise HTTPException(
+            status_code=400, detail="No document text provided. Supply doc_url, file_path, or doc_text.")
 
     doc_date = body.doc_date or date.today().isoformat()
     deal_context = _get_deal_context(deal_id)
@@ -1358,9 +1396,11 @@ def resolve_regulatory_conflict(
     """
     resolution = body.get("resolution")
     if resolution not in ("accepted", "dismissed", "older_document"):
-        raise HTTPException(status_code=400, detail="resolution must be 'accepted', 'dismissed', or 'older_document'")
+        raise HTTPException(
+            status_code=400, detail="resolution must be 'accepted', 'dismissed', or 'older_document'")
     try:
-        result = _mon_resolve_conflict(deal_id, approval_id, conflict_id, resolution)
+        result = _mon_resolve_conflict(
+            deal_id, approval_id, conflict_id, resolution)
         return {"status": "ok", **result}
     except KeyError as e:
         raise HTTPException(status_code=404, detail=str(e))
@@ -1402,7 +1442,8 @@ def get_available_documents(deal_id: str):
                     url = r.get("url", "")
                     doc_type = r.get("form_type", "filing")
                     doc_date = r.get("date", "")
-                    already = url in processed_urls or (doc_type, doc_date) in processed_types_dates
+                    already = url in processed_urls or (
+                        doc_type, doc_date) in processed_types_dates
                     available.append({
                         "url": url,
                         "doc_type": doc_type,
@@ -1514,7 +1555,8 @@ def monitor_document_new(deal_id: str, body: MonitorRequest):
         if fp.exists() and fp.is_file():
             text = _read_file_as_text(fp)
         else:
-            raise HTTPException(status_code=400, detail=f"File not found: {body.file_path}")
+            raise HTTPException(
+                status_code=400, detail=f"File not found: {body.file_path}")
 
     if body.doc_url and not text:
         try:
@@ -1523,10 +1565,12 @@ def monitor_document_new(deal_id: str, body: MonitorRequest):
             if not doc_type or doc_type == "filing":
                 doc_type = detected_type
         except Exception as e:
-            raise HTTPException(status_code=400, detail=f"Could not fetch URL: {e}")
+            raise HTTPException(
+                status_code=400, detail=f"Could not fetch URL: {e}")
 
     if not text:
-        raise HTTPException(status_code=400, detail="No document text provided.")
+        raise HTTPException(
+            status_code=400, detail="No document text provided.")
 
     doc_date = body.doc_date or date.today().isoformat()
     deal_context = _get_deal_context(deal_id)
@@ -1577,7 +1621,8 @@ def get_monitor_available_documents(deal_id: str):
                     url = r.get("url", "")
                     dt = r.get("form_type", "filing")
                     dd = r.get("date", "")
-                    already = url in processed_urls or (dt, dd) in processed_types_dates
+                    already = url in processed_urls or (
+                        dt, dd) in processed_types_dates
                     available.append({
                         "url": url,
                         "doc_type": dt,
@@ -1633,7 +1678,8 @@ def get_monitor_available_documents(deal_id: str):
     if pr_path.exists():
         try:
             pr_data = json.loads(pr_path.read_text())
-            pr_date = pr_data.get("filing_date") or (pr_data.get("extracted", {}) or {}).get("announce_date")
+            pr_date = pr_data.get("filing_date") or (
+                pr_data.get("extracted", {}) or {}).get("announce_date")
             already = ("PRESS_RELEASE", pr_date) in processed_types_dates
             available.append({
                 "url": None,
@@ -1725,9 +1771,11 @@ def resolve_monitor_conflict(
     """Resolve a conflict in the monitor pipeline storage."""
     resolution = body.get("resolution")
     if resolution not in ("accepted", "dismissed", "older_document"):
-        raise HTTPException(status_code=400, detail="resolution must be 'accepted', 'dismissed', or 'older_document'")
+        raise HTTPException(
+            status_code=400, detail="resolution must be 'accepted', 'dismissed', or 'older_document'")
     try:
-        result = _mon_resolve_conflict(deal_id, approval_id, conflict_id, resolution, storage="monitor")
+        result = _mon_resolve_conflict(
+            deal_id, approval_id, conflict_id, resolution, storage="monitor")
         return {"status": "ok", **result}
     except KeyError as e:
         raise HTTPException(status_code=404, detail=str(e))
@@ -1756,13 +1804,16 @@ def get_timeline_stock(deal_id: str):
     """Return historical stock data for the deal's tickers, scoped to the deal timeline range."""
     path = get_timeline_json_path(deal_id)
     if not path:
-        raise HTTPException(status_code=404, detail=f"No timeline data for {deal_id}")
+        raise HTTPException(
+            status_code=404, detail=f"No timeline data for {deal_id}")
     deal_data = json.loads(path.read_text())
-    tickers = [t for t in [deal_data.get("target_ticker"), deal_data.get("acquirer_ticker")] if t]
+    tickers = [t for t in [deal_data.get(
+        "target_ticker"), deal_data.get("acquirer_ticker")] if t]
     if not tickers:
         return {"available": False, "tickers": [], "series": {}}
     start = deal_data.get("nda_date") or deal_data.get("signing_date")
-    end   = deal_data.get("outside_date_extended") or deal_data.get("outside_date_initial")
+    end = deal_data.get("outside_date_extended") or deal_data.get(
+        "outside_date_initial")
     try:
         import sys
         _dma_dir = str(Path(__file__).parent.parent.parent / "DMA Timeline")
@@ -2006,7 +2057,8 @@ def get_all_activity():
         # Timeline events as milestones
         for event in deal.timeline_events:
             activity_id_counter += 1
-            event_date = date.fromisoformat(event.event_date) if isinstance(event.event_date, str) else event.event_date
+            event_date = date.fromisoformat(event.event_date) if isinstance(
+                event.event_date, str) else event.event_date
 
             # Determine importance based on event type and status
             if event.status == "pending":
@@ -2033,7 +2085,8 @@ def get_all_activity():
                 summary["last_7_days"] += 1
             if event.status == "pending" and event_date <= seven_days_future:
                 summary["upcoming_events"] += 1
-            summary["by_type"]["milestone"] = summary["by_type"].get("milestone", 0) + 1
+            summary["by_type"]["milestone"] = summary["by_type"].get(
+                "milestone", 0) + 1
 
         # Regulatory events
         for event in deal.regulatory_timeline:
@@ -2068,7 +2121,8 @@ def get_all_activity():
                 summary["last_7_days"] += 1
             if event.status == "pending":
                 summary["upcoming_events"] += 1
-            summary["by_type"]["regulatory"] = summary["by_type"].get("regulatory", 0) + 1
+            summary["by_type"]["regulatory"] = summary["by_type"].get(
+                "regulatory", 0) + 1
 
         # Docket entries
         for entry in deal.docket_entries:
@@ -2100,7 +2154,8 @@ def get_all_activity():
             summary["total_activities"] += 1
             if entry_date >= seven_days_ago:
                 summary["last_7_days"] += 1
-            summary["by_type"]["docket"] = summary["by_type"].get("docket", 0) + 1
+            summary["by_type"]["docket"] = summary["by_type"].get(
+                "docket", 0) + 1
 
         # Add deal announcement as a milestone if not already in timeline
         announce_date = deal.announce_date
@@ -2133,7 +2188,8 @@ def get_all_activity():
         deal_id = activity["deal_id"]
         deal_name = activity["deal_name"]
         if deal_id not in deal_activity_counts:
-            deal_activity_counts[deal_id] = {"deal_id": deal_id, "deal_name": deal_name, "activity_count": 0}
+            deal_activity_counts[deal_id] = {
+                "deal_id": deal_id, "deal_name": deal_name, "activity_count": 0}
         deal_activity_counts[deal_id]["activity_count"] += 1
 
     summary["most_active_deals"] = sorted(
@@ -2154,7 +2210,8 @@ def get_deal_feed(deal_id: str):
     deals = get_deals()
     deal = next((d for d in deals if d.id == deal_id), None)
     if not deal:
-        raise HTTPException(status_code=404, detail=f"Deal {deal_id} not found")
+        raise HTTPException(
+            status_code=404, detail=f"Deal {deal_id} not found")
 
     items = []
     counter = 0
@@ -2209,7 +2266,8 @@ def get_deal_feed(deal_id: str):
                 desc = r.get("description", "")
                 summary_obj = r.get("summary", {})
                 if isinstance(summary_obj, dict):
-                    ai_sum = summary_obj.get("L2_brief") or summary_obj.get("L1_headline", "")
+                    ai_sum = summary_obj.get(
+                        "L2_brief") or summary_obj.get("L1_headline", "")
                     if not filed and summary_obj.get("filing_date"):
                         filed = summary_obj["filing_date"]
                 else:
@@ -2239,7 +2297,8 @@ def get_deal_feed(deal_id: str):
     for entry in deal.docket_entries:
         imp_map = {"high": "high", "medium": "medium", "low": "low"}
         add("docket", entry.received_date.isoformat(), entry.title,
-            entry.entry_summary or "", imp_map.get(entry.relevance_level, "medium"),
+            entry.entry_summary or "", imp_map.get(
+                entry.relevance_level, "medium"),
             source=entry.filer_name or "", status="completed")
 
     # 4. Regulatory status changes
@@ -2251,7 +2310,8 @@ def get_deal_feed(deal_id: str):
                 filed = appr.get("filing_date", "")
                 cleared = appr.get("cleared_date", "")
                 st = appr.get("status", "pending")
-                agency = appr.get("authority_short") or appr.get("authority") or appr.get("agency", "")
+                agency = appr.get("authority_short") or appr.get(
+                    "authority") or appr.get("agency", "")
                 juris = appr.get("jurisdiction", "")
                 label = f"{agency} — {juris}" if agency and juris else agency or juris
                 if cleared:
@@ -2377,7 +2437,8 @@ def get_reddit_analysis():
     """Get Reddit antitrust analysis data (standalone page)"""
     import json
 
-    reddit_data_path = Path(__file__).parent / "data" / "reddit" / "sample_reddit_analysis.json"
+    reddit_data_path = Path(__file__).parent / "data" / \
+        "reddit" / "sample_reddit_analysis.json"
 
     if not reddit_data_path.exists():
         return {
@@ -2406,10 +2467,12 @@ def get_deal_reddit_analysis(deal_id: str):
     """Get Reddit antitrust analysis for a specific deal"""
     import json
 
-    reddit_data_path = Path(__file__).parent / "data" / "reddit" / f"{deal_id}_reddit.json"
+    reddit_data_path = Path(__file__).parent / "data" / \
+        "reddit" / f"{deal_id}_reddit.json"
 
     if not reddit_data_path.exists():
-        raise HTTPException(status_code=404, detail=f"No Reddit analysis found for deal {deal_id}")
+        raise HTTPException(
+            status_code=404, detail=f"No Reddit analysis found for deal {deal_id}")
 
     with open(reddit_data_path) as f:
         data = json.load(f)
@@ -2500,14 +2563,17 @@ class MergerUrlRequest(BaseModel):
     run_covenants: bool = False
     run_termination: bool = False
 
+
 @app.get("/api/deals/{deal_id}/merger-agreement-url")
 def get_merger_agreement_url(deal_id: str):
     """Get stored merger agreement URL for a deal."""
-    config_path = Path(__file__).parent / "data" / "deal_config" / f"{deal_id}.json"
+    config_path = Path(__file__).parent / "data" / \
+        "deal_config" / f"{deal_id}.json"
     if config_path.exists():
         cfg = json.loads(config_path.read_text())
         return {"url": cfg.get("merger_agreement_url")}
     return {"url": None}
+
 
 @app.post("/api/deals/{deal_id}/merger-agreement-url")
 def set_merger_agreement_url(deal_id: str, body: MergerUrlRequest):
@@ -2546,15 +2612,19 @@ def set_merger_agreement_url(deal_id: str, body: MergerUrlRequest):
 def run_covenant_pipeline_endpoint(deal_id: str):
     """Launch the full covenant pipeline from the stored merger agreement URL."""
     from covenant_pipeline import start_covenant_pipeline
-    config_path = Path(__file__).parent / "data" / "deal_config" / f"{deal_id}.json"
+    config_path = Path(__file__).parent / "data" / \
+        "deal_config" / f"{deal_id}.json"
     if not config_path.exists():
-        raise HTTPException(status_code=404, detail="No merger agreement URL stored")
+        raise HTTPException(
+            status_code=404, detail="No merger agreement URL stored")
     cfg = json.loads(config_path.read_text())
     url = cfg.get("merger_agreement_url")
     if not url:
-        raise HTTPException(status_code=404, detail="No merger agreement URL stored")
+        raise HTTPException(
+            status_code=404, detail="No merger agreement URL stored")
     result = start_covenant_pipeline(deal_id, url)
     return result
+
 
 @app.get("/api/deals/{deal_id}/covenants/pipeline-status")
 def get_covenant_pipeline_status(deal_id: str):
@@ -2571,24 +2641,30 @@ def get_deal_mae(deal_id: str):
     from mae_pipeline import get_mae_path
     path = get_mae_path(deal_id)
     if not path:
-        raise HTTPException(status_code=404, detail=f"No MAE dashboard for {deal_id}")
+        raise HTTPException(
+            status_code=404, detail=f"No MAE dashboard for {deal_id}")
     return FileResponse(path, media_type="text/html")
+
 
 @app.post("/api/deals/{deal_id}/mae/run-pipeline")
 def run_mae_pipeline_endpoint(deal_id: str):
     """Launch the full MAE pipeline from the stored merger agreement URL."""
     from mae_pipeline import start_mae_pipeline
-    config_path = Path(__file__).parent / "data" / "deal_config" / f"{deal_id}.json"
+    config_path = Path(__file__).parent / "data" / \
+        "deal_config" / f"{deal_id}.json"
     if not config_path.exists():
-        raise HTTPException(status_code=404, detail="No merger agreement URL stored")
+        raise HTTPException(
+            status_code=404, detail="No merger agreement URL stored")
     cfg = json.loads(config_path.read_text())
     url = cfg.get("merger_agreement_url")
     if not url:
-        raise HTTPException(status_code=404, detail="No merger agreement URL stored")
+        raise HTTPException(
+            status_code=404, detail="No merger agreement URL stored")
     deal = _find_deal(deal_id)
     deal_name = deal.get("target", deal_id) if deal else deal_id
     result = start_mae_pipeline(deal_id, url, deal_name)
     return result
+
 
 @app.get("/api/deals/{deal_id}/mae/pipeline-status")
 def get_mae_pipeline_status(deal_id: str):
@@ -2602,20 +2678,24 @@ def get_mae_pipeline_status(deal_id: str):
 class TerminationRunRequest(BaseModel):
     url: Optional[str] = None
 
+
 @app.post("/api/deals/{deal_id}/termination/run-pipeline")
 def run_termination_pipeline_endpoint(deal_id: str, body: TerminationRunRequest = None):
     """Launch the termination pipeline. Accepts optional URL in body; falls back to stored merger agreement URL."""
     from termination_pipeline import start_termination_pipeline
     url = body.url if body and body.url else None
     if not url:
-        config_path = Path(__file__).parent / "data" / "deal_config" / f"{deal_id}.json"
+        config_path = Path(__file__).parent / "data" / \
+            "deal_config" / f"{deal_id}.json"
         if config_path.exists():
             cfg = json.loads(config_path.read_text())
             url = cfg.get("merger_agreement_url")
     if not url:
-        raise HTTPException(status_code=404, detail="No URL provided and no merger agreement URL stored")
+        raise HTTPException(
+            status_code=404, detail="No URL provided and no merger agreement URL stored")
     result = start_termination_pipeline(deal_id, url)
     return result
+
 
 @app.get("/api/deals/{deal_id}/termination/pipeline-status")
 def get_termination_pipeline_status(deal_id: str):
@@ -2634,7 +2714,8 @@ def get_termination_sources(deal_id: str):
     sources = []
     # Agreement source — check for triggers or fees (one entry per source type)
     agmt_files = sorted(
-        [f for f in input_dir.glob("termination_response_*.json") if "_8k" not in f.name],
+        [f for f in input_dir.glob(
+            "termination_response_*.json") if "_8k" not in f.name],
         key=lambda p: p.stat().st_mtime, reverse=True,
     )
     if agmt_files:
@@ -2684,17 +2765,18 @@ def get_upcoming_events():
                 for ev in data.get("static_events", []):
                     if ev.get("date") and ev["date"] >= today:
                         events.append({**common, "date": ev["date"], "label": ev["label"],
-                                        "type": "static", "ref": ev.get("ref", "")})
+                                       "type": "static", "ref": ev.get("ref", "")})
                 for ev in data.get("deadline_events", []):
                     if ev.get("date") and ev["date"] >= today:
                         events.append({**common, "date": ev["date"], "label": ev["label"],
-                                        "type": "deadline", "ref": ev.get("ref", ""),
-                                        "calculation": ev.get("calculation", "")})
+                                       "type": "deadline", "ref": ev.get("ref", ""),
+                                       "calculation": ev.get("calculation", "")})
             except Exception:
                 continue
 
     # Supplement with deal-level dates for deals without DMA JSONs
-    dma_ids = {f.stem for f in TIMELINES_DIR.glob("*.json")} if TIMELINES_DIR.exists() else set()
+    dma_ids = {f.stem for f in TIMELINES_DIR.glob(
+        "*.json")} if TIMELINES_DIR.exists() else set()
     for deal in get_deals():
         if deal.id in dma_ids:
             continue
@@ -2708,10 +2790,10 @@ def get_upcoming_events():
         }
         if deal.outside_date and deal.outside_date.isoformat() >= today:
             events.append({**common, "date": deal.outside_date.isoformat(),
-                            "label": "Outside Date", "type": "static"})
+                           "label": "Outside Date", "type": "static"})
         if deal.expected_close and deal.expected_close.isoformat() >= today:
             events.append({**common, "date": deal.expected_close.isoformat(),
-                            "label": "Expected Close", "type": "milestone"})
+                           "label": "Expected Close", "type": "milestone"})
 
     events.sort(key=lambda x: x["date"])
     return {"events": events, "as_of": today}
@@ -2722,7 +2804,8 @@ def get_deal_scorecard(deal_id: str):
     """Return the pre-generated scorecard JSON for a deal."""
     path = get_scorecard_path(deal_id)
     if not path:
-        raise HTTPException(status_code=404, detail=f"No scorecard for {deal_id}")
+        raise HTTPException(
+            status_code=404, detail=f"No scorecard for {deal_id}")
     return json.loads(path.read_text())
 
 
@@ -2776,7 +2859,8 @@ def generate_deal_scorecard(deal_id: str, body: ScorecardRequest = None):
 @app.get("/api/ai-summaries/{ticker}")
 def get_ai_summaries(ticker: str):
     """Return L1/L2/L3 AI summaries for all filings of a given ticker."""
-    summaries_root = Path(__file__).parent.parent.parent / "8K Test" / "Output Summaries"
+    summaries_root = Path(__file__).parent.parent.parent / \
+        "8K Test" / "Output Summaries"
 
     # Find folder matching pattern "Company Name (TICKER)"
     target_folder = None
@@ -2858,7 +2942,8 @@ def get_sec_company_filings(company_slug: str):
     """Get all AI-analyzed filings for a specific company."""
     index = get_filing_index(company_slug)
     if not index:
-        raise HTTPException(status_code=404, detail=f"No filings found for {company_slug}")
+        raise HTTPException(
+            status_code=404, detail=f"No filings found for {company_slug}")
     return index
 
 
@@ -2905,7 +2990,6 @@ class SECBatchRequest(BaseModel):
 
 
 # Background batch processing state
-import threading
 _batch_jobs: Dict[str, dict] = {}
 
 
@@ -2918,20 +3002,23 @@ def _run_batch_in_background(job_id: str, urls: list, company_slug: Optional[str
             print(f"[batch {job_id}] Processing {i}/{len(urls)}: {url[-60:]}")
             result = process_filing_url(url, company_slug)
             job["completed"] += 1
-            headline = result.get("L1_headline", "") if isinstance(result, dict) else ""
-            job["results"].append({"url": url, "status": "success", "headline": headline})
+            headline = result.get("L1_headline", "") if isinstance(
+                result, dict) else ""
+            job["results"].append(
+                {"url": url, "status": "success", "headline": headline})
             print(f"[batch {job_id}]   OK: {headline[:60]}")
             if deal_id and isinstance(result, dict):
                 try:
                     from propagation import propagate
                     propagate(deal_id, "sec_filing", url=url,
-                             filing_type=result.get("filing_type", ""),
-                             filing_date=result.get("filing_date", ""))
+                              filing_type=result.get("filing_type", ""),
+                              filing_date=result.get("filing_date", ""))
                 except Exception:
                     pass
         except Exception as e:
             job["completed"] += 1
-            job["results"].append({"url": url, "status": "error", "error": str(e)})
+            job["results"].append(
+                {"url": url, "status": "error", "error": str(e)})
             print(f"[batch {job_id}]   FAILED: {e}")
             traceback.print_exc()
     job["done"] = True
@@ -2946,8 +3033,10 @@ def process_sec_filing(req: SECProcessRequest):
         prop = None
         if req.deal_id:
             from propagation import propagate
-            filing_type = result.get("filing_type", "") if isinstance(result, dict) else ""
-            filing_date = result.get("filing_date", "") if isinstance(result, dict) else ""
+            filing_type = result.get(
+                "filing_type", "") if isinstance(result, dict) else ""
+            filing_date = result.get(
+                "filing_date", "") if isinstance(result, dict) else ""
             prop = propagate(req.deal_id, "sec_filing", url=req.url,
                              filing_type=filing_type, filing_date=filing_date)
         return {"status": "success", "result": result, "propagation": prop}
@@ -2979,7 +3068,7 @@ def process_sec_batch(req: SECBatchRequest):
 def list_batch_jobs():
     """List all batch jobs and their status."""
     return {job_id: {"total": j["total"], "completed": j["completed"], "done": j["done"],
-                      "errors": [r for r in j["results"] if r["status"] == "error"]}
+                     "errors": [r for r in j["results"] if r["status"] == "error"]}
             for job_id, j in _batch_jobs.items()}
 
 
@@ -3023,7 +3112,8 @@ async def upload_proxy_analysis(deal_id: str, request: Request):
     filename = body.get("filename", "")
     content = body.get("content", "")
     if not filename or not content:
-        raise HTTPException(status_code=400, detail="filename and content required")
+        raise HTTPException(
+            status_code=400, detail="filename and content required")
     filepath = save_proxy_txt(deal_id, filename, content)
     parsed = parse_proxy_txt(filepath)
     # Backfill ticker/company from deal data if parser couldn't find them
@@ -3129,7 +3219,8 @@ def _load_tenk_from_mongodb(deal_id: str) -> list:
                         ("regulatory", f.get("regulatory") or {}),
                         ("legal_language", f.get("legal_language") or {}),
                     ]
-                    changed_passes = [(name, p) for name, p in passes if p.get("changed")]
+                    changed_passes = [(name, p)
+                                      for name, p in passes if p.get("changed")]
                     if not changed_passes:
                         continue
                     tags = []
@@ -3147,7 +3238,8 @@ def _load_tenk_from_mongodb(deal_id: str) -> list:
                             prior_text = prior_excerpts[0].get("text", "")
                         if p.get("analysis"):
                             phrase_changes.append({"analysis": p["analysis"]})
-                    severity = f.get("tier") or changed_passes[0][1].get("severity") or "moderate"
+                    severity = f.get("tier") or changed_passes[0][1].get(
+                        "severity") or "moderate"
                     redline_excerpts.append({
                         "number": i + 1,
                         "significance": severity,
@@ -3172,7 +3264,8 @@ def _load_tenk_from_mongodb(deal_id: str) -> list:
                 })
 
                 # Exec summary — sections grouped by pass type
-                pass_labels = [("timing", "TIMING"), ("regulatory", "REGULATORY"), ("legal_language", "LEGAL LANGUAGE")]
+                pass_labels = [("timing", "TIMING"), ("regulatory",
+                                                      "REGULATORY"), ("legal_language", "LEGAL LANGUAGE")]
                 sections = []
                 for pass_key, pass_title in pass_labels:
                     items = []
@@ -3236,7 +3329,8 @@ async def upload_tenk_analysis(deal_id: str, request: Request):
     filename = body.get("filename", "")
     content = body.get("content", "")
     if not filename or not content:
-        raise HTTPException(status_code=400, detail="filename and content required")
+        raise HTTPException(
+            status_code=400, detail="filename and content required")
     filepath = save_tenk_txt(deal_id, filename, content)
     parsed = parse_tenk_txt(filepath)
     prop = propagate(deal_id, "tenk_upload")
@@ -3438,7 +3532,7 @@ def get_document_sources(deal_id: str):
         })
     else:
         sources.append({"source": "press_release", "label": "Press Release", "status": "missing",
-                         "extracted_at": None, "filing_date": None})
+                        "extracted_at": None, "filing_date": None})
 
     # ── DMA Extract ──
     dma_raw = _get_dma(deal_id)
@@ -3451,13 +3545,14 @@ def get_document_sources(deal_id: str):
         })
     else:
         sources.append({"source": "dma_extract", "label": "DMA Summary", "status": "missing",
-                         "extracted_at": None, "filing_date": None})
+                        "extracted_at": None, "filing_date": None})
 
     # ── DMA Sections ──
     # Details can be in backend/data/details/ or project-root/data/details/
     details_path = data_dir / "details" / f"{deal_id}.json"
     if not details_path.exists():
-        details_path = Path(__file__).parent.parent / "data" / "details" / f"{deal_id}.json"
+        details_path = Path(__file__).parent.parent / \
+            "data" / "details" / f"{deal_id}.json"
     if details_path.exists():
         det = json.loads(details_path.read_text())
         c = len(det.get("concise_sections", []))
@@ -3469,7 +3564,7 @@ def get_document_sources(deal_id: str):
         })
     else:
         sources.append({"source": "dma_sections", "label": "DMA Sections", "status": "missing",
-                         "extracted_at": None, "filing_date": None})
+                        "extracted_at": None, "filing_date": None})
 
     # ── Timeline ──
     tl_path = get_timeline_json_path(deal_id)
@@ -3482,7 +3577,7 @@ def get_document_sources(deal_id: str):
         })
     else:
         sources.append({"source": "timeline", "label": "Timeline", "status": "missing",
-                         "extracted_at": None, "filing_date": None})
+                        "extracted_at": None, "filing_date": None})
 
     # ── Regulatory Tracker ──
     reg_path = TIMELINES_DIR / f"{deal_id}_regulatory.json"
@@ -3495,7 +3590,7 @@ def get_document_sources(deal_id: str):
         })
     else:
         sources.append({"source": "regulatory", "label": "Regulatory Tracker", "status": "missing",
-                         "extracted_at": None, "filing_date": None})
+                        "extracted_at": None, "filing_date": None})
 
     # ── Tracking Layer ──
     trk_path = TIMELINES_DIR / f"{deal_id}_tracking.json"
@@ -3510,7 +3605,7 @@ def get_document_sources(deal_id: str):
         })
     else:
         sources.append({"source": "tracking", "label": "Tracking Layer", "status": "missing",
-                         "extracted_at": None, "filing_date": None})
+                        "extracted_at": None, "filing_date": None})
 
     # ── Proxy Analysis ──
     proxy_dir = data_dir / "proxy_analysis" / deal_id
@@ -3555,7 +3650,7 @@ def get_document_sources(deal_id: str):
         })
     else:
         sources.append({"source": "overrides", "label": "Overrides", "status": "missing",
-                         "extracted_at": None, "filing_date": None})
+                        "extracted_at": None, "filing_date": None})
 
     # ── Termination ──
     term_path = data_dir / "termination" / f"{deal_id}.html"
@@ -3566,7 +3661,7 @@ def get_document_sources(deal_id: str):
         })
     else:
         sources.append({"source": "termination", "label": "Termination Analysis", "status": "missing",
-                         "extracted_at": None, "filing_date": None})
+                        "extracted_at": None, "filing_date": None})
 
     # ── SEC Filings (AI-analyzed) ──
     from sec_processor import _find_existing_folder_for_ticker, get_filing_index
@@ -3641,10 +3736,11 @@ def get_document_sources(deal_id: str):
         })
     else:
         sources.append({"source": "reddit", "label": "Reddit Analysis", "status": "missing",
-                         "extracted_at": None, "filing_date": None})
+                        "extracted_at": None, "filing_date": None})
 
     # Discrepancies (unchanged)
-    discrepancies = _compute_cross_source_discrepancies(pr_extracted, dma_extracted, timeline_data)
+    discrepancies = _compute_cross_source_discrepancies(
+        pr_extracted, dma_extracted, timeline_data)
 
     return {"sources": sources, "discrepancies": discrepancies}
 
@@ -3673,13 +3769,16 @@ def get_document_preview(deal_id: str, doc_type: str):
                 lines = []
                 for item in value:
                     # Try common name keys, else show all
-                    name = item.get("authority") or item.get("authority_short") or item.get("name") or item.get("event")
+                    name = item.get("authority") or item.get(
+                        "authority_short") or item.get("name") or item.get("event")
                     if name:
                         extras = [f"{k}: {v}" for k, v in item.items()
                                   if k not in ("authority", "authority_short", "name", "event") and v is not None]
-                        lines.append(f"{name}" + (f" ({', '.join(extras)})" if extras else ""))
+                        lines.append(
+                            f"{name}" + (f" ({', '.join(extras)})" if extras else ""))
                     else:
-                        lines.append("; ".join(f"{k}: {v}" for k, v in item.items() if v is not None))
+                        lines.append(
+                            "; ".join(f"{k}: {v}" for k, v in item.items() if v is not None))
                 return "\n".join(f"• {l}" for l in lines)
             # List of strings
             return "\n".join(f"• {str(item)}" for item in value)
@@ -3713,13 +3812,16 @@ def get_document_preview(deal_id: str, doc_type: str):
     elif doc_type == "dma_sections":
         details_path = data_dir / "details" / f"{deal_id}.json"
         if not details_path.exists():
-            details_path = Path(__file__).parent.parent / "data" / "details" / f"{deal_id}.json"
+            details_path = Path(__file__).parent.parent / \
+                "data" / "details" / f"{deal_id}.json"
         if details_path.exists():
             det = json.loads(details_path.read_text())
             for sec in det.get("concise_sections", []):
-                fields.append({"label": f"Concise: {sec.get('name', '?')}", "value": f"{len(sec.get('clauses', []))} clauses"})
+                fields.append({"label": f"Concise: {sec.get('name', '?')}",
+                              "value": f"{len(sec.get('clauses', []))} clauses"})
             for sec in det.get("fulsome_sections", []):
-                fields.append({"label": f"Fulsome: {sec.get('name', '?')}", "value": f"{len(sec.get('clauses', []))} clauses"})
+                fields.append({"label": f"Fulsome: {sec.get('name', '?')}",
+                              "value": f"{len(sec.get('clauses', []))} clauses"})
 
     elif doc_type == "timeline":
         tl_path = get_timeline_json_path(deal_id)
@@ -3740,7 +3842,8 @@ def get_document_preview(deal_id: str, doc_type: str):
                     detail += f" — filed {a['filed_date']}"
                 if a.get("conditions"):
                     detail += f" — {a['conditions']}"
-                fields.append({"label": a.get("authority_short", "?"), "value": detail})
+                fields.append(
+                    {"label": a.get("authority_short", "?"), "value": detail})
 
     elif doc_type == "tracking":
         path = TIMELINES_DIR / f"{deal_id}_tracking.json"
@@ -3762,7 +3865,8 @@ def get_document_preview(deal_id: str, doc_type: str):
                 fields.append({"label": "Items", "value": str(len(rd))})
 
     elif doc_type == "termination":
-        fields.append({"label": "View", "value": "Full analysis available on the Termination tab"})
+        fields.append(
+            {"label": "View", "value": "Full analysis available on the Termination tab"})
 
     if not fields:
         fields.append({"label": "Status", "value": "Empty or not found"})
@@ -3791,7 +3895,8 @@ def get_document_source_text(deal_id: str, doc_type: str, filename: Optional[str
             if path.exists() and path.suffix == ".txt":
                 text = path.read_text()
     if text is None:
-        raise HTTPException(status_code=404, detail="Source text not available")
+        raise HTTPException(
+            status_code=404, detail="Source text not available")
     return {"source_text": text}
 
 
@@ -3812,7 +3917,8 @@ def delete_document(deal_id: str, doc_type: str, filename: Optional[str] = None)
 
     if doc_type in ("proxy", "tenk"):
         if not filename:
-            raise HTTPException(status_code=400, detail="filename required for proxy/tenk")
+            raise HTTPException(
+                status_code=400, detail="filename required for proxy/tenk")
         subdir = "proxy_analysis" if doc_type == "proxy" else "tenk_analysis"
         target = data_dir / subdir / deal_id / filename
     elif doc_type == "timeline":
@@ -3828,7 +3934,8 @@ def delete_document(deal_id: str, doc_type: str, filename: Optional[str] = None)
         target = path_map.get(doc_type)
 
     if not target or not target.exists():
-        raise HTTPException(status_code=404, detail=f"Document not found: {doc_type}")
+        raise HTTPException(
+            status_code=404, detail=f"Document not found: {doc_type}")
 
     target.unlink()
     _deals_cache = None
@@ -3933,7 +4040,8 @@ def get_sofr():
     cached_at = settings.get("sofr_fetched_at")
     if cached_at and settings.get("sofr_rate") is not None:
         try:
-            age_hours = (datetime.now() - datetime.fromisoformat(cached_at)).total_seconds() / 3600
+            age_hours = (
+                datetime.now() - datetime.fromisoformat(cached_at)).total_seconds() / 3600
             if age_hours < 24:
                 return {
                     "rate": settings["sofr_rate"],
@@ -3945,7 +4053,8 @@ def get_sofr():
     # Fetch fresh
     try:
         url = "https://markets.newyorkfed.org/api/rates/secured/sofr/last/1.json"
-        req = urllib.request.Request(url, headers={"User-Agent": "MergerDashboard/1.0"})
+        req = urllib.request.Request(
+            url, headers={"User-Agent": "MergerDashboard/1.0"})
         with urllib.request.urlopen(req, timeout=10) as resp:
             data = json.loads(resp.read().decode())
         ref = data["refRates"][0]
@@ -4006,8 +4115,10 @@ def backfill_spy_at_announce():
 
     # Fetch SPY history covering all needed dates
     sorted_dates = sorted(dates_needed)
-    start = (date.fromisoformat(sorted_dates[0]) - timedelta(days=5)).isoformat()
-    end = (date.fromisoformat(sorted_dates[-1]) + timedelta(days=5)).isoformat()
+    start = (date.fromisoformat(
+        sorted_dates[0]) - timedelta(days=5)).isoformat()
+    end = (date.fromisoformat(
+        sorted_dates[-1]) + timedelta(days=5)).isoformat()
 
     spy = yf.download("SPY", start=start, end=end, progress=False)
     if spy.empty:
@@ -4071,11 +4182,13 @@ def get_dma_summary(deal_id: str):
         client.close()
 
         if not summary_doc:
-            raise HTTPException(status_code=404, detail="No DMA summary found for this deal")
+            raise HTTPException(
+                status_code=404, detail="No DMA summary found for this deal")
 
         docx_url = summary_doc.get("summary_docx_url")
         if not docx_url:
-            raise HTTPException(status_code=404, detail="No summary DOCX URL for this deal")
+            raise HTTPException(
+                status_code=404, detail="No summary DOCX URL for this deal")
 
         result = parse_dma_summary_docx(docx_url)
         result["summary_status"] = summary_doc.get("summary_status")
@@ -4085,7 +4198,8 @@ def get_dma_summary(deal_id: str):
     except HTTPException:
         raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error parsing DMA summary: {str(e)}")
+        raise HTTPException(
+            status_code=500, detail=f"Error parsing DMA summary: {str(e)}")
 
 
 @app.get("/api/deals/{deal_id}/mae-analysis")
@@ -4112,7 +4226,8 @@ def get_mae_analysis(deal_id: str):
     client.close()
 
     if not doc:
-        raise HTTPException(status_code=404, detail="No MAE analysis found for this deal")
+        raise HTTPException(
+            status_code=404, detail="No MAE analysis found for this deal")
 
     # Build lookup maps for risk and compliance by clause_id
     risk_map: dict = {}
@@ -4163,7 +4278,8 @@ def get_mae_analysis(deal_id: str):
         clauses.append(clause)
 
     # Summary from risk_assessment
-    ra_top = (doc.get("risk_assessment") or {}).get("initial_risk_assessment") or {}
+    ra_top = (doc.get("risk_assessment") or {}).get(
+        "initial_risk_assessment") or {}
     risk_summary = (doc.get("risk_assessment") or {}).get("risk_summary") or {}
 
     return {
