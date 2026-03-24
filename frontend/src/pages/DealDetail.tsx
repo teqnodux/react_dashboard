@@ -996,9 +996,12 @@ export default function DealDetail() {
         body: JSON.stringify({ long_spread_bps: longVal, short_spread_bps: shortVal, borrow_rate_annual: null }),
       });
       setDealOverrides(prev => {
-        const n = { ...prev, long_spread_bps: longVal, short_spread_bps: shortVal };
-        delete n.borrow_rate_annual;
-        return n;
+        return {
+          ...prev,
+          long_spread_bps: longVal,
+          short_spread_bps: shortVal,
+          borrow_rate_annual: undefined,
+        };
       });
       setEditingBorrow(false);
     } catch {}
