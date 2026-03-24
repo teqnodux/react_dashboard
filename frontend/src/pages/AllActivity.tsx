@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import DashboardNav from '../components/DashboardNav';
 import '../styles/Activity.css';
 import '../styles/CrossDeal.css';
+import { API_BASE_URL } from '../config';
 
 interface Activity {
   id: string;
@@ -58,7 +59,7 @@ export default function AllActivity() {
 
   const fetchActivities = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/all-activity');
+      const response = await fetch(`${API_BASE_URL}/api/all-activity`);
       const data = await response.json();
       setActivities(data.activities);
       setSummary(data.summary);

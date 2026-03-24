@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import DashboardNav from '../components/DashboardNav';
 import '../styles/DealDetail.css';
 import '../styles/CrossDeal.css';
+import { API_BASE_URL } from '../config';
 
 interface UpcomingEvent {
   date: string;
@@ -61,7 +62,7 @@ export default function UpcomingEvents() {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/upcoming-events')
+    fetch(`${API_BASE_URL}/api/upcoming-events`)
       .then(r => r.json())
       .then(d => { setEvents(d.events || []); setLoading(false); })
       .catch(() => setLoading(false));

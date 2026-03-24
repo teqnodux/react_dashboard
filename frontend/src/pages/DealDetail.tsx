@@ -16,6 +16,7 @@ import DashboardNav from '../components/DashboardNav';
 import { getFilingTypeColor, renderL3Detail } from '../components/SECFilingRenderers';
 import '../styles/DealDetail.css';
 import '../styles/SECFilings.css';
+import { API_BASE_URL } from '../config';
 
 /** Render proxy detail section content with tables, headers, bullets, bold */
 function renderProxyDetailContent(content: string): React.ReactNode {
@@ -262,7 +263,7 @@ export default function DealDetail() {
   useEffect(() => {
     if (!dealId) return;
 
-    fetch(`http://localhost:8000/api/deals/${dealId}`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}`)
       .then(res => res.json())
       .then(data => {
         setDeal(data);
@@ -288,7 +289,7 @@ export default function DealDetail() {
   // Fetch merger agreement URL
   useEffect(() => {
     if (!dealId) return;
-    fetch(`http://localhost:8000/api/deals/${dealId}/merger-agreement-url`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/merger-agreement-url`)
       .then(res => res.json())
       .then(data => {
         if (data.url) {
@@ -335,7 +336,7 @@ export default function DealDetail() {
   useEffect(() => {
     if (activeTab !== '10k' || !dealId) return;
     setTenkLoading(true);
-    fetch(`http://localhost:8000/api/deals/${dealId}/tenk-analysis`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/tenk-analysis`)
       .then(res => res.json())
       .then(data => {
         const filings = data.filings || [];
@@ -355,7 +356,7 @@ export default function DealDetail() {
   useEffect(() => {
     if (activeTab !== 'proxy' || !dealId || proxyAnalyses.length > 0) return;
     setProxyLoading(true);
-    fetch(`http://localhost:8000/api/deals/${dealId}/proxy-analysis`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/proxy-analysis`)
       .then(res => res.json())
       .then(data => {
         const allFilings = data.filings || [];
@@ -386,13 +387,13 @@ export default function DealDetail() {
   useEffect(() => {
     if (activeTab !== 'covenants' || !dealId || covenantStatus !== 'idle') return;
     setCovenantStatus('checking');
-    fetch(`http://localhost:8000/api/deals/${dealId}/covenants`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/covenants`)
       .then(res => {
         if (res.ok) {
           setCovenantStatus('ready');
         } else if (res.status === 404) {
           setCovenantStatus('generating');
-          return fetch(`http://localhost:8000/api/deals/${dealId}/covenants/generate`, { method: 'POST' })
+          return fetch(`${API_BASE_URL}/api/deals/${dealId}/covenants/generate`, { method: 'POST' })
             .then(genRes => genRes.json())
             .then(genData => {
               if (genData.url) {
@@ -417,13 +418,13 @@ export default function DealDetail() {
   useEffect(() => {
     if (activeTab !== 'termination' || !dealId || terminationStatus !== 'idle') return;
     setTerminationStatus('checking');
-    fetch(`http://localhost:8000/api/deals/${dealId}/termination`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/termination`)
       .then(res => {
         if (res.ok) {
           setTerminationStatus('ready');
         } else {
           // Check if pipeline is already running
-          return fetch(`http://localhost:8000/api/deals/${dealId}/termination/pipeline-status`)
+          return fetch(`${API_BASE_URL}/api/deals/${dealId}/termination/pipeline-status`)
             .then(r => r.json())
             .then(ps => {
               if (ps.status === 'running') {
@@ -447,7 +448,7 @@ export default function DealDetail() {
   useEffect(() => {
     if (terminationPipelineStatus !== 'running' || !dealId) return;
     const interval = setInterval(() => {
-      fetch(`http://localhost:8000/api/deals/${dealId}/termination/pipeline-status`)
+      fetch(`${API_BASE_URL}/api/deals/${dealId}/termination/pipeline-status`)
         .then(res => res.json())
         .then(data => {
           setTerminationPipelineStep(data.step || '');
@@ -466,11 +467,11 @@ export default function DealDetail() {
   // Fetch termination sources + HTML when dashboard is ready
   useEffect(() => {
     if (terminationStatus !== 'ready' || !dealId) return;
-    fetch(`http://localhost:8000/api/deals/${dealId}/termination/sources`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/termination/sources`)
       .then(res => res.json())
       .then(data => setTerminationSources(data.sources || []))
       .catch(() => {});
-    fetch(`http://localhost:8000/api/deals/${dealId}/termination`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/termination`)
       .then(res => res.text())
       .then(html => setTerminationHtml(html))
       .catch(() => {});
@@ -500,7 +501,7 @@ export default function DealDetail() {
   useEffect(() => {
     if (activeTab !== 'mae' || !dealId || maeStatus !== 'idle') return;
     setMaeStatus('checking');
-    fetch(`http://localhost:8000/api/deals/${dealId}/mae`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/mae`)
       .then(res => {
         if (res.ok) {
           setMaeStatus('ready');
@@ -519,7 +520,7 @@ export default function DealDetail() {
   useEffect(() => {
     if (activeTab !== 'mae' || !dealId || maeData) return;
     setMaeDataLoading(true);
-    fetch(`http://localhost:8000/api/deals/${dealId}/mae-analysis`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/mae-analysis`)
       .then(res => { if (!res.ok) throw new Error('No MAE data'); return res.json(); })
       .then(data => { setMaeData(data); setMaeDataLoading(false); })
       .catch(() => setMaeDataLoading(false));
@@ -529,7 +530,7 @@ export default function DealDetail() {
   useEffect(() => {
     if (covenantPipelineStatus !== 'running' || !dealId) return;
     const interval = setInterval(() => {
-      fetch(`http://localhost:8000/api/deals/${dealId}/covenants/pipeline-status`)
+      fetch(`${API_BASE_URL}/api/deals/${dealId}/covenants/pipeline-status`)
         .then(res => res.json())
         .then(data => {
           setCovenantPipelineStep(data.step || '');
@@ -549,7 +550,7 @@ export default function DealDetail() {
   useEffect(() => {
     if (maeStatus !== 'running' || !dealId) return;
     const interval = setInterval(() => {
-      fetch(`http://localhost:8000/api/deals/${dealId}/mae/pipeline-status`)
+      fetch(`${API_BASE_URL}/api/deals/${dealId}/mae/pipeline-status`)
         .then(res => res.json())
         .then(data => {
           setMaePipelineStep(data.step || '');
@@ -568,7 +569,7 @@ export default function DealDetail() {
   useEffect(() => {
     if (activeTab !== 'documents' || !dealId) return;
     setAllDocsLoading(true);
-    fetch(`http://localhost:8000/api/deals/${dealId}/document-sources`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/document-sources`)
       .then(res => res.json())
       .then(data => { setAllDocSources(data); setAllDocsLoading(false); })
       .catch(() => setAllDocsLoading(false));
@@ -578,13 +579,13 @@ export default function DealDetail() {
   useEffect(() => {
     if (activeTab !== 'timeline' || !dealId || dmaStatus !== 'idle') return;
     setDmaStatus('checking');
-    fetch(`http://localhost:8000/api/deals/${dealId}/dma-timeline-data`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/dma-timeline-data`)
       .then(res => {
         if (res.ok) {
           setDmaStatus('ready');
         } else if (res.status === 404) {
           setDmaStatus('generating');
-          return fetch(`http://localhost:8000/api/deals/${dealId}/timeline/generate`, { method: 'POST' })
+          return fetch(`${API_BASE_URL}/api/deals/${dealId}/timeline/generate`, { method: 'POST' })
             .then(genRes => genRes.json())
             .then(genData => {
               if (genData.url) {
@@ -609,7 +610,7 @@ export default function DealDetail() {
   useEffect(() => {
     if (activeTab !== 'dma' || !dealId || dmaSummary) return;
     setDmaSummaryLoading(true);
-    fetch(`http://localhost:8000/api/deals/${dealId}/dma-summary`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/dma-summary`)
       .then(res => { if (!res.ok) throw new Error('No DMA summary'); return res.json(); })
       .then(data => {
         setDmaSummary(data);
@@ -626,7 +627,7 @@ export default function DealDetail() {
   // Document sources: fetch when timeline tab opens
   const fetchDocSources = () => {
     if (!dealId) return;
-    fetch(`http://localhost:8000/api/deals/${dealId}/document-sources`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/document-sources`)
       .then(res => res.json())
       .then(data => setDocSources(data))
       .catch(() => {});
@@ -639,7 +640,7 @@ export default function DealDetail() {
   // Load per-deal overrides
   useEffect(() => {
     if (!dealId) return;
-    fetch(`http://localhost:8000/api/deals/${dealId}/overrides`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/overrides`)
       .then(res => res.json())
       .then(data => setDealOverrides(data))
       .catch(() => {});
@@ -647,11 +648,11 @@ export default function DealDetail() {
 
   // Fetch SOFR rate and global settings
   useEffect(() => {
-    fetch('http://localhost:8000/api/sofr')
+    fetch(`${API_BASE_URL}/api/sofr`)
       .then(res => res.json())
       .then(data => { setSofrRate(data.rate); setSofrDate(data.effective_date || ''); })
       .catch(() => {});
-    fetch('http://localhost:8000/api/settings')
+    fetch(`${API_BASE_URL}/api/settings`)
       .then(res => res.json())
       .then(data => setGlobalSettings({ long_spread_bps: data.long_spread_bps ?? 50, short_spread_bps: data.short_spread_bps ?? 20 }))
       .catch(() => {});
@@ -663,7 +664,7 @@ export default function DealDetail() {
     if (!dealId) return;
     if (activeTab !== 'financial' && activeTab !== 'dma') return;
     if (!prData && activeTab === 'financial') {
-      fetch(`http://localhost:8000/api/deals/${dealId}/press-release`)
+      fetch(`${API_BASE_URL}/api/deals/${dealId}/press-release`)
         .then(res => res.json())
         .then(data => {
           if (data.status === 'ok' && data.data) setPrData(data.data.extracted);
@@ -671,7 +672,7 @@ export default function DealDetail() {
         .catch(() => {});
     }
     if (!dmaExtract) {
-      fetch(`http://localhost:8000/api/deals/${dealId}/dma-extract`)
+      fetch(`${API_BASE_URL}/api/deals/${dealId}/dma-extract`)
         .then(res => res.json())
         .then(data => {
           if (data.status === 'ok' && data.data) {
@@ -684,7 +685,7 @@ export default function DealDetail() {
     }
     // Always refresh regulatory data when switching to financial tab
     if (activeTab === 'financial') {
-      fetch(`http://localhost:8000/api/deals/${dealId}/regulatory`)
+      fetch(`${API_BASE_URL}/api/deals/${dealId}/regulatory`)
         .then(res => { if (!res.ok) throw new Error(); return res.json(); })
         .then(data => { if (data && data.approvals) setRegData(data); })
         .catch(() => {});
@@ -700,7 +701,7 @@ export default function DealDetail() {
   // Fetch unaffected price from yfinance when we have undisturbed date from PR
   useEffect(() => {
     if (!prData?.undisturbed_date || !deal?.target_ticker || unaffectedYf) return;
-    fetch(`http://localhost:8000/api/stock/historical-price?ticker=${deal.target_ticker}&date_str=${prData.undisturbed_date}`)
+    fetch(`${API_BASE_URL}/api/stock/historical-price?ticker=${deal.target_ticker}&date_str=${prData.undisturbed_date}`)
       .then(res => res.json())
       .then(data => {
         if (data.price) setUnaffectedYf({ price: data.price, date: data.date });
@@ -767,7 +768,7 @@ export default function DealDetail() {
       if (secBatchMode) {
         const urls = secBatchUrls.split('\n').map(u => u.trim()).filter(Boolean);
         if (urls.length === 0) { setSecProcessing(false); return; }
-        const res = await fetch('http://localhost:8000/api/sec-ai/process-batch', {
+        const res = await fetch(`${API_BASE_URL}/api/sec-ai/process-batch`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ urls, company_slug: null, deal_id: dealId })
@@ -780,7 +781,7 @@ export default function DealDetail() {
         // Poll for progress
         const poll = setInterval(async () => {
           try {
-            const statusRes = await fetch(`http://localhost:8000/api/sec-ai/batch-status/${jobId}`);
+            const statusRes = await fetch(`${API_BASE_URL}/api/sec-ai/batch-status/${jobId}`);
             if (!statusRes.ok) { clearInterval(poll); return; }
             const status = await statusRes.json();
             const errors = status.results.filter((r: any) => r.status === 'error').length;
@@ -792,7 +793,7 @@ export default function DealDetail() {
               setTimeout(() => setSecProcessSuccess(''), 8000);
               setSecProcessing(false);
               // Refresh deal data
-              const dealRes = await fetch(`http://localhost:8000/api/deals/${dealId}`);
+              const dealRes = await fetch(`${API_BASE_URL}/api/deals/${dealId}`);
               if (dealRes.ok) setDeal(await dealRes.json());
               refreshDependentData();
             }
@@ -800,7 +801,7 @@ export default function DealDetail() {
         }, 3000);
       } else {
         if (!secProcessUrl.trim()) { setSecProcessing(false); return; }
-        const res = await fetch('http://localhost:8000/api/sec-ai/process', {
+        const res = await fetch(`${API_BASE_URL}/api/sec-ai/process`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ url: secProcessUrl, deal_id: dealId })
@@ -813,7 +814,7 @@ export default function DealDetail() {
         setSecProcessUrl('');
         setTimeout(() => setSecProcessSuccess(''), 5000);
         // Re-fetch deal to pick up the new AI filing
-        const dealRes = await fetch(`http://localhost:8000/api/deals/${dealId}`);
+        const dealRes = await fetch(`${API_BASE_URL}/api/deals/${dealId}`);
         if (dealRes.ok) setDeal(await dealRes.json());
         refreshDependentData();
         setSecProcessing(false);
@@ -828,7 +829,7 @@ export default function DealDetail() {
   // Unified refresh: call after any document processing to update dependent tabs
   const refreshDependentData = () => {
     setTimelineRefreshKey(k => k + 1);
-    fetch(`http://localhost:8000/api/deals/${dealId}/regulatory`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/regulatory`)
       .then(res => { if (!res.ok) throw new Error(); return res.json(); })
       .then(data => { if (data?.approvals) setRegData(data); })
       .catch(() => {});
@@ -838,20 +839,20 @@ export default function DealDetail() {
     if (!dealId || syncing) return;
     setSyncing(true);
     try {
-      await fetch(`http://localhost:8000/api/deals/${dealId}/sync`, { method: 'POST' });
+      await fetch(`${API_BASE_URL}/api/deals/${dealId}/sync`, { method: 'POST' });
       // Re-fetch the deal itself (picks up new concise/fulsome sections)
-      const dealRes = await fetch(`http://localhost:8000/api/deals/${dealId}`);
+      const dealRes = await fetch(`${API_BASE_URL}/api/deals/${dealId}`);
       if (dealRes.ok) setDeal(await dealRes.json());
       // Refresh all data sources
       setPrData(null);
       setDmaExtract(null);
       refreshDependentData();
       // Re-fetch PR and DMA extract
-      fetch(`http://localhost:8000/api/deals/${dealId}/press-release`)
+      fetch(`${API_BASE_URL}/api/deals/${dealId}/press-release`)
         .then(res => res.json())
         .then(data => { if (data.status === 'ok' && data.data) setPrData(data.data.extracted); })
         .catch(() => {});
-      fetch(`http://localhost:8000/api/deals/${dealId}/dma-extract`)
+      fetch(`${API_BASE_URL}/api/deals/${dealId}/dma-extract`)
         .then(res => res.json())
         .then(data => {
           if (data.status === 'ok' && data.data) {
@@ -867,7 +868,7 @@ export default function DealDetail() {
 
   const refreshDocSources = () => {
     if (!dealId) return;
-    fetch(`http://localhost:8000/api/deals/${dealId}/document-sources`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/document-sources`)
       .then(res => res.json())
       .then(data => setAllDocSources(data))
       .catch(() => {});
@@ -877,8 +878,8 @@ export default function DealDetail() {
     setDocSourceLoading(true);
     setDocViewSource({ type: docType, filename });
     const url = filename
-      ? `http://localhost:8000/api/deals/${dealId}/documents/${docType}/source-text?filename=${encodeURIComponent(filename)}`
-      : `http://localhost:8000/api/deals/${dealId}/documents/${docType}/source-text`;
+      ? `${API_BASE_URL}/api/deals/${dealId}/documents/${docType}/source-text?filename=${encodeURIComponent(filename)}`
+      : `${API_BASE_URL}/api/deals/${dealId}/documents/${docType}/source-text`;
     fetch(url)
       .then(res => res.json())
       .then(data => { setDocSourceText(data.source_text || null); setDocSourceLoading(false); })
@@ -888,8 +889,8 @@ export default function DealDetail() {
   const handleDeleteDocument = async (docType: string, filename?: string) => {
     if (!dealId || !confirm(`Delete ${docType}${filename ? ` (${filename})` : ''}?`)) return;
     const url = filename
-      ? `http://localhost:8000/api/deals/${dealId}/documents/${docType}?filename=${encodeURIComponent(filename)}`
-      : `http://localhost:8000/api/deals/${dealId}/documents/${docType}`;
+      ? `${API_BASE_URL}/api/deals/${dealId}/documents/${docType}?filename=${encodeURIComponent(filename)}`
+      : `${API_BASE_URL}/api/deals/${dealId}/documents/${docType}`;
     try {
       const res = await fetch(url, { method: 'DELETE' });
       if (!res.ok) throw new Error(await res.text());
@@ -906,7 +907,7 @@ export default function DealDetail() {
     } else {
       next.add(source);
       if (!docPreviews[source]) {
-        fetch(`http://localhost:8000/api/deals/${dealId}/documents/${source}/preview`)
+        fetch(`${API_BASE_URL}/api/deals/${dealId}/documents/${source}/preview`)
           .then(res => res.json())
           .then(data => setDocPreviews(prev => ({ ...prev, [source]: data })))
           .catch(() => setDocPreviews(prev => ({ ...prev, [source]: { fields: [{ label: 'Error', value: 'Could not load preview' }] } })));
@@ -921,7 +922,7 @@ export default function DealDetail() {
     try {
       const ts = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
       const filename = `proxy_summary_${ts}.txt`;
-      const res = await fetch(`http://localhost:8000/api/deals/${dealId}/proxy-analysis/upload`, {
+      const res = await fetch(`${API_BASE_URL}/api/deals/${dealId}/proxy-analysis/upload`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ filename, content: proxyUploadText }),
@@ -930,7 +931,7 @@ export default function DealDetail() {
       setProxyUploadText('');
       setProxyUploadOpen(false);
       // Re-fetch proxy list
-      const listRes = await fetch(`http://localhost:8000/api/deals/${dealId}/proxy-analysis`);
+      const listRes = await fetch(`${API_BASE_URL}/api/deals/${dealId}/proxy-analysis`);
       const listData = await listRes.json();
       const allFilings = listData.filings || [];
       const filings = deal ? allFilings.filter((f: any) => !f.ticker || f.ticker === deal.target_ticker) : allFilings;
@@ -949,7 +950,7 @@ export default function DealDetail() {
     try {
       const ts = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
       const filename = `tenk_summary_${ts}.txt`;
-      const res = await fetch(`http://localhost:8000/api/deals/${dealId}/tenk-analysis/upload`, {
+      const res = await fetch(`${API_BASE_URL}/api/deals/${dealId}/tenk-analysis/upload`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ filename, content: tenkUploadText }),
@@ -958,7 +959,7 @@ export default function DealDetail() {
       setTenkUploadText('');
       setTenkUploadOpen(false);
       // Re-fetch tenk list
-      const listRes = await fetch(`http://localhost:8000/api/deals/${dealId}/tenk-analysis`);
+      const listRes = await fetch(`${API_BASE_URL}/api/deals/${dealId}/tenk-analysis`);
       const listData = await listRes.json();
       setTenkAnalyses(listData.filings || []);
     } catch (e: any) {
@@ -974,7 +975,7 @@ export default function DealDetail() {
     if (isNaN(val) || !dealId) return;
     const rate = val / 100;
     try {
-      await fetch(`http://localhost:8000/api/deals/${dealId}/overrides`, {
+      await fetch(`${API_BASE_URL}/api/deals/${dealId}/overrides`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ borrow_rate_annual: rate }),
@@ -989,7 +990,7 @@ export default function DealDetail() {
     const shortVal = parseInt(shortSpreadInput);
     if (isNaN(longVal) || isNaN(shortVal) || !dealId) return;
     try {
-      await fetch(`http://localhost:8000/api/deals/${dealId}/overrides`, {
+      await fetch(`${API_BASE_URL}/api/deals/${dealId}/overrides`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ long_spread_bps: longVal, short_spread_bps: shortVal, borrow_rate_annual: null }),
@@ -1006,7 +1007,7 @@ export default function DealDetail() {
   const saveExpectedClose = async () => {
     if (!closeInput || !dealId) return;
     try {
-      await fetch(`http://localhost:8000/api/deals/${dealId}/overrides`, {
+      await fetch(`${API_BASE_URL}/api/deals/${dealId}/overrides`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ expected_close_date: closeInput }),
@@ -1019,7 +1020,7 @@ export default function DealDetail() {
   const resetExpectedClose = async () => {
     if (!dealId) return;
     try {
-      await fetch(`http://localhost:8000/api/deals/${dealId}/overrides`, {
+      await fetch(`${API_BASE_URL}/api/deals/${dealId}/overrides`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ expected_close_date: null }),
@@ -1035,7 +1036,7 @@ export default function DealDetail() {
     setDmaExError('');
     setDmaExSuccess('');
     try {
-      const res = await fetch(`http://localhost:8000/api/deals/${dealId}/dma-extract`, {
+      const res = await fetch(`${API_BASE_URL}/api/deals/${dealId}/dma-extract`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: dmaExText }),
@@ -1063,7 +1064,7 @@ export default function DealDetail() {
     setTimelineError('');
     setTimelineSuccess('');
     try {
-      const res = await fetch(`http://localhost:8000/api/deals/${dealId}/timeline/generate-from-text`, {
+      const res = await fetch(`${API_BASE_URL}/api/deals/${dealId}/timeline/generate-from-text`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: timelineText }),
@@ -1091,12 +1092,12 @@ export default function DealDetail() {
       if (uploadDocType === 'dma_summary') {
         // Run both timeline generation AND financial extraction from the same text
         const [tlRes, dmaRes] = await Promise.all([
-          fetch(`http://localhost:8000/api/deals/${dealId}/timeline/generate-from-text`, {
+          fetch(`${API_BASE_URL}/api/deals/${dealId}/timeline/generate-from-text`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text: uploadText }),
           }),
-          fetch(`http://localhost:8000/api/deals/${dealId}/dma-extract`, {
+          fetch(`${API_BASE_URL}/api/deals/${dealId}/dma-extract`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text: uploadText }),
@@ -1111,7 +1112,7 @@ export default function DealDetail() {
         setTimelineRefreshKey(k => k + 1); // trigger DMATimeline re-fetch
         setUploadSuccess('DMA summary processed — timeline + financials extracted');
       } else if (uploadDocType === 'press_release') {
-        const res = await fetch(`http://localhost:8000/api/deals/${dealId}/press-release`, {
+        const res = await fetch(`${API_BASE_URL}/api/deals/${dealId}/press-release`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ text: uploadText }),
@@ -1123,7 +1124,7 @@ export default function DealDetail() {
       } else if (uploadDocType === 'proxy') {
         const ts = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
         const filename = `proxy_summary_${ts}.txt`;
-        const res = await fetch(`http://localhost:8000/api/deals/${dealId}/proxy-analysis/upload`, {
+        const res = await fetch(`${API_BASE_URL}/api/deals/${dealId}/proxy-analysis/upload`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ filename, content: uploadText }),
@@ -1133,7 +1134,7 @@ export default function DealDetail() {
       } else if (uploadDocType === 'tenk') {
         const ts = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
         const filename = `tenk_summary_${ts}.txt`;
-        const res = await fetch(`http://localhost:8000/api/deals/${dealId}/tenk-analysis/upload`, {
+        const res = await fetch(`${API_BASE_URL}/api/deals/${dealId}/tenk-analysis/upload`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ filename, content: uploadText }),
@@ -1159,7 +1160,7 @@ export default function DealDetail() {
     setPrError('');
     setPrSuccess('');
     try {
-      const res = await fetch(`http://localhost:8000/api/deals/${dealId}/press-release`, {
+      const res = await fetch(`${API_BASE_URL}/api/deals/${dealId}/press-release`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: prText }),
@@ -1251,7 +1252,7 @@ export default function DealDetail() {
     setQuotesError(null);
 
     try {
-      const response = await fetch(`http://localhost:8000/api/deals/${dealId}/quotes`);
+      const response = await fetch(`${API_BASE_URL}/api/deals/${dealId}/quotes`);
       if (!response.ok) {
         throw new Error('Failed to fetch quotes');
       }
@@ -1408,7 +1409,7 @@ export default function DealDetail() {
             className="nav-refresh-btn"
             onClick={() => {
               setDmaStatus('generating');
-              fetch(`http://localhost:8000/api/deals/${dealId}/timeline/generate`, { method: 'POST' })
+              fetch(`${API_BASE_URL}/api/deals/${dealId}/timeline/generate`, { method: 'POST' })
                 .then(r => r.json())
                 .then(d => setDmaStatus(d.url ? 'ready' : 'error'))
                 .catch(() => setDmaStatus('error'));
@@ -2706,11 +2707,11 @@ export default function DealDetail() {
                     className="tearsheet-action-btn"
                     onClick={async () => {
                       try {
-                        const res = await fetch('http://localhost:8000/api/spread-snapshot', { method: 'POST' });
+                        const res = await fetch(`${API_BASE_URL}/api/spread-snapshot`, { method: 'POST' });
                         const result = await res.json();
                         alert(`${result.message}`);
                         // Reload deal to get updated spread history
-                        const dealRes = await fetch(`http://localhost:8000/api/deals/${dealId}`);
+                        const dealRes = await fetch(`${API_BASE_URL}/api/deals/${dealId}`);
                         const dealData = await dealRes.json();
                         setDeal(dealData);
                       } catch (err) {
@@ -3121,7 +3122,7 @@ export default function DealDetail() {
               refreshKey={timelineRefreshKey}
               onGenerateClick={() => {
                 setDmaStatus('generating');
-                fetch(`http://localhost:8000/api/deals/${dealId}/timeline/generate`, { method: 'POST' })
+                fetch(`${API_BASE_URL}/api/deals/${dealId}/timeline/generate`, { method: 'POST' })
                   .then(r => r.json())
                   .then(() => { setDmaStatus('ready'); refreshDependentData(); })
                   .catch(() => { setDmaStatus('error'); });
@@ -3723,7 +3724,7 @@ export default function DealDetail() {
                         <button
                           className="pipeline-run-btn"
                           onClick={() => {
-                            fetch(`http://localhost:8000/api/deals/${dealId}/termination/run-pipeline`, {
+                            fetch(`${API_BASE_URL}/api/deals/${dealId}/termination/run-pipeline`, {
                               method: 'POST',
                               headers: { 'Content-Type': 'application/json' },
                               body: JSON.stringify({ url: selectedSECFiling.url }),
@@ -4110,7 +4111,7 @@ export default function DealDetail() {
                 {maeStatus === 'ready' && (
                   <iframe
                     key={maeStatus}
-                    src={`http://localhost:8000/api/deals/${dealId}/mae`}
+                    src={`${API_BASE_URL}/api/deals/${dealId}/mae`}
                     className="dma-timeline-iframe"
                     title="MAE Analysis"
                   />
@@ -4135,7 +4136,7 @@ export default function DealDetail() {
                             setMaeStatus('running');
                             setMaePipelineStep('starting');
                             setMaeError(null);
-                            fetch(`http://localhost:8000/api/deals/${dealId}/mae/run-pipeline`, { method: 'POST' })
+                            fetch(`${API_BASE_URL}/api/deals/${dealId}/mae/run-pipeline`, { method: 'POST' })
                               .then(res => res.json())
                               .then(data => {
                                 if (data.status === 'already_running') {
@@ -4177,7 +4178,7 @@ export default function DealDetail() {
             {covenantStatus === 'ready' && (
               <iframe
                 key={covenantStatus}
-                src={`http://localhost:8000/api/deals/${dealId}/covenants`}
+                src={`${API_BASE_URL}/api/deals/${dealId}/covenants`}
                 className="dma-timeline-iframe"
                 title="Covenant Analysis"
               />
@@ -4201,7 +4202,7 @@ export default function DealDetail() {
                       onClick={() => {
                         setCovenantPipelineStatus('running');
                         setCovenantPipelineStep('starting');
-                        fetch(`http://localhost:8000/api/deals/${dealId}/covenants/run-pipeline`, { method: 'POST' })
+                        fetch(`${API_BASE_URL}/api/deals/${dealId}/covenants/run-pipeline`, { method: 'POST' })
                           .then(res => res.json())
                           .then(data => {
                             if (data.status === 'already_running') {
@@ -4313,7 +4314,7 @@ export default function DealDetail() {
                       setTerminationPipelineStatus('running');
                       setTerminationPipelineStep('starting');
                       setTerminationStatus('error');
-                      fetch(`http://localhost:8000/api/deals/${dealId}/termination/run-pipeline`, { method: 'POST' })
+                      fetch(`${API_BASE_URL}/api/deals/${dealId}/termination/run-pipeline`, { method: 'POST' })
                         .then(res => res.json());
                     }}
                   >Re-run from Agreement</button>
@@ -4327,7 +4328,7 @@ export default function DealDetail() {
                         setTerminationPipelineStatus('running');
                         setTerminationPipelineStep('starting');
                         setTerminationStatus('error');
-                        fetch(`http://localhost:8000/api/deals/${dealId}/termination/run-pipeline`, {
+                        fetch(`${API_BASE_URL}/api/deals/${dealId}/termination/run-pipeline`, {
                           method: 'POST',
                           headers: { 'Content-Type': 'application/json' },
                           body: JSON.stringify({ url }),
@@ -4383,7 +4384,7 @@ export default function DealDetail() {
                         setTerminationPipelineStatus('running');
                         setTerminationPipelineStep('starting');
                         setTerminationError(null);
-                        fetch(`http://localhost:8000/api/deals/${dealId}/termination/run-pipeline`, { method: 'POST' })
+                        fetch(`${API_BASE_URL}/api/deals/${dealId}/termination/run-pipeline`, { method: 'POST' })
                           .then(res => res.json())
                           .then(data => {
                             if (data.status === 'already_running') {
@@ -4414,7 +4415,7 @@ export default function DealDetail() {
                         setTerminationPipelineStatus('running');
                         setTerminationPipelineStep('starting');
                         setTerminationError(null);
-                        fetch(`http://localhost:8000/api/deals/${dealId}/termination/run-pipeline`, {
+                        fetch(`${API_BASE_URL}/api/deals/${dealId}/termination/run-pipeline`, {
                           method: 'POST',
                           headers: { 'Content-Type': 'application/json' },
                           body: JSON.stringify({ url }),
@@ -4466,17 +4467,17 @@ export default function DealDetail() {
                     <button className="merger-url-btn" disabled={!runMaeOnSave && !runCovenantsOnSave && !runTerminationOnSave} onClick={() => {
                       const started: string[] = [];
                       if (runMaeOnSave) {
-                        fetch(`http://localhost:8000/api/deals/${dealId}/mae/run-pipeline`, { method: 'POST' });
+                        fetch(`${API_BASE_URL}/api/deals/${dealId}/mae/run-pipeline`, { method: 'POST' });
                         setMaeStatus('running'); setMaePipelineStep('starting');
                         started.push('MAE');
                       }
                       if (runCovenantsOnSave) {
-                        fetch(`http://localhost:8000/api/deals/${dealId}/covenants/run-pipeline`, { method: 'POST' });
+                        fetch(`${API_BASE_URL}/api/deals/${dealId}/covenants/run-pipeline`, { method: 'POST' });
                         setCovenantPipelineStatus('running'); setCovenantPipelineStep('starting'); setCovenantStatus('error');
                         started.push('Covenants');
                       }
                       if (runTerminationOnSave) {
-                        fetch(`http://localhost:8000/api/deals/${dealId}/termination/run-pipeline`, { method: 'POST' });
+                        fetch(`${API_BASE_URL}/api/deals/${dealId}/termination/run-pipeline`, { method: 'POST' });
                         setTerminationPipelineStatus('running'); setTerminationPipelineStep('starting'); setTerminationStatus('error');
                         started.push('Termination');
                       }
@@ -4499,7 +4500,7 @@ export default function DealDetail() {
                       className="merger-url-btn"
                       disabled={!mergerUrlInput.trim()}
                       onClick={() => {
-                        fetch(`http://localhost:8000/api/deals/${dealId}/merger-agreement-url`, {
+                        fetch(`${API_BASE_URL}/api/deals/${dealId}/merger-agreement-url`, {
                           method: 'POST',
                           headers: { 'Content-Type': 'application/json' },
                           body: JSON.stringify({

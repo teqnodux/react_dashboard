@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import DashboardNav from '../components/DashboardNav';
 import '../styles/CrossDeal.css';
+import { API_BASE_URL } from '../config';
 
 interface RegulatoryEvent {
   agency: string;
@@ -44,7 +45,7 @@ export default function AllRegulatory() {
 
   const fetchRegulatory = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/all-regulatory');
+      const response = await fetch(`${API_BASE_URL}/api/all-regulatory`);
       const data = await response.json();
       setEvents(data.events);
       setSummary(data.summary);

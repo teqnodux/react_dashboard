@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { API_BASE_URL } from '../config';
 
 interface Signal {
   id: string;
@@ -210,7 +211,7 @@ function ScorecardSourcesForm({
   const [maText, setMaText] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/deals/${dealId}/scorecard/sources`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/scorecard/sources`)
       .then(res => res.json())
       .then(data => {
         setSources(data.sources || []);
@@ -226,7 +227,7 @@ function ScorecardSourcesForm({
     setGenerating(true);
     setError(null);
     try {
-      const res = await fetch(`http://localhost:8000/api/deals/${dealId}/scorecard/generate`, {
+      const res = await fetch(`${API_BASE_URL}/api/deals/${dealId}/scorecard/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -252,7 +253,7 @@ function ScorecardSourcesForm({
     setGenerating(true);
     setError(null);
     try {
-      const res = await fetch(`http://localhost:8000/api/deals/${dealId}/scorecard/generate`, {
+      const res = await fetch(`${API_BASE_URL}/api/deals/${dealId}/scorecard/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -430,7 +431,7 @@ export default function ScorecardTab({ dealId }: { dealId: string }) {
 
   function loadScorecard() {
     setStatus('checking');
-    fetch(`http://localhost:8000/api/deals/${dealId}/scorecard`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/scorecard`)
       .then(res => {
         if (res.ok) return res.json();
         if (res.status === 404) { setStatus('input'); return null; }

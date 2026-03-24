@@ -7,6 +7,7 @@
 
 import { useEffect, useState } from 'react';
 import './DocumentSelector.css';
+import { API_BASE_URL } from '../config';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -54,7 +55,7 @@ export default function DocumentSelector({ dealId, onProcessed, endpointPrefix =
 
   const loadDocs = () => {
     setLoading(true);
-    fetch(`http://localhost:8000/api/deals/${dealId}/${endpointPrefix}/available-documents`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/${endpointPrefix}/available-documents`)
       .then(async r => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         const data = await r.json();
@@ -100,7 +101,7 @@ export default function DocumentSelector({ dealId, onProcessed, endpointPrefix =
     for (const idx of sortedIdxs) {
       const doc = docs[idx];
       try {
-        const resp = await fetch(`http://localhost:8000/api/deals/${dealId}/${endpointPrefix}/monitor`, {
+        const resp = await fetch(`${API_BASE_URL}/api/deals/${dealId}/${endpointPrefix}/monitor`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -133,7 +134,7 @@ export default function DocumentSelector({ dealId, onProcessed, endpointPrefix =
     if (!manualUrl) return;
     setProcessing(true);
     try {
-      const resp = await fetch(`http://localhost:8000/api/deals/${dealId}/${endpointPrefix}/monitor`, {
+      const resp = await fetch(`${API_BASE_URL}/api/deals/${dealId}/${endpointPrefix}/monitor`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

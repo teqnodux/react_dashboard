@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import DashboardNav from '../components/DashboardNav';
 import '../styles/CrossDeal.css';
+import { API_BASE_URL } from '../config';
 
 interface DocketCase {
   deal_id: string;
@@ -52,7 +53,7 @@ export default function AllDockets() {
 
   const fetchDockets = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/all-dockets');
+      const response = await fetch(`${API_BASE_URL}/api/all-dockets`);
       const data = await response.json();
 
       // Transform entries into docket cases

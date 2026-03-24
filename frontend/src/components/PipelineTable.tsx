@@ -4,6 +4,7 @@ import { Deal, DealsResponse, DealCategory } from '../types/deal';
 import DashboardNav from './DashboardNav';
 import '../styles/CrossDeal.css';
 import '../styles/Pipeline.css';
+import { API_BASE_URL } from '../config';
 
 // Category ordering (matches Python CATEGORY_ORDER)
 const CATEGORY_ORDER: DealCategory[] = [
@@ -35,7 +36,7 @@ export default function PipelineTable() {
 
   // Fetch deals from API
   useEffect(() => {
-    fetch('http://localhost:8000/api/deals')
+    fetch(`${API_BASE_URL}/api/deals`)
       .then(res => res.json())
       .then(data => {
         setDealsData(data);
@@ -61,14 +62,14 @@ export default function PipelineTable() {
   const refreshPrices = async () => {
     setRefreshing(true);
     try {
-      const response = await fetch('http://localhost:8000/api/refresh-prices', {
+      const response = await fetch(`${API_BASE_URL}/api/refresh-prices`, {
         method: 'POST'
       });
       const result = await response.json();
 
       if (response.ok) {
         // Reload deals data after refresh
-        const dealsResponse = await fetch('http://localhost:8000/api/deals');
+        const dealsResponse = await fetch(`${API_BASE_URL}/api/deals`);
         const dealsData = await dealsResponse.json();
         setDealsData(dealsData);
         alert(`Successfully updated ${result.updated_count} of ${result.total_deals} deals`);

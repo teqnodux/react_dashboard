@@ -2,6 +2,7 @@ import { Fragment, useEffect, useState } from 'react';
 import './RegulatoryTab.css';
 import StatusProgression from './StatusProgression';
 import DocumentSelector from './DocumentSelector';
+import { API_BASE_URL } from '../config';
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -450,7 +451,7 @@ export default function RegulatoryTab({ dealId, onProcessed }: Props) {
 
   const load = () => {
     setLoading(true);
-    fetch(`http://localhost:8000/api/deals/${dealId}/regulatory`)
+    fetch(`${API_BASE_URL}/api/deals/${dealId}/regulatory`)
       .then(async r => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         setData(await r.json());
@@ -463,7 +464,7 @@ export default function RegulatoryTab({ dealId, onProcessed }: Props) {
 
   // Fetch master approval definitions (once)
   useEffect(() => {
-    fetch('http://localhost:8000/api/regulatory/master-approvals')
+    fetch(`${API_BASE_URL}/api/regulatory/master-approvals`)
       .then(async r => {
         if (!r.ok) return;
         const d = await r.json();

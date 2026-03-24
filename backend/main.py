@@ -361,6 +361,7 @@ async def auto_process_docx():
     that don't yet have a corresponding timeline JSON in data/timelines/.
     """
     import re
+    print(f"[startup] DATA_SOURCE={_DATA_SOURCE}")
     if not INPUT_DIR.exists():
         return
     for docx_path in sorted(INPUT_DIR.glob("*.docx")):

@@ -5,6 +5,7 @@ import DashboardNav from '../components/DashboardNav';
 import TearsheetTooltip from '../components/TearsheetTooltip';
 import '../styles/DealDetail.css';
 import '../styles/CrossDeal.css';
+import { API_BASE_URL } from '../config';
 
 export default function PipelineTearsheet() {
   const [deals, setDeals] = useState<Deal[]>([]);
@@ -75,7 +76,7 @@ export default function PipelineTearsheet() {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/deals')
+    fetch(`${API_BASE_URL}/api/deals`)
       .then(res => res.json())
       .then(data => {
         setDeals(data.deals);
@@ -105,7 +106,7 @@ export default function PipelineTearsheet() {
 
     for (const deal of deals) {
       try {
-        const response = await fetch(`http://localhost:8000/api/deals/${deal.id}/quotes`);
+        const response = await fetch(`${API_BASE_URL}/api/deals/${deal.id}/quotes`);
         if (response.ok) {
           const data = await response.json();
           quotesData[deal.id] = data;

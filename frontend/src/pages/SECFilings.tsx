@@ -4,6 +4,7 @@ import DashboardNav from '../components/DashboardNav';
 import { getFilingTypeColor, renderL3Detail } from '../components/SECFilingRenderers';
 import '../styles/CrossDeal.css';
 import '../styles/SECFilings.css';
+import { API_BASE_URL } from '../config';
 
 // ── Main Component ──
 
@@ -36,7 +37,7 @@ export default function SECFilings() {
   const fetchAIFilings = async () => {
     setAiLoading(true);
     try {
-      const res = await fetch('http://localhost:8000/api/sec-ai/all');
+      const res = await fetch(`${API_BASE_URL}/api/sec-ai/all`);
       console.log('[SEC] fetch status:', res.status);
       const data: SecAIAllResponse = await res.json();
       console.log('[SEC] filings received:', data.filings?.length, 'total:', data.total);
@@ -59,7 +60,7 @@ export default function SECFilings() {
       if (batchMode) {
         const urls = batchUrls.split('\n').map(u => u.trim()).filter(Boolean);
         if (urls.length === 0) { setProcessing(false); return; }
-        const res = await fetch('http://localhost:8000/api/sec-ai/process-batch', {
+        const res = await fetch(`${API_BASE_URL}/api/sec-ai/process-batch`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ urls, company_slug: processSlug || null })
@@ -71,7 +72,7 @@ export default function SECFilings() {
         setBatchProgress(`Processing 0/${urls.length} filings...`);
         const poll = setInterval(async () => {
           try {
-            const statusRes = await fetch(`http://localhost:8000/api/sec-ai/batch-status/${jobId}`);
+            const statusRes = await fetch(`${API_BASE_URL}/api/sec-ai/batch-status/${jobId}`);
             if (!statusRes.ok) { clearInterval(poll); return; }
             const status = await statusRes.json();
             const errors = status.results.filter((r: any) => r.status === 'error').length;
@@ -88,7 +89,7 @@ export default function SECFilings() {
         }, 3000);
       } else {
         if (!processUrl.trim()) { setProcessing(false); return; }
-        const res = await fetch('http://localhost:8000/api/sec-ai/process', {
+        const res = await fetch(`${API_BASE_URL}/api/sec-ai/process`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ url: processUrl, company_slug: processSlug || null })
