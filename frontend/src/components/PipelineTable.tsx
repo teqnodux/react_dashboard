@@ -1,6 +1,6 @@
 import { useState, useEffect, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { Deal, DealsResponse, DealCategory } from '../types/deal';
+import { Deal, DealsResponse, DealCategory, Pagination } from '../types/deal';
 import DashboardNav from './DashboardNav';
 import '../styles/CrossDeal.css';
 import '../styles/Pipeline.css';
@@ -23,8 +23,11 @@ export default function PipelineTable() {
   const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<'all' | 'watchlist'>('watchlist');
   const [searchTerm, setSearchTerm] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
   const [watchlist, setWatchlist] = useState<Set<string>>(new Set());
   const [refreshing, setRefreshing] = useState(false);
+  const [page, setPage] = useState(1);
+  const PAGE_SIZE = 20;
 
   // Load watchlist from localStorage
   useEffect(() => {
@@ -34,19 +37,38 @@ export default function PipelineTable() {
     }
   }, []);
 
-  // Fetch deals from API
+  // Debounce search — wait 500ms after user stops typing, then reset page + fire search
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/deals`)
+    const timer = setTimeout(() => {
+      setPage(1);
+      setDebouncedSearch(searchTerm);
+    }, 750);
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
+
+  // Fetch deals from API (re-runs when page or debounced search changes)
+  useEffect(() => {
+    const controller = new AbortController();
+    setLoading(true);
+    const params = new URLSearchParams({
+      page: String(page),
+      page_size: String(PAGE_SIZE),
+      ...(debouncedSearch ? { search: debouncedSearch } : {}),
+    });
+    fetch(`${API_BASE_URL}/api/deals?${params}`, { signal: controller.signal })
       .then(res => res.json())
       .then(data => {
         setDealsData(data);
         setLoading(false);
       })
       .catch(err => {
-        setError(err.message);
-        setLoading(false);
+        if (err.name !== 'AbortError') {
+          setError(err.message);
+          setLoading(false);
+        }
       });
-  }, []);
+    return () => controller.abort();
+  }, [page, debouncedSearch]);
 
   const toggleWatch = (dealId: string) => {
     const newWatchlist = new Set(watchlist);
@@ -68,8 +90,8 @@ export default function PipelineTable() {
       const result = await response.json();
 
       if (response.ok) {
-        // Reload deals data after refresh
-        const dealsResponse = await fetch(`${API_BASE_URL}/api/deals`);
+        // Reload current page after refresh
+        const dealsResponse = await fetch(`${API_BASE_URL}/api/deals?page=${page}&page_size=${PAGE_SIZE}`);
         const dealsData = await dealsResponse.json();
         setDealsData(dealsData);
         alert(`Successfully updated ${result.updated_count} of ${result.total_deals} deals`);
@@ -120,25 +142,12 @@ export default function PipelineTable() {
     return 'spread-wide';
   };
 
-  // Filter deals
+  // Filter deals (search is handled server-side)
   const filterDeals = (deals: Deal[]): Deal[] => {
     return deals.filter(deal => {
-      // Watchlist filter
       if (filter === 'watchlist' && !watchlist.has(deal.id)) {
         return false;
       }
-
-      // Search filter
-      if (searchTerm) {
-        const term = searchTerm.toLowerCase();
-        const matchTarget = deal.target.toLowerCase().includes(term);
-        const matchAcquirer = deal.acquirer.toLowerCase().includes(term);
-        const matchTicker = deal.target_ticker.toLowerCase().includes(term);
-        if (!matchTarget && !matchAcquirer && !matchTicker) {
-          return false;
-        }
-      }
-
       return true;
     });
   };
@@ -228,7 +237,7 @@ export default function PipelineTable() {
             className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
             onClick={() => setFilter('all')}
           >
-            All Deals ({dealsData?.deals.length || 0})
+            All Deals ({dealsData?.pagination?.total_deals || 0})
           </button>
         </div>
       </div>
@@ -363,6 +372,31 @@ export default function PipelineTable() {
           </tbody>
         </table>
       </div>
+
+      {/* Pagination Controls */}
+      {dealsData?.pagination && (
+        <div className="pagination-bar">
+          <button
+            className="pagination-btn"
+            onClick={() => setPage(p => p - 1)}
+            disabled={!dealsData.pagination.has_prev}
+          >
+            ← Prev
+          </button>
+          <span className="pagination-info">
+            Page {dealsData.pagination.page} of {dealsData.pagination.total_pages}
+            &nbsp;·&nbsp;
+            {dealsData.pagination.total_deals} total deals
+          </span>
+          <button
+            className="pagination-btn"
+            onClick={() => setPage(p => p + 1)}
+            disabled={!dealsData.pagination.has_next}
+          >
+            Next →
+          </button>
+        </div>
+      )}
     </div>
   );
 }

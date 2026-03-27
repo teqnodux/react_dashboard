@@ -5,7 +5,6 @@ import yfinance as yf
 from typing import Dict, Optional
 from datetime import datetime
 import time
-import traceback
 
 # Simple cache: {ticker: (quote_data, timestamp)}
 _cache: Dict[str, tuple] = {}
@@ -25,6 +24,14 @@ def _safe(val):
     return val
 
 
+def _safe_attr(obj, attr):
+    """Return None if accessing a fast_info attribute raises any exception."""
+    try:
+        return _safe(getattr(obj, attr))
+    except Exception:
+        return None
+
+
 def get_live_quote(ticker: str) -> Optional[Dict]:
     """
     Fetch real-time quote data for a given ticker.
@@ -42,8 +49,8 @@ def get_live_quote(ticker: str) -> Optional[Dict]:
         stock = yf.Ticker(ticker)
         fi = stock.fast_info  # lightweight — avoids 429 rate limiting
 
-        current_price = _safe(fi.last_price)
-        previous_close = _safe(fi.previous_close)
+        current_price = _safe_attr(fi, 'last_price')
+        previous_close = _safe_attr(fi, 'previous_close')
 
         price_change = None
         percent_change = None
@@ -58,15 +65,15 @@ def get_live_quote(ticker: str) -> Optional[Dict]:
             'ask': None,
             'bid_size': None,
             'ask_size': None,
-            'volume': _safe(fi.last_volume),
+            'volume': _safe_attr(fi, 'last_volume'),
             'average_volume': None,
-            'day_high': _safe(fi.day_high),
-            'day_low': _safe(fi.day_low),
+            'day_high': _safe_attr(fi, 'day_high'),
+            'day_low': _safe_attr(fi, 'day_low'),
             'previous_close': round(previous_close, 4) if previous_close else None,
             'price_change': round(price_change, 4) if price_change else None,
             'percent_change': round(percent_change, 4) if percent_change else None,
-            'market_cap': _safe(fi.market_cap),
-            'shares_outstanding': _safe(fi.shares),
+            'market_cap': _safe_attr(fi, 'market_cap'),
+            'shares_outstanding': _safe_attr(fi, 'shares'),
             'timestamp': datetime.now().isoformat(),
             'market_state': 'REGULAR'
         }
@@ -76,11 +83,9 @@ def get_live_quote(ticker: str) -> Optional[Dict]:
         return quote_data
 
     except Exception as e:
-        print(f"[quote_fetcher] ERROR for {ticker}: {e}")
-        traceback.print_exc()
-        # On error, return stale cache if available rather than None
-        if ticker in _cache:
-            return _cache[ticker][0]
+        print(f"[quote_fetcher] WARNING: could not fetch quote for '{ticker}': {e}")
+        # Cache None briefly to avoid hammering yfinance for bad tickers
+        _cache[ticker] = (None, now)
         return None
 
 

@@ -76,9 +76,19 @@ export interface DashboardSummary {
   avg_gross_spread: number;
 }
 
+export interface Pagination {
+  page: number;
+  page_size: number;
+  total_deals: number;
+  total_pages: number;
+  has_next: boolean;
+  has_prev: boolean;
+}
+
 export interface DealsResponse {
   deals: Deal[];
   summary: DashboardSummary;
+  pagination: Pagination;
 }
 
 export interface DMAClause {

@@ -882,3 +882,38 @@
 
 .deal-link { color: var(--text-secondary); text-decoration: none; }
 .deal-link:hover { color: var(--accent-blue); }
+
+/* Pagination */
+.pagination-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.pagination-btn {
+  padding: 4px 12px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: var(--bg-hover);
+  color: var(--accent-blue);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  font-size: 12px;
+  color: var(--text-muted);
+}

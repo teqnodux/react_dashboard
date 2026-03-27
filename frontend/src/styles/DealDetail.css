@@ -1976,25 +1976,6 @@ td .muted {
     background-color: rgba(239, 68, 68, 0.08);
 }
 
-/* Recent activity highlighting */
-.tearsheet-row.row-recent {
-    position: relative;
-}
-
-.tearsheet-row.row-recent::before {
-    content: "●";
-    position: absolute;
-    left: 8px;
-    color: #3b82f6;
-    font-size: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.tearsheet-row.row-recent .cell-target,
-.tearsheet-row.row-recent .cell-acquirer {
-    background-color: rgba(59, 130, 246, 0.05);
-}
 
 /* Select column styling */
 .col-select,
@@ -5516,6 +5497,13 @@ td .muted {
 .feed-status-high { background: rgba(240,113,120,0.15); color: var(--accent-red); }
 
 .feed-item { cursor: pointer; }
+
+.feed-item-headline {
+  font-size: 11px;
+  color: var(--text-primary);
+  margin-top: 3px;
+  font-style: italic;
+}
 
 .feed-item-detail {
   font-family: var(--font-mono);

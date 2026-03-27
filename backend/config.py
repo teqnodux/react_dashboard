@@ -24,4 +24,4 @@ MONGODB_URI = os.getenv(
     "MONGODB_URI",
     ""
 )
-MONGODB_DB = "Deal_DB_New"
+MONGODB_DB = "Deal_DB"

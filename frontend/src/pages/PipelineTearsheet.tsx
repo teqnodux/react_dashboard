@@ -11,12 +11,16 @@ export default function PipelineTearsheet() {
   const [deals, setDeals] = useState<Deal[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
+  const [pagination, setPagination] = useState<{ total_deals: number; total_pages: number; has_next: boolean; has_prev: boolean } | null>(null);
+  const PAGE_SIZE = 20;
   const [expandedColumnGroups, setExpandedColumnGroups] = useState<Set<string>>(new Set());
   const [liveQuotes, setLiveQuotes] = useState<any>({});
   const [quotesLoading, setQuotesLoading] = useState(false);
   const [quoteTimestamps, setQuoteTimestamps] = useState<Record<string, number>>({});
   const [filter, setFilter] = useState<'all' | 'watchlist'>('watchlist');
   const [searchTerm, setSearchTerm] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
   const [watchlist, setWatchlist] = useState<Set<string>>(new Set());
   const [sortColumn, setSortColumn] = useState<string>('gross_spread_pct');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
@@ -75,18 +79,38 @@ export default function PipelineTearsheet() {
     }
   }, []);
 
+  // Debounce search — wait 500ms after user stops typing, then reset page + fire search
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/deals`)
+    const timer = setTimeout(() => {
+      setPage(1);
+      setDebouncedSearch(searchTerm);
+    }, 750);
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    setLoading(true);
+    const params = new URLSearchParams({
+      page: String(page),
+      page_size: String(PAGE_SIZE),
+      ...(debouncedSearch ? { search: debouncedSearch } : {}),
+    });
+    fetch(`${API_BASE_URL}/api/deals?${params}`, { signal: controller.signal })
       .then(res => res.json())
       .then(data => {
         setDeals(data.deals);
+        setPagination(data.pagination);
         setLoading(false);
       })
       .catch(err => {
-        setError(err.message);
-        setLoading(false);
+        if (err.name !== 'AbortError') {
+          setError(err.message);
+          setLoading(false);
+        }
       });
-  }, []);
+    return () => controller.abort();
+  }, [page, debouncedSearch]);
 
   const toggleColumnGroup = (groupName: string) => {
     const newExpanded = new Set(expandedColumnGroups);
@@ -162,17 +186,6 @@ export default function PipelineTearsheet() {
     // Watchlist filter
     if (filter === 'watchlist' && !watchlist.has(deal.id)) {
       return false;
-    }
-
-    // Search filter
-    if (searchTerm) {
-      const term = searchTerm.toLowerCase();
-      const matchTarget = deal.target.toLowerCase().includes(term);
-      const matchAcquirer = deal.acquirer.toLowerCase().includes(term);
-      const matchTicker = deal.target_ticker.toLowerCase().includes(term);
-      if (!matchTarget && !matchAcquirer && !matchTicker) {
-        return false;
-      }
     }
 
     // Deal type filter
@@ -414,13 +427,6 @@ export default function PipelineTearsheet() {
     return wideSpread || highDownside || approachingOutside;
   };
 
-  // Helper function to check if deal has recent activity (within 7 days)
-  const hasRecentActivity = (deal: Deal): boolean => {
-    const announceDate = new Date(deal.announce_date);
-    const daysSinceAnnounce = Math.floor((new Date().getTime() - announceDate.getTime()) / (1000 * 60 * 60 * 24));
-    return daysSinceAnnounce <= 7;
-  };
-
   // Helper function to check if deal has regulatory challenges (wide spread might indicate issues)
   const hasRegulatoryChallenges = (deal: Deal): boolean => {
     return deal.gross_spread_pct >= 10; // Very wide spread often means regulatory concerns
@@ -608,7 +614,7 @@ export default function PipelineTearsheet() {
               className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
               onClick={() => setFilter('all')}
             >
-              All Deals ({deals.length})
+              All Deals ({pagination?.total_deals ?? deals.length})
             </button>
 
             {/* Quick Filters */}
@@ -1160,7 +1166,7 @@ export default function PipelineTearsheet() {
                 return (
                   <tr
                     key={deal.id}
-                    className={`tearsheet-row ${isAtRisk(deal) ? 'row-at-risk' : ''} ${hasRecentActivity(deal) ? 'row-recent' : ''}`}
+                    className={`tearsheet-row ${isAtRisk(deal) ? 'row-at-risk' : ''}`}
                   >
                     {/* Select Checkbox */}
                     <td
@@ -1640,6 +1646,31 @@ export default function PipelineTearsheet() {
             </tbody>
           </table>
         </div>
+
+        {/* Pagination Controls */}
+        {pagination && (
+          <div className="pagination-bar">
+            <button
+              className="pagination-btn"
+              onClick={() => setPage(p => p - 1)}
+              disabled={!pagination.has_prev}
+            >
+              ← Prev
+            </button>
+            <span className="pagination-info">
+              Page {page} of {pagination.total_pages}
+              &nbsp;·&nbsp;
+              {pagination.total_deals} total deals
+            </span>
+            <button
+              className="pagination-btn"
+              onClick={() => setPage(p => p + 1)}
+              disabled={!pagination.has_next}
+            >
+              Next →
+            </button>
+          </div>
+        )}
 
         <div className="tearsheet-footer">
           <div className="footer-note">

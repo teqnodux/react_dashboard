@@ -12,6 +12,7 @@ import TearsheetTooltip from '../components/TearsheetTooltip';
 import ScorecardTab from '../components/ScorecardTab';
 import MilestoneLog from '../components/MilestoneLog';
 import FeedTab from '../components/FeedTab';
+import MongoFeedTab from '../components/MongoFeedTab';
 import DashboardNav from '../components/DashboardNav';
 import { getFilingTypeColor, renderL3Detail } from '../components/SECFilingRenderers';
 import '../styles/DealDetail.css';
@@ -1577,6 +1578,12 @@ export default function DealDetail() {
             onClick={() => setActiveTab('feed')}
           >
             Feed
+          </button>
+          <button
+            className={`tab-btn tab-ready ${activeTab === 'feed-new' ? 'active' : ''}`}
+            onClick={() => setActiveTab('feed-new')}
+          >
+            Feed (New)
           </button>
           <button
             className={`tab-btn tab-ready ${activeTab === 'scorecard' ? 'active' : ''}`}
@@ -4300,6 +4307,10 @@ export default function DealDetail() {
 
         {activeTab === 'feed' && (
           <FeedTab dealId={dealId!} />
+        )}
+
+        {activeTab === 'feed-new' && (
+          <MongoFeedTab dealId={dealId!} />
         )}
 
 

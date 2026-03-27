@@ -21,7 +21,7 @@ from generate_regulatory import (
     seed_from_timeline_json, compute_deadlines as _reg_compute_deadlines,
     check_time_based_transitions as _reg_check_time_transitions,
 )
-from fastapi import FastAPI, HTTPException, Body, Request
+from fastapi import FastAPI, HTTPException, Body, Request, Query
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, Response
@@ -443,13 +443,18 @@ async def auto_process_docx():
 _deals_cache = None
 
 
+def _get_deal_obj(deal_id: str):
+    """Return a Deal object for deal_id without triggering a full cache load."""
+    if _DATA_SOURCE == "mongodb":
+        from mongo_loader import load_single_deal_from_mongodb
+        return load_single_deal_from_mongodb(deal_id)
+    return next((d for d in get_deals() if d.id == deal_id), None)
+
+
 def _find_deal(deal_id: str) -> Optional[dict]:
-    """Find a deal by ID from the cache, returned as a dict."""
-    for d in get_deals():
-        did = getattr(d, 'deal_id', None) or getattr(d, 'id', None)
-        if did == deal_id:
-            return deal_to_dict(d)
-    return None
+    """Find a deal by ID, returned as a dict."""
+    deal = _get_deal_obj(deal_id)
+    return deal_to_dict(deal) if deal else None
 
 
 def get_deals():
@@ -548,20 +553,46 @@ def root():
 
 
 @app.get("/api/deals")
-def get_all_deals():
-    """Get all deals with calculated spreads"""
-    deals = get_deals()
+def get_all_deals(
+    page: int = Query(default=1, ge=1, description="Page number (1-based)"),
+    page_size: int = Query(default=20, ge=1, le=100, description="Number of deals per page"),
+    search: str = Query(default="", description="Search by target, acquirer, or ticker"),
+):
+    """Get deals with calculated spreads — paginated (default page=1, page_size=20)"""
+    skip = (page - 1) * page_size
 
-    # Calculate summary stats
+    if _DATA_SOURCE == "mongodb":
+        from mongo_loader import load_deals_page_from_mongodb
+        deals, total_count = load_deals_page_from_mongodb(skip=skip, limit=page_size, search=search)
+    else:
+        all_deals = get_deals()
+        if search:
+            term = search.lower()
+            all_deals = [d for d in all_deals if
+                term in d.target.lower() or
+                term in d.acquirer.lower() or
+                term in d.target_ticker.lower()]
+        total_count = len(all_deals)
+        deals = all_deals[skip: skip + page_size]
+
+    total_pages = (total_count + page_size - 1) // page_size
+
     total_value = sum(d.deal_value_bn for d in deals)
     at_risk_count = sum(1 for d in deals if d.status == "at_risk")
-    avg_gross = sum(d.gross_spread_pct for d in deals) / \
-        len(deals) if deals else 0
+    avg_gross = sum(d.gross_spread_pct for d in deals) / len(deals) if deals else 0
 
     return {
         "deals": [deal_to_dict(d) for d in deals],
+        "pagination": {
+            "page": page,
+            "page_size": page_size,
+            "total_deals": total_count,
+            "total_pages": total_pages,
+            "has_next": page < total_pages,
+            "has_prev": page > 1,
+        },
         "summary": {
-            "total_deals": len(deals),
+            "total_deals": total_count,
             "total_value_bn": round(total_value, 1),
             "at_risk_count": at_risk_count,
             "avg_gross_spread": round(avg_gross, 1)
@@ -572,8 +603,12 @@ def get_all_deals():
 @app.get("/api/deals/{deal_id}")
 def get_deal_detail(deal_id: str):
     """Get detailed information for a single deal"""
-    deals = get_deals()
-    deal = next((d for d in deals if d.id == deal_id), None)
+    if _DATA_SOURCE == "mongodb":
+        from mongo_loader import load_single_deal_from_mongodb
+        deal = load_single_deal_from_mongodb(deal_id)
+    else:
+        deals = get_deals()
+        deal = next((d for d in deals if d.id == deal_id), None)
 
     if not deal:
         raise HTTPException(
@@ -908,8 +943,7 @@ def get_deal_live_quotes(deal_id: str):
         )
 
     # Find the deal
-    deals = get_deals()
-    deal = next((d for d in deals if d.id == deal_id), None)
+    deal = _get_deal_obj(deal_id)
 
     if not deal:
         raise HTTPException(status_code=404, detail="Deal not found")
@@ -1428,8 +1462,7 @@ def get_available_documents(deal_id: str):
     try:
         from sec_processor import _find_existing_folder_for_ticker, get_filing_index
         # Find deal tickers
-        deals = get_deals()
-        deal = next((d for d in deals if d.id == deal_id), None)
+        deal = _get_deal_obj(deal_id)
         if deal:
             for ticker in [deal.target_ticker, deal.acquirer_ticker]:
                 if not ticker:
@@ -1607,8 +1640,7 @@ def get_monitor_available_documents(deal_id: str):
     # SEC AI-analyzed filings
     try:
         from sec_processor import _find_existing_folder_for_ticker, get_filing_index
-        deals = get_deals()
-        deal = next((d for d in deals if d.id == deal_id), None)
+        deal = _get_deal_obj(deal_id)
         if deal:
             for ticker in [deal.target_ticker, deal.acquirer_ticker]:
                 if not ticker:
@@ -1785,8 +1817,7 @@ def _get_deal_context(deal_id: str) -> dict:
     """Build deal context for the monitoring pipeline from available data."""
     context = {"deal_id": deal_id}
     try:
-        deals = get_deals()
-        deal = next((d for d in deals if d.id == deal_id), None)
+        deal = _get_deal_obj(deal_id)
         if deal:
             context["target"] = deal.target
             context["acquirer"] = deal.acquirer
@@ -2204,11 +2235,19 @@ def get_all_activity():
     }
 
 
+@app.get("/api/deals/{deal_id}/feed-new")
+def get_deal_feed_new(deal_id: str):
+    """Feed from MongoDB: DMA, SEC filings, press releases."""
+    if _DATA_SOURCE == "mongodb":
+        from mongo_loader import load_mongo_feed
+        return load_mongo_feed(deal_id)
+    return {"items": [], "summary": {"total": 0, "by_type": {}}}
+
+
 @app.get("/api/deals/{deal_id}/feed")
 def get_deal_feed(deal_id: str):
     """Unified chronological feed for a single deal — all document sources."""
-    deals = get_deals()
-    deal = next((d for d in deals if d.id == deal_id), None)
+    deal = _get_deal_obj(deal_id)
     if not deal:
         raise HTTPException(
             status_code=404, detail=f"Deal {deal_id} not found")
