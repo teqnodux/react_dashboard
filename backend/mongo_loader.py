@@ -777,3 +777,117 @@ def load_mongo_feed(deal_id: str) -> dict:
         by_type[item["type"]] = by_type.get(item["type"], 0) + 1
 
     return {"items": items, "summary": {"total": len(items), "by_type": by_type}}
+
+
+def load_proxy_filings_for_deal(deal_id: str, allowed_form_types: Optional[list[str]] = None) -> list[dict]:
+    """
+    Load proxy filings (for the Proxy tab) from `sec_filing_summary`.
+
+    Returns the lightweight list used by the UI's left-side feed.
+
+    Priority rules (matches backend parsing endpoint intent):
+      - If `proxy.comparison.result` exists and has change URLs -> "changes"
+      - Otherwise -> fallback to "summary" and use `proxy.summary_docx_url`
+    """
+    if allowed_form_types is None:
+        allowed_form_types = [
+            "S-4",
+            "S-4/A",
+            "F-4",
+            "PREM14A",
+            "PREM14C",
+            "DEFM14A",
+            "DEFM14C",
+        ]
+
+    def _dt_to_iso(v: object) -> str:
+        if not v:
+            return ""
+        try:
+            import datetime as _dt
+            if isinstance(v, _dt.datetime):
+                return v.isoformat()
+        except Exception:
+            pass
+        if isinstance(v, dict) and "$date" in v:
+            return str(v["$date"])
+        return str(v)
+
+    client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
+    db = client[MONGODB_DB]
+
+    try:
+        deal_doc = None
+        # deals._id is usually an ObjectId; deal_id passed around in the UI is a string id.
+        from bson import ObjectId
+        try:
+            deal_doc = db["deals"].find_one({"_id": ObjectId(deal_id)}, {"target_ticker": 1, "target_name": 1, "target": 1})
+        except Exception:
+            deal_doc = db["deals"].find_one({"_id": deal_id}, {"target_ticker": 1, "target_name": 1, "target": 1})
+
+        deal_ticker = (deal_doc.get("target_ticker") if deal_doc else "") or ""
+        deal_company = ((deal_doc.get("target_name") or deal_doc.get("target")) if deal_doc else "") or ""
+
+        docs = list(
+            db["sec_filing_summary"]
+            .find({"deal_id": deal_id, "form_type": {"$in": allowed_form_types}})
+            .sort("created_at", -1)
+        )
+    finally:
+        client.close()
+
+    filings: list[dict] = []
+    for doc in docs:
+        proxy = doc.get("proxy") or {}
+        comparison = proxy.get("comparison") or {}
+        cache = comparison.get("cache") or {}
+        result = comparison.get("result", None)
+
+        # Changes are only possible if we have a change source URL.
+        # If result is missing/null/empty, fallback to proxy.summary_docx_url.
+        has_change_urls = bool(
+            (result or {}).get("change_txt_url") or (result or {}).get("change_docx_url")
+        )
+        is_changes = has_change_urls
+        doc_type = "changes" if is_changes else "summary"
+
+        filing_type = (
+            (cache.get("form_type") if is_changes else doc.get("form_type", "")) or
+            doc.get("form_type", "")
+        )
+
+        if is_changes:
+            generated_raw = (
+                (result or {}).get("completed_at") or
+                (result or {}).get("filing_date") or
+                doc.get("updated_at") or
+                doc.get("created_at")
+            )
+        else:
+            generated_raw = (
+                proxy.get("summary_generated_at") or
+                proxy.get("completed_at") or
+                doc.get("updated_at") or
+                doc.get("created_at")
+            )
+
+        generated = _dt_to_iso(generated_raw)
+
+        proxy_id = str(doc.get("_id", ""))
+        filename = f"proxy_{proxy_id}.txt"  # stable key for UI selection
+
+        proxy_company = proxy.get("company_name") or deal_company
+
+        filings.append({
+            "proxy_id": proxy_id,
+            "filename": filename,
+            "doc_type": doc_type,
+            "filing_type": filing_type,
+            "ticker": deal_ticker,
+            "company": proxy_company,
+            "generated": generated,
+            # Filled in by parsed endpoint after download+parse.
+            "transition": "",
+        })
+
+    return filings

@@ -166,6 +166,7 @@ export default function DealDetail() {
   const [proxyLoading, setProxyLoading] = useState(false);
   const [selectedProxy, setSelectedProxy] = useState<any>(null);
   const [proxyCollapsed, setProxyCollapsed] = useState<Set<string>>(new Set());
+  const [proxyDetailLoading, setProxyDetailLoading] = useState(false);
   const [proxyDetailTab, setProxyDetailTab] = useState<string>('summary');
   const [proxyUploadOpen, setProxyUploadOpen] = useState(false);
   const [proxyUploadText, setProxyUploadText] = useState('');
@@ -353,35 +354,59 @@ export default function DealDetail() {
       .finally(() => setTenkLoading(false));
   }, [activeTab, dealId, deal]);
 
+  const buildProxyCollapsedSet = (p: any) => {
+    const collapsed = new Set<string>();
+    if (p?.doc_type === 'changes') {
+      p.sections?.forEach((s: any) => {
+        if (!s.has_changes) collapsed.add(`${p.filename}-${s.name}`);
+      });
+    }
+    // Collapse individual detail sections by default (both summary + changes)
+    p?.detail_sections?.forEach((sec: any) => {
+      collapsed.add(`${p.filename}-detail-${sec.number}`);
+    });
+    return collapsed;
+  };
+
+  const handleSelectProxy = async (f: any) => {
+    if (!dealId || !f) return;
+    setProxyDetailLoading(true);
+    setProxyDetailTab('summary');
+    try {
+      // Render something immediately, then replace with the parsed result.
+      setSelectedProxy(f);
+      const proxyId = f.proxy_id || f._id;
+      const parsedRes = await fetch(`${API_BASE_URL}/api/deals/${dealId}/proxy-analysis/parsed/${proxyId}`);
+      if (!parsedRes.ok) throw new Error(await parsedRes.text());
+      const parsed = await parsedRes.json();
+      setSelectedProxy(parsed);
+      setProxyCollapsed(buildProxyCollapsedSet(parsed));
+    } finally {
+      setProxyDetailLoading(false);
+    }
+  };
+
   // Fetch proxy analyses when proxy tab opens
   useEffect(() => {
     if (activeTab !== 'proxy' || !dealId || proxyAnalyses.length > 0) return;
     setProxyLoading(true);
-    fetch(`${API_BASE_URL}/api/deals/${dealId}/proxy-analysis`)
-      .then(res => res.json())
-      .then(data => {
-        const allFilings = data.filings || [];
-        // Show filings matching this deal's target ticker, or with no ticker (uploaded without header)
-        const filings = deal ? allFilings.filter((f: any) => !f.ticker || f.ticker === deal.target_ticker) : allFilings;
+    (async () => {
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/deals/${dealId}/proxy-analysis`);
+        const data = await res.json();
+        const filings = data.filings || [];
         setProxyAnalyses(filings);
-        if (filings.length > 0) setSelectedProxy(filings[0]);
-        // Auto-collapse: no-change sections in changes docs + detail sections in summaries
-        const collapsed = new Set<string>();
-        filings.forEach((f: any) => {
-          if (f.doc_type === 'changes') {
-            f.sections?.forEach((s: any) => {
-              if (!s.has_changes) collapsed.add(`${f.filename}-${s.name}`);
-            });
-          }
-          // Collapse individual detail sections by default
-          f.detail_sections?.forEach((sec: any) => {
-            collapsed.add(`${f.filename}-detail-${sec.number}`);
-          });
-        });
-        setProxyCollapsed(collapsed);
-      })
-      .catch(e => console.error('[proxy] fetch error:', e))
-      .finally(() => setProxyLoading(false));
+        setSelectedProxy(filings[0] || null);
+        setProxyCollapsed(new Set());
+        if (filings.length > 0) {
+          await handleSelectProxy(filings[0]);
+        }
+      } catch (e) {
+        console.error('[proxy] fetch error:', e);
+      } finally {
+        setProxyLoading(false);
+      }
+    })();
   }, [activeTab, dealId]);
 
   // Covenants: auto-check when tab opens, auto-generate if missing
@@ -3286,34 +3311,12 @@ export default function DealDetail() {
                 <div className="sec-ai-left">
                   <div className="sec-ai-feed-header">
                     <span className="sec-toggle-label" style={{marginRight: 'auto'}}>Proxy Filings</span>
-                    <button className="pr-toggle-btn" onClick={() => setProxyUploadOpen(!proxyUploadOpen)}>
-                      {proxyUploadOpen ? 'CLOSE' : 'ADD'}
-                    </button>
                   </div>
-                  {proxyUploadOpen && (
-                    <div className="tab-inline-upload">
-                      <textarea
-                        placeholder="Paste proxy summary (concise or fulsome — auto-detected)..."
-                        value={proxyUploadText}
-                        onChange={(e) => setProxyUploadText(e.target.value)}
-                        rows={5}
-                        className="pr-textarea"
-                        disabled={proxyUploading}
-                      />
-                      <button
-                        onClick={handleProxyUpload}
-                        disabled={proxyUploading || !proxyUploadText.trim()}
-                        className="sec-process-btn"
-                      >
-                        {proxyUploading ? 'SAVING...' : 'SAVE'}
-                      </button>
-                    </div>
-                  )}
                   <div className="sec-ai-feed">
                     {proxyLoading ? (
                       <div className="sec-ai-empty">Loading proxy analyses...</div>
                     ) : proxyAnalyses.length === 0 ? (
-                      <div className="sec-ai-empty">No proxy analyses found. Use ADD above to paste analysis.</div>
+                      <div className="sec-ai-empty">No proxy analyses found.</div>
                     ) : (
                       proxyAnalyses.map((f: any, idx: number) => {
                         const isSelected = selectedProxy?.filename === f.filename;
@@ -3321,7 +3324,7 @@ export default function DealDetail() {
                           <div
                             key={f.filename}
                             className={`sec-ai-feed-item ${isSelected ? 'selected' : ''}`}
-                            onClick={() => { setSelectedProxy(f); setProxyDetailTab('summary'); }}
+                            onClick={() => handleSelectProxy(f)}
                           >
                             <div className="feed-item-top">
                               <span
@@ -3374,6 +3377,12 @@ export default function DealDetail() {
                       {selectedProxy.transition && (
                         <div className="proxy-transition-bar">
                           {selectedProxy.transition}
+                        </div>
+                      )}
+
+                      {proxyDetailLoading && (
+                        <div className="sec-ai-empty" style={{ margin: '12px 0', fontFamily: 'var(--font-mono)', fontSize: '11px' }}>
+                          Loading proxy details...
                         </div>
                       )}
 

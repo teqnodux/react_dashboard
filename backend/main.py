@@ -4,6 +4,7 @@ Wraps existing Python logic and serves data to React frontend
 """
 
 import threading
+import logging
 from approval_master import (
     get_all_approvals as _master_all,
     get_approval as _master_get,
@@ -40,6 +41,8 @@ from sec_processor import get_company_slugs, get_filing_index, get_all_filing_in
 import json
 
 _DATA_DIR = Path(__file__).parent / "data"
+
+logger = logging.getLogger(__name__)
 
 # Auto deploy check comment:
 
@@ -555,23 +558,26 @@ def root():
 @app.get("/api/deals")
 def get_all_deals(
     page: int = Query(default=1, ge=1, description="Page number (1-based)"),
-    page_size: int = Query(default=20, ge=1, le=100, description="Number of deals per page"),
-    search: str = Query(default="", description="Search by target, acquirer, or ticker"),
+    page_size: int = Query(default=20, ge=1, le=100,
+                           description="Number of deals per page"),
+    search: str = Query(
+        default="", description="Search by target, acquirer, or ticker"),
 ):
     """Get deals with calculated spreads — paginated (default page=1, page_size=20)"""
     skip = (page - 1) * page_size
 
     if _DATA_SOURCE == "mongodb":
         from mongo_loader import load_deals_page_from_mongodb
-        deals, total_count = load_deals_page_from_mongodb(skip=skip, limit=page_size, search=search)
+        deals, total_count = load_deals_page_from_mongodb(
+            skip=skip, limit=page_size, search=search)
     else:
         all_deals = get_deals()
         if search:
             term = search.lower()
             all_deals = [d for d in all_deals if
-                term in d.target.lower() or
-                term in d.acquirer.lower() or
-                term in d.target_ticker.lower()]
+                         term in d.target.lower() or
+                         term in d.acquirer.lower() or
+                         term in d.target_ticker.lower()]
         total_count = len(all_deals)
         deals = all_deals[skip: skip + page_size]
 
@@ -579,7 +585,8 @@ def get_all_deals(
 
     total_value = sum(d.deal_value_bn for d in deals)
     at_risk_count = sum(1 for d in deals if d.status == "at_risk")
-    avg_gross = sum(d.gross_spread_pct for d in deals) / len(deals) if deals else 0
+    avg_gross = sum(d.gross_spread_pct for d in deals) / \
+        len(deals) if deals else 0
 
     return {
         "deals": [deal_to_dict(d) for d in deals],
@@ -3129,17 +3136,212 @@ def get_batch_status(job_id: str):
 @app.get("/api/deals/{deal_id}/proxy-analysis")
 def get_proxy_analysis(deal_id: str):
     """Get all proxy analysis filings for a deal."""
-    from proxy_analysis_processor import get_proxy_analyses
-    results = get_proxy_analyses(deal_id)
-    # Backfill ticker/company from deal data when parser couldn't extract them
-    deal = _find_deal(deal_id)
-    if deal:
-        for r in results:
-            if not r.get("ticker"):
-                r["ticker"] = deal.get("target_ticker", "")
-            if not r.get("company"):
-                r["company"] = deal.get("target", "")
-    return {"filings": results, "total": len(results)}
+    allowed_form_types = [
+        "S-4",
+        "S-4/A",
+        "F-4",
+        "PREM14A",
+        "PREM14C",
+        "DEFM14A",
+        "DEFM14C",
+    ]
+    from mongo_loader import load_proxy_filings_for_deal
+
+    filings = load_proxy_filings_for_deal(
+        deal_id, allowed_form_types=allowed_form_types)
+    logger.info(
+        "[proxy-analysis] list deal_id=%s filings=%d",
+        deal_id,
+        len(filings),
+    )
+    return {"filings": filings, "total": len(filings)}
+
+
+@app.get("/api/deals/{deal_id}/proxy-analysis/parsed/{proxy_id}")
+def get_proxy_analysis_parsed(deal_id: str, proxy_id: str):
+    """
+    Download the selected proxy source (prefer TXT, fallback to DOCX),
+    parse it into the same schema used by the existing UI.
+
+    No caching: every selection re-downloads and re-parses.
+    """
+    import io
+    import requests
+    from docx import Document
+    from config import MONGODB_URI, MONGODB_DB
+    from pymongo import MongoClient
+
+    from proxy_analysis_processor import parse_proxy_content
+
+    allowed_form_types = [
+        "S-4",
+        "S-4/A",
+        "F-4",
+        "F-4/A",
+        "PREM14A",
+        "PREM14C",
+        "DEFM14A",
+        "DEFM14C",
+    ]
+
+    def _dt_to_iso(v: object) -> str:
+        if not v:
+            return ""
+        try:
+            import datetime as _dt
+            if isinstance(v, _dt.datetime):
+                return v.isoformat()
+        except Exception:
+            pass
+        if isinstance(v, dict) and "$date" in v:
+            return str(v["$date"])
+        return str(v)
+
+    def _extract_docx_text(url: str) -> str:
+        resp = requests.get(url, timeout=60)
+        resp.raise_for_status()
+        doc = Document(io.BytesIO(resp.content))
+        # Most of our parsing relies on the text lines (headers, markers, bullets).
+        # DOCX tables will be omitted, but the proxy templates typically store
+        # the important structure in paragraphs/headings.
+        return "\n".join([p.text for p in doc.paragraphs if p.text is not None])
+
+    client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
+    db = client[MONGODB_DB]
+
+    try:
+        logger.info(
+            "[proxy-analysis] parsed request deal_id=%s proxy_id=%s", deal_id, proxy_id)
+        deal = _find_deal(deal_id) or {}
+        ticker = deal.get("target_ticker", "") or ""
+        company = deal.get("target", "") or ""
+
+        # Try to find by _id (string); if your collection uses ObjectId, we handle that too.
+        doc = db["sec_filing_summary"].find_one({
+            "deal_id": deal_id,
+            "form_type": {"$in": allowed_form_types},
+            "_id": proxy_id
+        })
+        if not doc:
+            # Best-effort ObjectId lookup if proxy_id looks like a bson ObjectId.
+            try:
+                import re as _re
+                from bson import ObjectId
+                if _re.match(r"^[0-9a-fA-F]{24}$", proxy_id or ""):
+                    doc = db["sec_filing_summary"].find_one({
+                        "deal_id": deal_id,
+                        "form_type": {"$in": allowed_form_types},
+                        "_id": ObjectId(proxy_id)
+                    })
+            except Exception:
+                pass
+
+        if not doc:
+            raise HTTPException(
+                status_code=404, detail="Proxy document not found")
+
+        proxy = doc.get("proxy") or {}
+        comparison = proxy.get("comparison") or {}
+        cache = comparison.get("cache") or {}
+        result = comparison.get("result", None)
+
+        # Changes are only possible if we have a change source URL.
+        # If `comparison.result` is missing (or empty/null), fall back to summary_docx_url.
+        has_change_urls = bool(
+            (result or {}).get("change_txt_url") or (
+                result or {}).get("change_docx_url")
+        )
+        is_changes = has_change_urls
+
+        # Stable filename expected by the UI.
+        resolved_proxy_id = str(doc.get("_id", proxy_id))
+        filename = f"proxy_{resolved_proxy_id}.txt"
+
+        if is_changes:
+            url = (result or {}).get("change_txt_url") or ""
+            use_txt = bool(url)
+            if not use_txt:
+                url = (result or {}).get("change_docx_url") or ""
+                use_txt = False
+        else:
+            print("proxy:", proxy)
+            url = proxy.get("summary_docx_url") or doc.get("s3_docx_url") or ""
+            use_txt = False
+
+        summary_docx_url_present = bool(
+            proxy.get("summary_docx_url") or doc.get("s3_docx_url"))
+        change_txt_url_present = bool((result or {}).get(
+            "change_txt_url")) if is_changes else False
+        change_docx_url_present = bool((result or {}).get(
+            "change_docx_url")) if is_changes else False
+
+        print("summary_docx_url_present:", summary_docx_url_present)
+        print("change_txt_url_present:", change_txt_url_present)
+        print("change_docx_url_present:", change_docx_url_present)
+
+        logger.info(
+            "[proxy-analysis] resolved proxy_id=%s form_type=%s is_changes=%s use_txt=%s summary_docx_url_present=%s change_txt_present=%s change_docx_present=%s",
+            resolved_proxy_id,
+            doc.get("form_type", ""),
+            is_changes,
+            use_txt,
+            summary_docx_url_present,
+            change_txt_url_present,
+            change_docx_url_present,
+        )
+
+        if not url:
+            raise HTTPException(
+                status_code=404, detail="Proxy document URL not available")
+
+        if url and use_txt:
+            logger.info(
+                "[proxy-analysis] downloading change_txt for proxy_id=%s", resolved_proxy_id)
+            resp = requests.get(url, timeout=60)
+            resp.raise_for_status()
+            content = resp.text
+        else:
+            print("url:", url)
+            logger.info(
+                "[proxy-analysis] downloading/parsing docx for proxy_id=%s", resolved_proxy_id)
+            content = _extract_docx_text(url)
+            print("content:", content)
+
+        logger.info(
+            "[proxy-analysis] downloaded proxy_id=%s chars=%d",
+            resolved_proxy_id,
+            len(content or ""),
+        )
+
+        try:
+            parsed = parse_proxy_content(content, filename=filename)
+        except Exception:
+            logger.exception(
+                "[proxy-analysis] parse failed proxy_id=%s (chars=%d)",
+                resolved_proxy_id,
+                len(content or ""),
+            )
+            raise
+
+        # Backfill ticker/company/filing_type when parsing didn't extract them.
+        if not parsed.get("ticker"):
+            parsed["ticker"] = ticker
+        if not parsed.get("company"):
+            parsed["company"] = company
+        if not parsed.get("filing_type"):
+            parsed["filing_type"] = cache.get(
+                "form_type") if is_changes else doc.get("form_type", "")
+        if not parsed.get("generated"):
+            # UI reads `generated` directly; use best available.
+            parsed["generated"] = _dt_to_iso(
+                ((result or {}).get("completed_at") if is_changes else proxy.get("summary_generated_at")) or
+                doc.get("updated_at") or
+                doc.get("created_at")
+            )
+
+        return parsed
+    finally:
+        client.close()
 
 
 @app.post("/api/deals/{deal_id}/proxy-analysis/upload")

@@ -155,7 +155,8 @@ def _parse_qa_section(lines: list[str], start: int) -> list[dict]:
         elif not stripped:
             if in_answer and current_q_parts and current_a_parts:
                 # Save completed Q&A pair
-                qa_items.append({"question": " ".join(current_q_parts), "answer": " ".join(current_a_parts)})
+                qa_items.append({"question": " ".join(
+                    current_q_parts), "answer": " ".join(current_a_parts)})
                 current_q_parts = []
                 current_a_parts = []
                 in_answer = False
@@ -173,7 +174,8 @@ def _parse_qa_section(lines: list[str], start: int) -> list[dict]:
 
     # Don't forget last pair
     if current_q_parts and current_a_parts:
-        qa_items.append({"question": " ".join(current_q_parts), "answer": " ".join(current_a_parts)})
+        qa_items.append({"question": " ".join(current_q_parts),
+                        "answer": " ".join(current_a_parts)})
 
     return qa_items
 
@@ -503,9 +505,11 @@ def _parse_changes_section_items(section_lines: list[str]) -> tuple[list[dict], 
                 content = content.replace("[NEW]", "").strip()
             if ":" in content:
                 label, value = content.split(":", 1)
-                current_item = {"label": label.strip(), "value": value.strip(), "tag": tag}
+                current_item = {"label": label.strip(
+                ), "value": value.strip(), "tag": tag}
             else:
-                current_item = {"label": content.strip(), "value": "", "tag": tag}
+                current_item = {
+                    "label": content.strip(), "value": "", "tag": tag}
 
         # Was/Now blocks
         elif stripped.startswith("Was:"):
@@ -638,6 +642,35 @@ def parse_proxy_txt(filepath: str) -> dict:
     lines = content.split("\n")
     info = _parse_header(lines)
     info["filename"] = os.path.basename(filepath)
+
+    if info["doc_type"] == "changes":
+        result = _parse_changes_file(lines, info)
+    else:
+        result = _parse_summary_file(lines, info)
+
+    # Auto-detect view_type purely from content
+    if result.get("detail_sections"):
+        result["view_type"] = "fulsome"
+    else:
+        result["view_type"] = "concise"
+
+    return result
+
+
+def parse_proxy_content(content: str, filename: str = "") -> dict:
+    """
+    Parse proxy analysis from raw text content.
+
+    This is the same output schema as `parse_proxy_txt`, but avoids needing
+    a local file on disk (useful when the source is downloaded from Mongo / S3).
+    """
+    if content is None:
+        content = ""
+    lines = content.split("\n")
+
+    print("lines:", lines)
+    info = _parse_header(lines)
+    info["filename"] = filename or info.get("filename", "") or "proxy.txt"
 
     if info["doc_type"] == "changes":
         result = _parse_changes_file(lines, info)
