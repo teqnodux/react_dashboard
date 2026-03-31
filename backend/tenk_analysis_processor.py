@@ -122,7 +122,8 @@ def _detect_doc_type(lines: list[str]) -> str:
         if line.strip().startswith("L1") and "Headline" in line:
             return "l123"
     # Check for category headers (TIMING, REGULATORY, etc.) with bullet items
-    exec_headers = {"TIMING", "REGULATORY", "BUSINESS/RISK", "DEAL_TERMS", "RISK", "FINANCING", "OTHER"}
+    exec_headers = {"TIMING", "REGULATORY", "BUSINESS/RISK",
+                    "DEAL_TERMS", "RISK", "FINANCING", "OTHER"}
     has_header = False
     has_bullet = False
     for line in lines[:30]:
@@ -239,9 +240,11 @@ def _parse_exec(lines: list[str], info: dict) -> dict:
                 # overview was already set, this is the first section
                 pass
             if current_section:
-                sections.append({"name": current_section, "items": current_items})
+                sections.append(
+                    {"name": current_section, "items": current_items})
                 current_items = []
-            current_section = stripped.upper() if stripped.upper() in exec_section_names else stripped
+            current_section = stripped.upper() if stripped.upper(
+            ) in exec_section_names else stripped
             i += 1
             continue
 
@@ -300,7 +303,8 @@ def _parse_redline(lines: list[str], info: dict) -> dict:
             excerpt_starts.append(i)
 
     for idx, start_line in enumerate(excerpt_starts):
-        end_line = excerpt_starts[idx + 1] if idx + 1 < len(excerpt_starts) else len(lines)
+        end_line = excerpt_starts[idx + 1] if idx + \
+            1 < len(excerpt_starts) else len(lines)
         block = lines[start_line:end_line]
         excerpt = _parse_redline_excerpt(block)
         if excerpt:
@@ -358,7 +362,8 @@ def _parse_redline_excerpt(block: list[str]) -> dict | None:
             i += 1
             break
         elif stripped.startswith("Current:") and "New Disclosure" in stripped:
-            m2 = re.match(r'Current:\s*(.+?)(?:\s*—\s*New Disclosure)', stripped)
+            m2 = re.match(
+                r'Current:\s*(.+?)(?:\s*—\s*New Disclosure)', stripped)
             if m2:
                 excerpt["current_label"] = m2.group(1).strip()
             excerpt["is_new"] = True
@@ -575,7 +580,8 @@ def _parse_l123(lines: list[str], info: dict) -> dict:
             )
             if is_header:
                 if current_section:
-                    sections.append({"name": current_section, "items": current_items})
+                    sections.append(
+                        {"name": current_section, "items": current_items})
                     current_items = []
                 current_section = stripped
                 continue
