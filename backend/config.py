@@ -4,7 +4,11 @@ Switch between static JSON files and MongoDB (Deal_DB_New).
 
 Set DATA_SOURCE env variable or change the default here:
   "static"  → reads from /data/deals.json (original behaviour)
-  "mongodb" → reads from Deal_DB_New via MongoDB
+  "mongodb" → reads from Deal_DB via MongoDB
+
+Set QUOTE_SOURCE env variable or change the default here:
+  "yfinance" → uses yfinance (free, unofficial, may 429)
+  "polygon"  → uses Polygon.io (requires POLYGON_API_KEY)
 """
 import os
 from pathlib import Path
@@ -20,8 +24,8 @@ if load_dotenv and _ENV_PATH.exists():
 
 DATA_SOURCE = os.getenv("DATA_SOURCE", "mongodb")
 
-MONGODB_URI = os.getenv(
-    "MONGODB_URI",
-    ""
-)
+MONGODB_URI = os.getenv("MONGODB_URI", "")
 MONGODB_DB = "Deal_DB"
+
+QUOTE_SOURCE = os.getenv("QUOTE_SOURCE", "yfinance")  # "yfinance" or "polygon"
+POLYGON_API_KEY = os.getenv("POLYGON_API_KEY", "")

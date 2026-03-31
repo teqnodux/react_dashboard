@@ -62,8 +62,24 @@ try:
     from quote_fetcher import get_deal_quotes
 except ImportError:
     print("Warning: Could not import from existing modules. Using fallback.")
-    # Fallback will be handled in data_loader.py
     get_deal_quotes = None
+
+# Quote source switch — mirrors DATA_SOURCE pattern
+from config import QUOTE_SOURCE as _QUOTE_SOURCE
+
+def _get_live_quote(ticker: str):
+    if _QUOTE_SOURCE == "polygon":
+        from polygon_fetcher import get_live_quote
+    else:
+        from quote_fetcher import get_live_quote
+    return get_live_quote(ticker)
+
+def _get_deal_quotes(target_ticker: str, acquirer_ticker=None):
+    if _QUOTE_SOURCE == "polygon":
+        from polygon_fetcher import get_deal_quotes as _fn
+    else:
+        from quote_fetcher import get_deal_quotes as _fn
+    return _fn(target_ticker, acquirer_ticker)
 
 try:
     from config import DATA_SOURCE as _DATA_SOURCE
@@ -957,13 +973,12 @@ def get_deal_live_quotes(deal_id: str):
 
     # Fetch quotes (target, acquirer, and SPY for beta adjustment)
     try:
-        quotes = get_deal_quotes(
+        quotes = _get_deal_quotes(
             target_ticker=deal.target_ticker,
             acquirer_ticker=deal.acquirer_ticker
         )
         # Add SPY current price for beta-adjusted break price
-        from quote_fetcher import get_live_quote
-        spy_quote = get_live_quote("SPY")
+        spy_quote = _get_live_quote("SPY")
         quotes["spy_price"] = spy_quote["current_price"] if spy_quote else None
         return quotes
     except Exception as e:
@@ -4571,8 +4586,7 @@ def get_spy_price():
     now = time.time()
     # Simple in-memory cache
     if not hasattr(get_spy_price, '_cache') or now - get_spy_price._cache[1] > 300:
-        from quote_fetcher import get_live_quote
-        spy = get_live_quote("SPY")
+        spy = _get_live_quote("SPY")
         price = spy["current_price"] if spy else None
         get_spy_price._cache = (price, now)
     return {"price": get_spy_price._cache[0]}

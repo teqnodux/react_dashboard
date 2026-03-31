@@ -236,16 +236,22 @@ _unaffected_cache: dict[str, float] = {}
 _dividend_cache: dict[str, float] = {}
 
 
+def _get_live_quote(ticker: str):
+    """Return live quote dict using whichever source is configured."""
+    from config import QUOTE_SOURCE
+    if QUOTE_SOURCE == "polygon":
+        from polygon_fetcher import get_live_quote
+    else:
+        from quote_fetcher import get_live_quote
+    return get_live_quote(ticker)
+
+
 def _fetch_current_price(ticker: str) -> float:
-    """
-    Fetch live current price using quote_fetcher (V2 pattern).
-    Returns 0.0 on any failure.
-    """
-    if not YFINANCE_AVAILABLE or not ticker:
+    """Fetch live current price. Returns 0.0 on any failure."""
+    if not ticker:
         return 0.0
     try:
-        from quote_fetcher import get_live_quote
-        q = get_live_quote(ticker)
+        q = _get_live_quote(ticker)
         if q and q.get("current_price"):
             return float(q["current_price"])
     except Exception:
@@ -254,15 +260,11 @@ def _fetch_current_price(ticker: str) -> float:
 
 
 def _fetch_shares_outstanding(ticker: str) -> int:
-    """
-    Fetch shares outstanding using quote_fetcher (V2 pattern).
-    Returns 0 on any failure.
-    """
-    if not YFINANCE_AVAILABLE or not ticker:
+    """Fetch shares outstanding. Returns 0 on any failure."""
+    if not ticker:
         return 0
     try:
-        from quote_fetcher import get_live_quote
-        q = get_live_quote(ticker)
+        q = _get_live_quote(ticker)
         if q and q.get("shares_outstanding"):
             return int(q["shares_outstanding"])
     except Exception:
@@ -273,13 +275,28 @@ def _fetch_shares_outstanding(ticker: str) -> int:
 def _fetch_unaffected_price(ticker: str, announce_date: date) -> float:
     """
     Fetch closing price on or just before announce_date.
-    Cached per ticker to avoid repeated yfinance calls across page loads.
-    Returns 0.0 on any failure.
+    Uses Polygon or yfinance depending on QUOTE_SOURCE config.
+    Cached per ticker to avoid repeated calls across page loads.
     """
-    if not YFINANCE_AVAILABLE or not ticker:
+    if not ticker:
         return 0.0
     if ticker in _unaffected_cache:
         return _unaffected_cache[ticker]
+
+    from config import QUOTE_SOURCE
+    if QUOTE_SOURCE == "polygon":
+        try:
+            from polygon_fetcher import get_historical_close
+            result = get_historical_close(ticker, announce_date - timedelta(days=1)) or 0.0
+            _unaffected_cache[ticker] = result
+            return result
+        except Exception:
+            _unaffected_cache[ticker] = 0.0
+            return 0.0
+
+    # yfinance path
+    if not YFINANCE_AVAILABLE:
+        return 0.0
     try:
         start = announce_date - timedelta(days=7)
         end = announce_date + timedelta(days=1)
@@ -300,14 +317,29 @@ def _fetch_unaffected_price(ticker: str, announce_date: date) -> float:
 
 def _fetch_annual_dividend(ticker: str) -> float:
     """
-    Sum of dividends paid in the last 12 months via yfinance.
-    Cached per ticker to avoid repeated yfinance calls across page loads.
-    Returns 0.0 on any failure.
+    Sum of dividends paid in the last 12 months.
+    Uses Polygon or yfinance depending on QUOTE_SOURCE config.
+    Cached per ticker to avoid repeated calls across page loads.
     """
-    if not YFINANCE_AVAILABLE or not ticker:
+    if not ticker:
         return 0.0
     if ticker in _dividend_cache:
         return _dividend_cache[ticker]
+
+    from config import QUOTE_SOURCE
+    if QUOTE_SOURCE == "polygon":
+        try:
+            from polygon_fetcher import get_annual_dividend
+            result = get_annual_dividend(ticker)
+            _dividend_cache[ticker] = result
+            return result
+        except Exception:
+            _dividend_cache[ticker] = 0.0
+            return 0.0
+
+    # yfinance path
+    if not YFINANCE_AVAILABLE:
+        return 0.0
     try:
         stock = yf.Ticker(ticker)
         divs = stock.dividends
