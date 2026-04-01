@@ -3560,7 +3560,7 @@ def get_tenk_analysis(deal_id: str):
     from config import MONGODB_URI, MONGODB_DB
     from pymongo import MongoClient
     from bson import ObjectId
-    
+
     def _dt_to_iso(v: object) -> str:
         if not v:
             return ""
@@ -3573,21 +3573,24 @@ def get_tenk_analysis(deal_id: str):
         if isinstance(v, dict) and "$date" in v:
             return str(v["$date"])
         return str(v)
-    
+
     client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
     db = client[MONGODB_DB]
-    
+
     try:
         # Fetch deal data for ticker/company
         deal_doc = None
         try:
-            deal_doc = db["deals"].find_one({"_id": ObjectId(deal_id)}, {"target_ticker": 1, "target_name": 1, "target": 1})
+            deal_doc = db["deals"].find_one({"_id": ObjectId(deal_id)}, {
+                                            "target_ticker": 1, "target_name": 1, "target": 1})
         except Exception:
-            deal_doc = db["deals"].find_one({"_id": deal_id}, {"target_ticker": 1, "target_name": 1, "target": 1})
-        
+            deal_doc = db["deals"].find_one(
+                {"_id": deal_id}, {"target_ticker": 1, "target_name": 1, "target": 1})
+
         deal_ticker = (deal_doc.get("target_ticker") if deal_doc else "") or ""
-        deal_company = ((deal_doc.get("target_name") or deal_doc.get("target")) if deal_doc else "") or ""
-        
+        deal_company = ((deal_doc.get("target_name") or deal_doc.get(
+            "target")) if deal_doc else "") or ""
+
         # Query 10-K/10-Q filings
         # deal_id in sec_filing_summary is stored as string (ObjectId format)
         allowed_form_types = ["10-K", "10-K/A", "10-Q", "10-Q/A"]
@@ -3595,21 +3598,23 @@ def get_tenk_analysis(deal_id: str):
             {"deal_id": deal_id, "form_type": {"$in": allowed_form_types}},
             sort=[("created_at", -1)]
         ))
-        
-        logger.info("[tenk-analysis] list deal_id=%s found=%d records", deal_id, len(docs))
-        
+
+        logger.info(
+            "[tenk-analysis] list deal_id=%s found=%d records", deal_id, len(docs))
+
         filings = []
         for doc in docs:
             filing_date = _dt_to_iso(doc.get("filing_date"))
-            
+
             # Determine hasComparison based on ten_k_ten_q URLs
             has_comparison = False
             if doc.get("ten_k_ten_q"):
                 t = doc["ten_k_ten_q"]
                 has_comparison = bool(
-                    t.get("s3_exec_summary_docx_url") and t.get("s3_redline_docx_url")
+                    t.get("s3_exec_summary_docx_url") and t.get(
+                        "s3_redline_docx_url")
                 )
-            
+
             filings.append({
                 "_id": str(doc.get("_id", "")),
                 "filing_type": doc.get("form_type", ""),
@@ -3620,9 +3625,9 @@ def get_tenk_analysis(deal_id: str):
                 "hasComparison": has_comparison,
                 "created_at": _dt_to_iso(doc.get("created_at")),
             })
-        
+
         return {"filings": filings, "total": len(filings)}
-    
+
     finally:
         client.close()
 
@@ -3641,7 +3646,7 @@ def get_tenk_analysis_parsed(deal_id: str, record_id: str):
     from pymongo import MongoClient
     from bson import ObjectId
     from tenk_analysis_processor import parse_tenk_txt
-    
+
     def _dt_to_iso(v: object) -> str:
         if not v:
             return ""
@@ -3654,12 +3659,12 @@ def get_tenk_analysis_parsed(deal_id: str, record_id: str):
         if isinstance(v, dict) and "$date" in v:
             return str(v["$date"])
         return str(v)
-    
+
     def _extract_docx_text(url: str) -> str:
         resp = requests.get(url, timeout=60)
         resp.raise_for_status()
         doc = Document(io.BytesIO(resp.content))
-        
+
         # Extract both paragraphs AND tables (redline format uses tables for current/prior text)
         lines = []
         for element in doc.element.body:
@@ -3674,77 +3679,88 @@ def get_tenk_analysis_parsed(deal_id: str, record_id: str):
                 for table in doc.tables:
                     if table._element == element:
                         for row in table.rows:
-                            cells = [cell.text.strip() for cell in row.cells if cell.text.strip()]
+                            cells = [cell.text.strip()
+                                     for cell in row.cells if cell.text.strip()]
                             if cells:
                                 # Use 6 spaces to ensure parser's \s{4,} regex matches
                                 lines.append("      ".join(cells))
                         break
-        
+
         return "\n".join(lines)
-    
+
     client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
     db = client[MONGODB_DB]
-    
+
     try:
-        logger.info("[tenk-analysis] parsed request deal_id=%s record_id=%s", deal_id, record_id)
-        
+        logger.info(
+            "[tenk-analysis] parsed request deal_id=%s record_id=%s", deal_id, record_id)
+
         # Fetch deal data for ticker/company
         deal_doc = None
         try:
-            deal_doc = db["deals"].find_one({"_id": ObjectId(deal_id)}, {"target_ticker": 1, "target_name": 1, "target": 1})
+            deal_doc = db["deals"].find_one({"_id": ObjectId(deal_id)}, {
+                                            "target_ticker": 1, "target_name": 1, "target": 1})
         except Exception:
-            deal_doc = db["deals"].find_one({"_id": deal_id}, {"target_ticker": 1, "target_name": 1, "target": 1})
-        
+            deal_doc = db["deals"].find_one(
+                {"_id": deal_id}, {"target_ticker": 1, "target_name": 1, "target": 1})
+
         deal_ticker = (deal_doc.get("target_ticker") if deal_doc else "") or ""
-        deal_company = ((deal_doc.get("target_name") or deal_doc.get("target")) if deal_doc else "") or ""
-        
+        deal_company = ((deal_doc.get("target_name") or deal_doc.get(
+            "target")) if deal_doc else "") or ""
+
         # Fetch the record - _id can be string UUID or ObjectId
         doc = None
-        
+
         # Try as string UUID first (most common in your examples)
         doc = db["sec_filing_summary"].find_one({"_id": record_id})
-        
+
         if not doc:
             # Try as ObjectId if it looks like one (24 hex chars)
             try:
                 if record_id and len(record_id) == 24 and all(c in '0123456789abcdefABCDEF' for c in record_id):
-                    doc = db["sec_filing_summary"].find_one({"_id": ObjectId(record_id)})
+                    doc = db["sec_filing_summary"].find_one(
+                        {"_id": ObjectId(record_id)})
                     if doc:
-                        logger.info("[tenk-analysis] found record using ObjectId conversion")
+                        logger.info(
+                            "[tenk-analysis] found record using ObjectId conversion")
             except Exception as e:
-                logger.warning("[tenk-analysis] ObjectId conversion failed: %s", e)
-        
+                logger.warning(
+                    "[tenk-analysis] ObjectId conversion failed: %s", e)
+
         if not doc:
-            logger.error("[tenk-analysis] record not found: record_id=%s deal_id=%s", record_id, deal_id)
-            raise HTTPException(status_code=404, detail=f"10-K/10-Q record not found: {record_id}")
-        
+            logger.error(
+                "[tenk-analysis] record not found: record_id=%s deal_id=%s", record_id, deal_id)
+            raise HTTPException(
+                status_code=404, detail=f"10-K/10-Q record not found: {record_id}")
+
         filing_type = doc.get("form_type", "10-K")
         filing_date = _dt_to_iso(doc.get("filing_date"))
-        
+
         # Determine URLs and hasComparison
         ten_k_ten_q = doc.get("ten_k_ten_q")
         has_comparison = False
         exec_url = None
         redline_url = None
         overview_url = None
-        
+
         if ten_k_ten_q:
             exec_url = ten_k_ten_q.get("s3_exec_summary_docx_url")
             redline_url = ten_k_ten_q.get("s3_redline_docx_url")
             overview_url = ten_k_ten_q.get("s3_docx_url")
-            
+
             if exec_url and redline_url:
                 has_comparison = True
             elif not overview_url:
                 overview_url = doc.get("s3_docx_url")
         else:
             overview_url = doc.get("s3_docx_url")
-        
+
         logger.info(
             "[tenk-analysis] record_id=%s has_comparison=%s exec_url=%s redline_url=%s overview_url=%s",
-            record_id, has_comparison, bool(exec_url), bool(redline_url), bool(overview_url)
+            record_id, has_comparison, bool(exec_url), bool(
+                redline_url), bool(overview_url)
         )
-        
+
         response = {
             "hasComparison": has_comparison,
             "filing_type": filing_type,
@@ -3754,25 +3770,26 @@ def get_tenk_analysis_parsed(deal_id: str, record_id: str):
             "generated": filing_date,
             "filename": f"{filing_type}_{record_id}",
         }
-        
+
         # Parse based on what's available
         if has_comparison:
             # Download and parse BOTH exec summary and redline
-            logger.info("[tenk-analysis] downloading exec summary from %s", exec_url[-60:])
+            logger.info(
+                "[tenk-analysis] downloading exec summary from %s", exec_url[-60:])
             exec_text = _extract_docx_text(exec_url)
-            
+
             # Create a synthetic header for the parser
             header_lines = [
                 f"{deal_company} ({deal_ticker})",
                 response["filing_label"],
             ]
             exec_full_text = "\n".join(header_lines) + "\n\n" + exec_text
-            
+
             # Write to temp file for parsing (parser expects filepath)
             with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False, encoding='utf-8') as tmp:
                 tmp.write(exec_full_text)
                 tmp_path = tmp.name
-            
+
             try:
                 exec_parsed = parse_tenk_txt(tmp_path)
                 response["summary"] = {
@@ -3782,16 +3799,17 @@ def get_tenk_analysis_parsed(deal_id: str, record_id: str):
                 }
             finally:
                 os.unlink(tmp_path)
-            
+
             # Download and parse redline
-            logger.info("[tenk-analysis] downloading redline from %s", redline_url[-60:])
+            logger.info(
+                "[tenk-analysis] downloading redline from %s", redline_url[-60:])
             redline_text = _extract_docx_text(redline_url)
             redline_full_text = "\n".join(header_lines) + "\n\n" + redline_text
-            
+
             with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False, encoding='utf-8') as tmp:
                 tmp.write(redline_full_text)
                 tmp_path = tmp.name
-            
+
             try:
                 redline_parsed = parse_tenk_txt(tmp_path)
                 response["fulsome"] = {
@@ -3802,25 +3820,28 @@ def get_tenk_analysis_parsed(deal_id: str, record_id: str):
                 }
             finally:
                 os.unlink(tmp_path)
-        
+
         else:
             # Single filing — download overview
             if not overview_url:
-                raise HTTPException(status_code=404, detail="No DOCX URL available for this filing")
-            
-            logger.info("[tenk-analysis] downloading overview from %s", overview_url[-60:])
+                raise HTTPException(
+                    status_code=404, detail="No DOCX URL available for this filing")
+
+            logger.info(
+                "[tenk-analysis] downloading overview from %s", overview_url[-60:])
             overview_text = _extract_docx_text(overview_url)
-            
+
             header_lines = [
                 f"{deal_company} ({deal_ticker})",
                 response["filing_label"],
             ]
-            overview_full_text = "\n".join(header_lines) + "\n\n" + overview_text
-            
+            overview_full_text = "\n".join(
+                header_lines) + "\n\n" + overview_text
+
             with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False, encoding='utf-8') as tmp:
                 tmp.write(overview_full_text)
                 tmp_path = tmp.name
-            
+
             try:
                 overview_parsed = parse_tenk_txt(tmp_path)
                 response["summary"] = {
@@ -3833,10 +3854,11 @@ def get_tenk_analysis_parsed(deal_id: str, record_id: str):
                 }
             finally:
                 os.unlink(tmp_path)
-        
-        logger.info("[tenk-analysis] parsed record_id=%s hasComparison=%s", record_id, has_comparison)
+
+        logger.info(
+            "[tenk-analysis] parsed record_id=%s hasComparison=%s", record_id, has_comparison)
         return response
-    
+
     finally:
         client.close()
 
