@@ -243,14 +243,12 @@ export default function DealDetail() {
   // 10-K/10-Q analysis state
   const [tenkAnalyses, setTenkAnalyses] = useState<any[]>([]);
   const [tenkLoading, setTenkLoading] = useState(false);
-  const [selectedTenkPeriod, setSelectedTenkPeriod] = useState<string>("");
+  const [selectedTenk, setSelectedTenk] = useState<any>(null);
+  const [tenkDetailLoading, setTenkDetailLoading] = useState(false);
   const [tenkTagFilter, setTenkTagFilter] = useState<string>("ALL");
   const [tenkViewMode, setTenkViewMode] = useState<"summary" | "detail">(
     "summary"
   );
-  const [tenkUploadOpen, setTenkUploadOpen] = useState(false);
-  const [tenkUploadText, setTenkUploadText] = useState("");
-  const [tenkUploading, setTenkUploading] = useState(false);
   // Press release extraction state
   const [prText, setPrText] = useState("");
   const [prProcessing, setPrProcessing] = useState(false);
@@ -436,23 +434,27 @@ export default function DealDetail() {
 
   // Fetch 10-K/10-Q analyses when tab opens
   useEffect(() => {
-    if (activeTab !== "10k" || !dealId) return;
+    if (activeTab !== "10k" || !dealId || tenkAnalyses.length > 0) return;
     setTenkLoading(true);
-    fetch(`${API_BASE_URL}/api/deals/${dealId}/tenk-analysis`)
-      .then((res) => res.json())
-      .then((data) => {
+    (async () => {
+      try {
+        const res = await fetch(
+          `${API_BASE_URL}/api/deals/${dealId}/tenk-analysis`
+        );
+        const data = await res.json();
         const filings = data.filings || [];
         setTenkAnalyses(filings);
-        // Build periods and select the newest
-        const periods = _buildTenkPeriods(filings);
-        if (periods.length > 0) {
-          setSelectedTenkPeriod(periods[0].key);
-          setTenkViewMode(periods[0].hasComparison ? "summary" : "summary");
+        // Auto-select first filing
+        if (filings.length > 0) {
+          await handleSelectTenk(filings[0]);
         }
-      })
-      .catch((e) => console.error("[tenk] fetch error:", e))
-      .finally(() => setTenkLoading(false));
-  }, [activeTab, dealId, deal]);
+      } catch (e) {
+        console.error("[tenk] fetch error:", e);
+      } finally {
+        setTenkLoading(false);
+      }
+    })();
+  }, [activeTab, dealId]);
 
   const buildProxyCollapsedSet = (p: any) => {
     const collapsed = new Set<string>();
@@ -485,6 +487,25 @@ export default function DealDetail() {
       setProxyCollapsed(buildProxyCollapsedSet(parsed));
     } finally {
       setProxyDetailLoading(false);
+    }
+  };
+
+  const handleSelectTenk = async (f: any) => {
+    if (!dealId || !f) return;
+    setTenkDetailLoading(true);
+    setTenkViewMode("summary");
+    setTenkTagFilter("ALL");
+    try {
+      setSelectedTenk(f);
+      const recordId = f._id;
+      const parsedRes = await fetch(
+        `${API_BASE_URL}/api/deals/${dealId}/tenk-analysis/parsed/${recordId}`
+      );
+      if (!parsedRes.ok) throw new Error(await parsedRes.text());
+      const parsed = await parsedRes.json();
+      setSelectedTenk(parsed);
+    } finally {
+      setTenkDetailLoading(false);
     }
   };
 
@@ -892,69 +913,6 @@ export default function DealDetail() {
   }, [prData, deal?.target_ticker]);
 
   // Build 10-K/10-Q period groups from raw filings
-  function _buildTenkPeriods(filings: any[]) {
-    const groups: Record<
-      string,
-      {
-        key: string;
-        label: string;
-        filingType: string;
-        overview: any;
-        exec: any;
-        redline: any;
-        hasComparison: boolean;
-        sortDate: string;
-      }
-    > = {};
-    for (const f of filings) {
-      let periodKey: string;
-      if (f.doc_type === "overview" || f.doc_type === "l123") {
-        periodKey = f.filing_label || f.filing_type || f.filename;
-      } else if (f.doc_type === "exec" && !f.transition) {
-        // Standalone exec — use filing_label or company as label
-        periodKey = f.filing_label || f.filing_type || f.company || f.filename;
-      } else {
-        // Right side of transition = this filing's period
-        const parts = (f.transition || "").split("→");
-        periodKey =
-          parts.length === 2 ? parts[1].trim() : f.filing_type || f.filename;
-      }
-      if (!groups[periodKey]) {
-        groups[periodKey] = {
-          key: periodKey,
-          label: periodKey,
-          filingType: f.filing_type,
-          overview: null,
-          exec: null,
-          redline: null,
-          hasComparison: false,
-          sortDate: f.generated || f.filename
-        };
-      }
-      if (f.doc_type === "overview" || f.doc_type === "l123")
-        groups[periodKey].overview = f;
-      else if (f.doc_type === "exec" && f.transition) {
-        groups[periodKey].exec = f;
-        groups[periodKey].hasComparison = true;
-      } else if (f.doc_type === "exec" && !f.transition) {
-        groups[periodKey].overview = f;
-      } // standalone exec = treat as overview
-      else if (f.doc_type === "redline") {
-        groups[periodKey].redline = f;
-        groups[periodKey].hasComparison = true;
-      }
-    }
-    // Sort oldest first (oldest on top)
-    return Object.values(groups).sort((a, b) => {
-      const aDate = (a.overview || a.exec || a.redline)?.filename || "";
-      const bDate = (b.overview || b.exec || b.redline)?.filename || "";
-      return aDate.localeCompare(bDate);
-    });
-  }
-
-  const tenkPeriods = _buildTenkPeriods(tenkAnalyses);
-  const selectedTenkGroup =
-    tenkPeriods.find((p) => p.key === selectedTenkPeriod) || null;
 
   if (loading) {
     return (
@@ -1222,36 +1180,6 @@ export default function DealDetail() {
       alert(e.message || "Upload failed");
     } finally {
       setProxyUploading(false);
-    }
-  };
-
-  const handleTenkUpload = async () => {
-    if (!dealId || !tenkUploadText.trim()) return;
-    setTenkUploading(true);
-    try {
-      const ts = new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19);
-      const filename = `tenk_summary_${ts}.txt`;
-      const res = await fetch(
-        `${API_BASE_URL}/api/deals/${dealId}/tenk-analysis/upload`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ filename, content: tenkUploadText })
-        }
-      );
-      if (!res.ok) throw new Error(await res.text());
-      setTenkUploadText("");
-      setTenkUploadOpen(false);
-      // Re-fetch tenk list
-      const listRes = await fetch(
-        `${API_BASE_URL}/api/deals/${dealId}/tenk-analysis`
-      );
-      const listData = await listRes.json();
-      setTenkAnalyses(listData.filings || []);
-    } catch (e: any) {
-      alert(e.message || "Upload failed");
-    } finally {
-      setTenkUploading(false);
     }
   };
 
@@ -5268,7 +5196,7 @@ export default function DealDetail() {
                 style={{ height: "calc(100vh - 300px)", minHeight: "400px" }}
               >
                 <div className="sec-ai-split">
-                  {/* Left: Feed — one item per filing period, oldest at bottom */}
+                  {/* Left: Feed */}
                   <div className="sec-ai-left">
                     <div className="sec-ai-feed-header">
                       <span
@@ -5277,33 +5205,8 @@ export default function DealDetail() {
                       >
                         10-K / 10-Q Filings
                       </span>
-                      <button
-                        className="pr-toggle-btn"
-                        onClick={() => setTenkUploadOpen(!tenkUploadOpen)}
-                      >
-                        {tenkUploadOpen ? "CLOSE" : "ADD"}
-                      </button>
                     </div>
-                    {tenkUploadOpen && (
-                      <div className="tab-inline-upload">
-                        <textarea
-                          placeholder="Paste 10-K / 10-Q analysis text here..."
-                          value={tenkUploadText}
-                          onChange={(e) => setTenkUploadText(e.target.value)}
-                          rows={5}
-                          className="pr-textarea"
-                          disabled={tenkUploading}
-                        />
-                        <button
-                          onClick={handleTenkUpload}
-                          disabled={tenkUploading || !tenkUploadText.trim()}
-                          className="sec-process-btn"
-                        >
-                          {tenkUploading ? "SAVING..." : "SAVE"}
-                        </button>
-                      </div>
-                    )}
-                    {selectedTenkGroup?.hasComparison && (
+                    {selectedTenk?.hasComparison && (
                       <div className="sec-default-view-toggle">
                         <span className="sec-toggle-label">View:</span>
                         <button
@@ -5325,36 +5228,33 @@ export default function DealDetail() {
                         <div className="sec-ai-empty">
                           Loading 10-K/10-Q analyses...
                         </div>
-                      ) : tenkPeriods.length === 0 ? (
+                      ) : tenkAnalyses.length === 0 ? (
                         <div className="sec-ai-empty">
                           No 10-K/10-Q analyses found.
                         </div>
                       ) : (
-                        tenkPeriods.map((group, idx) => {
-                          const isSelected = selectedTenkPeriod === group.key;
+                        tenkAnalyses.map((filing, idx) => {
+                          const isSelected = selectedTenk?._id === filing._id;
                           return (
                             <div
-                              key={group.key}
+                              key={filing._id}
                               className={`sec-ai-feed-item ${isSelected ? "selected" : ""}`}
-                              onClick={() => {
-                                setSelectedTenkPeriod(group.key);
-                                setTenkViewMode("summary");
-                                setTenkTagFilter("ALL");
-                              }}
+                              onClick={() => handleSelectTenk(filing)}
                             >
                               <div className="feed-item-top">
                                 <span
                                   className="filing-type-badge"
                                   style={{
                                     backgroundColor:
-                                      group.filingType === "10-K"
+                                      filing.filing_type === "10-K" ||
+                                      filing.filing_type === "10-K/A"
                                         ? "var(--accent-green)"
                                         : "var(--accent-blue)"
                                   }}
                                 >
-                                  {group.filingType}
+                                  {filing.filing_type}
                                 </span>
-                                {group.hasComparison ? (
+                                {filing.hasComparison ? (
                                   <span
                                     style={{
                                       fontSize: "9px",
@@ -5381,18 +5281,20 @@ export default function DealDetail() {
                                 )}
                               </div>
                               <div className="feed-item-headline">
-                                {group.label}
+                                {filing.filing_label}
                               </div>
                               <div className="feed-item-meta">
                                 <span className="feed-item-ticker">
-                                  {
-                                    (
-                                      group.overview ||
-                                      group.exec ||
-                                      group.redline
-                                    )?.ticker
-                                  }
+                                  {filing.ticker}
                                 </span>
+                                {filing.generated && (
+                                  <span
+                                    className="feed-item-date"
+                                    style={{ fontSize: "9px" }}
+                                  >
+                                    {formatDate(filing.generated.split("T")[0])}
+                                  </span>
+                                )}
                               </div>
                             </div>
                           );
@@ -5403,7 +5305,7 @@ export default function DealDetail() {
 
                   {/* Right: Detail Panel */}
                   <div className="sec-ai-right">
-                    {selectedTenkGroup ? (
+                    {selectedTenk ? (
                       <>
                         <div className="sec-ai-detail-header">
                           <div className="sec-ai-detail-title">
@@ -5411,27 +5313,43 @@ export default function DealDetail() {
                               className="filing-type-badge"
                               style={{
                                 backgroundColor:
-                                  selectedTenkGroup.filingType === "10-K"
+                                  selectedTenk.filing_type === "10-K" ||
+                                  selectedTenk.filing_type === "10-K/A"
                                     ? "var(--accent-green)"
                                     : "var(--accent-blue)"
                               }}
                             >
-                              {selectedTenkGroup.filingType}
+                              {selectedTenk.filing_type}
                             </span>
                             <span className="detail-ticker">
-                              {selectedTenkGroup.label}
+                              {selectedTenk.filing_label}
+                            </span>
+                            <span className="detail-date">
+                              {formatDate(
+                                selectedTenk.generated?.split("T")[0]
+                              )}
                             </span>
                           </div>
-                          {/* Toggle moved to feed header */}
                         </div>
 
+                        {tenkDetailLoading && (
+                          <div
+                            className="sec-ai-empty"
+                            style={{
+                              margin: "12px 0",
+                              fontFamily: "var(--font-mono)",
+                              fontSize: "11px"
+                            }}
+                          >
+                            Loading 10-K/10-Q details...
+                          </div>
+                        )}
+
                         {/* Transition bar for comparison views */}
-                        {selectedTenkGroup.hasComparison &&
-                          (selectedTenkGroup.exec?.transition ||
-                            selectedTenkGroup.redline?.transition) && (
+                        {selectedTenk.hasComparison &&
+                          selectedTenk.fulsome?.transition && (
                             <div className="proxy-transition-bar">
-                              {selectedTenkGroup.exec?.transition ||
-                                selectedTenkGroup.redline?.transition}
+                              {selectedTenk.fulsome.transition}
                             </div>
                           )}
 
@@ -5440,64 +5358,63 @@ export default function DealDetail() {
                           style={{ padding: "16px 20px" }}
                         >
                           {/* ── STANDALONE FILING (no comparison) ── */}
-                          {!selectedTenkGroup.hasComparison &&
-                            selectedTenkGroup.overview && (
+                          {!selectedTenk.hasComparison &&
+                            selectedTenk.summary && (
                               <>
                                 {/* Headline (L1/L2/L3 format) */}
-                                {selectedTenkGroup.overview.headline && (
+                                {selectedTenk.summary.headline && (
                                   <div className="tenk-headline">
-                                    {selectedTenkGroup.overview.headline}
+                                    {selectedTenk.summary.headline}
                                   </div>
                                 )}
 
                                 {/* Overview / Brief text */}
-                                {selectedTenkGroup.overview.overview && (
+                                {selectedTenk.summary.overview && (
                                   <div className="tenk-overview-line">
-                                    {selectedTenkGroup.overview.overview}
+                                    {selectedTenk.summary.overview}
                                   </div>
                                 )}
 
                                 {/* Category sections with bullets (exec-format standalone) */}
-                                {(selectedTenkGroup.overview.sections || [])
-                                  .length > 0 && (
+                                {(selectedTenk.summary.sections || []).length >
+                                  0 && (
                                   <>
-                                    {(
-                                      selectedTenkGroup.overview.sections || []
-                                    ).map((section: any, si: number) => (
-                                      <div
-                                        key={si}
-                                        className="tenk-exec-section"
-                                      >
-                                        <h5 className="l3-label">
-                                          {section.name}
-                                        </h5>
-                                        <ul className="tenk-exec-items">
-                                          {section.items.map(
-                                            (item: string, ii: number) => (
-                                              <li
-                                                key={ii}
-                                                className="tenk-exec-item"
-                                              >
-                                                {item}
-                                              </li>
-                                            )
-                                          )}
-                                        </ul>
-                                      </div>
-                                    ))}
+                                    {(selectedTenk.summary.sections || []).map(
+                                      (section: any, si: number) => (
+                                        <div
+                                          key={si}
+                                          className="tenk-exec-section"
+                                        >
+                                          <h5 className="l3-label">
+                                            {section.name}
+                                          </h5>
+                                          <ul className="tenk-exec-items">
+                                            {section.items.map(
+                                              (item: string, ii: number) => (
+                                                <li
+                                                  key={ii}
+                                                  className="tenk-exec-item"
+                                                >
+                                                  {item}
+                                                </li>
+                                              )
+                                            )}
+                                          </ul>
+                                        </div>
+                                      )
+                                    )}
                                   </>
                                 )}
 
                                 {/* Tag filter + key excerpts (overview-format) */}
-                                {(selectedTenkGroup.overview.excerpts || [])
-                                  .length > 0 && (
+                                {(selectedTenk.summary.excerpts || []).length >
+                                  0 && (
                                   <>
                                     {(() => {
                                       const allTags: string[] = Array.from(
                                         new Set(
                                           (
-                                            selectedTenkGroup.overview
-                                              .excerpts || []
+                                            selectedTenk.summary.excerpts || []
                                           ).flatMap(
                                             (e: any) => e.tags as string[]
                                           )
@@ -5550,7 +5467,7 @@ export default function DealDetail() {
                                         </div>
                                       );
                                     })()}
-                                    {(selectedTenkGroup.overview.excerpts || [])
+                                    {(selectedTenk.summary.excerpts || [])
                                       .filter(
                                         (e: any) =>
                                           tenkTagFilter === "ALL" ||
@@ -5590,16 +5507,16 @@ export default function DealDetail() {
                             )}
 
                           {/* ── SUMMARY VIEW (Exec Summary) ── */}
-                          {selectedTenkGroup.hasComparison &&
+                          {selectedTenk.hasComparison &&
                             tenkViewMode === "summary" &&
-                            selectedTenkGroup.exec && (
+                            selectedTenk.summary && (
                               <>
-                                {selectedTenkGroup.exec.overview && (
+                                {selectedTenk.summary.overview && (
                                   <div className="tenk-overview-line">
-                                    {selectedTenkGroup.exec.overview}
+                                    {selectedTenk.summary.overview}
                                   </div>
                                 )}
-                                {(selectedTenkGroup.exec.sections || []).map(
+                                {(selectedTenk.summary.sections || []).map(
                                   (section: any, si: number) => (
                                     <div key={si} className="tenk-exec-section">
                                       <h5 className="l3-label">
@@ -5624,22 +5541,17 @@ export default function DealDetail() {
                             )}
 
                           {/* ── FULL DETAIL VIEW (Redline) ── */}
-                          {selectedTenkGroup.hasComparison &&
+                          {selectedTenk.hasComparison &&
                             tenkViewMode === "detail" &&
-                            selectedTenkGroup.redline && (
+                            selectedTenk.fulsome && (
                               <>
-                                {selectedTenkGroup.redline
-                                  .comparison_header && (
+                                {selectedTenk.fulsome.comparison_header && (
                                   <div className="tenk-comparison-header">
-                                    {
-                                      selectedTenkGroup.redline
-                                        .comparison_header
-                                    }
+                                    {selectedTenk.fulsome.comparison_header}
                                   </div>
                                 )}
                                 {(
-                                  selectedTenkGroup.redline.redline_excerpts ||
-                                  []
+                                  selectedTenk.fulsome.redline_excerpts || []
                                 ).map((excerpt: any) => (
                                   <div
                                     key={excerpt.number}
