@@ -36,6 +36,44 @@ def get_covenant_path(deal_id: str) -> Path | None:
     return p if p.exists() else None
 
 
+def get_covenant_html_from_mongo(deal_id: str) -> str | None:
+    """
+    Fetch covenant dashboard HTML from MongoDB (covenant_analysis collection).
+    The dashboard_html field contains an S3 URL — fetches it server-side and returns HTML string.
+    """
+    try:
+        from pymongo import MongoClient
+        from config import MONGODB_URI, MONGODB_DB
+        import requests
+
+        client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
+        db = client[MONGODB_DB]
+        doc = db["covenant_analysis"].find_one(
+            {"deal_id": deal_id},
+            sort=[("created_at", -1)],
+        )
+        client.close()
+
+        if not doc:
+            print(f"[covenant_processor] No covenant_analysis doc for deal_id={deal_id}")
+            return None
+
+        s3_url = doc.get("dashboard_html")
+        if not s3_url:
+            print(f"[covenant_processor] dashboard_html field missing for deal_id={deal_id}")
+            return None
+
+        r = requests.get(s3_url, timeout=15)
+        if r.status_code == 200:
+            return r.text
+        print(f"[covenant_processor] S3 fetch failed: {r.status_code} for {s3_url}")
+        return None
+
+    except Exception as e:
+        print(f"[covenant_processor] MongoDB error: {e}")
+        return None
+
+
 def find_covenant_inputs(deal_id: str) -> Path | None:
     """Return the input folder for deal_id if it contains the required JSONs."""
     deal_dir = COVENANT_INPUT_DIR / deal_id

@@ -18,11 +18,39 @@ PRESS_RELEASE_DIR = _BACKEND_DIR / "data" / "press_release"
 
 
 def get_press_release_data(deal_id: str):
-    """Return saved press release extraction for a deal, or None."""
+    """Return saved press release extraction for a deal, or None.
+    MongoDB mode: reads from fo_press_release_extraction collection.
+    Static mode:  reads from data/press_release/{deal_id}.json.
+    """
+    from config import DATA_SOURCE
+    if DATA_SOURCE == "mongodb":
+        return _get_pr_from_mongo(deal_id)
     p = PRESS_RELEASE_DIR / f"{deal_id}.json"
     if p.exists():
         return json.loads(p.read_text())
     return None
+
+
+def _get_pr_from_mongo(deal_id: str):
+    """Fetch the most recent fo_press_release_extraction record for deal_id."""
+    try:
+        from pymongo import MongoClient
+        from config import MONGODB_URI, MONGODB_DB
+        client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
+        db = client[MONGODB_DB]
+        doc = db["fo_press_release_extraction"].find_one(
+            {"deal_id": deal_id},
+            sort=[("created_at", -1)],
+        )
+        client.close()
+        if not doc:
+            return None
+        return {
+            "extracted": doc.get("extracted") or {},
+        }
+    except Exception as e:
+        print(f"[press_release_processor] MongoDB error: {e}")
+        return None
 
 
 def extract_from_press_release(deal_id: str, summary_text: str) -> dict:

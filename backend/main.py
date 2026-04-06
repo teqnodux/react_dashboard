@@ -34,8 +34,8 @@ import time
 import os
 
 from timeline_processor import get_timeline_path, get_timeline_json_path, find_docx, build_timeline, build_timeline_from_text, TIMELINES_DIR, INPUT_DIR
-from covenant_processor import get_covenant_path, find_covenant_inputs, build_covenant_dashboard
-from termination_processor import get_termination_path, find_termination_inputs, build_termination_dashboard
+from covenant_processor import get_covenant_path, find_covenant_inputs, build_covenant_dashboard, get_covenant_html_from_mongo
+from termination_processor import get_termination_path, find_termination_inputs, build_termination_dashboard, get_termination_html_from_mongo
 from scorecard_processor import get_scorecard_path, find_scorecard_inputs, build_scorecard, check_scorecard_sources
 from sec_processor import get_company_slugs, get_filing_index, get_all_filing_indexes, process_filing_url, SEC_FILINGS_DIR
 import json
@@ -2545,6 +2545,13 @@ def get_deal_reddit_analysis(deal_id: str):
 def get_deal_covenants(deal_id: str):
     """Serve the pre-generated covenant dashboard HTML for a deal."""
     import re
+
+    if _DATA_SOURCE == "mongodb":
+        html = get_covenant_html_from_mongo(deal_id)
+        if not html:
+            raise HTTPException(status_code=404, detail=f"No covenant dashboard found in MongoDB for {deal_id}.")
+        return Response(content=html, media_type="text/html")
+
     path = get_covenant_path(deal_id)
     if not path:
         raise HTTPException(
@@ -2591,6 +2598,12 @@ def generate_deal_covenants(deal_id: str):
 @app.get("/api/deals/{deal_id}/termination")
 def get_deal_termination(deal_id: str):
     """Serve the pre-generated termination dashboard HTML for a deal."""
+    if _DATA_SOURCE == "mongodb":
+        html = get_termination_html_from_mongo(deal_id)
+        if not html:
+            raise HTTPException(status_code=404, detail=f"No termination dashboard found in MongoDB for {deal_id}.")
+        return Response(content=html, media_type="text/html")
+
     path = get_termination_path(deal_id)
     if not path:
         raise HTTPException(

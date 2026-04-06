@@ -19,11 +19,40 @@ DMA_EXTRACT_DIR = _BACKEND_DIR / "data" / "dma_extract"
 
 
 def get_dma_extract(deal_id: str):
-    """Return saved DMA extraction for a deal, or None."""
+    """Return saved DMA extraction for a deal, or None.
+    MongoDB mode: reads from fo_dma_extraction collection.
+    Static mode:  reads from data/dma_extract/{deal_id}.json.
+    """
+    from config import DATA_SOURCE
+    if DATA_SOURCE == "mongodb":
+        return _get_dma_extract_from_mongo(deal_id)
     p = DMA_EXTRACT_DIR / f"{deal_id}.json"
     if p.exists():
         return json.loads(p.read_text())
     return None
+
+
+def _get_dma_extract_from_mongo(deal_id: str):
+    """Fetch the most recent fo_dma_extraction record for deal_id."""
+    try:
+        from pymongo import MongoClient
+        from config import MONGODB_URI, MONGODB_DB
+        client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
+        db = client[MONGODB_DB]
+        doc = db["fo_dma_extraction"].find_one(
+            {"deal_id": deal_id},
+            sort=[("created_at", -1)],
+        )
+        client.close()
+        if not doc:
+            return None
+        return {
+            "extracted": doc.get("extracted") or {},
+            "inconsistencies": doc.get("inconsistencies") or [],
+        }
+    except Exception as e:
+        print(f"[dma_summary_processor] MongoDB error: {e}")
+        return None
 
 
 def _load_press_release(deal_id: str):
