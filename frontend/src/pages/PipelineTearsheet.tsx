@@ -15,9 +15,9 @@ export default function PipelineTearsheet() {
   const [pagination, setPagination] = useState<{ total_deals: number; total_pages: number; has_next: boolean; has_prev: boolean } | null>(null);
   const PAGE_SIZE = 20;
   const [expandedColumnGroups, setExpandedColumnGroups] = useState<Set<string>>(new Set());
-  const [liveQuotes, setLiveQuotes] = useState<any>({});
+  const [quotesMap, setQuotesMap] = useState<Record<string, any>>({});  // ticker → quote
   const [quotesLoading, setQuotesLoading] = useState(false);
-  const [quoteTimestamps, setQuoteTimestamps] = useState<Record<string, number>>({});
+  const [quotesTimestamp, setQuotesTimestamp] = useState<number | null>(null);
   const [filter, setFilter] = useState<'all' | 'watchlist'>('watchlist');
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedSearch, setDebouncedSearch] = useState('');
@@ -123,41 +123,74 @@ export default function PipelineTearsheet() {
   };
 
   const fetchLiveQuotes = async () => {
+    if (!deals.length) return;
+    const tickers = [...new Set([
+      ...deals.map(d => d.target_ticker).filter(Boolean),
+      ...deals.filter(d => d.deal_type !== 'cash' && d.acquirer_ticker).map(d => d.acquirer_ticker),
+    ])];
+    if (!tickers.length) return;
     setQuotesLoading(true);
-    const quotesData: any = {};
-    const timestamps: Record<string, number> = {};
-    const now = Date.now();
-
-    for (const deal of deals) {
-      try {
-        const response = await fetch(`${API_BASE_URL}/api/deals/${deal.id}/quotes`);
-        if (response.ok) {
-          const data = await response.json();
-          quotesData[deal.id] = data;
-          timestamps[deal.id] = now;
-        }
-      } catch (err) {
-        console.error(`Error fetching quotes for ${deal.id}:`, err);
+    try {
+      const r = await fetch(`${API_BASE_URL}/api/quotes/batch?tickers=${tickers.join(',')}`);
+      if (r.ok) {
+        const data = await r.json();
+        setQuotesMap(data);
+        setQuotesTimestamp(Date.now());
       }
+    } catch (err) {
+      console.error('Error fetching batch quotes:', err);
     }
-
-    setLiveQuotes(quotesData);
-    setQuoteTimestamps(timestamps);
     setQuotesLoading(false);
   };
 
-  // Helper to format time since last update
-  const getTimeSinceUpdate = (dealId: string): string => {
-    const timestamp = quoteTimestamps[dealId];
-    if (!timestamp) return '';
+  // Auto-fetch quotes after deals load
+  useEffect(() => {
+    if (deals.length) fetchLiveQuotes();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [deals]);
 
-    const seconds = Math.floor((Date.now() - timestamp) / 1000);
+  const getTimeSinceUpdate = (): string => {
+    if (!quotesTimestamp) return '';
+    const seconds = Math.floor((Date.now() - quotesTimestamp) / 1000);
     if (seconds < 60) return `${seconds}s ago`;
     const minutes = Math.floor(seconds / 60);
     if (minutes < 60) return `${minutes}m ago`;
-    const hours = Math.floor(minutes / 60);
-    return `${hours}h ago`;
+    return `${Math.floor(minutes / 60)}h ago`;
   };
+
+  // Spread helpers using live prices
+  const getLivePrice = (deal: any): number | null =>
+    quotesMap[deal.target_ticker]?.current_price || null;
+
+  const getGrossSpreadDollars = (deal: any): number => {
+    const p = getLivePrice(deal);
+    return p !== null ? deal.offer_price - p : deal.gross_spread_dollars;
+  };
+
+  const getGrossSpreadPct = (deal: any): number => {
+    const p = getLivePrice(deal);
+    if (p === null || p === 0) return deal.gross_spread_pct;
+    return (getGrossSpreadDollars(deal) / p) * 100;
+  };
+
+  const getNetSpreadDollars = (deal: any): number => {
+    const p = getLivePrice(deal);
+    if (p === null) return deal.net_spread_dollars;
+    const borrowCost = p * deal.borrow_rate_annual * (deal.days_to_close / 365);
+    return getGrossSpreadDollars(deal) - borrowCost + deal.dividend_expected;
+  };
+
+  const getNetSpreadPct = (deal: any): number => {
+    const p = getLivePrice(deal);
+    if (p === null || p === 0) return deal.net_spread_pct;
+    return (getNetSpreadDollars(deal) / p) * 100;
+  };
+
+  const getAnnualizedGross = (deal: any): number =>
+    (getGrossSpreadPct(deal) / deal.days_to_close) * 365;
+
+  const getAnnualizedNet = (deal: any): number =>
+    (getNetSpreadPct(deal) / deal.days_to_close) * 365;
 
   const toggleWatch = (dealId: string) => {
     const newWatchlist = new Set(watchlist);
@@ -417,19 +450,18 @@ export default function PipelineTearsheet() {
 
   // Helper function to determine if deal is at-risk
   const isAtRisk = (deal: Deal): boolean => {
-    // At-risk if: wide spread (>8%) OR high downside (>20%) OR close to outside date
-    const wideSpread = deal.gross_spread_pct >= 8;
-    const highDownside = ((deal.unaffected_price - deal.current_price) / deal.current_price * 100) < -20;
+    const spread = getGrossSpreadPct(deal);
+    const price = getLivePrice(deal) ?? deal.current_price;
+    const wideSpread = spread >= 8;
+    const highDownside = price > 0 ? ((deal.unaffected_price - price) / price * 100) < -20 : false;
     const outsideDate = deal.outside_date ? new Date(deal.outside_date) : null;
     const daysToOutside = outsideDate ? Math.floor((outsideDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)) : 999;
     const approachingOutside = daysToOutside < 60 && daysToOutside > 0;
-
     return wideSpread || highDownside || approachingOutside;
   };
 
-  // Helper function to check if deal has regulatory challenges (wide spread might indicate issues)
   const hasRegulatoryChallenges = (deal: Deal): boolean => {
-    return deal.gross_spread_pct >= 10; // Very wide spread often means regulatory concerns
+    return getGrossSpreadPct(deal) >= 10;
   };
 
   // Helper function to check if approaching outside date
@@ -440,17 +472,14 @@ export default function PipelineTearsheet() {
     return daysToOutside < 60 && daysToOutside > 0;
   };
 
-  // Helper function to check if high downside risk
   const hasHighDownsideRisk = (deal: Deal): boolean => {
-    const downsidePct = ((deal.unaffected_price - deal.current_price) / deal.current_price * 100);
-    return downsidePct < -20;
+    const price = getLivePrice(deal) ?? deal.current_price;
+    if (!price) return false;
+    return ((deal.unaffected_price - price) / price * 100) < -20;
   };
 
-  // Helper function to get spread trend indicator
-  // In a real implementation, this would use historical data
-  // For now, we'll use a simple heuristic based on spread size and days to close
   const getSpreadTrend = (deal: Deal): { icon: string; color: string; tooltip: string } => {
-    const spread = deal.gross_spread_pct;
+    const spread = getGrossSpreadPct(deal);
     const daysToClose = deal.days_to_close;
 
     // Tight spreads typically tighten further as close date approaches
@@ -514,19 +543,19 @@ export default function PipelineTearsheet() {
         !hiddenColumns.has('consideration') && (deal.deal_type === 'cash' ? deal.offer_price.toFixed(2) : '—'),
         !hiddenColumns.has('consideration') && (deal.deal_type === 'stock' ? deal.offer_price.toFixed(2) : '—'),
         !hiddenColumns.has('consideration') && deal.deal_value_bn.toFixed(2),
-        !hiddenColumns.has('trading') && deal.current_price.toFixed(2),
-        !hiddenColumns.has('trading') && '—',
-        !hiddenColumns.has('gross') && deal.gross_spread_dollars.toFixed(2),
-        !hiddenColumns.has('gross') && deal.gross_spread_pct.toFixed(2),
-        !hiddenColumns.has('gross') && deal.annualized_gross.toFixed(2),
-        !hiddenColumns.has('net') && deal.net_spread_dollars.toFixed(2),
-        !hiddenColumns.has('net') && deal.net_spread_pct.toFixed(2),
-        !hiddenColumns.has('net') && deal.annualized_net.toFixed(2),
-        !hiddenColumns.has('timing') && deal.annualized_gross.toFixed(2),
+        !hiddenColumns.has('trading') && (getLivePrice(deal) ?? deal.current_price).toFixed(2),
+        !hiddenColumns.has('trading') && (quotesMap[deal.acquirer_ticker]?.current_price?.toFixed(2) || '—'),
+        !hiddenColumns.has('gross') && getGrossSpreadDollars(deal).toFixed(2),
+        !hiddenColumns.has('gross') && getGrossSpreadPct(deal).toFixed(2),
+        !hiddenColumns.has('gross') && getAnnualizedGross(deal).toFixed(2),
+        !hiddenColumns.has('net') && getNetSpreadDollars(deal).toFixed(2),
+        !hiddenColumns.has('net') && getNetSpreadPct(deal).toFixed(2),
+        !hiddenColumns.has('net') && getAnnualizedNet(deal).toFixed(2),
+        !hiddenColumns.has('timing') && getAnnualizedGross(deal).toFixed(2),
         !hiddenColumns.has('timing') && new Date(deal.expected_close).toLocaleDateString(),
         !hiddenColumns.has('timing') && new Date(deal.announce_date).toLocaleDateString(),
         !hiddenColumns.has('downsides') && deal.unaffected_price.toFixed(2),
-        !hiddenColumns.has('downsides') && ((deal.unaffected_price - deal.current_price) / deal.current_price * 100).toFixed(2),
+        !hiddenColumns.has('downsides') && (() => { const p = getLivePrice(deal) ?? deal.current_price; return p ? ((deal.unaffected_price - p) / p * 100).toFixed(2) : '—'; })(),
       ].filter(x => x !== false).join(',');
       return row;
     });
@@ -1161,7 +1190,8 @@ export default function PipelineTearsheet() {
 
             <tbody>
               {sortedDeals.map((deal) => {
-                const dealQuotes = liveQuotes[deal.id];
+                const targetQuote = quotesMap[deal.target_ticker];
+                const acquirerQuote = deal.acquirer_ticker ? quotesMap[deal.acquirer_ticker] : null;
 
                 return (
                   <tr
@@ -1221,7 +1251,9 @@ export default function PipelineTearsheet() {
                         {expandedColumnGroups.has('target') && (
                           <>
                             <td className="price-cell">
-                              <span className="price-value">${deal.current_price.toFixed(2)}</span>
+                              <span className="price-value">
+                                {targetQuote?.current_price ? `$${targetQuote.current_price.toFixed(2)}` : quotesLoading ? '…' : `$${deal.current_price.toFixed(2)}`}
+                              </span>
                             </td>
                             <td className="number-cell">
                               <span className="muted">—</span>
@@ -1358,55 +1390,55 @@ export default function PipelineTearsheet() {
                         content={
                           <div>
                             <div className="tooltip-row" style={{gridTemplateColumns: '1fr 1fr 1fr'}}>
-                              <div><div className="tooltip-label">Target Bid</div><div className="tooltip-value">{dealQuotes?.target_quote?.bid ? `$${dealQuotes.target_quote.bid.toFixed(2)}` : '$21.00'}</div></div>
-                              <div><div className="tooltip-label">Target Last</div><div className="tooltip-value">{dealQuotes?.target_quote?.current_price ? `$${dealQuotes.target_quote.current_price.toFixed(2)}` : `$${deal.current_price.toFixed(2)}`}</div></div>
-                              <div><div className="tooltip-label">Target Ask</div><div className="tooltip-value">{dealQuotes?.target_quote?.ask ? `$${dealQuotes.target_quote.ask.toFixed(2)}` : '$21.12'}</div></div>
+                              <div><div className="tooltip-label">Target Bid</div><div className="tooltip-value">{targetQuote?.bid ? `$${targetQuote.bid.toFixed(2)}` : '—'}</div></div>
+                              <div><div className="tooltip-label">Target Last</div><div className="tooltip-value">{targetQuote?.current_price ? `$${targetQuote.current_price.toFixed(2)}` : '—'}</div></div>
+                              <div><div className="tooltip-label">Target Ask</div><div className="tooltip-value">{targetQuote?.ask ? `$${targetQuote.ask.toFixed(2)}` : '—'}</div></div>
                             </div>
                             <div className="tooltip-row" style={{gridTemplateColumns: '1fr 1fr 1fr'}}>
-                              <div><div className="tooltip-label">Spread Bid</div><div className="tooltip-value">{dealQuotes?.target_quote?.bid ? `$${(deal.offer_price - dealQuotes.target_quote.bid).toFixed(2)}` : '$6.25'}</div></div>
-                              <div><div className="tooltip-label">Spread Last</div><div className="tooltip-value">${deal.gross_spread_dollars.toFixed(2)}</div></div>
-                              <div><div className="tooltip-label">Spread Ask</div><div className="tooltip-value">{dealQuotes?.target_quote?.ask ? `$${(deal.offer_price - dealQuotes.target_quote.ask).toFixed(2)}` : '$6.13'}</div></div>
+                              <div><div className="tooltip-label">Spread Bid</div><div className="tooltip-value">{targetQuote?.bid ? `$${(deal.offer_price - targetQuote.bid).toFixed(2)}` : '—'}</div></div>
+                              <div><div className="tooltip-label">Spread Last</div><div className="tooltip-value">${getGrossSpreadDollars(deal).toFixed(2)}</div></div>
+                              <div><div className="tooltip-label">Spread Ask</div><div className="tooltip-value">{targetQuote?.ask ? `$${(deal.offer_price - targetQuote.ask).toFixed(2)}` : '—'}</div></div>
                             </div>
                             <div className="tooltip-row" style={{gridTemplateColumns: '1fr 1fr 1fr'}}>
-                              <div><div className="tooltip-label">Vol (mm)</div><div className="tooltip-value">{dealQuotes?.target_quote?.volume && dealQuotes?.target_quote?.current_price ? `$${((dealQuotes.target_quote.volume * dealQuotes.target_quote.current_price) / 1000000).toFixed(2)}` : '$24.5'}</div></div>
-                              <div><div className="tooltip-label">Vol (shares)</div><div className="tooltip-value">{dealQuotes?.target_quote?.volume ? dealQuotes.target_quote.volume.toLocaleString() : '1,301,329'}</div></div>
-                              <div><div className="tooltip-label">30-day Vol</div><div className="tooltip-value">6,040,076</div></div>
+                              <div><div className="tooltip-label">Vol (mm)</div><div className="tooltip-value">{targetQuote?.volume && targetQuote?.current_price ? `$${((targetQuote.volume * targetQuote.current_price) / 1000000).toFixed(2)}` : '—'}</div></div>
+                              <div><div className="tooltip-label">Vol (shares)</div><div className="tooltip-value">{targetQuote?.volume ? targetQuote.volume.toLocaleString() : '—'}</div></div>
+                              <div><div className="tooltip-label">30-day Vol</div><div className="tooltip-value">—</div></div>
                             </div>
                           </div>
                         }
                       >
                         <span className="price-value">
-                          ${(dealQuotes?.target_quote?.current_price || deal.current_price).toFixed(2)}
-                          {quoteTimestamps[deal.id] && (
-                            <span className="refresh-indicator" title={`Last updated: ${new Date(quoteTimestamps[deal.id]).toLocaleTimeString()}`}>
-                              🔄 {getTimeSinceUpdate(deal.id)}
+                          {targetQuote?.current_price
+                            ? `$${targetQuote.current_price.toFixed(2)}`
+                            : quotesLoading ? '…' : `$${deal.current_price.toFixed(2)}`}
+                          {quotesTimestamp && (
+                            <span className="refresh-indicator" title={`Last updated: ${new Date(quotesTimestamp).toLocaleTimeString()}`}>
+                              🔄 {getTimeSinceUpdate()}
                             </span>
                           )}
                         </span>
                       </TearsheetTooltip>
                     </td>
                     <td className="price-cell">
-                      <span className={dealQuotes?.acquirer_quote?.current_price ? "price-value" : "muted"}>
-                        {dealQuotes?.acquirer_quote?.current_price
-                          ? `$${dealQuotes.acquirer_quote.current_price.toFixed(2)}`
-                          : '—'}
+                      <span className={acquirerQuote?.current_price ? "price-value" : "muted"}>
+                        {acquirerQuote?.current_price ? `$${acquirerQuote.current_price.toFixed(2)}` : '—'}
                       </span>
                     </td>
                     {expandedColumnGroups.has('trading') && (
                       <>
                         <td className="price-cell">
-                          <span className={dealQuotes?.target_quote?.bid ? "price-value" : "muted"}>
-                            {dealQuotes?.target_quote?.bid ? `$${dealQuotes.target_quote.bid.toFixed(2)}` : '—'}
+                          <span className={targetQuote?.bid ? "price-value" : "muted"}>
+                            {targetQuote?.bid ? `$${targetQuote.bid.toFixed(2)}` : '—'}
                           </span>
                         </td>
                         <td className="price-cell">
-                          <span className={dealQuotes?.target_quote?.ask ? "price-value" : "muted"}>
-                            {dealQuotes?.target_quote?.ask ? `$${dealQuotes.target_quote.ask.toFixed(2)}` : '—'}
+                          <span className={targetQuote?.ask ? "price-value" : "muted"}>
+                            {targetQuote?.ask ? `$${targetQuote.ask.toFixed(2)}` : '—'}
                           </span>
                         </td>
                         <td className="volume-cell">
-                          <span className={dealQuotes?.target_quote?.volume ? "volume-value" : "muted"}>
-                            {dealQuotes?.target_quote?.volume ? dealQuotes.target_quote.volume.toLocaleString() : '—'}
+                          <span className={targetQuote?.volume ? "volume-value" : "muted"}>
+                            {targetQuote?.volume ? targetQuote.volume.toLocaleString() : '—'}
                           </span>
                         </td>
                       </>
@@ -1417,10 +1449,10 @@ export default function PipelineTearsheet() {
                     {/* Gross Spread */}
                     {!hiddenColumns.has('gross') && (
                       <>
-                        <td className={`spread-cell ${getSpreadColorClass(deal.gross_spread_pct)}`}>
-                          <span className="spread-dollars">${deal.gross_spread_dollars.toFixed(2)}</span>
+                        <td className={`spread-cell ${getSpreadColorClass(getGrossSpreadPct(deal))}`}>
+                          <span className="spread-dollars">${getGrossSpreadDollars(deal).toFixed(2)}</span>
                         </td>
-                        <td className={`spread-cell ${getSpreadColorClass(deal.gross_spread_pct)}`}>
+                        <td className={`spread-cell ${getSpreadColorClass(getGrossSpreadPct(deal))}`}>
                           <span
                             className="spread-trend"
                             style={{ color: getSpreadTrend(deal).color }}
@@ -1428,12 +1460,12 @@ export default function PipelineTearsheet() {
                           >
                             {getSpreadTrend(deal).icon}
                           </span>
-                          <span className="spread-pct">{deal.gross_spread_pct.toFixed(2)}%</span>
+                          <span className="spread-pct">{getGrossSpreadPct(deal).toFixed(2)}%</span>
                         </td>
                         {expandedColumnGroups.has('gross') && (
                           <>
-                            <td className={`spread-cell ${getSpreadColorClass(deal.gross_spread_pct)}`}>
-                              <span className="spread-pct">{deal.annualized_gross.toFixed(2)}%</span>
+                            <td className={`spread-cell ${getSpreadColorClass(getGrossSpreadPct(deal))}`}>
+                              <span className="spread-pct">{getAnnualizedGross(deal).toFixed(2)}%</span>
                             </td>
                           </>
                         )}
@@ -1443,22 +1475,22 @@ export default function PipelineTearsheet() {
                     {/* Net Spread */}
                     {!hiddenColumns.has('net') && (
                       <>
-                        <td className={`spread-cell ${getSpreadColorClass(deal.net_spread_pct)}`}>
-                          <span className="spread-dollars">${deal.net_spread_dollars.toFixed(2)}</span>
+                        <td className={`spread-cell ${getSpreadColorClass(getNetSpreadPct(deal))}`}>
+                          <span className="spread-dollars">${getNetSpreadDollars(deal).toFixed(2)}</span>
                         </td>
-                        <td className={`spread-cell ${getSpreadColorClass(deal.net_spread_pct)}`}>
-                          <span className="spread-pct">{deal.net_spread_pct.toFixed(2)}%</span>
+                        <td className={`spread-cell ${getSpreadColorClass(getNetSpreadPct(deal))}`}>
+                          <span className="spread-pct">{getNetSpreadPct(deal).toFixed(2)}%</span>
                         </td>
                         {expandedColumnGroups.has('net') && (
                           <>
                             <td className="cost-cell">
-                              <span className="cost-value">${deal.borrow_cost_to_close.toFixed(2)}</span>
+                              <span className="cost-value">${(() => { const p = getLivePrice(deal) ?? deal.current_price; return (p * deal.borrow_rate_annual * deal.days_to_close / 365).toFixed(2); })()}</span>
                             </td>
                             <td className="cost-cell">
                               <span className="cost-value">${deal.dividend_expected.toFixed(2)}</span>
                             </td>
                             <td className="spread-cell">
-                              <span className="spread-pct">{deal.annualized_net.toFixed(2)}%</span>
+                              <span className="spread-pct">{getAnnualizedNet(deal).toFixed(2)}%</span>
                             </td>
                           </>
                         )}
@@ -1469,7 +1501,7 @@ export default function PipelineTearsheet() {
                     {!hiddenColumns.has('timing') && (
                       <>
                         <td className="spread-cell">
-                          <span className="spread-pct">{deal.annualized_gross.toFixed(2)}%</span>
+                          <span className="spread-pct">{getAnnualizedGross(deal).toFixed(2)}%</span>
                         </td>
                         <td className="date-cell">
                       <TearsheetTooltip
@@ -1601,7 +1633,7 @@ export default function PipelineTearsheet() {
                                   Calculation = 1 – (Deal Spread) / (Total Spread)
                                 </div>
                                 <div className="tooltip-row" style={{gridTemplateColumns: '1fr'}}>
-                                  <div><div className="tooltip-label">Deal Spread =</div><div className="tooltip-value">{deal.offer_price.toFixed(2)} – {deal.current_price.toFixed(2)} = {deal.gross_spread_dollars.toFixed(2)}</div></div>
+                                  <div><div className="tooltip-label">Deal Spread =</div><div className="tooltip-value">{deal.offer_price.toFixed(2)} – {(getLivePrice(deal) ?? deal.current_price).toFixed(2)} = {getGrossSpreadDollars(deal).toFixed(2)}</div></div>
                                 </div>
                                 <div className="tooltip-row" style={{gridTemplateColumns: '1fr'}}>
                                   <div><div className="tooltip-label">Total Spread =</div><div className="tooltip-value">{deal.offer_price.toFixed(2)} – 15.00 = {(deal.offer_price - 15.00).toFixed(2)}</div></div>
@@ -1621,13 +1653,14 @@ export default function PipelineTearsheet() {
                           </div>
                         }
                       >
-                        <span className={`downside-value ${
-                          ((deal.unaffected_price - deal.current_price) / deal.current_price * 100) < -20 ? 'high-risk' : ''
-                        }`}>
+                        <span className={`downside-value ${hasHighDownsideRisk(deal) ? 'high-risk' : ''}`}>
                           {hasHighDownsideRisk(deal) && (
                             <span className="indicator-icon warning-icon" title="High downside risk">⚠️</span>
                           )}
-                          {((deal.unaffected_price - deal.current_price) / deal.current_price * 100).toFixed(2)}%
+                          {(() => {
+                            const price = getLivePrice(deal) ?? deal.current_price;
+                            return price ? ((deal.unaffected_price - price) / price * 100).toFixed(2) + '%' : '—';
+                          })()}
                         </span>
                           </TearsheetTooltip>
                         </td>
@@ -1676,8 +1709,8 @@ export default function PipelineTearsheet() {
           <div className="footer-note">
             <span className="muted">
               📊 Showing {filteredDeals.length} of {deals.length} deal{deals.length !== 1 ? 's' : ''}
-              {Object.keys(liveQuotes).length > 0 &&
-                ` • Quotes updated: ${new Date().toLocaleTimeString()}`
+              {quotesTimestamp &&
+                ` • Quotes updated: ${new Date(quotesTimestamp).toLocaleTimeString()}`
               }
             </span>
           </div>
@@ -1755,17 +1788,17 @@ export default function PipelineTearsheet() {
                       <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid var(--border)' }}>
                         <strong>Pricing</strong>
                       </div>
-                      <div><strong>Current:</strong> ${deal.current_price.toFixed(2)}</div>
+                      <div><strong>Current:</strong> ${(getLivePrice(deal) ?? deal.current_price).toFixed(2)}</div>
                       <div><strong>Offer:</strong> ${deal.offer_price.toFixed(2)}</div>
                       <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid var(--border)' }}>
                         <strong>Spreads</strong>
                       </div>
-                      <div><strong>Gross $:</strong> ${deal.gross_spread_dollars.toFixed(2)}</div>
-                      <div className={getSpreadColorClass(deal.gross_spread_pct)}>
-                        <strong>Gross %:</strong> {deal.gross_spread_pct.toFixed(2)}%
+                      <div><strong>Gross $:</strong> ${getGrossSpreadDollars(deal).toFixed(2)}</div>
+                      <div className={getSpreadColorClass(getGrossSpreadPct(deal))}>
+                        <strong>Gross %:</strong> {getGrossSpreadPct(deal).toFixed(2)}%
                       </div>
-                      <div><strong>Net %:</strong> {deal.net_spread_pct.toFixed(2)}%</div>
-                      <div><strong>Ann. Net:</strong> {deal.annualized_net.toFixed(2)}%</div>
+                      <div><strong>Net %:</strong> {getNetSpreadPct(deal).toFixed(2)}%</div>
+                      <div><strong>Ann. Net:</strong> {getAnnualizedNet(deal).toFixed(2)}%</div>
                       <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid var(--border)' }}>
                         <strong>Timing</strong>
                       </div>
@@ -1776,7 +1809,7 @@ export default function PipelineTearsheet() {
                         <strong>Risk</strong>
                       </div>
                       <div><strong>Unaffected:</strong> ${deal.unaffected_price.toFixed(2)}</div>
-                      <div><strong>Downside:</strong> {((deal.unaffected_price - deal.current_price) / deal.current_price * 100).toFixed(2)}%</div>
+                      <div><strong>Downside:</strong> {(() => { const p = getLivePrice(deal) ?? deal.current_price; return p ? ((deal.unaffected_price - p) / p * 100).toFixed(2) + '%' : '—'; })()}</div>
                       <div><strong>Deal Value:</strong> ${deal.deal_value_bn.toFixed(2)}B</div>
                     </div>
                   </div>

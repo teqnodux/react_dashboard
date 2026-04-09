@@ -28,6 +28,8 @@ export default function PipelineTable() {
   const [refreshing, setRefreshing] = useState(false);
   const [page, setPage] = useState(1);
   const PAGE_SIZE = 20;
+  const [quotesMap, setQuotesMap] = useState<Record<string, any>>({});
+  const [quotesLoading, setQuotesLoading] = useState(false);
 
   // Load watchlist from localStorage
   useEffect(() => {
@@ -69,6 +71,49 @@ export default function PipelineTable() {
       });
     return () => controller.abort();
   }, [page, debouncedSearch]);
+
+  // After deals load, fetch all quotes in parallel via batch endpoint
+  useEffect(() => {
+    if (!dealsData?.deals?.length) return;
+    const tickers = [...new Set([
+      ...dealsData.deals.map(d => d.target_ticker).filter(Boolean),
+      ...dealsData.deals.filter(d => d.deal_type !== 'cash' && d.acquirer_ticker).map(d => d.acquirer_ticker),
+    ])];
+    if (!tickers.length) return;
+    setQuotesLoading(true);
+    fetch(`${API_BASE_URL}/api/quotes/batch?tickers=${tickers.join(',')}`)
+      .then(r => r.json())
+      .then(data => { setQuotesMap(data); setQuotesLoading(false); })
+      .catch(() => setQuotesLoading(false));
+  }, [dealsData]);
+
+  // Spread helpers using live prices from batch
+  const getLivePrice = (deal: any): number | null =>
+    quotesMap[deal.target_ticker]?.current_price || null;
+
+  const getGrossSpreadDollars = (deal: any): number => {
+    const p = getLivePrice(deal);
+    return p !== null ? deal.offer_price - p : deal.gross_spread_dollars;
+  };
+
+  const getGrossSpreadPct = (deal: any): number => {
+    const p = getLivePrice(deal);
+    if (p === null || p === 0) return deal.gross_spread_pct;
+    return (getGrossSpreadDollars(deal) / p) * 100;
+  };
+
+  const getNetSpreadDollars = (deal: any): number => {
+    const p = getLivePrice(deal);
+    if (p === null) return deal.net_spread_dollars;
+    const borrowCost = p * deal.borrow_rate_annual * (deal.days_to_close / 365);
+    return getGrossSpreadDollars(deal) - borrowCost + deal.dividend_expected;
+  };
+
+  const getNetSpreadPct = (deal: any): number => {
+    const p = getLivePrice(deal);
+    if (p === null || p === 0) return deal.net_spread_pct;
+    return (getNetSpreadDollars(deal) / p) * 100;
+  };
 
   const toggleWatch = (dealId: string) => {
     const newWatchlist = new Set(watchlist);
@@ -321,7 +366,9 @@ export default function PipelineTable() {
                       </td>
                       <td className="cell-price">
                         <Link to={`/deal/${deal.id}`} className="deal-link">
-                          ${deal.current_price.toFixed(2)}
+                          {getLivePrice(deal) !== null
+                            ? `$${getLivePrice(deal)!.toFixed(2)}`
+                            : quotesLoading ? '…' : `$${deal.current_price.toFixed(2)}`}
                         </Link>
                       </td>
                       <td className="cell-offer">
@@ -334,16 +381,16 @@ export default function PipelineTable() {
                           )}
                         </Link>
                       </td>
-                      <td className={`cell-spread ${getSpreadClass(deal.gross_spread_pct)}`}>
+                      <td className={`cell-spread ${getSpreadClass(getGrossSpreadPct(deal))}`}>
                         <Link to={`/deal/${deal.id}`} className="deal-link">
-                          <div className="spread-dollars">${deal.gross_spread_dollars.toFixed(2)}</div>
-                          <div className="spread-pct">{deal.gross_spread_pct.toFixed(1)}%</div>
+                          <div className="spread-dollars">${getGrossSpreadDollars(deal).toFixed(2)}</div>
+                          <div className="spread-pct">{getGrossSpreadPct(deal).toFixed(1)}%</div>
                         </Link>
                       </td>
-                      <td className={`cell-spread ${getSpreadClass(deal.net_spread_pct, true)}`}>
+                      <td className={`cell-spread ${getSpreadClass(getNetSpreadPct(deal), true)}`}>
                         <Link to={`/deal/${deal.id}`} className="deal-link">
-                          <div className="spread-dollars">${deal.net_spread_dollars.toFixed(2)}</div>
-                          <div className="spread-pct">{deal.net_spread_pct.toFixed(1)}%</div>
+                          <div className="spread-dollars">${getNetSpreadDollars(deal).toFixed(2)}</div>
+                          <div className="spread-pct">{getNetSpreadPct(deal).toFixed(1)}%</div>
                         </Link>
                       </td>
                       <td className="cell-close-date">

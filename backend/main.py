@@ -947,6 +947,33 @@ def refresh_prices():
     }
 
 
+@app.get("/api/quotes/batch")
+def get_batch_quotes(tickers: str = Query("")):
+    """
+    Fetch live quotes for multiple tickers in parallel.
+    ?tickers=AAPL,MSFT,GOOG  (comma-separated)
+    Returns {TICKER: {current_price, bid, ask, volume, percent_change, ...}}
+    """
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
+    ticker_list = [t.strip().upper() for t in tickers.split(",") if t.strip()]
+    ticker_list = list(dict.fromkeys(ticker_list))  # deduplicate, preserve order
+    if not ticker_list:
+        return {}
+
+    results: dict = {}
+    with ThreadPoolExecutor(max_workers=min(20, len(ticker_list))) as executor:
+        future_to_ticker = {executor.submit(_get_live_quote, t): t for t in ticker_list}
+        for future in as_completed(future_to_ticker):
+            ticker = future_to_ticker[future]
+            try:
+                results[ticker] = future.result()
+            except Exception:
+                results[ticker] = None
+
+    return results
+
+
 @app.get("/api/deals/{deal_id}/quotes")
 def get_deal_live_quotes(deal_id: str):
     """

@@ -622,8 +622,8 @@ def load_deals_page_from_mongodb(skip: int = 0, limit: int = 20, search: str = "
         borrow_rate_annual = float(doc.get("borrow_rate_annual") or 0.0)
 
         current_price = float(doc.get("current_price") or 0.0)
-        if not current_price:
-            current_price = _fetch_current_price(target_ticker)
+        # Live price is NOT fetched here — the frontend requests /api/quotes/batch
+        # after page load to get all 20 quotes in parallel (avoids serial blocking).
 
         unaffected_price = float(doc.get("unaffected_price") or 0.0)
         if not unaffected_price:
@@ -644,8 +644,8 @@ def load_deals_page_from_mongodb(skip: int = 0, limit: int = 20, search: str = "
             if not offer_price:
                 offer_price = cash_component
 
-        shares_outstanding = _fetch_shares_outstanding(target_ticker)
         deal_value_bn = float(doc.get("deal_value_bn") or 0.0)
+        shares_outstanding = _fetch_shares_outstanding(target_ticker) if not deal_value_bn else 0
         if not deal_value_bn and offer_price and shares_outstanding:
             deal_value_bn = round(offer_price * shares_outstanding / 1_000_000_000, 2)
 
