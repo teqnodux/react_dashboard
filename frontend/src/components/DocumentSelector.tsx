@@ -7,7 +7,7 @@
 
 import { useEffect, useState } from 'react';
 import './DocumentSelector.css';
-import { API_BASE_URL } from '../config';
+import api from '../services/api';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -55,11 +55,9 @@ export default function DocumentSelector({ dealId, onProcessed, endpointPrefix =
 
   const loadDocs = () => {
     setLoading(true);
-    fetch(`${API_BASE_URL}/api/deals/${dealId}/${endpointPrefix}/available-documents`)
-      .then(async r => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        const data = await r.json();
-        setDocs(data.documents || []);
+    api.get(`/api/deals/${dealId}/${endpointPrefix}/available-documents`)
+      .then(res => {
+        setDocs(res.data.documents || []);
       })
       .catch(() => setDocs([]))
       .finally(() => setLoading(false));
@@ -101,21 +99,12 @@ export default function DocumentSelector({ dealId, onProcessed, endpointPrefix =
     for (const idx of sortedIdxs) {
       const doc = docs[idx];
       try {
-        const resp = await fetch(`${API_BASE_URL}/api/deals/${dealId}/${endpointPrefix}/monitor`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            doc_url: doc.url,
-            doc_type: doc.doc_type,
-            doc_date: doc.doc_date || undefined,
-            file_path: (doc as any).file_path || undefined,
-          }),
+        const { data: result } = await api.post(`/api/deals/${dealId}/${endpointPrefix}/monitor`, {
+          doc_url: doc.url,
+          doc_type: doc.doc_type,
+          doc_date: doc.doc_date || undefined,
+          file_path: (doc as any).file_path || undefined,
         });
-        if (!resp.ok) {
-          const err = await resp.json();
-          throw new Error(err.detail || `HTTP ${resp.status}`);
-        }
-        const result = await resp.json();
         newResults.set(idx, result);
         setResults(new Map(newResults));
       } catch (e: any) {
@@ -134,20 +123,11 @@ export default function DocumentSelector({ dealId, onProcessed, endpointPrefix =
     if (!manualUrl) return;
     setProcessing(true);
     try {
-      const resp = await fetch(`${API_BASE_URL}/api/deals/${dealId}/${endpointPrefix}/monitor`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          doc_url: manualUrl,
-          doc_type: manualType || 'filing',
-          doc_date: manualDate || undefined,
-        }),
+      const { data: result } = await api.post(`/api/deals/${dealId}/${endpointPrefix}/monitor`, {
+        doc_url: manualUrl,
+        doc_type: manualType || 'filing',
+        doc_date: manualDate || undefined,
       });
-      if (!resp.ok) {
-        const err = await resp.json();
-        throw new Error(err.detail || `HTTP ${resp.status}`);
-      }
-      const result = await resp.json();
       setResults(new Map([[999, result]]));
       setManualUrl('');
       setManualDate('');

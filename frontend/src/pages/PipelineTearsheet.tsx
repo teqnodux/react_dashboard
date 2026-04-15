@@ -5,7 +5,7 @@ import DashboardNav from '../components/DashboardNav';
 import TearsheetTooltip from '../components/TearsheetTooltip';
 import '../styles/DealDetail.css';
 import '../styles/CrossDeal.css';
-import { API_BASE_URL } from '../config';
+import api from '../services/api';
 
 export default function PipelineTearsheet() {
   const [deals, setDeals] = useState<Deal[]>([]);
@@ -96,15 +96,14 @@ export default function PipelineTearsheet() {
       page_size: String(PAGE_SIZE),
       ...(debouncedSearch ? { search: debouncedSearch } : {}),
     });
-    fetch(`${API_BASE_URL}/api/deals?${params}`, { signal: controller.signal })
-      .then(res => res.json())
-      .then(data => {
-        setDeals(data.deals);
-        setPagination(data.pagination);
+    api.get(`/api/deals?${params}`, { signal: controller.signal })
+      .then(res => {
+        setDeals(res.data.deals);
+        setPagination(res.data.pagination);
         setLoading(false);
       })
       .catch(err => {
-        if (err.name !== 'AbortError') {
+        if (err.name !== 'AbortError' && err.code !== 'ERR_CANCELED') {
           setError(err.message);
           setLoading(false);
         }
@@ -131,12 +130,9 @@ export default function PipelineTearsheet() {
     if (!tickers.length) return;
     setQuotesLoading(true);
     try {
-      const r = await fetch(`${API_BASE_URL}/api/quotes/batch?tickers=${tickers.join(',')}`);
-      if (r.ok) {
-        const data = await r.json();
-        setQuotesMap(data);
-        setQuotesTimestamp(Date.now());
-      }
+      const { data } = await api.get(`/api/quotes/batch?tickers=${tickers.join(',')}`);
+      setQuotesMap(data);
+      setQuotesTimestamp(Date.now());
     } catch (err) {
       console.error('Error fetching batch quotes:', err);
     }

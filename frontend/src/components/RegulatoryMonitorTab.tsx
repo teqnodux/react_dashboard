@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import StatusProgression from './StatusProgression';
 import DocumentSelector from './DocumentSelector';
 import './RegulatoryMonitorTab.css';
-import { API_BASE_URL } from '../config';
+import api from '../services/api';
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -478,11 +478,8 @@ export default function RegulatoryMonitorTab({ dealId, dealName, onProcessed }: 
 
   const load = () => {
     setLoading(true);
-    fetch(`${API_BASE_URL}/api/deals/${dealId}/regulatory-monitor`)
-      .then(async r => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        setData(await r.json());
-      })
+    api.get(`/api/deals/${dealId}/regulatory-monitor`)
+      .then(res => { setData(res.data); })
       .catch(() => setData(null))
       .finally(() => setLoading(false));
   };
@@ -490,12 +487,10 @@ export default function RegulatoryMonitorTab({ dealId, dealName, onProcessed }: 
   useEffect(() => { load(); }, [dealId]);
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/regulatory/master-approvals`)
-      .then(async r => {
-        if (!r.ok) return;
-        const d = await r.json();
+    api.get(`/api/regulatory/master-approvals`)
+      .then(res => {
         const map: Record<string, MasterApproval> = {};
-        for (const ap of d.approvals || []) map[ap.id] = ap;
+        for (const ap of res.data.approvals || []) map[ap.id] = ap;
         setMasterDefs(map);
       })
       .catch(() => {});

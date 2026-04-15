@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react';
+import api, { setLogoutCallback } from '../services/api';
 
 interface User {
   email: string;
@@ -16,8 +17,6 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
-
-const AUTH_API_URL = 'https://rag-django-sq2f.onrender.com/api/auth/login/';
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
@@ -40,19 +39,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setLoading(false);
   }, []);
 
+  const logout = useCallback(() => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('user');
+    setToken(null);
+    setUser(null);
+  }, []);
+
+  useEffect(() => {
+    setLogoutCallback(logout);
+  }, [logout]);
+
   const login = async (email: string, password: string) => {
-    const response = await fetch(AUTH_API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => null);
-      throw new Error(errorData?.detail || 'Invalid email or password');
-    }
-
-    const { access, refresh, user_email, role, user_id } = await response.json();
+    const { data } = await api.post('/api/auth/login', { email, password });
+    const { access, refresh, user_email, role, user_id } = data;
 
     localStorage.setItem('token', access);
     localStorage.setItem('refreshToken', refresh);
@@ -60,14 +61,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     setToken(access);
     setUser({ email: user_email, role, id: user_id });
-  };
-
-  const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('refreshToken');
-    localStorage.removeItem('user');
-    setToken(null);
-    setUser(null);
   };
 
   return (

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './DMATimeline.css';
-import { API_BASE_URL } from '../config';
+import api from '../services/api';
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -445,11 +445,12 @@ export default function DMATimeline({ dealId, onGenerateClick, generating, refre
 
   useEffect(() => {
     setLoading(true); setNotFound(false); setData(null);
-    fetch(`${API_BASE_URL}/api/deals/${dealId}/dma-timeline-data`)
-      .then(async r => {
-        if (r.status === 404) { setNotFound(true); return; }
-        setData(await r.json());
-      }).catch(() => setNotFound(true))
+    api.get(`/api/deals/${dealId}/dma-timeline-data`)
+      .then(res => { setData(res.data); })
+      .catch((err) => {
+        if (err.response?.status === 404) { setNotFound(true); return; }
+        setNotFound(true);
+      })
       .finally(() => setLoading(false));
   }, [dealId, refreshKey]);
 

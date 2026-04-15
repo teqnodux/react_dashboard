@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { API_BASE_URL } from '../config';
+import api from '../services/api';
 
 interface FeedItem {
   id: string;
@@ -68,11 +68,10 @@ export default function FeedTab({ dealId }: { dealId: string }) {
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/deals/${dealId}/feed`)
-      .then(res => res.json())
-      .then(data => {
-        setItems(data.items || []);
-        setSummary(data.summary || null);
+    api.get(`/api/deals/${dealId}/feed`)
+      .then(res => {
+        setItems(res.data.items || []);
+        setSummary(res.data.summary || null);
       })
       .catch(() => {})
       .finally(() => setLoading(false));

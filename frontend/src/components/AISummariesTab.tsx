@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { AISummaryResult, AISummaryResponse } from '../types/deal';
-import { API_BASE_URL } from '../config';
+import api from '../services/api';
 
 interface AISummariesTabProps {
   ticker: string;
@@ -73,12 +73,9 @@ export default function AISummariesTab({ ticker }: AISummariesTabProps) {
     setLoading(true);
     setError(null);
 
-    fetch(`${API_BASE_URL}/api/ai-summaries/${ticker}`)
+    api.get(`/api/ai-summaries/${ticker}`)
       .then(res => {
-        if (!res.ok) throw new Error(`Failed to fetch AI summaries`);
-        return res.json();
-      })
-      .then((data: AISummaryResponse) => {
+        const data: AISummaryResponse = res.data;
         const sorted = [...data.results].sort((a, b) =>
           new Date(b.date).getTime() - new Date(a.date).getTime()
         );

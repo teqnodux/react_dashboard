@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/RedditAnalysis.css';
-import { API_BASE_URL } from '../config';
+import api from '../services/api';
 
 interface RedditFinding {
   relevant: boolean;
@@ -42,10 +42,9 @@ export default function RedditAnalysis() {
   const [expandedFindings, setExpandedFindings] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/reddit-analysis`)
-      .then(res => res.json())
-      .then(data => {
-        setData(data);
+    api.get(`/api/reddit-analysis`)
+      .then(res => {
+        setData(res.data);
         setLoading(false);
       })
       .catch(err => {
