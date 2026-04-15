@@ -663,16 +663,29 @@ def get_all_deals(
                            description="Number of deals per page"),
     search: str = Query(
         default="", description="Search by target, acquirer, or ticker"),
+    ids: Optional[str] = Query(
+        default=None, description="Comma-separated deal IDs to restrict results to"),
 ):
     """Get deals with calculated spreads — paginated (default page=1, page_size=20)"""
     skip = (page - 1) * page_size
+
+    # Parse allowed ID set when provided (role-based deal filtering)
+    allowed_ids: Optional[set] = None
+    if ids:
+        allowed_ids = {s.strip() for s in ids.split(",") if s.strip()}
 
     if _DATA_SOURCE == "mongodb":
         from mongo_loader import load_deals_page_from_mongodb
         deals, total_count = load_deals_page_from_mongodb(
             skip=skip, limit=page_size, search=search)
+        if allowed_ids is not None:
+            deals = [d for d in deals if str(d.id) in allowed_ids]
+            total_count = len(deals)
+            deals = deals[skip: skip + page_size]
     else:
         all_deals = get_deals()
+        if allowed_ids is not None:
+            all_deals = [d for d in all_deals if str(d.id) in allowed_ids]
         if search:
             term = search.lower()
             all_deals = [d for d in all_deals if

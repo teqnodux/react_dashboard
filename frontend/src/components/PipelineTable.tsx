@@ -5,6 +5,7 @@ import DashboardNav from './DashboardNav';
 import '../styles/CrossDeal.css';
 import '../styles/Pipeline.css';
 import api from '../services/api';
+import { usePermissions } from '../hooks/usePermissions';
 
 // Category ordering (matches Python CATEGORY_ORDER)
 const CATEGORY_ORDER: DealCategory[] = [
@@ -18,6 +19,7 @@ const CATEGORY_ORDER: DealCategory[] = [
 ];
 
 export default function PipelineTable() {
+  const { allowedDealIds } = usePermissions();
   const [dealsData, setDealsData] = useState<DealsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -56,6 +58,7 @@ export default function PipelineTable() {
       page: String(page),
       page_size: String(PAGE_SIZE),
       ...(debouncedSearch ? { search: debouncedSearch } : {}),
+      ...(allowedDealIds !== 'all' ? { ids: allowedDealIds.join(',') } : {}),
     });
     api.get(`/api/deals?${params}`, { signal: controller.signal })
       .then(res => {
@@ -69,7 +72,7 @@ export default function PipelineTable() {
         }
       });
     return () => controller.abort();
-  }, [page, debouncedSearch]);
+  }, [page, debouncedSearch, allowedDealIds]);
 
   // After deals load, fetch all quotes in parallel via batch endpoint
   useEffect(() => {

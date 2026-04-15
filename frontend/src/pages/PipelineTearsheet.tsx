@@ -6,8 +6,10 @@ import TearsheetTooltip from '../components/TearsheetTooltip';
 import '../styles/DealDetail.css';
 import '../styles/CrossDeal.css';
 import api from '../services/api';
+import { usePermissions } from '../hooks/usePermissions';
 
 export default function PipelineTearsheet() {
+  const { allowedDealIds } = usePermissions();
   const [deals, setDeals] = useState<Deal[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -95,6 +97,7 @@ export default function PipelineTearsheet() {
       page: String(page),
       page_size: String(PAGE_SIZE),
       ...(debouncedSearch ? { search: debouncedSearch } : {}),
+      ...(allowedDealIds !== 'all' ? { ids: allowedDealIds.join(',') } : {}),
     });
     api.get(`/api/deals?${params}`, { signal: controller.signal })
       .then(res => {
@@ -109,7 +112,7 @@ export default function PipelineTearsheet() {
         }
       });
     return () => controller.abort();
-  }, [page, debouncedSearch]);
+  }, [page, debouncedSearch, allowedDealIds]);
 
   const toggleColumnGroup = (groupName: string) => {
     const newExpanded = new Set(expandedColumnGroups);

@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { ReactNode } from 'react';
+import { usePermissions } from '../hooks/usePermissions';
 
 const NAV_TABS = [
   { path: '/tearsheet',      label: '📊 Tearsheet' },
@@ -13,9 +14,11 @@ const NAV_TABS = [
 
 export default function DashboardNav({ children }: { children?: ReactNode }) {
   const location = useLocation();
+  const { canSeeNavTab } = usePermissions();
+  const visibleTabs = NAV_TABS.filter(tab => canSeeNavTab(tab.path));
   return (
     <nav className="top-nav">
-      {NAV_TABS.map(tab => (
+      {visibleTabs.map(tab => (
         <Link
           key={tab.path}
           to={tab.path}

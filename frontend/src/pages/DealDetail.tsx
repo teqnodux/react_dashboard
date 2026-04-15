@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
+import { usePermissions } from "../hooks/usePermissions";
+import ROLE_CONFIG, { type Role } from "../config/roleConfig";
 import { DealDetail as DealDetailType } from "../types/deal";
 import DocketView from "../components/DocketView";
 import SpreadChart from "../components/SpreadChart";
@@ -189,10 +191,18 @@ function renderProxyDetailContent(content: string): React.ReactNode {
 
 export default function DealDetail() {
   const { dealId } = useParams<{ dealId: string }>();
+  const { canSeeDealTab } = usePermissions();
   const [deal, setDeal] = useState<DealDetailType | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState("financial");
+  const [activeTab, setActiveTab] = useState(() => {
+    // Start on the first tab the user is allowed to see
+    const storedUser = localStorage.getItem('user');
+    const role: Role = storedUser ? (JSON.parse(storedUser).role as Role) : 'user';
+    const allowed = ROLE_CONFIG[role]?.dealDetailTabs ?? ROLE_CONFIG.user.dealDetailTabs;
+    if (allowed === 'all') return 'financial';
+    return allowed.includes('financial') ? 'financial' : (allowed[0] ?? 'financial');
+  });
   const [expandedClauses, setExpandedClauses] = useState<Set<string>>(
     new Set()
   );
@@ -1683,120 +1693,120 @@ export default function DealDetail() {
 
         {/* Tabs */}
         <div className="tabs-nav">
-          <button
+          {canSeeDealTab("financial") && <button
             className={`tab-btn tab-ready ${activeTab === "financial" ? "active" : ""}`}
             onClick={() => setActiveTab("financial")}
           >
             Financial Overview
-          </button>
-          <button
+          </button>}
+          {canSeeDealTab("tearsheet") && <button
             className={`tab-btn tab-ready ${activeTab === "tearsheet" ? "active" : ""}`}
             onClick={() => setActiveTab("tearsheet")}
           >
             Tearsheet
-          </button>
-          <button
+          </button>}
+          {canSeeDealTab("dma") && <button
             className={`tab-btn tab-ready ${activeTab === "dma" ? "active" : ""}`}
             onClick={() => setActiveTab("dma")}
           >
             DMA Summary
-          </button>
-          <button
+          </button>}
+          {canSeeDealTab("timeline") && <button
             className={`tab-btn tab-ready ${activeTab === "timeline" ? "active" : ""}`}
             onClick={() => setActiveTab("timeline")}
           >
             Timeline
-          </button>
-          <button
+          </button>}
+          {canSeeDealTab("sec") && <button
             className={`tab-btn tab-ready ${activeTab === "sec" ? "active" : ""}`}
             onClick={() => setActiveTab("sec")}
           >
             SEC Filings
-          </button>
-          <button
+          </button>}
+          {canSeeDealTab("proxy") && <button
             className={`tab-btn tab-ready ${activeTab === "proxy" ? "active" : ""}`}
             onClick={() => setActiveTab("proxy")}
           >
             Proxy
-          </button>
-          <button
+          </button>}
+          {canSeeDealTab("10k") && <button
             className={`tab-btn tab-ready ${activeTab === "10k" ? "active" : ""}`}
             onClick={() => setActiveTab("10k")}
           >
             10-K / 10-Q
-          </button>
-          <button
+          </button>}
+          {canSeeDealTab("mae") && <button
             className={`tab-btn tab-ready ${activeTab === "mae" ? "active" : ""}`}
             onClick={() => setActiveTab("mae")}
           >
             MAE Review
-          </button>
-          <button
+          </button>}
+          {canSeeDealTab("covenants") && <button
             className={`tab-btn tab-ready ${activeTab === "covenants" ? "active" : ""}`}
             onClick={() => setActiveTab("covenants")}
           >
             Covenants
-          </button>
-          <button
+          </button>}
+          {canSeeDealTab("regulatory") && <button
             className={`tab-btn tab-ready ${activeTab === "regulatory" ? "active" : ""}`}
             onClick={() => setActiveTab("regulatory")}
           >
             Regulatory
-          </button>
-          <button
+          </button>}
+          {canSeeDealTab("reg-monitor") && <button
             className={`tab-btn tab-ready ${activeTab === "reg-monitor" ? "active" : ""}`}
             onClick={() => setActiveTab("reg-monitor")}
           >
             Deal Monitor
-          </button>
-          <button
+          </button>}
+          {canSeeDealTab("milestones") && <button
             className={`tab-btn tab-ready ${activeTab === "milestones" ? "active" : ""}`}
             onClick={() => setActiveTab("milestones")}
           >
             Milestones
-          </button>
-          <button
+          </button>}
+          {canSeeDealTab("termination") && <button
             className={`tab-btn tab-ready ${activeTab === "termination" ? "active" : ""}`}
             onClick={() => setActiveTab("termination")}
           >
             Termination
-          </button>
-          <button
+          </button>}
+          {canSeeDealTab("docket") && <button
             className={`tab-btn tab-ready ${activeTab === "docket" ? "active" : ""}`}
             onClick={() => setActiveTab("docket")}
           >
             Docket
-          </button>
-          <button
+          </button>}
+          {canSeeDealTab("reddit") && <button
             className={`tab-btn tab-wip ${activeTab === "reddit" ? "active" : ""}`}
             onClick={() => setActiveTab("reddit")}
           >
             Reddit
-          </button>
-          <button
+          </button>}
+          {canSeeDealTab("feed") && <button
             className={`tab-btn tab-ready ${activeTab === "feed" ? "active" : ""}`}
             onClick={() => setActiveTab("feed")}
           >
             Feed
-          </button>
-          <button
+          </button>}
+          {canSeeDealTab("feed-new") && <button
             className={`tab-btn tab-ready ${activeTab === "feed-new" ? "active" : ""}`}
             onClick={() => setActiveTab("feed-new")}
           >
             Feed (New)
-          </button>
-          <button
+          </button>}
+          {canSeeDealTab("scorecard") && <button
             className={`tab-btn tab-ready ${activeTab === "scorecard" ? "active" : ""}`}
             onClick={() => setActiveTab("scorecard")}
           >
             Deal Scorecard
-          </button>
-          <button
+          </button>}
+          {canSeeDealTab("documents") && <button
             className={`tab-btn tab-ready ${activeTab === "documents" ? "active" : ""}`}
             onClick={() => setActiveTab("documents")}
           >
             Documents
-          </button>
+          </button>}
         </div>
       </div>
       {/* end sticky-header-group */}
