@@ -1,4 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
+import Login from './pages/Login';
 import PipelineTable from './components/PipelineTable';
 import DealDetail from './pages/DealDetail';
 import PipelineTearsheet from './pages/PipelineTearsheet';
@@ -13,18 +16,23 @@ import './styles/GlobalVars.css';
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navigate to="/tearsheet" replace />} />
-        <Route path="/tearsheet" element={<PipelineTearsheet />} />
-        <Route path="/pipeline" element={<PipelineTable />} />
-        <Route path="/deal/:dealId" element={<DealDetail />} />
-        <Route path="/all-dockets" element={<AllDockets />} />
-        <Route path="/all-regulatory" element={<AllRegulatory />} />
-        <Route path="/activity" element={<AllActivity />} />
-        <Route path="/reddit" element={<RedditAnalysis />} />
-        <Route path="/sec-filings" element={<SECFilings />} />
-        <Route path="/upcoming" element={<UpcomingEvents />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/" element={<Navigate to="/tearsheet" replace />} />
+            <Route path="/tearsheet" element={<PipelineTearsheet />} />
+            <Route path="/pipeline" element={<PipelineTable />} />
+            <Route path="/deal/:dealId" element={<DealDetail />} />
+            <Route path="/all-dockets" element={<AllDockets />} />
+            <Route path="/all-regulatory" element={<AllRegulatory />} />
+            <Route path="/activity" element={<AllActivity />} />
+            <Route path="/reddit" element={<RedditAnalysis />} />
+            <Route path="/sec-filings" element={<SECFilings />} />
+            <Route path="/upcoming" element={<UpcomingEvents />} />
+          </Route>
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   );
 }
