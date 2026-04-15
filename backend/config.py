@@ -29,3 +29,9 @@ MONGODB_DB = "Deal_DB"
 
 QUOTE_SOURCE = os.getenv("QUOTE_SOURCE", "yfinance")  # "yfinance" or "polygon"
 POLYGON_API_KEY = os.getenv("POLYGON_API_KEY", "")
+
+# JWT auth settings
+JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY", "KEEP_THIS_SECRET")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(
+    os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "60"))
+REFRESH_TOKEN_EXPIRE_DAYS = int(os.getenv("REFRESH_TOKEN_EXPIRE_DAYS", "7"))

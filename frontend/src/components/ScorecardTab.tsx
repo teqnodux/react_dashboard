@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { API_BASE_URL } from '../config';
+import api from '../services/api';
 
 interface Signal {
   id: string;
@@ -211,11 +211,10 @@ function ScorecardSourcesForm({
   const [maText, setMaText] = useState('');
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/deals/${dealId}/scorecard/sources`)
-      .then(res => res.json())
-      .then(data => {
-        setSources(data.sources || []);
-        setReady(data.ready || false);
+    api.get(`/api/deals/${dealId}/scorecard/sources`)
+      .then(res => {
+        setSources(res.data.sources || []);
+        setReady(res.data.ready || false);
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -227,21 +226,11 @@ function ScorecardSourcesForm({
     setGenerating(true);
     setError(null);
     try {
-      const res = await fetch(`${API_BASE_URL}/api/deals/${dealId}/scorecard/generate`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          auto_gather: true,
-          supplement_text: supplement,
-        }),
+      await api.post(`/api/deals/${dealId}/scorecard/generate`, {
+        auto_gather: true,
+        supplement_text: supplement,
       });
-      const data = await res.json();
-      if (res.ok) {
-        onGenerated();
-      } else {
-        setError(data.detail || 'Generation failed');
-        setGenerating(false);
-      }
+      onGenerated();
     } catch (e: any) {
       setError(e.message);
       setGenerating(false);
@@ -253,22 +242,12 @@ function ScorecardSourcesForm({
     setGenerating(true);
     setError(null);
     try {
-      const res = await fetch(`${API_BASE_URL}/api/deals/${dealId}/scorecard/generate`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          auto_gather: false,
-          proxy_text: proxyText,
-          merger_agreement_text: maText,
-        }),
+      await api.post(`/api/deals/${dealId}/scorecard/generate`, {
+        auto_gather: false,
+        proxy_text: proxyText,
+        merger_agreement_text: maText,
       });
-      const data = await res.json();
-      if (res.ok) {
-        onGenerated();
-      } else {
-        setError(data.detail || 'Generation failed');
-        setGenerating(false);
-      }
+      onGenerated();
     } catch (e: any) {
       setError(e.message);
       setGenerating(false);
@@ -431,14 +410,12 @@ export default function ScorecardTab({ dealId }: { dealId: string }) {
 
   function loadScorecard() {
     setStatus('checking');
-    fetch(`${API_BASE_URL}/api/deals/${dealId}/scorecard`)
-      .then(res => {
-        if (res.ok) return res.json();
-        if (res.status === 404) { setStatus('input'); return null; }
-        throw new Error(`HTTP ${res.status}`);
-      })
-      .then(json => { if (json) { setData(json); setStatus('ready'); } })
-      .catch(() => setStatus('input'));
+    api.get(`/api/deals/${dealId}/scorecard`)
+      .then(res => { setData(res.data); setStatus('ready'); })
+      .catch((err) => {
+        if (err.response?.status === 404) { setStatus('input'); return; }
+        setStatus('input');
+      });
   }
 
   useEffect(() => { loadScorecard(); }, [dealId]);

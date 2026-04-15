@@ -24,12 +24,21 @@ from generate_regulatory import (
     seed_from_timeline_json, compute_deadlines as _reg_compute_deadlines,
     check_time_based_transitions as _reg_check_time_transitions,
 )
-from fastapi import FastAPI, HTTPException, Body, Request, Query
+from fastapi import FastAPI, HTTPException, Body, Request, Query, APIRouter
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, Response
 from datetime import date, timedelta, datetime
 from typing import Optional, Dict
+
+from auth import (
+    get_users_collection,
+    verify_password,
+    create_access_token,
+    create_refresh_token,
+    decode_token,
+    get_current_user,
+)
 import sys
 from pathlib import Path
 import time
@@ -412,6 +421,80 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# ── Auth routes (public — no token required) ─────────────────────────────
+
+auth_router = APIRouter(prefix="/api/auth", tags=["auth"])
+
+
+class LoginRequest(BaseModel):
+    email: str
+    password: str
+
+
+class RefreshRequest(BaseModel):
+    refresh: str
+
+
+@auth_router.post("/login")
+def auth_login(body: LoginRequest):
+    users = get_users_collection()
+    user = users.find_one({"email": body.email})
+    if not user or not verify_password(body.password, user["password"]):
+        raise HTTPException(status_code=401, detail="Invalid email or password")
+
+    token_payload = {
+        "user_id": str(user["_id"]),
+        "email": user["email"],
+        "role": user.get("role", "viewer"),
+    }
+    return {
+        "access": create_access_token(token_payload),
+        "refresh": create_refresh_token(token_payload),
+        "user_id": str(user["_id"]),
+        "user_email": user["email"],
+        "role": user.get("role", "viewer"),
+    }
+
+
+@auth_router.post("/token/refresh")
+def auth_refresh(body: RefreshRequest):
+    payload = decode_token(body.refresh)
+    if payload.get("type") != "refresh":
+        raise HTTPException(status_code=401, detail="Invalid token type")
+    token_payload = {
+        "user_id": payload["user_id"],
+        "email": payload["email"],
+        "role": payload.get("role", "viewer"),
+    }
+    return {"access": create_access_token(token_payload)}
+
+
+app.include_router(auth_router)
+
+# ── Auth middleware — protects all routes except public ones ──────────────
+
+_PUBLIC_PATHS = frozenset({"/", "/api/health", "/api/auth/login", "/api/auth/token/refresh"})
+
+
+@app.middleware("http")
+async def enforce_auth(request: Request, call_next):
+    if request.method == "OPTIONS" or request.url.path in _PUBLIC_PATHS:
+        return await call_next(request)
+    try:
+        await get_current_user(request)
+    except HTTPException as exc:
+        origin = request.headers.get("origin", "")
+        resp = Response(
+            content=json.dumps({"detail": exc.detail}),
+            status_code=exc.status_code,
+            media_type="application/json",
+        )
+        if origin:
+            resp.headers["Access-Control-Allow-Origin"] = origin
+            resp.headers["Access-Control-Allow-Credentials"] = "true"
+        return resp
+    return await call_next(request)
 
 
 @app.on_event("startup")

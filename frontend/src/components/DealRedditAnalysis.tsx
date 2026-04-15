@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import '../styles/DealReddit.css';
-import { API_BASE_URL } from '../config';
+import api from '../services/api';
 
 interface RedditFinding {
   relevant: boolean;
@@ -42,19 +42,13 @@ export default function DealRedditAnalysis({ dealId }: DealRedditAnalysisProps) 
   const [filterTier, setFilterTier] = useState<number | 'all'>('all');
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/deals/${dealId}/reddit`)
+    api.get(`/api/deals/${dealId}/reddit`)
       .then(res => {
-        if (!res.ok) {
-          throw new Error('No Reddit analysis available for this deal');
-        }
-        return res.json();
-      })
-      .then(data => {
-        setData(data);
+        setData(res.data);
         setLoading(false);
       })
       .catch(err => {
-        setError(err.message);
+        setError(err.message || 'No Reddit analysis available for this deal');
         setLoading(false);
       });
   }, [dealId]);

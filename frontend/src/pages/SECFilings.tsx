@@ -4,7 +4,7 @@ import DashboardNav from '../components/DashboardNav';
 import { getFilingTypeColor, renderL3Detail } from '../components/SECFilingRenderers';
 import '../styles/CrossDeal.css';
 import '../styles/SECFilings.css';
-import { API_BASE_URL } from '../config';
+import api from '../services/api';
 
 // ── Main Component ──
 
@@ -37,9 +37,8 @@ export default function SECFilings() {
   const fetchAIFilings = async () => {
     setAiLoading(true);
     try {
-      const res = await fetch(`${API_BASE_URL}/api/sec-ai/all`);
-      console.log('[SEC] fetch status:', res.status);
-      const data: SecAIAllResponse = await res.json();
+      const res = await api.get(`/api/sec-ai/all`);
+      const data: SecAIAllResponse = res.data;
       console.log('[SEC] filings received:', data.filings?.length, 'total:', data.total);
       setAiFilings(data.filings);
       setAiByType(data.by_type);
@@ -60,21 +59,13 @@ export default function SECFilings() {
       if (batchMode) {
         const urls = batchUrls.split('\n').map(u => u.trim()).filter(Boolean);
         if (urls.length === 0) { setProcessing(false); return; }
-        const res = await fetch(`${API_BASE_URL}/api/sec-ai/process-batch`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ urls, company_slug: processSlug || null })
-        });
-        if (!res.ok) throw new Error(await res.text());
-        const data = await res.json();
+        const { data } = await api.post(`/api/sec-ai/process-batch`, { urls, company_slug: processSlug || null });
         const jobId = data.job_id;
         setBatchUrls('');
         setBatchProgress(`Processing 0/${urls.length} filings...`);
         const poll = setInterval(async () => {
           try {
-            const statusRes = await fetch(`${API_BASE_URL}/api/sec-ai/batch-status/${jobId}`);
-            if (!statusRes.ok) { clearInterval(poll); return; }
-            const status = await statusRes.json();
+            const { data: status } = await api.get(`/api/sec-ai/batch-status/${jobId}`);
             const errors = status.results.filter((r: any) => r.status === 'error').length;
             const errText = errors > 0 ? ` (${errors} failed)` : '';
             setBatchProgress(`Processing ${status.completed}/${status.total} filings...${errText}`);
@@ -89,12 +80,7 @@ export default function SECFilings() {
         }, 3000);
       } else {
         if (!processUrl.trim()) { setProcessing(false); return; }
-        const res = await fetch(`${API_BASE_URL}/api/sec-ai/process`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ url: processUrl, company_slug: processSlug || null })
-        });
-        if (!res.ok) throw new Error(await res.text());
+        await api.post(`/api/sec-ai/process`, { url: processUrl, company_slug: processSlug || null });
         setProcessUrl('');
         await fetchAIFilings();
         setProcessing(false);

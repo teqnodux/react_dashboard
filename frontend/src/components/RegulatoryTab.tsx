@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from 'react';
 import './RegulatoryTab.css';
 import StatusProgression from './StatusProgression';
 import DocumentSelector from './DocumentSelector';
-import { API_BASE_URL } from '../config';
+import api from '../services/api';
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -451,11 +451,8 @@ export default function RegulatoryTab({ dealId, onProcessed }: Props) {
 
   const load = () => {
     setLoading(true);
-    fetch(`${API_BASE_URL}/api/deals/${dealId}/regulatory`)
-      .then(async r => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        setData(await r.json());
-      })
+    api.get(`/api/deals/${dealId}/regulatory`)
+      .then(res => { setData(res.data); })
       .catch(() => setData(null))
       .finally(() => setLoading(false));
   };
@@ -464,12 +461,10 @@ export default function RegulatoryTab({ dealId, onProcessed }: Props) {
 
   // Fetch master approval definitions (once)
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/regulatory/master-approvals`)
-      .then(async r => {
-        if (!r.ok) return;
-        const d = await r.json();
+    api.get(`/api/regulatory/master-approvals`)
+      .then(res => {
         const map: Record<string, MasterApproval> = {};
-        for (const ap of d.approvals || []) {
+        for (const ap of res.data.approvals || []) {
           map[ap.id] = ap;
         }
         setMasterDefs(map);

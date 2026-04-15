@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './MilestoneLog.css';
-import { API_BASE_URL } from '../config';
+import api from '../services/api';
 
 interface Observation {
   doc_date: string | null;
@@ -139,11 +139,8 @@ export default function MilestoneLog({ dealId }: Props) {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${API_BASE_URL}/api/deals/${dealId}/milestone-log`)
-      .then(async r => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        setData(await r.json());
-      })
+    api.get(`/api/deals/${dealId}/milestone-log`)
+      .then(res => { setData(res.data); })
       .catch(() => setData(null))
       .finally(() => setLoading(false));
   }, [dealId]);

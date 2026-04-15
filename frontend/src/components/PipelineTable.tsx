@@ -4,7 +4,7 @@ import { Deal, DealsResponse, DealCategory, Pagination } from '../types/deal';
 import DashboardNav from './DashboardNav';
 import '../styles/CrossDeal.css';
 import '../styles/Pipeline.css';
-import { API_BASE_URL } from '../config';
+import api from '../services/api';
 
 // Category ordering (matches Python CATEGORY_ORDER)
 const CATEGORY_ORDER: DealCategory[] = [
@@ -57,14 +57,13 @@ export default function PipelineTable() {
       page_size: String(PAGE_SIZE),
       ...(debouncedSearch ? { search: debouncedSearch } : {}),
     });
-    fetch(`${API_BASE_URL}/api/deals?${params}`, { signal: controller.signal })
-      .then(res => res.json())
-      .then(data => {
-        setDealsData(data);
+    api.get(`/api/deals?${params}`, { signal: controller.signal })
+      .then(res => {
+        setDealsData(res.data);
         setLoading(false);
       })
       .catch(err => {
-        if (err.name !== 'AbortError') {
+        if (err.name !== 'AbortError' && err.code !== 'ERR_CANCELED') {
           setError(err.message);
           setLoading(false);
         }
@@ -81,9 +80,8 @@ export default function PipelineTable() {
     ])];
     if (!tickers.length) return;
     setQuotesLoading(true);
-    fetch(`${API_BASE_URL}/api/quotes/batch?tickers=${tickers.join(',')}`)
-      .then(r => r.json())
-      .then(data => { setQuotesMap(data); setQuotesLoading(false); })
+    api.get(`/api/quotes/batch?tickers=${tickers.join(',')}`)
+      .then(res => { setQuotesMap(res.data); setQuotesLoading(false); })
       .catch(() => setQuotesLoading(false));
   }, [dealsData]);
 
@@ -129,20 +127,10 @@ export default function PipelineTable() {
   const refreshPrices = async () => {
     setRefreshing(true);
     try {
-      const response = await fetch(`${API_BASE_URL}/api/refresh-prices`, {
-        method: 'POST'
-      });
-      const result = await response.json();
-
-      if (response.ok) {
-        // Reload current page after refresh
-        const dealsResponse = await fetch(`${API_BASE_URL}/api/deals?page=${page}&page_size=${PAGE_SIZE}`);
-        const dealsData = await dealsResponse.json();
-        setDealsData(dealsData);
-        alert(`Successfully updated ${result.updated_count} of ${result.total_deals} deals`);
-      } else {
-        alert(`Error refreshing prices: ${result.detail || 'Unknown error'}`);
-      }
+      const { data: result } = await api.post(`/api/refresh-prices`);
+      const { data: dealsData } = await api.get(`/api/deals?page=${page}&page_size=${PAGE_SIZE}`);
+      setDealsData(dealsData);
+      alert(`Successfully updated ${result.updated_count} of ${result.total_deals} deals`);
     } catch (err) {
       alert(`Error refreshing prices: ${err}`);
     } finally {

@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { Navigate } from 'react-router-dom';
+import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import '../styles/Login.css';
 
@@ -19,7 +20,11 @@ export default function Login() {
     try {
       await login(email, password);
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'Login failed');
+      if (axios.isAxiosError(err)) {
+        setError(err.response?.data?.detail || 'Invalid email or password');
+      } else {
+        setError(err instanceof Error ? err.message : 'Login failed');
+      }
     } finally {
       setSubmitting(false);
     }
