@@ -13,12 +13,26 @@ import RedditAnalysis from './pages/RedditAnalysis';
 import SECFilings from './pages/SECFilings';
 import UpcomingEvents from './pages/UpcomingEvents';
 import { usePermissions } from './hooks/usePermissions';
+import ROLE_CONFIG from './config/roleConfig';
 import './styles/GlobalVars.css';
 
-/** Redirects to /tearsheet if the current role cannot access this nav path */
-function NavGuard({ path, children }: { path: string; children: ReactNode }) {
+/** Redirects to the first allowed nav tab for the current role */
+function DefaultRedirect() {
   const { canSeeNavTab } = usePermissions();
-  if (!canSeeNavTab(path)) return <Navigate to="/tearsheet" replace />;
+  const fallback = '/tearsheet';
+  const allTabs = ['/tearsheet', '/pipeline', '/activity', '/all-dockets', '/all-regulatory', '/sec-filings', '/upcoming'];
+  const first = allTabs.find(t => canSeeNavTab(t)) ?? fallback;
+  return <Navigate to={first} replace />;
+}
+
+/** Redirects to the role's default if the current role cannot access this nav path */
+function NavGuard({ path, children }: { path: string; children: ReactNode }) {
+  const { canSeeNavTab, role } = usePermissions();
+  if (!canSeeNavTab(path)) {
+    const navTabs = ROLE_CONFIG[role as keyof typeof ROLE_CONFIG]?.navTabs;
+    const fallback = Array.isArray(navTabs) ? (navTabs[0] ?? '/tearsheet') : '/tearsheet';
+    return <Navigate to={fallback} replace />;
+  }
   return <>{children}</>;
 }
 
@@ -29,8 +43,8 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route element={<ProtectedRoute />}>
-            <Route path="/" element={<Navigate to="/tearsheet" replace />} />
-            <Route path="/tearsheet" element={<PipelineTearsheet />} />
+            <Route path="/" element={<DefaultRedirect />} />
+            <Route path="/tearsheet" element={<NavGuard path="/tearsheet"><PipelineTearsheet /></NavGuard>} />
             <Route path="/pipeline" element={<PipelineTable />} />
             <Route path="/deal/:dealId" element={<DealDetail />} />
             <Route path="/all-dockets"    element={<NavGuard path="/all-dockets"><AllDockets /></NavGuard>} />

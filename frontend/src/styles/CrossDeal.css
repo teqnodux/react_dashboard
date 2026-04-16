@@ -39,6 +39,112 @@
   border-bottom-color: var(--accent-blue);
 }
 
+/* Profile Menu */
+.profile-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 6px 0 6px var(--space-md);
+}
+
+.profile-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  color: var(--bg-primary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
+}
+
+.profile-avatar:hover {
+  opacity: 0.85;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 200px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  z-index: 200;
+  overflow: hidden;
+}
+
+.profile-dropdown-info {
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.profile-email {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-role-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  width: fit-content;
+}
+
+.profile-role-badge.admin {
+  background: rgba(92, 207, 230, 0.12);
+  color: var(--accent-blue);
+}
+
+.profile-role-badge.user {
+  background: rgba(138, 145, 154, 0.12);
+  color: var(--text-secondary);
+}
+
+.profile-dropdown-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0;
+}
+
+.profile-logout-btn {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.profile-logout-btn:hover {
+  background: rgba(240, 113, 120, 0.08);
+  color: var(--accent-red);
+}
+
 /* Page Header */
 .page-header {
   margin: var(--space-md) var(--space-lg) var(--space-md) var(--space-lg);

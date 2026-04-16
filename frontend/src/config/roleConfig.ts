@@ -32,13 +32,13 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
   // ── User: restricted ─────────────────────────────────────────────────────
   user: {
     navTabs: [
-      '/tearsheet',
+      // '/tearsheet',
       '/pipeline',
     ],
 
     dealDetailTabs: [
-      'financial',   // Financial Overview
-      'tearsheet',   // Tearsheet
+      // 'financial',   // Financial Overview
+      // 'tearsheet',   // Tearsheet
       'dma',
       // 'timeline',    // Timeline
       'sec',
@@ -61,7 +61,9 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
 
     // ← Add/remove deal IDs here to control which deals the user role can see.
     // Pagination and search will work correctly within this list.
-    allowedDealIds: ["69de2fa54c812787f76020e2"],
+    allowedDealIds: ["69de2fa54c812787f76020e2","69de20d94c812787f76020d4","69dcd30cb0541230ae68d0b8",
+      "69d77d1406713c50590b585d","69d393d661cdc5a28af26dfc","69cbae4f640784d45bf14678","69c668f5cef98f44b7207caa","69c5045d07b524e51a763dba",
+    "69c4e246b2464e0d1babc51d","69c3bd9e84d7e1498c0b10c4"],
   },
 };
 

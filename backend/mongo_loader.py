@@ -626,28 +626,25 @@ def load_deals_page_from_mongodb(skip: int = 0, limit: int = 20, search: str = "
         # after page load to get all 20 quotes in parallel (avoids serial blocking).
 
         unaffected_price = float(doc.get("unaffected_price") or 0.0)
-        if not unaffected_price:
-            unaffected_price = _fetch_unaffected_price(target_ticker, announce_date)
+        # Unaffected price is not fetched live here — stored value used.
+        # This avoids a historical Polygon call per deal on every page load.
 
         dividend_expected = float(doc.get("dividend_expected") or 0.0)
-        if not dividend_expected:
-            dividend_expected = _fetch_annual_dividend(target_ticker)
+        # Annual dividend is not fetched live here — stored value used.
+        # Update via /api/refresh-prices or store directly in MongoDB.
 
         offer_price = float(doc.get("offer_price") or 0.0)
         if not offer_price:
             cash_component = _derive_offer_price(sr)
             exchange_ratio = _derive_exchange_ratio(sr)
-            if exchange_ratio and acquirer_ticker:
-                acquirer_price = _fetch_current_price(acquirer_ticker)
-                if acquirer_price:
-                    offer_price = round(cash_component + exchange_ratio * acquirer_price, 2)
-            if not offer_price:
-                offer_price = cash_component
+            # Acquirer live price is not fetched here to avoid blocking polygon calls.
+            # For stock deals without a stored offer_price, only the cash component
+            # is used. The correct offer_price should be stored in MongoDB.
+            offer_price = cash_component
 
         deal_value_bn = float(doc.get("deal_value_bn") or 0.0)
-        shares_outstanding = _fetch_shares_outstanding(target_ticker) if not deal_value_bn else 0
-        if not deal_value_bn and offer_price and shares_outstanding:
-            deal_value_bn = round(offer_price * shares_outstanding / 1_000_000_000, 2)
+        # shares_outstanding not fetched live — avoids a polygon call per deal.
+        # deal_value_bn should be stored in MongoDB; defaults to 0.0 if missing.
 
         cash_per_share  = float(doc.get("cash_per_share") or 0.0)
         stock_ratio     = float(doc.get("stock_ratio") or 0.0)
