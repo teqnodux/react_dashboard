@@ -561,24 +561,36 @@ def load_deals_from_mongodb() -> list:
     return result
 
 
-def load_deals_page_from_mongodb(skip: int = 0, limit: int = 20, search: str = "") -> tuple[list, int]:
+def load_deals_page_from_mongodb(skip: int = 0, limit: int = 20, search: str = "", allowed_ids: Optional[set] = None) -> tuple[list, int]:
     """
     Paginated version of load_deals_from_mongodb.
     Returns (deals_for_page, total_count).
     Optional search filters by target name, acquirer name, or ticker (case-insensitive).
+    Optional allowed_ids restricts results to a specific set of deal ID strings.
     """
+    from bson import ObjectId
     client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
     db = client[MONGODB_DB]
 
     query = {}
+    if allowed_ids is not None:
+        oid_list = []
+        for id_str in allowed_ids:
+            try:
+                oid_list.append(ObjectId(id_str))
+            except Exception:
+                pass
+        query["_id"] = {"$in": oid_list}
+
     if search:
         regex = {"$regex": search, "$options": "i"}
-        query = {"$or": [
+        search_filter = {"$or": [
             {"target_name": regex},
             {"acquire_name": regex},
             {"target_ticker": regex},
             {"acquirer_ticker": regex},
         ]}
+        query = {"$and": [query, search_filter]} if query else search_filter
 
     total_count = db["deals"].count_documents(query)
 

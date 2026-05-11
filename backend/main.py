@@ -677,11 +677,7 @@ def get_all_deals(
     if _DATA_SOURCE == "mongodb":
         from mongo_loader import load_deals_page_from_mongodb
         deals, total_count = load_deals_page_from_mongodb(
-            skip=skip, limit=page_size, search=search)
-        if allowed_ids is not None:
-            deals = [d for d in deals if str(d.id) in allowed_ids]
-            total_count = len(deals)
-            deals = deals[skip: skip + page_size]
+            skip=skip, limit=page_size, search=search, allowed_ids=allowed_ids)
     else:
         all_deals = get_deals()
         if allowed_ids is not None:
