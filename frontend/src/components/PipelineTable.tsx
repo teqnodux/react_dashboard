@@ -19,7 +19,10 @@ const CATEGORY_ORDER: DealCategory[] = [
 ];
 
 export default function PipelineTable() {
-  const { allowedDealIds, showSummaryStats } = usePermissions();
+  const { allowedDealIds, showSummaryStats, canSeeColumn } = usePermissions();
+
+  const ALL_COLUMNS = ['watch','target','acquirer','deal-type','consideration','current','offer','gross-spread','net-spread','close-date','status','milestone'] as const;
+  const visibleColCount = ALL_COLUMNS.filter(c => canSeeColumn(c)).length;
   const [dealsData, setDealsData] = useState<DealsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -309,16 +312,18 @@ export default function PipelineTable() {
         <table className="deals-table">
           <thead>
             <tr>
-              <th className="col-watch"></th>
-              <th>Target</th>
-              <th>Acquirer</th>
-              <th>Current</th>
-              <th>Offer</th>
-              <th>Gross Spread</th>
-              <th>Net Spread</th>
-              <th>Est. Close</th>
-              <th>Status</th>
-              <th>Next Milestone</th>
+              {canSeeColumn('watch')         && <th className="col-watch"></th>}
+              {canSeeColumn('target')        && <th>Target</th>}
+              {canSeeColumn('acquirer')      && <th>Acquirer</th>}
+              {canSeeColumn('deal-type')     && <th>Deal Type</th>}
+              {canSeeColumn('consideration') && <th>Consideration</th>}
+              {canSeeColumn('current')       && <th>Current</th>}
+              {canSeeColumn('offer')        && <th>Offer</th>}
+              {canSeeColumn('gross-spread') && <th>Gross Spread</th>}
+              {canSeeColumn('net-spread')   && <th>Net Spread</th>}
+              {canSeeColumn('close-date')   && <th>Est. Close</th>}
+              {canSeeColumn('status')       && <th>Status</th>}
+              {canSeeColumn('milestone')    && <th>Next Milestone</th>}
             </tr>
           </thead>
           <tbody>
@@ -329,81 +334,122 @@ export default function PipelineTable() {
               return (
                 <Fragment key={category}>
                   <tr className="category-row">
-                    <td colSpan={10} className="category-cell">{category}</td>
+                    <td colSpan={visibleColCount} className="category-cell">{category}</td>
                   </tr>
                   {categoryDeals.map(deal => (
                     <tr key={deal.id} className="deal-row">
-                      <td 
-                        className="cell-watch"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          e.preventDefault();
-                          toggleWatch(deal.id);
-                        }}
-                      >
-                        <span className={`watch-star ${watchlist.has(deal.id) ? 'watched' : ''}`}>
-                          {watchlist.has(deal.id) ? '★' : '☆'}
-                        </span>
-                      </td>
-                      <td className="cell-target">
-                        <Link to={`/deal/${deal.id}`} className="deal-link">
-                          <div className="company-primary">{deal.target}</div>
-                          <div className="company-ticker">{deal.target_ticker}</div>
-                        </Link>
-                      </td>
-                      <td className="cell-acquirer">
-                        <Link to={`/deal/${deal.id}`} className="deal-link">
-                          <div className="company-primary">{deal.acquirer}</div>
-                          <div className="company-ticker">{deal.acquirer_ticker}</div>
-                        </Link>
-                      </td>
-                      <td className="cell-price">
-                        <Link to={`/deal/${deal.id}`} className="deal-link">
-                          {getLivePrice(deal) !== null
-                            ? `$${getLivePrice(deal)!.toFixed(2)}`
-                            : quotesLoading ? '…' : `$${deal.current_price.toFixed(2)}`}
-                        </Link>
-                      </td>
-                      <td className="cell-offer">
-                        <Link to={`/deal/${deal.id}`} className="deal-link">
-                          <div>${deal.offer_price.toFixed(2)}</div>
-                          {deal.stock_ratio > 0 && (
-                            <div className="company-ticker" style={{ fontSize: '9px' }}>
-                              {deal.cash_per_share > 0 ? `$${deal.cash_per_share.toFixed(0)}+` : ''}{deal.stock_ratio}x {deal.acquirer_ticker}
-                            </div>
-                          )}
-                        </Link>
-                      </td>
-                      <td className={`cell-spread ${getSpreadClass(getGrossSpreadPct(deal))}`}>
-                        <Link to={`/deal/${deal.id}`} className="deal-link">
-                          <div className="spread-dollars">${getGrossSpreadDollars(deal).toFixed(2)}</div>
-                          <div className="spread-pct">{getGrossSpreadPct(deal).toFixed(1)}%</div>
-                        </Link>
-                      </td>
-                      <td className={`cell-spread ${getSpreadClass(getNetSpreadPct(deal), true)}`}>
-                        <Link to={`/deal/${deal.id}`} className="deal-link">
-                          <div className="spread-dollars">${getNetSpreadDollars(deal).toFixed(2)}</div>
-                          <div className="spread-pct">{getNetSpreadPct(deal).toFixed(1)}%</div>
-                        </Link>
-                      </td>
-                      <td className="cell-close-date">
-                        <Link to={`/deal/${deal.id}`} className="deal-link">
-                          {formatDate(deal.expected_close)}
-                        </Link>
-                      </td>
-                      <td className="cell-status">
-                        <Link to={`/deal/${deal.id}`} className="deal-link">
-                          <span className={`status-badge ${getStatusClass(deal.status)}`}>
-                            {getStatusLabel(deal.status)}
+                      {canSeeColumn('watch') && (
+                        <td
+                          className="cell-watch"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            toggleWatch(deal.id);
+                          }}
+                        >
+                          <span className={`watch-star ${watchlist.has(deal.id) ? 'watched' : ''}`}>
+                            {watchlist.has(deal.id) ? '★' : '☆'}
                           </span>
-                        </Link>
-                      </td>
-                      <td className="cell-milestone">
-                        <Link to={`/deal/${deal.id}`} className="deal-link">
-                          <div className="milestone-text">{deal.next_milestone}</div>
-                          <div className="milestone-date">{formatDate(deal.next_milestone_date)}</div>
-                        </Link>
-                      </td>
+                        </td>
+                      )}
+                      {canSeeColumn('target') && (
+                        <td className="cell-target">
+                          <Link to={`/deal/${deal.id}`} className="deal-link">
+                            <div className="company-primary">{deal.target}</div>
+                            <div className="company-ticker">{deal.target_ticker}</div>
+                          </Link>
+                        </td>
+                      )}
+                      {canSeeColumn('acquirer') && (
+                        <td className="cell-acquirer">
+                          <Link to={`/deal/${deal.id}`} className="deal-link">
+                            <div className="company-primary">{deal.acquirer}</div>
+                            <div className="company-ticker">{deal.acquirer_ticker}</div>
+                          </Link>
+                        </td>
+                      )}
+                      {canSeeColumn('deal-type') && (
+                        <td className="cell-deal-type">
+                          <Link to={`/deal/${deal.id}`} className="deal-link">
+                            <span className={`deal-type-badge deal-type-${deal.deal_type}`}>
+                              {deal.deal_type.toUpperCase()}
+                            </span>
+                          </Link>
+                        </td>
+                      )}
+                      {canSeeColumn('consideration') && (
+                        <td className="cell-consideration">
+                          <Link to={`/deal/${deal.id}`} className="deal-link">
+                            <div>${deal.offer_price.toFixed(2)} per share</div>
+                            {deal.stock_ratio > 0 && (
+                              <div className="company-ticker" style={{ fontSize: '9px' }}>
+                                {deal.cash_per_share > 0 ? `$${deal.cash_per_share.toFixed(2)}+` : ''}{deal.stock_ratio}x {deal.acquirer_ticker}
+                              </div>
+                            )}
+                          </Link>
+                        </td>
+                      )}
+                      {canSeeColumn('current') && (
+                        <td className="cell-price">
+                          <Link to={`/deal/${deal.id}`} className="deal-link">
+                            {getLivePrice(deal) !== null
+                              ? `$${getLivePrice(deal)!.toFixed(2)}`
+                              : quotesLoading ? '…' : `$${deal.current_price.toFixed(2)}`}
+                          </Link>
+                        </td>
+                      )}
+                      {canSeeColumn('offer') && (
+                        <td className="cell-offer">
+                          <Link to={`/deal/${deal.id}`} className="deal-link">
+                            <div>${deal.offer_price.toFixed(2)}</div>
+                            {deal.stock_ratio > 0 && (
+                              <div className="company-ticker" style={{ fontSize: '9px' }}>
+                                {deal.cash_per_share > 0 ? `$${deal.cash_per_share.toFixed(0)}+` : ''}{deal.stock_ratio}x {deal.acquirer_ticker}
+                              </div>
+                            )}
+                          </Link>
+                        </td>
+                      )}
+                      {canSeeColumn('gross-spread') && (
+                        <td className={`cell-spread ${getSpreadClass(getGrossSpreadPct(deal))}`}>
+                          <Link to={`/deal/${deal.id}`} className="deal-link">
+                            <div className="spread-dollars">${getGrossSpreadDollars(deal).toFixed(2)}</div>
+                            <div className="spread-pct">{getGrossSpreadPct(deal).toFixed(1)}%</div>
+                          </Link>
+                        </td>
+                      )}
+                      {canSeeColumn('net-spread') && (
+                        <td className={`cell-spread ${getSpreadClass(getNetSpreadPct(deal), true)}`}>
+                          <Link to={`/deal/${deal.id}`} className="deal-link">
+                            <div className="spread-dollars">${getNetSpreadDollars(deal).toFixed(2)}</div>
+                            <div className="spread-pct">{getNetSpreadPct(deal).toFixed(1)}%</div>
+                          </Link>
+                        </td>
+                      )}
+                      {canSeeColumn('close-date') && (
+                        <td className="cell-close-date">
+                          <Link to={`/deal/${deal.id}`} className="deal-link">
+                            {formatDate(deal.expected_close)}
+                          </Link>
+                        </td>
+                      )}
+                      {canSeeColumn('status') && (
+                        <td className="cell-status">
+                          <Link to={`/deal/${deal.id}`} className="deal-link">
+                            <span className={`status-badge ${getStatusClass(deal.status)}`}>
+                              {getStatusLabel(deal.status)}
+                            </span>
+                          </Link>
+                        </td>
+                      )}
+                      {canSeeColumn('milestone') && (
+                        <td className="cell-milestone">
+                          <Link to={`/deal/${deal.id}`} className="deal-link">
+                            <div className="milestone-text">{deal.next_milestone}</div>
+                            <div className="milestone-date">{formatDate(deal.next_milestone_date)}</div>
+                          </Link>
+                        </td>
+                      )}
                     </tr>
                   ))}
                 </Fragment>

@@ -34,6 +34,12 @@ export function usePermissions() {
   /** Whether to show the summary stats bar on the List View page */
   const showSummaryStats = config.showSummaryStats;
 
+  /** Returns true if the List View column with `colId` is visible for the current role */
+  const canSeeColumn = (colId: string): boolean => {
+    if (config.visibleColumns === 'all') return true;
+    return config.visibleColumns.includes(colId);
+  };
+
   return {
     isAdmin,
     isSuperAdmin,
@@ -41,6 +47,7 @@ export function usePermissions() {
     canSeeNavTab,
     canSeeDealTab,
     allowedDealIds,
-    showSummaryStats
+    showSummaryStats,
+    canSeeColumn,
   };
 }

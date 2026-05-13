@@ -21,6 +21,12 @@ export interface RolePermissions {
   allowedDealIds: string[] | 'all';
   /** Whether to show the summary stats bar (Total Deals, Total Value, Avg Spread, At Risk) on the List View page */
   showSummaryStats: boolean;
+  /**
+   * Which List View columns are visible.
+   * IDs: 'watch' | 'target' | 'acquirer' | 'current' | 'offer' |
+   *      'gross-spread' | 'net-spread' | 'close-date' | 'status' | 'milestone'
+   */
+  visibleColumns: string[] | 'all';
 }
 
 const ROLE_CONFIG: Record<Role, RolePermissions> = {
@@ -30,6 +36,7 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
     dealDetailTabs: 'all',
     allowedDealIds: 'all',
     showSummaryStats: true,
+    visibleColumns: 'all',
   },
 
   // ── Admin: unrestricted ───────────────────────────────────────────────────
@@ -67,6 +74,20 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
     // Pagination and search will work correctly within this list.
     allowedDealIds: ["69fc2f8615960fbe4105afb2","69b15c2254958e923c2cb92a","69301375c0aa46c328847932","6981ce6ab995ffbb7cb5c582","69a5884454958e923ceb9115"],
     showSummaryStats: false,
+    visibleColumns: [
+      // 'watch',
+      'target',
+      'acquirer',
+      'deal-type',
+      'consideration',
+      // 'current',
+      // 'offer',
+      // 'gross-spread',
+      // 'net-spread',
+      'close-date',
+      'status',
+      'milestone',
+    ],
   },
 
   // ── User: restricted ─────────────────────────────────────────────────────
@@ -104,6 +125,20 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
     // Pagination and search will work correctly within this list.
     allowedDealIds: ["69fc2f8615960fbe4105afb2","69b15c2254958e923c2cb92a","69301375c0aa46c328847932","6981ce6ab995ffbb7cb5c582","69a5884454958e923ceb9115"],
     showSummaryStats: false,
+    visibleColumns: [
+      // 'watch',
+      'target',
+      'acquirer',
+      'deal-type',
+      'consideration',
+      // 'current',
+      // 'offer',
+      // 'gross-spread',
+      // 'net-spread',
+      'close-date',
+      'status',
+      'milestone',
+    ],
   },
 };
 
