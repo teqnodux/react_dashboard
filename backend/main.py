@@ -38,6 +38,7 @@ from auth import (
     create_refresh_token,
     decode_token,
     get_current_user,
+    build_token_payload,
 )
 import sys
 from pathlib import Path
@@ -401,7 +402,22 @@ def _enrich_from_dma_extract(deal: dict, deal_id: str) -> dict:
     return deal
 
 
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+
+from db import get_db
+from services.org_service import expire_organizations
+from routers.super_admin import router as super_admin_router
+from routers.org_admin import router as org_admin_router
+from routers.auth_extended import router as auth_extended_router
+
+_limiter = Limiter(key_func=get_remote_address)
+
 app = FastAPI(title="Merger Arb Dashboard API")
+app.state.limiter = _limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 # CORS - allow local dev plus configured production origins
 _default_origins = [
@@ -439,21 +455,47 @@ class RefreshRequest(BaseModel):
 @auth_router.post("/login")
 def auth_login(body: LoginRequest):
     users = get_users_collection()
-    user = users.find_one({"email": body.email})
+    user = users.find_one({"email": body.email.lower().strip()})
     if not user or not verify_password(body.password, user["password"]):
         raise HTTPException(status_code=401, detail="Invalid email or password")
 
-    token_payload = {
-        "user_id": str(user["_id"]),
-        "email": user["email"],
-        "role": user.get("role", "viewer"),
-    }
+    if user.get("status") in ("suspended", "inactive"):
+        raise HTTPException(status_code=403, detail="Account is not active")
+
+    # Lazy org expiry check
+    org_id = user.get("organization_id")
+    if org_id and not user.get("is_individual"):
+        from datetime import timezone as _tz
+        from bson import ObjectId as _ObjId
+        db = get_db()
+        try:
+            org = db["organizations"].find_one({"_id": _ObjId(org_id)})
+        except Exception:
+            org = None
+        if org:
+            end_date = org.get("end_date")
+            if end_date:
+                if end_date.tzinfo is None:
+                    end_date = end_date.replace(tzinfo=_tz.utc)
+                if end_date < datetime.now(_tz.utc) and org.get("status") == "active":
+                    db["organizations"].update_one(
+                        {"_id": org["_id"]},
+                        {"$set": {"status": "expired", "updated_at": datetime.now(_tz.utc)}},
+                    )
+                    org["status"] = "expired"
+            if org.get("status") not in ("active", None):
+                raise HTTPException(status_code=403, detail=f"Organization subscription is '{org['status']}'")
+
+    token_payload = build_token_payload(user)
     return {
         "access": create_access_token(token_payload),
         "refresh": create_refresh_token(token_payload),
         "user_id": str(user["_id"]),
         "user_email": user["email"],
-        "role": user.get("role", "viewer"),
+        "role": user.get("role", "user"),
+        "must_reset": user.get("force_password_reset", False),
+        "org_id": token_payload.get("org_id"),
+        "is_individual": token_payload.get("is_individual", False),
     }
 
 
@@ -465,16 +507,31 @@ def auth_refresh(body: RefreshRequest):
     token_payload = {
         "user_id": payload["user_id"],
         "email": payload["email"],
-        "role": payload.get("role", "viewer"),
+        "role": payload.get("role", "user"),
+        "org_id": payload.get("org_id"),
+        "is_individual": payload.get("is_individual", False),
+        "force_reset": payload.get("force_reset", False),
     }
     return {"access": create_access_token(token_payload)}
 
 
 app.include_router(auth_router)
+app.include_router(auth_extended_router)
+app.include_router(super_admin_router)
+app.include_router(org_admin_router)
 
 # ── Auth middleware — protects all routes except public ones ──────────────
 
-_PUBLIC_PATHS = frozenset({"/", "/api/health", "/api/auth/login", "/api/auth/token/refresh"})
+_PUBLIC_PATHS = frozenset({
+    "/",
+    "/api/health",
+    "/api/auth/login",
+    "/api/auth/token/refresh",
+    "/api/auth/forgot-password",
+    "/api/auth/reset-password",
+    "/api/auth/accept-invite",
+    "/api/auth/invite/check",
+})
 
 
 @app.middleware("http")
@@ -482,7 +539,7 @@ async def enforce_auth(request: Request, call_next):
     if request.method == "OPTIONS" or request.url.path in _PUBLIC_PATHS:
         return await call_next(request)
     try:
-        await get_current_user(request)
+        user = await get_current_user(request)
     except HTTPException as exc:
         origin = request.headers.get("origin", "")
         resp = Response(
@@ -494,7 +551,65 @@ async def enforce_auth(request: Request, call_next):
             resp.headers["Access-Control-Allow-Origin"] = origin
             resp.headers["Access-Control-Allow-Credentials"] = "true"
         return resp
+
+    # Lazy org subscription check (skip for super_admin and individual users)
+    org_id = user.get("org_id")
+    if org_id and not user.get("is_individual") and user.get("role") != "super_admin":
+        try:
+            from datetime import timezone as _tz
+            from bson import ObjectId as _ObjId
+            db = get_db()
+            org = db["organizations"].find_one({"_id": _ObjId(org_id)})
+            if org:
+                end_date = org.get("end_date")
+                if end_date:
+                    if end_date.tzinfo is None:
+                        end_date = end_date.replace(tzinfo=_tz.utc)
+                    if end_date < datetime.now(_tz.utc) and org.get("status") == "active":
+                        db["organizations"].update_one(
+                            {"_id": org["_id"]},
+                            {"$set": {"status": "expired", "updated_at": datetime.now(_tz.utc)}},
+                        )
+                        org["status"] = "expired"
+                if org.get("status") not in ("active",):
+                    origin = request.headers.get("origin", "")
+                    resp = Response(
+                        content=json.dumps({"detail": f"Organization subscription is '{org['status']}'"}),
+                        status_code=403,
+                        media_type="application/json",
+                    )
+                    if origin:
+                        resp.headers["Access-Control-Allow-Origin"] = origin
+                        resp.headers["Access-Control-Allow-Credentials"] = "true"
+                    return resp
+        except Exception:
+            pass  # Don't break the request if org check fails — let route handle it
+
     return await call_next(request)
+
+
+_scheduler = AsyncIOScheduler()
+
+
+@app.on_event("startup")
+async def start_scheduler():
+    """Start background scheduler for org expiry and other periodic tasks."""
+    from datetime import timezone as _tz
+
+    def _expire_orgs_job():
+        try:
+            expire_organizations(get_db())
+        except Exception as e:
+            logger.error("Org expiry job failed: %s", e)
+
+    _scheduler.add_job(_expire_orgs_job, "interval", hours=1, id="expire_orgs")
+    _scheduler.start()
+    logger.info("APScheduler started — org expiry job runs every hour")
+
+
+@app.on_event("shutdown")
+async def stop_scheduler():
+    _scheduler.shutdown(wait=False)
 
 
 @app.on_event("startup")

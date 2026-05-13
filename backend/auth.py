@@ -5,18 +5,16 @@ dependency that protects routes.
 """
 
 from datetime import datetime, timedelta, timezone
+from functools import wraps
 
 import jwt
-from fastapi import HTTPException, Request
+from fastapi import Depends, HTTPException, Request
 from passlib.context import CryptContext
-from pymongo import MongoClient
 
 from config import (
     JWT_SECRET_KEY,
     ACCESS_TOKEN_EXPIRE_MINUTES,
     REFRESH_TOKEN_EXPIRE_DAYS,
-    MONGODB_URI,
-    MONGODB_DB,
 )
 
 ALGORITHM = "HS256"
@@ -26,21 +24,15 @@ _pwd_ctx = CryptContext(
     deprecated="auto",
 )
 
-# ── MongoDB users collection ─────────────────────────────────────────────
-
-_mongo_client: MongoClient | None = None
-
+# ── Backward-compatible shim — use db.py for new code ────────────────────────
 
 def get_users_collection():
-    global _mongo_client
-    if _mongo_client is None:
-        if not MONGODB_URI:
-            raise RuntimeError("MONGODB_URI is not configured")
-        _mongo_client = MongoClient(MONGODB_URI)
-    return _mongo_client[MONGODB_DB]["users"]
+    """Kept for backward compatibility with existing main.py login route."""
+    from db import get_users_col
+    return get_users_col()
 
 
-# ── Password helpers ─────────────────────────────────────────────────────
+# ── Password helpers ─────────────────────────────────────────────────────────
 
 def hash_password(plain: str) -> str:
     return _pwd_ctx.hash(plain)
@@ -50,7 +42,7 @@ def verify_password(plain: str, hashed: str) -> bool:
     return _pwd_ctx.verify(plain, hashed)
 
 
-# ── Token helpers ────────────────────────────────────────────────────────
+# ── Token helpers ─────────────────────────────────────────────────────────────
 
 def _check_secret():
     if not JWT_SECRET_KEY:
@@ -85,7 +77,19 @@ def decode_token(token: str) -> dict:
         raise HTTPException(status_code=401, detail="Invalid token")
 
 
-# ── FastAPI dependency ───────────────────────────────────────────────────
+def build_token_payload(user: dict) -> dict:
+    """Build the standard JWT payload from a user document."""
+    return {
+        "user_id": str(user["_id"]),
+        "email": user["email"],
+        "role": user.get("role", "user"),
+        "org_id": str(user["organization_id"]) if user.get("organization_id") else None,
+        "is_individual": user.get("is_individual", False),
+        "force_reset": user.get("force_password_reset", False),
+    }
+
+
+# ── FastAPI dependency ────────────────────────────────────────────────────────
 
 async def get_current_user(request: Request) -> dict:
     """Extract and validate the Bearer token from the Authorization header."""
@@ -100,3 +104,30 @@ async def get_current_user(request: Request) -> dict:
         raise HTTPException(status_code=401, detail="Invalid token type")
 
     return payload
+
+
+# ── Role-based access control ─────────────────────────────────────────────────
+
+def require_roles(*allowed_roles: str):
+    """
+    FastAPI Depends factory for role-based access control.
+
+    Usage:
+        @router.get("/admin-only")
+        def view(user=Depends(require_roles("super_admin", "admin"))):
+            ...
+    """
+    async def dependency(request: Request) -> dict:
+        user = await get_current_user(request)
+        if user.get("role") not in allowed_roles:
+            raise HTTPException(status_code=403, detail="Insufficient permissions")
+        return user
+    return dependency
+
+
+def require_super_admin(request: Request):
+    return require_roles("super_admin")(request)
+
+
+def require_admin_or_above(request: Request):
+    return require_roles("super_admin", "admin")(request)

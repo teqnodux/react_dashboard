@@ -46,11 +46,28 @@ function clearAuthAndRedirect() {
   window.location.href = '/login';
 }
 
+// Auth routes that must never trigger the refresh/redirect flow
+const AUTH_PASSTHROUGH_PATHS = [
+  '/api/auth/login',
+  '/api/auth/forgot-password',
+  '/api/auth/reset-password',
+  '/api/auth/accept-invite',
+  '/api/auth/invite/check',
+  '/api/auth/change-password',
+  '/api/auth/token/refresh',
+];
+
 api.interceptors.response.use(
   (response) => response,
   async (error: AxiosError) => {
     const originalRequest = error.config as InternalAxiosRequestConfig & { _retry?: boolean };
     const status = error.response?.status;
+
+    // Never intercept auth endpoints — let the calling code handle errors directly
+    const requestPath = originalRequest?.url ?? '';
+    if (AUTH_PASSTHROUGH_PATHS.some((p) => requestPath.endsWith(p))) {
+      return Promise.reject(error);
+    }
 
     // Only attempt refresh on 401, or on network errors (CORS-blocked 401s have no response)
     const isAuthError = status === 401 || (!error.response && !!localStorage.getItem('token'));

@@ -1,10 +1,12 @@
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react';
 import api, { setLogoutCallback } from '../services/api';
 
-interface User {
+export interface User {
   email: string;
-  role: string;
+  role: string;         // 'super_admin' | 'admin' | 'user'
   id: string;
+  org_id: string | null;
+  is_individual: boolean;
 }
 
 interface AuthContextType {
@@ -12,7 +14,8 @@ interface AuthContextType {
   token: string | null;
   isAuthenticated: boolean;
   loading: boolean;
-  login: (email: string, password: string) => Promise<void>;
+  /** Returns true if the backend signals the user must change their password */
+  login: (email: string, password: string) => Promise<boolean>;
   logout: () => void;
 }
 
@@ -51,16 +54,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setLogoutCallback(logout);
   }, [logout]);
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string, password: string): Promise<boolean> => {
     const { data } = await api.post('/api/auth/login', { email, password });
-    const { access, refresh, user_email, role, user_id } = data;
+    const { access, refresh, user_email, role, user_id, org_id, is_individual, must_reset } = data;
+
+    const userData: User = {
+      email: user_email,
+      role,
+      id: user_id,
+      org_id: org_id ?? null,
+      is_individual: is_individual ?? false,
+    };
 
     localStorage.setItem('token', access);
     localStorage.setItem('refreshToken', refresh);
-    localStorage.setItem('user', JSON.stringify({ email: user_email, role, id: user_id }));
+    localStorage.setItem('user', JSON.stringify(userData));
 
     setToken(access);
-    setUser({ email: user_email, role, id: user_id });
+    setUser(userData);
+
+    return !!must_reset;
   };
 
   return (

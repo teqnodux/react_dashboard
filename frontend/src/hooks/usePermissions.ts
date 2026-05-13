@@ -10,7 +10,8 @@ export function usePermissions() {
   const role = user?.role ?? 'user';
   const config = getConfig(role);
 
-  const isAdmin = role === 'admin';
+  const isSuperAdmin = role === 'super_admin';
+  const isAdmin = role === 'admin' || role === 'super_admin';
 
   /** Returns true if the nav tab at `path` is visible for the current role */
   const canSeeNavTab = (path: string): boolean => {
@@ -27,5 +28,5 @@ export function usePermissions() {
   /** Array of allowed deal IDs, or 'all' if unrestricted */
   const allowedDealIds = config.allowedDealIds;
 
-  return { isAdmin, role, canSeeNavTab, canSeeDealTab, allowedDealIds };
+  return { isAdmin, isSuperAdmin, role, canSeeNavTab, canSeeDealTab, allowedDealIds };
 }

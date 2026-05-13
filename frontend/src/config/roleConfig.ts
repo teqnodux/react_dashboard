@@ -10,7 +10,7 @@
 // Deal detail tab IDs match the activeTab values used in DealDetail.tsx.
 // ─────────────────────────────────────────────────────────────────────────────
 
-export type Role = 'admin' | 'user';
+export type Role = 'super_admin' | 'admin' | 'user';
 
 export interface RolePermissions {
   /** Which top-nav tabs are visible. Use route paths e.g. '/tearsheet' */
@@ -22,6 +22,13 @@ export interface RolePermissions {
 }
 
 const ROLE_CONFIG: Record<Role, RolePermissions> = {
+  // ── Super Admin: unrestricted ─────────────────────────────────────────────
+  super_admin: {
+    navTabs: 'all',
+    dealDetailTabs: 'all',
+    allowedDealIds: 'all',
+  },
+
   // ── Admin: unrestricted ───────────────────────────────────────────────────
   admin: {
     navTabs: 'all',
