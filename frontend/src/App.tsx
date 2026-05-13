@@ -12,7 +12,14 @@ import AllActivity from './pages/AllActivity';
 import RedditAnalysis from './pages/RedditAnalysis';
 import SECFilings from './pages/SECFilings';
 import UpcomingEvents from './pages/UpcomingEvents';
+import ForgotPassword from './pages/auth/ForgotPassword';
+import ResetPassword from './pages/auth/ResetPassword';
+import AcceptInvite from './pages/auth/AcceptInvite';
+import ChangePassword from './pages/auth/ChangePassword';
+import AdminPanel from './pages/admin/AdminPanel';
+import SuperAdminPanel from './pages/admin/SuperAdminPanel';
 import { usePermissions } from './hooks/usePermissions';
+import { useAuth } from './context/AuthContext';
 import ROLE_CONFIG from './config/roleConfig';
 import './styles/GlobalVars.css';
 
@@ -27,7 +34,9 @@ function DefaultRedirect() {
 
 /** Redirects to the role's default if the current role cannot access this nav path */
 function NavGuard({ path, children }: { path: string; children: ReactNode }) {
+  const { loading } = useAuth();
   const { canSeeNavTab, role } = usePermissions();
+  if (loading) return null;
   if (!canSeeNavTab(path)) {
     const navTabs = ROLE_CONFIG[role as keyof typeof ROLE_CONFIG]?.navTabs;
     const fallback = Array.isArray(navTabs) ? (navTabs[0] ?? '/tearsheet') : '/tearsheet';
@@ -36,16 +45,46 @@ function NavGuard({ path, children }: { path: string; children: ReactNode }) {
   return <>{children}</>;
 }
 
+/** Redirects away if current user doesn't have one of the required roles */
+function RoleGuard({ roles, children }: { roles: string[]; children: ReactNode }) {
+  const { user } = useAuth();
+  if (!user || !roles.includes(user.role)) return <Navigate to="/" replace />;
+  return <>{children}</>;
+}
+
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          <Route path="/login" element={<Login />} />
+          {/* Public routes — no auth required */}
+          <Route path="/login"           element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password"  element={<ResetPassword />} />
+          <Route path="/accept-invite"   element={<AcceptInvite />} />
+
+          {/* Protected routes — must be logged in */}
           <Route element={<ProtectedRoute />}>
             <Route path="/" element={<DefaultRedirect />} />
+            <Route path="/change-password" element={<ChangePassword />} />
+
+            {/* Admin panel — admin + super_admin */}
+            <Route path="/admin" element={
+              <RoleGuard roles={['admin', 'super_admin']}>
+                <AdminPanel />
+              </RoleGuard>
+            } />
+
+            {/* Super admin panel — super_admin only */}
+            <Route path="/super-admin" element={
+              <RoleGuard roles={['super_admin']}>
+                <SuperAdminPanel />
+              </RoleGuard>
+            } />
+
+            {/* Dashboard routes */}
             <Route path="/tearsheet" element={<NavGuard path="/tearsheet"><PipelineTearsheet /></NavGuard>} />
-            <Route path="/pipeline" element={<PipelineTable />} />
+            <Route path="/pipeline"  element={<PipelineTable />} />
             <Route path="/deal/:dealId" element={<DealDetail />} />
             <Route path="/all-dockets"    element={<NavGuard path="/all-dockets"><AllDockets /></NavGuard>} />
             <Route path="/all-regulatory" element={<NavGuard path="/all-regulatory"><AllRegulatory /></NavGuard>} />

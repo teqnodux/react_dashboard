@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ReactNode, useRef, useState, useEffect } from 'react';
 import { usePermissions } from '../hooks/usePermissions';
 import { useAuth } from '../context/AuthContext';
+import '../styles/AdminNav.css';
 
 const NAV_TABS = [
   { path: '/tearsheet',      label: '📊 Tearsheet' },
@@ -15,6 +16,7 @@ const NAV_TABS = [
 
 function ProfileMenu() {
   const { user, logout } = useAuth();
+  const { isAdmin, isSuperAdmin } = usePermissions();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -38,6 +40,18 @@ function ProfileMenu() {
     navigate('/login', { replace: true });
   }
 
+  function roleBadgeClass() {
+    if (isSuperAdmin) return 'super-admin';
+    if (isAdmin) return 'admin';
+    return 'user';
+  }
+
+  function roleLabel() {
+    if (isSuperAdmin) return 'Super Admin';
+    if (isAdmin) return 'Admin';
+    return user?.role ?? 'user';
+  }
+
   return (
     <div className="profile-menu" ref={wrapperRef}>
       <button
@@ -52,10 +66,29 @@ function ProfileMenu() {
         <div className="profile-dropdown">
           <div className="profile-dropdown-info">
             <span className="profile-email">{user?.email ?? '—'}</span>
-            <span className={`profile-role-badge ${user?.role === 'admin' ? 'admin' : 'user'}`}>
-              {user?.role ?? 'user'}
+            <span className={`profile-role-badge ${roleBadgeClass()}`}>
+              {roleLabel()}
             </span>
           </div>
+          <div className="profile-dropdown-divider" />
+
+          {isSuperAdmin && (
+            <button
+              className="profile-panel-btn super-admin-btn"
+              onClick={() => { setOpen(false); navigate('/super-admin'); }}
+            >
+              ⚙️ Super Admin Panel
+            </button>
+          )}
+          {isAdmin && !isSuperAdmin && (
+            <button
+              className="profile-panel-btn admin-btn"
+              onClick={() => { setOpen(false); navigate('/admin'); }}
+            >
+              🛠️ Admin Panel
+            </button>
+          )}
+
           <div className="profile-dropdown-divider" />
           <button className="profile-logout-btn" onClick={handleLogout}>
             Log out

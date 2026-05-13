@@ -1,24 +1,34 @@
 import { useState, type FormEvent } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import '../styles/Login.css';
 
 export default function Login() {
   const { login, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
-  if (isAuthenticated) return <Navigate to="/tearsheet" replace />;
+  const infoParam = searchParams.get('info');
+  const infoMessage = infoParam === 'invite_already_accepted'
+    ? 'This invitation has already been accepted. Please sign in.'
+    : null;
+
+  if (isAuthenticated) return <Navigate to="/" replace />;
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError('');
     setSubmitting(true);
     try {
-      await login(email, password);
+      const mustReset = await login(email, password);
+      if (mustReset) {
+        navigate('/change-password', { replace: true });
+      }
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
         setError(err.response?.data?.detail || 'Invalid email or password');
@@ -59,11 +69,15 @@ export default function Login() {
               required
             />
           </div>
+          {infoMessage && <div className="login-error" style={{ background: 'color-mix(in srgb, var(--accent-blue) 15%, transparent)', borderColor: 'var(--accent-blue)' }}>{infoMessage}</div>}
           {error && <div className="login-error">{error}</div>}
           <button type="submit" className="login-btn" disabled={submitting}>
             {submitting ? 'Signing in…' : 'Sign In'}
           </button>
         </form>
+        <p style={{ marginTop: '16px', textAlign: 'center' }}>
+          <Link to="/forgot-password" style={{ color: 'var(--accent-blue)', fontFamily: 'var(--font-mono)', fontSize: '11px' }}>Forgot password?</Link>
+        </p>
       </div>
     </div>
   );

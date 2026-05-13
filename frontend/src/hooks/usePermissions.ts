@@ -1,5 +1,8 @@
-import { useAuth } from '../context/AuthContext';
-import ROLE_CONFIG, { type Role, type RolePermissions } from '../config/roleConfig';
+import { useAuth } from "../context/AuthContext";
+import ROLE_CONFIG, {
+  type Role,
+  type RolePermissions
+} from "../config/roleConfig";
 
 function getConfig(role: string): RolePermissions {
   return ROLE_CONFIG[role as Role] ?? ROLE_CONFIG.user;
@@ -7,20 +10,21 @@ function getConfig(role: string): RolePermissions {
 
 export function usePermissions() {
   const { user } = useAuth();
-  const role = user?.role ?? 'user';
+  const role = user?.role ?? "user";
   const config = getConfig(role);
 
-  const isAdmin = role === 'admin';
+  const isSuperAdmin = role === "super_admin";
+  const isAdmin = role === "admin" || role === "super_admin";
 
   /** Returns true if the nav tab at `path` is visible for the current role */
   const canSeeNavTab = (path: string): boolean => {
-    if (config.navTabs === 'all') return true;
+    if (config.navTabs === "all") return true;
     return config.navTabs.includes(path);
   };
 
   /** Returns true if the deal detail tab with `tabId` is visible for the current role */
   const canSeeDealTab = (tabId: string): boolean => {
-    if (config.dealDetailTabs === 'all') return true;
+    if (config.dealDetailTabs === "all") return true;
     return config.dealDetailTabs.includes(tabId);
   };
 
@@ -30,5 +34,13 @@ export function usePermissions() {
   /** Whether to show the summary stats bar on the List View page */
   const showSummaryStats = config.showSummaryStats;
 
-  return { isAdmin, role, canSeeNavTab, canSeeDealTab, allowedDealIds, showSummaryStats };
+  return {
+    isAdmin,
+    isSuperAdmin,
+    role,
+    canSeeNavTab,
+    canSeeDealTab,
+    allowedDealIds,
+    showSummaryStats
+  };
 }
