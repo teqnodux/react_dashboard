@@ -34,7 +34,9 @@ function DefaultRedirect() {
 
 /** Redirects to the role's default if the current role cannot access this nav path */
 function NavGuard({ path, children }: { path: string; children: ReactNode }) {
+  const { loading } = useAuth();
   const { canSeeNavTab, role } = usePermissions();
+  if (loading) return null;
   if (!canSeeNavTab(path)) {
     const navTabs = ROLE_CONFIG[role as keyof typeof ROLE_CONFIG]?.navTabs;
     const fallback = Array.isArray(navTabs) ? (navTabs[0] ?? '/tearsheet') : '/tearsheet';
