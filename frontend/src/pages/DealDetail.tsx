@@ -1371,15 +1371,20 @@ export default function DealDetail() {
   };
 
   const expandAllClauses = () => {
+    // Mirror the same data-source priority as the render
     const sectionsToDisplay =
-      deal?.concise_sections && deal?.fulsome_sections
+      dmaSummary?.concise_sections && dmaSummary?.fulsome_sections
         ? dmaViewMode === "concise"
-          ? deal.concise_sections
-          : deal.fulsome_sections
-        : deal?.dma_sections || [];
+          ? dmaSummary.concise_sections
+          : dmaSummary.fulsome_sections
+        : deal?.concise_sections && deal?.fulsome_sections
+          ? dmaViewMode === "concise"
+            ? deal.concise_sections
+            : deal.fulsome_sections
+          : deal?.dma_sections || [];
 
     const allSectionIds = new Set<string>();
-    sectionsToDisplay.forEach((_, idx) => {
+    sectionsToDisplay.forEach((_: any, idx: number) => {
       allSectionIds.add(`section-${idx}`);
     });
     setExpandedSections(allSectionIds);
