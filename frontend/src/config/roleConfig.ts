@@ -19,6 +19,8 @@ export interface RolePermissions {
   dealDetailTabs: string[] | 'all';
   /** Which deals are visible by ID. Use numeric deal IDs. */
   allowedDealIds: string[] | 'all';
+  /** Whether to show the summary stats bar (Total Deals, Total Value, Avg Spread, At Risk) on the List View page */
+  showSummaryStats: boolean;
 }
 
 const ROLE_CONFIG: Record<Role, RolePermissions> = {
@@ -27,6 +29,7 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
     navTabs: 'all',
     dealDetailTabs: 'all',
     allowedDealIds: 'all',
+    showSummaryStats: true,
   },
 
   // ── User: restricted ─────────────────────────────────────────────────────
@@ -62,6 +65,7 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
     // ← Add/remove deal IDs here to control which deals the user role can see.
     // Pagination and search will work correctly within this list.
     allowedDealIds: ["69fc2f8615960fbe4105afb2","69b15c2254958e923c2cb92a","69301375c0aa46c328847932","6981ce6ab995ffbb7cb5c582","69a5884454958e923ceb9115"],
+    showSummaryStats: false,
   },
 };
 

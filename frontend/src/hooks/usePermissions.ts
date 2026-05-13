@@ -27,5 +27,8 @@ export function usePermissions() {
   /** Array of allowed deal IDs, or 'all' if unrestricted */
   const allowedDealIds = config.allowedDealIds;
 
-  return { isAdmin, role, canSeeNavTab, canSeeDealTab, allowedDealIds };
+  /** Whether to show the summary stats bar on the List View page */
+  const showSummaryStats = config.showSummaryStats;
+
+  return { isAdmin, role, canSeeNavTab, canSeeDealTab, allowedDealIds, showSummaryStats };
 }

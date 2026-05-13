@@ -19,7 +19,7 @@ const CATEGORY_ORDER: DealCategory[] = [
 ];
 
 export default function PipelineTable() {
-  const { allowedDealIds } = usePermissions();
+  const { allowedDealIds, showSummaryStats } = usePermissions();
   const [dealsData, setDealsData] = useState<DealsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -241,24 +241,26 @@ export default function PipelineTable() {
       </div>
 
       {/* Summary Cards */}
-      <div className="summary-cards">
-        <div className="summary-card">
-          <div className="card-label">Total Deals</div>
-          <div className="card-value">{summary.total_deals}</div>
+      {showSummaryStats && (
+        <div className="summary-cards">
+          <div className="summary-card">
+            <div className="card-label">Total Deals</div>
+            <div className="card-value">{summary.total_deals}</div>
+          </div>
+          <div className="summary-card">
+            <div className="card-label">Total Value</div>
+            <div className="card-value">${summary.total_value_bn.toFixed(0)}B</div>
+          </div>
+          <div className="summary-card highlight-yellow">
+            <div className="card-label">Avg Spread</div>
+            <div className="card-value">{summary.avg_gross_spread.toFixed(1)}%</div>
+          </div>
+          <div className="summary-card highlight-red">
+            <div className="card-label">At Risk</div>
+            <div className="card-value">{summary.at_risk_count}</div>
+          </div>
         </div>
-        <div className="summary-card">
-          <div className="card-label">Total Value</div>
-          <div className="card-value">${summary.total_value_bn.toFixed(0)}B</div>
-        </div>
-        <div className="summary-card highlight-yellow">
-          <div className="card-label">Avg Spread</div>
-          <div className="card-value">{summary.avg_gross_spread.toFixed(1)}%</div>
-        </div>
-        <div className="summary-card highlight-red">
-          <div className="card-label">At Risk</div>
-          <div className="card-value">{summary.at_risk_count}</div>
-        </div>
-      </div>
+      )}
 
       {/* Filter Bar — Watchlist / All Deals toggle (matches Tearsheet) */}
       <div className="filter-bar" style={{padding: '0 var(--space-lg)', marginBottom: 'var(--space-sm)'}}>
