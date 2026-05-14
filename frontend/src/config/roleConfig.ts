@@ -44,7 +44,8 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
    navTabs: [
       // '/tearsheet',
       '/pipeline',
-      
+      '/news-feed',
+      '/sec-feed',
     ],
 
     dealDetailTabs: [
@@ -95,7 +96,8 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
     navTabs: [
       // '/tearsheet',
       '/pipeline',
-      
+      '/news-feed',
+      '/sec-feed',
     ],
 
     dealDetailTabs: [

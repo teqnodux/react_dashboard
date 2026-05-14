@@ -12,6 +12,8 @@ import AllActivity from './pages/AllActivity';
 import RedditAnalysis from './pages/RedditAnalysis';
 import SECFilings from './pages/SECFilings';
 import UpcomingEvents from './pages/UpcomingEvents';
+import NewsFeed from './pages/NewsFeed';
+import SecFeed from './pages/SecFeed';
 import ForgotPassword from './pages/auth/ForgotPassword';
 import ResetPassword from './pages/auth/ResetPassword';
 import AcceptInvite from './pages/auth/AcceptInvite';
@@ -20,6 +22,7 @@ import AdminPanel from './pages/admin/AdminPanel';
 import SuperAdminPanel from './pages/admin/SuperAdminPanel';
 import { usePermissions } from './hooks/usePermissions';
 import { useAuth } from './context/AuthContext';
+import { ToastProvider } from './components/ToastNotification';
 import ROLE_CONFIG from './config/roleConfig';
 import './styles/GlobalVars.css';
 
@@ -27,7 +30,7 @@ import './styles/GlobalVars.css';
 function DefaultRedirect() {
   const { canSeeNavTab } = usePermissions();
   const fallback = '/tearsheet';
-  const allTabs = ['/tearsheet', '/pipeline', '/activity', '/all-dockets', '/all-regulatory', '/sec-filings', '/upcoming'];
+  const allTabs = ['/tearsheet', '/pipeline', '/activity', '/all-dockets', '/all-regulatory', '/sec-filings', '/upcoming', '/news-feed', '/sec-feed'];
   const first = allTabs.find(t => canSeeNavTab(t)) ?? fallback;
   return <Navigate to={first} replace />;
 }
@@ -56,6 +59,7 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+        <ToastProvider>
         <Routes>
           {/* Public routes — no auth required */}
           <Route path="/login"           element={<Login />} />
@@ -92,8 +96,11 @@ function App() {
             <Route path="/reddit"         element={<NavGuard path="/reddit"><RedditAnalysis /></NavGuard>} />
             <Route path="/sec-filings"    element={<NavGuard path="/sec-filings"><SECFilings /></NavGuard>} />
             <Route path="/upcoming"       element={<NavGuard path="/upcoming"><UpcomingEvents /></NavGuard>} />
+            <Route path="/news-feed"     element={<NavGuard path="/news-feed"><NewsFeed /></NavGuard>} />
+            <Route path="/sec-feed"      element={<NavGuard path="/sec-feed"><SecFeed /></NavGuard>} />
           </Route>
         </Routes>
+        </ToastProvider>
       </AuthProvider>
     </BrowserRouter>
   );
