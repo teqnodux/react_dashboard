@@ -16,6 +16,7 @@ import ScorecardTab from "../components/ScorecardTab";
 import MilestoneLog from "../components/MilestoneLog";
 import FeedTab from "../components/FeedTab";
 import MongoFeedTab from "../components/MongoFeedTab";
+import ForeignFilingsTab from "../components/ForeignFilingsTab";
 import DashboardNav from "../components/DashboardNav";
 import {
   getFilingTypeColor,
@@ -192,7 +193,7 @@ function renderProxyDetailContent(content: string): React.ReactNode {
 
 export default function DealDetail() {
   const { dealId } = useParams<{ dealId: string }>();
-  const { canSeeDealTab, showDealMetrics } = usePermissions();
+  const { canSeeDealTab, showDealMetrics, isSuperAdmin } = usePermissions();
   const [deal, setDeal] = useState<DealDetailType | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -1646,14 +1647,16 @@ export default function DealDetail() {
               <span className={`status-badge ${getStatusClass(deal.status)}`}>
                 {getStatusLabel(deal.status)}
               </span>
-              <button
-                className="sync-btn"
-                onClick={handleSyncAll}
-                disabled={syncing}
-                title="Re-sync all document sources to regulatory tracker and refresh all tabs"
-              >
-                {syncing ? "↻ Syncing…" : "↻ Sync"}
-              </button>
+              {isSuperAdmin && (
+                <button
+                  className="sync-btn"
+                  onClick={handleSyncAll}
+                  disabled={syncing}
+                  title="Re-sync all document sources to regulatory tracker and refresh all tabs"
+                >
+                  {syncing ? "↻ Syncing…" : "↻ Sync"}
+                </button>
+              )}
             </div>
             <div className="deal-meta-row">
               <span>{deal.deal_type.toUpperCase()}</span>
@@ -1814,6 +1817,12 @@ export default function DealDetail() {
             onClick={() => setActiveTab("documents")}
           >
             Documents
+          </button>}
+          {canSeeDealTab("foreign-filings") && <button
+            className={`tab-btn tab-ready ${activeTab === "foreign-filings" ? "active" : ""}`}
+            onClick={() => setActiveTab("foreign-filings")}
+          >
+            Foreign Filings
           </button>}
         </div>
       </div>
@@ -4698,58 +4707,62 @@ export default function DealDetail() {
 
           {activeTab === "sec" && (
             <div className="sec-tab-wrapper">
-              {/* URL Input Bar */}
-              <div className="sec-url-bar">
-                <input
-                  type="text"
-                  placeholder="Paste SEC filing URL to analyze..."
-                  value={secProcessUrl}
-                  onChange={(e) => setSecProcessUrl(e.target.value)}
-                  disabled={secBatchMode || secProcessing}
-                  className="sec-url-input"
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" && !secBatchMode) handleSecProcess();
-                  }}
-                />
-                <button
-                  onClick={handleSecProcess}
-                  disabled={
-                    secProcessing ||
-                    (!secProcessUrl.trim() && !secBatchUrls.trim())
-                  }
-                  className="sec-process-btn"
-                >
-                  {secProcessing ? "PROCESSING..." : "ANALYZE"}
-                </button>
-                <button
-                  onClick={() => setSecBatchMode(!secBatchMode)}
-                  className={`batch-toggle ${secBatchMode ? "active" : ""}`}
-                >
-                  BATCH
-                </button>
-                {secProcessError && (
-                  <span className="sec-process-error">{secProcessError}</span>
-                )}
-                {secProcessSuccess && (
-                  <span className="sec-process-success">
-                    {secProcessSuccess}
-                  </span>
-                )}
-              </div>
-              {secBatchMode && (
-                <textarea
-                  placeholder="Paste one SEC URL per line..."
-                  value={secBatchUrls}
-                  onChange={(e) => setSecBatchUrls(e.target.value)}
-                  rows={4}
-                  className="batch-textarea"
-                  disabled={secProcessing}
-                  style={{
-                    margin: "0 0 8px 0",
-                    width: "100%",
-                    boxSizing: "border-box"
-                  }}
-                />
+              {/* URL Input Bar — super_admin only */}
+              {isSuperAdmin && (
+                <>
+                  <div className="sec-url-bar">
+                    <input
+                      type="text"
+                      placeholder="Paste SEC filing URL to analyze..."
+                      value={secProcessUrl}
+                      onChange={(e) => setSecProcessUrl(e.target.value)}
+                      disabled={secBatchMode || secProcessing}
+                      className="sec-url-input"
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" && !secBatchMode) handleSecProcess();
+                      }}
+                    />
+                    <button
+                      onClick={handleSecProcess}
+                      disabled={
+                        secProcessing ||
+                        (!secProcessUrl.trim() && !secBatchUrls.trim())
+                      }
+                      className="sec-process-btn"
+                    >
+                      {secProcessing ? "PROCESSING..." : "ANALYZE"}
+                    </button>
+                    <button
+                      onClick={() => setSecBatchMode(!secBatchMode)}
+                      className={`batch-toggle ${secBatchMode ? "active" : ""}`}
+                    >
+                      BATCH
+                    </button>
+                    {secProcessError && (
+                      <span className="sec-process-error">{secProcessError}</span>
+                    )}
+                    {secProcessSuccess && (
+                      <span className="sec-process-success">
+                        {secProcessSuccess}
+                      </span>
+                    )}
+                  </div>
+                  {secBatchMode && (
+                    <textarea
+                      placeholder="Paste one SEC URL per line..."
+                      value={secBatchUrls}
+                      onChange={(e) => setSecBatchUrls(e.target.value)}
+                      rows={4}
+                      className="batch-textarea"
+                      disabled={secProcessing}
+                      style={{
+                        margin: "0 0 8px 0",
+                        width: "100%",
+                        boxSizing: "border-box"
+                      }}
+                    />
+                  )}
+                </>
               )}
 
               <div className="sec-split-wrapper">
@@ -5588,14 +5601,16 @@ export default function DealDetail() {
                 >
                   Clause Analysis
                 </button>
-                <button
-                  className={
-                    maeView === "pipeline" ? "tab-btn active" : "tab-btn"
-                  }
-                  onClick={() => setMaeView("pipeline")}
-                >
-                  Pipeline Dashboard
-                </button>
+                {isSuperAdmin && (
+                  <button
+                    className={
+                      maeView === "pipeline" ? "tab-btn active" : "tab-btn"
+                    }
+                    onClick={() => setMaeView("pipeline")}
+                  >
+                    Pipeline Dashboard
+                  </button>
+                )}
               </div>
 
               {/* Clause Analysis view — structured MAEReview component from MongoDB */}
@@ -5616,17 +5631,18 @@ export default function DealDetail() {
                   )}
                   {!maeDataLoading && !maeData && (
                     <div className="placeholder">
-                      <p>No MAE analysis available in MongoDB for this deal.</p>
-                      <p
-                        style={{
-                          fontSize: "0.85em",
-                          color: "var(--text-muted)"
-                        }}
-                      >
-                        MAE analysis is sourced from the{" "}
-                        <code>mae_analyses</code> collection. Switch to Pipeline
-                        Dashboard to generate one.
-                      </p>
+                      {isSuperAdmin ? (
+                        <>
+                          <p>No MAE analysis available in MongoDB for this deal.</p>
+                          <p style={{ fontSize: "0.85em", color: "var(--text-muted)" }}>
+                            MAE analysis is sourced from the{" "}
+                            <code>mae_analyses</code> collection. Switch to Pipeline
+                            Dashboard to generate one.
+                          </p>
+                        </>
+                      ) : (
+                        <p>MAE clause analysis has not been generated for this deal yet. Check back later.</p>
+                      )}
                     </div>
                   )}
                 </>
@@ -5729,11 +5745,17 @@ export default function DealDetail() {
               )}
               {covenantStatus === "generating" && (
                 <div className="placeholder">
-                  <p>⏳ Generating covenant dashboard…</p>
-                  <p className="muted">
-                    Drop stage JSONs in backend/data/covenants/input/{dealId}/
-                    to enable auto-generation.
-                  </p>
+                  {isSuperAdmin ? (
+                    <>
+                      <p>⏳ Generating covenant dashboard…</p>
+                      <p className="muted">
+                        Drop stage JSONs in backend/data/covenants/input/{dealId}/
+                        to enable auto-generation.
+                      </p>
+                    </>
+                  ) : (
+                    <p>Covenant analysis has not been generated for this deal yet. Check back later.</p>
+                  )}
                 </div>
               )}
               {covenantStatus === "ready" && (
@@ -5771,45 +5793,56 @@ export default function DealDetail() {
                     )}
                     {mergerUrlSaved ? (
                       <>
-                        <p>No covenant dashboard generated yet.</p>
-                        <button
-                          className="pipeline-run-btn"
-                          onClick={() => {
-                            setCovenantPipelineStatus("running");
-                            setCovenantPipelineStep("starting");
-                            api.post(`/api/deals/${dealId}/covenants/run-pipeline`)
-                              .then((res) => {
-                                if (res.data.status === "already_running") {
-                                  setCovenantPipelineStep(
-                                    res.data.step || "in progress"
-                                  );
-                                }
-                              })
-                              .catch(() => {
-                                setCovenantPipelineStatus("error");
-                                setCovenantError("Failed to start pipeline");
-                              });
-                          }}
-                        >
-                          Run Covenant Analysis
-                        </button>
                         <p>
-                          ~10 min — scrapes merger agreement, classifies
-                          clauses, generates dashboard
+                          {isSuperAdmin
+                            ? "No covenant dashboard generated yet."
+                            : "Covenant analysis has not been generated for this deal yet. Check back later."}
                         </p>
+                        {isSuperAdmin && (
+                          <>
+                            <button
+                              className="pipeline-run-btn"
+                              onClick={() => {
+                                setCovenantPipelineStatus("running");
+                                setCovenantPipelineStep("starting");
+                                api.post(`/api/deals/${dealId}/covenants/run-pipeline`)
+                                  .then((res) => {
+                                    if (res.data.status === "already_running") {
+                                      setCovenantPipelineStep(
+                                        res.data.step || "in progress"
+                                      );
+                                    }
+                                  })
+                                  .catch(() => {
+                                    setCovenantPipelineStatus("error");
+                                    setCovenantError("Failed to start pipeline");
+                                  });
+                              }}
+                            >
+                              Run Covenant Analysis
+                            </button>
+                            <p>
+                              ~10 min — scrapes merger agreement, classifies
+                              clauses, generates dashboard
+                            </p>
+                          </>
+                        )}
                       </>
                     ) : (
                       <div className="pipeline-no-url">
                         <p>
-                          Set the merger agreement URL in the Documents tab to
-                          enable covenant analysis.
+                          {isSuperAdmin
+                            ? "Set the merger agreement URL in the Documents tab to enable covenant analysis."
+                            : "Covenant analysis has not been generated for this deal yet. Check back later."}
                         </p>
-                        <button
-                          className="retry-btn"
-                          onClick={() => setCovenantStatus("idle")}
-                        >
-                          Retry
-                        </button>
+                        {isSuperAdmin && (
+                          <button
+                            className="retry-btn"
+                            onClick={() => setCovenantStatus("idle")}
+                          >
+                            Retry
+                          </button>
+                        )}
                       </div>
                     )}
                   </div>
@@ -5915,39 +5948,41 @@ export default function DealDetail() {
               )}
               {terminationStatus === "ready" && (
                 <>
-                  <div className="termination-source-bar">
-                    <button
-                      className="pipeline-run-btn"
-                      onClick={() => {
-                        setTerminationPipelineStatus("running");
-                        setTerminationPipelineStep("starting");
-                        setTerminationStatus("error");
-                        api.post(`/api/deals/${dealId}/termination/run-pipeline`);
-                      }}
-                    >
-                      Re-run from Agreement
-                    </button>
-                    <input
-                      className="termination-url-input"
-                      placeholder="Paste 8-K or 99.1 URL to add source..."
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          const url = (
-                            e.target as HTMLInputElement
-                          ).value.trim();
-                          if (!url) return;
+                  {isSuperAdmin && (
+                    <div className="termination-source-bar">
+                      <button
+                        className="pipeline-run-btn"
+                        onClick={() => {
                           setTerminationPipelineStatus("running");
                           setTerminationPipelineStep("starting");
                           setTerminationStatus("error");
-                          api.post(
-                            `/api/deals/${dealId}/termination/run-pipeline`,
-                            { url }
-                          );
-                          (e.target as HTMLInputElement).value = "";
-                        }
-                      }}
-                    />
-                  </div>
+                          api.post(`/api/deals/${dealId}/termination/run-pipeline`);
+                        }}
+                      >
+                        Re-run from Agreement
+                      </button>
+                      <input
+                        className="termination-url-input"
+                        placeholder="Paste 8-K or 99.1 URL to add source..."
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            const url = (
+                              e.target as HTMLInputElement
+                            ).value.trim();
+                            if (!url) return;
+                            setTerminationPipelineStatus("running");
+                            setTerminationPipelineStep("starting");
+                            setTerminationStatus("error");
+                            api.post(
+                              `/api/deals/${dealId}/termination/run-pipeline`,
+                              { url }
+                            );
+                            (e.target as HTMLInputElement).value = "";
+                          }
+                        }}
+                      />
+                    </div>
+                  )}
                   {terminationHtml ? (
                     <iframe
                       ref={terminationIframeRef}
@@ -6005,7 +6040,7 @@ export default function DealDetail() {
                           {terminationError}
                         </p>
                       )}
-                    {mergerUrlSaved && (
+                    {isSuperAdmin && mergerUrlSaved && (
                       <>
                         <p>No termination dashboard generated yet.</p>
                         <button
@@ -6038,35 +6073,38 @@ export default function DealDetail() {
                     )}
                     {!mergerUrlSaved && (
                       <p className="step-label">
-                        No merger agreement URL stored. Paste a URL below or set
-                        it in the Documents tab.
+                        {isSuperAdmin
+                          ? "No merger agreement URL stored. Paste a URL below or set it in the Documents tab."
+                          : "Termination analysis has not been generated for this deal yet. Check back later."}
                       </p>
                     )}
-                    <div className="termination-alt-url">
-                      <span className="step-label">
-                        Or run from a specific filing:
-                      </span>
-                      <input
-                        className="termination-url-input"
-                        placeholder="Paste 8-K, 99.1, or merger agreement URL..."
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter") {
-                            const url = (
-                              e.target as HTMLInputElement
-                            ).value.trim();
-                            if (!url) return;
-                            setTerminationPipelineStatus("running");
-                            setTerminationPipelineStep("starting");
-                            setTerminationError(null);
-                            api.post(
-                              `/api/deals/${dealId}/termination/run-pipeline`,
-                              { url }
-                            );
-                            (e.target as HTMLInputElement).value = "";
-                          }
-                        }}
-                      />
-                    </div>
+                    {isSuperAdmin && (
+                      <div className="termination-alt-url">
+                        <span className="step-label">
+                          Or run from a specific filing:
+                        </span>
+                        <input
+                          className="termination-url-input"
+                          placeholder="Paste 8-K, 99.1, or merger agreement URL..."
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                              const url = (
+                                e.target as HTMLInputElement
+                              ).value.trim();
+                              if (!url) return;
+                              setTerminationPipelineStatus("running");
+                              setTerminationPipelineStep("starting");
+                              setTerminationError(null);
+                              api.post(
+                                `/api/deals/${dealId}/termination/run-pipeline`,
+                                { url }
+                              );
+                              (e.target as HTMLInputElement).value = "";
+                            }
+                          }}
+                        />
+                      </div>
+                    )}
                   </div>
                 )}
               {terminationStatus === "idle" && (
@@ -6770,6 +6808,10 @@ export default function DealDetail() {
                   </div>
                 )}
             </div>
+          )}
+
+          {activeTab === "foreign-filings" && dealId && (
+            <ForeignFilingsTab dealId={dealId} />
           )}
         </div>
       </div>

@@ -5069,6 +5069,51 @@ def get_mae_analysis(deal_id: str):
     }
 
 
+@app.get("/api/deals/{deal_id}/foreign-filings")
+def get_foreign_filings(deal_id: str):
+    """
+    Query all foreign filing collections in Deal_DB for records matching deal_id.
+    Returns grouped results per jurisdiction.
+    """
+    from config import MONGODB_URI
+    from pymongo import MongoClient
+
+    FOREIGN_COLLECTIONS = [
+        ("accc_cases",        "ACCC",                "Australia"),
+        ("brazil_cases",      "CADE",                "Brazil"),
+        ("canada_cases",      "Competition Bureau",  "Canada"),
+        ("ec_cases",          "European Commission", "EU"),
+        ("fs_cases",          "Foreign Subsidies",   "EU"),
+        ("german_cases",      "Bundeskartellamt",    "Germany"),
+        ("nz_cases",          "NZCC",                "New Zealand"),
+        ("samr_cases",        "SAMR",                "China"),
+        ("samr_conditional",  "SAMR Conditional",    "China"),
+        ("samr_unconditional","SAMR Unconditional",  "China"),
+        ("uk_cma_cases",      "CMA",                 "United Kingdom"),
+    ]
+
+    client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
+    db = client["Deal_DB"]
+
+    result = []
+    for col_name, label, country in FOREIGN_COLLECTIONS:
+        try:
+            docs = list(db[col_name].find({"deal_id": deal_id}, {"_id": 0}))
+            if docs:
+                result.append({
+                    "source": col_name,
+                    "label": label,
+                    "country": country,
+                    "count": len(docs),
+                    "records": docs,
+                })
+        except Exception as e:
+            print(f"Foreign filings: error querying {col_name}: {e}")
+
+    client.close()
+    return {"filings": result}
+
+
 @app.get("/api/health")
 def health_check():
     return {"status": "healthy"}

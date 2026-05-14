@@ -1,0 +1,265 @@
+/* Foreign Filings Tab */
+
+.ff-container {
+  padding: var(--space-lg);
+  max-width: 960px;
+}
+
+.ff-loading,
+.ff-error {
+  padding: 60px var(--space-lg);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.ff-error { color: var(--accent-red, #ef4444); }
+
+/* Empty state */
+.ff-empty {
+  padding: 80px var(--space-lg);
+  text-align: center;
+}
+.ff-empty-icon {
+  font-size: 36px;
+  margin-bottom: var(--space-md);
+  opacity: 0.6;
+}
+.ff-empty-title {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+.ff-empty-sub {
+  font-size: 12px;
+  color: var(--text-secondary);
+  max-width: 400px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Summary bar */
+.ff-summary-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.ff-summary-jurisdictions {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.ff-summary-sep {
+  color: var(--border);
+}
+.ff-summary-total {
+  color: var(--text-secondary);
+}
+
+/* Section accordion */
+.ff-section {
+  margin-bottom: var(--space-sm);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.ff-section-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px var(--space-md);
+  background: var(--bg-secondary);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+.ff-section-header:hover {
+  background: var(--bg-hover);
+}
+.ff-section-header.open {
+  background: var(--bg-hover);
+  border-bottom: 1px solid var(--border);
+}
+
+.ff-section-flag {
+  font-size: 16px;
+  line-height: 1;
+}
+.ff-section-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.ff-section-country {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  flex: 1;
+}
+.ff-section-badge {
+  background: var(--accent-blue);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+  min-width: 22px;
+  text-align: center;
+}
+.ff-section-chevron {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+/* Records list */
+.ff-records {
+  padding: var(--space-sm);
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ff-record {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px var(--space-md);
+  transition: border-color 0.15s;
+}
+.ff-record:hover {
+  border-color: var(--accent-blue);
+}
+
+.ff-record-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.ff-record-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-primary);
+  flex: 1;
+  line-height: 1.5;
+}
+
+.ff-record-link {
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+.ff-record-link:hover {
+  text-decoration: underline;
+}
+
+.ff-record-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* Status badges */
+.ff-status-badge {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ff-status-badge.open {
+  background: rgba(34, 197, 94, 0.12);
+  color: var(--accent-green, #22c55e);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+.ff-status-badge.closed {
+  background: rgba(100, 116, 139, 0.12);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.ff-record-date {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* Three-dates row */
+.ff-dates-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+  margin-top: 6px;
+  padding: 6px 0;
+  border-top: 1px solid var(--border);
+}
+
+.ff-date-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ff-date-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+}
+
+.ff-date-value {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-primary);
+}
+
+/* Extra fields row */
+.ff-record-extras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid var(--border);
+}
+
+.ff-extra-item {
+  display: flex;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  align-items: baseline;
+}
+.ff-extra-label {
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+.ff-extra-value {
+  color: var(--text-primary);
+  word-break: break-word;
+}

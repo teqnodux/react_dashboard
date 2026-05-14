@@ -15,7 +15,7 @@ export type Role = 'super_admin' | 'admin' | 'user';
 export interface RolePermissions {
   /** Which top-nav tabs are visible. Use route paths e.g. '/tearsheet' */
   navTabs: string[] | 'all';
-  /** Which deal detail tabs are visible. Use tab IDs e.g. 'financial' */
+  /** Which deal detail tabs are visible. Use tab IDs e.g. 'financial' | 'foreign-filings' */
   dealDetailTabs: string[] | 'all';
   /** Which deals are visible by ID. Use numeric deal IDs. */
   allowedDealIds: string[] | 'all';
@@ -69,7 +69,8 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
       // 'feed',        // Feed
       'feed-new',    // Feed (New)
       // 'scorecard',
-      // 'documents'
+      // 'documents',
+      'foreign-filings',
 
     ],
 
@@ -99,7 +100,7 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
     navTabs: [
       // '/tearsheet',
       '/pipeline',
-      
+
     ],
 
     dealDetailTabs: [
@@ -121,7 +122,8 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
       // 'feed',        // Feed
       'feed-new',    // Feed (New)
       // 'scorecard',
-      // 'documents'
+      // 'documents',
+      'foreign-filings',
 
     ],
 
