@@ -27,6 +27,15 @@ DATA_SOURCE = os.getenv("DATA_SOURCE", "mongodb")
 MONGODB_URI = os.getenv("MONGODB_URI", "")
 MONGODB_DB = "Deal_DB"
 
+# News / RSS items in MongoDB (change stream + /api/news-feed).
+# Typical Atlas name is "feed_items". Set FEED_ITEMS_COLLECTION=feet_items only if yours differs.
+FEED_ITEMS_COLLECTION = os.getenv("FEED_ITEMS_COLLECTION", "feed_items")
+
+SEC_FILING_SUMMARY_COLLECTION = os.getenv(
+    "SEC_FILING_SUMMARY_COLLECTION",
+    "sec_filing_summary",
+)
+
 QUOTE_SOURCE = os.getenv("QUOTE_SOURCE", "yfinance")  # "yfinance" or "polygon"
 POLYGON_API_KEY = os.getenv("POLYGON_API_KEY", "")
 

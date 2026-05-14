@@ -10,15 +10,15 @@
 // Deal detail tab IDs match the activeTab values used in DealDetail.tsx.
 // ─────────────────────────────────────────────────────────────────────────────
 
-export type Role = 'super_admin' | 'admin' | 'user';
+export type Role = "super_admin" | "admin" | "user";
 
 export interface RolePermissions {
   /** Which top-nav tabs are visible. Use route paths e.g. '/tearsheet' */
-  navTabs: string[] | 'all';
-  /** Which deal detail tabs are visible. Use tab IDs e.g. 'financial' | 'foreign-filings' */
-  dealDetailTabs: string[] | 'all';
+  navTabs: string[] | "all";
+  /** Which deal detail tabs are visible. Use tab IDs e.g. 'financial' | 'foreign-filings */
+  dealDetailTabs: string[] | "all";
   /** Which deals are visible by ID. Use numeric deal IDs. */
-  allowedDealIds: string[] | 'all';
+  allowedDealIds: string[] | "all";
   /** Whether to show the summary stats bar (Total Deals, Total Value, Avg Spread, At Risk) on the List View page */
   showSummaryStats: boolean;
   /** Whether to show the header metrics strip (Current, Offer, Gross, Net, Ann.) on the Deal Detail page */
@@ -28,125 +28,137 @@ export interface RolePermissions {
    * IDs: 'watch' | 'target' | 'acquirer' | 'current' | 'offer' |
    *      'gross-spread' | 'net-spread' | 'close-date' | 'status' | 'milestone'
    */
-  visibleColumns: string[] | 'all';
+  visibleColumns: string[] | "all";
 }
 
 const ROLE_CONFIG: Record<Role, RolePermissions> = {
   // ── Super Admin: unrestricted ─────────────────────────────────────────────
   super_admin: {
-    navTabs: 'all',
-    dealDetailTabs: 'all',
-    allowedDealIds: 'all',
+    navTabs: "all",
+    dealDetailTabs: "all",
+    allowedDealIds: "all",
     showSummaryStats: true,
     showDealMetrics: true,
-    visibleColumns: 'all',
+    visibleColumns: "all"
   },
 
   // ── Admin: unrestricted ───────────────────────────────────────────────────
   admin: {
-   navTabs: [
+    navTabs: [
       // '/tearsheet',
-      '/pipeline',
-      
+      "/pipeline",
+      "/news-feed",
+      "/sec-feed"
     ],
 
     dealDetailTabs: [
       // 'financial',   // Financial Overview
       // 'tearsheet',   // Tearsheet
-      'dma',
+      "dma",
       // 'timeline',    // Timeline
-      'sec',
-      'proxy',
-      '10k',
-      'mae',
-      'covenants',
+      "sec",
+      "proxy",
+      "10k",
+      "mae",
+      "covenants",
       // 'regulatory',
       // 'reg-monitor',
       // 'milestones',
-      'termination',
+      "termination",
       // 'docket',
       // 'reddit',
       // 'feed',        // Feed
-      'feed-new',    // Feed (New)
+      "feed-new", // Feed (New)
       // 'scorecard',
       // 'documents',
-      'foreign-filings',
-
+      "foreign-filings"
     ],
 
     // ← Add/remove deal IDs here to control which deals the user role can see.
     // Pagination and search will work correctly within this list.
-    allowedDealIds: ["69fc2f8615960fbe4105afb2","69b15c2254958e923c2cb92a","69301375c0aa46c328847932","6981ce6ab995ffbb7cb5c582","69a5884454958e923ceb9115"],
+    allowedDealIds: [
+      "69fc2f8615960fbe4105afb2",
+      "69b15c2254958e923c2cb92a",
+      "69301375c0aa46c328847932",
+      "6981ce6ab995ffbb7cb5c582",
+      "69a5884454958e923ceb9115"
+    ],
     showSummaryStats: false,
     showDealMetrics: false,
     visibleColumns: [
       // 'watch',
-      'target',
-      'acquirer',
-      'deal-type',
-      'consideration',
+      "target",
+      "acquirer",
+      "deal-type",
+      "consideration",
       // 'current',
       // 'offer',
       // 'gross-spread',
       // 'net-spread',
-      'close-date',
-      'status',
-      'milestone',
-    ],
+      "close-date",
+      "status",
+      "milestone"
+    ]
   },
 
   // ── User: restricted ─────────────────────────────────────────────────────
   user: {
     navTabs: [
       // '/tearsheet',
-      '/pipeline',
-
+      "/pipeline",
+      "/news-feed",
+      "/sec-feed"
     ],
 
     dealDetailTabs: [
       // 'financial',   // Financial Overview
       // 'tearsheet',   // Tearsheet
-      'dma',
+      "dma",
       // 'timeline',    // Timeline
-      'sec',
-      'proxy',
-      '10k',
-      'mae',
-      'covenants',
+      "sec",
+      "proxy",
+      "10k",
+      "mae",
+      "covenants",
       // 'regulatory',
       // 'reg-monitor',
       // 'milestones',
-      'termination',
+      "termination",
       // 'docket',
       // 'reddit',
       // 'feed',        // Feed
-      'feed-new',    // Feed (New)
+      "feed-new", // Feed (New)
       // 'scorecard',
       // 'documents',
-      'foreign-filings',
-
+      "foreign-filings"
     ],
 
     // ← Add/remove deal IDs here to control which deals the user role can see.
     // Pagination and search will work correctly within this list.
-    allowedDealIds: ["69fc2f8615960fbe4105afb2","69b15c2254958e923c2cb92a","69301375c0aa46c328847932","6981ce6ab995ffbb7cb5c582","69a5884454958e923ceb9115"],
+    allowedDealIds: [
+      "69fc2f8615960fbe4105afb2",
+      "69b15c2254958e923c2cb92a",
+      "69301375c0aa46c328847932",
+      "6981ce6ab995ffbb7cb5c582",
+      "69a5884454958e923ceb9115"
+    ],
     showSummaryStats: false,
     showDealMetrics: false,
     visibleColumns: [
       // 'watch',
-      'target',
-      'acquirer',
-      'deal-type',
-      'consideration',
+      "target",
+      "acquirer",
+      "deal-type",
+      "consideration",
       // 'current',
       // 'offer',
       // 'gross-spread',
       // 'net-spread',
-      'close-date',
-      'status',
-      'milestone',
-    ],
-  },
+      "close-date",
+      "status",
+      "milestone"
+    ]
+  }
 };
 
 export default ROLE_CONFIG;
