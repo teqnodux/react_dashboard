@@ -34,6 +34,9 @@ export function usePermissions() {
   /** Whether to show the summary stats bar on the List View page */
   const showSummaryStats = config.showSummaryStats;
 
+  /** Whether to show the header metrics strip (Current, Offer, Gross, Net, Ann.) on Deal Detail */
+  const showDealMetrics = config.showDealMetrics;
+
   /** Returns true if the List View column with `colId` is visible for the current role */
   const canSeeColumn = (colId: string): boolean => {
     if (config.visibleColumns === 'all') return true;
@@ -48,6 +51,7 @@ export function usePermissions() {
     canSeeDealTab,
     allowedDealIds,
     showSummaryStats,
+    showDealMetrics,
     canSeeColumn,
   };
 }

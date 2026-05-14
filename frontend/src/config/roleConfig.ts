@@ -21,6 +21,8 @@ export interface RolePermissions {
   allowedDealIds: string[] | 'all';
   /** Whether to show the summary stats bar (Total Deals, Total Value, Avg Spread, At Risk) on the List View page */
   showSummaryStats: boolean;
+  /** Whether to show the header metrics strip (Current, Offer, Gross, Net, Ann.) on the Deal Detail page */
+  showDealMetrics: boolean;
   /**
    * Which List View columns are visible.
    * IDs: 'watch' | 'target' | 'acquirer' | 'current' | 'offer' |
@@ -36,6 +38,7 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
     dealDetailTabs: 'all',
     allowedDealIds: 'all',
     showSummaryStats: true,
+    showDealMetrics: true,
     visibleColumns: 'all',
   },
 
@@ -74,6 +77,7 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
     // Pagination and search will work correctly within this list.
     allowedDealIds: ["69fc2f8615960fbe4105afb2","69b15c2254958e923c2cb92a","69301375c0aa46c328847932","6981ce6ab995ffbb7cb5c582","69a5884454958e923ceb9115"],
     showSummaryStats: false,
+    showDealMetrics: false,
     visibleColumns: [
       // 'watch',
       'target',
@@ -125,6 +129,7 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
     // Pagination and search will work correctly within this list.
     allowedDealIds: ["69fc2f8615960fbe4105afb2","69b15c2254958e923c2cb92a","69301375c0aa46c328847932","6981ce6ab995ffbb7cb5c582","69a5884454958e923ceb9115"],
     showSummaryStats: false,
+    showDealMetrics: false,
     visibleColumns: [
       // 'watch',
       'target',

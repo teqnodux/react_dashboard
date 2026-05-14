@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import { usePermissions } from "../hooks/usePermissions";
+
 import ROLE_CONFIG, { type Role } from "../config/roleConfig";
 import { DealDetail as DealDetailType } from "../types/deal";
 import DocketView from "../components/DocketView";
@@ -191,7 +192,7 @@ function renderProxyDetailContent(content: string): React.ReactNode {
 
 export default function DealDetail() {
   const { dealId } = useParams<{ dealId: string }>();
-  const { canSeeDealTab } = usePermissions();
+  const { canSeeDealTab, showDealMetrics } = usePermissions();
   const [deal, setDeal] = useState<DealDetailType | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -1670,30 +1671,32 @@ export default function DealDetail() {
             </div>
           </div>
 
-          <div className="header-metrics">
-            <div className="hm">
-              <span className="hm-label">Current</span>
-              <span className="hm-value">${deal.current_price.toFixed(2)}</span>
+          {showDealMetrics && (
+            <div className="header-metrics">
+              <div className="hm">
+                <span className="hm-label">Current</span>
+                <span className="hm-value">${deal.current_price.toFixed(2)}</span>
+              </div>
+              <div className="hm">
+                <span className="hm-label">Offer</span>
+                <span className="hm-value">${liveOfferValue.toFixed(2)}</span>
+              </div>
+              <div className="hm highlight">
+                <span className="hm-label">Gross</span>
+                <span className="hm-value">
+                  ${liveGrossSpread.toFixed(2)} ({liveGrossPct.toFixed(1)}%)
+                </span>
+              </div>
+              <div className="hm">
+                <span className="hm-label">Net</span>
+                <span className="hm-value">${liveNetSpread.toFixed(2)}</span>
+              </div>
+              <div className="hm">
+                <span className="hm-label">Ann.</span>
+                <span className="hm-value">{liveAnnualizedNet.toFixed(1)}%</span>
+              </div>
             </div>
-            <div className="hm">
-              <span className="hm-label">Offer</span>
-              <span className="hm-value">${liveOfferValue.toFixed(2)}</span>
-            </div>
-            <div className="hm highlight">
-              <span className="hm-label">Gross</span>
-              <span className="hm-value">
-                ${liveGrossSpread.toFixed(2)} ({liveGrossPct.toFixed(1)}%)
-              </span>
-            </div>
-            <div className="hm">
-              <span className="hm-label">Net</span>
-              <span className="hm-value">${liveNetSpread.toFixed(2)}</span>
-            </div>
-            <div className="hm">
-              <span className="hm-label">Ann.</span>
-              <span className="hm-value">{liveAnnualizedNet.toFixed(1)}%</span>
-            </div>
-          </div>
+          )}
         </header>
 
         {/* Tabs */}
