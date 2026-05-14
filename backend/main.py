@@ -15,6 +15,7 @@ from slowapi.errors import RateLimitExceeded
 from slowapi.util import get_remote_address
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from config import QUOTE_SOURCE as _QUOTE_SOURCE
+import asyncio
 import threading
 import logging
 from approval_master import (
@@ -34,6 +35,7 @@ from generate_regulatory import (
     seed_from_timeline_json, compute_deadlines as _reg_compute_deadlines,
     check_time_based_transitions as _reg_check_time_transitions,
 )
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Body, Request, Query, APIRouter
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
@@ -414,9 +416,28 @@ def _enrich_from_dma_extract(deal: dict, deal_id: str) -> dict:
     return deal
 
 
+@asynccontextmanager
+async def _app_lifespan(_inner: FastAPI):
+    from feed_realtime import (
+        ensure_feed_watcher_started,
+        ensure_sec_filing_summary_watcher_started,
+        set_feed_emit_event_loop,
+    )
+
+    set_feed_emit_event_loop(asyncio.get_running_loop())
+    ensure_feed_watcher_started()
+    ensure_sec_filing_summary_watcher_started()
+    print(
+        "[main] lifespan: feed + sec_filing_summary change-stream watchers + Socket.IO emit loop ready",
+        flush=True,
+    )
+    yield
+    set_feed_emit_event_loop(None)
+
+
 _limiter = Limiter(key_func=get_remote_address)
 
-app = FastAPI(title="Merger Arb Dashboard API")
+app = FastAPI(title="Merger Arb Dashboard API", lifespan=_app_lifespan)
 app.state.limiter = _limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
@@ -5083,14 +5104,16 @@ def get_mae_analysis(deal_id: str):
 
 @app.get("/api/news-feed")
 def get_news_feed(page: int = 1, page_size: int = 20):
-    from db import get_db as _get_feed_db
-    db = _get_feed_db()
-    col = db["feed_items"]
+    from db import get_feed_items_col, feed_items_deal_id_query
+
+    col = get_feed_items_col()
+    q = feed_items_deal_id_query()
 
     skip = (page - 1) * page_size
-    total = col.count_documents({})
-    items = list(col.find({}).sort(
-        "date_published", -1).skip(skip).limit(page_size))
+    total = col.count_documents(q)
+    items = list(
+        col.find(q).sort("date_published", -1).skip(skip).limit(page_size)
+    )
 
     for item in items:
         item["id"] = str(item.pop("_id"))
@@ -5106,17 +5129,19 @@ def get_news_feed(page: int = 1, page_size: int = 20):
 
 @app.get("/api/sec-feed")
 def get_sec_feed(page: int = 1, page_size: int = 20):
+    from config import SEC_FILING_SUMMARY_COLLECTION
     from db import get_db as _get_feed_db
+    from sec_feed_enrichment import enrich_sec_summary_record
+
     db = _get_feed_db()
-    col = db["sec_filings"]
+    col = db[SEC_FILING_SUMMARY_COLLECTION]
 
     skip = (page - 1) * page_size
     total = col.count_documents({})
-    items = list(col.find({}).sort(
-        "filing_date", -1).skip(skip).limit(page_size))
-
-    for item in items:
-        item["id"] = str(item.pop("_id"))
+    raw = list(
+        col.find({}).sort("filing_date", -1).skip(skip).limit(page_size)
+    )
+    items = [enrich_sec_summary_record(db, doc) for doc in raw]
 
     return {
         "items": items,
@@ -5131,6 +5156,11 @@ def get_sec_feed(page: int = 1, page_size: int = 20):
 def health_check():
     return {"status": "healthy"}
 
+
+import socketio as _socketio_pkg
+from feed_realtime import sio as _feed_sio
+
+app = _socketio_pkg.ASGIApp(_feed_sio, other_asgi_app=app)
 
 if __name__ == "__main__":
     import uvicorn

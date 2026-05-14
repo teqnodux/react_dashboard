@@ -1,7 +1,12 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { flushSync } from "react-dom";
 import DashboardNav from "../components/DashboardNav";
-import { useToast } from "../components/ToastNotification";
-import { socketService } from "../services/socketService";
+import {
+  DASHBOARD_NEWS_FEED_ITEM,
+  useFeedSocketConnected,
+  type NewsFeedItemDetail,
+} from "../context/FeedLiveContext";
+import { formatFeedPublishedLabel } from "../utils/feedFormatting";
 import api from "../services/api";
 import "../styles/Feed.css";
 
@@ -24,9 +29,10 @@ export default function NewsFeed() {
   const [error, setError] = useState("");
   const [page, setPage] = useState(1);
   const [hasNext, setHasNext] = useState(false);
-  const [connected, setConnected] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { showToast } = useToast();
+
+  /** Live socket — global `FeedLiveProvider` (toast shows on every route); page only prepends rows */
+  const connected = useFeedSocketConnected();
 
   const fetchPage = useCallback(async (p: number, append: boolean) => {
     if (append) setLoadingMore(true);
@@ -56,7 +62,6 @@ export default function NewsFeed() {
     fetchPage(1, false);
   }, [fetchPage]);
 
-  // Infinite scroll
   const handleScroll = useCallback(() => {
     const el = scrollRef.current;
     if (!el || loadingMore || !hasNext) return;
@@ -72,47 +77,29 @@ export default function NewsFeed() {
     return () => el.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  // Socket subscription
   useEffect(() => {
-    const handleConnection = (data: unknown) => {
-      const d = data as { connected: boolean };
-      setConnected(d.connected);
+    const onItem = (ev: Event) => {
+      const e = ev as CustomEvent<NewsFeedItemDetail>;
+      const detail = e.detail;
+      const id =
+        typeof detail?.id === "string" && detail.id
+          ? detail.id
+          : String(detail["_id"] ?? "");
+      if (!id) return;
+
+      const item = { ...detail, id } as NewsItem;
+
+      flushSync(() => {
+        setItems((prev) => {
+          if (prev.some((p) => p.id === id)) return prev;
+          return [item, ...prev];
+        });
+      });
     };
 
-    const handleRssUpdate = (data: unknown) => {
-      const d = data as { type?: string; items?: NewsItem[]; message?: string };
-      if (d.type === "new_feed_items" || d.type === "feed_update") {
-        if (d.items?.length) {
-          setItems((prev) => [...d.items!, ...prev]);
-          showToast(
-            `📰 ${d.items!.length} new article${d.items!.length > 1 ? "s" : ""} received`,
-            "success"
-          );
-        }
-      } else if (d.type === "error") {
-        showToast(`RSS Error: ${d.message}`, "error");
-      }
-    };
-
-    socketService.on("connection_status", handleConnection);
-    socketService.on("rss_update", handleRssUpdate);
-    setConnected(socketService.getConnectionStatus());
-
-    return () => {
-      socketService.off("connection_status", handleConnection);
-      socketService.off("rss_update", handleRssUpdate);
-    };
-  }, [showToast]);
-
-  const formatDate = (d?: string) => {
-    if (!d) return "";
-    return new Date(d).toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit"
-    });
-  };
+    window.addEventListener(DASHBOARD_NEWS_FEED_ITEM, onItem);
+    return () => window.removeEventListener(DASHBOARD_NEWS_FEED_ITEM, onItem);
+  }, []);
 
   const getAuthors = (authors?: { name: string }[]) =>
     authors?.map((a) => a.name).join(", ") ?? "";
@@ -180,8 +167,8 @@ export default function NewsFeed() {
                       <img
                         src={item.thumbnail}
                         alt=""
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).style.display = "none";
+                        onError={(evt) => {
+                          (evt.target as HTMLImageElement).style.display = "none";
                         }}
                       />
                       {item.source && (
@@ -196,7 +183,7 @@ export default function NewsFeed() {
                       </div>
                       <div className="feed-card-meta">
                         <span>{getAuthors(item.authors)}</span>
-                        <span>{formatDate(item.date_published)}</span>
+                        <span>{formatFeedPublishedLabel(item.date_published)}</span>
                       </div>
                     </div>
                   </div>
@@ -209,7 +196,7 @@ export default function NewsFeed() {
                     </div>
                     <div className="feed-card-meta">
                       <span>{getAuthors(item.authors)}</span>
-                      <span>{formatDate(item.date_published)}</span>
+                      <span>{formatFeedPublishedLabel(item.date_published)}</span>
                     </div>
                   </div>
                 )}

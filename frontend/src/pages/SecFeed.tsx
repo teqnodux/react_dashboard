@@ -1,9 +1,12 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-import DashboardNav from '../components/DashboardNav';
-import { useToast } from '../components/ToastNotification';
-import { socketService } from '../services/socketService';
-import api from '../services/api';
-import '../styles/Feed.css';
+import { useState, useEffect, useRef, useCallback } from "react";
+import { flushSync } from "react-dom";
+import DashboardNav from "../components/DashboardNav";
+import {
+  DASHBOARD_SEC_FEED_ITEM,
+  useFeedSocketConnected,
+} from "../context/FeedLiveContext";
+import api from "../services/api";
+import "../styles/Feed.css";
 
 interface SecFiling {
   id: string;
@@ -19,28 +22,28 @@ interface SecFiling {
 }
 
 const FORM_TYPE_COLORS: Record<string, string> = {
-  '8-K':     'badge-blue',
-  '8-K/':    'badge-blue',
-  '10-K':    'badge-green',
-  '10-K/':   'badge-green',
-  '10-Q':    'badge-yellow',
-  'PRE 14A': 'badge-purple',
-  'DEF 14A': 'badge-indigo',
+  "8-K": "badge-blue",
+  "8-K/": "badge-blue",
+  "10-K": "badge-green",
+  "10-K/": "badge-green",
+  "10-Q": "badge-yellow",
+  "PRE 14A": "badge-purple",
+  "DEF 14A": "badge-indigo"
 };
 
 export default function SecFeed() {
   const [items, setItems] = useState<SecFiling[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [page, setPage] = useState(1);
   const [hasNext, setHasNext] = useState(false);
-  const [connected, setConnected] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { showToast } = useToast();
+  const connected = useFeedSocketConnected();
 
   const fetchPage = useCallback(async (p: number, append: boolean) => {
-    if (append) setLoadingMore(true); else setLoading(true);
+    if (append) setLoadingMore(true);
+    else setLoading(true);
     try {
       const { data } = await api.get(`/api/sec-feed?page=${p}&page_size=20`);
       const newItems: SecFiling[] = data.items;
@@ -55,16 +58,17 @@ export default function SecFeed() {
       setHasNext(data.has_next);
       setPage(p);
     } catch {
-      setError('Failed to load SEC filings');
+      setError("Failed to load SEC filings");
     } finally {
       setLoading(false);
       setLoadingMore(false);
     }
   }, []);
 
-  useEffect(() => { fetchPage(1, false); }, [fetchPage]);
+  useEffect(() => {
+    fetchPage(1, false);
+  }, [fetchPage]);
 
-  // Infinite scroll
   const handleScroll = useCallback(() => {
     const el = scrollRef.current;
     if (!el || loadingMore || !hasNext) return;
@@ -76,53 +80,45 @@ export default function SecFeed() {
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
-    el.addEventListener('scroll', handleScroll);
-    return () => el.removeEventListener('scroll', handleScroll);
+    el.addEventListener("scroll", handleScroll);
+    return () => el.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  // Socket subscription
   useEffect(() => {
-    const handleConnection = (data: unknown) => {
-      const d = data as { connected: boolean };
-      setConnected(d.connected);
+    const onItem = (ev: Event) => {
+      const e = ev as CustomEvent<Record<string, unknown>>;
+      const detail = e.detail;
+      const id =
+        typeof detail?.id === "string" && detail.id
+          ? detail.id
+          : String(detail["_id"] ?? "");
+      if (!id) return;
+
+      const row = { ...detail, id } as SecFiling;
+
+      flushSync(() => {
+        setItems((prev) => {
+          if (prev.some((x) => x.id === id)) return prev;
+          return [row, ...prev];
+        });
+      });
     };
 
-    const handleFilingUpdate = (data: unknown) => {
-      const d = data as { filing?: SecFiling; message?: string };
-      showToast('📑 New SEC filing received', 'success');
-      if (d.filing) setItems((prev) => [d.filing!, ...prev]);
-    };
-
-    const handleAnalysisUpdate = (data: unknown) => {
-      const d = data as { filing?: SecFiling; analysis_result?: string };
-      if (d.analysis_result === 'processing_completed') {
-        showToast(`SEC analysis complete: ${d.filing?.company_name ?? ''}`, 'success');
-      } else if (d.analysis_result === 'processing_failed') {
-        showToast('SEC filing analysis failed', 'error');
-      }
-    };
-
-    socketService.on('connection_status', handleConnection);
-    socketService.on('sec_filing_update', handleFilingUpdate);
-    socketService.on('sec_analysis_update', handleAnalysisUpdate);
-    setConnected(socketService.getConnectionStatus());
-
-    return () => {
-      socketService.off('connection_status', handleConnection);
-      socketService.off('sec_filing_update', handleFilingUpdate);
-      socketService.off('sec_analysis_update', handleAnalysisUpdate);
-    };
-  }, [showToast]);
+    window.addEventListener(DASHBOARD_SEC_FEED_ITEM, onItem);
+    return () => window.removeEventListener(DASHBOARD_SEC_FEED_ITEM, onItem);
+  }, []);
 
   const formatDate = (d?: string | null) => {
-    if (!d) return 'N/A';
-    return new Date(d).toLocaleDateString('en-US', {
-      month: '2-digit', day: '2-digit', year: 'numeric',
+    if (!d) return "N/A";
+    return new Date(d).toLocaleDateString("en-US", {
+      month: "2-digit",
+      day: "2-digit",
+      year: "numeric"
     });
   };
 
   const badgeClass = (formType?: string) =>
-    FORM_TYPE_COLORS[formType ?? ''] ?? 'badge-default';
+    FORM_TYPE_COLORS[formType ?? ""] ?? "badge-default";
 
   if (loading) {
     return (
@@ -149,7 +145,9 @@ export default function SecFeed() {
     return (
       <div className="dashboard">
         <DashboardNav />
-        <div className="feed-page"><div className="feed-error">{error}</div></div>
+        <div className="feed-page">
+          <div className="feed-error">{error}</div>
+        </div>
       </div>
     );
   }
@@ -161,7 +159,7 @@ export default function SecFeed() {
         <div className="feed-header">
           <h2 className="feed-title">SEC Filings</h2>
           <div className="feed-header-right">
-            <span className={`feed-dot ${connected ? 'connected' : ''}`} />
+            <span className={`feed-dot ${connected ? "connected" : ""}`} />
             <span className="feed-count">{items.length} filings</span>
           </div>
         </div>
@@ -174,22 +172,22 @@ export default function SecFeed() {
               <div
                 key={f.id}
                 className="feed-card"
-                onClick={() => f.link && window.open(f.link, '_blank')}
+                onClick={() => f.link && window.open(f.link, "_blank")}
               >
                 <div className="feed-card-row sec-card-row">
                   <div className="feed-card-body">
-                    <div className="feed-card-title">{f.company_name ?? 'Unknown'}</div>
+                    <div className="feed-card-title">{f.company_name ?? "Unknown"}</div>
                     <div className="feed-card-meta">
-                      <span>CIK: {f.cik_number ?? '—'}</span>
+                      <span>CIK: {f.cik_number ?? "—"}</span>
                       <span>{formatDate(f.filing_date)}</span>
                     </div>
-                    {f.document_kind && (
-                      <div className="feed-card-sub">{f.document_kind.replace(/_/g, ' ')}</div>
+                    {f.accession_number && (
+                      <div className="feed-card-sub">{f.accession_number}</div>
                     )}
                   </div>
                   <div className="sec-card-badge-col">
                     <span className={`form-badge ${badgeClass(f.form_type)}`}>
-                      {f.form_type ?? '—'}
+                      {f.form_type ?? "—"}
                     </span>
                   </div>
                 </div>

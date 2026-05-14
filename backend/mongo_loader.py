@@ -14,6 +14,7 @@ from typing import Optional
 from pymongo import MongoClient
 
 from config import MONGODB_URI, MONGODB_DB
+from db import get_feed_items_col
 from models import Deal, DealCategory
 
 try:
@@ -790,8 +791,10 @@ def load_mongo_feed(deal_id: str) -> dict:
             "form_type": form_type,
         })
 
-    # 3. Press Releases — feed_items by deal_id (stored as string)
-    pr_docs = list(db["feed_items"].find({"deal_id": deal_id}).sort("created_at", -1))
+    # 3. Press Releases — feed items collection (deal_id stored as string)
+    pr_docs = list(
+        get_feed_items_col().find({"deal_id": deal_id}).sort("created_at", -1)
+    )
     for doc in pr_docs:
         raw_ts = doc.get("date_published") or doc.get("created_at") or doc.get("published_at")
         ts = raw_ts.isoformat() if hasattr(raw_ts, "isoformat") else datetime.utcnow().isoformat()
