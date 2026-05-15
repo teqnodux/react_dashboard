@@ -12,8 +12,7 @@ const NAV_TABS = [
   { path: '/all-regulatory', label: '🏛️ Regulatory' },
   { path: '/sec-filings',    label: '📑 SEC Filings' },
   { path: '/upcoming',       label: '📅 Upcoming' },
-  { path: '/news-feed',      label: '📰 News Feed' },
-  { path: '/sec-feed',       label: '🗂️ SEC Feed' },
+  { path: '/feed',           label: '📰 Feed' },
 ];
 
 function ProfileMenu() {

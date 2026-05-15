@@ -12,8 +12,7 @@ import AllActivity from './pages/AllActivity';
 import RedditAnalysis from './pages/RedditAnalysis';
 import SECFilings from './pages/SECFilings';
 import UpcomingEvents from './pages/UpcomingEvents';
-import NewsFeed from './pages/NewsFeed';
-import SecFeed from './pages/SecFeed';
+import Feed from './pages/Feed';
 import ForgotPassword from './pages/auth/ForgotPassword';
 import ResetPassword from './pages/auth/ResetPassword';
 import AcceptInvite from './pages/auth/AcceptInvite';
@@ -30,7 +29,7 @@ import './styles/GlobalVars.css';
 function DefaultRedirect() {
   const { canSeeNavTab } = usePermissions();
   const fallback = '/tearsheet';
-  const allTabs = ['/tearsheet', '/pipeline', '/activity', '/all-dockets', '/all-regulatory', '/sec-filings', '/upcoming', '/news-feed', '/sec-feed'];
+  const allTabs = ['/tearsheet', '/pipeline', '/activity', '/all-dockets', '/all-regulatory', '/sec-filings', '/upcoming', '/feed'];
   const first = allTabs.find(t => canSeeNavTab(t)) ?? fallback;
   return <Navigate to={first} replace />;
 }
@@ -96,8 +95,9 @@ function App() {
             <Route path="/reddit"         element={<NavGuard path="/reddit"><RedditAnalysis /></NavGuard>} />
             <Route path="/sec-filings"    element={<NavGuard path="/sec-filings"><SECFilings /></NavGuard>} />
             <Route path="/upcoming"       element={<NavGuard path="/upcoming"><UpcomingEvents /></NavGuard>} />
-            <Route path="/news-feed"     element={<NavGuard path="/news-feed"><NewsFeed /></NavGuard>} />
-            <Route path="/sec-feed"      element={<NavGuard path="/sec-feed"><SecFeed /></NavGuard>} />
+            <Route path="/feed"      element={<NavGuard path="/feed"><Feed /></NavGuard>} />
+            <Route path="/news-feed" element={<Navigate to="/feed" replace />} />
+            <Route path="/sec-feed"  element={<Navigate to="/feed" replace />} />
           </Route>
         </Routes>
         </ToastProvider>

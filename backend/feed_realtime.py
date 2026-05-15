@@ -183,7 +183,8 @@ def _watch_loop() -> None:
                         f"[feed_realtime] INSERT seen _id={doc.get('_id')} → emitting to Socket.IO clients",
                         flush=True,
                     )
-                    _schedule_feed_emit({"message": "New feed item", "data": payload})
+                    _schedule_feed_emit(
+                        {"message": "New feed item", "data": payload})
         except OperationFailure as e:
             logger.warning(
                 "feed change stream OperationFailure (retrying in 5s): %s", e
@@ -254,7 +255,8 @@ def _schedule_sec_summary_emit(body: dict[str, Any]) -> None:
 
 def _sec_summary_watch_loop() -> None:
     if not MONGODB_URI:
-        logger.warning("MONGODB_URI unset — sec_filing_summary change stream not started")
+        logger.warning(
+            "MONGODB_URI unset — sec_filing_summary change stream not started")
         return
 
     resume_token = None
@@ -313,7 +315,8 @@ def _sec_summary_watch_loop() -> None:
             )
             time.sleep(5)
         except Exception:
-            logger.exception("sec_filing_summary watcher error (retrying in 5s)")
+            logger.exception(
+                "sec_filing_summary watcher error (retrying in 5s)")
             time.sleep(5)
 
 

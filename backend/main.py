@@ -5149,6 +5149,20 @@ def get_foreign_filings(deal_id: str):
 
 # ── News Feed & SEC Feed (paginated from MongoDB) ─────────────────────────────
 
+@app.get("/api/feed")
+def get_dashboard_feed(
+    tab: str = "all",
+    page: int = 1,
+    page_size: int = 20,
+    search: str = "",
+    days: Optional[int] = None,
+):
+    """Unified feed for dashboard Feed page (press + SEC + foreign); Phase 1 live Socket.IO covers press + SEC only."""
+    from unified_feed import get_unified_feed
+
+    return get_unified_feed(tab, page, page_size, search=search, days=days)
+
+
 @app.get("/api/news-feed")
 def get_news_feed(page: int = 1, page_size: int = 20):
     from db import get_feed_items_col, feed_items_deal_id_query
