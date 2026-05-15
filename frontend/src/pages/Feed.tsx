@@ -5,7 +5,7 @@ import {
   DASHBOARD_NEWS_FEED_ITEM,
   DASHBOARD_SEC_FEED_ITEM,
   useFeedSocketConnected,
-  type NewsFeedItemDetail,
+  type NewsFeedItemDetail
 } from "../context/FeedLiveContext";
 import { formatFeedPublishedLabel } from "../utils/feedFormatting";
 import api from "../services/api";
@@ -15,6 +15,8 @@ import "../styles/ForeignFilingsTab.css";
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 type TabKey = "all" | "sec" | "press" | "foreign";
+// foreign filing source:
+// accc_cases, brazil_cases, canada_cases, ec_cases, fs_cases, german_cases, nz_cases, samr_cases, samr_conditional, samr_unconditional, uk_cma_cases
 
 interface FeedItem {
   id: string;
@@ -44,69 +46,78 @@ interface FeedItem {
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const TABS: { key: TabKey; label: string }[] = [
-  { key: "all",     label: "All" },
-  { key: "sec",     label: "SEC Filing" },
-  { key: "press",   label: "Press Release" },
-  { key: "foreign", label: "Foreign Filing" },
+  { key: "all", label: "All" },
+  { key: "sec", label: "SEC Filing" },
+  { key: "press", label: "Press Release" },
+  { key: "foreign", label: "Foreign Filing" }
 ];
 
 const FORM_TYPE_COLORS: Record<string, string> = {
-  "8-K":    "badge-blue",
-  "8-K/":   "badge-blue",
-  "10-K":   "badge-green",
-  "10-K/":  "badge-green",
-  "10-Q":   "badge-yellow",
-  "PRE 14A":"badge-purple",
-  "DEF 14A":"badge-indigo",
+  "8-K": "badge-blue",
+  "8-K/": "badge-blue",
+  "10-K": "badge-green",
+  "10-K/": "badge-green",
+  "10-Q": "badge-yellow",
+  "PRE 14A": "badge-purple",
+  "DEF 14A": "badge-indigo"
 };
 
 const FLAG: Record<string, string> = {
-  Australia:       "🇦🇺",
-  Brazil:          "🇧🇷",
-  Canada:          "🇨🇦",
-  EU:              "🇪🇺",
-  Germany:         "🇩🇪",
-  "New Zealand":   "🇳🇿",
-  China:           "🇨🇳",
-  "United Kingdom":"🇬🇧",
+  Australia: "🇦🇺",
+  Brazil: "🇧🇷",
+  Canada: "🇨🇦",
+  EU: "🇪🇺",
+  Germany: "🇩🇪",
+  "New Zealand": "🇳🇿",
+  China: "🇨🇳",
+  "United Kingdom": "🇬🇧"
 };
 
 // ─── Type colors / icons (MongoFeedTab style) ─────────────────────────────────
 
 const TYPE_ICON: Record<string, string> = {
-  sec_filing:     "■",
-  press_release:  "●",
-  foreign_filing: "◆",
+  sec_filing: "■",
+  press_release: "●",
+  foreign_filing: "◆"
 };
 
 const TYPE_COLOR: Record<string, string> = {
-  sec_filing:     "var(--accent-blue)",
-  press_release:  "var(--accent-yellow)",
-  foreign_filing: "var(--accent-green)",
+  sec_filing: "var(--accent-blue)",
+  press_release: "var(--accent-yellow)",
+  foreign_filing: "var(--accent-green)"
 };
 
 const TYPE_LABEL: Record<string, string> = {
-  sec_filing:     "SEC Filing",
-  press_release:  "Press Release",
-  foreign_filing: "Foreign Filing",
+  sec_filing: "SEC Filing",
+  press_release: "Press Release",
+  foreign_filing: "Foreign Filing"
 };
 
 // ─── Foreign filing helpers ───────────────────────────────────────────────────
 
 function getRecordTitle(source: string, r: FeedItem): string {
   switch (source) {
-    case "accc_cases":        return (r.title as string) || "";
-    case "brazil_cases":      return (r.interessados_en as string) || (r.interessados as string) || "";
-    case "canada_cases":      return (r.parties as string) || "";
+    case "accc_cases":
+      return (r.title as string) || "";
+    case "brazil_cases":
+      return (r.interessados_en as string) || (r.interessados as string) || "";
+    case "canada_cases":
+      return (r.parties as string) || "";
     case "ec_cases":
-    case "fs_cases":          return (r.case_title as string) || "";
-    case "german_cases":      return (r.pursue_en as string) || (r.pursue as string) || "";
-    case "nz_cases":          return (r.title as string) || "";
+    case "fs_cases":
+      return (r.case_title as string) || "";
+    case "german_cases":
+      return (r.pursue_en as string) || (r.pursue as string) || "";
+    case "nz_cases":
+      return (r.title as string) || "";
     case "samr_cases":
     case "samr_conditional":
-    case "samr_unconditional":return (r.title_en as string) || (r.title_cn as string) || "";
-    case "uk_cma_cases":      return (r.title as string) || "";
-    default:                  return "";
+    case "samr_unconditional":
+      return (r.title_en as string) || (r.title_cn as string) || "";
+    case "uk_cma_cases":
+      return (r.title as string) || "";
+    default:
+      return "";
   }
 }
 
@@ -115,47 +126,70 @@ function getRecordUrl(source: string, r: FeedItem): string | null {
     case "accc_cases":
     case "samr_cases":
     case "samr_conditional":
-    case "samr_unconditional": return (r.url as string) || null;
-    case "brazil_cases":       return (r.detail_url as string) || null;
+    case "samr_unconditional":
+      return (r.url as string) || null;
+    case "brazil_cases":
+      return (r.detail_url as string) || null;
     case "ec_cases":
-    case "fs_cases":           return (r.case_url as string) || null;
+    case "fs_cases":
+      return (r.case_url as string) || null;
     case "nz_cases":
-    case "uk_cma_cases":       return (r.detail_url as string) || null;
-    default:                   return null;
+    case "uk_cma_cases":
+      return (r.detail_url as string) || null;
+    default:
+      return null;
   }
 }
 
-function getRecordStatus(source: string, r: FeedItem): { text: string; open: boolean } | null {
+function getRecordStatus(
+  source: string,
+  r: FeedItem
+): { text: string; open: boolean } | null {
   switch (source) {
     case "accc_cases": {
       const status = r.status as Record<string, unknown> | undefined;
       const text =
         (status?.accc_determination as string) ||
-        (r.acquisition_status as string) || "";
+        (r.acquisition_status as string) ||
+        "";
       return text ? { text, open: (r.is_open as boolean) ?? true } : null;
     }
     case "brazil_cases":
       return r.type_en
-        ? { text: r.type_en as string, open: r.is_open === "True" || r.is_open === true }
+        ? {
+            text: r.type_en as string,
+            open: r.is_open === "True" || r.is_open === true
+          }
         : null;
     case "canada_cases":
-      return r.outcome ? { text: r.outcome as string, open: r.is_open === true } : null;
+      return r.outcome
+        ? { text: r.outcome as string, open: r.is_open === true }
+        : null;
     case "ec_cases":
     case "fs_cases":
-      return r.status ? { text: r.status as string, open: r.is_open !== false } : null;
+      return r.status
+        ? { text: r.status as string, open: r.is_open !== false }
+        : null;
     case "german_cases":
-      return r.diploma_en ? { text: r.diploma_en as string, open: r.is_open === true } : null;
+      return r.diploma_en
+        ? { text: r.diploma_en as string, open: r.is_open === true }
+        : null;
     case "nz_cases":
-      return r.status ? { text: r.status as string, open: r.is_open !== false } : null;
+      return r.status
+        ? { text: r.status as string, open: r.is_open !== false }
+        : null;
     case "samr_cases":
       return { text: r.is_open ? "Open" : "Closed", open: r.is_open === true };
     case "uk_cma_cases": {
       const text = r.case_state
-        ? r.outcome ? `${r.case_state} — ${r.outcome}` : (r.case_state as string)
+        ? r.outcome
+          ? `${r.case_state} — ${r.outcome}`
+          : (r.case_state as string)
         : "";
       return text ? { text, open: r.case_state === "Open" } : null;
     }
-    default: return null;
+    default:
+      return null;
   }
 }
 
@@ -169,23 +203,23 @@ const formatDate = (d?: string | null) => {
   return new Date(d).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
-    year: "numeric",
+    year: "numeric"
   });
 };
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function Feed() {
-  const [activeTab, setActiveTab]     = useState<TabKey>("all");
-  const [items, setItems]             = useState<FeedItem[]>([]);
-  const [loading, setLoading]         = useState(true);
+  const [activeTab, setActiveTab] = useState<TabKey>("all");
+  const [items, setItems] = useState<FeedItem[]>([]);
+  const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
-  const [error, setError]             = useState("");
-  const [page, setPage]               = useState(1);
-  const [hasNext, setHasNext]         = useState(false);
+  const [error, setError] = useState("");
+  const [page, setPage] = useState(1);
+  const [hasNext, setHasNext] = useState(false);
   // ── Filter state ───────────────────────────────────────────────────────────
-  const [dateRange, setDateRange]     = useState<string>("all");
-  const [search, setSearch]           = useState("");
+  const [dateRange, setDateRange] = useState<string>("all");
+  const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
   const connected = useFeedSocketConnected();
@@ -202,7 +236,7 @@ export default function Feed() {
       const params = new URLSearchParams({
         tab,
         page: String(p),
-        page_size: "20",
+        page_size: "20"
       });
       if (s.trim()) params.set("search", s.trim());
       if (dr !== "all") params.set("days", dr);
@@ -257,7 +291,7 @@ export default function Feed() {
     setHasNext(false);
     setError("");
     fetchPage(1, false, activeTab, debouncedSearch, dateRange);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearch, dateRange]);
 
   const handleScroll = useCallback(() => {
@@ -266,7 +300,15 @@ export default function Feed() {
     if (el.scrollHeight - el.scrollTop - el.clientHeight < 300) {
       fetchPage(page + 1, true, activeTab, debouncedSearch, dateRange);
     }
-  }, [fetchPage, loadingMore, hasNext, page, activeTab, debouncedSearch, dateRange]);
+  }, [
+    fetchPage,
+    loadingMore,
+    hasNext,
+    page,
+    activeTab,
+    debouncedSearch,
+    dateRange
+  ]);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -286,7 +328,11 @@ export default function Feed() {
           ? detail.id
           : String(detail["_id"] ?? "");
       if (!id) return;
-      const item = { ...detail, id, feed_type: "press_release" as const } as FeedItem;
+      const item = {
+        ...detail,
+        id,
+        feed_type: "press_release" as const
+      } as FeedItem;
       flushSync(() => {
         setItems((prev) => {
           if (prev.some((p) => p.id === id)) return prev;
@@ -309,7 +355,11 @@ export default function Feed() {
           ? detail.id
           : String(detail["_id"] ?? "");
       if (!id) return;
-      const row = { ...detail, id, feed_type: "sec_filing" as const } as FeedItem;
+      const row = {
+        ...detail,
+        id,
+        feed_type: "sec_filing" as const
+      } as FeedItem;
       flushSync(() => {
         setItems((prev) => {
           if (prev.some((x) => x.id === id)) return prev;
@@ -329,7 +379,10 @@ export default function Feed() {
       className="feed-item"
       onClick={() => item.url && window.open(item.url, "_blank")}
     >
-      <span className="feed-item-icon" style={{ color: TYPE_COLOR.press_release }}>
+      <span
+        className="feed-item-icon"
+        style={{ color: TYPE_COLOR.press_release }}
+      >
         {TYPE_ICON.press_release}
       </span>
       <div className="feed-item-content">
@@ -348,7 +401,10 @@ export default function Feed() {
               item.title || "Untitled"
             )}
           </span>
-          <span className="feed-type-badge" style={{ color: TYPE_COLOR.press_release }}>
+          <span
+            className="feed-type-badge"
+            style={{ color: TYPE_COLOR.press_release }}
+          >
             {TYPE_LABEL.press_release}
           </span>
         </div>
@@ -390,7 +446,7 @@ export default function Feed() {
                 {item.company_name ?? "Unknown"}
               </a>
             ) : (
-              item.company_name ?? "Unknown"
+              (item.company_name ?? "Unknown")
             )}
           </span>
           <span className={`form-badge ${badgeClass(item.form_type)}`}>
@@ -402,9 +458,7 @@ export default function Feed() {
           {item.filing_date && (
             <span> · {formatFeedPublishedLabel(item.filing_date)}</span>
           )}
-          {item.accession_number && (
-            <span> · {item.accession_number}</span>
-          )}
+          {item.accession_number && <span> · {item.accession_number}</span>}
         </span>
       </div>
       <div className="feed-item-date">{formatDate(item.filing_date)}</div>
@@ -412,11 +466,11 @@ export default function Feed() {
   );
 
   const renderForeignRow = (item: FeedItem) => {
-    const src    = (item.source as string) ?? "";
-    const title  = getRecordTitle(src, item);
-    const url    = getRecordUrl(src, item);
+    const src = (item.source as string) ?? "";
+    const title = getRecordTitle(src, item);
+    const url = getRecordUrl(src, item);
     const status = getRecordStatus(src, item);
-    const flag   = FLAG[item.country ?? ""] ?? "🌐";
+    const flag = FLAG[item.country ?? ""] ?? "🌐";
 
     return (
       <div
@@ -442,12 +496,17 @@ export default function Feed() {
               )}
             </span>
             {item.source_label && (
-              <span className="feed-type-badge" style={{ color: TYPE_COLOR.foreign_filing }}>
+              <span
+                className="feed-type-badge"
+                style={{ color: TYPE_COLOR.foreign_filing }}
+              >
                 {item.source_label}
               </span>
             )}
             {status && (
-              <span className={`ff-status-badge ${status.open ? "open" : "closed"}`}>
+              <span
+                className={`ff-status-badge ${status.open ? "open" : "closed"}`}
+              >
                 {status.text}
               </span>
             )}
@@ -466,10 +525,14 @@ export default function Feed() {
 
   const renderItem = (item: FeedItem) => {
     switch (item.feed_type) {
-      case "press_release":   return renderPressRow(item);
-      case "sec_filing":      return renderSecRow(item);
-      case "foreign_filing":  return renderForeignRow(item);
-      default:                return null;
+      case "press_release":
+        return renderPressRow(item);
+      case "sec_filing":
+        return renderSecRow(item);
+      case "foreign_filing":
+        return renderForeignRow(item);
+      default:
+        return null;
     }
   };
 
@@ -482,10 +545,19 @@ export default function Feed() {
           <span className="feed-item-icon skeleton-icon" />
           <div className="feed-item-content">
             <div className="skeleton-line skeleton-title" />
-            <div className="skeleton-line skeleton-body" style={{ marginTop: 6 }} />
-            <div className="skeleton-line skeleton-meta" style={{ marginTop: 6 }} />
+            <div
+              className="skeleton-line skeleton-body"
+              style={{ marginTop: 6 }}
+            />
+            <div
+              className="skeleton-line skeleton-meta"
+              style={{ marginTop: 6 }}
+            />
           </div>
-          <div className="skeleton-line" style={{ width: 55, height: 10, marginTop: 4 }} />
+          <div
+            className="skeleton-line"
+            style={{ width: 55, height: 10, marginTop: 4 }}
+          />
         </div>
       ))}
     </div>
@@ -497,7 +569,6 @@ export default function Feed() {
     <div className="dashboard">
       <DashboardNav />
       <div className="feed-page">
-
         {/* Header */}
         <div className="feed-header">
           <h2 className="feed-title">Feed</h2>
@@ -572,7 +643,6 @@ export default function Feed() {
             )}
           </div>
         )}
-
       </div>
     </div>
   );
