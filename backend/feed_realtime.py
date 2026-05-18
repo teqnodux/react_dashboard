@@ -15,6 +15,7 @@ from pymongo.errors import OperationFailure, PyMongoError
 
 from config import FEED_ITEMS_COLLECTION, MONGODB_URI, SEC_FILING_SUMMARY_COLLECTION
 from db import get_db, feed_item_has_deal_id
+from foreign_collections import FOREIGN_COLLECTIONS
 from sec_feed_enrichment import enrich_sec_summary_record
 
 logger = logging.getLogger(__name__)
@@ -101,11 +102,39 @@ def normalize_feed_document(doc: dict) -> dict[str, Any]:
     return out
 
 
+def normalize_foreign_feed_document(
+    doc: dict, coll_name: str, label: str, country: str
+) -> dict[str, Any]:
+    """Same shape as `unified_feed._fetch_foreign_collection_batch` rows (JSON-safe)."""
+    out = normalize_feed_document(doc)
+    out["feed_type"] = "foreign_filing"
+    out["source"] = coll_name
+    out["source_label"] = label
+    out["country"] = country
+    return out
+
+
+_FOREIGN_COLL_NAMES = [c for c, _, _ in FOREIGN_COLLECTIONS]
+_FOREIGN_META = {c: (lbl, ct) for c, lbl, ct in FOREIGN_COLLECTIONS}
+
+
 _CHANGE_STREAM_OPS = [
     {"$match": {"operationType": {"$in": ["insert", "update", "replace"]}}}
 ]
 
 _WATCH_KWARGS: dict[str, Any] = {"full_document": "updateLookup"}
+
+
+def _foreign_db_watch_pipeline(db_name: str) -> list[dict[str, Any]]:
+    return [
+        {
+            "$match": {
+                "operationType": {"$in": ["insert", "update", "replace"]},
+                "ns.db": db_name,
+                "ns.coll": {"$in": _FOREIGN_COLL_NAMES},
+            }
+        }
+    ]
 
 
 async def _emit_feed_created(body: dict[str, Any]) -> None:
@@ -346,5 +375,147 @@ def ensure_sec_filing_summary_watcher_started() -> None:
         )
         print(
             f"[feed_realtime] sec watcher started — `{SEC_FILING_SUMMARY_COLLECTION}`",
+            flush=True,
+        )
+
+
+_FOREIGN_WATCHER_LOCK = threading.Lock()
+_FOREIGN_WATCHER_STARTED = False
+
+
+async def _emit_foreign_feed_created(body: dict[str, Any]) -> None:
+    await sio.emit("foreign_feed_item_created", body)
+    inner = body.get("data") or {}
+    logger.info(
+        "[feed_realtime] emitted foreign_feed_item_created id=%s source=%r label=%r",
+        inner.get("id"),
+        inner.get("source"),
+        inner.get("source_label"),
+    )
+
+
+def _schedule_foreign_feed_emit(body: dict[str, Any]) -> None:
+    loop = _emit_loop
+    if loop is None:
+        logger.warning(
+            "[feed_realtime] event loop unset — cannot emit foreign_feed_item_created"
+        )
+        return
+    inner = body.get("data") or {}
+    logger.info(
+        "[feed_realtime] scheduling foreign_feed_item_created id=%s",
+        inner.get("id"),
+    )
+    try:
+        asyncio.run_coroutine_threadsafe(_emit_foreign_feed_created(body), loop)
+    except Exception:
+        logger.exception("failed to schedule foreign feed emit")
+
+
+def _foreign_feed_watch_loop() -> None:
+    if not MONGODB_URI:
+        logger.warning(
+            "MONGODB_URI unset — foreign filing change stream not started"
+        )
+        return
+
+    resume_token = None
+    while True:
+        try:
+            db = get_db()
+            pipeline = _foreign_db_watch_pipeline(db.name)
+            kwargs: dict[str, Any] = dict(_WATCH_KWARGS)
+            if resume_token is not None:
+                kwargs["resume_after"] = resume_token
+
+            with db.watch(pipeline, **kwargs) as stream:
+                logger.info(
+                    "Mongo change stream ACTIVE foreign filings db=%s "
+                    "(collections=%s, insert/update/replace, fullDocument=updateLookup)",
+                    db.name,
+                    len(_FOREIGN_COLL_NAMES),
+                )
+                print(
+                    "[feed_realtime] foreign DB-level stream READY — "
+                    f"{len(_FOREIGN_COLL_NAMES)} regulatory collections",
+                    flush=True,
+                )
+                for change in stream:
+                    resume_token = change.get("_id")
+                    doc = change.get("fullDocument")
+                    op = change.get("operationType")
+                    ns = change.get("ns") or {}
+                    coll_name = ns.get("coll")
+                    if not coll_name or coll_name not in _FOREIGN_META:
+                        continue
+                    label, country = _FOREIGN_META[coll_name]
+                    if not doc:
+                        logger.info(
+                            "[feed_realtime] foreign change op=%s coll=%s (no fullDocument, skip)",
+                            op,
+                            coll_name,
+                        )
+                        continue
+                    if not feed_item_has_deal_id(doc):
+                        logger.info(
+                            "[feed_realtime] foreign change skipped (missing/empty deal_id) "
+                            "op=%s coll=%s _id=%s",
+                            op,
+                            coll_name,
+                            doc.get("_id"),
+                        )
+                        continue
+                    payload = normalize_foreign_feed_document(
+                        doc, coll_name, label, country
+                    )
+                    logger.info(
+                        "[feed_realtime] foreign op=%s coll=%s id=%s label=%s",
+                        op,
+                        coll_name,
+                        payload.get("id"),
+                        label,
+                    )
+                    print(
+                        f"[feed_realtime] FOREIGN {op} {coll_name} id={payload.get('id')} → Socket.IO",
+                        flush=True,
+                    )
+                    _schedule_foreign_feed_emit(
+                        {"message": "Foreign filing update", "data": payload}
+                    )
+        except OperationFailure as e:
+            logger.warning(
+                "foreign feed change stream OperationFailure (retrying in 5s): %s",
+                e,
+            )
+            time.sleep(5)
+        except PyMongoError as e:
+            logger.warning(
+                "foreign feed change stream PyMongoError (retrying in 5s): %s",
+                e,
+            )
+            time.sleep(5)
+        except Exception:
+            logger.exception("foreign feed watcher error (retrying in 5s)")
+            time.sleep(5)
+
+
+def ensure_foreign_feed_watcher_started() -> None:
+    global _FOREIGN_WATCHER_STARTED
+    with _FOREIGN_WATCHER_LOCK:
+        if _FOREIGN_WATCHER_STARTED:
+            return
+        _FOREIGN_WATCHER_STARTED = True
+        threading.Thread(
+            target=_foreign_feed_watch_loop,
+            name="mongodb-foreign-feed-change-stream",
+            daemon=True,
+        ).start()
+        logger.info(
+            "Foreign filing DB change-stream watcher started (%s collections)",
+            len(_FOREIGN_COLL_NAMES),
+        )
+        print(
+            "[feed_realtime] foreign watcher started — DB-level stream "
+            f"({len(_FOREIGN_COLL_NAMES)} collections, deal_id required)",
             flush=True,
         )

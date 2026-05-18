@@ -422,6 +422,7 @@ def _enrich_from_dma_extract(deal: dict, deal_id: str) -> dict:
 async def _app_lifespan(_inner: FastAPI):
     from feed_realtime import (
         ensure_feed_watcher_started,
+        ensure_foreign_feed_watcher_started,
         ensure_sec_filing_summary_watcher_started,
         set_feed_emit_event_loop,
     )
@@ -429,8 +430,9 @@ async def _app_lifespan(_inner: FastAPI):
     set_feed_emit_event_loop(asyncio.get_running_loop())
     ensure_feed_watcher_started()
     ensure_sec_filing_summary_watcher_started()
+    ensure_foreign_feed_watcher_started()
     print(
-        "[main] lifespan: feed + sec_filing_summary change-stream watchers + Socket.IO emit loop ready",
+        "[main] lifespan: feed + sec + foreign change-stream watchers + Socket.IO emit loop ready",
         flush=True,
     )
     yield

@@ -14,11 +14,17 @@ export type SecFeedItemCreatedPayload = {
   data?: Record<string, unknown>;
 };
 
-/** Subscribes to `feed_item_created` and optionally `sec_feed_item_created` on one Socket.IO connection. */
+export type ForeignFeedItemCreatedPayload = {
+  message?: string;
+  data?: Record<string, unknown>;
+};
+
+/** Subscribes to feed / SEC / foreign Socket.IO events on one connection. */
 export function connectFeedRealtime(
   onFeedItem: (item: Record<string, unknown>) => void,
   onConnectionChange: (connected: boolean) => void,
-  onSecFeedItem?: (item: Record<string, unknown>) => void
+  onSecFeedItem?: (item: Record<string, unknown>) => void,
+  onForeignFeedItem?: (item: Record<string, unknown>) => void
 ): () => void {
   const socket: Socket = io(baseUrl, {
     path: "/socket.io",
@@ -67,6 +73,23 @@ export function connectFeedRealtime(
     }
     onSecFeedItem(row);
   });
+
+  socket.on(
+    "foreign_feed_item_created",
+    (payload: ForeignFeedItemCreatedPayload) => {
+      console.log("[feedRealtime] foreign_feed_item_created", payload);
+      if (!onForeignFeedItem) return;
+      const row = payload?.data;
+      if (!row || typeof row !== "object") {
+        console.warn(
+          "[feedRealtime] foreign_feed_item_created missing data",
+          payload
+        );
+        return;
+      }
+      onForeignFeedItem(row);
+    }
+  );
 
   return () => {
     socket.disconnect();

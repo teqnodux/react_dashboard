@@ -7,6 +7,7 @@ import {
   type NewsFeedItemDetail,
 } from "../context/FeedLiveContext";
 import { formatFeedPublishedLabel } from "../utils/feedFormatting";
+import { hasNonEmptyDealId } from "../utils/dealId";
 import api from "../services/api";
 import "../styles/Feed.css";
 
@@ -86,6 +87,7 @@ export default function NewsFeed() {
           ? detail.id
           : String(detail["_id"] ?? "");
       if (!id) return;
+      if (!hasNonEmptyDealId(detail)) return;
 
       const item = { ...detail, id } as NewsItem;
 

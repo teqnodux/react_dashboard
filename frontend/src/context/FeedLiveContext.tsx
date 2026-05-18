@@ -8,6 +8,7 @@ import {
 import { useToast } from "../components/ToastNotification";
 import { connectFeedRealtime } from "../services/feedRealtime";
 import { formatFeedPublishedLabel } from "../utils/feedFormatting";
+import { hasNonEmptyDealId } from "../utils/dealId";
 
 /** Dispatched whenever the backend emits `feed_item_created` while logged in */
 export const DASHBOARD_NEWS_FEED_ITEM = "dashboard:news-feed-item";
@@ -15,11 +16,14 @@ export const DASHBOARD_NEWS_FEED_ITEM = "dashboard:news-feed-item";
 /** Dispatched whenever the backend emits `sec_feed_item_created` while logged in */
 export const DASHBOARD_SEC_FEED_ITEM = "dashboard:sec-feed-item";
 
+/** Dispatched whenever the backend emits `foreign_feed_item_created` while logged in */
+export const DASHBOARD_FOREIGN_FEED_ITEM = "dashboard:foreign-feed-item";
+
 export type NewsFeedItemDetail = Record<string, unknown> & { id?: string };
 
 const FeedConnectedCtx = createContext(false);
 
-/** Single Socket.IO connection: news + SEC summary toasts and window events for detail pages */
+/** Single Socket.IO connection: news + SEC + foreign filing toasts and window events */
 export function FeedLiveProvider({ children }: { children: ReactNode }) {
   const [connected, setConnected] = useState(false);
   const { showToast } = useToast();
@@ -31,6 +35,7 @@ export function FeedLiveProvider({ children }: { children: ReactNode }) {
         const id =
           typeof item.id === "string" && item.id ? item.id : String(item["_id"] ?? "");
         if (!id) return;
+        if (!hasNonEmptyDealId(item)) return;
 
         window.dispatchEvent(
           new CustomEvent<NewsFeedItemDetail>(DASHBOARD_NEWS_FEED_ITEM, {
@@ -87,6 +92,50 @@ export function FeedLiveProvider({ children }: { children: ReactNode }) {
         showToast(company, "success", {
           heading: "SEC Feed",
           subtitle
+        });
+      },
+      (foreignRow) => {
+        const item = foreignRow as Record<string, unknown>;
+        const id =
+          typeof item.id === "string" && item.id
+            ? item.id
+            : String(item["_id"] ?? "");
+        if (!id) return;
+        if (!hasNonEmptyDealId(item)) return;
+
+        window.dispatchEvent(
+          new CustomEvent<Record<string, unknown>>(DASHBOARD_FOREIGN_FEED_ITEM, {
+            detail: { ...item, id }
+          })
+        );
+
+        const label =
+          typeof item.source_label === "string" && item.source_label.trim()
+            ? item.source_label.trim()
+            : "Foreign filing";
+        const country =
+          typeof item.country === "string" && item.country.trim()
+            ? item.country.trim()
+            : "";
+        const titleGuess =
+          (typeof item.title === "string" && item.title.trim()
+            ? item.title.trim()
+            : undefined) ??
+          (typeof item.case_title === "string" && item.case_title.trim()
+            ? item.case_title.trim()
+            : undefined) ??
+          (typeof item.parties === "string" && item.parties.trim()
+            ? item.parties.trim()
+            : undefined) ??
+          label;
+        const updatedRaw =
+          (typeof item.updated_at === "string" ? item.updated_at : undefined) ??
+          (typeof item.processed_at === "string" ? item.processed_at : undefined);
+        const when = updatedRaw ? formatFeedPublishedLabel(updatedRaw) : "";
+
+        showToast(titleGuess, "success", {
+          heading: "Foreign Filing",
+          subtitle: [label, country, when].filter(Boolean).join(" · ") || undefined
         });
       }
     );

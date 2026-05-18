@@ -2,12 +2,14 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { flushSync } from "react-dom";
 import DashboardNav from "../components/DashboardNav";
 import {
+  DASHBOARD_FOREIGN_FEED_ITEM,
   DASHBOARD_NEWS_FEED_ITEM,
   DASHBOARD_SEC_FEED_ITEM,
   useFeedSocketConnected,
   type NewsFeedItemDetail
 } from "../context/FeedLiveContext";
 import { formatFeedPublishedLabel } from "../utils/feedFormatting";
+import { hasNonEmptyDealId } from "../utils/dealId";
 import api from "../services/api";
 import "../styles/Feed.css";
 import "../styles/ForeignFilingsTab.css";
@@ -93,6 +95,13 @@ const TYPE_LABEL: Record<string, string> = {
   press_release: "Press Release",
   foreign_filing: "Foreign Filing"
 };
+
+/** SAMR rows sort/filter on `processed_at` in unified_feed — mirror for live events */
+const SAMR_SOURCES = new Set([
+  "samr_cases",
+  "samr_conditional",
+  "samr_unconditional"
+]);
 
 // ─── Foreign filing helpers ───────────────────────────────────────────────────
 
@@ -230,7 +239,7 @@ function withinDaysWindow(updatedAtRaw: unknown, daysStr: string): boolean {
 function matchesSearchHaystack(item: FeedItem, q: string): boolean {
   const needle = q.trim().toLowerCase();
   if (!needle) return true;
-  const hay = [
+  const parts = [
     item.title,
     item.company_name,
     item.description_text,
@@ -239,10 +248,12 @@ function matchesSearchHaystack(item: FeedItem, q: string): boolean {
     item.country,
     item.form_type,
     item.accession_number
-  ]
-    .filter(Boolean)
-    .join(" ")
-    .toLowerCase();
+  ].filter(Boolean) as string[];
+  if (item.feed_type === "foreign_filing" && typeof item.source === "string") {
+    const ft = getRecordTitle(item.source, item);
+    if (ft) parts.push(ft);
+  }
+  const hay = parts.join(" ").toLowerCase();
   return hay.includes(needle);
 }
 
@@ -255,6 +266,21 @@ function livePressMatchesFilters(item: FeedItem, daysStr: string, q: string): bo
 function liveSecMatchesFilters(item: FeedItem, daysStr: string, q: string): boolean {
   return (
     withinDaysWindow(item.updated_at, daysStr) && matchesSearchHaystack(item, q)
+  );
+}
+
+function foreignLiveSortTimestamp(item: FeedItem): unknown {
+  const src = typeof item.source === "string" ? item.source : "";
+  if (SAMR_SOURCES.has(src)) {
+    return item.processed_at ?? item.updated_at;
+  }
+  return item.updated_at ?? item.processed_at;
+}
+
+function liveForeignMatchesFilters(item: FeedItem, daysStr: string, q: string): boolean {
+  return (
+    withinDaysWindow(foreignLiveSortTimestamp(item), daysStr) &&
+    matchesSearchHaystack(item, q)
   );
 }
 
@@ -376,6 +402,7 @@ export default function Feed() {
           ? detail.id
           : String(detail["_id"] ?? "");
       if (!id) return;
+      if (!hasNonEmptyDealId(detail as Record<string, unknown>)) return;
       const item = {
         ...detail,
         id,
@@ -420,6 +447,37 @@ export default function Feed() {
     };
     window.addEventListener(DASHBOARD_SEC_FEED_ITEM, onItem);
     return () => window.removeEventListener(DASHBOARD_SEC_FEED_ITEM, onItem);
+  }, [activeTab]);
+
+  useEffect(() => {
+    const onItem = (ev: Event) => {
+      if (activeTab !== "all" && activeTab !== "foreign") return;
+      const e = ev as CustomEvent<Record<string, unknown>>;
+      const detail = e.detail;
+      const id =
+        typeof detail?.id === "string" && detail.id
+          ? detail.id
+          : String(detail["_id"] ?? "");
+      if (!id) return;
+      if (!hasNonEmptyDealId(detail as Record<string, unknown>)) return;
+      const row = {
+        ...detail,
+        id,
+        feed_type: "foreign_filing" as const
+      } as FeedItem;
+      if (
+        !liveForeignMatchesFilters(row, dateRangeRef.current, debouncedSearchRef.current)
+      )
+        return;
+      flushSync(() => {
+        setItems((prev) => {
+          const rest = prev.filter((x) => x.id !== id);
+          return [row, ...rest];
+        });
+      });
+    };
+    window.addEventListener(DASHBOARD_FOREIGN_FEED_ITEM, onItem);
+    return () => window.removeEventListener(DASHBOARD_FOREIGN_FEED_ITEM, onItem);
   }, [activeTab]);
 
   // ─── Row renderers (MongoFeedTab style) ───────────────────────────────────
