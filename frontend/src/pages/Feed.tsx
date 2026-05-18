@@ -10,6 +10,7 @@ import {
 } from "../context/FeedLiveContext";
 import { formatFeedPublishedLabel } from "../utils/feedFormatting";
 import { hasNonEmptyDealId } from "../utils/dealId";
+import { usePermissions } from "../hooks/usePermissions";
 import api from "../services/api";
 import "../styles/Feed.css";
 import "../styles/ForeignFilingsTab.css";
@@ -301,6 +302,11 @@ export default function Feed() {
   const dateRangeRef = useRef<string>("1");
   const debouncedSearchRef = useRef<string>("");
   const connected = useFeedSocketConnected();
+  const { allowedDealIds } = usePermissions();
+  const allowedIdsRef = useRef(allowedDealIds);
+  useEffect(() => {
+    allowedIdsRef.current = allowedDealIds;
+  }, [allowedDealIds]);
 
   useEffect(() => {
     dateRangeRef.current = dateRange;
@@ -331,6 +337,10 @@ export default function Feed() {
         if (q.trim()) params.set("search", q.trim());
         if (append && nextCursorRef.current) {
           params.set("cursor", nextCursorRef.current);
+        }
+        const ids = allowedIdsRef.current;
+        if (ids !== "all" && Array.isArray(ids) && ids.length > 0) {
+          params.set("ids", ids.join(","));
         }
         const { data } = await api.get(`/api/feed?${params.toString()}`);
         const newItems: FeedItem[] = data.items ?? [];

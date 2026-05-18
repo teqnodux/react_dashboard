@@ -2,6 +2,7 @@ import {
   createContext,
   useContext,
   useEffect,
+  useRef,
   useState,
   type ReactNode
 } from "react";
@@ -9,6 +10,7 @@ import { useToast } from "../components/ToastNotification";
 import { connectFeedRealtime } from "../services/feedRealtime";
 import { formatFeedPublishedLabel } from "../utils/feedFormatting";
 import { hasNonEmptyDealId } from "../utils/dealId";
+import { usePermissions } from "../hooks/usePermissions";
 
 /** Dispatched whenever the backend emits `feed_item_created` while logged in */
 export const DASHBOARD_NEWS_FEED_ITEM = "dashboard:news-feed-item";
@@ -27,6 +29,18 @@ const FeedConnectedCtx = createContext(false);
 export function FeedLiveProvider({ children }: { children: ReactNode }) {
   const [connected, setConnected] = useState(false);
   const { showToast } = useToast();
+  const { allowedDealIds, isSuperAdmin } = usePermissions();
+  const allowedIdsRef = useRef<string[] | "all">(allowedDealIds ?? "all");
+
+  useEffect(() => {
+    allowedIdsRef.current = isSuperAdmin ? "all" : (allowedDealIds ?? "all");
+  }, [allowedDealIds, isSuperAdmin]);
+
+  const isDealAllowed = (dealId: unknown): boolean => {
+    const ids = allowedIdsRef.current;
+    if (ids === "all") return true;
+    return typeof dealId === "string" && dealId.length > 0 && ids.includes(dealId);
+  };
 
   useEffect(() => {
     const disconnect = connectFeedRealtime(
@@ -36,6 +50,7 @@ export function FeedLiveProvider({ children }: { children: ReactNode }) {
           typeof item.id === "string" && item.id ? item.id : String(item["_id"] ?? "");
         if (!id) return;
         if (!hasNonEmptyDealId(item)) return;
+        if (!isDealAllowed(item.deal_id)) return;
 
         window.dispatchEvent(
           new CustomEvent<NewsFeedItemDetail>(DASHBOARD_NEWS_FEED_ITEM, {
@@ -68,6 +83,7 @@ export function FeedLiveProvider({ children }: { children: ReactNode }) {
             ? item.id
             : String(item["_id"] ?? "");
         if (!id) return;
+        if (!isDealAllowed(item.deal_id)) return;
 
         window.dispatchEvent(
           new CustomEvent<Record<string, unknown>>(DASHBOARD_SEC_FEED_ITEM, {
@@ -102,6 +118,7 @@ export function FeedLiveProvider({ children }: { children: ReactNode }) {
             : String(item["_id"] ?? "");
         if (!id) return;
         if (!hasNonEmptyDealId(item)) return;
+        if (!isDealAllowed(item.deal_id)) return;
 
         window.dispatchEvent(
           new CustomEvent<Record<string, unknown>>(DASHBOARD_FOREIGN_FEED_ITEM, {

@@ -5158,11 +5158,21 @@ def get_dashboard_feed(
     search: str = "",
     days: Optional[int] = None,
     cursor: Optional[str] = None,
+    ids: Optional[str] = None,
 ):
-    """Unified feed (cursor pagination; default days=1 in unified_feed)."""
+    """Unified feed (cursor pagination; default days=1 in unified_feed).
+
+    ids: comma-separated deal_id whitelist for role-filtered users; omit for super_admin.
+    """
     from unified_feed import get_unified_feed
 
-    return get_unified_feed(tab, page_size, search=search, days=days, cursor=cursor)
+    allowed_deal_ids = (
+        {i.strip() for i in ids.split(",") if i.strip()} if ids else None
+    )
+    return get_unified_feed(
+        tab, page_size, search=search, days=days, cursor=cursor,
+        allowed_deal_ids=allowed_deal_ids,
+    )
 
 
 @app.get("/api/news-feed")

@@ -266,9 +266,10 @@ def _fetch_press_batch(
     search: str,
     cursor_pair: tuple[Any, Any] | None,
     limit: int,
+    deal_id_filter: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     col = get_feed_items_col()
-    base_q = feed_items_deal_id_query()
+    base_q = deal_id_filter if deal_id_filter is not None else feed_items_deal_id_query()
     search_q = (
         _regex_clause(["title", "description_text", "source"], search) if search else {}
     )
@@ -292,8 +293,10 @@ def _fetch_sec_batch(
     search: str,
     cursor_pair: tuple[Any, Any] | None,
     limit: int,
+    deal_id_filter: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     col = db[SEC_FILING_SUMMARY_COLLECTION]
+    base_q = deal_id_filter if deal_id_filter is not None else {}
     search_q = (
         _regex_clause(
             ["company_name", "cik_number", "form_type", "accession_number"], search
@@ -307,7 +310,7 @@ def _fetch_sec_batch(
         if cursor_pair
         else {}
     )
-    q = _and(search_q, win, ks)
+    q = _and(base_q, search_q, win, ks)
     raw = list(col.find(q).sort([("updated_at", -1), ("_id", -1)]).limit(limit))
     items: list[dict[str, Any]] = []
     for doc in raw:
@@ -483,7 +486,12 @@ def _run_k_way_merge(
 
 
 def _make_all_fetcher(
-    db: Any, deal_q: dict[str, Any], search: str, cutoff: datetime
+    db: Any,
+    deal_q: dict[str, Any],
+    search: str,
+    cutoff: datetime,
+    press_deal_filter: dict[str, Any] | None = None,
+    sec_deal_filter: dict[str, Any] | None = None,
 ) -> Callable[[str, tuple[Any, Any] | None, int], list[dict[str, Any]]]:
     meta = {f"f:{c}": (c, lbl, ct) for c, lbl, ct in FOREIGN_COLLECTIONS}
 
@@ -491,9 +499,9 @@ def _make_all_fetcher(
         sk: str, cur: tuple[Any, Any] | None, limit: int
     ) -> list[dict[str, Any]]:
         if sk == "press":
-            return _fetch_press_batch(db, cutoff, search, cur, limit)
+            return _fetch_press_batch(db, cutoff, search, cur, limit, press_deal_filter)
         if sk == "sec":
-            return _fetch_sec_batch(db, cutoff, search, cur, limit)
+            return _fetch_sec_batch(db, cutoff, search, cur, limit, sec_deal_filter)
         if sk in meta:
             c, lbl, ct = meta[sk]
             return _fetch_foreign_collection_batch(
@@ -559,8 +567,14 @@ def get_unified_feed(
     search: str = "",
     days: int | None = None,
     cursor: str | None = None,
+    allowed_deal_ids: set[str] | None = None,
 ) -> dict[str, Any]:
-    """Cursor-based pagination; days defaults to 1 via normalize_days."""
+    """Cursor-based pagination; days defaults to 1 via normalize_days.
+
+    allowed_deal_ids: when provided (non-None), restrict press/SEC/foreign
+    results to documents whose deal_id is in this set. None = super_admin
+    (no restriction beyond the usual non-empty deal_id check).
+    """
 
     t = (tab or "all").lower().strip()
     if t not in ("all", "sec", "press", "foreign"):
@@ -573,7 +587,17 @@ def get_unified_feed(
 
     cursor_in = decode_feed_cursor(cursor)
     db = get_db()
-    deal_q = feed_items_deal_id_query()
+
+    # Build deal_id filters based on allowed_deal_ids
+    if allowed_deal_ids is not None:
+        id_list = list(allowed_deal_ids)
+        press_deal_filter: dict[str, Any] = {"deal_id": {"$in": id_list}}
+        sec_deal_filter: dict[str, Any] = {"deal_id": {"$in": id_list}}
+        foreign_deal_q: dict[str, Any] = {"deal_id": {"$in": id_list}}
+    else:
+        press_deal_filter = None  # _fetch_press_batch falls back to feed_items_deal_id_query()
+        sec_deal_filter = None    # _fetch_sec_batch uses empty base_q (no deal_id restriction)
+        foreign_deal_q = feed_items_deal_id_query()
 
     # ── press ────────────────────────────────────────────────────────────────
     if t == "press":
@@ -582,7 +606,7 @@ def get_unified_feed(
         def fetch_batch(
             cur: tuple[Any, Any] | None, lim: int
         ) -> list[dict[str, Any]]:
-            return _fetch_press_batch(db, cutoff, search, cur, lim)
+            return _fetch_press_batch(db, cutoff, search, cur, lim, press_deal_filter)
 
         items, next_c, has_next = _single_stream_page(
             fetch_batch, "updated_at", main_cur, page_size, as_datetime=True
@@ -602,7 +626,7 @@ def get_unified_feed(
         def fetch_batch_sec(
             cur: tuple[Any, Any] | None, lim: int
         ) -> list[dict[str, Any]]:
-            return _fetch_sec_batch(db, cutoff, search, cur, lim)
+            return _fetch_sec_batch(db, cutoff, search, cur, lim, sec_deal_filter)
 
         items, next_c, has_next = _single_stream_page(
             fetch_batch_sec, "updated_at", main_cur, page_size, as_datetime=True
@@ -618,7 +642,7 @@ def get_unified_feed(
     # ── foreign ──────────────────────────────────────────────────────────────
     if t == "foreign":
         keys = stream_keys_foreign_only()
-        fetch_for = _make_foreign_only_fetcher(db, deal_q, search, cutoff)
+        fetch_for = _make_foreign_only_fetcher(db, foreign_deal_q, search, cutoff)
         items, next_c, has_next = _run_k_way_merge(page_size, cursor_in, keys, fetch_for)
         return {
             "items": items,
@@ -630,7 +654,9 @@ def get_unified_feed(
 
     # ── all ──────────────────────────────────────────────────────────────────
     keys = stream_keys_all()
-    fetch_for = _make_all_fetcher(db, deal_q, search, cutoff)
+    fetch_for = _make_all_fetcher(
+        db, foreign_deal_q, search, cutoff, press_deal_filter, sec_deal_filter
+    )
     items, next_c, has_next = _run_k_way_merge(page_size, cursor_in, keys, fetch_for)
     return {
         "items": items,
