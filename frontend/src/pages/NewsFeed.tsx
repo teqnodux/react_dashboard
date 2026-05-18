@@ -91,8 +91,8 @@ export default function NewsFeed() {
 
       flushSync(() => {
         setItems((prev) => {
-          if (prev.some((p) => p.id === id)) return prev;
-          return [item, ...prev];
+          const rest = prev.filter((p) => p.id !== id);
+          return [item, ...rest];
         });
       });
     };

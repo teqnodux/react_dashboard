@@ -1,4 +1,4 @@
-"""Socket.IO broadcast driven by MongoDB change stream on the feed items collection."""
+"""Socket.IO broadcast driven by MongoDB change streams (insert/update/replace)."""
 
 from __future__ import annotations
 
@@ -101,7 +101,11 @@ def normalize_feed_document(doc: dict) -> dict[str, Any]:
     return out
 
 
-_INSERT_ONLY = [{"$match": {"operationType": "insert"}}]
+_CHANGE_STREAM_OPS = [
+    {"$match": {"operationType": {"$in": ["insert", "update", "replace"]}}}
+]
+
+_WATCH_KWARGS: dict[str, Any] = {"full_document": "updateLookup"}
 
 
 async def _emit_feed_created(body: dict[str, Any]) -> None:
@@ -141,19 +145,20 @@ def _watch_loop() -> None:
     while True:
         try:
             coll = get_db()[FEED_ITEMS_COLLECTION]
-            kwargs: dict[str, Any] = {}
+            kwargs: dict[str, Any] = dict(_WATCH_KWARGS)
             if resume_token is not None:
                 kwargs["resume_after"] = resume_token
 
-            with coll.watch(_INSERT_ONLY, **kwargs) as stream:
+            with coll.watch(_CHANGE_STREAM_OPS, **kwargs) as stream:
                 logger.info(
-                    "Mongo change stream ACTIVE on db=%s coll=%s (insert-only pipeline)",
+                    "Mongo change stream ACTIVE on db=%s coll=%s "
+                    "(insert/update/replace, fullDocument=updateLookup)",
                     coll.database.name,
                     FEED_ITEMS_COLLECTION,
                 )
                 print(
                     f"[feed_realtime] change stream READY — Deal_DB.`{FEED_ITEMS_COLLECTION}` "
-                    "(insert webhook only if deal_id set)",
+                    "(emit when deal_id non-empty)",
                     flush=True,
                 )
                 for change in stream:
@@ -168,19 +173,21 @@ def _watch_loop() -> None:
                         continue
                     if not feed_item_has_deal_id(doc):
                         logger.info(
-                            "[feed_realtime] insert skipped (missing/empty deal_id) _id=%s",
+                            "[feed_realtime] change skipped (missing/empty deal_id) op=%s _id=%s",
+                            op,
                             doc.get("_id"),
                         )
                         continue
                     payload = normalize_feed_document(doc)
                     logger.info(
-                        "[feed_realtime] change stream insert _id=%s normalized_id=%s title=%r",
+                        "[feed_realtime] change stream op=%s _id=%s normalized_id=%s title=%r",
+                        op,
                         doc.get("_id"),
                         payload.get("id"),
                         (payload.get("title") or "")[:80],
                     )
                     print(
-                        f"[feed_realtime] INSERT seen _id={doc.get('_id')} → emitting to Socket.IO clients",
+                        f"[feed_realtime] {str(op or '').upper()} seen _id={doc.get('_id')} → emitting to Socket.IO clients",
                         flush=True,
                     )
                     _schedule_feed_emit(
@@ -264,13 +271,14 @@ def _sec_summary_watch_loop() -> None:
         try:
             db = get_db()
             coll = db[SEC_FILING_SUMMARY_COLLECTION]
-            kwargs: dict[str, Any] = {}
+            kwargs: dict[str, Any] = dict(_WATCH_KWARGS)
             if resume_token is not None:
                 kwargs["resume_after"] = resume_token
 
-            with coll.watch(_INSERT_ONLY, **kwargs) as stream:
+            with coll.watch(_CHANGE_STREAM_OPS, **kwargs) as stream:
                 logger.info(
-                    "Mongo change stream ACTIVE sec_filing_summary db=%s coll=%s",
+                    "Mongo change stream ACTIVE sec_filing_summary db=%s coll=%s "
+                    "(insert/update/replace, fullDocument=updateLookup)",
                     coll.database.name,
                     SEC_FILING_SUMMARY_COLLECTION,
                 )
@@ -290,13 +298,14 @@ def _sec_summary_watch_loop() -> None:
                         continue
                     payload = enrich_sec_summary_record(db, doc)
                     logger.info(
-                        "[feed_realtime] sec_filing_summary insert id=%s form=%s cik=%s",
+                        "[feed_realtime] sec_filing_summary op=%s id=%s form=%s cik=%s",
+                        op,
                         payload.get("id"),
                         payload.get("form_type"),
                         payload.get("cik_number"),
                     )
                     print(
-                        f"[feed_realtime] SEC insert id={payload.get('id')} → Socket.IO",
+                        f"[feed_realtime] SEC {op} id={payload.get('id')} → Socket.IO",
                         flush=True,
                     )
                     _schedule_sec_summary_emit(

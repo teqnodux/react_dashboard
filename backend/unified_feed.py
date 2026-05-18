@@ -1,9 +1,13 @@
-"""Unified `/api/feed` — merges press (`feed_items`), SEC (`sec_filing_summary`), and foreign filings."""
+"""Unified `/api/feed` — press, SEC, foreign; sort by `updated_at` (SAMR: `processed_at`); cursor pagination."""
 
 from __future__ import annotations
 
+import base64
+import json
+import heapq
+from collections import deque
 from datetime import datetime, timedelta, timezone
-from typing import Any
+from typing import Any, Callable
 
 from bson import ObjectId
 from bson.errors import InvalidId
@@ -13,10 +17,17 @@ from db import get_db, get_feed_items_col, feed_items_deal_id_query
 from foreign_collections import FOREIGN_COLLECTIONS
 from sec_feed_enrichment import enrich_sec_summary_record
 
-_FOREIGN_CAP = 400
+ALLOWED_DAYS = frozenset({1, 3, 7})
+CURSOR_VERSION = 2
+_FETCH_BATCH = 40
+
+SAMR_COLLECTIONS = frozenset(
+    {"samr_cases", "samr_conditional", "samr_unconditional"}
+)
 
 
-# ─── Sort helpers ─────────────────────────────────────────────────────────────
+# ─── Time / sort ts ───────────────────────────────────────────────────────────
+
 
 def _parse_sort_ts(val: Any) -> float:
     if val is None:
@@ -53,53 +64,57 @@ def _maybe_oid_ts(doc: dict[str, Any]) -> float:
 
 
 def _press_sort_ts(doc: dict[str, Any]) -> float:
-    for k in ("date_published", "created_at", "published_at"):
-        t = _parse_sort_ts(doc.get(k))
-        if t > 0:
-            return t
-    return _maybe_oid_ts(doc)
+    t = _parse_sort_ts(doc.get("updated_at"))
+    return t if t > 0 else _maybe_oid_ts(doc)
 
 
 def _sec_sort_ts(doc: dict[str, Any]) -> float:
-    for k in ("filing_date", "created_at"):
-        t = _parse_sort_ts(doc.get(k))
-        if t > 0:
-            return t
-    return _maybe_oid_ts(doc)
+    t = _parse_sort_ts(doc.get("updated_at"))
+    return t if t > 0 else _maybe_oid_ts(doc)
+
+
+def _foreign_sort_field(col_name: str) -> str:
+    return "processed_at" if col_name in SAMR_COLLECTIONS else "updated_at"
 
 
 def _foreign_sort_ts(doc: dict[str, Any]) -> float:
-    for k in (
-        "updated_at",
-        "modified_at",
-        "created_at",
-        "date_published",
-        "announcement_date",
-        "decision_date",
-    ):
+    col = doc.get("source") or ""
+    field = _foreign_sort_field(str(col))
+    t = _parse_sort_ts(doc.get(field))
+    if t > 0:
+        return t
+    for k in ("updated_at", "modified_at", "created_at", "processed_at"):
         t = _parse_sort_ts(doc.get(k))
         if t > 0:
             return t
     return _maybe_oid_ts(doc)
 
 
-# ─── Query builder helpers ────────────────────────────────────────────────────
+def unified_sort_ts(doc: dict[str, Any]) -> float:
+    ft = doc.get("feed_type")
+    if ft == "press_release":
+        return _press_sort_ts(doc)
+    if ft == "sec_filing":
+        return _sec_sort_ts(doc)
+    return _foreign_sort_ts(doc)
 
-def _days_cutoff(days: int | None) -> datetime | None:
-    """Return a UTC datetime `days` ago, or None if days is falsy."""
-    if not days:
-        return None
+
+def normalize_days(days: int | None) -> int:
+    if days is None or days not in ALLOWED_DAYS:
+        return 1
+    return days
+
+
+def _days_cutoff(days: int) -> datetime:
     return datetime.now(tz=timezone.utc) - timedelta(days=days)
 
 
 def _regex_clause(fields: list[str], search: str) -> dict[str, Any]:
-    """Build a MongoDB $or regex filter across multiple fields."""
     pattern = {"$regex": search, "$options": "i"}
     return {"$or": [{f: pattern} for f in fields]}
 
 
 def _and(*clauses: dict[str, Any]) -> dict[str, Any]:
-    """Combine query dicts; skip empty ones."""
     active = [c for c in clauses if c]
     if not active:
         return {}
@@ -108,221 +123,519 @@ def _and(*clauses: dict[str, Any]) -> dict[str, Any]:
     return {"$and": active}
 
 
-# ─── Foreign filing helpers ───────────────────────────────────────────────────
+# ─── Keyset helpers ───────────────────────────────────────────────────────────
+
+
+def _parse_cursor_id(s: str) -> Any:
+    """Rebuild Mongo `_id` for filters: 24-char hex → ObjectId, else keep string (e.g. UUID)."""
+    if len(s) == 24:
+        try:
+            return ObjectId(s)
+        except InvalidId:
+            pass
+    return s
+
+
+def _id_from_doc(doc: dict[str, Any]) -> Any:
+    """`_id` for keyset queries — unchanged BSON type, or parsed from string `id`."""
+    raw = doc.get("_id")
+    if raw is not None:
+        return raw
+    sid = doc.get("id")
+    if sid is None or sid == "":
+        raise InvalidId("feed row missing id/_id")
+    return _parse_cursor_id(str(sid))
+
+
+def _keyset_clause(sort_field: str, sf_val: Any, id_val: Any) -> dict[str, Any]:
+    """Descending sort: next page is strictly older than (sf_val, _id)."""
+    return {
+        "$or": [
+            {sort_field: {"$lt": sf_val}},
+            {"$and": [{sort_field: sf_val}, {"_id": {"$lt": id_val}}]},
+        ]
+    }
+
+
+def _doc_key_tuple(doc: dict[str, Any], sort_field: str) -> tuple[Any, Any]:
+    return doc.get(sort_field), _id_from_doc(doc)
+
+
+def _serialize_key_part(sort_field: str, sf_val: Any, id_val: Any) -> list[Any]:
+    """JSON-serializable cursor fragment."""
+    if isinstance(sf_val, datetime):
+        sf_out = sf_val.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+    elif sf_val is None:
+        sf_out = None
+    else:
+        sf_out = sf_val
+    return [sf_out, str(id_val)]
+
+
+def _deserialize_key_part(
+    pair: list[Any] | None,
+    *,
+    as_datetime: bool = False,
+) -> tuple[Any, Any] | None:
+    if not pair or len(pair) < 2:
+        return None
+    sf_raw, oid_s = pair[0], pair[1]
+    rid = _parse_cursor_id(str(oid_s))
+    if sf_raw is None:
+        return None
+    if as_datetime and isinstance(sf_raw, str):
+        try:
+            s = sf_raw.replace("Z", "+00:00")
+            sf_val: Any = datetime.fromisoformat(s)
+            if sf_val.tzinfo is None:
+                sf_val = sf_val.replace(tzinfo=timezone.utc)
+            else:
+                sf_val = sf_val.astimezone(timezone.utc)
+            return sf_val, rid
+        except ValueError:
+            pass
+    sf_val = sf_raw
+    return sf_val, rid
+
+
+# ─── Cursor encode/decode ──────────────────────────────────────────────────────
+
+
+def encode_feed_cursor(streams: dict[str, list[Any] | None]) -> str | None:
+    payload = {"v": CURSOR_VERSION, "s": streams}
+    raw = json.dumps(payload, separators=(",", ":")).encode("utf-8")
+    return base64.urlsafe_b64encode(raw).decode("ascii")
+
+
+def decode_feed_cursor(token: str | None) -> dict[str, list[Any] | None]:
+    if not token or not token.strip():
+        return {}
+    try:
+        pad = 4 - len(token) % 4
+        if pad != 4:
+            token += "=" * pad
+        raw = base64.urlsafe_b64decode(token.encode("ascii"))
+        data = json.loads(raw.decode("utf-8"))
+        if data.get("v") != CURSOR_VERSION:
+            return {}
+        out = data.get("s") or {}
+        return {str(k): v for k, v in out.items()}
+    except Exception:
+        return {}
+
+
+def stream_keys_all() -> list[str]:
+    keys = ["press", "sec"]
+    for col_name, _, _ in FOREIGN_COLLECTIONS:
+        keys.append(f"f:{col_name}")
+    return keys
+
+
+def stream_keys_foreign_only() -> list[str]:
+    return [f"f:{col_name}" for col_name, _, _ in FOREIGN_COLLECTIONS]
+
+
+# ─── Foreign title (search) ───────────────────────────────────────────────────
+
 
 def _foreign_title(col_name: str, doc: dict[str, Any]) -> str:
-    """Extract display title from a foreign filing document."""
     m = {
-        "accc_cases":         lambda d: d.get("title", ""),
-        "brazil_cases":       lambda d: d.get("interessados_en") or d.get("interessados", ""),
-        "canada_cases":       lambda d: d.get("parties", ""),
-        "ec_cases":           lambda d: d.get("case_title", ""),
-        "fs_cases":           lambda d: d.get("case_title", ""),
-        "german_cases":       lambda d: d.get("pursue_en") or d.get("pursue", ""),
-        "nz_cases":           lambda d: d.get("title", ""),
-        "samr_cases":         lambda d: d.get("title_en") or d.get("title_cn", ""),
-        "samr_conditional":   lambda d: d.get("title_en") or d.get("title_cn", ""),
+        "accc_cases": lambda d: d.get("title", ""),
+        "brazil_cases": lambda d: d.get("interessados_en") or d.get("interessados", ""),
+        "canada_cases": lambda d: d.get("parties", ""),
+        "ec_cases": lambda d: d.get("case_title", ""),
+        "fs_cases": lambda d: d.get("case_title", ""),
+        "ftc_cases": lambda d: d.get("title") or d.get("case_title", ""),
+        "german_cases": lambda d: d.get("pursue_en") or d.get("pursue", ""),
+        "nz_cases": lambda d: d.get("title", ""),
+        "samr_cases": lambda d: d.get("title_en") or d.get("title_cn", ""),
+        "samr_conditional": lambda d: d.get("title_en") or d.get("title_cn", ""),
         "samr_unconditional": lambda d: d.get("title_en") or d.get("title_cn", ""),
-        "uk_cma_cases":       lambda d: d.get("title", ""),
+        "uk_cma_cases": lambda d: d.get("title", ""),
     }
     fn = m.get(col_name)
     return str(fn(doc)) if fn else ""
 
 
-def _foreign_rows_from_db(
+# ─── Fetch batches ────────────────────────────────────────────────────────────
+
+
+def _fetch_press_batch(
     db: Any,
-    q: dict[str, Any],
-    per_collection_cap: int,
-    search: str = "",
-    cutoff: datetime | None = None,
-) -> tuple[list[dict[str, Any]], bool]:
-    rows: list[dict[str, Any]] = []
-    hit_cap = False
-
-    for col_name, label, country in FOREIGN_COLLECTIONS:
-        coll = db[col_name]
-        docs = list(coll.find(q).sort("_id", -1).limit(per_collection_cap))
-        if len(docs) >= per_collection_cap:
-            hit_cap = True
-        for doc in docs:
-            d = dict(doc)
-            oid = d.pop("_id", None)
-            d["id"] = str(oid) if oid is not None else ""
-            d["feed_type"] = "foreign_filing"
-            d["source"] = col_name
-            d["source_label"] = label
-            d["country"] = country
-            rows.append(d)
-
-    rows.sort(key=_foreign_sort_ts, reverse=True)
-
-    # Python-side filters (foreign fields are too varied for generic Mongo query)
-    if cutoff:
-        cutoff_ts = cutoff.timestamp()
-        rows = [r for r in rows if _foreign_sort_ts(r) >= cutoff_ts]
-
-    if search:
-        sq = search.lower()
-        rows = [
-            r for r in rows
-            if sq in _foreign_title(r.get("source", ""), r).lower()
-            or sq in (r.get("source_label") or "").lower()
-            or sq in (r.get("country") or "").lower()
-        ]
-
-    return rows, hit_cap
-
-
-# ─── Press loader ─────────────────────────────────────────────────────────────
-
-def _load_press_slice(
-    skip: int,
+    cutoff: datetime,
+    search: str,
+    cursor_pair: tuple[Any, Any] | None,
     limit: int,
-    search: str = "",
-    cutoff: datetime | None = None,
-) -> tuple[list[dict[str, Any]], int]:
+) -> list[dict[str, Any]]:
     col = get_feed_items_col()
-
     base_q = feed_items_deal_id_query()
-    search_q = _regex_clause(["title", "description_text", "source"], search) if search else {}
-    date_q = {"date_published": {"$gte": cutoff.isoformat()}} if cutoff else {}
-    q = _and(base_q, search_q, date_q)
-
-    total = col.count_documents(q)
-    raw = list(col.find(q).sort("date_published", -1).skip(skip).limit(limit))
+    search_q = (
+        _regex_clause(["title", "description_text", "source"], search) if search else {}
+    )
+    win = {"updated_at": {"$gte": cutoff}}
+    ks = (
+        _keyset_clause("updated_at", cursor_pair[0], cursor_pair[1])
+        if cursor_pair
+        else {}
+    )
+    q = _and(base_q, search_q, win, ks)
+    raw = list(col.find(q).sort([("updated_at", -1), ("_id", -1)]).limit(limit))
     for doc in raw:
         doc["id"] = str(doc.pop("_id"))
         doc["feed_type"] = "press_release"
-    return raw, total
+    return raw
 
 
-# ─── SEC loader ───────────────────────────────────────────────────────────────
-
-def _load_sec_slice(
-    skip: int,
+def _fetch_sec_batch(
+    db: Any,
+    cutoff: datetime,
+    search: str,
+    cursor_pair: tuple[Any, Any] | None,
     limit: int,
-    search: str = "",
-    cutoff: datetime | None = None,
-) -> tuple[list[dict[str, Any]], int]:
-    db = get_db()
+) -> list[dict[str, Any]]:
     col = db[SEC_FILING_SUMMARY_COLLECTION]
-
     search_q = (
-        _regex_clause(["company_name", "cik_number", "form_type", "accession_number"], search)
+        _regex_clause(
+            ["company_name", "cik_number", "form_type", "accession_number"], search
+        )
         if search
         else {}
     )
-    # filing_date is stored as "YYYY-MM-DD" string — ISO string comparison works correctly
-    date_q = {"filing_date": {"$gte": cutoff.strftime("%Y-%m-%d")}} if cutoff else {}
-    q = _and(search_q, date_q)
-
-    total = col.count_documents(q)
-    raw = list(col.find(q).sort("filing_date", -1).skip(skip).limit(limit))
+    win = {"updated_at": {"$gte": cutoff}}
+    ks = (
+        _keyset_clause("updated_at", cursor_pair[0], cursor_pair[1])
+        if cursor_pair
+        else {}
+    )
+    q = _and(search_q, win, ks)
+    raw = list(col.find(q).sort([("updated_at", -1), ("_id", -1)]).limit(limit))
     items: list[dict[str, Any]] = []
     for doc in raw:
         row = enrich_sec_summary_record(db, doc)
         row["feed_type"] = "sec_filing"
         items.append(row)
-    return items, total
+    return items
 
 
-# ─── Public entry point ───────────────────────────────────────────────────────
+def _utc_iso_z(dt: datetime) -> str:
+    return dt.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
+
+
+def _fetch_foreign_collection_batch(
+    db: Any,
+    col_name: str,
+    label: str,
+    country: str,
+    deal_q: dict[str, Any],
+    cutoff: datetime,
+    search: str,
+    cursor_pair: tuple[Any, Any] | None,
+    limit: int,
+) -> list[dict[str, Any]]:
+    coll = db[col_name]
+    sf = _foreign_sort_field(col_name)
+    cutoff_cmp = _utc_iso_z(cutoff)
+    win = {sf: {"$gte": cutoff_cmp}}
+    ks = _keyset_clause(sf, cursor_pair[0], cursor_pair[1]) if cursor_pair else {}
+    q = _and(deal_q, win, ks)
+    raw = list(coll.find(q).sort([(sf, -1), ("_id", -1)]).limit(limit))
+    rows: list[dict[str, Any]] = []
+    for doc in raw:
+        d = dict(doc)
+        oid = d.pop("_id", None)
+        d["id"] = str(oid) if oid is not None else ""
+        d["feed_type"] = "foreign_filing"
+        d["source"] = col_name
+        d["source_label"] = label
+        d["country"] = country
+        rows.append(d)
+    if search:
+        sq = search.lower()
+        rows = [
+            r
+            for r in rows
+            if sq in _foreign_title(col_name, r).lower()
+            or sq in label.lower()
+            or sq in country.lower()
+        ]
+    return rows
+
+
+# ─── K-way merge (lazy heap + batch refill) ───────────────────────────────────
+
+
+def _merge_push_heap(
+    heap: list[tuple[tuple[float, str], str, dict[str, Any]]],
+    stream_key: str,
+    doc: dict[str, Any],
+) -> None:
+    ts = unified_sort_ts(doc)
+    doc_id = doc.get("id") or ""
+    heapq.heappush(heap, ((-ts, doc_id), stream_key, doc))
+
+
+def _stream_key_for_doc(doc: dict[str, Any]) -> str:
+    ft = doc.get("feed_type")
+    if ft == "press_release":
+        return "press"
+    if ft == "sec_filing":
+        return "sec"
+    return "f:" + str(doc.get("source", ""))
+
+
+def _run_k_way_merge(
+    page_size: int,
+    cursor_in: dict[str, list[Any] | None],
+    stream_keys: list[str],
+    fetch_for: Callable[[str, tuple[Any, Any] | None, int], list[dict[str, Any]]],
+) -> tuple[list[dict[str, Any]], str | None, bool]:
+    """K-way merge with per-stream keyset batches; fetch page_size+1 to detect has_next."""
+    next_fetch: dict[str, tuple[Any, Any] | None] = {}
+    for sk in stream_keys:
+        pair_list = cursor_in.get(sk)
+        if sk == "press":
+            tup = _deserialize_key_part(pair_list, as_datetime=True)
+        elif sk == "sec":
+            tup = _deserialize_key_part(pair_list, as_datetime=True)
+        elif sk.startswith("f:"):
+            tup = _deserialize_key_part(pair_list, as_datetime=False)
+        else:
+            tup = None
+        next_fetch[sk] = tup
+
+    deques: dict[str, deque[dict[str, Any]]] = {sk: deque() for sk in stream_keys}
+
+    def refill(sk: str) -> None:
+        cur = next_fetch[sk]
+        batch = fetch_for(sk, cur, _FETCH_BATCH)
+        if not batch:
+            deques[sk] = deque()
+            return
+        last = batch[-1]
+        if sk == "press":
+            sf = "updated_at"
+        elif sk == "sec":
+            sf = "updated_at"
+        else:
+            col = sk[2:]
+            sf = _foreign_sort_field(col)
+        sf_val, oid = _doc_key_tuple(last, sf)
+        next_fetch[sk] = (sf_val, oid)
+        deques[sk] = deque(batch)
+
+    for sk in stream_keys:
+        refill(sk)
+
+    heap: list[tuple[tuple[float, str], str, dict[str, Any]]] = []
+    for sk in stream_keys:
+        if deques[sk]:
+            _merge_push_heap(heap, sk, deques[sk][0])
+
+    target = page_size + 1
+    out: list[dict[str, Any]] = []
+
+    while len(out) < target and heap:
+        _, sk, doc = heapq.heappop(heap)
+        if not deques[sk] or deques[sk][0]["id"] != doc["id"]:
+            continue
+        deques[sk].popleft()
+        out.append(doc)
+
+        if not deques[sk]:
+            refill(sk)
+
+        if deques[sk]:
+            _merge_push_heap(heap, sk, deques[sk][0])
+
+    has_next = len(out) > page_size
+    out = out[:page_size]
+
+    if not out:
+        return [], encode_feed_cursor(cursor_in) if cursor_in else None, False
+
+    last_row: dict[str, dict[str, Any]] = {}
+    for d in out:
+        last_row[_stream_key_for_doc(d)] = d
+
+    cursor_out: dict[str, list[Any] | None] = {}
+    for sk in stream_keys:
+        if sk in last_row:
+            d = last_row[sk]
+            id_val = _id_from_doc(d)
+            if sk == "press":
+                cursor_out[sk] = _serialize_key_part(
+                    "updated_at", d.get("updated_at"), id_val
+                )
+            elif sk == "sec":
+                cursor_out[sk] = _serialize_key_part(
+                    "updated_at", d.get("updated_at"), id_val
+                )
+            else:
+                col = sk[2:]
+                sf = _foreign_sort_field(col)
+                cursor_out[sk] = _serialize_key_part(sf, d.get(sf), id_val)
+        else:
+            prev = cursor_in.get(sk)
+            cursor_out[sk] = list(prev) if isinstance(prev, list) else prev
+
+    next_token = encode_feed_cursor(cursor_out)
+    return out, next_token, has_next
+
+
+def _make_all_fetcher(
+    db: Any, deal_q: dict[str, Any], search: str, cutoff: datetime
+) -> Callable[[str, tuple[Any, Any] | None, int], list[dict[str, Any]]]:
+    meta = {f"f:{c}": (c, lbl, ct) for c, lbl, ct in FOREIGN_COLLECTIONS}
+
+    def fetch_for(
+        sk: str, cur: tuple[Any, Any] | None, limit: int
+    ) -> list[dict[str, Any]]:
+        if sk == "press":
+            return _fetch_press_batch(db, cutoff, search, cur, limit)
+        if sk == "sec":
+            return _fetch_sec_batch(db, cutoff, search, cur, limit)
+        if sk in meta:
+            c, lbl, ct = meta[sk]
+            return _fetch_foreign_collection_batch(
+                db, c, lbl, ct, deal_q, cutoff, search, cur, limit
+            )
+        return []
+
+    return fetch_for
+
+
+def _make_foreign_only_fetcher(
+    db: Any, deal_q: dict[str, Any], search: str, cutoff: datetime
+) -> Callable[[str, tuple[Any, Any] | None, int], list[dict[str, Any]]]:
+    meta = {f"f:{c}": (c, lbl, ct) for c, lbl, ct in FOREIGN_COLLECTIONS}
+
+    def fetch_for(
+        sk: str, cur: tuple[Any, Any] | None, limit: int
+    ) -> list[dict[str, Any]]:
+        if sk in meta:
+            c, lbl, ct = meta[sk]
+            return _fetch_foreign_collection_batch(
+                db, c, lbl, ct, deal_q, cutoff, search, cur, limit
+            )
+        return []
+
+    return fetch_for
+
+
+# ─── Single-stream cursor page (+1 probe) ─────────────────────────────────────
+
+
+def _single_stream_page(
+    fetch_batch: Callable[..., list[dict[str, Any]]],
+    sort_field: str,
+    cursor_pair_raw: list[Any] | None,
+    page_size: int,
+    *,
+    as_datetime: bool = True,
+) -> tuple[list[dict[str, Any]], str | None, bool]:
+    cur = _deserialize_key_part(cursor_pair_raw, as_datetime=as_datetime)
+    batch = fetch_batch(cur, page_size + 1)
+    has_next = len(batch) > page_size
+    batch = batch[:page_size]
+    if not batch:
+        return (
+            [],
+            encode_feed_cursor({"main": cursor_pair_raw}) if cursor_pair_raw else None,
+            False,
+        )
+    last = batch[-1]
+    id_val = _id_from_doc(last)
+    sf_val = last.get(sort_field)
+    frag = _serialize_key_part(sort_field, sf_val, id_val)
+    return batch, encode_feed_cursor({"main": frag}), has_next
+
+
+# ─── Public API ───────────────────────────────────────────────────────────────
+
 
 def get_unified_feed(
     tab: str,
-    page: int,
     page_size: int,
     search: str = "",
     days: int | None = None,
+    cursor: str | None = None,
 ) -> dict[str, Any]:
+    """Cursor-based pagination; days defaults to 1 via normalize_days."""
+
     t = (tab or "all").lower().strip()
     if t not in ("all", "sec", "press", "foreign"):
         t = "all"
 
-    page = max(1, page)
     page_size = min(max(1, page_size), 100)
-
-    cutoff = _days_cutoff(days)
+    days_n = normalize_days(days)
+    cutoff = _days_cutoff(days_n)
     search = (search or "").strip()
 
-    # ── press ──────────────────────────────────────────────────────────────────
-    if t == "press":
-        skip = (page - 1) * page_size
-        items, total = _load_press_slice(skip, page_size, search=search, cutoff=cutoff)
-        return {
-            "items": items,
-            "page": page,
-            "page_size": page_size,
-            "has_next": skip + len(items) < total,
-        }
-
-    # ── sec ────────────────────────────────────────────────────────────────────
-    if t == "sec":
-        skip = (page - 1) * page_size
-        items, total = _load_sec_slice(skip, page_size, search=search, cutoff=cutoff)
-        return {
-            "items": items,
-            "page": page,
-            "page_size": page_size,
-            "has_next": skip + len(items) < total,
-        }
-
+    cursor_in = decode_feed_cursor(cursor)
     db = get_db()
-    q = feed_items_deal_id_query()
+    deal_q = feed_items_deal_id_query()
 
-    # ── foreign ────────────────────────────────────────────────────────────────
-    if t == "foreign":
-        rows, hit_cap = _foreign_rows_from_db(
-            db, q, _FOREIGN_CAP, search=search, cutoff=cutoff
+    # ── press ────────────────────────────────────────────────────────────────
+    if t == "press":
+        main_cur = cursor_in.get("main")
+
+        def fetch_batch(
+            cur: tuple[Any, Any] | None, lim: int
+        ) -> list[dict[str, Any]]:
+            return _fetch_press_batch(db, cutoff, search, cur, lim)
+
+        items, next_c, has_next = _single_stream_page(
+            fetch_batch, "updated_at", main_cur, page_size, as_datetime=True
         )
-        total = len(rows)
-        start = (page - 1) * page_size
-        chunk = rows[start : start + page_size]
-        has_next = start + page_size < total or (hit_cap and not search and not cutoff)
         return {
-            "items": chunk,
-            "page": page,
+            "items": items,
             "page_size": page_size,
             "has_next": has_next,
+            "next_cursor": next_c,
+            "days": days_n,
         }
 
-    # ── all ────────────────────────────────────────────────────────────────────
-    merge_limit = min(2500, page * page_size + page_size * 4)
-    press_items, _pt = _load_press_slice(0, merge_limit, search=search, cutoff=cutoff)
-    sec_items, _st = _load_sec_slice(0, merge_limit, search=search, cutoff=cutoff)
+    # ── sec ──────────────────────────────────────────────────────────────────
+    if t == "sec":
+        main_cur = cursor_in.get("main")
 
-    per_col = min(_FOREIGN_CAP, max(page_size * 4, merge_limit // 11 + page_size))
-    foreign_bucket, hit_foreign_cap = _foreign_rows_from_db(
-        db, q, per_col, search=search, cutoff=cutoff
-    )
+        def fetch_batch_sec(
+            cur: tuple[Any, Any] | None, lim: int
+        ) -> list[dict[str, Any]]:
+            return _fetch_sec_batch(db, cutoff, search, cur, lim)
 
-    merged: list[tuple[float, dict[str, Any]]] = []
-    for x in press_items:
-        merged.append((_press_sort_ts(x), x))
-    for x in sec_items:
-        merged.append((_sec_sort_ts(x), x))
-    for x in foreign_bucket:
-        merged.append((_foreign_sort_ts(x), x))
+        items, next_c, has_next = _single_stream_page(
+            fetch_batch_sec, "updated_at", main_cur, page_size, as_datetime=True
+        )
+        return {
+            "items": items,
+            "page_size": page_size,
+            "has_next": has_next,
+            "next_cursor": next_c,
+            "days": days_n,
+        }
 
-    merged.sort(key=lambda row: row[0], reverse=True)
-    flat = [row[1] for row in merged]
+    # ── foreign ──────────────────────────────────────────────────────────────
+    if t == "foreign":
+        keys = stream_keys_foreign_only()
+        fetch_for = _make_foreign_only_fetcher(db, deal_q, search, cutoff)
+        items, next_c, has_next = _run_k_way_merge(page_size, cursor_in, keys, fetch_for)
+        return {
+            "items": items,
+            "page_size": page_size,
+            "has_next": has_next,
+            "next_cursor": next_c,
+            "days": days_n,
+        }
 
-    start = (page - 1) * page_size
-    slice_out = flat[start : start + page_size]
-
-    press_truncated = len(press_items) >= merge_limit
-    sec_truncated = len(sec_items) >= merge_limit
-
-    has_next = (
-        start + page_size < len(flat)
-        or press_truncated
-        or sec_truncated
-        or (hit_foreign_cap and not search and not cutoff)
-    )
-
+    # ── all ──────────────────────────────────────────────────────────────────
+    keys = stream_keys_all()
+    fetch_for = _make_all_fetcher(db, deal_q, search, cutoff)
+    items, next_c, has_next = _run_k_way_merge(page_size, cursor_in, keys, fetch_for)
     return {
-        "items": slice_out,
-        "page": page,
+        "items": items,
         "page_size": page_size,
         "has_next": has_next,
+        "next_cursor": next_c,
+        "days": days_n,
     }

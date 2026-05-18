@@ -6,6 +6,7 @@ FOREIGN_COLLECTIONS = [
     ("canada_cases",       "Competition Bureau",  "Canada"),
     ("ec_cases",           "European Commission", "EU"),
     ("fs_cases",           "Foreign Subsidies",   "EU"),
+    ("ftc_cases",          "FTC",                 "United States"),
     ("german_cases",       "Bundeskartellamt",    "Germany"),
     ("nz_cases",           "NZCC",                "New Zealand"),
     ("samr_cases",         "SAMR",                "China"),

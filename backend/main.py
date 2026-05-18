@@ -5152,15 +5152,15 @@ def get_foreign_filings(deal_id: str):
 @app.get("/api/feed")
 def get_dashboard_feed(
     tab: str = "all",
-    page: int = 1,
     page_size: int = 20,
     search: str = "",
     days: Optional[int] = None,
+    cursor: Optional[str] = None,
 ):
-    """Unified feed for dashboard Feed page (press + SEC + foreign); Phase 1 live Socket.IO covers press + SEC only."""
+    """Unified feed (cursor pagination; default days=1 in unified_feed)."""
     from unified_feed import get_unified_feed
 
-    return get_unified_feed(tab, page, page_size, search=search, days=days)
+    return get_unified_feed(tab, page_size, search=search, days=days, cursor=cursor)
 
 
 @app.get("/api/news-feed")

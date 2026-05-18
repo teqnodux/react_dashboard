@@ -98,8 +98,8 @@ export default function SecFeed() {
 
       flushSync(() => {
         setItems((prev) => {
-          if (prev.some((x) => x.id === id)) return prev;
-          return [row, ...prev];
+          const rest = prev.filter((x) => x.id !== id);
+          return [row, ...rest];
         });
       });
     };

@@ -70,7 +70,8 @@ const FLAG: Record<string, string> = {
   Germany: "🇩🇪",
   "New Zealand": "🇳🇿",
   China: "🇨🇳",
-  "United Kingdom": "🇬🇧"
+  "United Kingdom": "🇬🇧",
+  "United States": "🇺🇸"
 };
 
 // ─── Type colors / icons (MongoFeedTab style) ─────────────────────────────────
@@ -106,6 +107,8 @@ function getRecordTitle(source: string, r: FeedItem): string {
     case "ec_cases":
     case "fs_cases":
       return (r.case_title as string) || "";
+    case "ftc_cases":
+      return (r.title as string) || (r.case_title as string) || "";
     case "german_cases":
       return (r.pursue_en as string) || (r.pursue as string) || "";
     case "nz_cases":
@@ -133,6 +136,8 @@ function getRecordUrl(source: string, r: FeedItem): string | null {
     case "ec_cases":
     case "fs_cases":
       return (r.case_url as string) || null;
+    case "ftc_cases":
+      return (r.url as string) || (r.detail_url as string) || null;
     case "nz_cases":
     case "uk_cma_cases":
       return (r.detail_url as string) || null;
@@ -207,6 +212,52 @@ const formatDate = (d?: string | null) => {
   });
 };
 
+function parseTimeMs(raw: unknown): number | null {
+  if (raw == null || raw === "") return null;
+  const t = new Date(String(raw)).getTime();
+  return Number.isNaN(t) ? null : t;
+}
+
+function withinDaysWindow(updatedAtRaw: unknown, daysStr: string): boolean {
+  const days = parseInt(daysStr, 10);
+  if (!days || days < 1) return true;
+  const t = parseTimeMs(updatedAtRaw);
+  if (t === null) return false;
+  const cutoff = Date.now() - days * 86400000;
+  return t >= cutoff;
+}
+
+function matchesSearchHaystack(item: FeedItem, q: string): boolean {
+  const needle = q.trim().toLowerCase();
+  if (!needle) return true;
+  const hay = [
+    item.title,
+    item.company_name,
+    item.description_text,
+    item.source,
+    item.source_label,
+    item.country,
+    item.form_type,
+    item.accession_number
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+  return hay.includes(needle);
+}
+
+function livePressMatchesFilters(item: FeedItem, daysStr: string, q: string): boolean {
+  return (
+    withinDaysWindow(item.updated_at, daysStr) && matchesSearchHaystack(item, q)
+  );
+}
+
+function liveSecMatchesFilters(item: FeedItem, daysStr: string, q: string): boolean {
+  return (
+    withinDaysWindow(item.updated_at, daysStr) && matchesSearchHaystack(item, q)
+  );
+}
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function Feed() {
@@ -215,43 +266,50 @@ export default function Feed() {
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState("");
-  const [page, setPage] = useState(1);
   const [hasNext, setHasNext] = useState(false);
-  // ── Filter state ───────────────────────────────────────────────────────────
-  const [dateRange, setDateRange] = useState<string>("all");
+  const [dateRange, setDateRange] = useState<string>("1");
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
+  const nextCursorRef = useRef<string | null>(null);
+  const dateRangeRef = useRef<string>("1");
+  const debouncedSearchRef = useRef<string>("");
   const connected = useFeedSocketConnected();
 
-  // Debounce search input — wait 400 ms after user stops typing
+  useEffect(() => {
+    dateRangeRef.current = dateRange;
+  }, [dateRange]);
+  useEffect(() => {
+    debouncedSearchRef.current = debouncedSearch;
+  }, [debouncedSearch]);
+
   useEffect(() => {
     const t = setTimeout(() => setDebouncedSearch(search), 400);
     return () => clearTimeout(t);
   }, [search]);
 
-  // Build query string for API
-  const buildQuery = useCallback(
-    (tab: TabKey, p: number, s: string, dr: string) => {
-      const params = new URLSearchParams({
-        tab,
-        page: String(p),
-        page_size: "20"
-      });
-      if (s.trim()) params.set("search", s.trim());
-      if (dr !== "all") params.set("days", dr);
-      return `/api/feed?${params.toString()}`;
-    },
-    []
-  );
-
-  const fetchPage = useCallback(
-    async (p: number, append: boolean, tab: TabKey, s: string, dr: string) => {
+  const fetchFeed = useCallback(
+    async (opts: { append: boolean; tab: TabKey; days: string; q: string }) => {
+      const { append, tab, days, q } = opts;
       if (append) setLoadingMore(true);
-      else setLoading(true);
+      else {
+        setLoading(true);
+        nextCursorRef.current = null;
+      }
       try {
-        const { data } = await api.get(buildQuery(tab, p, s, dr));
-        const newItems: FeedItem[] = data.items;
+        const params = new URLSearchParams({
+          tab,
+          page_size: "20",
+          days
+        });
+        if (q.trim()) params.set("search", q.trim());
+        if (append && nextCursorRef.current) {
+          params.set("cursor", nextCursorRef.current);
+        }
+        const { data } = await api.get(`/api/feed?${params.toString()}`);
+        const newItems: FeedItem[] = data.items ?? [];
+        nextCursorRef.current =
+          typeof data.next_cursor === "string" ? data.next_cursor : null;
         if (append) {
           setItems((prev) => {
             const existingIds = new Set(prev.map((i) => i.id));
@@ -260,8 +318,8 @@ export default function Feed() {
         } else {
           setItems(newItems);
         }
-        setHasNext(data.has_next);
-        setPage(p);
+        setHasNext(Boolean(data.has_next));
+        setError("");
       } catch {
         setError("Failed to load feed");
       } finally {
@@ -269,46 +327,37 @@ export default function Feed() {
         setLoadingMore(false);
       }
     },
-    [buildQuery]
+    []
   );
 
-  // Reset + refetch when tab changes
   useEffect(() => {
-    setItems([]);
-    setPage(1);
-    setHasNext(false);
-    setError("");
-    setDateRange("all");
+    fetchFeed({
+      append: false,
+      tab: activeTab,
+      days: dateRange,
+      q: debouncedSearch
+    });
+  }, [activeTab, dateRange, debouncedSearch, fetchFeed]);
+
+  const selectTab = (key: TabKey) => {
+    setActiveTab(key);
+    setDateRange("1");
     setSearch("");
     setDebouncedSearch("");
-    fetchPage(1, false, activeTab, "", "all");
-  }, [activeTab, fetchPage]);
-
-  // Refetch from page 1 when debounced search or date range changes
-  useEffect(() => {
-    setItems([]);
-    setPage(1);
-    setHasNext(false);
-    setError("");
-    fetchPage(1, false, activeTab, debouncedSearch, dateRange);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedSearch, dateRange]);
+  };
 
   const handleScroll = useCallback(() => {
     const el = scrollRef.current;
-    if (!el || loadingMore || !hasNext) return;
+    if (!el || loadingMore || !hasNext || !nextCursorRef.current) return;
     if (el.scrollHeight - el.scrollTop - el.clientHeight < 300) {
-      fetchPage(page + 1, true, activeTab, debouncedSearch, dateRange);
+      fetchFeed({
+        append: true,
+        tab: activeTab,
+        days: dateRange,
+        q: debouncedSearch
+      });
     }
-  }, [
-    fetchPage,
-    loadingMore,
-    hasNext,
-    page,
-    activeTab,
-    debouncedSearch,
-    dateRange
-  ]);
+  }, [fetchFeed, loadingMore, hasNext, activeTab, dateRange, debouncedSearch]);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -317,7 +366,6 @@ export default function Feed() {
     return () => el.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  // Live updates: press releases
   useEffect(() => {
     const onItem = (ev: Event) => {
       if (activeTab !== "all" && activeTab !== "press") return;
@@ -333,10 +381,12 @@ export default function Feed() {
         id,
         feed_type: "press_release" as const
       } as FeedItem;
+      if (!livePressMatchesFilters(item, dateRangeRef.current, debouncedSearchRef.current))
+        return;
       flushSync(() => {
         setItems((prev) => {
-          if (prev.some((p) => p.id === id)) return prev;
-          return [item, ...prev];
+          const rest = prev.filter((p) => p.id !== id);
+          return [item, ...rest];
         });
       });
     };
@@ -344,7 +394,6 @@ export default function Feed() {
     return () => window.removeEventListener(DASHBOARD_NEWS_FEED_ITEM, onItem);
   }, [activeTab]);
 
-  // Live updates: SEC filings
   useEffect(() => {
     const onItem = (ev: Event) => {
       if (activeTab !== "all" && activeTab !== "sec") return;
@@ -360,10 +409,12 @@ export default function Feed() {
         id,
         feed_type: "sec_filing" as const
       } as FeedItem;
+      if (!liveSecMatchesFilters(row, dateRangeRef.current, debouncedSearchRef.current))
+        return;
       flushSync(() => {
         setItems((prev) => {
-          if (prev.some((x) => x.id === id)) return prev;
-          return [row, ...prev];
+          const rest = prev.filter((x) => x.id !== id);
+          return [row, ...rest];
         });
       });
     };
@@ -415,12 +466,17 @@ export default function Feed() {
         )}
         <span className="feed-item-source">
           {item.source}
-          {item.date_published && (
+          {item.updated_at && (
+            <span> · Updated {formatFeedPublishedLabel(item.updated_at)}</span>
+          )}
+          {item.date_published && !item.updated_at && (
             <span> · {formatFeedPublishedLabel(item.date_published)}</span>
           )}
         </span>
       </div>
-      <div className="feed-item-date">{formatDate(item.date_published)}</div>
+      <div className="feed-item-date">
+        {formatDate((item.updated_at as string) || item.date_published)}
+      </div>
     </div>
   );
 
@@ -455,13 +511,18 @@ export default function Feed() {
         </div>
         <span className="feed-item-source">
           CIK: {item.cik_number ?? "—"}
+          {item.updated_at && (
+            <span> · Updated {formatFeedPublishedLabel(item.updated_at)}</span>
+          )}
           {item.filing_date && (
-            <span> · {formatFeedPublishedLabel(item.filing_date)}</span>
+            <span> · Filed {formatFeedPublishedLabel(item.filing_date)}</span>
           )}
           {item.accession_number && <span> · {item.accession_number}</span>}
         </span>
       </div>
-      <div className="feed-item-date">{formatDate(item.filing_date)}</div>
+      <div className="feed-item-date">
+        {formatDate((item.updated_at as string) || item.filing_date)}
+      </div>
     </div>
   );
 
@@ -471,6 +532,13 @@ export default function Feed() {
     const url = getRecordUrl(src, item);
     const status = getRecordStatus(src, item);
     const flag = FLAG[item.country ?? ""] ?? "🌐";
+    const isSamr =
+      src === "samr_cases" ||
+      src === "samr_conditional" ||
+      src === "samr_unconditional";
+    const sortTs = (isSamr ? item.processed_at : item.updated_at) as
+      | string
+      | undefined;
 
     return (
       <div
@@ -513,12 +581,16 @@ export default function Feed() {
           </div>
           <span className="feed-item-source">
             {item.country}
-            {item.updated_at && (
-              <span> · {formatFeedPublishedLabel(item.updated_at)}</span>
+            {sortTs && (
+              <span>
+                {" "}
+                · {isSamr ? "Processed " : "Updated "}
+                {formatFeedPublishedLabel(sortTs)}
+              </span>
             )}
           </span>
         </div>
-        <div className="feed-item-date">{formatDate(item.updated_at)}</div>
+        <div className="feed-item-date">{formatDate(sortTs)}</div>
       </div>
     );
   };
@@ -569,22 +641,13 @@ export default function Feed() {
     <div className="dashboard">
       <DashboardNav />
       <div className="feed-page">
-        {/* Header */}
-        <div className="feed-header">
-          <h2 className="feed-title">Feed</h2>
-          <div className="feed-header-right">
-            <span className={`feed-dot ${connected ? "connected" : ""}`} />
-            <span className="feed-count">{items.length} items</span>
-          </div>
-        </div>
-
         {/* Tabs — DealDetail style */}
         <div className="tabs-nav">
           {TABS.map((t) => (
             <button
               key={t.key}
               className={`tab-btn tab-ready ${activeTab === t.key ? "active" : ""}`}
-              onClick={() => setActiveTab(t.key)}
+              onClick={() => selectTab(t.key)}
             >
               {t.label}
             </button>
@@ -594,16 +657,18 @@ export default function Feed() {
         {/* Filter bar — date range + search */}
         <div className="feed-filters">
           <div className="feed-right-filters">
+            <div className="feed-live-indicator">
+              <span className={`feed-dot ${connected ? "connected" : ""}`} />
+              <span className="feed-count">{items.length} loaded</span>
+            </div>
             <select
               className="feed-date-select"
               value={dateRange}
               onChange={(e) => setDateRange(e.target.value)}
             >
-              <option value="7">Last 7d</option>
-              <option value="30">Last 30d</option>
-              <option value="90">Last 90d</option>
-              <option value="365">Last year</option>
-              <option value="all">All time</option>
+              <option value="1">Last 1 day</option>
+              <option value="3">Last 3 days</option>
+              <option value="7">Last 7 days</option>
             </select>
             <input
               className="feed-search"
@@ -625,9 +690,9 @@ export default function Feed() {
           <div className="feed-list" ref={scrollRef}>
             {items.length === 0 ? (
               <div className="feed-empty">
-                {debouncedSearch || dateRange !== "all"
+                {debouncedSearch.trim()
                   ? "No items match your filters."
-                  : "No items yet. Check back later."}
+                  : "No items in this time window."}
               </div>
             ) : (
               items.map((item) => renderItem(item))

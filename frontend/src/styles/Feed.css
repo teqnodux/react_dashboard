@@ -130,6 +130,13 @@
   align-items: center;
 }
 
+.feed-live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 8px;
+}
+
 .feed-date-select {
   font-family: var(--font-mono);
   font-size: 10px;
