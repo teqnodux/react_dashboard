@@ -1,0 +1,32 @@
+services:
+  react-dashboard-backend:
+    build:
+      context: ./backend
+    container_name: react_dashboard_backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    expose:
+      - "8000"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.react-dashboard-backend.rule=Host(`fast.arbintel.cloud`)"
+      - "traefik.http.routers.react-dashboard-backend.entrypoints=websecure"
+      - "traefik.http.routers.react-dashboard-backend.tls=true"
+      - "traefik.http.routers.react-dashboard-backend.tls.certresolver=letsencrypt"
+      - "traefik.http.services.react-dashboard-backend.loadbalancer.server.port=8000"
+
+  react-dashboard-frontend:
+    build:
+      context: ./frontend
+    container_name: react_dashboard_frontend
+    restart: unless-stopped
+    expose:
+      - "80"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.react-dashboard-frontend.rule=Host(`dashboard.arbintel.cloud`)"
+      - "traefik.http.routers.react-dashboard-frontend.entrypoints=websecure"
+      - "traefik.http.routers.react-dashboard-frontend.tls=true"
+      - "traefik.http.routers.react-dashboard-frontend.tls.certresolver=letsencrypt"
+      - "traefik.http.services.react-dashboard-frontend.loadbalancer.server.port=80"
