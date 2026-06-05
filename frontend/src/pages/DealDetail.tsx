@@ -5887,6 +5887,7 @@ export default function DealDetail() {
                   stakeholders={deal.docket_stakeholders}
                   conditions={deal.docket_conditions}
                   metadata={deal.docket_metadata}
+                  dealId={dealId}
                 />
               ) : (
                 <div className="content-panel">

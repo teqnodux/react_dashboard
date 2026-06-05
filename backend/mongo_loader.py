@@ -823,6 +823,95 @@ def load_mongo_feed(deal_id: str) -> dict:
     return {"items": items, "summary": {"total": len(items), "by_type": by_type}}
 
 
+def load_dockets_from_mongodb(deal_id: Optional[str] = None) -> list | dict:
+    """
+    Read docket data from the docket_dashboard collection.
+    deal_id=None  → list of all deal docket dicts (for /api/all-dockets)
+    deal_id=str   → single deal docket dict, or {} if not found
+    Tickers are joined from the deals collection.
+    """
+    client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
+    db = client[MONGODB_DB]
+
+    ticker_map: dict[str, dict] = {}
+    for doc in db["deals"].find({}, {"_id": 1, "target_ticker": 1, "acquirer_ticker": 1}):
+        ticker_map[str(doc["_id"])] = {
+            "target_ticker": doc.get("target_ticker") or "",
+            "acquirer_ticker": doc.get("acquirer_ticker") or "",
+        }
+
+    query = {"deal_id": deal_id} if deal_id else {}
+    cursor = db["docket_dashboard"].find(query)
+
+    def _serialize_entry(e: dict) -> dict:
+        return {
+            "entry_no": e.get("entry_no", 0),
+            "received_date": e.get("received_date", ""),
+            "title": e.get("title", ""),
+            "relevance_level": e.get("relevance_level", "medium"),
+            "filer_role": e.get("filer_role", ""),
+            "filer_name": e.get("filer_name", ""),
+            "position_on_deal": e.get("position_on_deal", ""),
+            "entry_summary": e.get("entry_summary", ""),
+            "key_arguments": e.get("key_arguments", []),
+            "key_excerpts": e.get("key_excerpts", []),
+            "cumulative_impact": e.get("cumulative_impact", ""),
+            "download_link": e.get("download_link", ""),
+            "opposition_type": e.get("opposition_type", ""),
+            "intervenor_type": e.get("intervenor_type", ""),
+            "relief_requested": e.get("relief_requested", ""),
+            "legal_regulatory_significance": e.get("legal_regulatory_significance", ""),
+            "proceeding_phase": e.get("proceeding_phase", ""),
+            "document_type": e.get("document_type", ""),
+            "deadline_date": e.get("deadline_date", ""),
+            "deadline_description": e.get("deadline_description", ""),
+        }
+
+    def _serialize_stakeholder(s: dict) -> dict:
+        return {"name": s.get("name", ""), "role": s.get("role", ""),
+                "filing_count": s.get("filing_count", 0), "position": s.get("position", ""),
+                "opposition_type": s.get("opposition_type", ""), "status": s.get("status", ""),
+                "intervenor_type": s.get("intervenor_type", "")}
+
+    def _serialize_condition(c: dict) -> dict:
+        return {"text": c.get("text", ""), "status": c.get("status", ""),
+                "source": c.get("source", ""), "category": c.get("category", ""),
+                "opposition_type": c.get("opposition_type", ""), "relief_type": c.get("relief_type", ""),
+                "asked_in": c.get("asked_in"), "resolved_in": c.get("resolved_in")}
+
+    def _build_deal_dict(doc: dict) -> dict:
+        did = doc.get("deal_id", "")
+        tickers = ticker_map.get(did, {})
+        entries = [_serialize_entry(e) for e in doc.get("docket_entries", [])]
+        stakeholders = [_serialize_stakeholder(s) for s in doc.get("docket_stakeholders", [])]
+        conditions = [_serialize_condition(c) for c in doc.get("docket_conditions", [])]
+        high = sum(1 for e in entries if e["relevance_level"] == "high")
+        oppose = sum(1 for e in entries if e["position_on_deal"] == "Oppose")
+        support = sum(1 for e in entries if e["position_on_deal"] == "Support")
+        dates = [e["received_date"] for e in entries if e.get("received_date")]
+        latest = max(dates) if dates else None
+        return {
+            "deal_id": did,
+            "deal_name": doc.get("deal_name", ""),
+            "target_ticker": tickers.get("target_ticker", ""),
+            "acquirer_ticker": tickers.get("acquirer_ticker", ""),
+            "metadata": doc.get("docket_metadata", {}),
+            "entries": entries, "stakeholders": stakeholders, "conditions": conditions,
+            "entry_count": len(entries), "high_relevance_count": high,
+            "opposition_count": oppose, "support_count": support, "latest_entry_date": latest,
+        }
+
+    if deal_id:
+        doc = next(cursor, None)
+        client.close()
+        return _build_deal_dict(doc) if doc else {}
+
+    results = [_build_deal_dict(doc) for doc in cursor]
+    client.close()
+    results.sort(key=lambda d: d.get("latest_entry_date") or "", reverse=True)
+    return results
+
+
 def load_proxy_filings_for_deal(deal_id: str, allowed_form_types: Optional[list[str]] = None) -> list[dict]:
     """
     Load proxy filings (for the Proxy tab) from `sec_filing_summary`.

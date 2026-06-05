@@ -1,97 +1,42 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useMemo } from 'react';
 import DashboardNav from '../components/DashboardNav';
-import '../styles/CrossDeal.css';
+import DocketView from '../components/DocketView';
 import api from '../services/api';
+import '../styles/CrossDeal.css';
 
-interface DocketCase {
+interface DocketDeal {
   deal_id: string;
   deal_name: string;
+  target_ticker: string;
+  acquirer_ticker: string;
+  metadata: {
+    docket_number?: string;
+    case_name?: string;
+    jurisdiction?: string;
+    status?: string;
+  };
+  entries: any[];
+  stakeholders: any[];
+  conditions: any[];
   entry_count: number;
-  docket_number?: string;
-  case_name?: string;
-  jurisdiction?: string;
-  status?: string;
-  latest_entry_date?: string;
-  high_relevance_count?: number;
-  opposition_count?: number;
-  support_count?: number;
-}
-
-interface DocketSummary {
-  total_entries: number;
-  total_deals_with_dockets: number;
-  high_relevance: number;
+  high_relevance_count: number;
   opposition_count: number;
   support_count: number;
-  entries_by_deal: Array<{
-    deal_id: string;
-    deal_name: string;
-    entry_count: number;
-  }>;
+  latest_entry_date?: string;
 }
 
 export default function AllDockets() {
-  const [docketCases, setDocketCases] = useState<DocketCase[]>([]);
-  const [summary, setSummary] = useState<DocketSummary | null>(null);
+  const [deals, setDeals] = useState<DocketDeal[]>([]);
   const [loading, setLoading] = useState(true);
-  const [followedDockets, setFollowedDockets] = useState<Set<string>>(new Set());
-  const [filter, setFilter] = useState<'all' | 'following'>('all');
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [activeDealGroup, setActiveDealGroup] = useState<string>('');
+  const [activeSubTab, setActiveSubTab] = useState<string>('');
 
-  // Load followed dockets from localStorage
-  useEffect(() => {
-    const stored = localStorage.getItem('followed_dockets');
-    if (stored) {
-      setFollowedDockets(new Set(JSON.parse(stored)));
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchDockets();
-  }, []);
+  useEffect(() => { fetchDockets(); }, []);
 
   const fetchDockets = async () => {
     try {
-      const { data } = await api.get(`/api/all-dockets`);
-
-      // Transform entries into docket cases
-      const casesMap = new Map<string, DocketCase>();
-
-      data.entries.forEach((entry: any) => {
-        if (!casesMap.has(entry.deal_id)) {
-          casesMap.set(entry.deal_id, {
-            deal_id: entry.deal_id,
-            deal_name: entry.deal_name,
-            entry_count: 0,
-            latest_entry_date: entry.received_date,
-            high_relevance_count: 0,
-            opposition_count: 0,
-            support_count: 0,
-          });
-        }
-
-        const docketCase = casesMap.get(entry.deal_id)!;
-        docketCase.entry_count++;
-
-        if (entry.relevance_level === 'high') {
-          docketCase.high_relevance_count = (docketCase.high_relevance_count || 0) + 1;
-        }
-        if (entry.position_on_deal === 'Oppose') {
-          docketCase.opposition_count = (docketCase.opposition_count || 0) + 1;
-        }
-        if (entry.position_on_deal === 'Support') {
-          docketCase.support_count = (docketCase.support_count || 0) + 1;
-        }
-
-        // Update latest date
-        if (new Date(entry.received_date) > new Date(docketCase.latest_entry_date || '1970-01-01')) {
-          docketCase.latest_entry_date = entry.received_date;
-        }
-      });
-
-      setDocketCases(Array.from(casesMap.values()));
-      setSummary(data.summary);
+      const { data } = await api.get('/api/all-dockets');
+      setDeals(data.deals || []);
     } catch (error) {
       console.error('Error fetching dockets:', error);
     } finally {
@@ -99,178 +44,102 @@ export default function AllDockets() {
     }
   };
 
-  const toggleFollow = (dealId: string) => {
-    const newFollowed = new Set(followedDockets);
-    if (newFollowed.has(dealId)) {
-      newFollowed.delete(dealId);
-    } else {
-      newFollowed.add(dealId);
+  const dealGroups = useMemo(() => {
+    const groups = new Map<string, DocketDeal[]>();
+    for (const deal of deals) {
+      const key = `${deal.target_ticker}/${deal.acquirer_ticker}`;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key)!.push(deal);
     }
-    setFollowedDockets(newFollowed);
-    localStorage.setItem('followed_dockets', JSON.stringify([...newFollowed]));
+    return groups;
+  }, [deals]);
+
+  useEffect(() => {
+    if (deals.length > 0 && !activeDealGroup) {
+      const firstKey = Array.from(dealGroups.keys())[0];
+      setActiveDealGroup(firstKey);
+      setActiveSubTab(dealGroups.get(firstKey)![0].deal_id);
+    }
+  }, [deals, dealGroups]);
+
+  const handleGroupClick = (groupKey: string) => {
+    setActiveDealGroup(groupKey);
+    const groupDeals = dealGroups.get(groupKey);
+    if (groupDeals && groupDeals.length > 0) setActiveSubTab(groupDeals[0].deal_id);
   };
 
-  // Filter docket cases
-  const filteredCases = docketCases.filter(docketCase => {
-    if (filter === 'following' && !followedDockets.has(docketCase.deal_id)) return false;
-    if (searchTerm && !docketCase.deal_name.toLowerCase().includes(searchTerm.toLowerCase())) return false;
-    return true;
-  });
-
-  // Sort by latest activity
-  const sortedCases = [...filteredCases].sort((a, b) => {
-    const dateA = a.latest_entry_date ? new Date(a.latest_entry_date).getTime() : 0;
-    const dateB = b.latest_entry_date ? new Date(b.latest_entry_date).getTime() : 0;
-    return dateB - dateA;
-  });
-
-  const formatDate = (dateStr: string | undefined): string => {
-    if (!dateStr) return '—';
-    const date = new Date(dateStr);
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-  };
+  const activeDeal = deals.find(d => d.deal_id === activeSubTab);
+  const activeGroupDeals = dealGroups.get(activeDealGroup) || [];
 
   return (
     <div className="dashboard">
       <DashboardNav />
-
       {loading && <div className="loading">Loading dockets...</div>}
-      {!loading && (<>
+      {!loading && (
+        <>
+          <div className="page-header">
+            <div className="header-content"><h1>Regulatory Dockets</h1></div>
+          </div>
 
+          <div style={{ display: 'flex', alignItems: 'flex-end', gap: '0', borderBottom: '2px solid #333', padding: '0 1rem' }}>
+            {Array.from(dealGroups.entries()).map(([groupKey, groupDeals]) => {
+              const isActive = activeDealGroup === groupKey;
+              const totalEntries = groupDeals.reduce((sum, d) => sum + d.entry_count, 0);
+              return (
+                <button key={groupKey} onClick={() => handleGroupClick(groupKey)} style={{
+                  padding: '0.6rem 1rem', background: isActive ? '#1a1a2e' : 'transparent',
+                  color: isActive ? '#fff' : '#888', border: 'none',
+                  borderBottom: isActive ? '2px solid #4a9eff' : '2px solid transparent',
+                  cursor: 'pointer', fontSize: '0.9rem', fontWeight: isActive ? 600 : 400,
+                  whiteSpace: 'nowrap', transition: 'all 0.15s ease', marginBottom: '-2px', letterSpacing: '0.02em',
+                }}>
+                  {groupKey}
+                  <span style={{ marginLeft: '0.4rem', fontSize: '0.7rem', color: isActive ? '#666' : '#555' }}>{totalEntries}</span>
+                </button>
+              );
+            })}
+          </div>
 
-      <div className="page-header">
-        <div className="header-content">
-          <h1>Dockets We're Following</h1>
-          <p className="page-subtitle">Track regulatory dockets and court proceedings across deals</p>
-        </div>
-      </div>
+          {activeGroupDeals.length > 1 && (
+            <div style={{ display: 'flex', gap: '0', borderBottom: '1px solid #2a2a3a', padding: '0 1rem', background: '#111122' }}>
+              {activeGroupDeals.map((deal) => {
+                const isActive = activeSubTab === deal.deal_id;
+                const label = deal.metadata.jurisdiction || deal.metadata.docket_number || deal.deal_id;
+                return (
+                  <button key={deal.deal_id} onClick={() => setActiveSubTab(deal.deal_id)} style={{
+                    padding: '0.5rem 0.9rem', background: 'transparent',
+                    color: isActive ? '#4a9eff' : '#777', border: 'none',
+                    borderBottom: isActive ? '2px solid #4a9eff' : '2px solid transparent',
+                    cursor: 'pointer', fontSize: '0.78rem', fontWeight: isActive ? 600 : 400,
+                    whiteSpace: 'nowrap', transition: 'all 0.15s ease', marginBottom: '-1px',
+                  }}>
+                    {label}
+                    <span style={{ marginLeft: '0.3rem', fontSize: '0.65rem', color: '#555' }}>({deal.entry_count})</span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
 
-      {/* Summary Cards */}
-      {summary && (
-        <div className="summary-cards">
-          <div className="summary-card">
-            <div className="card-label">Total Dockets</div>
-            <div className="card-value">{summary.total_deals_with_dockets}</div>
-          </div>
-          <div className="summary-card">
-            <div className="card-label">Following</div>
-            <div className="card-value">{followedDockets.size}</div>
-          </div>
-          <div className="summary-card">
-            <div className="card-label">Total Entries</div>
-            <div className="card-value">{summary.total_entries}</div>
-          </div>
-          <div className="summary-card highlight-red">
-            <div className="card-label">High Relevance</div>
-            <div className="card-value">{summary.high_relevance}</div>
-          </div>
-          <div className="summary-card highlight-red">
-            <div className="card-label">Opposition Filings</div>
-            <div className="card-value">{summary.opposition_count}</div>
-          </div>
-        </div>
+          {activeDeal && (
+            <div className="docket-tab-content">
+              <DocketView
+                entries={activeDeal.entries}
+                stakeholders={activeDeal.stakeholders}
+                conditions={activeDeal.conditions}
+                metadata={activeDeal.metadata}
+                dealId={activeDeal.deal_id}
+              />
+            </div>
+          )}
+
+          {deals.length === 0 && (
+            <div className="no-entries" style={{ textAlign: 'center', padding: '3rem' }}>
+              No dockets found. Run docket extraction to populate this page.
+            </div>
+          )}
+        </>
       )}
-
-      {/* Filters */}
-      <div className="filters-section">
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Search dockets..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="search-input"
-          />
-        </div>
-
-        <div className="filter-groups">
-          <div className="filter-group">
-            <button
-              className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
-              onClick={() => setFilter('all')}
-            >
-              All Dockets
-            </button>
-            <button
-              className={`filter-btn ${filter === 'following' ? 'active' : ''}`}
-              onClick={() => setFilter('following')}
-            >
-              Following ({followedDockets.size})
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Docket Cases List */}
-      <div className="docket-cases-container">
-        <div className="entries-count">{sortedCases.length} docket{sortedCases.length !== 1 ? 's' : ''}</div>
-        <div className="docket-cases-list">
-          {sortedCases.map((docketCase) => {
-            const isFollowing = followedDockets.has(docketCase.deal_id);
-            return (
-              <div key={docketCase.deal_id} className="docket-case-card">
-                <div className="case-header">
-                  <div className="case-title-row">
-                    <Link to={`/deal/${docketCase.deal_id}`} className="case-title">
-                      {docketCase.deal_name}
-                    </Link>
-                    <button
-                      className={`watch-btn ${isFollowing ? 'watching' : ''}`}
-                      onClick={() => toggleFollow(docketCase.deal_id)}
-                      title={isFollowing ? 'Unfollow this docket' : 'Follow this docket'}
-                    >
-                      {isFollowing ? '★' : '☆'}
-                    </button>
-                  </div>
-                  {docketCase.docket_number && (
-                    <div className="case-meta">
-                      <span className="docket-number">{docketCase.docket_number}</span>
-                    </div>
-                  )}
-                </div>
-
-                <div className="case-stats">
-                  <div className="stat-item">
-                    <span className="stat-label">Total Entries</span>
-                    <span className="stat-value">{docketCase.entry_count}</span>
-                  </div>
-                  <div className="stat-item">
-                    <span className="stat-label">High Relevance</span>
-                    <span className="stat-value highlight-red">{docketCase.high_relevance_count || 0}</span>
-                  </div>
-                  <div className="stat-item">
-                    <span className="stat-label">Opposition</span>
-                    <span className="stat-value highlight-red">{docketCase.opposition_count || 0}</span>
-                  </div>
-                  <div className="stat-item">
-                    <span className="stat-label">Support</span>
-                    <span className="stat-value highlight-green">{docketCase.support_count || 0}</span>
-                  </div>
-                  <div className="stat-item">
-                    <span className="stat-label">Latest Activity</span>
-                    <span className="stat-value">{formatDate(docketCase.latest_entry_date)}</span>
-                  </div>
-                </div>
-
-                <div className="case-actions">
-                  <Link to={`/deal/${docketCase.deal_id}`} className="view-docket-btn">
-                    View Full Docket →
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {sortedCases.length === 0 && (
-          <div className="no-entries">
-            {filter === 'following'
-              ? "You're not following any dockets yet. Click the ☆ to follow a docket."
-              : 'No dockets found'}
-          </div>
-        )}
-      </div>
-      </>)}
     </div>
   );
 }

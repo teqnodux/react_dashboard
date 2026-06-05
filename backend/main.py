@@ -39,11 +39,12 @@ from generate_regulatory import (
 )
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Body, Request, Query, APIRouter
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, Response
 from datetime import date, timedelta, datetime
-from typing import Optional, Dict
+from typing import Optional, Dict, List
 
 from auth import (
     get_users_collection,
@@ -928,57 +929,52 @@ def get_deal_detail(deal_id: str):
     ]
 
     # Add docket entries
-    detail["docket_entries"] = [
-        {
-            "entry_no": entry.entry_no,
-            "received_date": entry.received_date.isoformat(),
-            "title": entry.title,
-            "relevance_level": entry.relevance_level,
-            "filer_role": entry.filer_role,
-            "filer_name": entry.filer_name,
-            "position_on_deal": entry.position_on_deal,
-            "entry_summary": entry.entry_summary,
-            "key_arguments": entry.key_arguments,
-            "cumulative_impact": entry.cumulative_impact,
-            "download_link": entry.download_link,
-            "opposition_type": entry.opposition_type,
-            "intervenor_type": entry.intervenor_type,
-            "key_excerpts": entry.key_excerpts
-        }
-        for entry in deal.docket_entries
-    ]
-
-    # Add docket stakeholders
-    detail["docket_stakeholders"] = [
-        {
-            "name": sh.name,
-            "role": sh.role,
-            "filing_count": sh.filing_count,
-            "position": sh.position,
-            "opposition_type": sh.opposition_type,
-            "status": sh.status,
-            "intervenor_type": sh.intervenor_type
-        }
-        for sh in deal.docket_stakeholders
-    ]
-
-    # Add docket conditions
-    detail["docket_conditions"] = [
-        {
-            "text": cond.text,
-            "status": cond.status,
-            "source": cond.source,
-            "category": cond.category,
-            "opposition_type": cond.opposition_type,
-            "relief_type": cond.relief_type,
-            "asked_in": cond.asked_in,
-            "resolved_in": cond.resolved_in,
-        }
-        for cond in deal.docket_conditions
-    ]
-
-    # Add docket metadata
-    detail["docket_metadata"] = deal.docket_metadata
+    if _DATA_SOURCE == "mongodb":
+        from mongo_loader import load_dockets_from_mongodb
+        _docket = load_dockets_from_mongodb(deal_id=deal_id)
+        detail["docket_entries"] = _docket.get("entries", [])
+        detail["docket_stakeholders"] = _docket.get("stakeholders", [])
+        detail["docket_conditions"] = _docket.get("conditions", [])
+        detail["docket_metadata"] = _docket.get("metadata", {})
+    else:
+        detail["docket_entries"] = [
+            {
+                "entry_no": entry.entry_no,
+                "received_date": entry.received_date.isoformat() if entry.received_date else "",
+                "title": entry.title,
+                "relevance_level": entry.relevance_level,
+                "filer_role": entry.filer_role,
+                "filer_name": entry.filer_name,
+                "position_on_deal": entry.position_on_deal,
+                "entry_summary": entry.entry_summary,
+                "key_arguments": entry.key_arguments,
+                "key_excerpts": entry.key_excerpts,
+                "cumulative_impact": entry.cumulative_impact,
+                "download_link": entry.download_link,
+                "opposition_type": entry.opposition_type,
+                "intervenor_type": entry.intervenor_type,
+                "relief_requested": entry.relief_requested,
+                "legal_regulatory_significance": entry.legal_regulatory_significance,
+                "proceeding_phase": entry.proceeding_phase,
+                "document_type": entry.document_type,
+                "deadline_date": entry.deadline_date,
+                "deadline_description": entry.deadline_description,
+            }
+            for entry in deal.docket_entries
+        ]
+        detail["docket_stakeholders"] = [
+            {"name": sh.name, "role": sh.role, "filing_count": sh.filing_count,
+             "position": sh.position, "opposition_type": sh.opposition_type,
+             "status": sh.status, "intervenor_type": sh.intervenor_type}
+            for sh in deal.docket_stakeholders
+        ]
+        detail["docket_conditions"] = [
+            {"text": cond.text, "status": cond.status, "source": cond.source,
+             "category": cond.category, "opposition_type": cond.opposition_type,
+             "relief_type": cond.relief_type, "asked_in": cond.asked_in, "resolved_in": cond.resolved_in}
+            for cond in deal.docket_conditions
+        ]
+        detail["docket_metadata"] = deal.docket_metadata
 
     # Add SEC filings (legacy scraped data)
     detail["sec_filings"] = [
@@ -2222,17 +2218,28 @@ def generate_deal_timeline_from_text(deal_id: str, body: TimelineTextRequest):
 
 @app.get("/api/all-dockets")
 def get_all_dockets():
-    """Get all docket entries across all deals"""
-    deals = get_deals()
+    """Get all docket data grouped by deal, with full entries/stakeholders/conditions per deal."""
 
-    all_entries = []
+    if _DATA_SOURCE == "mongodb":
+        from mongo_loader import load_dockets_from_mongodb
+        docket_deals = load_dockets_from_mongodb()
+        summary = {
+            "total_entries": sum(d["entry_count"] for d in docket_deals),
+            "total_deals_with_dockets": len(docket_deals),
+            "high_relevance": sum(d["high_relevance_count"] for d in docket_deals),
+            "opposition_count": sum(d["opposition_count"] for d in docket_deals),
+            "support_count": sum(d["support_count"] for d in docket_deals),
+        }
+        return {"deals": docket_deals, "summary": summary}
+
+    deals = get_deals()
+    docket_deals = []
     summary = {
         "total_entries": 0,
         "total_deals_with_dockets": 0,
         "high_relevance": 0,
         "opposition_count": 0,
         "support_count": 0,
-        "entries_by_deal": []
     }
 
     for deal in deals:
@@ -2240,12 +2247,15 @@ def get_all_dockets():
             continue
 
         summary["total_deals_with_dockets"] += 1
-        deal_entries = []
+        entries = []
+        high_count = oppose_count = support_count = 0
+        latest_date = None
 
         for entry in deal.docket_entries:
+            rd = entry.received_date.isoformat() if entry.received_date else ""
             entry_dict = {
                 "entry_no": entry.entry_no,
-                "received_date": entry.received_date.isoformat(),
+                "received_date": rd,
                 "title": entry.title,
                 "relevance_level": entry.relevance_level,
                 "filer_role": entry.filer_role,
@@ -2254,34 +2264,59 @@ def get_all_dockets():
                 "entry_summary": entry.entry_summary,
                 "key_arguments": entry.key_arguments,
                 "cumulative_impact": entry.cumulative_impact,
-                "deal_id": deal.id,
-                "deal_name": f"{deal.target} / {deal.acquirer}"
+                "download_link": entry.download_link,
+                "opposition_type": entry.opposition_type,
+                "intervenor_type": entry.intervenor_type,
+                "key_excerpts": entry.key_excerpts,
+                "relief_requested": getattr(entry, "relief_requested", ""),
+                "legal_regulatory_significance": getattr(entry, "legal_regulatory_significance", ""),
+                "proceeding_phase": getattr(entry, "proceeding_phase", ""),
+                "document_type": getattr(entry, "document_type", ""),
+                "deadline_date": getattr(entry, "deadline_date", ""),
+                "deadline_description": getattr(entry, "deadline_description", ""),
             }
-            all_entries.append(entry_dict)
-            deal_entries.append(entry_dict)
+            entries.append(entry_dict)
+            if entry.relevance_level == "high": high_count += 1
+            if entry.position_on_deal == "Oppose": oppose_count += 1
+            elif entry.position_on_deal == "Support": support_count += 1
+            if rd and (latest_date is None or rd > latest_date): latest_date = rd
 
-            # Update summary stats
-            summary["total_entries"] += 1
-            if entry.relevance_level == "high":
-                summary["high_relevance"] += 1
-            if entry.position_on_deal == "Oppose":
-                summary["opposition_count"] += 1
-            elif entry.position_on_deal == "Support":
-                summary["support_count"] += 1
+        summary["total_entries"] += len(entries)
+        summary["high_relevance"] += high_count
+        summary["opposition_count"] += oppose_count
+        summary["support_count"] += support_count
 
-        summary["entries_by_deal"].append({
+        stakeholders = [{"name": sh.name, "role": sh.role, "filing_count": sh.filing_count,
+                         "position": sh.position, "opposition_type": sh.opposition_type,
+                         "status": sh.status, "intervenor_type": getattr(sh, "intervenor_type", "")}
+                        for sh in deal.docket_stakeholders]
+
+        conditions = []
+        for c in deal.docket_conditions:
+            asked = {"entry_no": c.asked_in.entry_no, "date": c.asked_in.date, "filer": c.asked_in.filer} if c.asked_in else None
+            resolved = {"entry_no": c.resolved_in.entry_no, "date": c.resolved_in.date, "filer": c.resolved_in.filer} if c.resolved_in else None
+            conditions.append({"text": c.text, "status": c.status, "source": c.source,
+                                "category": getattr(c, "category", ""), "opposition_type": getattr(c, "opposition_type", ""),
+                                "relief_type": getattr(c, "relief_type", ""), "asked_in": asked, "resolved_in": resolved})
+
+        docket_deals.append({
             "deal_id": deal.id,
             "deal_name": f"{deal.target} / {deal.acquirer}",
-            "entry_count": len(deal_entries)
+            "target_ticker": deal.target_ticker,
+            "acquirer_ticker": deal.acquirer_ticker,
+            "metadata": deal.docket_metadata or {},
+            "entries": entries,
+            "stakeholders": stakeholders,
+            "conditions": conditions,
+            "entry_count": len(entries),
+            "high_relevance_count": high_count,
+            "opposition_count": oppose_count,
+            "support_count": support_count,
+            "latest_entry_date": latest_date,
         })
 
-    # Sort entries by date (most recent first)
-    all_entries.sort(key=lambda x: x["received_date"], reverse=True)
-
-    return {
-        "entries": all_entries,
-        "summary": summary
-    }
+    docket_deals.sort(key=lambda d: d.get("latest_entry_date") or "", reverse=True)
+    return {"deals": docket_deals, "summary": summary}
 
 
 @app.get("/api/all-regulatory")
@@ -5223,6 +5258,53 @@ def get_sec_feed(page: int = 1, page_size: int = 20):
         "page_size": page_size,
         "has_next": skip + page_size < total,
     }
+
+
+# ── Docket Query ──────────────────────────────────────────────────────────────
+
+from docket_query_engine import get_engine, get_engine_for_deal
+
+class DocketQueryRequest(BaseModel):
+    question: str
+    history: List[dict] = []
+    model: str = "sonnet"
+    focus_entry: Optional[str] = None
+
+
+def _get_query_engine(deal_id: str):
+    """Route to MongoDB or file-based engine depending on DATA_SOURCE."""
+    if _DATA_SOURCE == "mongodb":
+        from config import MONGODB_URI, MONGODB_DB
+        from pymongo import MongoClient
+        client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
+        db = client[MONGODB_DB]
+        engine = get_engine_for_deal(deal_id, db=db)
+        client.close()
+        return engine
+    return get_engine_for_deal(deal_id)
+
+
+@app.get("/api/deals/{deal_id}/docket-query/status")
+def docket_query_status(deal_id: str):
+    """Check if the query engine is available for a deal."""
+    engine = _get_query_engine(deal_id)
+    if not engine:
+        return {"ready": False, "entry_count": 0}
+    return {"ready": True, "entry_count": len(engine.enriched_entries)}
+
+
+@app.post("/api/deals/{deal_id}/docket-query")
+async def docket_query(deal_id: str, req: DocketQueryRequest):
+    """Stream a docket query response via SSE."""
+    engine = _get_query_engine(deal_id)
+    if not engine:
+        raise HTTPException(404, f"No query data configured for deal {deal_id}")
+
+    async def generate():
+        async for chunk in engine.query_stream(req.question, req.history, req.model, req.focus_entry):
+            yield f"data: {json.dumps(chunk)}\n\n"
+
+    return StreamingResponse(generate(), media_type="text/event-stream")
 
 
 @app.get("/api/health")

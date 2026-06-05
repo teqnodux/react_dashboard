@@ -254,7 +254,13 @@ except ImportError as e:
                             download_link=entry.get("download_link", ""),
                             opposition_type=entry.get("opposition_type", ""),
                             intervenor_type=entry.get("intervenor_type", ""),
-                            key_excerpts=entry.get("key_excerpts", [])
+                            key_excerpts=entry.get("key_excerpts", []),
+                            relief_requested=entry.get("relief_requested", ""),
+                            legal_regulatory_significance=entry.get("legal_regulatory_significance", ""),
+                            proceeding_phase=entry.get("proceeding_phase", ""),
+                            document_type=entry.get("document_type", ""),
+                            deadline_date=entry.get("deadline_date", ""),
+                            deadline_description=entry.get("deadline_description", ""),
                         ))
 
                     # Load docket stakeholders (handle both key formats)

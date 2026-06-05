@@ -47,7 +47,8 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
     navTabs: [
       // '/tearsheet',
       "/pipeline",
-      "/feed"
+      "/feed",
+      "/all-dockets"
     ],
 
     dealDetailTabs: [
@@ -64,7 +65,7 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
       // 'reg-monitor',
       // 'milestones',
       "termination",
-      // 'docket',
+      "docket",
       // 'reddit',
       // 'feed',        // Feed
       "feed-new", // Feed (New)
@@ -105,7 +106,8 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
     navTabs: [
       // '/tearsheet',
       "/pipeline",
-      "/feed"
+      "/feed",
+      "/all-dockets"
     ],
 
     dealDetailTabs: [
@@ -122,7 +124,7 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
       // 'reg-monitor',
       // 'milestones',
       "termination",
-      // 'docket',
+      "docket",
       // 'reddit',
       // 'feed',        // Feed
       "feed-new", // Feed (New)
@@ -138,7 +140,8 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
       "69b15c2254958e923c2cb92a",
       "69301375c0aa46c328847932",
       "6981ce6ab995ffbb7cb5c582",
-      "69a5884454958e923ceb9115"
+      "69a5884454958e923ceb9115",
+      "6981ce69b995ffbb7cb5c568"
     ],
     showSummaryStats: false,
     showDealMetrics: false,

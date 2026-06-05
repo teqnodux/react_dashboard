@@ -133,6 +133,12 @@ class DocketEntry:
     opposition_type: str = ""  # outright, conditional
     intervenor_type: str = ""  # Special Interest, Government, etc.
     key_excerpts: list[str] = field(default_factory=list)
+    relief_requested: str = ""
+    legal_regulatory_significance: str = ""
+    proceeding_phase: str = ""
+    document_type: str = ""
+    deadline_date: str = ""
+    deadline_description: str = ""
 
 
 @dataclass
