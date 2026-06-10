@@ -218,7 +218,8 @@ const formatDate = (d?: string | null) => {
   return new Date(d).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
-    year: "numeric"
+    year: "numeric",
+    timeZone: "America/New_York",
   });
 };
 
@@ -294,12 +295,12 @@ export default function Feed() {
   const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState("");
   const [hasNext, setHasNext] = useState(false);
-  const [dateRange, setDateRange] = useState<string>("1");
+  const [dateRange, setDateRange] = useState<string>("7");
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
   const nextCursorRef = useRef<string | null>(null);
-  const dateRangeRef = useRef<string>("1");
+  const dateRangeRef = useRef<string>("7");
   const debouncedSearchRef = useRef<string>("");
   const connected = useFeedSocketConnected();
   const { allowedDealIds } = usePermissions();
@@ -377,7 +378,6 @@ export default function Feed() {
 
   const selectTab = (key: TabKey) => {
     setActiveTab(key);
-    setDateRange("1");
     setSearch("");
     setDebouncedSearch("");
   };
