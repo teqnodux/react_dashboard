@@ -19,14 +19,14 @@ const CATEGORY_ORDER: DealCategory[] = [
 ];
 
 export default function PipelineTable() {
-  const { allowedDealIds, showSummaryStats, canSeeColumn } = usePermissions();
+  const { allowedDealIds, showSummaryStats, showWatchlist, canSeeColumn } = usePermissions();
 
   const ALL_COLUMNS = ['watch','target','acquirer','deal-type','consideration','current','offer','gross-spread','net-spread','close-date','status','milestone'] as const;
   const visibleColCount = ALL_COLUMNS.filter(c => canSeeColumn(c)).length;
   const [dealsData, setDealsData] = useState<DealsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [filter, setFilter] = useState<'all' | 'watchlist'>('watchlist');
+  const [filter, setFilter] = useState<'all' | 'watchlist'>(showWatchlist ? 'watchlist' : 'all');
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedSearch, setDebouncedSearch] = useState('');
   const [watchlist, setWatchlist] = useState<Set<string>>(new Set());
@@ -265,23 +265,25 @@ export default function PipelineTable() {
         </div>
       )}
 
-      {/* Filter Bar — Watchlist / All Deals toggle (matches Tearsheet) */}
-      <div className="filter-bar" style={{padding: '0 var(--space-lg)', marginBottom: 'var(--space-sm)'}}>
-        <div className="filter-tabs">
-          <button
-            className={`filter-btn ${filter === 'watchlist' ? 'active' : ''}`}
-            onClick={() => setFilter('watchlist')}
-          >
-            Watchlist ({watchlist.size})
-          </button>
-          <button
-            className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
-            onClick={() => setFilter('all')}
-          >
-            All Deals ({dealsData?.pagination?.total_deals || 0})
-          </button>
+      {/* Filter Bar — Watchlist / All Deals toggle (hidden for admin/user) */}
+      {showWatchlist && (
+        <div className="filter-bar" style={{padding: '0 var(--space-lg)', marginBottom: 'var(--space-sm)'}}>
+          <div className="filter-tabs">
+            <button
+              className={`filter-btn ${filter === 'watchlist' ? 'active' : ''}`}
+              onClick={() => setFilter('watchlist')}
+            >
+              Watchlist ({watchlist.size})
+            </button>
+            <button
+              className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
+              onClick={() => setFilter('all')}
+            >
+              All Deals ({dealsData?.pagination?.total_deals || 0})
+            </button>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Filters */}
       <div className="filters-section">

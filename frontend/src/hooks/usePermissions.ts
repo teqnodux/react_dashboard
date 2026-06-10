@@ -37,6 +37,9 @@ export function usePermissions() {
   /** Whether to show the header metrics strip (Current, Offer, Gross, Net, Ann.) on Deal Detail */
   const showDealMetrics = config.showDealMetrics;
 
+  /** Whether to show the Watchlist toggle and watch-star column on the List View page */
+  const showWatchlist = config.showWatchlist;
+
   /** Returns true if the List View column with `colId` is visible for the current role */
   const canSeeColumn = (colId: string): boolean => {
     if (config.visibleColumns === 'all') return true;
@@ -52,6 +55,7 @@ export function usePermissions() {
     allowedDealIds,
     showSummaryStats,
     showDealMetrics,
+    showWatchlist,
     canSeeColumn,
   };
 }

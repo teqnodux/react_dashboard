@@ -3536,8 +3536,8 @@ def get_proxy_analysis_parsed(deal_id: str, proxy_id: str):
         # the important structure in paragraphs/headings.
         return "\n".join([p.text for p in doc.paragraphs if p.text is not None])
 
-    client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
-    db = client[MONGODB_DB]
+    from mongo_loader import get_db as _get_db
+    db = _get_db()
 
     try:
         logger.info(
@@ -3671,7 +3671,7 @@ def get_proxy_analysis_parsed(deal_id: str, proxy_id: str):
 
         return parsed
     finally:
-        client.close()
+        pass  # shared client — do not close
 
 
 @app.post("/api/deals/{deal_id}/proxy-analysis/upload")
@@ -3705,13 +3705,12 @@ def _load_tenk_from_mongodb(deal_id: str) -> list:
     from pymongo import MongoClient
     from config import MONGODB_URI, MONGODB_DB
 
-    client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
-    db = client[MONGODB_DB]
+    from mongo_loader import get_db as _get_db
+    db = _get_db()
 
     docs = list(db["sec_filing_summary"].find(
         {"deal_id": deal_id, "ten_k_ten_q": {"$ne": None, "$exists": True}}
     ))
-    client.close()
 
     if not docs:
         return []
@@ -3889,8 +3888,8 @@ def get_tenk_analysis(deal_id: str):
             return str(v["$date"])
         return str(v)
 
-    client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
-    db = client[MONGODB_DB]
+    from mongo_loader import get_db as _get_db
+    db = _get_db()
 
     try:
         # Fetch deal data for ticker/company
@@ -3944,7 +3943,7 @@ def get_tenk_analysis(deal_id: str):
         return {"filings": filings, "total": len(filings)}
 
     finally:
-        client.close()
+        pass  # shared client — do not close
 
 
 @app.get("/api/deals/{deal_id}/tenk-analysis/parsed/{record_id}")
@@ -4003,8 +4002,8 @@ def get_tenk_analysis_parsed(deal_id: str, record_id: str):
 
         return "\n".join(lines)
 
-    client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
-    db = client[MONGODB_DB]
+    from mongo_loader import get_db as _get_db
+    db = _get_db()
 
     try:
         logger.info(
@@ -4175,7 +4174,7 @@ def get_tenk_analysis_parsed(deal_id: str, record_id: str):
         return response
 
     finally:
-        client.close()
+        pass  # shared client — do not close
 
 
 @app.get("/api/deals/{deal_id}/dma-extract")
@@ -5010,8 +5009,8 @@ def get_dma_summary(deal_id: str):
     from docx_parser import parse_dma_summary_docx
 
     try:
-        client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
-        db = client[MONGODB_DB]
+        from mongo_loader import get_db as _get_db
+        db = _get_db()
 
         try:
             oid = ObjectId(deal_id)
@@ -5019,7 +5018,6 @@ def get_dma_summary(deal_id: str):
             raise HTTPException(status_code=400, detail="Invalid deal ID")
 
         summary_doc = db["deal_dma_summary"].find_one({"deal_id": oid})
-        client.close()
 
         if not summary_doc:
             raise HTTPException(
@@ -5059,11 +5057,10 @@ def get_mae_analysis(deal_id: str):
     except Exception:
         raise HTTPException(status_code=400, detail="Invalid deal ID")
 
-    client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
-    db = client[MONGODB_DB]
+    from mongo_loader import get_db as _get_db
+    db = _get_db()
     # deal_id is stored as a plain string in mae_analyses (not ObjectId)
     doc = db["mae_analyses"].find_one({"deal_id": deal_id})
-    client.close()
 
     if not doc:
         raise HTTPException(
@@ -5158,8 +5155,8 @@ def get_foreign_filings(deal_id: str):
         ("uk_cma_cases",      "CMA",                 "United Kingdom"),
     ]
 
-    client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
-    db = client["Deal_DB"]
+    from mongo_loader import get_db as _get_db
+    db = _get_db()
 
     result = []
     for col_name, label, country in FOREIGN_COLLECTIONS:
@@ -5176,7 +5173,6 @@ def get_foreign_filings(deal_id: str):
         except Exception as e:
             print(f"Foreign filings: error querying {col_name}: {e}")
 
-    client.close()
     return {"filings": result}
 
 

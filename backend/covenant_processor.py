@@ -42,17 +42,14 @@ def get_covenant_html_from_mongo(deal_id: str) -> str | None:
     The dashboard_html field contains an S3 URL — fetches it server-side and returns HTML string.
     """
     try:
-        from pymongo import MongoClient
-        from config import MONGODB_URI, MONGODB_DB
+        from mongo_loader import get_db
         import requests
 
-        client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
-        db = client[MONGODB_DB]
+        db = get_db()
         doc = db["covenant_analysis"].find_one(
             {"deal_id": deal_id},
             sort=[("created_at", -1)],
         )
-        client.close()
 
         if not doc:
             print(f"[covenant_processor] No covenant_analysis doc for deal_id={deal_id}")

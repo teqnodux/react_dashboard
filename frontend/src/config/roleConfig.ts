@@ -23,6 +23,8 @@ export interface RolePermissions {
   showSummaryStats: boolean;
   /** Whether to show the header metrics strip (Current, Offer, Gross, Net, Ann.) on the Deal Detail page */
   showDealMetrics: boolean;
+  /** Whether to show the Watchlist toggle and watch-star column on the List View page */
+  showWatchlist: boolean;
   /**
    * Which List View columns are visible.
    * IDs: 'watch' | 'target' | 'acquirer' | 'current' | 'offer' |
@@ -39,6 +41,7 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
     allowedDealIds: "all",
     showSummaryStats: true,
     showDealMetrics: true,
+    showWatchlist: true,
     visibleColumns: "all"
   },
 
@@ -85,6 +88,7 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
     ],
     showSummaryStats: false,
     showDealMetrics: false,
+    showWatchlist: false,
     visibleColumns: [
       // 'watch',
       "target",
@@ -145,6 +149,7 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
     ],
     showSummaryStats: false,
     showDealMetrics: false,
+    showWatchlist: false,
     visibleColumns: [
       // 'watch',
       "target",

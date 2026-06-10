@@ -35,15 +35,12 @@ def get_dma_extract(deal_id: str):
 def _get_dma_extract_from_mongo(deal_id: str):
     """Fetch the most recent fo_dma_extraction record for deal_id."""
     try:
-        from pymongo import MongoClient
-        from config import MONGODB_URI, MONGODB_DB
-        client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
-        db = client[MONGODB_DB]
+        from mongo_loader import get_db
+        db = get_db()
         doc = db["fo_dma_extraction"].find_one(
             {"deal_id": deal_id},
             sort=[("created_at", -1)],
         )
-        client.close()
         if not doc:
             return None
         return {
