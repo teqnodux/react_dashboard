@@ -797,6 +797,21 @@ export default function DealDetail() {
       .catch(() => setDmaSummaryLoading(false));
   }, [activeTab, dealId]);
 
+  // Auto-expand all DMA sections whenever view mode toggles or sections data arrives
+  useEffect(() => {
+    if (activeTab !== "dma") return;
+    const sections: any[] =
+      dmaSummary?.concise_sections && dmaSummary?.fulsome_sections
+        ? dmaViewMode === "concise" ? dmaSummary.concise_sections : dmaSummary.fulsome_sections
+        : deal?.concise_sections && deal?.fulsome_sections
+          ? dmaViewMode === "concise" ? deal.concise_sections : deal.fulsome_sections
+          : (deal as any)?.dma_sections || [];
+    if (!sections?.length) return;
+    const ids = new Set<string>();
+    sections.forEach((_, idx) => ids.add(`section-${idx}`));
+    setExpandedSections(ids);
+  }, [dmaViewMode, activeTab, dmaSummary, deal]);
+
   // Document sources: fetch when timeline tab opens
   const fetchDocSources = () => {
     if (!dealId) return;
