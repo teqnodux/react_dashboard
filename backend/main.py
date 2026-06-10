@@ -997,12 +997,9 @@ def get_deal_detail(deal_id: str):
 
     if _DATA_SOURCE == "mongodb":
         try:
-            from config import MONGODB_URI, MONGODB_DB
-            from pymongo import MongoClient
             from bson import ObjectId
-
-            _client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
-            _db = _client[MONGODB_DB]
+            from mongo_loader import get_db as _get_mongo_db
+            _db = _get_mongo_db()
 
             # Fetch CIK fields from deals collection to determine target vs acquirer role
             try:
@@ -1018,7 +1015,6 @@ def get_deal_detail(deal_id: str):
             # Fetch all sec_filing_summary records for this deal
             sec_docs = list(
                 _db["sec_filing_summary"].find({"deal_id": deal_id}))
-            _client.close()
 
             seen_urls = set()
             for doc in sec_docs:
@@ -5274,13 +5270,8 @@ class DocketQueryRequest(BaseModel):
 def _get_query_engine(deal_id: str):
     """Route to MongoDB or file-based engine depending on DATA_SOURCE."""
     if _DATA_SOURCE == "mongodb":
-        from config import MONGODB_URI, MONGODB_DB
-        from pymongo import MongoClient
-        client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
-        db = client[MONGODB_DB]
-        engine = get_engine_for_deal(deal_id, db=db)
-        client.close()
-        return engine
+        from mongo_loader import get_db as _get_mongo_db
+        return get_engine_for_deal(deal_id, db=_get_mongo_db())
     return get_engine_for_deal(deal_id)
 
 

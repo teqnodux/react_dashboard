@@ -17,6 +17,19 @@ from config import MONGODB_URI, MONGODB_DB
 from db import get_feed_items_col
 from models import Deal, DealCategory
 
+# ── Persistent MongoDB client (one connection pool, reused across all requests) ──
+_mongo_client: Optional[MongoClient] = None
+
+def get_db():
+    """Return a shared MongoClient database handle.
+    pymongo is thread-safe and manages its own connection pool — calling
+    MongoClient() per request is the main source of latency on Atlas.
+    """
+    global _mongo_client
+    if _mongo_client is None:
+        _mongo_client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
+    return _mongo_client[MONGODB_DB]
+
 try:
     import yfinance as yf
     YFINANCE_AVAILABLE = True
@@ -468,8 +481,7 @@ def load_deals_from_mongodb() -> list:
     special_div, spy_at_announce) default to 0.0 — populated from DB
     when available.
     """
-    client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
-    db = client[MONGODB_DB]
+    db = get_db()
 
     # Pre-load schema_results keyed by deal_id string
     schema_map: dict[str, dict] = {}
@@ -558,7 +570,6 @@ def load_deals_from_mongodb() -> list:
         )
         result.append(deal)
 
-    client.close()
     return result
 
 
@@ -570,8 +581,7 @@ def load_deals_page_from_mongodb(skip: int = 0, limit: int = 20, search: str = "
     Optional allowed_ids restricts results to a specific set of deal ID strings.
     """
     from bson import ObjectId
-    client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
-    db = client[MONGODB_DB]
+    db = get_db()
 
     query = {}
     if allowed_ids is not None:
@@ -694,7 +704,6 @@ def load_deals_page_from_mongodb(skip: int = 0, limit: int = 20, search: str = "
         )
         result.append(deal)
 
-    client.close()
     return result, total_count
 
 
@@ -705,40 +714,33 @@ def load_single_deal_from_mongodb(deal_id: str) -> Optional[Deal]:
     """
     from bson import ObjectId
 
-    client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
-    db = client[MONGODB_DB]
+    db = get_db()
 
     try:
         oid = ObjectId(deal_id)
     except Exception:
-        client.close()
         return None
 
     doc = db["deals"].find_one({"_id": oid})
     if not doc:
-        client.close()
         return None
 
     # Fetch schema_results for this deal only
     sr_doc = db["deal_schema_results"].find_one({"deal_id": oid}, {"schema_results": 1})
     sr = (sr_doc.get("schema_results") or {}) if sr_doc else {}
 
-    deal = _build_deal(doc, sr)
-    client.close()
-    return deal
+    return _build_deal(doc, sr)
 
 
 def load_mongo_feed(deal_id: str) -> dict:
     """Load feed items for a deal from MongoDB: DMA, SEC filings, press releases."""
     from bson import ObjectId
 
-    client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
-    db = client[MONGODB_DB]
+    db = get_db()
 
     try:
         oid = ObjectId(deal_id)
     except Exception:
-        client.close()
         return {"items": [], "summary": {"total": 0, "by_type": {}}}
 
     deal_doc = db["deals"].find_one(
@@ -746,7 +748,6 @@ def load_mongo_feed(deal_id: str) -> dict:
         {"cik": 1, "sec_url": 1, "announce_date": 1, "target_name": 1},
     )
     if not deal_doc:
-        client.close()
         return {"items": [], "summary": {"total": 0, "by_type": {}}}
 
     items = []
@@ -811,8 +812,6 @@ def load_mongo_feed(deal_id: str) -> dict:
             "form_type": "",
         })
 
-    client.close()
-
     # Sort all by timestamp descending
     items.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
 
@@ -830,8 +829,7 @@ def load_dockets_from_mongodb(deal_id: Optional[str] = None) -> list | dict:
     deal_id=str   → single deal docket dict, or {} if not found
     Tickers are joined from the deals collection.
     """
-    client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
-    db = client[MONGODB_DB]
+    db = get_db()
 
     ticker_map: dict[str, dict] = {}
     for doc in db["deals"].find({}, {"_id": 1, "target_ticker": 1, "acquirer_ticker": 1}):
@@ -903,11 +901,9 @@ def load_dockets_from_mongodb(deal_id: Optional[str] = None) -> list | dict:
 
     if deal_id:
         doc = next(cursor, None)
-        client.close()
         return _build_deal_dict(doc) if doc else {}
 
     results = [_build_deal_dict(doc) for doc in cursor]
-    client.close()
     results.sort(key=lambda d: d.get("latest_entry_date") or "", reverse=True)
     return results
 
@@ -946,8 +942,7 @@ def load_proxy_filings_for_deal(deal_id: str, allowed_form_types: Optional[list[
             return str(v["$date"])
         return str(v)
 
-    client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=8000)
-    db = client[MONGODB_DB]
+    db = get_db()
 
     try:
         deal_doc = None
@@ -967,7 +962,7 @@ def load_proxy_filings_for_deal(deal_id: str, allowed_form_types: Optional[list[
             .sort("created_at", -1)
         )
     finally:
-        client.close()
+        pass  # shared client — do not close
 
     filings: list[dict] = []
     for doc in docs:
