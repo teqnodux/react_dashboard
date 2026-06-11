@@ -43,6 +43,9 @@ export const superAdminApi = {
   getOrgs: (status?: string) =>
     api.get('/api/super-admin/orgs', { params: status ? { status } : {} }),
 
+  getOrg: (orgId: string) =>
+    api.get(`/api/super-admin/orgs/${orgId}`),
+
   createOrg: (body: {
     name: string;
     plan_name: string;
@@ -66,6 +69,41 @@ export const superAdminApi = {
 
   getOrgUsers: (orgId: string) =>
     api.get(`/api/super-admin/orgs/${orgId}/users`),
+
+  inviteOrgUser: (orgId: string, body: { email: string; role: string }) =>
+    api.post(`/api/super-admin/orgs/${orgId}/invite`, body),
+
+  suspendOrgUser: (orgId: string, userId: string) =>
+    api.patch(`/api/super-admin/orgs/${orgId}/users/${userId}/suspend`),
+
+  reactivateOrgUser: (orgId: string, userId: string) =>
+    api.patch(`/api/super-admin/orgs/${orgId}/users/${userId}/reactivate`),
+
+  removeOrgUser: (orgId: string, userId: string) =>
+    api.delete(`/api/super-admin/orgs/${orgId}/users/${userId}`),
+
+  resendOrgInvite: (orgId: string, inviteId: string) =>
+    api.post(`/api/super-admin/orgs/${orgId}/invites/${inviteId}/resend`),
+
+  forceResetOrgUser: (orgId: string, userId: string) =>
+    api.patch(`/api/super-admin/orgs/${orgId}/users/${userId}/force-reset`),
+
+  getOrgRecipients: (orgId: string) =>
+    api.get(`/api/super-admin/orgs/${orgId}/email-recipients`),
+
+  addOrgRecipient: (
+    orgId: string,
+    body: { email: string; name: string; is_active: boolean }
+  ) => api.post(`/api/super-admin/orgs/${orgId}/email-recipients`, body),
+
+  updateOrgRecipient: (
+    orgId: string,
+    recipientId: string,
+    body: { name?: string; is_active?: boolean }
+  ) => api.patch(`/api/super-admin/orgs/${orgId}/email-recipients/${recipientId}`, body),
+
+  deleteOrgRecipient: (orgId: string, recipientId: string) =>
+    api.delete(`/api/super-admin/orgs/${orgId}/email-recipients/${recipientId}`),
 
   getAllUsers: () =>
     api.get('/api/super-admin/users'),

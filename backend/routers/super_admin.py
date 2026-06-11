@@ -3,6 +3,7 @@ Super-admin routes — full system access.
 All routes require role = super_admin.
 """
 
+import os
 from datetime import datetime, timezone
 from typing import Optional
 
@@ -10,9 +11,13 @@ from bson import ObjectId
 from fastapi import APIRouter, Depends, HTTPException, Request
 from pydantic import BaseModel, EmailStr
 
-from auth import get_current_user, require_roles, hash_password, build_token_payload
+from auth import require_roles, hash_password
 from db import get_db
+from services.email_service import send_invite_email
+from services.invite_service import create_invite
 from services.org_service import get_org_or_404, org_to_dict, check_user_cap
+
+FRONTEND_BASE_URL = os.getenv("FRONTEND_BASE_URL", "http://localhost:5173")
 
 router = APIRouter(prefix="/api/super-admin", tags=["super-admin"])
 
@@ -124,15 +129,326 @@ def delete_org(org_id: str, current_user=_require_super):
     return {"detail": "Organization deactivated"}
 
 
+def _org_member_to_dict(u: dict) -> dict:
+    """Org-scoped user row (no organization_id — implied by path)."""
+    return {
+        "id": str(u["_id"]),
+        "email": u.get("email"),
+        "role": u.get("role"),
+        "status": u.get("status"),
+        "is_individual": u.get("is_individual", False),
+        "force_password_reset": u.get("force_password_reset", False),
+        "created_at": u.get("created_at").isoformat() if u.get("created_at") else None,
+    }
+
+
+def _recipient_to_dict(r: dict) -> dict:
+    return {
+        "id": str(r["_id"]),
+        "organization_id": r.get("organization_id"),
+        "email": r.get("email"),
+        "name": r.get("name"),
+        "is_active": r.get("is_active", True),
+        "created_at": r.get("created_at").isoformat() if r.get("created_at") else None,
+        "updated_at": r.get("updated_at").isoformat() if r.get("updated_at") else None,
+    }
+
+
 @router.get("/orgs/{org_id}/users")
 def list_org_users(org_id: str, current_user=_require_super):
+    """Users + pending/expired invitations for one organization."""
     db = get_db()
     get_org_or_404(org_id, db)
-    users = db["users"].find({"organization_id": org_id})
-    return [_user_to_dict(u) for u in users]
+
+    users = [_org_member_to_dict(u) for u in db["users"].find({"organization_id": org_id})]
+
+    invites = db["invitations"].find({
+        "organization_id": org_id,
+        "status": {"$in": ["pending", "expired"]},
+    })
+    for inv in invites:
+        inv_status = inv.get("status")
+        display_status = "invited" if inv_status == "pending" else "expired"
+        users.append({
+            "id": str(inv["_id"]),
+            "email": inv.get("email"),
+            "role": inv.get("role", "user"),
+            "status": display_status,
+            "is_individual": False,
+            "force_password_reset": False,
+            "created_at": inv.get("created_at").isoformat() if inv.get("created_at") else None,
+            "_is_invite": True,
+        })
+
+    return users
 
 
-# ── User management ───────────────────────────────────────────────────────────
+class OrgInviteRequest(BaseModel):
+    email: EmailStr
+    role: str = "user"
+
+
+@router.post("/orgs/{org_id}/invite")
+def invite_org_user(org_id: str, body: OrgInviteRequest, current_user=_require_super):
+    db = get_db()
+    org = get_org_or_404(org_id, db)
+    if org.get("status") != "active":
+        raise HTTPException(status_code=403, detail="Organization is not active")
+
+    check_user_cap(org_id, db)
+
+    email = body.email.lower().strip()
+    if db["users"].find_one({"email": email}):
+        raise HTTPException(status_code=409, detail="A user with this email already exists")
+    if db["invitations"].find_one({
+        "email": email,
+        "organization_id": org_id,
+        "status": "pending",
+    }):
+        raise HTTPException(
+            status_code=409,
+            detail="An active invitation already exists for this email",
+        )
+
+    raw_token = create_invite(db, org_id, current_user["user_id"], email, body.role)
+    invite_link = f"{FRONTEND_BASE_URL}/accept-invite?token={raw_token}"
+    send_invite_email(email, org.get("name", ""), invite_link)
+
+    return {"detail": "Invitation sent", "email": email}
+
+
+@router.patch("/orgs/{org_id}/users/{user_id}/suspend")
+def suspend_org_user(org_id: str, user_id: str, current_user=_require_super):
+    db = get_db()
+    get_org_or_404(org_id, db)
+    try:
+        oid = ObjectId(user_id)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid user ID")
+
+    user = db["users"].find_one({"_id": oid, "organization_id": org_id})
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found in this organization")
+
+    db["users"].update_one(
+        {"_id": oid},
+        {"$set": {"status": "suspended", "updated_at": datetime.now(timezone.utc)}},
+    )
+    return {"detail": "User suspended"}
+
+
+@router.patch("/orgs/{org_id}/users/{user_id}/reactivate")
+def reactivate_org_user(org_id: str, user_id: str, current_user=_require_super):
+    db = get_db()
+    get_org_or_404(org_id, db)
+    try:
+        oid = ObjectId(user_id)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid user ID")
+
+    user = db["users"].find_one({"_id": oid, "organization_id": org_id})
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found in this organization")
+
+    if user.get("status") == "active":
+        raise HTTPException(status_code=400, detail="User is already active")
+
+    db["users"].update_one(
+        {"_id": oid},
+        {"$set": {"status": "active", "updated_at": datetime.now(timezone.utc)}},
+    )
+    return {"detail": "User reactivated"}
+
+
+@router.delete("/orgs/{org_id}/users/{user_id}")
+def remove_org_user(org_id: str, user_id: str, current_user=_require_super):
+    """Remove a user or cancel a pending/expired invitation."""
+    db = get_db()
+    get_org_or_404(org_id, db)
+    try:
+        oid = ObjectId(user_id)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid ID")
+
+    invite = db["invitations"].find_one({
+        "_id": oid,
+        "organization_id": org_id,
+        "status": {"$in": ["pending", "expired"]},
+    })
+    if invite:
+        db["invitations"].delete_one({"_id": oid})
+        return {"detail": "Invitation removed"}
+
+    user = db["users"].find_one({"_id": oid, "organization_id": org_id})
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found in this organization")
+
+    db["users"].update_one(
+        {"_id": oid},
+        {"$set": {
+            "status": "inactive",
+            "organization_id": None,
+            "updated_at": datetime.now(timezone.utc),
+        }},
+    )
+    return {"detail": "User removed from organization"}
+
+
+@router.post("/orgs/{org_id}/invites/{invite_id}/resend")
+def resend_org_invite(org_id: str, invite_id: str, current_user=_require_super):
+    db = get_db()
+    org = get_org_or_404(org_id, db)
+    if org.get("status") != "active":
+        raise HTTPException(status_code=403, detail="Organization is not active")
+
+    try:
+        oid = ObjectId(invite_id)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid invite ID")
+
+    old_invite = db["invitations"].find_one({
+        "_id": oid,
+        "organization_id": org_id,
+        "status": {"$in": ["pending", "expired"]},
+    })
+    if not old_invite:
+        raise HTTPException(status_code=404, detail="Invitation not found")
+
+    email = old_invite["email"]
+    role = old_invite.get("role", "user")
+
+    db["invitations"].delete_one({"_id": oid})
+
+    raw_token = create_invite(db, org_id, current_user["user_id"], email, role)
+    invite_link = f"{FRONTEND_BASE_URL}/accept-invite?token={raw_token}"
+    send_invite_email(email, org.get("name", ""), invite_link)
+
+    return {"detail": "Invitation resent", "email": email}
+
+
+@router.patch("/orgs/{org_id}/users/{user_id}/force-reset")
+def force_reset_org_user(org_id: str, user_id: str, current_user=_require_super):
+    db = get_db()
+    get_org_or_404(org_id, db)
+    try:
+        oid = ObjectId(user_id)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid user ID")
+
+    user = db["users"].find_one({"_id": oid, "organization_id": org_id})
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found in this organization")
+
+    db["users"].update_one(
+        {"_id": oid},
+        {"$set": {"force_password_reset": True, "updated_at": datetime.now(timezone.utc)}},
+    )
+    return {"detail": "Password reset flag set for user"}
+
+
+# ── Org email recipients ──────────────────────────────────────────────────────
+
+class RecipientCreate(BaseModel):
+    email: EmailStr
+    name: str
+    is_active: bool = True
+
+
+class RecipientUpdate(BaseModel):
+    name: Optional[str] = None
+    is_active: Optional[bool] = None
+
+
+@router.get("/orgs/{org_id}/email-recipients")
+def list_org_email_recipients(org_id: str, current_user=_require_super):
+    db = get_db()
+    get_org_or_404(org_id, db)
+    recipients = db["organization_email_recipients"].find({"organization_id": org_id})
+    return [_recipient_to_dict(r) for r in recipients]
+
+
+@router.post("/orgs/{org_id}/email-recipients")
+def add_org_email_recipient(
+    org_id: str, body: RecipientCreate, current_user=_require_super
+):
+    db = get_db()
+    get_org_or_404(org_id, db)
+    email = body.email.lower().strip()
+
+    if db["organization_email_recipients"].find_one({
+        "organization_id": org_id,
+        "email": email,
+    }):
+        raise HTTPException(status_code=409, detail="Recipient with this email already exists")
+
+    now = datetime.now(timezone.utc)
+    doc = {
+        "organization_id": org_id,
+        "email": email,
+        "name": body.name,
+        "is_active": body.is_active,
+        "created_at": now,
+        "updated_at": now,
+    }
+    result = db["organization_email_recipients"].insert_one(doc)
+    doc["_id"] = result.inserted_id
+    return _recipient_to_dict(doc)
+
+
+@router.patch("/orgs/{org_id}/email-recipients/{recipient_id}")
+def update_org_email_recipient(
+    org_id: str,
+    recipient_id: str,
+    body: RecipientUpdate,
+    current_user=_require_super,
+):
+    db = get_db()
+    get_org_or_404(org_id, db)
+    try:
+        oid = ObjectId(recipient_id)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid recipient ID")
+
+    recipient = db["organization_email_recipients"].find_one({
+        "_id": oid,
+        "organization_id": org_id,
+    })
+    if not recipient:
+        raise HTTPException(status_code=404, detail="Recipient not found")
+
+    updates: dict = {"updated_at": datetime.now(timezone.utc)}
+    if body.name is not None:
+        updates["name"] = body.name
+    if body.is_active is not None:
+        updates["is_active"] = body.is_active
+
+    db["organization_email_recipients"].update_one({"_id": oid}, {"$set": updates})
+    return _recipient_to_dict(
+        db["organization_email_recipients"].find_one({"_id": oid})
+    )
+
+
+@router.delete("/orgs/{org_id}/email-recipients/{recipient_id}")
+def delete_org_email_recipient(
+    org_id: str, recipient_id: str, current_user=_require_super
+):
+    db = get_db()
+    get_org_or_404(org_id, db)
+    try:
+        oid = ObjectId(recipient_id)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid recipient ID")
+
+    result = db["organization_email_recipients"].delete_one({
+        "_id": oid,
+        "organization_id": org_id,
+    })
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Recipient not found")
+    return {"detail": "Recipient removed"}
+
+
+# ── Global user management ────────────────────────────────────────────────────
 
 class CreateUserRequest(BaseModel):
     email: EmailStr

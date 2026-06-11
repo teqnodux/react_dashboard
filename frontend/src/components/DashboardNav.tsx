@@ -15,11 +15,25 @@ const NAV_TABS = [
   { path: '/feed',           label: '📰 Feed' },
 ];
 
+const DASHBOARD_HOME_TABS = [
+  '/tearsheet',
+  '/pipeline',
+  '/activity',
+  '/all-dockets',
+  '/all-regulatory',
+  '/sec-filings',
+  '/upcoming',
+  '/feed'
+];
+
 function ProfileMenu() {
   const { user, logout } = useAuth();
-  const { isAdmin, isSuperAdmin } = usePermissions();
+  const { isAdmin, isSuperAdmin, canSeeNavTab } = usePermissions();
   const navigate = useNavigate();
+  const location = useLocation();
   const [open, setOpen] = useState(false);
+  const onSuperAdminRoute = location.pathname.startsWith('/super-admin');
+  const onAdminRoute = location.pathname.startsWith('/admin');
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   // Close on outside click
@@ -39,6 +53,13 @@ function ProfileMenu() {
   function handleLogout() {
     logout();
     navigate('/login', { replace: true });
+  }
+
+  function goDashboard() {
+    setOpen(false);
+    const first =
+      DASHBOARD_HOME_TABS.find((path) => canSeeNavTab(path)) ?? '/pipeline';
+    navigate(first);
   }
 
   function roleBadgeClass() {
@@ -73,21 +94,38 @@ function ProfileMenu() {
           </div>
           <div className="profile-dropdown-divider" />
 
-          {isSuperAdmin && (
-            <button
-              className="profile-panel-btn super-admin-btn"
-              onClick={() => { setOpen(false); navigate('/super-admin'); }}
-            >
-              ⚙️ Super Admin Panel
-            </button>
-          )}
-          {isAdmin && !isSuperAdmin && (
+          {(onSuperAdminRoute || onAdminRoute) ? (
             <button
               className="profile-panel-btn admin-btn"
-              onClick={() => { setOpen(false); navigate('/admin'); }}
+              onClick={goDashboard}
             >
-              🛠️ Admin Panel
+              📊 Dashboard
             </button>
+          ) : (
+            <>
+              {isSuperAdmin && (
+                <button
+                  className="profile-panel-btn super-admin-btn"
+                  onClick={() => {
+                    setOpen(false);
+                    navigate('/super-admin');
+                  }}
+                >
+                  ⚙️ Super Admin Panel
+                </button>
+              )}
+              {isAdmin && !isSuperAdmin && (
+                <button
+                  className="profile-panel-btn admin-btn"
+                  onClick={() => {
+                    setOpen(false);
+                    navigate('/admin');
+                  }}
+                >
+                  🛠️ Admin Panel
+                </button>
+              )}
+            </>
           )}
 
           <div className="profile-dropdown-divider" />

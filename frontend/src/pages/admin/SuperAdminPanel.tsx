@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect, useCallback, type ReactNode } from 'react';
 import axios from 'axios';
+import DashboardNav from '../../components/DashboardNav';
 import { superAdminApi } from '../../services/adminApi';
 import '../../styles/AdminNav.css';
 
@@ -24,6 +24,27 @@ interface OrgUser {
   status: string;
   organization_id: string | null;
   is_individual: boolean;
+  force_password_reset?: boolean;
+  created_at: string | null;
+  _is_invite?: boolean;
+}
+
+interface OrgMember {
+  id: string;
+  email: string;
+  role: string;
+  status: string;
+  is_individual: boolean;
+  force_password_reset: boolean;
+  created_at: string | null;
+  _is_invite?: boolean;
+}
+
+interface Recipient {
+  id: string;
+  email: string;
+  name: string;
+  is_active: boolean;
   created_at: string | null;
 }
 
@@ -181,41 +202,567 @@ function EditOrgModal({ org, onClose, onSuccess }: { org: Org; onClose: () => vo
   );
 }
 
-// ── Org Users Drilldown ───────────────────────────────────────────────────
+// ── Org detail icons + stat card ──────────────────────────────────────────
 
-function OrgUsersDrawer({ org, onClose }: { org: Org; onClose: () => void }) {
-  const [users, setUsers] = useState<OrgUser[]>([]);
-  const [loading, setLoading] = useState(true);
+const IconOrgUsers = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+  </svg>
+);
 
-  useEffect(() => {
-    superAdminApi.getOrgUsers(org.id).then(({ data }) => setUsers(data)).finally(() => setLoading(false));
-  }, [org.id]);
+const IconOrgPlan = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="4" y="2" width="16" height="20" rx="2" />
+    <path d="M8 6h8M8 10h8M8 14h5" />
+  </svg>
+);
+
+const IconOrgStatus = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+    <polyline points="22 4 12 14.01 9 11.01" />
+  </svg>
+);
+
+const IconOrgCalendar = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="4" width="18" height="18" rx="2" />
+    <line x1="16" y1="2" x2="16" y2="6" />
+    <line x1="8" y1="2" x2="8" y2="6" />
+    <line x1="3" y1="10" x2="21" y2="10" />
+  </svg>
+);
+
+const IconEdit = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 20h9" />
+    <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+  </svg>
+);
+
+function OrgDetailMiniCard({
+  label,
+  value,
+  sub,
+  accent,
+  icon
+}: {
+  label: string;
+  value: string | number;
+  sub: string;
+  accent: string;
+  icon: ReactNode;
+}) {
+  return (
+    <div
+      className="org-detail-mini-card"
+      style={{ '--stat-accent': accent } as React.CSSProperties}
+    >
+      <div className="org-detail-mini-card-top">
+        <div className="org-detail-mini-icon">{icon}</div>
+      </div>
+      <div className="org-detail-mini-value">{value}</div>
+      <div className="org-detail-mini-label">{label}</div>
+      <div className="org-detail-mini-sub">{sub}</div>
+    </div>
+  );
+}
+
+function formatOrgDate(iso: string | null): string {
+  if (!iso) return '—';
+  return new Date(iso).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+  });
+}
+
+// ── Org detail: invite + recipient modals ─────────────────────────────────
+
+function OrgInviteModal({
+  orgId,
+  onClose,
+  onSuccess
+}: {
+  orgId: string;
+  onClose: () => void;
+  onSuccess: () => void;
+}) {
+  const [email, setEmail] = useState('');
+  const [role, setRole] = useState('user');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+    try {
+      await superAdminApi.inviteOrgUser(orgId, { email, role });
+      onSuccess();
+      onClose();
+    } catch (err) {
+      if (axios.isAxiosError(err)) setError(err.response?.data?.detail || 'Failed to send invite');
+      else setError('Something went wrong');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-box" style={{ maxWidth: 640 }} onClick={(e) => e.stopPropagation()}>
-        <h2>Users — {org.name}</h2>
-        {loading ? <p className="loading">Loading…</p> : users.length === 0 ? (
-          <div className="admin-empty">No users in this organization.</div>
-        ) : (
-          <div className="admin-table-wrapper">
-            <table className="admin-table">
-              <thead><tr><th>Email</th><th>Role</th><th>Status</th></tr></thead>
-              <tbody>
-                {users.map((u) => (
-                  <tr key={u.id}>
-                    <td>{u.email}</td>
-                    <td style={{ textTransform: 'capitalize' }}>{u.role}</td>
-                    <td><span className={`status-badge ${u.status}`}>{u.status}</span></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+      <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+        <h2>Invite User</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="modal-field">
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              autoFocus
+              placeholder="user@example.com"
+            />
           </div>
-        )}
-        <div className="modal-actions">
-          <button className="btn-ghost" onClick={onClose}>Close</button>
+          <div className="modal-field">
+            <label>Role</label>
+            <select value={role} onChange={(e) => setRole(e.target.value)}>
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+          {error && <div className="admin-error">{error}</div>}
+          <div className="modal-actions">
+            <button type="button" className="btn-ghost" onClick={onClose}>Cancel</button>
+            <button type="submit" className="btn-primary" disabled={loading}>
+              {loading ? 'Sending…' : 'Send Invite'}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+function OrgAddRecipientModal({
+  orgId,
+  onClose,
+  onSuccess
+}: {
+  orgId: string;
+  onClose: () => void;
+  onSuccess: () => void;
+}) {
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+    try {
+      await superAdminApi.addOrgRecipient(orgId, { email, name, is_active: true });
+      onSuccess();
+      onClose();
+    } catch (err) {
+      if (axios.isAxiosError(err)) setError(err.response?.data?.detail || 'Failed to add recipient');
+      else setError('Something went wrong');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+        <h2>Add Email Recipient</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="modal-field">
+            <label>Name</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              autoFocus
+              placeholder="John Smith"
+            />
+          </div>
+          <div className="modal-field">
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="john@example.com"
+            />
+          </div>
+          {error && <div className="admin-error">{error}</div>}
+          <div className="modal-actions">
+            <button type="button" className="btn-ghost" onClick={onClose}>Cancel</button>
+            <button type="submit" className="btn-primary" disabled={loading}>
+              {loading ? 'Adding…' : 'Add Recipient'}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+function OrgDetailUsersTab({
+  orgId,
+  onMembersChange
+}: {
+  orgId: string;
+  onMembersChange?: (count: number) => void;
+}) {
+  const [users, setUsers] = useState<OrgMember[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [showInvite, setShowInvite] = useState(false);
+
+  const load = useCallback(async () => {
+    setLoading(true);
+    try {
+      const { data } = await superAdminApi.getOrgUsers(orgId);
+      setUsers(data);
+      const seated = data.filter((u: OrgMember) => !u._is_invite).length;
+      onMembersChange?.(seated);
+    } finally {
+      setLoading(false);
+    }
+  }, [orgId, onMembersChange]);
+
+  useEffect(() => {
+    load();
+  }, [load]);
+
+  const handleSuspend = async (id: string) => {
+    if (!confirm('Suspend this user? They will lose access immediately.')) return;
+    await superAdminApi.suspendOrgUser(orgId, id);
+    load();
+  };
+
+  const handleReactivate = async (id: string) => {
+    await superAdminApi.reactivateOrgUser(orgId, id);
+    load();
+  };
+
+  const handleRemove = async (id: string) => {
+    if (!confirm('Remove this user from the organization?')) return;
+    await superAdminApi.removeOrgUser(orgId, id);
+    load();
+  };
+
+  const handleCancelInvite = async (id: string) => {
+    if (!confirm('Cancel this pending invitation?')) return;
+    await superAdminApi.removeOrgUser(orgId, id);
+    load();
+  };
+
+  const handleResendInvite = async (id: string) => {
+    await superAdminApi.resendOrgInvite(orgId, id);
+    alert('Invitation resent successfully.');
+    load();
+  };
+
+  const handleForceReset = async (id: string) => {
+    await superAdminApi.forceResetOrgUser(orgId, id);
+    alert('Password reset flag set. User will be prompted on next login.');
+  };
+
+  return (
+    <div>
+      {showInvite && (
+        <OrgInviteModal orgId={orgId} onClose={() => setShowInvite(false)} onSuccess={load} />
+      )}
+      <div className="admin-action-row">
+        <button type="button" className="btn-primary-gradient" onClick={() => setShowInvite(true)}>
+          + Invite User
+        </button>
+      </div>
+      {loading ? (
+        <p className="loading">Loading…</p>
+      ) : users.length === 0 ? (
+        <div className="admin-empty">No users in this organization yet.</div>
+      ) : (
+        <div className="admin-table-wrapper">
+          <table className="admin-table">
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Joined</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((u) => (
+                <tr key={u.id}>
+                  <td>{u.email}</td>
+                  <td style={{ textTransform: 'capitalize' }}>{u.role}</td>
+                  <td>
+                    <span className={`status-badge ${u.status}`}>{u.status}</span>
+                  </td>
+                  <td className="cell-muted">
+                    {u.created_at ? new Date(u.created_at).toLocaleDateString() : '—'}
+                  </td>
+                  <td>
+                    <div className="org-detail-actions">
+                      {u.status === 'invited' ? (
+                        <button type="button" className="btn-danger" onClick={() => handleCancelInvite(u.id)}>
+                          Cancel Invite
+                        </button>
+                      ) : u.status === 'expired' ? (
+                        <>
+                          <button type="button" className="btn-info" onClick={() => handleResendInvite(u.id)}>
+                            Resend Invite
+                          </button>
+                          <button type="button" className="btn-danger" onClick={() => handleRemove(u.id)}>
+                            Remove
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          {u.status === 'active' && (
+                            <button type="button" className="btn-warning" onClick={() => handleSuspend(u.id)}>
+                              Suspend
+                            </button>
+                          )}
+                          {(u.status === 'suspended' || u.status === 'inactive') && (
+                            <button type="button" className="btn-info" onClick={() => handleReactivate(u.id)}>
+                              Reactivate
+                            </button>
+                          )}
+                          <button type="button" className="btn-info" onClick={() => handleForceReset(u.id)}>
+                            Reset Password
+                          </button>
+                          <button type="button" className="btn-danger" onClick={() => handleRemove(u.id)}>
+                            Remove
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
+      )}
+    </div>
+  );
+}
+
+function OrgDetailRecipientsTab({ orgId }: { orgId: string }) {
+  const [recipients, setRecipients] = useState<Recipient[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [showAdd, setShowAdd] = useState(false);
+
+  const load = useCallback(async () => {
+    setLoading(true);
+    try {
+      const { data } = await superAdminApi.getOrgRecipients(orgId);
+      setRecipients(data);
+    } finally {
+      setLoading(false);
+    }
+  }, [orgId]);
+
+  useEffect(() => {
+    load();
+  }, [load]);
+
+  const toggleActive = async (r: Recipient) => {
+    await superAdminApi.updateOrgRecipient(orgId, r.id, { is_active: !r.is_active });
+    load();
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!confirm('Remove this email recipient?')) return;
+    await superAdminApi.deleteOrgRecipient(orgId, id);
+    load();
+  };
+
+  return (
+    <div>
+      {showAdd && (
+        <OrgAddRecipientModal orgId={orgId} onClose={() => setShowAdd(false)} onSuccess={load} />
+      )}
+      <div className="admin-action-row">
+        <button type="button" className="btn-primary-gradient" onClick={() => setShowAdd(true)}>
+          + Add Recipient
+        </button>
+      </div>
+      {loading ? (
+        <p className="loading">Loading…</p>
+      ) : recipients.length === 0 ? (
+        <div className="admin-empty">No email recipients configured yet.</div>
+      ) : (
+        <div className="admin-table-wrapper">
+          <table className="admin-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Added</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {recipients.map((r) => (
+                <tr key={r.id}>
+                  <td>{r.name}</td>
+                  <td>{r.email}</td>
+                  <td>
+                    <span className={`status-badge ${r.is_active ? 'active' : 'inactive'}`}>
+                      {r.is_active ? 'Active' : 'Inactive'}
+                    </span>
+                  </td>
+                  <td className="cell-muted">
+                    {r.created_at ? new Date(r.created_at).toLocaleDateString() : '—'}
+                  </td>
+                  <td>
+                    <div style={{ display: 'flex', gap: '6px' }}>
+                      <button type="button" className="btn-ghost" onClick={() => toggleActive(r)}>
+                        {r.is_active ? 'Deactivate' : 'Activate'}
+                      </button>
+                      <button type="button" className="btn-danger" onClick={() => handleDelete(r.id)}>
+                        Remove
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function OrgDetailView({
+  org,
+  onBack,
+  onOrgUpdated
+}: {
+  org: Org;
+  onBack: () => void;
+  onOrgUpdated: () => void;
+}) {
+  const [activeTab, setActiveTab] = useState<'users' | 'recipients'>('users');
+  const [showEdit, setShowEdit] = useState(false);
+  const [orgInfo, setOrgInfo] = useState(org);
+  const [memberCount, setMemberCount] = useState(0);
+
+  useEffect(() => {
+    setOrgInfo(org);
+  }, [org]);
+
+  const refreshOrg = async () => {
+    const { data } = await superAdminApi.getOrg(org.id);
+    setOrgInfo(data);
+    onOrgUpdated();
+  };
+
+  const statusLabel = orgInfo.status
+    ? orgInfo.status.charAt(0).toUpperCase() + orgInfo.status.slice(1)
+    : '—';
+
+  return (
+    <div className="org-detail-shell">
+      {showEdit && (
+        <EditOrgModal
+          org={orgInfo}
+          onClose={() => setShowEdit(false)}
+          onSuccess={refreshOrg}
+        />
+      )}
+
+      <div className="org-detail-topbar">
+        <div className="org-detail-topbar-left">
+          <button type="button" className="admin-back-btn" onClick={onBack}>
+            ← Organizations
+          </button>
+          <div className="org-detail-title-row">
+            <h2 className="org-detail-title">{orgInfo.name}</h2>
+            <span className={`status-badge ${orgInfo.status}`}>{orgInfo.status}</span>
+          </div>
+          <p className="org-detail-subtitle">
+            {orgInfo.plan_name} · Cap {orgInfo.user_cap}
+            {orgInfo.end_date ? ` · Ends ${formatOrgDate(orgInfo.end_date)}` : ''}
+          </p>
+        </div>
+        <button type="button" className="org-detail-edit-btn" onClick={() => setShowEdit(true)}>
+          <IconEdit />
+          Edit Org
+        </button>
+      </div>
+
+      <div className="stat-cards-grid">
+        <OrgDetailMiniCard
+          label="Users"
+          value={`${memberCount} / ${orgInfo.user_cap}`}
+          sub="of capacity"
+          accent="var(--accent-blue)"
+          icon={<IconOrgUsers />}
+        />
+        <OrgDetailMiniCard
+          label="Plan"
+          value={orgInfo.plan_name.charAt(0).toUpperCase() + orgInfo.plan_name.slice(1)}
+          sub="Current plan"
+          accent="var(--accent-purple)"
+          icon={<IconOrgPlan />}
+        />
+        <OrgDetailMiniCard
+          label="Status"
+          value={statusLabel}
+          sub="Organization status"
+          accent="var(--accent-green)"
+          icon={<IconOrgStatus />}
+        />
+        <OrgDetailMiniCard
+          label="Expiry"
+          value={formatOrgDate(orgInfo.end_date)}
+          sub="Plan expires"
+          accent="var(--accent-blue)"
+          icon={<IconOrgCalendar />}
+        />
+      </div>
+
+      <div className="org-detail-tabs">
+        <button
+          type="button"
+          className={`org-detail-tab ${activeTab === 'users' ? 'active' : ''}`}
+          onClick={() => setActiveTab('users')}
+        >
+          Users
+        </button>
+        <button
+          type="button"
+          className={`org-detail-tab ${activeTab === 'recipients' ? 'active' : ''}`}
+          onClick={() => setActiveTab('recipients')}
+        >
+          Email Recipients
+        </button>
+      </div>
+
+      <div className="org-detail-panel">
+        {activeTab === 'users' ? (
+          <OrgDetailUsersTab orgId={orgInfo.id} onMembersChange={setMemberCount} />
+        ) : (
+          <OrgDetailRecipientsTab orgId={orgInfo.id} />
+        )}
       </div>
     </div>
   );
@@ -345,7 +892,7 @@ function OrgsTab() {
   const [loading, setLoading] = useState(true);
   const [showCreate, setShowCreate] = useState(false);
   const [editOrg, setEditOrg] = useState<Org | null>(null);
-  const [viewUsersOrg, setViewUsersOrg] = useState<Org | null>(null);
+  const [detailOrg, setDetailOrg] = useState<Org | null>(null);
   const [statusFilter, setStatusFilter] = useState('');
 
   const load = useCallback(async () => {
@@ -366,11 +913,20 @@ function OrgsTab() {
     load();
   };
 
+  if (detailOrg) {
+    return (
+      <OrgDetailView
+        org={detailOrg}
+        onBack={() => setDetailOrg(null)}
+        onOrgUpdated={load}
+      />
+    );
+  }
+
   return (
     <div>
       {showCreate && <CreateOrgModal onClose={() => setShowCreate(false)} onSuccess={load} />}
       {editOrg && <EditOrgModal org={editOrg} onClose={() => setEditOrg(null)} onSuccess={load} />}
-      {viewUsersOrg && <OrgUsersDrawer org={viewUsersOrg} onClose={() => setViewUsersOrg(null)} />}
 
       <div className="admin-action-row">
         <button className="btn-primary" onClick={() => setShowCreate(true)}>+ New Organization</button>
@@ -401,7 +957,16 @@ function OrgsTab() {
             <tbody>
               {orgs.map((org) => (
                 <tr key={org.id}>
-                  <td style={{ fontWeight: 600 }}>{org.name}</td>
+                  <td style={{ fontWeight: 600 }}>
+                    <button
+                      type="button"
+                      className="btn-ghost"
+                      style={{ padding: 0, border: 'none', fontWeight: 600, color: 'var(--accent-blue)' }}
+                      onClick={() => setDetailOrg(org)}
+                    >
+                      {org.name}
+                    </button>
+                  </td>
                   <td style={{ textTransform: 'capitalize', color: 'var(--accent-blue)' }}>{org.plan_name}</td>
                   <td><span className={`status-badge ${org.status}`}>{org.status}</span></td>
                   <td>{org.user_cap}</td>
@@ -410,8 +975,10 @@ function OrgsTab() {
                   </td>
                   <td>
                     <div style={{ display: 'flex', gap: '6px' }}>
-                      <button className="btn-ghost" onClick={() => setViewUsersOrg(org)}>Users</button>
-                      <button className="btn-ghost" onClick={() => setEditOrg(org)}>Edit</button>
+                      <button type="button" className="btn-ghost" onClick={() => setDetailOrg(org)}>
+                        Manage
+                      </button>
+                      <button type="button" className="btn-ghost" onClick={() => setEditOrg(org)}>Edit</button>
                       <button className="btn-danger" onClick={() => handleDelete(org)}>Deactivate</button>
                     </div>
                   </td>
@@ -579,120 +1146,12 @@ interface Stats {
   pending_invites: number;
 }
 
-// Decorative sparkline SVG (static wave)
-const Sparkline = ({ color }: { color: string }) => (
-  <svg className="stat-sparkline" viewBox="0 0 80 30" fill="none">
-    <polyline
-      points="0,20 12,14 24,18 36,8 48,15 60,6 72,12 80,8"
-      stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-      fill="none" opacity="0.6"
-    />
-  </svg>
-);
-
-// Linear progress bar
-const ProgressBar = ({ pct, color }: { pct: number; color: string }) => (
-  <div className="stat-progress-track">
-    <div className="stat-progress-fill" style={{ width: `${Math.min(pct, 100)}%`, background: color }} />
-    <span className="stat-progress-pct" style={{ color }}>{pct}%</span>
-  </div>
-);
-
-// Circular progress ring (SVG donut)
-const RingProgress = ({ pct, color }: { pct: number; color: string }) => {
-  const r = 18, cx = 24, cy = 24;
-  const circ = 2 * Math.PI * r;
-  const offset = circ - (Math.min(pct, 100) / 100) * circ;
-  return (
-    <svg className="stat-ring" viewBox="0 0 48 48">
-      <circle cx={cx} cy={cy} r={r} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="4" />
-      <circle cx={cx} cy={cy} r={r} fill="none" stroke={color} strokeWidth="4"
-        strokeDasharray={circ} strokeDashoffset={offset}
-        strokeLinecap="round" transform={`rotate(-90 ${cx} ${cy})`} />
-      <text x={cx} y={cy + 4} textAnchor="middle" fontSize="9" fill="white" fontWeight="700">{pct}%</text>
-    </svg>
-  );
-};
-
 // Section header with icon
 const SectionHeader = ({ label, icon }: { label: string; icon: React.ReactNode }) => (
   <div className="overview-group-header">
     <span className="overview-group-icon">{icon}</span>
     <span className="overview-group-label-text">{label}</span>
   </div>
-);
-
-// Org-style card: icon + value + label + sparkline + progress bar
-function OrgCard({ label, value, sub, pct, accent, icon }:
-  { label: string; value: number; sub: string; pct: number; accent: string; icon: React.ReactNode }) {
-  return (
-    <div className="stat-card stat-card-org" style={{ '--stat-accent': accent } as React.CSSProperties}>
-      <div className="stat-card-top">
-        <div className="stat-card-icon-box">{icon}</div>
-        <Sparkline color={accent} />
-      </div>
-      <div className="stat-card-value">{value}</div>
-      <div className="stat-card-label">{label}</div>
-      <div className="stat-card-sub">{sub}</div>
-      <ProgressBar pct={pct} color={accent} />
-    </div>
-  );
-}
-
-// User-style card: icon + value + label + optional ring or dots
-function UserCard({ label, value, sub, accent, icon, pct, showRing }:
-  { label: string; value: number | string; sub: string; accent: string; icon: React.ReactNode; pct?: number; showRing?: boolean }) {
-  return (
-    <div className="stat-card stat-card-user" style={{ '--stat-accent': accent } as React.CSSProperties}>
-      <div className="stat-card-top">
-        <div className="stat-card-icon-box">{icon}</div>
-        {showRing && pct !== undefined && <RingProgress pct={pct} color={accent} />}
-      </div>
-      <div className="stat-card-value">{value}</div>
-      <div className="stat-card-label">{label}</div>
-      <div className="stat-card-sub">{sub}</div>
-      {!showRing && pct !== undefined && <ProgressBar pct={pct} color={accent} />}
-    </div>
-  );
-}
-
-// Alert card: watermark background icon + value + OK badge when 0
-function AlertCard({ label, value, sub, accent, icon, watermark }:
-  { label: string; value: number; sub: string; accent: string; icon: React.ReactNode; watermark: React.ReactNode }) {
-  const isOk = value === 0;
-  return (
-    <div className={`stat-card stat-card-alert ${isOk ? 'stat-card-ok' : 'stat-card-warn'}`}
-      style={{ '--stat-accent': accent } as React.CSSProperties}>
-      <div className="stat-card-watermark">{watermark}</div>
-      <div className="stat-card-icon-box">{icon}</div>
-      <div className="stat-card-value">{value}</div>
-      <div className="stat-card-label">{label}</div>
-      <div className="stat-card-sub">{sub}</div>
-      {isOk && (
-        <div className="stat-ok-badge">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-          OK
-        </div>
-      )}
-    </div>
-  );
-}
-
-// Watermark icons (large, ghost opacity)
-const WatermarkCheck = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-    <polyline points="9 12 11 14 15 10"/>
-  </svg>
-);
-const WatermarkCal = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-    <rect x="3" y="4" width="18" height="18" rx="2"/>
-    <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
-    <line x1="3" y1="10" x2="21" y2="10"/>
-  </svg>
 );
 
 // Section icons
@@ -721,8 +1180,6 @@ function OverviewTab() {
 
   const orgActivePct  = stats.total_orgs  > 0 ? Math.round((stats.active_orgs  / stats.total_orgs)  * 100) : 0;
   const userActivePct = stats.total_users > 0 ? Math.round((stats.active_users / stats.total_users) * 100) : 0;
-  const capPct        = stats.total_orgs  > 0 ? Math.round((stats.near_cap     / stats.total_orgs)  * 100) : 0;
-  const expiringPct   = stats.total_orgs  > 0 ? Math.round((stats.expiring_soon / stats.total_orgs) * 100) : 0;
 
   return (
     <div className="overview-section">
@@ -730,43 +1187,79 @@ function OverviewTab() {
       {/* ── Organizations ── */}
       <SectionHeader label="Organizations" icon={<IconOrgs />} />
       <div className="stat-cards-grid">
-        <OrgCard label="Total Organizations" value={stats.total_orgs}
-          sub={`${orgActivePct}% active`} pct={orgActivePct}
-          accent="var(--accent-purple)" icon={<IconOrgs />} />
-        <OrgCard label="Active Organizations" value={stats.active_orgs}
-          sub="Currently enabled" pct={orgActivePct}
-          accent="var(--accent-green)" icon={<IconOrgs />} />
-        <OrgCard label="Expiring in 30 Days" value={stats.expiring_soon}
-          sub="Needs renewal" pct={expiringPct}
-          accent="var(--accent-yellow)" icon={<IconOrgs />} />
-        <OrgCard label="Near User Cap" value={stats.near_cap}
-          sub="≥ 80% of cap used" pct={capPct}
-          accent="var(--accent-orange)" icon={<IconUsers />} />
+        <OrgDetailMiniCard
+          label="Total Organizations"
+          value={stats.total_orgs}
+          sub={`${orgActivePct}% active`}
+          accent="var(--accent-purple)"
+          icon={<IconOrgs />}
+        />
+        <OrgDetailMiniCard
+          label="Active Organizations"
+          value={stats.active_orgs}
+          sub="Currently enabled"
+          accent="var(--accent-green)"
+          icon={<IconOrgs />}
+        />
+        <OrgDetailMiniCard
+          label="Expiring in 30 Days"
+          value={stats.expiring_soon}
+          sub="Needs renewal"
+          accent="var(--accent-yellow)"
+          icon={<IconOrgs />}
+        />
+        <OrgDetailMiniCard
+          label="Near User Cap"
+          value={stats.near_cap}
+          sub="≥ 80% of cap used"
+          accent="var(--accent-orange)"
+          icon={<IconUsers />}
+        />
       </div>
 
       {/* ── Users ── */}
       <SectionHeader label="Users" icon={<IconUsers />} />
       <div className="stat-cards-grid stat-cards-grid-3">
-        <UserCard label="Total Users" value={stats.total_users}
-          sub="All registered" accent="var(--accent-blue)"
-          icon={<IconUsers />} pct={100} />
-        <UserCard label="Active Users" value={stats.active_users}
-          sub={`${userActivePct}% of total`} accent="var(--accent-green)"
-          icon={<IconUsers />} pct={userActivePct} showRing />
-        <UserCard label="Pending Invitations" value={stats.pending_invites}
-          sub="Awaiting acceptance" accent="var(--accent-blue)"
-          icon={<IconUsers />} />
+        <OrgDetailMiniCard
+          label="Total Users"
+          value={stats.total_users}
+          sub="All registered"
+          accent="var(--accent-blue)"
+          icon={<IconUsers />}
+        />
+        <OrgDetailMiniCard
+          label="Active Users"
+          value={stats.active_users}
+          sub={`${userActivePct}% of total`}
+          accent="var(--accent-green)"
+          icon={<IconUsers />}
+        />
+        <OrgDetailMiniCard
+          label="Pending Invitations"
+          value={stats.pending_invites}
+          sub="Awaiting acceptance"
+          accent="var(--accent-blue)"
+          icon={<IconUsers />}
+        />
       </div>
 
       {/* ── Alerts ── */}
       <SectionHeader label="Alerts" icon={<IconBell />} />
       <div className="stat-cards-grid stat-cards-grid-2">
-        <AlertCard label="Force Reset Pending" value={stats.force_reset_pending}
-          sub="Users not yet reset" accent="var(--accent-red)"
-          icon={<IconUsers />} watermark={<WatermarkCheck />} />
-        <AlertCard label="Expired Organizations" value={stats.expired_orgs}
-          sub="Past end date" accent="var(--accent-red)"
-          icon={<IconOrgs />} watermark={<WatermarkCal />} />
+        <OrgDetailMiniCard
+          label="Force Reset Pending"
+          value={stats.force_reset_pending}
+          sub="Users not yet reset"
+          accent="var(--accent-red)"
+          icon={<IconUsers />}
+        />
+        <OrgDetailMiniCard
+          label="Expired Organizations"
+          value={stats.expired_orgs}
+          sub="Past end date"
+          accent="var(--accent-red)"
+          icon={<IconOrgs />}
+        />
       </div>
 
     </div>
@@ -776,40 +1269,36 @@ function OverviewTab() {
 // ── Main SuperAdminPanel ──────────────────────────────────────────────────
 
 export default function SuperAdminPanel() {
-  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState('overview');
 
   return (
-    <div className="admin-panel-page">
-      {/* ── Header ── */}
-      <div className="admin-panel-header">
-        <button className="admin-back-btn" onClick={() => navigate(-1)}>← Back</button>
-        <h1 className="super-admin-title">Super Admin Panel</h1>
-      </div>
+    <div className="dashboard">
+      <DashboardNav />
+      <div className="admin-panel-page admin-panel-page-in-dashboard">
+        <div className="admin-panel-body">
+          <nav className="admin-sidebar">
+            <div className="admin-sidebar-section">
+              <div className="admin-sidebar-label">Manage</div>
+              {NAV_ITEMS.map(({ id, label, Icon }) => (
+                <button
+                  key={id}
+                  type="button"
+                  className={`admin-sidebar-link super-admin-link ${activeSection === id ? 'active' : ''}`}
+                  onClick={() => setActiveSection(id)}
+                >
+                  <Icon />
+                  {label}
+                </button>
+              ))}
+            </div>
+          </nav>
 
-      {/* ── Sidebar + Content ── */}
-      <div className="admin-panel-body">
-        <nav className="admin-sidebar">
-          <div className="admin-sidebar-section">
-            <div className="admin-sidebar-label">Manage</div>
-            {NAV_ITEMS.map(({ id, label, Icon }) => (
-              <button
-                key={id}
-                className={`admin-sidebar-link super-admin-link ${activeSection === id ? 'active' : ''}`}
-                onClick={() => setActiveSection(id)}
-              >
-                <Icon />
-                {label}
-              </button>
-            ))}
-          </div>
-        </nav>
-
-        <main className="admin-panel-content">
-          {activeSection === 'overview' && <OverviewTab />}
-          {activeSection === 'orgs'     && <OrgsTab />}
-          {activeSection === 'users'    && <AllUsersTab />}
-        </main>
+          <main className="admin-panel-content">
+            {activeSection === 'overview' && <OverviewTab />}
+            {activeSection === 'orgs' && <OrgsTab />}
+            {activeSection === 'users' && <AllUsersTab />}
+          </main>
+        </div>
       </div>
     </div>
   );
