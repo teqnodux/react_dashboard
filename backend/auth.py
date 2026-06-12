@@ -103,6 +103,25 @@ async def get_current_user(request: Request) -> dict:
     if payload.get("type") != "access":
         raise HTTPException(status_code=401, detail="Invalid token type")
 
+    # Check if all sessions were invalidated (e.g. after Force Reset)
+    from db import get_db
+    from bson import ObjectId
+    try:
+        user_doc = get_db()["users"].find_one(
+            {"_id": ObjectId(payload["user_id"])},
+            {"tokens_invalidated_at": 1},
+        )
+        if user_doc:
+            invalidated_at = user_doc.get("tokens_invalidated_at")
+            if invalidated_at:
+                iat = payload.get("iat")
+                if iat and datetime.fromtimestamp(iat, tz=timezone.utc) < invalidated_at:
+                    raise HTTPException(status_code=401, detail="Session invalidated. Please log in again.")
+    except HTTPException:
+        raise
+    except Exception:
+        pass  # DB lookup failure should not block valid requests
+
     return payload
 
 

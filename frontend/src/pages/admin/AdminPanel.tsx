@@ -27,6 +27,43 @@ interface Recipient {
   created_at: string | null;
 }
 
+// ── Confirm Modal ─────────────────────────────────────────────────────────
+
+function ConfirmModal({
+  title,
+  message,
+  confirmLabel = 'Confirm',
+  danger = false,
+  onConfirm,
+  onClose,
+}: {
+  title: string;
+  message: string;
+  confirmLabel?: string;
+  danger?: boolean;
+  onConfirm: () => void;
+  onClose: () => void;
+}) {
+  return (
+    <div className="modal-overlay">
+      <div className="modal-box" style={{ maxWidth: 400 }}>
+        <h2>{title}</h2>
+        <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--space-xl)', lineHeight: 1.6 }}>{message}</p>
+        <div className="modal-actions">
+          <button type="button" className="btn-ghost" onClick={onClose}>Cancel</button>
+          <button
+            type="button"
+            className={danger ? 'btn-danger' : 'btn-primary'}
+            onClick={() => { onConfirm(); onClose(); }}
+          >
+            {confirmLabel}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── Invite Modal ──────────────────────────────────────────────────────────
 
 function InviteModal({ onClose, onSuccess }: { onClose: () => void; onSuccess: () => void }) {
@@ -202,6 +239,7 @@ function UsersTab() {
   const [users, setUsers] = useState<OrgUser[]>([]);
   const [loading, setLoading] = useState(true);
   const [showInvite, setShowInvite] = useState(false);
+  const [confirmReset, setConfirmReset] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -253,12 +291,22 @@ function UsersTab() {
 
   const handleForceReset = async (id: string) => {
     await orgAdminApi.forceResetUser(id);
-    alert('Password reset flag set. User will be prompted on next login.');
+    load();
   };
 
   return (
     <div>
       {showInvite && <InviteModal onClose={() => setShowInvite(false)} onSuccess={load} />}
+      {confirmReset && (
+        <ConfirmModal
+          title="Force Password Reset"
+          message="This will immediately log the user out of all sessions and require them to reset their password on next login. Continue?"
+          confirmLabel="Force Reset"
+          danger
+          onConfirm={() => handleForceReset(confirmReset)}
+          onClose={() => setConfirmReset(null)}
+        />
+      )}
       <div className="admin-action-row">
         <button className="btn-primary" onClick={() => setShowInvite(true)}>+ Invite User</button>
       </div>
@@ -304,7 +352,7 @@ function UsersTab() {
                           {(u.status === 'suspended' || u.status === 'inactive') && (
                             <button className="btn-ghost" style={{ color: 'var(--accent-green)', borderColor: 'var(--accent-green)' }} onClick={() => handleReactivate(u.id)}>Reactivate</button>
                           )}
-                          <button className="btn-ghost" onClick={() => handleForceReset(u.id)}>Force Reset</button>
+                          <button className="btn-ghost" onClick={() => setConfirmReset(u.id)}>Force Reset</button>
                           <button className="btn-danger" onClick={() => handleRemove(u.id)}>Remove</button>
                         </>
                       )}

@@ -408,9 +408,14 @@ def force_reset_org_user(org_id: str, user_id: str, current_user=_require_super)
     if not user:
         raise HTTPException(status_code=404, detail="User not found in this organization")
 
+    now = datetime.now(timezone.utc)
     db["users"].update_one(
         {"_id": oid},
-        {"$set": {"force_password_reset": True, "updated_at": datetime.now(timezone.utc)}},
+        {"$set": {
+            "force_password_reset": True,
+            "tokens_invalidated_at": now,
+            "updated_at": now,
+        }},
     )
     return {"detail": "Password reset flag set for user"}
 
@@ -626,9 +631,14 @@ def force_password_reset(user_id: str, current_user=_require_super):
     except Exception:
         raise HTTPException(status_code=400, detail="Invalid user ID")
 
+    now = datetime.now(timezone.utc)
     result = db["users"].update_one(
         {"_id": oid},
-        {"$set": {"force_password_reset": True, "updated_at": datetime.now(timezone.utc)}},
+        {"$set": {
+            "force_password_reset": True,
+            "tokens_invalidated_at": now,
+            "updated_at": now,
+        }},
     )
     if result.matched_count == 0:
         raise HTTPException(status_code=404, detail="User not found")

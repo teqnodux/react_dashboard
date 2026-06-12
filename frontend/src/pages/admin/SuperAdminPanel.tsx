@@ -50,6 +50,43 @@ interface Recipient {
   created_at: string | null;
 }
 
+// ── Confirm Modal ─────────────────────────────────────────────────────────
+
+function ConfirmModal({
+  title,
+  message,
+  confirmLabel = 'Confirm',
+  danger = false,
+  onConfirm,
+  onClose,
+}: {
+  title: string;
+  message: string;
+  confirmLabel?: string;
+  danger?: boolean;
+  onConfirm: () => void;
+  onClose: () => void;
+}) {
+  return (
+    <div className="modal-overlay">
+      <div className="modal-box" style={{ maxWidth: 400 }}>
+        <h2>{title}</h2>
+        <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--space-xl)', lineHeight: 1.6 }}>{message}</p>
+        <div className="modal-actions">
+          <button type="button" className="btn-ghost" onClick={onClose}>Cancel</button>
+          <button
+            type="button"
+            className={danger ? 'btn-danger' : 'btn-primary'}
+            onClick={() => { onConfirm(); onClose(); }}
+          >
+            {confirmLabel}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── Create Org Modal ──────────────────────────────────────────────────────
 
 function CreateOrgModal({ onClose, onSuccess }: { onClose: () => void; onSuccess: () => void }) {
@@ -514,6 +551,7 @@ function OrgDetailUsersTab({
   const [users, setUsers] = useState<OrgMember[]>([]);
   const [loading, setLoading] = useState(true);
   const [showInvite, setShowInvite] = useState(false);
+  const [confirmReset, setConfirmReset] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -562,13 +600,23 @@ function OrgDetailUsersTab({
 
   const handleForceReset = async (id: string) => {
     await superAdminApi.forceResetOrgUser(orgId, id);
-    alert('Password reset flag set. User will be prompted on next login.');
+    load();
   };
 
   return (
     <div>
       {showInvite && (
         <OrgInviteModal orgId={orgId} onClose={() => setShowInvite(false)} onSuccess={load} />
+      )}
+      {confirmReset && (
+        <ConfirmModal
+          title="Force Password Reset"
+          message="This will immediately log the user out of all sessions and require them to reset their password on next login. Continue?"
+          confirmLabel="Force Reset"
+          danger
+          onConfirm={() => handleForceReset(confirmReset)}
+          onClose={() => setConfirmReset(null)}
+        />
       )}
       <div className="admin-action-row">
         <button type="button" className="btn-primary-gradient" onClick={() => setShowInvite(true)}>
@@ -629,7 +677,7 @@ function OrgDetailUsersTab({
                               Reactivate
                             </button>
                           )}
-                          <button type="button" className="btn-info" onClick={() => handleForceReset(u.id)}>
+                          <button type="button" className="btn-info" onClick={() => setConfirmReset(u.id)}>
                             Reset Password
                           </button>
                           <button type="button" className="btn-danger" onClick={() => handleRemove(u.id)}>
@@ -1202,6 +1250,7 @@ function AllUsersTab() {
   const [orgs, setOrgs] = useState<Org[]>([]);
   const [loading, setLoading] = useState(true);
   const [showCreate, setShowCreate] = useState(false);
+  const [confirmReset, setConfirmReset] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -1231,7 +1280,7 @@ function AllUsersTab() {
 
   const handleForceReset = async (id: string) => {
     await superAdminApi.forceResetUser(id);
-    alert('Password reset flag set. User will be prompted on next login.');
+    load();
   };
 
   const getOrgName = (orgId: string | null) => {
@@ -1246,6 +1295,16 @@ function AllUsersTab() {
           orgs={orgs.filter((o) => o.status === 'active')}
           onClose={() => setShowCreate(false)}
           onSuccess={load}
+        />
+      )}
+      {confirmReset && (
+        <ConfirmModal
+          title="Force Password Reset"
+          message="This will immediately log the user out of all sessions and require them to reset their password on next login. Continue?"
+          confirmLabel="Force Reset"
+          danger
+          onConfirm={() => handleForceReset(confirmReset)}
+          onClose={() => setConfirmReset(null)}
         />
       )}
 
@@ -1297,7 +1356,7 @@ function AllUsersTab() {
                     ) : getOrgName(u.organization_id)}
                   </td>
                   <td>
-                    <button className="btn-ghost" onClick={() => handleForceReset(u.id)}>Force Reset</button>
+                    <button className="btn-ghost" onClick={() => setConfirmReset(u.id)}>Force Reset</button>
                   </td>
                 </tr>
               ))}

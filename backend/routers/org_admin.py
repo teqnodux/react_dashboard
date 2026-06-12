@@ -267,10 +267,14 @@ def admin_force_reset(user_id: str, current_user=_require_admin):
         raise HTTPException(
             status_code=404, detail="User not found in your organization")
 
+    now = datetime.now(timezone.utc)
     db["users"].update_one(
         {"_id": oid},
-        {"$set": {"force_password_reset": True,
-                  "updated_at": datetime.now(timezone.utc)}},
+        {"$set": {
+            "force_password_reset": True,
+            "tokens_invalidated_at": now,
+            "updated_at": now,
+        }},
     )
     return {"detail": "Password reset flag set for user"}
 
