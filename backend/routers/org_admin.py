@@ -16,6 +16,7 @@ from db import get_db
 from services.org_service import check_user_cap, get_org_or_404
 from services.invite_service import create_invite
 from services.email_service import send_invite_email
+from config import EMAIL_REPORT_TYPES
 
 router = APIRouter(prefix="/api/org", tags=["org-admin"])
 
@@ -260,17 +261,6 @@ def admin_force_reset(user_id: str, current_user=_require_admin):
 
 # ── Email recipients ──────────────────────────────────────────────────────────
 
-class RecipientCreate(BaseModel):
-    email: EmailStr
-    name: str
-    is_active: bool = True
-
-
-class RecipientUpdate(BaseModel):
-    name: Optional[str] = None
-    is_active: Optional[bool] = None
-
-
 def _recipient_to_dict(r: dict) -> dict:
     return {
         "id": str(r["_id"]),
@@ -278,8 +268,52 @@ def _recipient_to_dict(r: dict) -> dict:
         "email": r.get("email"),
         "name": r.get("name"),
         "is_active": r.get("is_active", True),
+        "report_types": r.get("report_types", []),
         "created_at": r.get("created_at").isoformat() if r.get("created_at") else None,
         "updated_at": r.get("updated_at").isoformat() if r.get("updated_at") else None,
+    }
+
+
+def _get_org_enabled_report_types(org_id: str, db) -> list[str]:
+    settings = db["organization_notification_settings"].find_one({"organization_id": org_id})
+    return settings.get("enabled_report_types", []) if settings else []
+
+
+def _validate_recipient_report_types(org_id: str, report_types: list[str], db) -> None:
+    if not report_types:
+        return
+    enabled = _get_org_enabled_report_types(org_id, db)
+    invalid = [t for t in report_types if t not in enabled]
+    if invalid:
+        raise HTTPException(
+            status_code=422,
+            detail=f"Report type(s) not enabled for this org: {', '.join(invalid)}",
+        )
+
+
+class RecipientCreate(BaseModel):
+    email: EmailStr
+    name: str
+    is_active: bool = True
+    report_types: list[str] = []
+
+
+class RecipientUpdate(BaseModel):
+    name: Optional[str] = None
+    is_active: Optional[bool] = None
+    report_types: Optional[list[str]] = None
+
+
+@router.get("/notification-settings")
+def get_notification_settings(current_user=_require_admin):
+    """Read-only: returns this org's enabled report types so org admin can scope recipients."""
+    org_id = _scoped_org_id(current_user)
+    db = get_db()
+    enabled = _get_org_enabled_report_types(org_id, db)
+    # Return labels alongside keys so frontend doesn't need a separate call
+    return {
+        "enabled_report_types": enabled,
+        "report_type_labels": {k: EMAIL_REPORT_TYPES[k] for k in enabled if k in EMAIL_REPORT_TYPES},
     }
 
 
@@ -300,12 +334,15 @@ def add_recipient(body: RecipientCreate, current_user=_require_admin):
     if db["organization_email_recipients"].find_one({"organization_id": org_id, "email": email}):
         raise HTTPException(status_code=409, detail="Recipient with this email already exists")
 
+    _validate_recipient_report_types(org_id, body.report_types, db)
+
     now = datetime.now(timezone.utc)
     doc = {
         "organization_id": org_id,
         "email": email,
         "name": body.name,
         "is_active": body.is_active,
+        "report_types": body.report_types,
         "created_at": now,
         "updated_at": now,
     }
@@ -332,6 +369,9 @@ def update_recipient(recipient_id: str, body: RecipientUpdate, current_user=_req
         updates["name"] = body.name
     if body.is_active is not None:
         updates["is_active"] = body.is_active
+    if body.report_types is not None:
+        _validate_recipient_report_types(org_id, body.report_types, db)
+        updates["report_types"] = body.report_types
 
     db["organization_email_recipients"].update_one({"_id": oid}, {"$set": updates})
     return _recipient_to_dict(db["organization_email_recipients"].find_one({"_id": oid}))

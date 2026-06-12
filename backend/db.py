@@ -3,7 +3,7 @@ Centralized MongoDB client.
 All modules should import get_db() from here instead of creating their own client.
 """
 
-from pymongo import MongoClient
+from pymongo import MongoClient, ASCENDING
 from pymongo.database import Database
 from config import MONGODB_URI, MONGODB_DB, FEED_ITEMS_COLLECTION
 
@@ -46,6 +46,36 @@ def get_password_reset_tokens_col():
 
 def get_feed_items_col():
     return get_db()[FEED_ITEMS_COLLECTION]
+
+
+def get_notification_settings_col():
+    return get_db()["organization_notification_settings"]
+
+
+def ensure_indexes() -> None:
+    """Create all required indexes. Safe to call on every startup (no-op if already exist)."""
+    db = get_db()
+
+    # organization_notification_settings
+    ns = db["organization_notification_settings"]
+    ns.create_index([("organization_id", ASCENDING)], unique=True, name="org_notif_org_id_unique")
+    ns.create_index([("enabled_report_types", ASCENDING)], name="org_notif_report_types")
+
+    # organization_email_recipients
+    rec = db["organization_email_recipients"]
+    rec.create_index(
+        [("organization_id", ASCENDING), ("email", ASCENDING)],
+        unique=True,
+        name="rec_org_email_unique",
+    )
+    rec.create_index(
+        [("organization_id", ASCENDING), ("is_active", ASCENDING)],
+        name="rec_org_active",
+    )
+    rec.create_index(
+        [("organization_id", ASCENDING), ("report_types", ASCENDING), ("is_active", ASCENDING)],
+        name="rec_org_report_types_active",
+    )
 
 
 def feed_item_has_deal_id(doc: dict | None) -> bool:

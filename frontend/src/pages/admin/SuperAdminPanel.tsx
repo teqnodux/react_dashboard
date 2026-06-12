@@ -45,6 +45,7 @@ interface Recipient {
   email: string;
   name: string;
   is_active: boolean;
+  report_types: string[];
   created_at: string | null;
 }
 
@@ -348,30 +349,61 @@ function OrgInviteModal({
   );
 }
 
-function OrgAddRecipientModal({
+function RecipientReportTypesModal({
   orgId,
+  recipient,
   onClose,
-  onSuccess
+  onSuccess,
 }: {
   orgId: string;
+  recipient?: Recipient;
   onClose: () => void;
   onSuccess: () => void;
 }) {
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
+  const isEdit = !!recipient;
+  const [email, setEmail] = useState(recipient?.email ?? '');
+  const [name, setName] = useState(recipient?.name ?? '');
+  const [selectedTypes, setSelectedTypes] = useState<string[]>(recipient?.report_types ?? []);
+  const [enabledTypes, setEnabledTypes] = useState<string[]>([]);
+  const [reportLabels, setReportLabels] = useState<Record<string, string>>({});
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    Promise.all([
+      superAdminApi.getOrgNotificationSettings(orgId),
+      superAdminApi.getReportTypes(),
+    ]).then(([settingsRes, typesRes]) => {
+      const enabled = settingsRes.data.enabled_report_types;
+      setEnabledTypes(enabled);
+      setReportLabels(typesRes.data);
+      // For new recipients default to all org-enabled types selected
+      if (!isEdit) setSelectedTypes(enabled);
+    }).catch(() => {});
+  }, [orgId, isEdit]);
+
+  const toggleType = (key: string) =>
+    setSelectedTypes((prev) =>
+      prev.includes(key) ? prev.filter((t) => t !== key) : [...prev, key]
+    );
+
+  const allSelected = enabledTypes.length > 0 && enabledTypes.every((t) => selectedTypes.includes(t));
+  const toggleAll = () => setSelectedTypes(allSelected ? [] : [...enabledTypes]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setLoading(true);
     try {
-      await superAdminApi.addOrgRecipient(orgId, { email, name, is_active: true });
+      if (isEdit) {
+        await superAdminApi.updateOrgRecipient(orgId, recipient.id, { report_types: selectedTypes });
+      } else {
+        await superAdminApi.addOrgRecipient(orgId, { email, name, is_active: true, report_types: selectedTypes });
+      }
       onSuccess();
       onClose();
     } catch (err) {
-      if (axios.isAxiosError(err)) setError(err.response?.data?.detail || 'Failed to add recipient');
+      if (axios.isAxiosError(err)) setError(err.response?.data?.detail || 'Failed to save recipient');
       else setError('Something went wrong');
     } finally {
       setLoading(false);
@@ -381,34 +413,64 @@ function OrgAddRecipientModal({
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-box" onClick={(e) => e.stopPropagation()}>
-        <h2>Add Email Recipient</h2>
+        <h2>{isEdit ? `Notifications — ${recipient.name || recipient.email}` : 'Add Email Recipient'}</h2>
         <form onSubmit={handleSubmit}>
+          {!isEdit && (
+            <>
+              <div className="modal-field">
+                <label>Name</label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  autoFocus
+                  placeholder="John Smith"
+                />
+              </div>
+              <div className="modal-field">
+                <label>Email</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder="john@example.com"
+                />
+              </div>
+            </>
+          )}
           <div className="modal-field">
-            <label>Name</label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              autoFocus
-              placeholder="John Smith"
-            />
-          </div>
-          <div className="modal-field">
-            <label>Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              placeholder="john@example.com"
-            />
+            <div className="report-type-checklist-header">
+              <label>Report Types</label>
+              {enabledTypes.length > 0 && (
+                <button type="button" className="report-type-select-all" onClick={toggleAll}>
+                  {allSelected ? 'Deselect All' : 'Select All'}
+                </button>
+              )}
+            </div>
+            {enabledTypes.length === 0 ? (
+              <p className="notif-empty-hint">No report types enabled for this organization yet.</p>
+            ) : (
+              <div className="report-type-checklist">
+                {enabledTypes.map((key) => (
+                  <label key={key} className="report-type-check-row">
+                    <input
+                      type="checkbox"
+                      checked={selectedTypes.includes(key)}
+                      onChange={() => toggleType(key)}
+                    />
+                    <span>{reportLabels[key] ?? key}</span>
+                  </label>
+                ))}
+              </div>
+            )}
           </div>
           {error && <div className="admin-error">{error}</div>}
           <div className="modal-actions">
             <button type="button" className="btn-ghost" onClick={onClose}>Cancel</button>
             <button type="submit" className="btn-primary" disabled={loading}>
-              {loading ? 'Adding…' : 'Add Recipient'}
+              {loading ? 'Saving…' : isEdit ? 'Save' : 'Add Recipient'}
             </button>
           </div>
         </form>
@@ -566,6 +628,7 @@ function OrgDetailRecipientsTab({ orgId }: { orgId: string }) {
   const [recipients, setRecipients] = useState<Recipient[]>([]);
   const [loading, setLoading] = useState(true);
   const [showAdd, setShowAdd] = useState(false);
+  const [editRecipient, setEditRecipient] = useState<Recipient | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -595,7 +658,15 @@ function OrgDetailRecipientsTab({ orgId }: { orgId: string }) {
   return (
     <div>
       {showAdd && (
-        <OrgAddRecipientModal orgId={orgId} onClose={() => setShowAdd(false)} onSuccess={load} />
+        <RecipientReportTypesModal orgId={orgId} onClose={() => setShowAdd(false)} onSuccess={load} />
+      )}
+      {editRecipient && (
+        <RecipientReportTypesModal
+          orgId={orgId}
+          recipient={editRecipient}
+          onClose={() => setEditRecipient(null)}
+          onSuccess={load}
+        />
       )}
       <div className="admin-action-row">
         <button type="button" className="btn-primary-gradient" onClick={() => setShowAdd(true)}>
@@ -613,6 +684,7 @@ function OrgDetailRecipientsTab({ orgId }: { orgId: string }) {
               <tr>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Report Types</th>
                 <th>Status</th>
                 <th>Added</th>
                 <th>Actions</th>
@@ -620,9 +692,20 @@ function OrgDetailRecipientsTab({ orgId }: { orgId: string }) {
             </thead>
             <tbody>
               {recipients.map((r) => (
-                <tr key={r.id}>
+                <tr
+                  key={r.id}
+                  className="recipient-row-clickable"
+                  onClick={() => setEditRecipient(r)}
+                  title="Click to manage notification permissions"
+                >
                   <td>{r.name}</td>
                   <td>{r.email}</td>
+                  <td>
+                    {r.report_types.length === 0
+                      ? <span className="cell-muted">None</span>
+                      : <span className="report-types-badge">{r.report_types.length} type{r.report_types.length !== 1 ? 's' : ''}</span>
+                    }
+                  </td>
                   <td>
                     <span className={`status-badge ${r.is_active ? 'active' : 'inactive'}`}>
                       {r.is_active ? 'Active' : 'Inactive'}
@@ -631,7 +714,7 @@ function OrgDetailRecipientsTab({ orgId }: { orgId: string }) {
                   <td className="cell-muted">
                     {r.created_at ? new Date(r.created_at).toLocaleDateString() : '—'}
                   </td>
-                  <td>
+                  <td onClick={(e) => e.stopPropagation()}>
                     <div style={{ display: 'flex', gap: '6px' }}>
                       <button type="button" className="btn-ghost" onClick={() => toggleActive(r)}>
                         {r.is_active ? 'Deactivate' : 'Activate'}
@@ -651,6 +734,87 @@ function OrgDetailRecipientsTab({ orgId }: { orgId: string }) {
   );
 }
 
+function OrgNotificationsTab({ orgId }: { orgId: string }) {
+  const [allTypes, setAllTypes] = useState<Record<string, string>>({});
+  const [selected, setSelected] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState('');
+  const [saved, setSaved] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    Promise.all([
+      superAdminApi.getReportTypes(),
+      superAdminApi.getOrgNotificationSettings(orgId),
+    ])
+      .then(([typesRes, settingsRes]) => {
+        setAllTypes(typesRes.data);
+        setSelected(settingsRes.data.enabled_report_types);
+      })
+      .catch(() => setError('Failed to load notification settings'))
+      .finally(() => setLoading(false));
+  }, [orgId]);
+
+  const toggle = (key: string) =>
+    setSelected((prev) =>
+      prev.includes(key) ? prev.filter((t) => t !== key) : [...prev, key]
+    );
+
+  const handleSave = async () => {
+    setSaving(true);
+    setError('');
+    setSaved(false);
+    try {
+      await superAdminApi.updateOrgNotificationSettings(orgId, { enabled_report_types: selected });
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2500);
+    } catch (err) {
+      if (axios.isAxiosError(err)) setError(err.response?.data?.detail || 'Failed to save');
+      else setError('Something went wrong');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  if (loading) return <p className="loading">Loading…</p>;
+
+  return (
+    <div className="notif-settings-panel">
+      <div className="notif-settings-header">
+        <div>
+          <div className="notif-settings-title">Notification Settings</div>
+          <div className="notif-settings-subtitle">
+            Select which report types this organization is allowed to receive.
+          </div>
+        </div>
+        <button
+          type="button"
+          className="btn-primary"
+          onClick={handleSave}
+          disabled={saving}
+        >
+          {saving ? 'Saving…' : 'Save'}
+        </button>
+      </div>
+      {error && <div className="admin-error">{error}</div>}
+      {saved && <div className="notif-saved-msg">Saved successfully.</div>}
+      <div className="report-type-checklist report-type-checklist-full">
+        {Object.entries(allTypes).map(([key, label]) => (
+          <label key={key} className="report-type-check-row">
+            <input
+              type="checkbox"
+              checked={selected.includes(key)}
+              onChange={() => toggle(key)}
+            />
+            <span>{label}</span>
+          </label>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function OrgDetailView({
   org,
   onBack,
@@ -660,7 +824,7 @@ function OrgDetailView({
   onBack: () => void;
   onOrgUpdated: () => void;
 }) {
-  const [activeTab, setActiveTab] = useState<'users' | 'recipients'>('users');
+  const [activeTab, setActiveTab] = useState<'users' | 'recipients' | 'notifications'>('users');
   const [showEdit, setShowEdit] = useState(false);
   const [orgInfo, setOrgInfo] = useState(org);
   const [memberCount, setMemberCount] = useState(0);
@@ -755,14 +919,19 @@ function OrgDetailView({
         >
           Email Recipients
         </button>
+        <button
+          type="button"
+          className={`org-detail-tab ${activeTab === 'notifications' ? 'active' : ''}`}
+          onClick={() => setActiveTab('notifications')}
+        >
+          Notifications
+        </button>
       </div>
 
       <div className="org-detail-panel">
-        {activeTab === 'users' ? (
-          <OrgDetailUsersTab orgId={orgInfo.id} onMembersChange={setMemberCount} />
-        ) : (
-          <OrgDetailRecipientsTab orgId={orgInfo.id} />
-        )}
+        {activeTab === 'users' && <OrgDetailUsersTab orgId={orgInfo.id} onMembersChange={setMemberCount} />}
+        {activeTab === 'recipients' && <OrgDetailRecipientsTab orgId={orgInfo.id} />}
+        {activeTab === 'notifications' && <OrgNotificationsTab orgId={orgInfo.id} />}
       </div>
     </div>
   );

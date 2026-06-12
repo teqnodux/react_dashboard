@@ -12,6 +12,7 @@ from fastapi import APIRouter, Depends, HTTPException, Request
 from pydantic import BaseModel, EmailStr
 
 from auth import require_roles, hash_password
+from config import EMAIL_REPORT_TYPES
 from db import get_db
 from services.email_service import send_invite_email
 from services.invite_service import create_invite
@@ -129,6 +130,68 @@ def delete_org(org_id: str, current_user=_require_super):
     return {"detail": "Organization deactivated"}
 
 
+# ── Report types master list ──────────────────────────────────────────────────
+
+@router.get("/report-types")
+def get_report_types(current_user=_require_super):
+    """Return the master list of all available email report types."""
+    return EMAIL_REPORT_TYPES
+
+
+# ── Org notification settings ─────────────────────────────────────────────────
+
+class NotificationSettingsRequest(BaseModel):
+    enabled_report_types: list[str]
+
+
+def _notif_settings_to_dict(doc: dict | None) -> dict:
+    if not doc:
+        return {"enabled_report_types": []}
+    return {
+        "enabled_report_types": doc.get("enabled_report_types", []),
+        "created_at": doc["created_at"].isoformat() if doc.get("created_at") else None,
+        "updated_at": doc["updated_at"].isoformat() if doc.get("updated_at") else None,
+    }
+
+
+@router.get("/orgs/{org_id}/notification-settings")
+def get_org_notification_settings(org_id: str, current_user=_require_super):
+    db = get_db()
+    get_org_or_404(org_id, db)
+    doc = db["organization_notification_settings"].find_one({"organization_id": org_id})
+    return _notif_settings_to_dict(doc)
+
+
+@router.put("/orgs/{org_id}/notification-settings")
+def update_org_notification_settings(
+    org_id: str,
+    body: NotificationSettingsRequest,
+    current_user=_require_super,
+):
+    db = get_db()
+    get_org_or_404(org_id, db)
+
+    invalid = [t for t in body.enabled_report_types if t not in EMAIL_REPORT_TYPES]
+    if invalid:
+        raise HTTPException(
+            status_code=422,
+            detail=f"Unknown report type(s): {', '.join(invalid)}",
+        )
+
+    now = datetime.now(timezone.utc)
+    db["organization_notification_settings"].update_one(
+        {"organization_id": org_id},
+        {"$set": {
+            "organization_id": org_id,
+            "enabled_report_types": body.enabled_report_types,
+            "updated_at": now,
+        }, "$setOnInsert": {"created_at": now}},
+        upsert=True,
+    )
+    doc = db["organization_notification_settings"].find_one({"organization_id": org_id})
+    return _notif_settings_to_dict(doc)
+
+
 def _org_member_to_dict(u: dict) -> dict:
     """Org-scoped user row (no organization_id — implied by path)."""
     return {
@@ -149,6 +212,7 @@ def _recipient_to_dict(r: dict) -> dict:
         "email": r.get("email"),
         "name": r.get("name"),
         "is_active": r.get("is_active", True),
+        "report_types": r.get("report_types", []),
         "created_at": r.get("created_at").isoformat() if r.get("created_at") else None,
         "updated_at": r.get("updated_at").isoformat() if r.get("updated_at") else None,
     }
@@ -348,15 +412,31 @@ def force_reset_org_user(org_id: str, user_id: str, current_user=_require_super)
 
 # ── Org email recipients ──────────────────────────────────────────────────────
 
+def _validate_recipient_report_types(org_id: str, report_types: list[str], db) -> None:
+    """Ensure recipient's report_types are all within the org's enabled list."""
+    if not report_types:
+        return
+    settings = db["organization_notification_settings"].find_one({"organization_id": org_id})
+    enabled = settings.get("enabled_report_types", []) if settings else []
+    invalid = [t for t in report_types if t not in enabled]
+    if invalid:
+        raise HTTPException(
+            status_code=422,
+            detail=f"Report type(s) not enabled for this org: {', '.join(invalid)}",
+        )
+
+
 class RecipientCreate(BaseModel):
     email: EmailStr
     name: str
     is_active: bool = True
+    report_types: list[str] = []
 
 
 class RecipientUpdate(BaseModel):
     name: Optional[str] = None
     is_active: Optional[bool] = None
+    report_types: Optional[list[str]] = None
 
 
 @router.get("/orgs/{org_id}/email-recipients")
@@ -381,12 +461,15 @@ def add_org_email_recipient(
     }):
         raise HTTPException(status_code=409, detail="Recipient with this email already exists")
 
+    _validate_recipient_report_types(org_id, body.report_types, db)
+
     now = datetime.now(timezone.utc)
     doc = {
         "organization_id": org_id,
         "email": email,
         "name": body.name,
         "is_active": body.is_active,
+        "report_types": body.report_types,
         "created_at": now,
         "updated_at": now,
     }
@@ -421,6 +504,9 @@ def update_org_email_recipient(
         updates["name"] = body.name
     if body.is_active is not None:
         updates["is_active"] = body.is_active
+    if body.report_types is not None:
+        _validate_recipient_report_types(org_id, body.report_types, db)
+        updates["report_types"] = body.report_types
 
     db["organization_email_recipients"].update_one({"_id": oid}, {"$set": updates})
     return _recipient_to_dict(

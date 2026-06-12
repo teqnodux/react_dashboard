@@ -624,6 +624,17 @@ _scheduler = AsyncIOScheduler()
 
 
 @app.on_event("startup")
+async def create_db_indexes():
+    """Ensure all MongoDB indexes exist on startup."""
+    from db import ensure_indexes
+    try:
+        ensure_indexes()
+        logger.info("MongoDB indexes ensured")
+    except Exception as e:
+        logger.warning("Index creation failed: %s", e)
+
+
+@app.on_event("startup")
 async def start_scheduler():
     """Start background scheduler for org expiry and other periodic tasks."""
     from datetime import timezone as _tz

@@ -27,14 +27,17 @@ export const orgAdminApi = {
   getRecipients: () =>
     api.get('/api/org/email-recipients'),
 
-  addRecipient: (body: { email: string; name: string; is_active: boolean }) =>
+  addRecipient: (body: { email: string; name: string; is_active: boolean; report_types?: string[] }) =>
     api.post('/api/org/email-recipients', body),
 
-  updateRecipient: (id: string, body: { name?: string; is_active?: boolean }) =>
+  updateRecipient: (id: string, body: { name?: string; is_active?: boolean; report_types?: string[] }) =>
     api.patch(`/api/org/email-recipients/${id}`, body),
 
   deleteRecipient: (id: string) =>
     api.delete(`/api/org/email-recipients/${id}`),
+
+  getNotificationSettings: () =>
+    api.get<{ enabled_report_types: string[]; report_type_labels: Record<string, string> }>('/api/org/notification-settings'),
 };
 
 // ── Super Admin API (/api/super-admin/...) ───────────────────────────────────
@@ -93,17 +96,26 @@ export const superAdminApi = {
 
   addOrgRecipient: (
     orgId: string,
-    body: { email: string; name: string; is_active: boolean }
+    body: { email: string; name: string; is_active: boolean; report_types?: string[] }
   ) => api.post(`/api/super-admin/orgs/${orgId}/email-recipients`, body),
 
   updateOrgRecipient: (
     orgId: string,
     recipientId: string,
-    body: { name?: string; is_active?: boolean }
+    body: { name?: string; is_active?: boolean; report_types?: string[] }
   ) => api.patch(`/api/super-admin/orgs/${orgId}/email-recipients/${recipientId}`, body),
 
   deleteOrgRecipient: (orgId: string, recipientId: string) =>
     api.delete(`/api/super-admin/orgs/${orgId}/email-recipients/${recipientId}`),
+
+  getReportTypes: () =>
+    api.get<Record<string, string>>('/api/super-admin/report-types'),
+
+  getOrgNotificationSettings: (orgId: string) =>
+    api.get<{ enabled_report_types: string[] }>(`/api/super-admin/orgs/${orgId}/notification-settings`),
+
+  updateOrgNotificationSettings: (orgId: string, body: { enabled_report_types: string[] }) =>
+    api.put(`/api/super-admin/orgs/${orgId}/notification-settings`, body),
 
   getAllUsers: () =>
     api.get('/api/super-admin/users'),
