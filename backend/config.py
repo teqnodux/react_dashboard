@@ -44,16 +44,16 @@ REFRESH_TOKEN_EXPIRE_DAYS = int(os.getenv("REFRESH_TOKEN_EXPIRE_DAYS", "7"))
 EMAIL_REPORT_TYPES = {
     "sec_standard_summary": "SEC General Summary L1/L2/L3",
     "sec_comparison_summary_10k": "SEC 10-K Comparison Summary",
-    "sec_comparison_summary_proxy":"SEC Proxy Comparison Summary",
-    "sec_background_summary_proxy":"SEC Proxy Background Summary",
-    "sec_new_deal_announcement":"SEC New Deal Announcement",
-    "sec_new_deal_details":"SEC New Deal Details",
-    "sec_dma_summary":"SEC DMA Summary",
-    "newswire_acquire":"Newswire Acquire",
-    "newswire_target":"Newswire Target",
-    "newswire_both":"Newswire Both",
-    "newswire_new_deal_without_threshold":"Newswire New Deal Without Threshold",
-    "newswire_new_deal_with_threshold":"Newswire New Deal With Threshold",
-    "financial_regulatory_us_deal":"Financial Regulatory US Deal",
-    "financial_regulatory_matched_deal":"Financial Regulatory Matched Deal"
+    "sec_comparison_summary_proxy": "SEC Proxy Comparison Summary",
+    "sec_background_summary_proxy": "SEC Proxy Background Summary",
+    "sec_new_deal_announcement": "SEC New Deal Announcement",
+    "sec_new_deal_details": "SEC New Deal Details",
+    "sec_dma_summary": "SEC DMA Summary",
+    "newswire_acquire": "Newswire Acquire",
+    "newswire_target": "Newswire Target",
+    "newswire_both": "Newswire Both",
+    "newswire_new_deal_without_threshold": "Newswire New Deal Without Threshold",
+    "newswire_new_deal_with_threshold": "Newswire New Deal With Threshold",
+    "foreign_regulatory_us_deal": "Foreign Regulatory US Deal",
+    "foreign_regulatory_matched_deal": "Foreign Regulatory Matched Deal"
 }
