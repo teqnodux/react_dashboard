@@ -53,8 +53,9 @@ export const superAdminApi = {
     name: string;
     plan_name: string;
     user_cap: number;
+    recipient_cap: number;
     start_date: string;
-    end_date: string;
+    end_date?: string;
     status?: string;
   }) => api.post('/api/super-admin/orgs', body),
 
@@ -62,6 +63,7 @@ export const superAdminApi = {
     name: string;
     plan_name: string;
     user_cap: number;
+    recipient_cap: number;
     start_date: string;
     end_date: string;
     status: string;

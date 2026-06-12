@@ -12,6 +12,7 @@ interface Org {
   status: string;
   plan_name: string;
   user_cap: number;
+  recipient_cap: number;
   start_date: string | null;
   end_date: string | null;
   created_at: string | null;
@@ -54,7 +55,7 @@ interface Recipient {
 function CreateOrgModal({ onClose, onSuccess }: { onClose: () => void; onSuccess: () => void }) {
   const today = new Date().toISOString().split('T')[0];
   const [form, setForm] = useState({
-    name: '', plan_name: 'basic', user_cap: 5,
+    name: '', plan_name: 'basic', user_cap: 5, recipient_cap: 10,
     start_date: today, end_date: '', status: 'active',
   });
   const [error, setError] = useState('');
@@ -67,7 +68,13 @@ function CreateOrgModal({ onClose, onSuccess }: { onClose: () => void; onSuccess
     setError('');
     setLoading(true);
     try {
-      await superAdminApi.createOrg({ ...form, user_cap: Number(form.user_cap) });
+      const { end_date, ...rest } = form;
+      await superAdminApi.createOrg({
+        ...rest,
+        user_cap: Number(form.user_cap),
+        recipient_cap: Number(form.recipient_cap),
+        ...(end_date ? { end_date } : {}),
+      });
       onSuccess();
       onClose();
     } catch (err) {
@@ -100,12 +107,16 @@ function CreateOrgModal({ onClose, onSuccess }: { onClose: () => void; onSuccess
             <input type="number" min={1} value={form.user_cap} onChange={(e) => set('user_cap', e.target.value)} required />
           </div>
           <div className="modal-field">
+            <label>Email Recipient Cap</label>
+            <input type="number" min={1} value={form.recipient_cap} onChange={(e) => set('recipient_cap', e.target.value)} required />
+          </div>
+          <div className="modal-field">
             <label>Start Date</label>
             <input type="date" value={form.start_date} onChange={(e) => set('start_date', e.target.value)} required />
           </div>
           <div className="modal-field">
-            <label>End Date</label>
-            <input type="date" value={form.end_date} onChange={(e) => set('end_date', e.target.value)} required />
+            <label>End Date <span className="modal-field-optional">(optional)</span></label>
+            <input type="date" value={form.end_date} onChange={(e) => set('end_date', e.target.value)} />
           </div>
           {error && <div className="admin-error">{error}</div>}
           <div className="modal-actions">
@@ -127,6 +138,7 @@ function EditOrgModal({ org, onClose, onSuccess }: { org: Org; onClose: () => vo
     name: org.name,
     plan_name: org.plan_name,
     user_cap: org.user_cap,
+    recipient_cap: org.recipient_cap ?? 10,
     status: org.status,
     start_date: org.start_date?.split('T')[0] ?? '',
     end_date: org.end_date?.split('T')[0] ?? '',
@@ -141,7 +153,7 @@ function EditOrgModal({ org, onClose, onSuccess }: { org: Org; onClose: () => vo
     setError('');
     setLoading(true);
     try {
-      await superAdminApi.updateOrg(org.id, { ...form, user_cap: Number(form.user_cap) });
+      await superAdminApi.updateOrg(org.id, { ...form, user_cap: Number(form.user_cap), recipient_cap: Number(form.recipient_cap) });
       onSuccess();
       onClose();
     } catch (err) {
@@ -172,6 +184,10 @@ function EditOrgModal({ org, onClose, onSuccess }: { org: Org; onClose: () => vo
           <div className="modal-field">
             <label>User Cap</label>
             <input type="number" min={1} value={form.user_cap} onChange={(e) => set('user_cap', e.target.value)} required />
+          </div>
+          <div className="modal-field">
+            <label>Email Recipient Cap</label>
+            <input type="number" min={1} value={form.recipient_cap} onChange={(e) => set('recipient_cap', e.target.value)} required />
           </div>
           <div className="modal-field">
             <label>Status</label>
@@ -234,6 +250,13 @@ const IconOrgCalendar = () => (
     <line x1="16" y1="2" x2="16" y2="6" />
     <line x1="8" y1="2" x2="8" y2="6" />
     <line x1="3" y1="10" x2="21" y2="10" />
+  </svg>
+);
+
+const IconOrgMail = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="4" width="20" height="16" rx="2" />
+    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
   </svg>
 );
 
@@ -375,10 +398,12 @@ function RecipientReportTypesModal({
       superAdminApi.getReportTypes(),
     ]).then(([settingsRes, typesRes]) => {
       const enabled = settingsRes.data.enabled_report_types;
-      setEnabledTypes(enabled);
+      // Preserve master definition order from config.py, not MongoDB storage order
+      const ordered = Object.keys(typesRes.data).filter(k => enabled.includes(k));
+      setEnabledTypes(ordered);
       setReportLabels(typesRes.data);
       // For new recipients default to all org-enabled types selected
-      if (!isEdit) setSelectedTypes(enabled);
+      if (!isEdit) setSelectedTypes(ordered);
     }).catch(() => {});
   }, [orgId, isEdit]);
 
@@ -624,7 +649,7 @@ function OrgDetailUsersTab({
   );
 }
 
-function OrgDetailRecipientsTab({ orgId }: { orgId: string }) {
+function OrgDetailRecipientsTab({ orgId, onCountChange }: { orgId: string; onCountChange?: (n: number) => void }) {
   const [recipients, setRecipients] = useState<Recipient[]>([]);
   const [loading, setLoading] = useState(true);
   const [showAdd, setShowAdd] = useState(false);
@@ -635,10 +660,11 @@ function OrgDetailRecipientsTab({ orgId }: { orgId: string }) {
     try {
       const { data } = await superAdminApi.getOrgRecipients(orgId);
       setRecipients(data);
+      onCountChange?.(data.length);
     } finally {
       setLoading(false);
     }
-  }, [orgId]);
+  }, [orgId, onCountChange]);
 
   useEffect(() => {
     load();
@@ -828,6 +854,7 @@ function OrgDetailView({
   const [showEdit, setShowEdit] = useState(false);
   const [orgInfo, setOrgInfo] = useState(org);
   const [memberCount, setMemberCount] = useState(0);
+  const [recipientCount, setRecipientCount] = useState(0);
 
   useEffect(() => {
     setOrgInfo(org);
@@ -863,7 +890,7 @@ function OrgDetailView({
             <span className={`status-badge ${orgInfo.status}`}>{orgInfo.status}</span>
           </div>
           <p className="org-detail-subtitle">
-            {orgInfo.plan_name} · Cap {orgInfo.user_cap}
+            {orgInfo.plan_name} · Users {orgInfo.user_cap} · Recipients {orgInfo.recipient_cap ?? 10}
             {orgInfo.end_date ? ` · Ends ${formatOrgDate(orgInfo.end_date)}` : ''}
           </p>
         </div>
@@ -873,13 +900,20 @@ function OrgDetailView({
         </button>
       </div>
 
-      <div className="stat-cards-grid">
+      <div className="stat-cards-grid stat-cards-grid-5">
         <OrgDetailMiniCard
           label="Users"
           value={`${memberCount} / ${orgInfo.user_cap}`}
-          sub="of capacity"
+          sub="of user cap"
           accent="var(--accent-blue)"
           icon={<IconOrgUsers />}
+        />
+        <OrgDetailMiniCard
+          label="Recipients"
+          value={`${recipientCount} / ${orgInfo.recipient_cap ?? 10}`}
+          sub="of recipient cap"
+          accent="var(--accent-orange)"
+          icon={<IconOrgMail />}
         />
         <OrgDetailMiniCard
           label="Plan"
@@ -899,7 +933,7 @@ function OrgDetailView({
           label="Expiry"
           value={formatOrgDate(orgInfo.end_date)}
           sub="Plan expires"
-          accent="var(--accent-blue)"
+          accent="var(--accent-yellow)"
           icon={<IconOrgCalendar />}
         />
       </div>
@@ -930,7 +964,7 @@ function OrgDetailView({
 
       <div className="org-detail-panel">
         {activeTab === 'users' && <OrgDetailUsersTab orgId={orgInfo.id} onMembersChange={setMemberCount} />}
-        {activeTab === 'recipients' && <OrgDetailRecipientsTab orgId={orgInfo.id} />}
+        {activeTab === 'recipients' && <OrgDetailRecipientsTab orgId={orgInfo.id} onCountChange={setRecipientCount} />}
         {activeTab === 'notifications' && <OrgNotificationsTab orgId={orgInfo.id} />}
       </div>
     </div>

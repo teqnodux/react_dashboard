@@ -13,7 +13,7 @@ from pydantic import BaseModel, EmailStr
 
 from auth import require_roles, get_current_user
 from db import get_db
-from services.org_service import check_user_cap, get_org_or_404
+from services.org_service import check_user_cap, check_recipient_cap, get_org_or_404
 from services.invite_service import create_invite
 from services.email_service import send_invite_email
 from config import EMAIL_REPORT_TYPES
@@ -59,7 +59,8 @@ def list_users(current_user=_require_admin):
     org_id = _scoped_org_id(current_user)
     db = get_db()
 
-    users = [_user_to_dict(u) for u in db["users"].find({"organization_id": org_id})]
+    users = [_user_to_dict(u)
+             for u in db["users"].find({"organization_id": org_id})]
 
     # Append pending + expired invitations so admins can see/resend/remove them
     invites = db["invitations"].find({
@@ -97,7 +98,8 @@ def invite_user(body: InviteRequest, current_user=_require_admin):
     # Guard: org must exist and be active
     org = get_org_or_404(org_id, db)
     if org.get("status") != "active":
-        raise HTTPException(status_code=403, detail="Organization is not active")
+        raise HTTPException(
+            status_code=403, detail="Organization is not active")
 
     # Guard: user cap
     check_user_cap(org_id, db)
@@ -105,11 +107,14 @@ def invite_user(body: InviteRequest, current_user=_require_admin):
     # Guard: no duplicate active invite or existing user
     email = body.email.lower().strip()
     if db["users"].find_one({"email": email}):
-        raise HTTPException(status_code=409, detail="A user with this email already exists")
+        raise HTTPException(
+            status_code=409, detail="A user with this email already exists")
     if db["invitations"].find_one({"email": email, "organization_id": org_id, "status": "pending"}):
-        raise HTTPException(status_code=409, detail="An active invitation already exists for this email")
+        raise HTTPException(
+            status_code=409, detail="An active invitation already exists for this email")
 
-    raw_token = create_invite(db, org_id, current_user["user_id"], email, body.role)
+    raw_token = create_invite(
+        db, org_id, current_user["user_id"], email, body.role)
     invite_link = f"{FRONTEND_BASE_URL}/accept-invite?token={raw_token}"
     send_invite_email(email, org.get("name", ""), invite_link)
 
@@ -123,7 +128,8 @@ def suspend_user(user_id: str, current_user=_require_admin):
 
     # Prevent admin from suspending themselves
     if user_id == current_user.get("user_id"):
-        raise HTTPException(status_code=400, detail="You cannot suspend your own account")
+        raise HTTPException(
+            status_code=400, detail="You cannot suspend your own account")
 
     try:
         oid = ObjectId(user_id)
@@ -132,11 +138,13 @@ def suspend_user(user_id: str, current_user=_require_admin):
 
     user = db["users"].find_one({"_id": oid, "organization_id": org_id})
     if not user:
-        raise HTTPException(status_code=404, detail="User not found in your organization")
+        raise HTTPException(
+            status_code=404, detail="User not found in your organization")
 
     db["users"].update_one(
         {"_id": oid},
-        {"$set": {"status": "suspended", "updated_at": datetime.now(timezone.utc)}},
+        {"$set": {"status": "suspended",
+                  "updated_at": datetime.now(timezone.utc)}},
     )
     return {"detail": "User suspended"}
 
@@ -152,14 +160,16 @@ def reactivate_user(user_id: str, current_user=_require_admin):
 
     user = db["users"].find_one({"_id": oid, "organization_id": org_id})
     if not user:
-        raise HTTPException(status_code=404, detail="User not found in your organization")
+        raise HTTPException(
+            status_code=404, detail="User not found in your organization")
 
     if user.get("status") == "active":
         raise HTTPException(status_code=400, detail="User is already active")
 
     db["users"].update_one(
         {"_id": oid},
-        {"$set": {"status": "active", "updated_at": datetime.now(timezone.utc)}},
+        {"$set": {"status": "active",
+                  "updated_at": datetime.now(timezone.utc)}},
     )
     return {"detail": "User reactivated"}
 
@@ -174,7 +184,8 @@ def remove_user(user_id: str, current_user=_require_admin):
     db = get_db()
 
     if user_id == current_user.get("user_id"):
-        raise HTTPException(status_code=400, detail="You cannot remove your own account")
+        raise HTTPException(
+            status_code=400, detail="You cannot remove your own account")
 
     try:
         oid = ObjectId(user_id)
@@ -194,11 +205,13 @@ def remove_user(user_id: str, current_user=_require_admin):
     # Otherwise treat as a regular user
     user = db["users"].find_one({"_id": oid, "organization_id": org_id})
     if not user:
-        raise HTTPException(status_code=404, detail="User not found in your organization")
+        raise HTTPException(
+            status_code=404, detail="User not found in your organization")
 
     db["users"].update_one(
         {"_id": oid},
-        {"$set": {"status": "inactive", "organization_id": None, "updated_at": datetime.now(timezone.utc)}},
+        {"$set": {"status": "inactive", "organization_id": None,
+                  "updated_at": datetime.now(timezone.utc)}},
     )
     return {"detail": "User removed from organization"}
 
@@ -224,7 +237,8 @@ def resend_invite(invite_id: str, current_user=_require_admin):
 
     org = get_org_or_404(org_id, db)
     if org.get("status") != "active":
-        raise HTTPException(status_code=403, detail="Organization is not active")
+        raise HTTPException(
+            status_code=403, detail="Organization is not active")
 
     email = old_invite["email"]
     role = old_invite.get("role", "user")
@@ -250,11 +264,13 @@ def admin_force_reset(user_id: str, current_user=_require_admin):
 
     user = db["users"].find_one({"_id": oid, "organization_id": org_id})
     if not user:
-        raise HTTPException(status_code=404, detail="User not found in your organization")
+        raise HTTPException(
+            status_code=404, detail="User not found in your organization")
 
     db["users"].update_one(
         {"_id": oid},
-        {"$set": {"force_password_reset": True, "updated_at": datetime.now(timezone.utc)}},
+        {"$set": {"force_password_reset": True,
+                  "updated_at": datetime.now(timezone.utc)}},
     )
     return {"detail": "Password reset flag set for user"}
 
@@ -275,7 +291,8 @@ def _recipient_to_dict(r: dict) -> dict:
 
 
 def _get_org_enabled_report_types(org_id: str, db) -> list[str]:
-    settings = db["organization_notification_settings"].find_one({"organization_id": org_id})
+    settings = db["organization_notification_settings"].find_one(
+        {"organization_id": org_id})
     return settings.get("enabled_report_types", []) if settings else []
 
 
@@ -309,11 +326,12 @@ def get_notification_settings(current_user=_require_admin):
     """Read-only: returns this org's enabled report types so org admin can scope recipients."""
     org_id = _scoped_org_id(current_user)
     db = get_db()
-    enabled = _get_org_enabled_report_types(org_id, db)
-    # Return labels alongside keys so frontend doesn't need a separate call
+    enabled_set = set(_get_org_enabled_report_types(org_id, db))
+    # Preserve master definition order from config.py regardless of MongoDB storage order
+    ordered = [k for k in EMAIL_REPORT_TYPES if k in enabled_set]
     return {
-        "enabled_report_types": enabled,
-        "report_type_labels": {k: EMAIL_REPORT_TYPES[k] for k in enabled if k in EMAIL_REPORT_TYPES},
+        "enabled_report_types": ordered,
+        "report_type_labels": {k: EMAIL_REPORT_TYPES[k] for k in ordered},
     }
 
 
@@ -321,7 +339,8 @@ def get_notification_settings(current_user=_require_admin):
 def list_recipients(current_user=_require_admin):
     org_id = _scoped_org_id(current_user)
     db = get_db()
-    recipients = db["organization_email_recipients"].find({"organization_id": org_id})
+    recipients = db["organization_email_recipients"].find(
+        {"organization_id": org_id})
     return [_recipient_to_dict(r) for r in recipients]
 
 
@@ -332,8 +351,10 @@ def add_recipient(body: RecipientCreate, current_user=_require_admin):
     email = body.email.lower().strip()
 
     if db["organization_email_recipients"].find_one({"organization_id": org_id, "email": email}):
-        raise HTTPException(status_code=409, detail="Recipient with this email already exists")
+        raise HTTPException(
+            status_code=409, detail="Recipient with this email already exists")
 
+    check_recipient_cap(org_id, db)
     _validate_recipient_report_types(org_id, body.report_types, db)
 
     now = datetime.now(timezone.utc)
@@ -360,7 +381,8 @@ def update_recipient(recipient_id: str, body: RecipientUpdate, current_user=_req
     except Exception:
         raise HTTPException(status_code=400, detail="Invalid recipient ID")
 
-    recipient = db["organization_email_recipients"].find_one({"_id": oid, "organization_id": org_id})
+    recipient = db["organization_email_recipients"].find_one(
+        {"_id": oid, "organization_id": org_id})
     if not recipient:
         raise HTTPException(status_code=404, detail="Recipient not found")
 
@@ -373,7 +395,8 @@ def update_recipient(recipient_id: str, body: RecipientUpdate, current_user=_req
         _validate_recipient_report_types(org_id, body.report_types, db)
         updates["report_types"] = body.report_types
 
-    db["organization_email_recipients"].update_one({"_id": oid}, {"$set": updates})
+    db["organization_email_recipients"].update_one(
+        {"_id": oid}, {"$set": updates})
     return _recipient_to_dict(db["organization_email_recipients"].find_one({"_id": oid}))
 
 
@@ -386,7 +409,8 @@ def delete_recipient(recipient_id: str, current_user=_require_admin):
     except Exception:
         raise HTTPException(status_code=400, detail="Invalid recipient ID")
 
-    result = db["organization_email_recipients"].delete_one({"_id": oid, "organization_id": org_id})
+    result = db["organization_email_recipients"].delete_one(
+        {"_id": oid, "organization_id": org_id})
     if result.deleted_count == 0:
         raise HTTPException(status_code=404, detail="Recipient not found")
     return {"detail": "Recipient removed"}

@@ -679,6 +679,13 @@
   letter-spacing: 0.05em;
 }
 
+.modal-field-optional {
+  font-weight: 400;
+  color: var(--text-muted);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
 .modal-field input,
 .modal-field select {
   background: var(--bg-tertiary);
@@ -820,6 +827,11 @@
 /* 3-col grid for users row */
 .stat-cards-grid-3 {
   grid-template-columns: repeat(3, 1fr);
+}
+
+/* 5-col grid for org detail stat cards */
+.stat-cards-grid-5 {
+  grid-template-columns: repeat(5, 1fr);
 }
 
 /* 2-col grid for alerts row */

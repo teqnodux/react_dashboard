@@ -16,7 +16,7 @@ from config import EMAIL_REPORT_TYPES
 from db import get_db
 from services.email_service import send_invite_email
 from services.invite_service import create_invite
-from services.org_service import get_org_or_404, org_to_dict, check_user_cap
+from services.org_service import get_org_or_404, org_to_dict, check_user_cap, check_recipient_cap
 
 FRONTEND_BASE_URL = os.getenv("FRONTEND_BASE_URL", "http://localhost:5173")
 
@@ -45,8 +45,9 @@ class CreateOrgRequest(BaseModel):
     name: str
     plan_name: str = "basic"          # basic | pro | enterprise
     user_cap: int = 5
+    recipient_cap: int = 10
     start_date: str                    # ISO date string
-    end_date: str
+    end_date: Optional[str] = None    # None = no fixed expiry
     status: str = "active"
 
 
@@ -54,6 +55,7 @@ class UpdateOrgRequest(BaseModel):
     name: Optional[str] = None
     plan_name: Optional[str] = None
     user_cap: Optional[int] = None
+    recipient_cap: Optional[int] = None
     start_date: Optional[str] = None
     end_date: Optional[str] = None
     status: Optional[str] = None
@@ -68,8 +70,9 @@ def create_org(body: CreateOrgRequest, current_user=_require_super):
         "status": body.status,
         "plan_name": body.plan_name,
         "user_cap": body.user_cap,
+        "recipient_cap": body.recipient_cap,
         "start_date": datetime.fromisoformat(body.start_date),
-        "end_date": datetime.fromisoformat(body.end_date),
+        "end_date": datetime.fromisoformat(body.end_date) if body.end_date else None,
         "created_by_super_admin_id": current_user["user_id"],
         "created_at": now,
         "updated_at": now,
@@ -107,6 +110,8 @@ def update_org(org_id: str, body: UpdateOrgRequest, current_user=_require_super)
         updates["plan_name"] = body.plan_name
     if body.user_cap is not None:
         updates["user_cap"] = body.user_cap
+    if body.recipient_cap is not None:
+        updates["recipient_cap"] = body.recipient_cap
     if body.status is not None:
         updates["status"] = body.status
     if body.start_date is not None:
@@ -461,6 +466,7 @@ def add_org_email_recipient(
     }):
         raise HTTPException(status_code=409, detail="Recipient with this email already exists")
 
+    check_recipient_cap(org_id, db)
     _validate_recipient_report_types(org_id, body.report_types, db)
 
     now = datetime.now(timezone.utc)

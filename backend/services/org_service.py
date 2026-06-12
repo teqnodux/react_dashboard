@@ -2,6 +2,7 @@
 Organization business logic:
   - Status checks
   - User cap enforcement
+  - Email recipient cap enforcement
   - Org expiry background job
 """
 
@@ -46,6 +47,20 @@ def check_user_cap(org_id: str, db):
         )
 
 
+def check_recipient_cap(org_id: str, db):
+    """Raise 403 if the org has reached its email recipient cap."""
+    org = get_org_or_404(org_id, db)
+    current_count = db["organization_email_recipients"].count_documents(
+        {"organization_id": org_id}
+    )
+    cap = org.get("recipient_cap", 10)
+    if current_count >= cap:
+        raise HTTPException(
+            status_code=403,
+            detail=f"Email recipient cap of {cap} reached for this organization",
+        )
+
+
 def expire_organizations(db):
     """
     Mark organizations as 'expired' when their end_date has passed.
@@ -71,6 +86,7 @@ def org_to_dict(org: dict) -> dict:
         "status": org.get("status"),
         "plan_name": org.get("plan_name"),
         "user_cap": org.get("user_cap"),
+        "recipient_cap": org.get("recipient_cap", 10),
         "start_date": org.get("start_date").isoformat() if org.get("start_date") else None,
         "end_date": org.get("end_date").isoformat() if org.get("end_date") else None,
         "created_by_super_admin_id": str(org["created_by_super_admin_id"])
