@@ -54,7 +54,9 @@ def _check_secret():
 def create_access_token(payload: dict) -> str:
     _check_secret()
     data = payload.copy()
-    data["exp"] = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    now = datetime.now(timezone.utc)
+    data["iat"] = now
+    data["exp"] = now + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     data["type"] = "access"
     return jwt.encode(data, JWT_SECRET_KEY, algorithm=ALGORITHM)
 
@@ -62,7 +64,9 @@ def create_access_token(payload: dict) -> str:
 def create_refresh_token(payload: dict) -> str:
     _check_secret()
     data = payload.copy()
-    data["exp"] = datetime.now(timezone.utc) + timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS)
+    now = datetime.now(timezone.utc)
+    data["iat"] = now
+    data["exp"] = now + timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS)
     data["type"] = "refresh"
     return jwt.encode(data, JWT_SECRET_KEY, algorithm=ALGORITHM)
 
@@ -114,8 +118,13 @@ async def get_current_user(request: Request) -> dict:
         if user_doc:
             invalidated_at = user_doc.get("tokens_invalidated_at")
             if invalidated_at:
+                # PyMongo returns naive UTC datetimes; normalise before comparing
+                if invalidated_at.tzinfo is None:
+                    invalidated_at = invalidated_at.replace(tzinfo=timezone.utc)
                 iat = payload.get("iat")
-                if iat and datetime.fromtimestamp(iat, tz=timezone.utc) < invalidated_at:
+                # Reject if no iat (old token) or issued before the invalidation timestamp
+                token_issued_at = datetime.fromtimestamp(iat, tz=timezone.utc) if iat else None
+                if token_issued_at is None or token_issued_at < invalidated_at:
                     raise HTTPException(status_code=401, detail="Session invalidated. Please log in again.")
     except HTTPException:
         raise

@@ -43,7 +43,7 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, Response
-from datetime import date, timedelta, datetime
+from datetime import date, timedelta, datetime, timezone
 from typing import Optional, Dict, List
 
 from auth import (
@@ -531,9 +531,36 @@ def auth_login(body: LoginRequest):
 
 @auth_router.post("/token/refresh")
 def auth_refresh(body: RefreshRequest):
+    from bson import ObjectId as _ObjId
     payload = decode_token(body.refresh)
     if payload.get("type") != "refresh":
         raise HTTPException(status_code=401, detail="Invalid token type")
+
+    # Reject the refresh token if all sessions were invalidated after it was issued
+    try:
+        user_doc = get_db()["users"].find_one(
+            {"_id": _ObjId(payload["user_id"])},
+            {"tokens_invalidated_at": 1},
+        )
+        if user_doc:
+            invalidated_at = user_doc.get("tokens_invalidated_at")
+            if invalidated_at:
+                # PyMongo returns naive UTC datetimes; normalise before comparing
+                if invalidated_at.tzinfo is None:
+                    invalidated_at = invalidated_at.replace(tzinfo=timezone.utc)
+                iat = payload.get("iat")
+                # Reject if no iat (old token) or issued before the invalidation timestamp
+                token_issued_at = datetime.fromtimestamp(iat, tz=timezone.utc) if iat else None
+                if token_issued_at is None or token_issued_at < invalidated_at:
+                    raise HTTPException(
+                        status_code=401,
+                        detail="Session invalidated. Please log in again.",
+                    )
+    except HTTPException:
+        raise
+    except Exception:
+        pass  # DB lookup failure should not block a valid refresh
+
     token_payload = {
         "user_id": payload["user_id"],
         "email": payload["email"],
