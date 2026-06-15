@@ -38,6 +38,9 @@ export const orgAdminApi = {
 
   getNotificationSettings: () =>
     api.get<{ enabled_report_types: string[]; report_type_labels: Record<string, string> }>('/api/org/notification-settings'),
+
+  getOrgSettings: () =>
+    api.get<{ is_admin_dashboard_visible: boolean }>('/api/org/settings'),
 };
 
 // ── Super Admin API (/api/super-admin/...) ───────────────────────────────────
@@ -67,6 +70,7 @@ export const superAdminApi = {
     start_date: string;
     end_date: string;
     status: string;
+    is_admin_dashboard_visible: boolean;
   }>) => api.patch(`/api/super-admin/orgs/${id}`, body),
 
   deleteOrg: (id: string) =>

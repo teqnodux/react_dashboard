@@ -59,6 +59,7 @@ class UpdateOrgRequest(BaseModel):
     start_date: Optional[str] = None
     end_date: Optional[str] = None
     status: Optional[str] = None
+    is_admin_dashboard_visible: Optional[bool] = None
 
 
 @router.post("/orgs")
@@ -118,6 +119,8 @@ def update_org(org_id: str, body: UpdateOrgRequest, current_user=_require_super)
         updates["start_date"] = datetime.fromisoformat(body.start_date)
     if body.end_date is not None:
         updates["end_date"] = datetime.fromisoformat(body.end_date)
+    if body.is_admin_dashboard_visible is not None:
+        updates["is_admin_dashboard_visible"] = body.is_admin_dashboard_visible
 
     db["organizations"].update_one({"_id": ObjectId(org_id)}, {"$set": updates})
     return org_to_dict(get_org_or_404(org_id, db))

@@ -418,3 +418,16 @@ def delete_recipient(recipient_id: str, current_user=_require_admin):
     if result.deleted_count == 0:
         raise HTTPException(status_code=404, detail="Recipient not found")
     return {"detail": "Recipient removed"}
+
+
+# ── Org settings (read-only for org admins) ───────────────────────────────
+
+@router.get("/settings")
+def get_org_settings(current_user=_require_admin):
+    """Returns org-level settings visible to org admins (e.g. dashboard visibility)."""
+    org_id = _scoped_org_id(current_user)
+    db = get_db()
+    org = get_org_or_404(org_id, db)
+    return {
+        "is_admin_dashboard_visible": org.get("is_admin_dashboard_visible", True),
+    }

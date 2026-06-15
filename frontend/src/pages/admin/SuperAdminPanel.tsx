@@ -13,6 +13,7 @@ interface Org {
   plan_name: string;
   user_cap: number;
   recipient_cap: number;
+  is_admin_dashboard_visible: boolean;
   start_date: string | null;
   end_date: string | null;
   created_at: string | null;
@@ -889,6 +890,71 @@ function OrgNotificationsTab({ orgId }: { orgId: string }) {
   );
 }
 
+// ── Org Settings Tab ─────────────────────────────────────────────────────
+
+function OrgSettingsTab({ orgId, defaultVisible }: { orgId: string; defaultVisible: boolean }) {
+  const [visible, setVisible] = useState(defaultVisible);
+  const [saving, setSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSave = async () => {
+    setSaving(true);
+    setError('');
+    setSaved(false);
+    try {
+      await superAdminApi.updateOrg(orgId, { is_admin_dashboard_visible: visible });
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2500);
+    } catch (err) {
+      if (axios.isAxiosError(err)) setError(err.response?.data?.detail || 'Failed to save');
+      else setError('Something went wrong');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  return (
+    <div className="notif-settings-panel">
+      <div className="notif-settings-header">
+        <div>
+          <div className="notif-settings-title">Organization Settings</div>
+          <div className="notif-settings-subtitle">
+            Control which features are accessible to admins in this organization.
+          </div>
+        </div>
+        <button
+          type="button"
+          className="btn-primary"
+          onClick={handleSave}
+          disabled={saving}
+        >
+          {saving ? 'Saving…' : 'Save'}
+        </button>
+      </div>
+      {error && <div className="admin-error">{error}</div>}
+      {saved && <div className="notif-saved-msg">Settings saved successfully.</div>}
+      <div style={{ marginTop: 'var(--space-lg)' }}>
+        <label className="report-type-check-row" style={{ gap: 'var(--space-md)', alignItems: 'flex-start', cursor: 'pointer' }}>
+          <input
+            type="checkbox"
+            checked={visible}
+            onChange={(e) => setVisible(e.target.checked)}
+            style={{ marginTop: 3 }}
+          />
+          <div>
+            <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>Admin Dashboard Visible</div>
+            <div style={{ fontSize: 12, color: 'var(--text-secondary)', marginTop: 4, lineHeight: 1.5 }}>
+              When enabled, admins in this organization can access the Admin Panel.
+              When disabled, they are redirected away from the admin panel.
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+  );
+}
+
 function OrgDetailView({
   org,
   onBack,
@@ -898,7 +964,7 @@ function OrgDetailView({
   onBack: () => void;
   onOrgUpdated: () => void;
 }) {
-  const [activeTab, setActiveTab] = useState<'users' | 'recipients' | 'notifications'>('users');
+  const [activeTab, setActiveTab] = useState<'users' | 'recipients' | 'notifications' | 'settings'>('users');
   const [showEdit, setShowEdit] = useState(false);
   const [orgInfo, setOrgInfo] = useState(org);
   const [memberCount, setMemberCount] = useState(0);
@@ -1008,12 +1074,25 @@ function OrgDetailView({
         >
           Notifications
         </button>
+        <button
+          type="button"
+          className={`org-detail-tab ${activeTab === 'settings' ? 'active' : ''}`}
+          onClick={() => setActiveTab('settings')}
+        >
+          Settings
+        </button>
       </div>
 
       <div className="org-detail-panel">
         {activeTab === 'users' && <OrgDetailUsersTab orgId={orgInfo.id} onMembersChange={setMemberCount} />}
         {activeTab === 'recipients' && <OrgDetailRecipientsTab orgId={orgInfo.id} onCountChange={setRecipientCount} />}
         {activeTab === 'notifications' && <OrgNotificationsTab orgId={orgInfo.id} />}
+        {activeTab === 'settings' && (
+          <OrgSettingsTab
+            orgId={orgInfo.id}
+            defaultVisible={orgInfo.is_admin_dashboard_visible ?? true}
+          />
+        )}
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ReactNode, useRef, useState, useEffect } from 'react';
 import { usePermissions } from '../hooks/usePermissions';
 import { useAuth } from '../context/AuthContext';
+import { orgAdminApi } from '../services/adminApi';
 import '../styles/AdminNav.css';
 
 const NAV_TABS = [
@@ -32,9 +33,18 @@ function ProfileMenu() {
   const navigate = useNavigate();
   const location = useLocation();
   const [open, setOpen] = useState(false);
+  const [adminPanelVisible, setAdminPanelVisible] = useState(true);
   const onSuperAdminRoute = location.pathname.startsWith('/super-admin');
   const onAdminRoute = location.pathname.startsWith('/admin');
   const wrapperRef = useRef<HTMLDivElement>(null);
+
+  // Check org-level dashboard visibility for non-super-admin admins
+  useEffect(() => {
+    if (!isAdmin || isSuperAdmin) return;
+    orgAdminApi.getOrgSettings()
+      .then(({ data }) => setAdminPanelVisible(data.is_admin_dashboard_visible))
+      .catch(() => setAdminPanelVisible(true)); // fail open
+  }, [isAdmin, isSuperAdmin]);
 
   // Close on outside click
   useEffect(() => {
@@ -114,7 +124,7 @@ function ProfileMenu() {
                   ⚙️ Super Admin Panel
                 </button>
               )}
-              {isAdmin && !isSuperAdmin && (
+              {isAdmin && !isSuperAdmin && adminPanelVisible && (
                 <button
                   className="profile-panel-btn admin-btn"
                   onClick={() => {

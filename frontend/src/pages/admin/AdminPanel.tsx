@@ -498,7 +498,40 @@ const NAV_ITEMS = [
 
 export default function AdminPanel() {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [activeSection, setActiveSection] = useState('users');
+  const [dashboardVisible, setDashboardVisible] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    // Super admins always have access; only check for org admins
+    if (user?.role === 'super_admin') {
+      setDashboardVisible(true);
+      return;
+    }
+    orgAdminApi.getOrgSettings()
+      .then(({ data }) => setDashboardVisible(data.is_admin_dashboard_visible))
+      .catch(() => setDashboardVisible(true)); // fail open — don't block on network errors
+  }, [user?.role]);
+
+  if (dashboardVisible === null) {
+    return (
+      <div className="admin-panel-page" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }}>
+        <p className="loading">Loading…</p>
+      </div>
+    );
+  }
+
+  if (!dashboardVisible) {
+    return (
+      <div className="admin-panel-page" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', gap: 'var(--space-lg)' }}>
+        <h2 style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-primary)' }}>Admin Panel Disabled</h2>
+        <p style={{ color: 'var(--text-secondary)', textAlign: 'center', maxWidth: 400 }}>
+          Access to the Admin Panel has been disabled for your organization. Contact your Super Admin to enable it.
+        </p>
+        <button className="btn-primary" onClick={() => navigate('/')}>Go to Dashboard</button>
+      </div>
+    );
+  }
 
   return (
     <div className="admin-panel-page">
