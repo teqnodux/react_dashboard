@@ -205,6 +205,7 @@ export default function DealDetail() {
     if (allowed === 'all') return 'financial';
     return allowed.includes('financial') ? 'financial' : (allowed[0] ?? 'financial');
   });
+  const [activeDocketIdx, setActiveDocketIdx] = useState<number>(0);
   const [expandedClauses, setExpandedClauses] = useState<Set<string>>(
     new Set()
   );
@@ -5894,30 +5895,75 @@ export default function DealDetail() {
             </div>
           )}
 
-          {activeTab === "docket" && (
-            <div className="docket-tab">
-              {deal.docket_entries && deal.docket_entries.length > 0 ? (
-                <DocketView
-                  entries={deal.docket_entries}
-                  stakeholders={deal.docket_stakeholders}
-                  conditions={deal.docket_conditions}
-                  metadata={deal.docket_metadata}
-                  dealId={dealId}
-                />
-              ) : (
-                <div className="content-panel">
-                  <h3>Court Docket</h3>
-                  <div className="info-message">
-                    <p>No docket entries available for this deal.</p>
-                    <p className="muted">
-                      Docket analysis will be added for deals with regulatory
-                      proceedings or litigation.
-                    </p>
+          {activeTab === "docket" && (() => {
+            // Prefer the new `dockets` array (multi-jurisdiction). Fall back to flat fields.
+            const dockets = deal.dockets && deal.dockets.length > 0
+              ? deal.dockets
+              : (deal.docket_entries && deal.docket_entries.length > 0
+                ? [{
+                    docket_id: "fallback",
+                    deal_id: dealId || "",
+                    metadata: deal.docket_metadata,
+                    entries: deal.docket_entries,
+                    stakeholders: deal.docket_stakeholders,
+                    conditions: deal.docket_conditions,
+                    entry_count: deal.docket_entries.length,
+                  }]
+                : []);
+
+            if (dockets.length === 0) {
+              return (
+                <div className="docket-tab">
+                  <div className="content-panel">
+                    <h3>Court Docket</h3>
+                    <div className="info-message">
+                      <p>No docket entries available for this deal.</p>
+                      <p className="muted">
+                        Docket analysis will be added for deals with regulatory
+                        proceedings or litigation.
+                      </p>
+                    </div>
                   </div>
                 </div>
-              )}
-            </div>
-          )}
+              );
+            }
+
+            const safeIdx = Math.min(activeDocketIdx, dockets.length - 1);
+            const active = dockets[safeIdx];
+
+            return (
+              <div className="docket-tab">
+                {dockets.length > 1 && (
+                  <div className="docket-jurisdiction-tabs">
+                    {dockets.map((d, i) => {
+                      const md = d.metadata || {};
+                      const label = md.jurisdiction || md.docket_number || `Docket ${i + 1}`;
+                      const sub = md.docket_number && md.jurisdiction ? md.docket_number : null;
+                      return (
+                        <button
+                          key={d.docket_id || i}
+                          className={`docket-jur-tab ${safeIdx === i ? "active" : ""}`}
+                          onClick={() => setActiveDocketIdx(i)}
+                        >
+                          <span className="docket-jur-label">{label}</span>
+                          {sub && <span className="docket-jur-sub">{sub}</span>}
+                          <span className="docket-jur-count">{d.entry_count}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+                <DocketView
+                  key={active.docket_id || safeIdx}
+                  entries={active.entries}
+                  stakeholders={active.stakeholders}
+                  conditions={active.conditions}
+                  metadata={active.metadata}
+                  dealId={dealId}
+                />
+              </div>
+            );
+          })()}
 
           {activeTab === "reddit" && (
             <div className="content-panel">

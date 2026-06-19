@@ -890,6 +890,9 @@ def load_dockets_from_mongodb(deal_id: Optional[str] = None) -> list | dict:
         latest = max(dates) if dates else None
         return {
             "deal_id": did,
+            # Unique per docket_dashboard record — a deal can have several dockets
+            # (different jurisdictions) which all share the same deal_id.
+            "docket_id": str(doc.get("_id", "")),
             "deal_name": doc.get("deal_name", ""),
             "target_ticker": tickers.get("target_ticker", ""),
             "acquirer_ticker": tickers.get("acquirer_ticker", ""),
@@ -900,11 +903,86 @@ def load_dockets_from_mongodb(deal_id: Optional[str] = None) -> list | dict:
         }
 
     if deal_id:
+        # Return the first matching docket (kept for /api/all-dockets one-per-deal grouping).
+        # Use load_all_dockets_for_deal() to fetch every docket when a deal has multiple.
         doc = next(cursor, None)
         return _build_deal_dict(doc) if doc else {}
 
     results = [_build_deal_dict(doc) for doc in cursor]
     results.sort(key=lambda d: d.get("latest_entry_date") or "", reverse=True)
+    return results
+
+
+def load_all_dockets_for_deal(deal_id: str) -> list:
+    """
+    Return every docket_dashboard record for a deal (not just the first).
+    Used by the deal detail endpoint so deals with multiple jurisdictions
+    (e.g. Montana PSC + South Dakota PUC) show every docket.
+    """
+    db = get_db()
+
+    deal_doc = db["deals"].find_one(
+        {"_id": __import__("bson").ObjectId(deal_id) if len(deal_id) == 24 else deal_id},
+        {"target_ticker": 1, "acquirer_ticker": 1},
+    ) if deal_id else None
+    tickers = {
+        "target_ticker":   (deal_doc.get("target_ticker")   if deal_doc else "") or "",
+        "acquirer_ticker": (deal_doc.get("acquirer_ticker") if deal_doc else "") or "",
+    }
+
+    def _ent(e: dict) -> dict:
+        return {
+            "entry_no": e.get("entry_no", 0),
+            "received_date": e.get("received_date", ""),
+            "title": e.get("title", ""),
+            "relevance_level": e.get("relevance_level", "medium"),
+            "filer_role": e.get("filer_role", ""),
+            "filer_name": e.get("filer_name", ""),
+            "position_on_deal": e.get("position_on_deal", ""),
+            "entry_summary": e.get("entry_summary", ""),
+            "key_arguments": e.get("key_arguments", []),
+            "key_excerpts": e.get("key_excerpts", []),
+            "cumulative_impact": e.get("cumulative_impact", ""),
+            "download_link": e.get("download_link", ""),
+            "opposition_type": e.get("opposition_type", ""),
+            "intervenor_type": e.get("intervenor_type", ""),
+            "relief_requested": e.get("relief_requested", ""),
+            "legal_regulatory_significance": e.get("legal_regulatory_significance", ""),
+            "proceeding_phase": e.get("proceeding_phase", ""),
+            "document_type": e.get("document_type", ""),
+            "deadline_date": e.get("deadline_date", ""),
+            "deadline_description": e.get("deadline_description", ""),
+        }
+
+    def _stk(s: dict) -> dict:
+        return {"name": s.get("name", ""), "role": s.get("role", ""),
+                "filing_count": s.get("filing_count", 0), "position": s.get("position", ""),
+                "opposition_type": s.get("opposition_type", ""), "status": s.get("status", ""),
+                "intervenor_type": s.get("intervenor_type", "")}
+
+    def _cnd(c: dict) -> dict:
+        return {"text": c.get("text", ""), "status": c.get("status", ""),
+                "source": c.get("source", ""), "category": c.get("category", ""),
+                "opposition_type": c.get("opposition_type", ""), "relief_type": c.get("relief_type", ""),
+                "asked_in": c.get("asked_in"), "resolved_in": c.get("resolved_in")}
+
+    results = []
+    for doc in db["docket_dashboard"].find({"deal_id": deal_id}):
+        entries = [_ent(e) for e in doc.get("docket_entries", [])]
+        results.append({
+            "docket_id":        str(doc.get("_id", "")),
+            "deal_id":          deal_id,
+            "target_ticker":    tickers["target_ticker"],
+            "acquirer_ticker":  tickers["acquirer_ticker"],
+            "metadata":         doc.get("docket_metadata", {}),
+            "entries":          entries,
+            "stakeholders":     [_stk(s) for s in doc.get("docket_stakeholders", [])],
+            "conditions":       [_cnd(c) for c in doc.get("docket_conditions", [])],
+            "entry_count":      len(entries),
+        })
+
+    # Sort: most-entries first (the "primary" docket tends to have the most filings)
+    results.sort(key=lambda d: d["entry_count"], reverse=True)
     return results
 
 

@@ -966,14 +966,17 @@ def get_deal_detail(deal_id: str):
         for event in deal.regulatory_timeline
     ]
 
-    # Add docket entries
+    # Add docket entries — a single deal can have multiple dockets (different jurisdictions)
     if _DATA_SOURCE == "mongodb":
-        from mongo_loader import load_dockets_from_mongodb
-        _docket = load_dockets_from_mongodb(deal_id=deal_id)
-        detail["docket_entries"] = _docket.get("entries", [])
-        detail["docket_stakeholders"] = _docket.get("stakeholders", [])
-        detail["docket_conditions"] = _docket.get("conditions", [])
-        detail["docket_metadata"] = _docket.get("metadata", {})
+        from mongo_loader import load_all_dockets_for_deal
+        all_dockets = load_all_dockets_for_deal(deal_id)
+        detail["dockets"] = all_dockets
+        # First docket fills the legacy flat fields so existing UI code keeps working
+        first = all_dockets[0] if all_dockets else {}
+        detail["docket_entries"]      = first.get("entries", [])
+        detail["docket_stakeholders"] = first.get("stakeholders", [])
+        detail["docket_conditions"]   = first.get("conditions", [])
+        detail["docket_metadata"]     = first.get("metadata", {})
     else:
         detail["docket_entries"] = [
             {
@@ -1013,6 +1016,19 @@ def get_deal_detail(deal_id: str):
             for cond in deal.docket_conditions
         ]
         detail["docket_metadata"] = deal.docket_metadata
+        # Static mode: one docket per deal, wrap in array so frontend code path is uniform
+        if detail["docket_entries"]:
+            detail["dockets"] = [{
+                "docket_id":    "static",
+                "deal_id":      deal_id,
+                "metadata":     detail["docket_metadata"],
+                "entries":      detail["docket_entries"],
+                "stakeholders": detail["docket_stakeholders"],
+                "conditions":   detail["docket_conditions"],
+                "entry_count":  len(detail["docket_entries"]),
+            }]
+        else:
+            detail["dockets"] = []
 
     # Add SEC filings (legacy scraped data)
     detail["sec_filings"] = [
@@ -5183,6 +5199,7 @@ def get_foreign_filings(deal_id: str):
         ("accc_cases",        "ACCC",                "Australia"),
         ("brazil_cases",      "CADE",                "Brazil"),
         ("canada_cases",      "Competition Bureau",  "Canada"),
+        ("cci_cases",         "CCI",                 "India"),
         ("ec_cases",          "European Commission", "EU"),
         ("fs_cases",          "Foreign Subsidies",   "EU"),
         ("german_cases",      "Bundeskartellamt",    "Germany"),

@@ -264,6 +264,24 @@ export interface DealDetail extends Deal {
     jurisdiction?: string;
     status?: string;
   };
+  /** Full per-docket payload (1 entry for static, 1+ for MongoDB). Use this
+   * when a deal has multiple dockets across jurisdictions (e.g. Montana PSC + South Dakota PUC). */
+  dockets?: Array<{
+    docket_id: string;
+    deal_id: string;
+    target_ticker?: string;
+    acquirer_ticker?: string;
+    metadata: {
+      docket_number?: string;
+      case_name?: string;
+      jurisdiction?: string;
+      status?: string;
+    };
+    entries: DocketEntry[];
+    stakeholders: DocketStakeholder[];
+    conditions: DocketCondition[];
+    entry_count: number;
+  }>;
   sec_filings: SECFiling[];
   ai_sec_filings?: AISummaryResult[];
   proxy_filings: ProxyFiling[];

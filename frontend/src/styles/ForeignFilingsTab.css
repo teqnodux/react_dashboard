@@ -2,7 +2,6 @@
 
 .ff-container {
   padding: var(--space-lg);
-  max-width: 960px;
 }
 
 .ff-loading,
@@ -139,9 +138,14 @@
   border-radius: var(--radius-sm);
   padding: 10px var(--space-md);
   transition: border-color 0.15s;
+  overflow: hidden;
 }
 .ff-record:hover {
   border-color: var(--accent-blue);
+}
+/* When expanded the grid takes over — reset padding so left/right handle it */
+.ff-record.expanded {
+  padding: 0;
 }
 
 .ff-record-header {
@@ -212,6 +216,7 @@
 .ff-dates-row {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-end;
   gap: 4px 24px;
   margin-top: 6px;
   padding: 6px 0;
@@ -262,4 +267,405 @@
 .ff-extra-value {
   color: var(--text-primary);
   word-break: break-word;
+}
+
+/* Record expanded — split into left card + right detail panel */
+.ff-record.expanded {
+  border-color: var(--accent-blue);
+  display: grid;
+  grid-template-columns: 38% 1fr;
+  gap: 0;
+  align-items: stretch;
+}
+
+.ff-record-left {
+  display: flex;
+  flex-direction: column;
+  padding: 10px var(--space-md);
+  min-width: 0;
+}
+
+/* collapsed: left fills full width, no explicit padding needed (ff-record handles it) */
+.ff-record:not(.expanded) .ff-record-left {
+  padding: 0;
+}
+
+.ff-record-right {
+  border-left: 1px solid var(--border);
+  background: var(--bg-primary);
+  padding: 10px var(--space-md);
+  overflow-y: auto;
+  max-height: 520px;
+  min-width: 0;
+}
+
+.ff-record-right-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Header right-side slot (status + external link) */
+.ff-record-header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* External link button */
+.ff-ext-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 11px;
+  color: var(--text-muted);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  text-decoration: none;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.15s, border-color 0.15s;
+}
+.ff-ext-link-btn:hover {
+  color: var(--accent-blue);
+  border-color: var(--accent-blue);
+}
+
+/* Show / hide details toggle — right side of dates row */
+.ff-expand-btn {
+  margin-left: auto;
+  padding: 0;
+  background: none;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent-blue);
+  cursor: pointer;
+  white-space: nowrap;
+  align-self: flex-end;
+  opacity: 0.85;
+}
+.ff-expand-btn:hover { opacity: 1; text-decoration: underline; }
+
+/* ── Detail panel ─────────────────────────────────────────────────────────── */
+
+.ff-detail-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ff-detail-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ff-detail-section-title {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-secondary);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Full description text */
+.ff-detail-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+/* Secondary (untranslated) text shown under the EN version */
+.ff-detail-text-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
+
+/* ── Timeline ─────────────────────────────────────────────────────────────── */
+
+.ff-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-left: 2px solid var(--border);
+  padding-left: 10px;
+}
+
+.ff-timeline-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 8px;
+  padding: 4px 0;
+  border-bottom: 1px dashed var(--border);
+  align-items: baseline;
+}
+.ff-timeline-item:last-child { border-bottom: none; }
+
+.ff-timeline-date {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ff-timeline-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.ff-timeline-tag {
+  margin-left: 6px;
+  font-size: 9px;
+  color: var(--text-muted);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 4px;
+  text-transform: capitalize;
+}
+
+.ff-timeline-more {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  padding: 4px 0 0;
+  font-style: italic;
+}
+
+/* ── Parties grid ─────────────────────────────────────────────────────────── */
+
+.ff-parties-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ff-parties-col {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 140px;
+}
+
+.ff-parties-col-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.ff-party-item {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-primary);
+  padding: 3px 6px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+
+/* ── Tags (EC companies) ──────────────────────────────────────────────────── */
+
+.ff-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.ff-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 2px 7px;
+}
+
+/* ── Detail list (economic activities) ───────────────────────────────────── */
+
+.ff-detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ff-detail-list-item {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+  padding: 3px 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.4;
+}
+.ff-detail-list-item:last-child { border-bottom: none; }
+
+/* ── Key-value table (regulation, NZ details) ────────────────────────────── */
+
+.ff-detail-kv {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ff-detail-kv-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.ff-detail-kv-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.ff-detail-kv-value {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* ── Documents list (CADE) ───────────────────────────────────────────────── */
+
+.ff-docs {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ff-doc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 4px 6px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.ff-doc-link {
+  color: var(--accent-blue);
+  text-decoration: none;
+  flex: 1;
+  line-height: 1.4;
+}
+.ff-doc-link:hover { text-decoration: underline; }
+
+.ff-doc-label {
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.ff-doc-id {
+  color: var(--text-muted);
+  font-size: 9px;
+  flex-shrink: 0;
+}
+
+.ff-doc-more {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  padding: 4px 0;
+  font-style: italic;
+}
+
+/* ── CADE full-column tables ─────────────────────────────────────────────── */
+
+.ff-cade-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.ff-cade-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.ff-cade-table thead tr {
+  background: var(--bg-tertiary);
+}
+
+.ff-cade-table th {
+  text-align: left;
+  padding: 5px 8px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.ff-cade-table td {
+  padding: 5px 8px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.4;
+}
+
+.ff-cade-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.ff-cade-table tbody tr:nth-child(even) {
+  background: var(--bg-secondary);
+}
+
+.ff-cade-table tbody tr:hover {
+  background: var(--bg-hover);
+}
+
+.ff-cade-td-date {
+  white-space: nowrap;
+  color: var(--text-secondary);
+  min-width: 110px;
+}
+
+.ff-cade-td-unit {
+  white-space: nowrap;
+  color: var(--text-muted);
+  font-size: 9px;
+  min-width: 50px;
+}
+
+.ff-cade-td-num {
+  white-space: nowrap;
+  color: var(--text-muted);
+  min-width: 70px;
 }

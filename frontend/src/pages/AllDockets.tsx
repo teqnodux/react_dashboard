@@ -6,6 +6,9 @@ import '../styles/CrossDeal.css';
 
 interface DocketDeal {
   deal_id: string;
+  /** docket_dashboard._id — unique per docket. Two dockets for the same deal
+   * (e.g. Montana PSC + South Dakota PUC) share deal_id but have distinct docket_ids. */
+  docket_id?: string;
   deal_name: string;
   target_ticker: string;
   acquirer_ticker: string;
@@ -54,22 +57,28 @@ export default function AllDockets() {
     return groups;
   }, [deals]);
 
+  // Each docket dashboard record is unique by docket_id (falls back to deal_id+index).
+  const docketKey = (d: DocketDeal, idx: number): string =>
+    d.docket_id || `${d.deal_id}-${idx}`;
+
   useEffect(() => {
     if (deals.length > 0 && !activeDealGroup) {
       const firstKey = Array.from(dealGroups.keys())[0];
       setActiveDealGroup(firstKey);
-      setActiveSubTab(dealGroups.get(firstKey)![0].deal_id);
+      setActiveSubTab(docketKey(dealGroups.get(firstKey)![0], 0));
     }
   }, [deals, dealGroups]);
 
   const handleGroupClick = (groupKey: string) => {
     setActiveDealGroup(groupKey);
     const groupDeals = dealGroups.get(groupKey);
-    if (groupDeals && groupDeals.length > 0) setActiveSubTab(groupDeals[0].deal_id);
+    if (groupDeals && groupDeals.length > 0) setActiveSubTab(docketKey(groupDeals[0], 0));
   };
 
-  const activeDeal = deals.find(d => d.deal_id === activeSubTab);
   const activeGroupDeals = dealGroups.get(activeDealGroup) || [];
+  const activeDeal = activeGroupDeals.find((d, i) => docketKey(d, i) === activeSubTab)
+    || activeGroupDeals[0]
+    || null;
 
   return (
     <div className="dashboard">
@@ -102,11 +111,12 @@ export default function AllDockets() {
 
           {activeGroupDeals.length > 1 && (
             <div style={{ display: 'flex', gap: '0', borderBottom: '1px solid #2a2a3a', padding: '0 1rem', background: '#111122' }}>
-              {activeGroupDeals.map((deal) => {
-                const isActive = activeSubTab === deal.deal_id;
+              {activeGroupDeals.map((deal, i) => {
+                const key = docketKey(deal, i);
+                const isActive = activeSubTab === key;
                 const label = deal.metadata.jurisdiction || deal.metadata.docket_number || deal.deal_id;
                 return (
-                  <button key={deal.deal_id} onClick={() => setActiveSubTab(deal.deal_id)} style={{
+                  <button key={key} onClick={() => setActiveSubTab(key)} style={{
                     padding: '0.5rem 0.9rem', background: 'transparent',
                     color: isActive ? '#4a9eff' : '#777', border: 'none',
                     borderBottom: isActive ? '2px solid #4a9eff' : '2px solid transparent',
@@ -124,6 +134,7 @@ export default function AllDockets() {
           {activeDeal && (
             <div className="docket-tab-content">
               <DocketView
+                key={activeSubTab}
                 entries={activeDeal.entries}
                 stakeholders={activeDeal.stakeholders}
                 conditions={activeDeal.conditions}
