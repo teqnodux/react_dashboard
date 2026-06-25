@@ -61,5 +61,6 @@ EMAIL_REPORT_TYPES = {
     "newswire_rss_match": "Newswire RSS Match Deal",
     "other_newswire": "Other Newswire",
     "foreign_regulatory_us_deal": "Foreign Regulatory US Deal",
-    "foreign_regulatory_matched_deal": "Foreign Regulatory Matched Deal"
+    "foreign_regulatory_matched_deal": "Foreign Regulatory Matched Deal",
+    "foreign_regulatory_regex_match_deal": "Foreign Regulatory Regex Match Deal"
 }
