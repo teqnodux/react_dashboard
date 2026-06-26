@@ -12,6 +12,7 @@ import { formatFeedPublishedLabel } from "../utils/feedFormatting";
 import { hasNonEmptyDealId } from "../utils/dealId";
 import { usePermissions } from "../hooks/usePermissions";
 import api from "../services/api";
+import { useCachedFetch } from "../context/DashboardCacheContext";
 import "../styles/Feed.css";
 import "../styles/ForeignFilingsTab.css";
 
@@ -288,18 +289,19 @@ function liveForeignMatchesFilters(item: FeedItem, daysStr: string, q: string): 
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
+interface FeedCacheData {
+  items: FeedItem[];
+  hasNext: boolean;
+  nextCursor: string | null;
+}
+
 export default function Feed() {
   const [activeTab, setActiveTab] = useState<TabKey>("all");
-  const [items, setItems] = useState<FeedItem[]>([]);
-  const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
-  const [error, setError] = useState("");
-  const [hasNext, setHasNext] = useState(false);
   const [dateRange, setDateRange] = useState<string>("7");
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
-  const nextCursorRef = useRef<string | null>(null);
   const dateRangeRef = useRef<string>("7");
   const debouncedSearchRef = useRef<string>("");
   const connected = useFeedSocketConnected();
@@ -321,60 +323,39 @@ export default function Feed() {
     return () => clearTimeout(t);
   }, [search]);
 
-  const fetchFeed = useCallback(
-    async (opts: { append: boolean; tab: TabKey; days: string; q: string }) => {
-      const { append, tab, days, q } = opts;
-      if (append) setLoadingMore(true);
-      else {
-        setLoading(true);
-        nextCursorRef.current = null;
-      }
-      try {
-        const params = new URLSearchParams({
-          tab,
-          page_size: "20",
-          days
-        });
-        if (q.trim()) params.set("search", q.trim());
-        if (append && nextCursorRef.current) {
-          params.set("cursor", nextCursorRef.current);
-        }
-        const ids = allowedIdsRef.current;
-        if (ids !== "all" && Array.isArray(ids) && ids.length > 0) {
-          params.set("ids", ids.join(","));
-        }
-        const { data } = await api.get(`/api/feed?${params.toString()}`);
-        const newItems: FeedItem[] = data.items ?? [];
-        nextCursorRef.current =
-          typeof data.next_cursor === "string" ? data.next_cursor : null;
-        if (append) {
-          setItems((prev) => {
-            const existingIds = new Set(prev.map((i) => i.id));
-            return [...prev, ...newItems.filter((i) => !existingIds.has(i.id))];
-          });
-        } else {
-          setItems(newItems);
-        }
-        setHasNext(Boolean(data.has_next));
-        setError("");
-      } catch {
-        setError("Failed to load feed");
-      } finally {
-        setLoading(false);
-        setLoadingMore(false);
-      }
-    },
-    []
-  );
+  // Cache key: (tab, days, search, ids) — switching tabs/filters fetches separately.
+  // Coming back to a previously-viewed combo restores items + scroll-down cursor.
+  const idsKey = allowedDealIds !== "all" && Array.isArray(allowedDealIds)
+    ? allowedDealIds.join(",") : "all";
+  const paramsKey = `tab=${activeTab}|days=${dateRange}|q=${debouncedSearch}|ids=${idsKey}`;
 
-  useEffect(() => {
-    fetchFeed({
-      append: false,
-      tab: activeTab,
-      days: dateRange,
-      q: debouncedSearch
+  const buildParams = useCallback((cursor: string | null): URLSearchParams => {
+    const p = new URLSearchParams({ tab: activeTab, page_size: "20", days: dateRange });
+    if (debouncedSearch.trim()) p.set("search", debouncedSearch.trim());
+    if (cursor) p.set("cursor", cursor);
+    const ids = allowedIdsRef.current;
+    if (ids !== "all" && Array.isArray(ids) && ids.length > 0) p.set("ids", ids.join(","));
+    return p;
+  }, [activeTab, dateRange, debouncedSearch]);
+
+  const { data: feedData, loading, error: hookError, mutate: mutateFeed } =
+    useCachedFetch<FeedCacheData>({
+      cacheKey: "feed",
+      paramsKey,
+      fetcher: async () => {
+        const { data } = await api.get(`/api/feed?${buildParams(null).toString()}`);
+        return {
+          items: data.items ?? [],
+          hasNext: Boolean(data.has_next),
+          nextCursor: typeof data.next_cursor === "string" ? data.next_cursor : null,
+        };
+      },
     });
-  }, [activeTab, dateRange, debouncedSearch, fetchFeed]);
+
+  const items: FeedItem[] = feedData?.items ?? [];
+  const hasNext = feedData?.hasNext ?? false;
+  const nextCursor = feedData?.nextCursor ?? null;
+  const error = hookError ? "Failed to load feed" : "";
 
   const selectTab = (key: TabKey) => {
     setActiveTab(key);
@@ -382,18 +363,32 @@ export default function Feed() {
     setDebouncedSearch("");
   };
 
+  const loadMore = useCallback(async () => {
+    if (loadingMore || !hasNext || !nextCursor) return;
+    setLoadingMore(true);
+    try {
+      const { data } = await api.get(`/api/feed?${buildParams(nextCursor).toString()}`);
+      const newItems: FeedItem[] = data.items ?? [];
+      mutateFeed((prev) => {
+        const existingIds = new Set((prev?.items ?? []).map((i) => i.id));
+        return {
+          items: [...(prev?.items ?? []), ...newItems.filter((i) => !existingIds.has(i.id))],
+          hasNext: Boolean(data.has_next),
+          nextCursor: typeof data.next_cursor === "string" ? data.next_cursor : null,
+        };
+      });
+    } finally {
+      setLoadingMore(false);
+    }
+  }, [buildParams, hasNext, nextCursor, loadingMore, mutateFeed]);
+
   const handleScroll = useCallback(() => {
     const el = scrollRef.current;
-    if (!el || loadingMore || !hasNext || !nextCursorRef.current) return;
+    if (!el || loadingMore || !hasNext || !nextCursor) return;
     if (el.scrollHeight - el.scrollTop - el.clientHeight < 300) {
-      fetchFeed({
-        append: true,
-        tab: activeTab,
-        days: dateRange,
-        q: debouncedSearch
-      });
+      loadMore();
     }
-  }, [fetchFeed, loadingMore, hasNext, activeTab, dateRange, debouncedSearch]);
+  }, [loadingMore, hasNext, nextCursor, loadMore]);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -421,15 +416,19 @@ export default function Feed() {
       if (!livePressMatchesFilters(item, dateRangeRef.current, debouncedSearchRef.current))
         return;
       flushSync(() => {
-        setItems((prev) => {
-          const rest = prev.filter((p) => p.id !== id);
-          return [item, ...rest];
+        mutateFeed((prev) => {
+          const rest = (prev?.items ?? []).filter((p) => p.id !== id);
+          return {
+            items: [item, ...rest],
+            hasNext: prev?.hasNext ?? false,
+            nextCursor: prev?.nextCursor ?? null,
+          };
         });
       });
     };
     window.addEventListener(DASHBOARD_NEWS_FEED_ITEM, onItem);
     return () => window.removeEventListener(DASHBOARD_NEWS_FEED_ITEM, onItem);
-  }, [activeTab]);
+  }, [activeTab, mutateFeed]);
 
   useEffect(() => {
     const onItem = (ev: Event) => {
@@ -449,15 +448,19 @@ export default function Feed() {
       if (!liveSecMatchesFilters(row, dateRangeRef.current, debouncedSearchRef.current))
         return;
       flushSync(() => {
-        setItems((prev) => {
-          const rest = prev.filter((x) => x.id !== id);
-          return [row, ...rest];
+        mutateFeed((prev) => {
+          const rest = (prev?.items ?? []).filter((x) => x.id !== id);
+          return {
+            items: [row, ...rest],
+            hasNext: prev?.hasNext ?? false,
+            nextCursor: prev?.nextCursor ?? null,
+          };
         });
       });
     };
     window.addEventListener(DASHBOARD_SEC_FEED_ITEM, onItem);
     return () => window.removeEventListener(DASHBOARD_SEC_FEED_ITEM, onItem);
-  }, [activeTab]);
+  }, [activeTab, mutateFeed]);
 
   useEffect(() => {
     const onItem = (ev: Event) => {
@@ -480,15 +483,19 @@ export default function Feed() {
       )
         return;
       flushSync(() => {
-        setItems((prev) => {
-          const rest = prev.filter((x) => x.id !== id);
-          return [row, ...rest];
+        mutateFeed((prev) => {
+          const rest = (prev?.items ?? []).filter((x) => x.id !== id);
+          return {
+            items: [row, ...rest],
+            hasNext: prev?.hasNext ?? false,
+            nextCursor: prev?.nextCursor ?? null,
+          };
         });
       });
     };
     window.addEventListener(DASHBOARD_FOREIGN_FEED_ITEM, onItem);
     return () => window.removeEventListener(DASHBOARD_FOREIGN_FEED_ITEM, onItem);
-  }, [activeTab]);
+  }, [activeTab, mutateFeed]);
 
   // ─── Row renderers (MongoFeedTab style) ───────────────────────────────────
 

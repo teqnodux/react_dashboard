@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Deal } from '../types/deal';
 import DashboardNav from '../components/DashboardNav';
+import BusyLoader from '../components/BusyLoader';
 import TearsheetTooltip from '../components/TearsheetTooltip';
 import '../styles/DealDetail.css';
 import '../styles/CrossDeal.css';
@@ -602,7 +603,7 @@ export default function PipelineTearsheet() {
     return (
       <div className="dashboard">
         <DashboardNav />
-        <div className="loading">Loading deals...</div>
+        <BusyLoader label="Loading deals" size="lg" />
       </div>
     );
   }

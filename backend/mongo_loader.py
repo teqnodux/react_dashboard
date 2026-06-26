@@ -986,6 +986,145 @@ def load_all_dockets_for_deal(deal_id: str) -> list:
     return results
 
 
+def load_dockets_summary_from_mongodb() -> list:
+    """
+    Lightweight version of load_dockets_from_mongodb() — returns ONLY the
+    fields needed to render the AllDockets tab strip and sub-tabs.
+
+    Skips the heavy entries / stakeholders / conditions arrays. Counts are
+    derived from MongoDB aggregation so we don't pay for full document scans.
+
+    Used by /api/all-dockets to make the first page paint fast. Full per-docket
+    data is fetched on demand via /api/all-dockets/{docket_id}.
+    """
+    db = get_db()
+
+    # Ticker lookup from deals collection (same as load_dockets_from_mongodb)
+    ticker_map: dict[str, dict] = {}
+    for d in db["deals"].find({}, {"_id": 1, "target_ticker": 1, "acquirer_ticker": 1}):
+        ticker_map[str(d["_id"])] = {
+            "target_ticker": d.get("target_ticker") or "",
+            "acquirer_ticker": d.get("acquirer_ticker") or "",
+        }
+
+    results = []
+    # Project only the lightweight fields — explicitly exclude the heavy arrays
+    # by NOT requesting them in the projection. We still need docket_entries to
+    # derive counts; do it via aggregation to avoid shipping them across.
+    pipeline = [
+        {"$project": {
+            "_id": 1, "deal_id": 1, "deal_name": 1, "docket_metadata": 1,
+            "entry_count": {"$size": {"$ifNull": ["$docket_entries", []]}},
+            "high_count": {"$size": {"$filter": {
+                "input": {"$ifNull": ["$docket_entries", []]},
+                "as":    "e",
+                "cond":  {"$eq": ["$$e.relevance_level", "high"]},
+            }}},
+            "oppose_count": {"$size": {"$filter": {
+                "input": {"$ifNull": ["$docket_entries", []]},
+                "as":    "e",
+                "cond":  {"$eq": ["$$e.position_on_deal", "Oppose"]},
+            }}},
+            "support_count": {"$size": {"$filter": {
+                "input": {"$ifNull": ["$docket_entries", []]},
+                "as":    "e",
+                "cond":  {"$eq": ["$$e.position_on_deal", "Support"]},
+            }}},
+            "latest_entry_date": {"$max": "$docket_entries.received_date"},
+        }},
+    ]
+
+    import re as _re
+    DATE_RE = _re.compile(r"^\d{4}-\d{2}-\d{2}")
+
+    for doc in db["docket_dashboard"].aggregate(pipeline):
+        did = doc.get("deal_id", "")
+        tickers = ticker_map.get(did, {})
+        latest_raw = doc.get("latest_entry_date")
+        # MongoDB $max on strings can return non-date values ('null', 'nullZ',
+        # 'TBD', etc.) since the field is loosely typed. Filter to a real ISO date.
+        latest = latest_raw if isinstance(latest_raw, str) and DATE_RE.match(latest_raw) else None
+        results.append({
+            "deal_id":             did,
+            "docket_id":           str(doc.get("_id", "")),
+            "deal_name":           doc.get("deal_name", ""),
+            "target_ticker":       tickers.get("target_ticker", ""),
+            "acquirer_ticker":     tickers.get("acquirer_ticker", ""),
+            "metadata":            doc.get("docket_metadata", {}),
+            "entry_count":         doc.get("entry_count", 0),
+            "high_relevance_count": doc.get("high_count", 0),
+            "opposition_count":    doc.get("oppose_count", 0),
+            "support_count":       doc.get("support_count", 0),
+            "latest_entry_date":   latest,
+        })
+
+    results.sort(key=lambda d: d.get("latest_entry_date") or "", reverse=True)
+    return results
+
+
+def load_docket_detail_by_id(docket_id: str) -> dict:
+    """
+    Fetch full entries/stakeholders/conditions for a single docket by its
+    docket_dashboard._id. Used by /api/all-dockets/{docket_id}.
+    """
+    from bson import ObjectId
+    db = get_db()
+
+    try:
+        oid = ObjectId(docket_id) if len(docket_id) == 24 else docket_id
+    except Exception:
+        return {}
+
+    doc = db["docket_dashboard"].find_one({"_id": oid})
+    if not doc:
+        return {}
+
+    def _ent(e: dict) -> dict:
+        return {
+            "entry_no": e.get("entry_no", 0),
+            "received_date": e.get("received_date", ""),
+            "title": e.get("title", ""),
+            "relevance_level": e.get("relevance_level", "medium"),
+            "filer_role": e.get("filer_role", ""),
+            "filer_name": e.get("filer_name", ""),
+            "position_on_deal": e.get("position_on_deal", ""),
+            "entry_summary": e.get("entry_summary", ""),
+            "key_arguments": e.get("key_arguments", []),
+            "key_excerpts": e.get("key_excerpts", []),
+            "cumulative_impact": e.get("cumulative_impact", ""),
+            "download_link": e.get("download_link", ""),
+            "opposition_type": e.get("opposition_type", ""),
+            "intervenor_type": e.get("intervenor_type", ""),
+            "relief_requested": e.get("relief_requested", ""),
+            "legal_regulatory_significance": e.get("legal_regulatory_significance", ""),
+            "proceeding_phase": e.get("proceeding_phase", ""),
+            "document_type": e.get("document_type", ""),
+            "deadline_date": e.get("deadline_date", ""),
+            "deadline_description": e.get("deadline_description", ""),
+        }
+
+    def _stk(s: dict) -> dict:
+        return {"name": s.get("name", ""), "role": s.get("role", ""),
+                "filing_count": s.get("filing_count", 0), "position": s.get("position", ""),
+                "opposition_type": s.get("opposition_type", ""), "status": s.get("status", ""),
+                "intervenor_type": s.get("intervenor_type", "")}
+
+    def _cnd(c: dict) -> dict:
+        return {"text": c.get("text", ""), "status": c.get("status", ""),
+                "source": c.get("source", ""), "category": c.get("category", ""),
+                "opposition_type": c.get("opposition_type", ""), "relief_type": c.get("relief_type", ""),
+                "asked_in": c.get("asked_in"), "resolved_in": c.get("resolved_in")}
+
+    return {
+        "docket_id":    docket_id,
+        "deal_id":      doc.get("deal_id", ""),
+        "metadata":     doc.get("docket_metadata", {}),
+        "entries":      [_ent(e) for e in doc.get("docket_entries", [])],
+        "stakeholders": [_stk(s) for s in doc.get("docket_stakeholders", [])],
+        "conditions":   [_cnd(c) for c in doc.get("docket_conditions", [])],
+    }
+
+
 def load_proxy_filings_for_deal(deal_id: str, allowed_form_types: Optional[list[str]] = None) -> list[dict]:
     """
     Load proxy filings (for the Proxy tab) from `sec_filing_summary`.

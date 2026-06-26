@@ -5,6 +5,7 @@ import { usePermissions } from "../hooks/usePermissions";
 import ROLE_CONFIG, { type Role } from "../config/roleConfig";
 import { DealDetail as DealDetailType } from "../types/deal";
 import DocketView from "../components/DocketView";
+import BusyLoader from "../components/BusyLoader";
 import SpreadChart from "../components/SpreadChart";
 import DMATimeline from "../components/DMATimeline";
 import RegulatoryTab from "../components/RegulatoryTab";
@@ -911,7 +912,7 @@ export default function DealDetail() {
   if (loading) {
     return (
       <div className="dashboard">
-        <div className="loading">Loading deal details...</div>
+        <BusyLoader label="Loading deal details" size="lg" />
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import DashboardNav from '../components/DashboardNav';
+import BusyLoader from '../components/BusyLoader';
 import '../styles/DealDetail.css';
 import '../styles/CrossDeal.css';
 import api from '../services/api';
@@ -103,7 +104,7 @@ export default function UpcomingEvents() {
         </div>
       </div>
 
-      {loading && <div className="loading">Loading upcoming events…</div>}
+      {loading && <BusyLoader label="Loading upcoming events" size="lg" />}
 
       {!loading && visible.length === 0 && (
         <div className="placeholder" style={{ margin: '40px auto' }}>

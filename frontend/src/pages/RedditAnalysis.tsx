@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/RedditAnalysis.css';
 import api from '../services/api';
+import BusyLoader from '../components/BusyLoader';
 
 interface RedditFinding {
   relevant: boolean;
@@ -137,7 +138,7 @@ export default function RedditAnalysis() {
           <Link to="/regulatory" className="nav-tab">Regulatory</Link>
           <Link to="/reddit" className="nav-tab active">Reddit Analysis</Link>
         </div>
-        <div className="loading">Loading Reddit analysis...</div>
+        <BusyLoader label="Loading Reddit analysis" size="lg" />
       </div>
     );
   }

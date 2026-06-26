@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import type { ReactNode } from 'react';
 import { AuthProvider } from './context/AuthContext';
+import { DashboardCacheProvider } from './context/DashboardCacheContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Login from './pages/Login';
 import PipelineTable from './components/PipelineTable';
@@ -59,6 +60,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <ToastProvider>
+        <DashboardCacheProvider>
         <Routes>
           {/* Public routes — no auth required */}
           <Route path="/login"           element={<Login />} />
@@ -100,6 +102,7 @@ function App() {
             <Route path="/sec-feed"  element={<Navigate to="/feed" replace />} />
           </Route>
         </Routes>
+        </DashboardCacheProvider>
         </ToastProvider>
       </AuthProvider>
     </BrowserRouter>

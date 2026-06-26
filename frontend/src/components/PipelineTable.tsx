@@ -6,6 +6,8 @@ import '../styles/CrossDeal.css';
 import '../styles/Pipeline.css';
 import api from '../services/api';
 import { usePermissions } from '../hooks/usePermissions';
+import { useCachedFetch } from '../context/DashboardCacheContext';
+import BusyLoader from './BusyLoader';
 
 // Category ordering (matches Python CATEGORY_ORDER)
 const CATEGORY_ORDER: DealCategory[] = [
@@ -23,9 +25,6 @@ export default function PipelineTable() {
 
   const ALL_COLUMNS = ['watch','target','acquirer','deal-type','consideration','current','offer','gross-spread','net-spread','close-date','status','milestone'] as const;
   const visibleColCount = ALL_COLUMNS.filter(c => canSeeColumn(c)).length;
-  const [dealsData, setDealsData] = useState<DealsResponse | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<'all' | 'watchlist'>(showWatchlist ? 'watchlist' : 'all');
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedSearch, setDebouncedSearch] = useState('');
@@ -53,29 +52,22 @@ export default function PipelineTable() {
     return () => clearTimeout(timer);
   }, [searchTerm]);
 
-  // Fetch deals from API (re-runs when page or debounced search changes)
-  useEffect(() => {
-    const controller = new AbortController();
-    setLoading(true);
-    const params = new URLSearchParams({
-      page: String(page),
-      page_size: String(PAGE_SIZE),
-      ...(debouncedSearch ? { search: debouncedSearch } : {}),
-      ...(allowedDealIds !== 'all' ? { ids: allowedDealIds.join(',') } : {}),
-    });
-    api.get(`/api/deals?${params}`, { signal: controller.signal })
-      .then(res => {
-        setDealsData(res.data);
-        setLoading(false);
-      })
-      .catch(err => {
-        if (err.name !== 'AbortError' && err.code !== 'ERR_CANCELED') {
-          setError(err.message);
-          setLoading(false);
-        }
+  // Cached fetch — same (page+search+ids) combination served from memory on tab return.
+  const idsKey = allowedDealIds !== 'all' ? allowedDealIds.join(',') : 'all';
+  const paramsKey = `p=${page}|q=${debouncedSearch}|ids=${idsKey}`;
+  const { data: dealsData, loading, error, refresh: refreshDeals } = useCachedFetch<DealsResponse>({
+    cacheKey: 'pipeline',
+    paramsKey,
+    fetcher: () => {
+      const params = new URLSearchParams({
+        page: String(page),
+        page_size: String(PAGE_SIZE),
+        ...(debouncedSearch ? { search: debouncedSearch } : {}),
+        ...(allowedDealIds !== 'all' ? { ids: allowedDealIds.join(',') } : {}),
       });
-    return () => controller.abort();
-  }, [page, debouncedSearch, allowedDealIds]);
+      return api.get(`/api/deals?${params}`).then(r => r.data);
+    },
+  });
 
   // After deals load, fetch all quotes in parallel via batch endpoint
   useEffect(() => {
@@ -134,8 +126,7 @@ export default function PipelineTable() {
     setRefreshing(true);
     try {
       const { data: result } = await api.post(`/api/refresh-prices`);
-      const { data: dealsData } = await api.get(`/api/deals?page=${page}&page_size=${PAGE_SIZE}`);
-      setDealsData(dealsData);
+      await refreshDeals();  // bypass cache + repopulate
       alert(`Successfully updated ${result.updated_count} of ${result.total_deals} deals`);
     } catch (err) {
       alert(`Error refreshing prices: ${err}`);
@@ -211,7 +202,7 @@ export default function PipelineTable() {
     return (
       <div className="dashboard">
         <DashboardNav />
-        <div className="loading">Loading deals...</div>
+        <BusyLoader label="Loading deals" size="lg" />
       </div>
     );
   }

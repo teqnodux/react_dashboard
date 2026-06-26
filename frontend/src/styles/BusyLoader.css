@@ -1,0 +1,94 @@
+/* ── Busy Loader ─────────────────────────────────────────────────────────────
+   Matches dashboard aesthetic: mono font, accent-blue, dark theme.
+   Two variants — pulsing dots (default) or spinning ring.
+   Two layouts — block (centred) or inline.
+   ────────────────────────────────────────────────────────────────────────── */
+
+.busy-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+.busy-loader--block {
+  min-height: 200px;
+  padding: var(--space-lg);
+  width: 100%;
+}
+
+.busy-loader--inline {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 8px;
+  min-height: 0;
+  padding: 4px 8px;
+}
+
+.busy-loader__label {
+  font-size: 11px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* ── Pulsing dots variant ─────────────────────────────────────────────────── */
+
+.busy-loader__dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.busy-loader__dots span {
+  display: block;
+  background: var(--accent-blue);
+  border-radius: 50%;
+  animation: busy-pulse 1.4s ease-in-out infinite both;
+  box-shadow: 0 0 8px rgba(92, 207, 230, 0.35);
+}
+
+.busy-loader__dots span:nth-child(1) { animation-delay: -0.32s; }
+.busy-loader__dots span:nth-child(2) { animation-delay: -0.16s; }
+.busy-loader__dots span:nth-child(3) { animation-delay: 0s; }
+
+@keyframes busy-pulse {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.35;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ── Spinning ring variant ────────────────────────────────────────────────── */
+
+.busy-loader__ring {
+  border-style: solid;
+  border-color: rgba(92, 207, 230, 0.15);
+  border-top-color: var(--accent-blue);
+  border-radius: 50%;
+  animation: busy-spin 0.8s linear infinite;
+  box-shadow: 0 0 12px rgba(92, 207, 230, 0.25);
+}
+
+@keyframes busy-spin { to { transform: rotate(360deg); } }
+
+/* ── Sizes ────────────────────────────────────────────────────────────────── */
+
+.busy-loader--sm .busy-loader__dots span { width: 6px; height: 6px; }
+.busy-loader--sm .busy-loader__ring      { width: 18px; height: 18px; border-width: 2px; }
+.busy-loader--sm .busy-loader__label     { font-size: 10px; }
+
+.busy-loader--md .busy-loader__dots span { width: 9px; height: 9px; }
+.busy-loader--md .busy-loader__ring      { width: 28px; height: 28px; border-width: 3px; }
+.busy-loader--md .busy-loader__label     { font-size: 11px; }
+
+.busy-loader--lg .busy-loader__dots span { width: 12px; height: 12px; }
+.busy-loader--lg .busy-loader__ring      { width: 40px; height: 40px; border-width: 3px; }
+.busy-loader--lg .busy-loader__label     { font-size: 12px; }

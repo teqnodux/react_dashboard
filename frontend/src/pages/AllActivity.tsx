@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import DashboardNav from '../components/DashboardNav';
+import BusyLoader from '../components/BusyLoader';
 import '../styles/Activity.css';
 import '../styles/CrossDeal.css';
 import api from '../services/api';
@@ -185,7 +186,7 @@ export default function AllActivity() {
     return (
       <div className="dashboard">
         <DashboardNav />
-        <div className="loading">Loading activity feed...</div>
+        <BusyLoader label="Loading activity feed" size="lg" />
       </div>
     );
   }

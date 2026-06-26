@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import DashboardNav from '../components/DashboardNav';
+import BusyLoader from '../components/BusyLoader';
 import '../styles/CrossDeal.css';
 import api from '../services/api';
 
@@ -89,7 +90,7 @@ export default function AllRegulatory() {
     <div className="dashboard">
       <DashboardNav />
 
-      {loading && <div className="loading">Loading regulatory events...</div>}
+      {loading && <BusyLoader label="Loading regulatory events" size="lg" />}
       {!loading && (<>
 
       <div className="page-header">
