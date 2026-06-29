@@ -90,7 +90,12 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
       "6a2fde166cfe5f8f5b5a9096",
       "69c4e246b2464e0d1babc51d",
       "69a0b95554958e923cd9829d",
-      "6981ce69b995ffbb7cb5c561"
+      "6981ce69b995ffbb7cb5c561",
+      "69a57e0554958e923ceb7a46",
+      "69303b08c0aa46c32884888a",
+      "6a3d0be2002ce36e38049415",
+      "6a423c636abc29f03687029a",
+
     ],
     showSummaryStats: false,
     showDealMetrics: false,
@@ -156,7 +161,11 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
       "6a2fde166cfe5f8f5b5a9096",
       "69c4e246b2464e0d1babc51d",
       "69a0b95554958e923cd9829d",
-      "6981ce69b995ffbb7cb5c561"
+      "6981ce69b995ffbb7cb5c561",
+      "69a57e0554958e923ceb7a46",
+      "69303b08c0aa46c32884888a",
+      "6a3d0be2002ce36e38049415",
+      "6a423c636abc29f03687029a",
     ],
     showSummaryStats: false,
     showDealMetrics: false,

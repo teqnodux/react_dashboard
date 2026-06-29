@@ -1042,16 +1042,16 @@ def load_all_dockets_for_deal(deal_id: str) -> list:
     return results
 
 
-def load_dockets_summary_from_mongodb() -> list:
+def load_dockets_summary_from_mongodb(deal_id: Optional[str] = None) -> list:
     """
     Lightweight version of load_dockets_from_mongodb() — returns ONLY the
-    fields needed to render the AllDockets tab strip and sub-tabs.
+    fields needed to render the docket tab strips and sub-tabs.
 
     Skips the heavy entries / stakeholders / conditions arrays. Counts are
     derived from MongoDB aggregation so we don't pay for full document scans.
 
-    Used by /api/all-dockets to make the first page paint fast. Full per-docket
-    data is fetched on demand via /api/all-dockets/{docket_id}.
+    deal_id=None → all dockets across all deals  (used by /api/all-dockets)
+    deal_id=str  → only that deal's docket(s)    (used by /api/deals/{id})
     """
     db = get_db()
 
@@ -1067,7 +1067,10 @@ def load_dockets_summary_from_mongodb() -> list:
     # Project only the lightweight fields — explicitly exclude the heavy arrays
     # by NOT requesting them in the projection. We still need docket_entries to
     # derive counts; do it via aggregation to avoid shipping them across.
-    pipeline = [
+    pipeline: list = []
+    if deal_id:
+        pipeline.append({"$match": {"deal_id": deal_id}})
+    pipeline.append(
         {"$project": {
             "_id": 1, "deal_id": 1, "deal_name": 1, "docket_metadata": 1,
             "entry_count": {"$size": {"$ifNull": ["$docket_entries", []]}},
@@ -1087,8 +1090,8 @@ def load_dockets_summary_from_mongodb() -> list:
                 "cond":  {"$eq": ["$$e.position_on_deal", "Support"]},
             }}},
             "latest_entry_date": {"$max": "$docket_entries.received_date"},
-        }},
-    ]
+        }}
+    )
 
     import re as _re
     DATE_RE = _re.compile(r"^\d{4}-\d{2}-\d{2}")

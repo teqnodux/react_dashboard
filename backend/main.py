@@ -971,16 +971,16 @@ def get_deal_detail(deal_id: str):
     ]
 
     # Add docket entries — a single deal can have multiple dockets (different jurisdictions)
+    # Lightweight summary only — full entries fetched on demand per docket via
+    # /api/all-dockets/{docket_id}. Keeps deal detail fast even for big dockets.
     if _DATA_SOURCE == "mongodb":
-        from mongo_loader import load_all_dockets_for_deal
-        all_dockets = load_all_dockets_for_deal(deal_id)
-        detail["dockets"] = all_dockets
-        # First docket fills the legacy flat fields so existing UI code keeps working
-        first = all_dockets[0] if all_dockets else {}
-        detail["docket_entries"] = first.get("entries", [])
-        detail["docket_stakeholders"] = first.get("stakeholders", [])
-        detail["docket_conditions"] = first.get("conditions", [])
-        detail["docket_metadata"] = first.get("metadata", {})
+        from mongo_loader import load_dockets_summary_from_mongodb
+        detail["dockets"] = load_dockets_summary_from_mongodb(deal_id=deal_id)
+        # Legacy flat fields kept empty for back-compat
+        detail["docket_entries"]      = []
+        detail["docket_stakeholders"] = []
+        detail["docket_conditions"]   = []
+        detail["docket_metadata"]     = {}
     else:
         detail["docket_entries"] = [
             {

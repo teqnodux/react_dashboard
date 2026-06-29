@@ -143,13 +143,12 @@ export default function AllDockets() {
               localized spinner so the tab strip stays visible. */}
           {activeSummary && (
             <div className="docket-tab-content">
-              {detailLoading && !detailData && (
+              {(!detailData || detailLoading) ? (
                 <BusyLoader
                   label={`Loading ${activeSummary.metadata.jurisdiction || 'docket'}`}
                   size="md"
                 />
-              )}
-              {detailData && (
+              ) : (
                 <DocketView
                   key={activeDocketId}
                   entries={detailData.entries}

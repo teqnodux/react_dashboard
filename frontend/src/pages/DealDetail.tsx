@@ -26,6 +26,7 @@ import {
 import "../styles/DealDetail.css";
 import "../styles/SECFilings.css";
 import api from "../services/api";
+import { useCachedFetch } from "../context/DashboardCacheContext";
 
 /** Render proxy detail section content with tables, headers, bullets, bold */
 function renderProxyDetailContent(content: string): React.ReactNode {
@@ -210,6 +211,30 @@ export default function DealDetail() {
   const [expandedClauses, setExpandedClauses] = useState<Set<string>>(
     new Set()
   );
+
+  // Docket sub-tab metadata + lazy-fetched per-docket detail.
+  // Shares the 'docket-detail' cache key with the AllDockets page — so if
+  // the user came from AllDockets they get an instant load here too.
+  // (Computed here as derived state; safe with deal=null because activeDocketId
+  // will be "" and the hook is disabled until activeTab === 'docket'.)
+  const docketSummaries = (deal?.dockets && deal.dockets.length > 0) ? deal.dockets : [];
+  const safeDocketIdx = docketSummaries.length > 0
+    ? Math.min(activeDocketIdx, docketSummaries.length - 1) : 0;
+  const activeDocketSummary = docketSummaries[safeDocketIdx];
+  const activeDocketId = activeDocketSummary?.docket_id || "";
+  const { data: activeDocketDetail, loading: activeDocketLoading } = useCachedFetch<{
+    docket_id: string;
+    deal_id: string;
+    metadata: { docket_number?: string; case_name?: string; jurisdiction?: string; status?: string };
+    entries: any[];
+    stakeholders: any[];
+    conditions: any[];
+  }>({
+    cacheKey: "docket-detail",
+    paramsKey: activeDocketId,
+    fetcher: () => api.get(`/api/all-dockets/${activeDocketId}`).then(r => r.data),
+    enabled: activeTab === "docket" && !!activeDocketId,
+  });
   const [expandedClauseTexts, setExpandedClauseTexts] = useState<Set<string>>(
     new Set()
   );
@@ -5896,54 +5921,32 @@ export default function DealDetail() {
             </div>
           )}
 
-          {activeTab === "docket" && (() => {
-            // Prefer the new `dockets` array (multi-jurisdiction). Fall back to flat fields.
-            const dockets = deal.dockets && deal.dockets.length > 0
-              ? deal.dockets
-              : (deal.docket_entries && deal.docket_entries.length > 0
-                ? [{
-                    docket_id: "fallback",
-                    deal_id: dealId || "",
-                    metadata: deal.docket_metadata,
-                    entries: deal.docket_entries,
-                    stakeholders: deal.docket_stakeholders,
-                    conditions: deal.docket_conditions,
-                    entry_count: deal.docket_entries.length,
-                  }]
-                : []);
-
-            if (dockets.length === 0) {
-              return (
-                <div className="docket-tab">
-                  <div className="content-panel">
-                    <h3>Court Docket</h3>
-                    <div className="info-message">
-                      <p>No docket entries available for this deal.</p>
-                      <p className="muted">
-                        Docket analysis will be added for deals with regulatory
-                        proceedings or litigation.
-                      </p>
-                    </div>
+          {activeTab === "docket" && (
+            docketSummaries.length === 0 ? (
+              <div className="docket-tab">
+                <div className="content-panel">
+                  <h3>Court Docket</h3>
+                  <div className="info-message">
+                    <p>No docket entries available for this deal.</p>
+                    <p className="muted">
+                      Docket analysis will be added for deals with regulatory
+                      proceedings or litigation.
+                    </p>
                   </div>
                 </div>
-              );
-            }
-
-            const safeIdx = Math.min(activeDocketIdx, dockets.length - 1);
-            const active = dockets[safeIdx];
-
-            return (
+              </div>
+            ) : (
               <div className="docket-tab">
-                {dockets.length > 1 && (
+                {docketSummaries.length > 1 && (
                   <div className="docket-jurisdiction-tabs">
-                    {dockets.map((d, i) => {
+                    {docketSummaries.map((d, i) => {
                       const md = d.metadata || {};
                       const label = md.jurisdiction || md.docket_number || `Docket ${i + 1}`;
                       const sub = md.docket_number && md.jurisdiction ? md.docket_number : null;
                       return (
                         <button
                           key={d.docket_id || i}
-                          className={`docket-jur-tab ${safeIdx === i ? "active" : ""}`}
+                          className={`docket-jur-tab ${safeDocketIdx === i ? "active" : ""}`}
                           onClick={() => setActiveDocketIdx(i)}
                         >
                           <span className="docket-jur-label">{label}</span>
@@ -5954,17 +5957,24 @@ export default function DealDetail() {
                     })}
                   </div>
                 )}
-                <DocketView
-                  key={active.docket_id || safeIdx}
-                  entries={active.entries}
-                  stakeholders={active.stakeholders}
-                  conditions={active.conditions}
-                  metadata={active.metadata}
-                  dealId={dealId}
-                />
+                {(!activeDocketDetail || activeDocketLoading) ? (
+                  <BusyLoader
+                    label={`Loading ${activeDocketSummary?.metadata.jurisdiction || "docket"}`}
+                    size="md"
+                  />
+                ) : (
+                  <DocketView
+                    key={activeDocketId}
+                    entries={activeDocketDetail.entries}
+                    stakeholders={activeDocketDetail.stakeholders}
+                    conditions={activeDocketDetail.conditions}
+                    metadata={activeDocketDetail.metadata}
+                    dealId={dealId}
+                  />
+                )}
               </div>
-            );
-          })()}
+            )
+          )}
 
           {activeTab === "reddit" && (
             <div className="content-panel">

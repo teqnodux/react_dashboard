@@ -13,6 +13,7 @@ import { hasNonEmptyDealId } from "../utils/dealId";
 import { usePermissions } from "../hooks/usePermissions";
 import api from "../services/api";
 import { useCachedFetch } from "../context/DashboardCacheContext";
+import BusyLoader from "../components/BusyLoader";
 import "../styles/Feed.css";
 import "../styles/ForeignFilingsTab.css";
 
@@ -298,11 +299,11 @@ interface FeedCacheData {
 export default function Feed() {
   const [activeTab, setActiveTab] = useState<TabKey>("all");
   const [loadingMore, setLoadingMore] = useState(false);
-  const [dateRange, setDateRange] = useState<string>("7");
+  const [dateRange, setDateRange] = useState<string>("3");
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
-  const dateRangeRef = useRef<string>("7");
+  const dateRangeRef = useRef<string>("3");
   const debouncedSearchRef = useRef<string>("");
   const connected = useFeedSocketConnected();
   const { allowedDealIds } = usePermissions();
@@ -683,33 +684,6 @@ export default function Feed() {
     }
   };
 
-  // ─── Skeleton ────────────────────────────────────────────────────────────────
-
-  const renderSkeleton = () => (
-    <div className="feed-list">
-      {Array.from({ length: 8 }).map((_, i) => (
-        <div key={i} className="feed-item feed-item-skeleton">
-          <span className="feed-item-icon skeleton-icon" />
-          <div className="feed-item-content">
-            <div className="skeleton-line skeleton-title" />
-            <div
-              className="skeleton-line skeleton-body"
-              style={{ marginTop: 6 }}
-            />
-            <div
-              className="skeleton-line skeleton-meta"
-              style={{ marginTop: 6 }}
-            />
-          </div>
-          <div
-            className="skeleton-line"
-            style={{ width: 55, height: 10, marginTop: 4 }}
-          />
-        </div>
-      ))}
-    </div>
-  );
-
   // ─── Render ───────────────────────────────────────────────────────────────────
 
   return (
@@ -760,7 +734,7 @@ export default function Feed() {
 
         {/* Feed rows */}
         {loading ? (
-          renderSkeleton()
+          <BusyLoader label="Loading feed" size="lg" />
         ) : (
           <div className="feed-list" ref={scrollRef}>
             {items.length === 0 ? (

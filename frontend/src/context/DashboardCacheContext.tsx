@@ -99,7 +99,14 @@ export function useCachedFetch<T>(opts: UseCachedFetchOptions<T>): UseCachedFetc
     const hit = existing && existing.paramsKey === paramsKey;
     const fresh = hit && Date.now() - existing.loadedAt < staleAfter;
 
-    if (hit) setData(existing.data as T);
+    if (hit) {
+      setData(existing.data as T);
+    } else {
+      // paramsKey changed and we have no cached value for the new key —
+      // drop stale data so consumers (e.g. AllDockets) show their loader
+      // instead of the previous selection's UI while the new one fetches.
+      setData(null);
+    }
 
     if (fresh) {
       setLoading(false);
