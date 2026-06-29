@@ -573,6 +573,62 @@ def load_deals_from_mongodb() -> list:
     return result
 
 
+def load_deals_summary_for_admin(status_filter: str = "all") -> list[dict]:
+    """
+    Lightweight deal list for the super admin deal-access picker.
+    Only fetches 7 fields per deal — no schema_results join, no yfinance calls.
+    """
+    db = get_db()
+
+    projection = {
+        "_id": 1,
+        "target_name": 1,
+        "acquire_name": 1,
+        "target_ticker": 1,
+        "acquirer_ticker": 1,
+        "deal_value_bn": 1,
+        "deal_status": 1,
+        "announce_date": 1,
+    }
+
+    query: dict = {}
+    if status_filter == "open":
+        query["deal_status"] = {"$regex": "^(open|active|pending)$", "$options": "i"}
+    elif status_filter == "closed":
+        query["deal_status"] = {"$regex": "^(closed|completed)$", "$options": "i"}
+    elif status_filter == "unknown":
+        query = {"$or": [
+            {"deal_status": {"$exists": False}},
+            {"deal_status": None},
+            {"deal_status": ""},
+        ]}
+
+    docs = list(db["deals"].find(query, projection).sort("announce_date", -1))
+
+    result = []
+    for doc in docs:
+        announce = doc.get("announce_date")
+        if hasattr(announce, "isoformat"):
+            announce_str = announce.isoformat()
+        elif announce:
+            announce_str = str(announce)
+        else:
+            announce_str = ""
+
+        result.append({
+            "id": str(doc["_id"]),
+            "target": doc.get("target_name") or "Unknown",
+            "acquirer": doc.get("acquire_name") or "Unknown",
+            "target_ticker": doc.get("target_ticker") or "",
+            "acquirer_ticker": doc.get("acquirer_ticker") or "",
+            "deal_value_bn": float(doc.get("deal_value_bn") or 0.0),
+            "status": doc.get("deal_status") or "unknown",
+            "announce_date": announce_str,
+        })
+
+    return result
+
+
 def load_deals_page_from_mongodb(skip: int = 0, limit: int = 20, search: str = "", allowed_ids: Optional[set] = None) -> tuple[list, int]:
     """
     Paginated version of load_deals_from_mongodb.

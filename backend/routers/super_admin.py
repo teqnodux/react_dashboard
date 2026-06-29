@@ -648,6 +648,42 @@ def force_password_reset(user_id: str, current_user=_require_super):
     return {"detail": "Password reset flag set"}
 
 
+# ── Deal access management ───────────────────────────────────────────────────
+
+@router.get("/deals")
+def list_deals_for_admin(
+    status: str = "all",
+    current_user=_require_super,
+):
+    """
+    Lightweight deal list for the super admin deal-access picker.
+    status: all | open | closed | unknown
+    """
+    from mongo_loader import load_deals_summary_for_admin
+    if status not in {"all", "open", "closed", "unknown"}:
+        raise HTTPException(status_code=400, detail="status must be one of: all, open, closed, unknown")
+    return load_deals_summary_for_admin(status_filter=status)
+
+
+class DealAccessRequest(BaseModel):
+    allowed_deal_ids: list[str]
+
+
+@router.put("/orgs/{org_id}/deal-access")
+def set_org_deal_access(org_id: str, body: DealAccessRequest, current_user=_require_super):
+    """Replace the org's allowed_deal_ids array."""
+    db = get_db()
+    get_org_or_404(org_id, db)
+    db["organizations"].update_one(
+        {"_id": ObjectId(org_id)},
+        {"$set": {
+            "allowed_deal_ids": body.allowed_deal_ids,
+            "updated_at": datetime.now(timezone.utc),
+        }},
+    )
+    return {"allowed_deal_ids": body.allowed_deal_ids}
+
+
 # ── Analytics / Overview ───────────────────────────────────────────────────────
 
 @router.get("/stats")

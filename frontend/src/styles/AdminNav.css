@@ -134,7 +134,8 @@
 }
 
 .admin-panel-page-in-dashboard {
-  min-height: calc(100vh - 33px);
+  height: calc(100vh - 33px);
+  overflow: hidden;
 }
 
 .admin-panel-page-in-dashboard .admin-sidebar {
@@ -208,11 +209,16 @@
   flex: 1;
   padding: var(--space-lg);
   overflow-y: auto;
-  max-width: 1000px;
+  max-width: auto;
 }
 
 .admin-panel-content:has(.org-detail-shell) {
-  max-width: 1200px;
+  max-width: 100vw;
+  padding-top: 0; /* tabs stick flush at the top edge — no gap for rows to bleed through */
+}
+
+.admin-panel-content:has(.org-detail-shell) .org-detail-topbar {
+  padding-top: var(--space-lg); /* restore visual top breathing room on the topbar */
 }
 
 /* ── Organization detail (super admin) ───────────────────────────────────── */
@@ -359,6 +365,10 @@
   gap: 28px;
   border-bottom: 1px solid var(--border);
   margin-top: 4px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg-primary);
 }
 
 .org-detail-tab {
@@ -786,6 +796,45 @@
   border-color: var(--accent-blue);
 }
 
+/* Deal Access tab — filter row + search input */
+.deal-access-filter-row {
+  flex-wrap: wrap;
+  margin-top: var(--space-xs);
+}
+
+.deal-access-search {
+  flex: 1 1 200px;
+  min-width: 0;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.deal-access-search::placeholder {
+  color: var(--text-muted);
+}
+
+.deal-access-search:focus {
+  border-color: var(--accent-blue);
+}
+
+/* Sticky controls bar inside the Deal Access tab */
+.deal-access-sticky-controls {
+  position: sticky;
+  top: 38px; /* sits just below the sticky .org-detail-tabs (~41px + 4px gap) */
+  z-index: 9;
+  background: var(--bg-secondary);
+  padding-bottom: var(--space-md);
+  margin-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border);
+}
+
 /* ── Overview / Stats ────────────────────────────────────────────────────── */
 
 .overview-section {
@@ -852,6 +901,7 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 16px;
+  padding-top: 10px;
 }
 
 .notif-settings-title {

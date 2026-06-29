@@ -5,6 +5,7 @@ Wraps existing Python logic and serves data to React frontend
 
 """
 
+from docket_query_engine import get_engine, get_engine_for_deal
 from feed_realtime import sio as _feed_sio
 import socketio as _socketio_pkg
 from routers.auth_extended import router as auth_extended_router
@@ -451,6 +452,7 @@ _default_origins = [
     "http://localhost:5173",
     "http://localhost:5174",
     "http://localhost:3000",
+    "http://localhost:5175",
 ]
 _env_origins = [o.strip() for o in os.getenv(
     "CORS_ORIGINS", "").split(",") if o.strip()]
@@ -547,10 +549,12 @@ def auth_refresh(body: RefreshRequest):
             if invalidated_at:
                 # PyMongo returns naive UTC datetimes; normalise before comparing
                 if invalidated_at.tzinfo is None:
-                    invalidated_at = invalidated_at.replace(tzinfo=timezone.utc)
+                    invalidated_at = invalidated_at.replace(
+                        tzinfo=timezone.utc)
                 iat = payload.get("iat")
                 # Reject if no iat (old token) or issued before the invalidation timestamp
-                token_issued_at = datetime.fromtimestamp(iat, tz=timezone.utc) if iat else None
+                token_issued_at = datetime.fromtimestamp(
+                    iat, tz=timezone.utc) if iat else None
                 if token_issued_at is None or token_issued_at < invalidated_at:
                     raise HTTPException(
                         status_code=401,
@@ -973,10 +977,10 @@ def get_deal_detail(deal_id: str):
         detail["dockets"] = all_dockets
         # First docket fills the legacy flat fields so existing UI code keeps working
         first = all_dockets[0] if all_dockets else {}
-        detail["docket_entries"]      = first.get("entries", [])
+        detail["docket_entries"] = first.get("entries", [])
         detail["docket_stakeholders"] = first.get("stakeholders", [])
-        detail["docket_conditions"]   = first.get("conditions", [])
-        detail["docket_metadata"]     = first.get("metadata", {})
+        detail["docket_conditions"] = first.get("conditions", [])
+        detail["docket_metadata"] = first.get("metadata", {})
     else:
         detail["docket_entries"] = [
             {
@@ -2278,11 +2282,11 @@ def get_all_dockets():
         from mongo_loader import load_dockets_summary_from_mongodb
         docket_deals = load_dockets_summary_from_mongodb()
         summary = {
-            "total_entries":            sum(d["entry_count"]          for d in docket_deals),
+            "total_entries":            sum(d["entry_count"] for d in docket_deals),
             "total_deals_with_dockets": len(docket_deals),
             "high_relevance":           sum(d["high_relevance_count"] for d in docket_deals),
-            "opposition_count":         sum(d["opposition_count"]     for d in docket_deals),
-            "support_count":            sum(d["support_count"]        for d in docket_deals),
+            "opposition_count":         sum(d["opposition_count"] for d in docket_deals),
+            "support_count":            sum(d["support_count"] for d in docket_deals),
         }
         return {"deals": docket_deals, "summary": summary}
 
@@ -2308,16 +2312,19 @@ def get_all_dockets():
 
         for entry in deal.docket_entries:
             rd = entry.received_date.isoformat() if entry.received_date else ""
-            if entry.relevance_level == "high": high_count += 1
-            if entry.position_on_deal == "Oppose":  oppose_count  += 1
-            elif entry.position_on_deal == "Support": support_count += 1
+            if entry.relevance_level == "high":
+                high_count += 1
+            if entry.position_on_deal == "Oppose":
+                oppose_count += 1
+            elif entry.position_on_deal == "Support":
+                support_count += 1
             if rd and (latest_date is None or rd > latest_date):
                 latest_date = rd
 
-        summary["total_entries"]    += entry_total
-        summary["high_relevance"]   += high_count
+        summary["total_entries"] += entry_total
+        summary["high_relevance"] += high_count
         summary["opposition_count"] += oppose_count
-        summary["support_count"]    += support_count
+        summary["support_count"] += support_count
 
         docket_deals.append({
             "deal_id":              deal.id,
@@ -2335,7 +2342,8 @@ def get_all_dockets():
             "latest_entry_date":    latest_date,
         })
 
-    docket_deals.sort(key=lambda d: d.get("latest_entry_date") or "", reverse=True)
+    docket_deals.sort(key=lambda d: d.get(
+        "latest_entry_date") or "", reverse=True)
     return {"deals": docket_deals, "summary": summary}
 
 
@@ -2352,13 +2360,15 @@ def get_docket_detail(docket_id: str):
         from mongo_loader import load_docket_detail_by_id
         detail = load_docket_detail_by_id(docket_id)
         if not detail:
-            raise HTTPException(status_code=404, detail=f"Docket {docket_id} not found")
+            raise HTTPException(
+                status_code=404, detail=f"Docket {docket_id} not found")
         return detail
 
     # Static mode — treat docket_id as deal_id
     deal = next((d for d in get_deals() if d.id == docket_id), None)
     if not deal or not deal.docket_entries:
-        raise HTTPException(status_code=404, detail=f"Docket {docket_id} not found")
+        raise HTTPException(
+            status_code=404, detail=f"Docket {docket_id} not found")
 
     entries = []
     for entry in deal.docket_entries:
@@ -2393,8 +2403,10 @@ def get_docket_detail(docket_id: str):
 
     conditions = []
     for c in deal.docket_conditions:
-        asked    = {"entry_no": c.asked_in.entry_no,    "date": c.asked_in.date,    "filer": c.asked_in.filer}    if c.asked_in    else None
-        resolved = {"entry_no": c.resolved_in.entry_no, "date": c.resolved_in.date, "filer": c.resolved_in.filer} if c.resolved_in else None
+        asked = {"entry_no": c.asked_in.entry_no,    "date": c.asked_in.date,
+                 "filer": c.asked_in.filer} if c.asked_in else None
+        resolved = {"entry_no": c.resolved_in.entry_no, "date": c.resolved_in.date,
+                    "filer": c.resolved_in.filer} if c.resolved_in else None
         conditions.append({
             "text": c.text, "status": c.status, "source": c.source,
             "category":        getattr(c, "category", ""),
@@ -5354,7 +5366,6 @@ def get_sec_feed(page: int = 1, page_size: int = 20):
 
 # ── Docket Query ──────────────────────────────────────────────────────────────
 
-from docket_query_engine import get_engine, get_engine_for_deal
 
 class DocketQueryRequest(BaseModel):
     question: str
@@ -5385,7 +5396,8 @@ async def docket_query(deal_id: str, req: DocketQueryRequest):
     """Stream a docket query response via SSE."""
     engine = _get_query_engine(deal_id)
     if not engine:
-        raise HTTPException(404, f"No query data configured for deal {deal_id}")
+        raise HTTPException(
+            404, f"No query data configured for deal {deal_id}")
 
     async def generate():
         async for chunk in engine.query_stream(req.question, req.history, req.model, req.focus_entry):

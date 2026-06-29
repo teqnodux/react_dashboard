@@ -151,6 +151,16 @@ export const superAdminApi = {
       total_users: number; active_users: number; force_reset_pending: number;
       pending_invites: number;
     }>('/api/super-admin/stats'),
+
+  getDealsForAdmin: (status?: string) =>
+    api.get<{
+      id: string; target: string; acquirer: string;
+      target_ticker: string; acquirer_ticker: string;
+      deal_value_bn: number; status: string; announce_date: string;
+    }[]>('/api/super-admin/deals', { params: status ? { status } : {} }),
+
+  setOrgDealAccess: (orgId: string, allowed_deal_ids: string[]) =>
+    api.put(`/api/super-admin/orgs/${orgId}/deal-access`, { allowed_deal_ids }),
 };
 
 // ── Auth extended API (/api/auth/...) ────────────────────────────────────────
