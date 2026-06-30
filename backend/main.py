@@ -429,13 +429,15 @@ async def _app_lifespan(_inner: FastAPI):
         ensure_sec_filing_summary_watcher_started,
         set_feed_emit_event_loop,
     )
+    from services.deal_access_propagation import ensure_deal_access_watcher_started
 
     set_feed_emit_event_loop(asyncio.get_running_loop())
     ensure_feed_watcher_started()
     ensure_sec_filing_summary_watcher_started()
     ensure_foreign_feed_watcher_started()
+    ensure_deal_access_watcher_started()
     print(
-        "[main] lifespan: feed + sec + foreign change-stream watchers + Socket.IO emit loop ready",
+        "[main] lifespan: feed + sec + foreign + deal-access change-stream watchers + Socket.IO emit loop ready",
         flush=True,
     )
     yield
