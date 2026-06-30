@@ -11,11 +11,11 @@ import os
 import secrets
 from datetime import datetime, timedelta, timezone
 
-from bson import ObjectId
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, EmailStr
 
 from auth import (
+    find_user_by_id,
     get_current_user,
     hash_password,
     verify_password,
@@ -133,15 +133,23 @@ def reset_password(body: ResetPasswordRequest):
     if expires_at < datetime.now(timezone.utc):
         raise HTTPException(status_code=400, detail="Reset token has expired")
 
-    user_oid = ObjectId(record["user_id"])
-    db["users"].update_one(
-        {"_id": user_oid},
+    user = find_user_by_id(db, record["user_id"])
+    if not user:
+        raise HTTPException(status_code=404, detail="User account not found")
+
+    now = datetime.now(timezone.utc)
+    result = db["users"].update_one(
+        {"_id": user["_id"]},
         {"$set": {
             "password": hash_password(body.new_password),
             "force_password_reset": False,
-            "updated_at": datetime.now(timezone.utc),
+            "tokens_invalidated_at": now,
+            "updated_at": now,
         }},
     )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=500, detail="Failed to update password")
+
     db["password_reset_tokens"].update_one(
         {"_id": record["_id"]},
         {"$set": {"used": True}},
@@ -163,7 +171,7 @@ async def change_password(body: ChangePasswordRequest, request: Request):
     _validate_password_strength(body.new_password)
 
     db = get_db()
-    user = db["users"].find_one({"_id": ObjectId(current_user["user_id"])})
+    user = find_user_by_id(db, current_user["user_id"])
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
 

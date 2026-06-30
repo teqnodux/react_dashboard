@@ -32,6 +32,22 @@ def get_users_collection():
     return get_users_col()
 
 
+def find_user_by_id(db, user_id: str, projection: dict | None = None):
+    """
+    Look up a user by _id, supporting legacy string _ids and ObjectId _ids.
+    Tries the raw string first (legacy), then ObjectId (standard).
+    """
+    from bson import ObjectId
+
+    user = db["users"].find_one({"_id": user_id}, projection)
+    if user:
+        return user
+    try:
+        return db["users"].find_one({"_id": ObjectId(user_id)}, projection)
+    except Exception:
+        return None
+
+
 # ── Password helpers ─────────────────────────────────────────────────────────
 
 def hash_password(plain: str) -> str:
@@ -109,11 +125,9 @@ async def get_current_user(request: Request) -> dict:
 
     # Check if all sessions were invalidated (e.g. after Force Reset)
     from db import get_db
-    from bson import ObjectId
     try:
-        user_doc = get_db()["users"].find_one(
-            {"_id": ObjectId(payload["user_id"])},
-            {"tokens_invalidated_at": 1},
+        user_doc = find_user_by_id(
+            get_db(), payload["user_id"], {"tokens_invalidated_at": 1},
         )
         if user_doc:
             invalidated_at = user_doc.get("tokens_invalidated_at")

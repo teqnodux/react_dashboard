@@ -48,6 +48,7 @@ from datetime import date, timedelta, datetime, timezone
 from typing import Optional, Dict, List
 
 from auth import (
+    find_user_by_id,
     get_users_collection,
     verify_password,
     create_access_token,
@@ -533,16 +534,14 @@ def auth_login(body: LoginRequest):
 
 @auth_router.post("/token/refresh")
 def auth_refresh(body: RefreshRequest):
-    from bson import ObjectId as _ObjId
     payload = decode_token(body.refresh)
     if payload.get("type") != "refresh":
         raise HTTPException(status_code=401, detail="Invalid token type")
 
     # Reject the refresh token if all sessions were invalidated after it was issued
     try:
-        user_doc = get_db()["users"].find_one(
-            {"_id": _ObjId(payload["user_id"])},
-            {"tokens_invalidated_at": 1},
+        user_doc = find_user_by_id(
+            get_db(), payload["user_id"], {"tokens_invalidated_at": 1},
         )
         if user_doc:
             invalidated_at = user_doc.get("tokens_invalidated_at")
@@ -580,6 +579,63 @@ app.include_router(auth_router)
 app.include_router(auth_extended_router)
 app.include_router(super_admin_router)
 app.include_router(org_admin_router)
+
+
+# ── Current-user deal access (recipient-level) ────────────────────────────────
+
+from pydantic import BaseModel as _BaseModel
+
+class _MyDealAccessRequest(_BaseModel):
+    allowed_deal_ids: list[str]
+
+
+@app.get("/api/me/recipient")
+async def get_my_recipient(request: Request):
+    """
+    Returns the email recipient record for the logged-in user (matched by email).
+    Used by the /user dashboard to load the current user's deal access.
+    Returns 404 if the user has no recipient record.
+    """
+    from auth import get_current_user as _get_user
+    from db import get_db as _get_db
+    current_user = await _get_user(request)
+    email = current_user.get("email", "").lower().strip()
+    db = _get_db()
+    r = db["organization_email_recipients"].find_one({"email": email})
+    if not r:
+        raise HTTPException(status_code=404, detail="No recipient record found for your email")
+    return {
+        "id": str(r["_id"]),
+        "email": r.get("email"),
+        "name": r.get("name"),
+        "organization_id": r.get("organization_id"),
+        "allowed_deal_ids": r.get("allowed_deal_ids", []),
+    }
+
+
+@app.put("/api/me/deal-access")
+async def set_my_deal_access(body: _MyDealAccessRequest, request: Request):
+    """
+    Allows the logged-in user to update their own recipient's allowed_deal_ids.
+    Requires the user's email to be in organization_email_recipients.
+    """
+    from auth import get_current_user as _get_user
+    from db import get_db as _get_db
+    from datetime import datetime, timezone as _tz
+    current_user = await _get_user(request)
+    email = current_user.get("email", "").lower().strip()
+    db = _get_db()
+    r = db["organization_email_recipients"].find_one({"email": email})
+    if not r:
+        raise HTTPException(status_code=404, detail="No recipient record found for your email")
+    db["organization_email_recipients"].update_one(
+        {"_id": r["_id"]},
+        {"$set": {
+            "allowed_deal_ids": body.allowed_deal_ids,
+            "updated_at": datetime.now(_tz.utc),
+        }},
+    )
+    return {"allowed_deal_ids": body.allowed_deal_ids}
 
 # ── Auth middleware — protects all routes except public ones ──────────────
 
