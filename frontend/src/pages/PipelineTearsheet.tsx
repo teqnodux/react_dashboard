@@ -599,24 +599,6 @@ export default function PipelineTearsheet() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedRowIndex, sortedDeals]);
 
-  if (loading) {
-    return (
-      <div className="dashboard">
-        <DashboardNav />
-        <BusyLoader label="Loading deals" size="lg" />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="dashboard">
-        <DashboardNav />
-        <div className="error">Error: {error}</div>
-      </div>
-    );
-  }
-
   return (
     <div className="dashboard">
       <DashboardNav />
@@ -1189,7 +1171,23 @@ export default function PipelineTearsheet() {
             </thead>
 
             <tbody>
-              {sortedDeals.map((deal) => {
+              {loading ? (
+                <tr>
+                  <td colSpan={100}>
+                    <BusyLoader label="Loading deals…" size="md" />
+                  </td>
+                </tr>
+              ) : error ? (
+                <tr>
+                  <td colSpan={100} className="error">Error: {error}</td>
+                </tr>
+              ) : sortedDeals.length === 0 ? (
+                <tr>
+                  <td colSpan={100} style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-muted)' }}>
+                    No deals found.
+                  </td>
+                </tr>
+              ) : sortedDeals.map((deal) => {
                 const targetQuote = quotesMap[deal.target_ticker];
                 const acquirerQuote = deal.acquirer_ticker ? quotesMap[deal.acquirer_ticker] : null;
 
@@ -1681,7 +1679,7 @@ export default function PipelineTearsheet() {
         </div>
 
         {/* Pagination Controls */}
-        {pagination && (
+        {pagination && !loading && (
           <div className="pagination-bar">
             <button
               className="pagination-btn"

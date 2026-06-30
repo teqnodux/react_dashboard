@@ -289,6 +289,7 @@ def _recipient_to_dict(r: dict) -> dict:
         "name": r.get("name"),
         "is_active": r.get("is_active", True),
         "report_types": r.get("report_types", []),
+        "allowed_deal_ids": r.get("allowed_deal_ids", []),
         "created_at": r.get("created_at").isoformat() if r.get("created_at") else None,
         "updated_at": r.get("updated_at").isoformat() if r.get("updated_at") else None,
     }
@@ -418,6 +419,51 @@ def delete_recipient(recipient_id: str, current_user=_require_admin):
     if result.deleted_count == 0:
         raise HTTPException(status_code=404, detail="Recipient not found")
     return {"detail": "Recipient removed"}
+
+
+# ── Recipient deal access ─────────────────────────────────────────────────
+
+class RecipientDealAccessRequest(BaseModel):
+    allowed_deal_ids: list[str]
+
+
+@router.get("/email-recipients/{recipient_id}/deal-access")
+def get_recipient_deal_access(recipient_id: str, current_user=_require_admin):
+    org_id = _scoped_org_id(current_user)
+    db = get_db()
+    try:
+        oid = ObjectId(recipient_id)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid recipient ID")
+    r = db["organization_email_recipients"].find_one({"_id": oid, "organization_id": org_id})
+    if not r:
+        raise HTTPException(status_code=404, detail="Recipient not found")
+    return {"allowed_deal_ids": r.get("allowed_deal_ids", [])}
+
+
+@router.put("/email-recipients/{recipient_id}/deal-access")
+def set_recipient_deal_access(
+    recipient_id: str,
+    body: RecipientDealAccessRequest,
+    current_user=_require_admin,
+):
+    org_id = _scoped_org_id(current_user)
+    db = get_db()
+    try:
+        oid = ObjectId(recipient_id)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid recipient ID")
+    r = db["organization_email_recipients"].find_one({"_id": oid, "organization_id": org_id})
+    if not r:
+        raise HTTPException(status_code=404, detail="Recipient not found")
+    db["organization_email_recipients"].update_one(
+        {"_id": oid},
+        {"$set": {
+            "allowed_deal_ids": body.allowed_deal_ids,
+            "updated_at": datetime.now(timezone.utc),
+        }},
+    )
+    return {"allowed_deal_ids": body.allowed_deal_ids}
 
 
 # ── Org settings (read-only for org admins) ───────────────────────────────

@@ -221,6 +221,7 @@ def _recipient_to_dict(r: dict) -> dict:
         "name": r.get("name"),
         "is_active": r.get("is_active", True),
         "report_types": r.get("report_types", []),
+        "allowed_deal_ids": r.get("allowed_deal_ids", []),
         "created_at": r.get("created_at").isoformat() if r.get("created_at") else None,
         "updated_at": r.get("updated_at").isoformat() if r.get("updated_at") else None,
     }
@@ -603,12 +604,22 @@ def list_all_users(current_user=_require_super):
 @router.patch("/users/{user_id}")
 def update_user(user_id: str, body: UpdateUserRequest, current_user=_require_super):
     db = get_db()
+
+    # Try ObjectId first; fall back to plain string _id for legacy documents
+    user = None
+    oid = None
     try:
         oid = ObjectId(user_id)
+        user = db["users"].find_one({"_id": oid})
     except Exception:
-        raise HTTPException(status_code=400, detail="Invalid user ID")
+        pass
 
-    user = db["users"].find_one({"_id": oid})
+    if user is None:
+        # Fallback: some documents may have been inserted with string _id
+        user = db["users"].find_one({"_id": user_id})
+        if user:
+            oid = user["_id"]
+
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
 
@@ -648,7 +659,7 @@ def force_password_reset(user_id: str, current_user=_require_super):
     return {"detail": "Password reset flag set"}
 
 
-# ── Deal access management ───────────────────────────────────────────────────
+# ── Deal access management (recipient-level) ─────────────────────────────────
 
 @router.get("/deals")
 def list_deals_for_admin(
@@ -656,26 +667,52 @@ def list_deals_for_admin(
     current_user=_require_super,
 ):
     """
-    Lightweight deal list for the super admin deal-access picker.
-    status: all | open | closed | unknown
+    Lightweight deal list for the deal-access picker.
+    status: all (Open+Unknown) | open | unknown
     """
     from mongo_loader import load_deals_summary_for_admin
-    if status not in {"all", "open", "closed", "unknown"}:
-        raise HTTPException(status_code=400, detail="status must be one of: all, open, closed, unknown")
+    if status not in {"all", "open", "unknown"}:
+        raise HTTPException(status_code=400, detail="status must be one of: all, open, unknown")
     return load_deals_summary_for_admin(status_filter=status)
 
 
-class DealAccessRequest(BaseModel):
+class RecipientDealAccessRequest(BaseModel):
     allowed_deal_ids: list[str]
 
 
-@router.put("/orgs/{org_id}/deal-access")
-def set_org_deal_access(org_id: str, body: DealAccessRequest, current_user=_require_super):
-    """Replace the org's allowed_deal_ids array."""
+@router.get("/orgs/{org_id}/email-recipients/{recipient_id}/deal-access")
+def get_recipient_deal_access(org_id: str, recipient_id: str, current_user=_require_super):
     db = get_db()
     get_org_or_404(org_id, db)
-    db["organizations"].update_one(
-        {"_id": ObjectId(org_id)},
+    try:
+        oid = ObjectId(recipient_id)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid recipient ID")
+    r = db["organization_email_recipients"].find_one({"_id": oid, "organization_id": org_id})
+    if not r:
+        raise HTTPException(status_code=404, detail="Recipient not found")
+    return {"allowed_deal_ids": r.get("allowed_deal_ids", [])}
+
+
+@router.put("/orgs/{org_id}/email-recipients/{recipient_id}/deal-access")
+def set_recipient_deal_access(
+    org_id: str,
+    recipient_id: str,
+    body: RecipientDealAccessRequest,
+    current_user=_require_super,
+):
+    """Replace a recipient's allowed_deal_ids array."""
+    db = get_db()
+    get_org_or_404(org_id, db)
+    try:
+        oid = ObjectId(recipient_id)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid recipient ID")
+    r = db["organization_email_recipients"].find_one({"_id": oid, "organization_id": org_id})
+    if not r:
+        raise HTTPException(status_code=404, detail="Recipient not found")
+    db["organization_email_recipients"].update_one(
+        {"_id": oid},
         {"$set": {
             "allowed_deal_ids": body.allowed_deal_ids,
             "updated_at": datetime.now(timezone.utc),

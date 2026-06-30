@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, type ReactNode } from "react";
 import axios from "axios";
 import DashboardNav from "../../components/DashboardNav";
 import { superAdminApi } from "../../services/adminApi";
+import DealAccessPicker from "../../components/DealAccessPicker";
 import "../../styles/AdminNav.css";
 
 // ── Types ─────────────────────────────────────────────────────────────────
@@ -14,21 +15,9 @@ interface Org {
   user_cap: number;
   recipient_cap: number;
   is_admin_dashboard_visible: boolean;
-  allowed_deal_ids: string[];
   start_date: string | null;
   end_date: string | null;
   created_at: string | null;
-}
-
-interface DealSummary {
-  id: string;
-  target: string;
-  acquirer: string;
-  target_ticker: string;
-  acquirer_ticker: string;
-  deal_value_bn: number;
-  status: string;
-  announce_date: string;
 }
 
 interface OrgUser {
@@ -60,6 +49,7 @@ interface Recipient {
   name: string;
   is_active: boolean;
   report_types: string[];
+  allowed_deal_ids: string[];
   created_at: string | null;
 }
 
@@ -947,6 +937,7 @@ function OrgDetailRecipientsTab({
   const [loading, setLoading] = useState(true);
   const [showAdd, setShowAdd] = useState(false);
   const [editRecipient, setEditRecipient] = useState<Recipient | null>(null);
+  const [dealAccessRecipient, setDealAccessRecipient] = useState<Recipient | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -959,14 +950,10 @@ function OrgDetailRecipientsTab({
     }
   }, [orgId, onCountChange]);
 
-  useEffect(() => {
-    load();
-  }, [load]);
+  useEffect(() => { load(); }, [load]);
 
   const toggleActive = async (r: Recipient) => {
-    await superAdminApi.updateOrgRecipient(orgId, r.id, {
-      is_active: !r.is_active
-    });
+    await superAdminApi.updateOrgRecipient(orgId, r.id, { is_active: !r.is_active });
     load();
   };
 
@@ -976,14 +963,34 @@ function OrgDetailRecipientsTab({
     load();
   };
 
+  if (dealAccessRecipient) {
+    return (
+      <div>
+        <div className="admin-action-row" style={{ marginBottom: 'var(--space-md)' }}>
+          <button type="button" className="admin-back-btn" onClick={() => setDealAccessRecipient(null)}>
+            ← Back to Recipients
+          </button>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-secondary)' }}>
+            {dealAccessRecipient.name || dealAccessRecipient.email}
+          </span>
+        </div>
+        <DealAccessPicker
+          initialAllowedIds={dealAccessRecipient.allowed_deal_ids ?? []}
+          subtitle={`Deals accessible to ${dealAccessRecipient.name || dealAccessRecipient.email}.`}
+          onSave={(ids) =>
+            superAdminApi.setRecipientDealAccess(orgId, dealAccessRecipient.id, ids).then(() => {
+              setDealAccessRecipient((prev) => prev ? { ...prev, allowed_deal_ids: ids } : null);
+            })
+          }
+        />
+      </div>
+    );
+  }
+
   return (
     <div>
       {showAdd && (
-        <RecipientReportTypesModal
-          orgId={orgId}
-          onClose={() => setShowAdd(false)}
-          onSuccess={load}
-        />
+        <RecipientReportTypesModal orgId={orgId} onClose={() => setShowAdd(false)} onSuccess={load} />
       )}
       {editRecipient && (
         <RecipientReportTypesModal
@@ -994,11 +1001,7 @@ function OrgDetailRecipientsTab({
         />
       )}
       <div className="admin-action-row">
-        <button
-          type="button"
-          className="btn-primary-gradient"
-          onClick={() => setShowAdd(true)}
-        >
+        <button type="button" className="btn-primary-gradient" onClick={() => setShowAdd(true)}>
           + Add Recipient
         </button>
       </div>
@@ -1014,6 +1017,7 @@ function OrgDetailRecipientsTab({
                 <th>Name</th>
                 <th>Email</th>
                 <th>Report Types</th>
+                <th>Deals</th>
                 <th>Status</th>
                 <th>Added</th>
                 <th>Actions</th>
@@ -1030,41 +1034,33 @@ function OrgDetailRecipientsTab({
                   <td>{r.name}</td>
                   <td>{r.email}</td>
                   <td>
-                    {r.report_types.length === 0 ? (
-                      <span className="cell-muted">None</span>
-                    ) : (
-                      <span className="report-types-badge">
-                        {r.report_types.length} type
-                        {r.report_types.length !== 1 ? "s" : ""}
-                      </span>
-                    )}
+                    {r.report_types.length === 0
+                      ? <span className="cell-muted">None</span>
+                      : <span className="report-types-badge">{r.report_types.length} type{r.report_types.length !== 1 ? "s" : ""}</span>
+                    }
                   </td>
                   <td>
-                    <span
-                      className={`status-badge ${r.is_active ? "active" : "inactive"}`}
-                    >
+                    <span className="report-types-badge">
+                      {(r.allowed_deal_ids ?? []).length} deal{(r.allowed_deal_ids ?? []).length !== 1 ? "s" : ""}
+                    </span>
+                  </td>
+                  <td>
+                    <span className={`status-badge ${r.is_active ? "active" : "inactive"}`}>
                       {r.is_active ? "Active" : "Inactive"}
                     </span>
                   </td>
                   <td className="cell-muted">
-                    {r.created_at
-                      ? new Date(r.created_at).toLocaleDateString()
-                      : "—"}
+                    {r.created_at ? new Date(r.created_at).toLocaleDateString() : "—"}
                   </td>
                   <td onClick={(e) => e.stopPropagation()}>
                     <div style={{ display: "flex", gap: "6px" }}>
-                      <button
-                        type="button"
-                        className="btn-ghost"
-                        onClick={() => toggleActive(r)}
-                      >
+                      <button type="button" className="btn-ghost" onClick={() => setDealAccessRecipient(r)}>
+                        Deal Access
+                      </button>
+                      <button type="button" className="btn-ghost" onClick={() => toggleActive(r)}>
                         {r.is_active ? "Deactivate" : "Activate"}
                       </button>
-                      <button
-                        type="button"
-                        className="btn-danger"
-                        onClick={() => handleDelete(r.id)}
-                      >
+                      <button type="button" className="btn-danger" onClick={() => handleDelete(r.id)}>
                         Remove
                       </button>
                     </div>
@@ -1257,258 +1253,8 @@ function OrgSettingsTab({
   );
 }
 
-// ── Org Deal Access Tab ───────────────────────────────────────────────────
-
-function OrgDealAccessTab({
-  orgId,
-  initialAllowedIds
-}: {
-  orgId: string;
-  initialAllowedIds: string[];
-}) {
-  const [allDeals, setAllDeals] = useState<DealSummary[]>([]);
-  const [allowedIds, setAllowedIds] = useState<Set<string>>(
-    new Set(initialAllowedIds)
-  );
-  const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
-  const [saved, setSaved] = useState(false);
-  const [error, setError] = useState("");
-  const [search, setSearch] = useState("");
-  const [statusFilter, setStatusFilter] = useState("all");
-  const [selectionFilter, setSelectionFilter] = useState("all");
-
-  useEffect(() => {
-    setLoading(true);
-    superAdminApi
-      .getDealsForAdmin()
-      .then(({ data }) => setAllDeals(data))
-      .catch(() => setError("Failed to load deals"))
-      .finally(() => setLoading(false));
-  }, [orgId]);
-
-  const visibleDeals = allDeals.filter((deal) => {
-    if (statusFilter !== "all") {
-      const s = (deal.status || "").toLowerCase();
-      if (statusFilter === "open" && !["open", "active", "pending"].includes(s))
-        return false;
-      if (statusFilter === "closed" && !["closed", "completed"].includes(s))
-        return false;
-      if (
-        statusFilter === "unknown" &&
-        ["open", "active", "pending", "closed", "completed"].includes(s)
-      )
-        return false;
-    }
-    if (selectionFilter === "selected" && !allowedIds.has(deal.id))
-      return false;
-    if (selectionFilter === "unselected" && allowedIds.has(deal.id))
-      return false;
-    if (search) {
-      const q = search.toLowerCase();
-      return (
-        deal.id.toLowerCase().includes(q) ||
-        deal.target.toLowerCase().includes(q) ||
-        deal.acquirer.toLowerCase().includes(q) ||
-        deal.target_ticker.toLowerCase().includes(q) ||
-        deal.acquirer_ticker.toLowerCase().includes(q)
-      );
-    }
-    return true;
-  });
-
-  const toggleDeal = (id: string) => {
-    setAllowedIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
-  };
-
-  const selectAllVisible = () => {
-    setAllowedIds((prev) => {
-      const next = new Set(prev);
-      visibleDeals.forEach((d) => next.add(d.id));
-      return next;
-    });
-  };
-
-  const clearAllVisible = () => {
-    setAllowedIds((prev) => {
-      const next = new Set(prev);
-      visibleDeals.forEach((d) => next.delete(d.id));
-      return next;
-    });
-  };
-
-  const handleSave = async () => {
-    setSaving(true);
-    setError("");
-    setSaved(false);
-    try {
-      await superAdminApi.setOrgDealAccess(orgId, Array.from(allowedIds));
-      setSaved(true);
-      setTimeout(() => setSaved(false), 2500);
-    } catch (err) {
-      if (axios.isAxiosError(err))
-        setError(err.response?.data?.detail || "Failed to save");
-      else setError("Something went wrong");
-    } finally {
-      setSaving(false);
-    }
-  };
-
-  const statusBadgeClass = (s: string) => {
-    const lower = (s || "").toLowerCase();
-    if (["open", "active", "pending"].includes(lower)) return "active";
-    if (["closed", "completed"].includes(lower)) return "inactive";
-    return "suspended";
-  };
-
-  return (
-    <div className="notif-settings-panel">
-      <div className="deal-access-sticky-controls">
-        <div className="notif-settings-header">
-          <div>
-            <div className="notif-settings-title">Deal Access</div>
-            <div className="notif-settings-subtitle">
-              Select which deals this organization can access.{" "}
-              <strong>{allowedIds.size}</strong> deal
-              {allowedIds.size !== 1 ? "s" : ""} selected.
-            </div>
-          </div>
-          <button
-            type="button"
-            className="btn-primary"
-            onClick={handleSave}
-            disabled={saving}
-          >
-            {saving ? "Saving…" : "Save Changes"}
-          </button>
-        </div>
-
-        {error && <div className="admin-error">{error}</div>}
-        {saved && (
-          <div className="notif-saved-msg">Deal access saved successfully.</div>
-        )}
-
-        <div className="admin-action-row deal-access-filter-row">
-          <input
-            type="text"
-            className="deal-access-search"
-            placeholder="Search deals…"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-          >
-            <option value="all">All Statuses</option>
-            <option value="open">Open</option>
-            <option value="closed">Closed</option>
-            <option value="unknown">Unknown</option>
-          </select>
-          <select
-            value={selectionFilter}
-            onChange={(e) => setSelectionFilter(e.target.value)}
-          >
-            <option value="all">All Deals</option>
-            <option value="selected">Selected Only</option>
-            <option value="unselected">Unselected Only</option>
-          </select>
-        </div>
-
-        <div className="admin-action-row">
-          <button
-            type="button"
-            className="btn-ghost"
-            onClick={selectAllVisible}
-            disabled={visibleDeals.length === 0}
-          >
-            Select All Visible ({visibleDeals.length})
-          </button>
-          <button
-            type="button"
-            className="btn-ghost"
-            onClick={clearAllVisible}
-            disabled={visibleDeals.length === 0}
-          >
-            Clear All Visible
-          </button>
-        </div>
-      </div>
-
-      {loading ? (
-        <p className="loading">Loading deals…</p>
-      ) : allDeals.length === 0 ? (
-        <div className="admin-empty">No deals found.</div>
-      ) : visibleDeals.length === 0 ? (
-        <div className="admin-empty">No deals match the current filters.</div>
-      ) : (
-        <div className="admin-table-wrapper">
-          <table className="admin-table">
-            <thead>
-              <tr>
-                <th style={{ width: 40 }}></th>
-                <th>Target</th>
-                <th>Acquirer</th>
-                <th>Tickers</th>
-                <th>Value (Bn)</th>
-                <th>Status</th>
-                <th>Announced</th>
-              </tr>
-            </thead>
-            <tbody>
-              {visibleDeals.map((deal) => (
-                <tr
-                  key={deal.id}
-                  onClick={() => toggleDeal(deal.id)}
-                  style={{ cursor: "pointer" }}
-                  className={
-                    allowedIds.has(deal.id) ? "recipient-row-clickable" : ""
-                  }
-                >
-                  <td onClick={(e) => e.stopPropagation()}>
-                    <input
-                      type="checkbox"
-                      checked={allowedIds.has(deal.id)}
-                      onChange={() => toggleDeal(deal.id)}
-                    />
-                  </td>
-                  <td style={{ fontWeight: 600 }}>{deal.target}</td>
-                  <td>{deal.acquirer}</td>
-                  <td className="cell-muted">
-                    {deal.target_ticker}
-                    {deal.acquirer_ticker ? ` · ${deal.acquirer_ticker}` : ""}
-                  </td>
-                  <td className="cell-muted">
-                    {deal.deal_value_bn > 0
-                      ? `$${deal.deal_value_bn.toFixed(1)}B`
-                      : "—"}
-                  </td>
-                  <td>
-                    <span
-                      className={`status-badge ${statusBadgeClass(deal.status)}`}
-                    >
-                      {deal.status || "unknown"}
-                    </span>
-                  </td>
-                  <td className="cell-muted">
-                    {deal.announce_date
-                      ? new Date(deal.announce_date).toLocaleDateString()
-                      : "—"}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
-    </div>
-  );
-}
+// Deal access is now managed per recipient inside OrgDetailRecipientsTab
+// using the shared DealAccessPicker component.
 
 function OrgDetailView({
   org,
@@ -1520,7 +1266,7 @@ function OrgDetailView({
   onOrgUpdated: () => void;
 }) {
   const [activeTab, setActiveTab] = useState<
-    "users" | "recipients" | "notifications" | "settings" | "deal-access"
+    "users" | "recipients" | "notifications" | "settings"
   >("users");
   const [showEdit, setShowEdit] = useState(false);
   const [orgInfo, setOrgInfo] = useState(org);
@@ -1650,42 +1396,18 @@ function OrgDetailView({
         >
           Settings
         </button>
-        <button
-          type="button"
-          className={`org-detail-tab ${activeTab === "deal-access" ? "active" : ""}`}
-          onClick={() => setActiveTab("deal-access")}
-        >
-          Deal Access
-        </button>
       </div>
 
       <div className="org-detail-panel">
         {activeTab === "users" && (
-          <OrgDetailUsersTab
-            orgId={orgInfo.id}
-            onMembersChange={setMemberCount}
-          />
+          <OrgDetailUsersTab orgId={orgInfo.id} onMembersChange={setMemberCount} />
         )}
         {activeTab === "recipients" && (
-          <OrgDetailRecipientsTab
-            orgId={orgInfo.id}
-            onCountChange={setRecipientCount}
-          />
+          <OrgDetailRecipientsTab orgId={orgInfo.id} onCountChange={setRecipientCount} />
         )}
-        {activeTab === "notifications" && (
-          <OrgNotificationsTab orgId={orgInfo.id} />
-        )}
+        {activeTab === "notifications" && <OrgNotificationsTab orgId={orgInfo.id} />}
         {activeTab === "settings" && (
-          <OrgSettingsTab
-            orgId={orgInfo.id}
-            defaultVisible={orgInfo.is_admin_dashboard_visible ?? true}
-          />
-        )}
-        {activeTab === "deal-access" && (
-          <OrgDealAccessTab
-            orgId={orgInfo.id}
-            initialAllowedIds={orgInfo.allowed_deal_ids ?? []}
-          />
+          <OrgSettingsTab orgId={orgInfo.id} defaultVisible={orgInfo.is_admin_dashboard_visible ?? true} />
         )}
       </div>
     </div>
@@ -1996,6 +1718,7 @@ function AllUsersTab() {
   const [loading, setLoading] = useState(true);
   const [showCreate, setShowCreate] = useState(false);
   const [confirmReset, setConfirmReset] = useState<string | null>(null);
+  const [updateError, setUpdateError] = useState('');
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -2016,18 +1739,36 @@ function AllUsersTab() {
   }, [load]);
 
   const handleRoleChange = async (user: OrgUser, newRole: string) => {
-    await superAdminApi.updateUser(user.id, { role: newRole });
-    load();
+    setUpdateError('');
+    try {
+      await superAdminApi.updateUser(user.id, { role: newRole });
+      load();
+    } catch (err) {
+      const msg = axios.isAxiosError(err) ? err.response?.data?.detail : null;
+      setUpdateError(msg || `Failed to update role for ${user.email}`);
+    }
   };
 
   const handleStatusChange = async (user: OrgUser, newStatus: string) => {
-    await superAdminApi.updateUser(user.id, { status: newStatus });
-    load();
+    setUpdateError('');
+    try {
+      await superAdminApi.updateUser(user.id, { status: newStatus });
+      load();
+    } catch (err) {
+      const msg = axios.isAxiosError(err) ? err.response?.data?.detail : null;
+      setUpdateError(msg || `Failed to update status for ${user.email}`);
+    }
   };
 
   const handleForceReset = async (id: string) => {
-    await superAdminApi.forceResetUser(id);
-    load();
+    setUpdateError('');
+    try {
+      await superAdminApi.forceResetUser(id);
+      load();
+    } catch (err) {
+      const msg = axios.isAxiosError(err) ? err.response?.data?.detail : null;
+      setUpdateError(msg || 'Failed to force reset');
+    }
   };
 
   const getOrgName = (orgId: string | null) => {
@@ -2060,6 +1801,19 @@ function AllUsersTab() {
           + Create User
         </button>
       </div>
+
+      {updateError && (
+        <div className="admin-error" style={{ marginBottom: 'var(--space-md)' }}>
+          {updateError}
+          <button
+            type="button"
+            style={{ marginLeft: 12, background: 'none', border: 'none', color: 'var(--accent-red)', cursor: 'pointer', fontSize: 12 }}
+            onClick={() => setUpdateError('')}
+          >
+            ✕
+          </button>
+        </div>
+      )}
 
       {loading ? (
         <p className="loading">Loading…</p>

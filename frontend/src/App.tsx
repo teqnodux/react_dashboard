@@ -20,6 +20,7 @@ import AcceptInvite from './pages/auth/AcceptInvite';
 import ChangePassword from './pages/auth/ChangePassword';
 import AdminPanel from './pages/admin/AdminPanel';
 import SuperAdminPanel from './pages/admin/SuperAdminPanel';
+import UserDashboard from './pages/UserDashboard';
 import { usePermissions } from './hooks/usePermissions';
 import { useAuth } from './context/AuthContext';
 import { ToastProvider } from './components/ToastNotification';
@@ -86,6 +87,9 @@ function App() {
                 <SuperAdminPanel />
               </RoleGuard>
             } />
+
+            {/* User deal access dashboard — all authenticated users */}
+            <Route path="/user" element={<UserDashboard />} />
 
             {/* Dashboard routes */}
             <Route path="/tearsheet" element={<NavGuard path="/tearsheet"><PipelineTearsheet /></NavGuard>} />

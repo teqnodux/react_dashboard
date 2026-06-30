@@ -24,6 +24,7 @@
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 500;
+  color: #ffffff;
   padding: var(--space-sm) var(--space-md);
   text-align: left;
   transition: all 0.15s;
@@ -92,14 +93,14 @@
 
 .admin-back-btn {
   background: none;
-  border: 1px solid var(--border);
+  border: 1px solid var(--accent-blue);
   border-radius: var(--radius-sm);
   padding: 5px 12px;
   font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 500;
   cursor: pointer;
-  color: var(--text-secondary);
+  color: var(--accent-blue);
   text-transform: uppercase;
   letter-spacing: 0.03em;
   transition: all 0.15s;
@@ -135,6 +136,7 @@
 
 .admin-panel-page-in-dashboard {
   height: calc(100vh - 33px);
+  min-height: calc(100vh - 33px); /* override base min-height: 100vh so height is respected */
   overflow: hidden;
 }
 
@@ -623,7 +625,7 @@
 .btn-ghost {
   background: var(--bg-tertiary);
   color: var(--text-secondary);
-  border: 1px solid var(--border);
+  border: 1px solid var(--accent-blue);
   border-radius: var(--radius-sm);
   padding: 3px 9px;
   font-family: var(--font-mono);
@@ -637,7 +639,7 @@
 
 .btn-ghost:hover {
   background: var(--bg-hover);
-  color: var(--text-primary);
+  color: var(--accent-blue);
   border-color: var(--accent-blue);
 }
 
@@ -827,12 +829,18 @@
 /* Sticky controls bar inside the Deal Access tab */
 .deal-access-sticky-controls {
   position: sticky;
-  top: 38px; /* sits just below the sticky .org-detail-tabs (~41px + 4px gap) */
+  top: 0; /* default: stick at top of scroll container */
   z-index: 9;
   background: var(--bg-secondary);
   padding-bottom: var(--space-md);
   margin-bottom: var(--space-md);
   border-bottom: 1px solid var(--border);
+}
+
+/* When inside org-detail-panel, offset below the sticky tabs bar */
+.org-detail-panel .deal-access-sticky-controls {
+  top: 45px;
+  background: var(--bg-secondary);
 }
 
 /* ── Overview / Stats ────────────────────────────────────────────────────── */

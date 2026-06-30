@@ -41,6 +41,32 @@ export const orgAdminApi = {
 
   getOrgSettings: () =>
     api.get<{ is_admin_dashboard_visible: boolean }>('/api/org/settings'),
+
+  getRecipientDealAccess: (recipientId: string) =>
+    api.get<{ allowed_deal_ids: string[] }>(`/api/org/email-recipients/${recipientId}/deal-access`),
+
+  setRecipientDealAccess: (recipientId: string, allowed_deal_ids: string[]) =>
+    api.put(`/api/org/email-recipients/${recipientId}/deal-access`, { allowed_deal_ids }),
+};
+
+// ── Current-user deal access API ─────────────────────────────────────────────
+
+export const userApi = {
+  getMyRecipient: () =>
+    api.get<{
+      id: string; email: string; name: string;
+      organization_id: string; allowed_deal_ids: string[];
+    }>('/api/me/recipient'),
+
+  setMyDealAccess: (allowed_deal_ids: string[]) =>
+    api.put('/api/me/deal-access', { allowed_deal_ids }),
+
+  getDeals: (status?: string) =>
+    api.get<{
+      id: string; target: string; acquirer: string;
+      target_ticker: string; acquirer_ticker: string;
+      deal_value_bn: number; status: string; announce_date: string;
+    }[]>('/api/deals/summary', { params: status ? { status } : {} }),
 };
 
 // ── Super Admin API (/api/super-admin/...) ───────────────────────────────────
@@ -159,8 +185,16 @@ export const superAdminApi = {
       deal_value_bn: number; status: string; announce_date: string;
     }[]>('/api/super-admin/deals', { params: status ? { status } : {} }),
 
-  setOrgDealAccess: (orgId: string, allowed_deal_ids: string[]) =>
-    api.put(`/api/super-admin/orgs/${orgId}/deal-access`, { allowed_deal_ids }),
+  getRecipientDealAccess: (orgId: string, recipientId: string) =>
+    api.get<{ allowed_deal_ids: string[] }>(
+      `/api/super-admin/orgs/${orgId}/email-recipients/${recipientId}/deal-access`
+    ),
+
+  setRecipientDealAccess: (orgId: string, recipientId: string, allowed_deal_ids: string[]) =>
+    api.put(
+      `/api/super-admin/orgs/${orgId}/email-recipients/${recipientId}/deal-access`,
+      { allowed_deal_ids }
+    ),
 };
 
 // ── Auth extended API (/api/auth/...) ────────────────────────────────────────

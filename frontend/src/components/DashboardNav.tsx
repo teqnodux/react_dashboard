@@ -138,7 +138,18 @@ function ProfileMenu() {
             </>
           )}
 
-          <div className="profile-dropdown-divider" />
+          {!isSuperAdmin && !isAdmin && (
+            <>
+              <button
+                className="profile-panel-btn"
+                onClick={() => { setOpen(false); navigate('/user'); }}
+              >
+                🔑 Deal Access
+              </button>
+              <div className="profile-dropdown-divider" />
+            </>
+          )}
+          {(isSuperAdmin || isAdmin) && <div className="profile-dropdown-divider" />}
           <button className="profile-logout-btn" onClick={handleLogout}>
             Log out
           </button>

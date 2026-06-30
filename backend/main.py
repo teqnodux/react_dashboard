@@ -589,6 +589,19 @@ class _MyDealAccessRequest(_BaseModel):
     allowed_deal_ids: list[str]
 
 
+@app.get("/api/deals/summary")
+async def get_deals_summary(status: str = "all", request: Request = None):
+    """
+    Lightweight deal list (Open + Unknown) for the deal-access picker.
+    Accessible to all authenticated users (no role restriction).
+    status: all (Open+Unknown) | open | unknown
+    """
+    from mongo_loader import load_deals_summary_for_admin
+    if status not in {"all", "open", "unknown"}:
+        raise HTTPException(status_code=400, detail="status must be one of: all, open, unknown")
+    return load_deals_summary_for_admin(status_filter=status)
+
+
 @app.get("/api/me/recipient")
 async def get_my_recipient(request: Request):
     """

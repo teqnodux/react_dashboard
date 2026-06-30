@@ -198,29 +198,9 @@ export default function PipelineTable() {
     return grouped;
   };
 
-  if (loading) {
-    return (
-      <div className="dashboard">
-        <DashboardNav />
-        <BusyLoader label="Loading deals" size="lg" />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="dashboard">
-        <DashboardNav />
-        <div className="error">Error: {error}</div>
-      </div>
-    );
-  }
-
-  if (!dealsData) return null;
-
-  const filteredDeals = filterDeals(dealsData.deals);
+  const filteredDeals = filterDeals(dealsData?.deals ?? []);
   const groupedDeals = groupByCategory(filteredDeals);
-  const summary = dealsData.summary;
+  const summary = dealsData?.summary;
 
   return (
     <div className="dashboard">
@@ -235,7 +215,7 @@ export default function PipelineTable() {
       </div>
 
       {/* Summary Cards */}
-      {showSummaryStats && (
+      {showSummaryStats && summary && (
         <div className="summary-cards">
           <div className="summary-card">
             <div className="card-label">Total Deals</div>
@@ -320,7 +300,23 @@ export default function PipelineTable() {
             </tr>
           </thead>
           <tbody>
-            {CATEGORY_ORDER.map(category => {
+            {loading ? (
+              <tr>
+                <td colSpan={visibleColCount}>
+                  <BusyLoader label="Loading deals…" size="md" />
+                </td>
+              </tr>
+            ) : error ? (
+              <tr>
+                <td colSpan={visibleColCount} className="error">Error: {error}</td>
+              </tr>
+            ) : filteredDeals.length === 0 ? (
+              <tr>
+                <td colSpan={visibleColCount} style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-muted)' }}>
+                  No deals found.
+                </td>
+              </tr>
+            ) : CATEGORY_ORDER.map(category => {
               const categoryDeals = groupedDeals[category];
               if (categoryDeals.length === 0) return null;
 
@@ -453,7 +449,7 @@ export default function PipelineTable() {
       </div>
 
       {/* Pagination Controls */}
-      {dealsData?.pagination && (
+      {dealsData?.pagination && !loading && (
         <div className="pagination-bar">
           <button
             className="pagination-btn"

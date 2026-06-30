@@ -591,17 +591,22 @@ def load_deals_summary_for_admin(status_filter: str = "all") -> list[dict]:
         "announce_date": 1,
     }
 
-    query: dict = {}
+    # Base filter: always exclude Closed deals — only Open and Unknown are shown
+    _open_filter = {"deal_status": {"$regex": "^open$", "$options": "i"}}
+    _unknown_filter = {"$or": [
+        {"deal_status": {"$exists": False}},
+        {"deal_status": None},
+        {"deal_status": ""},
+        {"deal_status": {"$regex": "^unknown$", "$options": "i"}},
+    ]}
+
     if status_filter == "open":
-        query["deal_status"] = {"$regex": "^(open|active|pending)$", "$options": "i"}
-    elif status_filter == "closed":
-        query["deal_status"] = {"$regex": "^(closed|completed)$", "$options": "i"}
+        query: dict = _open_filter
     elif status_filter == "unknown":
-        query = {"$or": [
-            {"deal_status": {"$exists": False}},
-            {"deal_status": None},
-            {"deal_status": ""},
-        ]}
+        query = _unknown_filter
+    else:
+        # "all" → Open + Unknown (no Closed)
+        query = {"$or": [_open_filter, _unknown_filter]}
 
     docs = list(db["deals"].find(query, projection).sort("announce_date", -1))
 

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { orgAdminApi } from '../../services/adminApi';
 import { useAuth } from '../../context/AuthContext';
+import DealAccessPicker from '../../components/DealAccessPicker';
 import '../../styles/AdminNav.css';
 
 // ── Types ──────────────────────────────────────────────────────────────────
@@ -24,6 +25,7 @@ interface Recipient {
   name: string;
   is_active: boolean;
   report_types: string[];
+  allowed_deal_ids: string[];
   created_at: string | null;
 }
 
@@ -375,6 +377,7 @@ function RecipientsTab() {
   const [loading, setLoading] = useState(true);
   const [showAdd, setShowAdd] = useState(false);
   const [editRecipient, setEditRecipient] = useState<Recipient | null>(null);
+  const [dealAccessRecipient, setDealAccessRecipient] = useState<Recipient | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -399,15 +402,35 @@ function RecipientsTab() {
     load();
   };
 
+  if (dealAccessRecipient) {
+    return (
+      <div>
+        <div className="admin-action-row" style={{ marginBottom: 'var(--space-md)' }}>
+          <button type="button" className="admin-back-btn" onClick={() => setDealAccessRecipient(null)}>
+            ← Back to Recipients
+          </button>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-secondary)' }}>
+            {dealAccessRecipient.name || dealAccessRecipient.email}
+          </span>
+        </div>
+        <DealAccessPicker
+          initialAllowedIds={dealAccessRecipient.allowed_deal_ids ?? []}
+          subtitle={`Deals accessible to ${dealAccessRecipient.name || dealAccessRecipient.email}.`}
+          onSave={(ids) =>
+            orgAdminApi.setRecipientDealAccess(dealAccessRecipient.id, ids).then(() => {
+              setDealAccessRecipient((prev) => prev ? { ...prev, allowed_deal_ids: ids } : null);
+            })
+          }
+        />
+      </div>
+    );
+  }
+
   return (
     <div>
       {showAdd && <RecipientModal onClose={() => setShowAdd(false)} onSuccess={load} />}
       {editRecipient && (
-        <RecipientModal
-          recipient={editRecipient}
-          onClose={() => setEditRecipient(null)}
-          onSuccess={load}
-        />
+        <RecipientModal recipient={editRecipient} onClose={() => setEditRecipient(null)} onSuccess={load} />
       )}
       <div className="admin-action-row">
         <button className="btn-primary" onClick={() => setShowAdd(true)}>+ Add Recipient</button>
@@ -424,6 +447,7 @@ function RecipientsTab() {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Report Types</th>
+                <th>Deals</th>
                 <th>Status</th>
                 <th>Added</th>
                 <th>Actions</th>
@@ -446,6 +470,11 @@ function RecipientsTab() {
                     }
                   </td>
                   <td>
+                    <span className="report-types-badge">
+                      {(r.allowed_deal_ids ?? []).length} deal{(r.allowed_deal_ids ?? []).length !== 1 ? 's' : ''}
+                    </span>
+                  </td>
+                  <td>
                     <span className={`status-badge ${r.is_active ? 'active' : 'inactive'}`}>
                       {r.is_active ? 'Active' : 'Inactive'}
                     </span>
@@ -455,6 +484,7 @@ function RecipientsTab() {
                   </td>
                   <td onClick={(e) => e.stopPropagation()}>
                     <div style={{ display: 'flex', gap: '6px' }}>
+                      <button className="btn-ghost" onClick={() => setDealAccessRecipient(r)}>Deal Access</button>
                       <button className="btn-ghost" onClick={() => toggleActive(r)}>
                         {r.is_active ? 'Deactivate' : 'Activate'}
                       </button>
