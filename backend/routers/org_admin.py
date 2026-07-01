@@ -295,6 +295,7 @@ def set_user_access_mode(user_id: str, body: _AccessModeBody, current_user=_requ
 
 @router.patch("/users/{user_id}/force-reset")
 def admin_force_reset(user_id: str, current_user=_require_admin):
+    from routers.auth_extended import create_and_send_reset_email
     org_id = _scoped_org_id(current_user)
     db = get_db()
     try:
@@ -316,7 +317,8 @@ def admin_force_reset(user_id: str, current_user=_require_admin):
             "updated_at": now,
         }},
     )
-    return {"detail": "Password reset flag set for user"}
+    create_and_send_reset_email(db, str(user["_id"]), user["email"])
+    return {"detail": "Password reset email sent to user"}
 
 
 # ── Email recipients ──────────────────────────────────────────────────────────

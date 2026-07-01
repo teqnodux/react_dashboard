@@ -76,6 +76,31 @@ def _validate_password_strength(password: str):
         raise HTTPException(status_code=400, detail="Password must contain at least one digit")
 
 
+def create_and_send_reset_email(db, user_id: str, to_email: str) -> None:
+    """
+    Generate a password reset token, store it, and send the reset email.
+    Called by admin force-reset endpoints so the user receives a reset link.
+    Errors are logged but not raised — force-reset still succeeds even if email fails.
+    """
+    import logging as _logging
+    _log = _logging.getLogger(__name__)
+    try:
+        raw_token = secrets.token_urlsafe(32)
+        expires_at = datetime.now(timezone.utc) + timedelta(hours=1)
+        db["password_reset_tokens"].insert_one({
+            "user_id": str(user_id),
+            "token_hash": _hash_token(raw_token),
+            "expires_at": expires_at,
+            "used": False,
+            "created_at": datetime.now(timezone.utc),
+        })
+        reset_link = f"{FRONTEND_BASE_URL}/reset-password?token={raw_token}"
+        send_password_reset_email(to_email, reset_link, admin_initiated=True)
+        _log.info("Admin-initiated reset email sent to %s", to_email)
+    except Exception:
+        _log.exception("Failed to send admin-initiated reset email to %s", to_email)
+
+
 # ── Forgot password ───────────────────────────────────────────────────────────
 
 class ForgotPasswordRequest(BaseModel):

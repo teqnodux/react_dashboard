@@ -172,15 +172,89 @@ def send_invite_email(to_email: str, org_name: str, invite_link: str) -> bool:
     return send_email(to_email, subject, body)
 
 
-def send_password_reset_email(to_email: str, reset_link: str) -> bool:
-    subject = "Reset your password"
-    body = f"""
-    <p>A password reset was requested for your account.</p>
-    <p><a href="{reset_link}" style="padding:10px 20px;background:#2563eb;color:#fff;border-radius:5px;text-decoration:none;">
-       Reset Password
-    </a></p>
-    <p>This link expires in 1 hour. If you didn't request this, you can safely ignore this email.</p>
-    """
+def send_password_reset_email(
+    to_email: str,
+    reset_link: str,
+    admin_initiated: bool = False,
+) -> bool:
+    subject = "Reset your password — Analysis Dashboard"
+    intro = (
+        "Your administrator has requested a password reset for your account."
+        if admin_initiated
+        else "A password reset was requested for your account."
+    )
+    footer_note = (
+        "If you were not expecting this, please contact your administrator."
+        if admin_initiated
+        else "If you did not request this, you can safely ignore this email."
+    )
+    body = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reset your password</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f4f6f8; font-family:Arial, Helvetica, sans-serif; color:#111827;">
+  <div style="display:none; max-height:0; overflow:hidden; opacity:0; color:transparent;">
+    {intro}
+  </div>
+  <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background-color:#f4f6f8; padding:24px 0;">
+    <tr>
+      <td align="center">
+        <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="max-width:600px; background-color:#ffffff; border-radius:10px; overflow:hidden; border:1px solid #e5e7eb;">
+          <tr>
+            <td style="padding:24px 32px; background-color:#111827; color:#ffffff;">
+              <h1 style="margin:0; font-size:22px; font-weight:600;">Analysis Dashboard</h1>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:32px;">
+              <h2 style="margin:0 0 16px; font-size:20px; font-weight:600; color:#111827;">
+                Reset your password
+              </h2>
+              <p style="margin:0 0 24px; font-size:15px; line-height:1.6; color:#374151;">
+                {intro}
+              </p>
+              <table cellpadding="0" cellspacing="0" role="presentation" style="margin:0 0 24px;">
+                <tr>
+                  <td align="center" bgcolor="#2563eb" style="border-radius:6px;">
+                    <a href="{reset_link}" target="_blank"
+                       style="display:inline-block; padding:12px 22px; font-size:15px; font-weight:600; color:#ffffff; text-decoration:none; border-radius:6px;">
+                      Reset Password
+                    </a>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:0 0 16px; font-size:14px; line-height:1.6; color:#4b5563;">
+                This link will expire in <strong>1 hour</strong>.
+              </p>
+              <p style="margin:0 0 8px; font-size:14px; line-height:1.6; color:#4b5563;">
+                If the button does not work, copy and paste this link into your browser:
+              </p>
+              <p style="margin:0 0 24px; font-size:13px; line-height:1.6; word-break:break-all;">
+                <a href="{reset_link}" target="_blank" style="color:#2563eb; text-decoration:underline;">
+                  {reset_link}
+                </a>
+              </p>
+              <p style="margin:0; font-size:14px; line-height:1.6; color:#6b7280;">
+                {footer_note}
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:20px 32px; background-color:#f9fafb; border-top:1px solid #e5e7eb;">
+              <p style="margin:0; font-size:12px; line-height:1.6; color:#6b7280;">
+                This is an automated email from Analysis Dashboard. Please do not reply to this message.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>"""
     return send_email(to_email, subject, body)
 
 

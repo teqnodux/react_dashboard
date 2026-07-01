@@ -453,6 +453,7 @@ def set_org_user_access_mode(
 
 @router.patch("/orgs/{org_id}/users/{user_id}/force-reset")
 def force_reset_org_user(org_id: str, user_id: str, current_user=_require_super):
+    from routers.auth_extended import create_and_send_reset_email
     db = get_db()
     get_org_or_404(org_id, db)
     try:
@@ -473,7 +474,8 @@ def force_reset_org_user(org_id: str, user_id: str, current_user=_require_super)
             "updated_at": now,
         }},
     )
-    return {"detail": "Password reset flag set for user"}
+    create_and_send_reset_email(db, str(user["_id"]), user["email"])
+    return {"detail": "Password reset email sent to user"}
 
 
 # ── Org email recipients ──────────────────────────────────────────────────────
