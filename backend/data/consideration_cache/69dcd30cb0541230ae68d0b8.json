@@ -1,0 +1,11 @@
+{
+  "hash": "2b6ca70d2694886c",
+  "data": {
+    "cash_per_share": 0.0,
+    "exchange_ratio": 0.1455,
+    "cvr_per_share": 0.0,
+    "special_div": 0.0,
+    "is_floating_ratio": false
+  },
+  "text": "Stock-based Merger Consideration: each Company Common Stock share is exchanged for a number of fully paid Parent Common Stock shares equal to the Exchange Ratio, with any fractional shares to be handled per the agreement.\nExchange Ratio; Fractional Shares Cash Amount; Assumed Company Options; Assumed RSU Awards; Assumed PSU Awards; Company Restricted Shares; Deferred Compensation Plans (Section 409A) and related 409A mechanics; Company DSP termination; 2.1(b) adjustments.\n0.1455; each Company Common Stock share outstanding at the Effective Time shall be automatically converted into a number of fully paid and nonassessable shares of Parent Common Stock equal to the Exchange Ratio, with any fractional shares cashed out under Section 2.5."
+}

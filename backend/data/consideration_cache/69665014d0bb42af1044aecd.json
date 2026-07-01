@@ -1,0 +1,11 @@
+{
+  "hash": "dfb3b9ce6e94c074",
+  "data": {
+    "cash_per_share": 0.0,
+    "exchange_ratio": 0.0,
+    "cvr_per_share": 0.0,
+    "special_div": 0.0,
+    "is_floating_ratio": true
+  },
+  "text": "Stock-based consideration (PubCo Shares) comprising Merger Consideration (Equity Value divided by $10) and Closing Stock Consideration; no cash or CVR-based consideration is described.\nMerger Consideration is PubCo Shares equal to Equity Value divided by 10. Closing Stock Consideration is the sum of Per Class A Share Stock Consideration and Per Class B Share Stock Consideration. Per Class A Share Stock Consideration is a number of PubCo Shares equal to the sum of the Per Class A Share Preference Amount (if any) plus the product of Class A Conversion Shares into which such Class A Share is convertible and the Per Share Participating Equity Value, divided by 10. The PubCo Assumption Award is intended to be an \"Assumed\" award within the meaning of the Company Equity Plan.\nMerger Consideration is the number of PubCo Shares equal to Equity Value divided by $10.00. Per Class B Share Stock Consideration means a number of validly issued, fully paid and nonassessable PubCo Shares equal to (a) the Per Share Participating Equity Value, divided by (b) $10.00. Closing Stock Consideration means the sum of the aggregate Per Class A Share Stock Consideration, plus the aggregate Per Class B Share Stock Consideration."
+}

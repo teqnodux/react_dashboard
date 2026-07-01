@@ -1,0 +1,11 @@
+{
+  "hash": "55d7607eb7a014a0",
+  "data": {
+    "cash_per_share": 90.0,
+    "exchange_ratio": 0.0,
+    "cvr_per_share": 0.0,
+    "special_div": 0.0,
+    "is_floating_ratio": true
+  },
+  "text": "The deal consideration to target shareholders is a mix of cash and stock: a cash component of Per Share Cash Consideration equal to $90.00 minus the Per Share Adjustment Amount per share, plus a stock component determined by the Exchange Ratio and the Parent Measurement Price, with Merger Consideration equal to the combined cash and stock value.\nMerger Consideration components: 1) Per Share Cash Consideration (cash amount equal to the Per Share Cash Consideration, i.e., the cash amount per share for cash elections); 2) Stock Consideration (Parent Common Stock equal to the Exchange Ratio) for Stock Election Shares; 3) the No Election Shares receive the applicable Stock Consideration; 4) Unpaid Dividends (dividends or other distributions to which holders become entitled under Section 3.1(e)); 5) cash in lieu of fractional shares under Section 3.1(d) and related handling (including any resulting distributions from sale of Excess Shares).\nThe Exchange Ratio is defined by a two-case price-based formula: (a) if the Parent Measurement Price is less than $280.38, the Exchange Ratio equals 0.3210 minus the quotient of (the Per Share Adjustment Amount) divided by the Parent Measurement Price; or (b) if the Parent Measurement Price is greater than or equal to $280.38, the Exchange Ratio equals the quotient of ($90.00 minus the Per Share Adjustment Amount) divided by the Parent Measurement Price, rounded to four decimal places."
+}

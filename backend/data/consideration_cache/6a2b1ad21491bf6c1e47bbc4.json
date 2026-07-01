@@ -1,0 +1,11 @@
+{
+  "hash": "6739bea566d6cf35",
+  "data": {
+    "cash_per_share": 0.0,
+    "exchange_ratio": 0.0,
+    "cvr_per_share": 0.0,
+    "special_div": 0.0,
+    "is_floating_ratio": true
+  },
+  "text": "SpinCo Shares are the merger consideration for Merger Partner, with the number of SpinCo Shares determined by Distribution Issuance: Fully Diluted Merger Partner Shares \u00d7 (50.1/49.9). The Merger Sub will merge with Merger Partner, and all Merger Partner shares will be converted into the right to receive SpinCo Shares. If any fractional SpinCo Shares arise, cash may be paid in lieu of such fractional SpinCo Shares pursuant to Section 3.3. The Fully Diluted Merger Partner Shares include shares of Merger Partner Common Stock underlying outstanding Merger Partner Equity Awards (including Merger Partner PSUs) and any other outstanding securities convertible into or exercisable for Merger Partner Common Stock.\nNot fixed; the Exchange Offer ratio is determined by the Distribution Ratio, defined as the Distribution Issuance divided by the number of Parent Shares issued and outstanding as of the Record Date. Distribution Issuance equals Fully Diluted Merger Partner Shares multiplied by 50.1/49.9; per Section 4.3(c), each validly tendered and accepted Parent Share is exchanged for a number of SpinCo Shares equal to the product of (i) the number of Parent Shares tendered and accepted for exchange in the Exchange Offer and (ii) the Distribution Ratio, rounded down to the nearest whole share, with any residual fractional interest dealt with in accordance with Section 4.3(h)."
+}

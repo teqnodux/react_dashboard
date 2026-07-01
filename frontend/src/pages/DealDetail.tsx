@@ -195,7 +195,7 @@ function renderProxyDetailContent(content: string): React.ReactNode {
 
 export default function DealDetail() {
   const { dealId } = useParams<{ dealId: string }>();
-  const { canSeeDealTab, showDealMetrics, isSuperAdmin } = usePermissions();
+  const { canSeeDealTab, showDealMetrics, isSuperAdmin, showFulsomeDma } = usePermissions();
   const [deal, setDeal] = useState<DealDetailType | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -3989,12 +3989,14 @@ export default function DealDetail() {
                         >
                           Concise
                         </button>
-                        <button
-                          className={dmaViewMode === "fulsome" ? "active" : ""}
-                          onClick={() => setDmaViewMode("fulsome")}
-                        >
-                          Fulsome
-                        </button>
+                        {showFulsomeDma && (
+                          <button
+                            className={dmaViewMode === "fulsome" ? "active" : ""}
+                            onClick={() => setDmaViewMode("fulsome")}
+                          >
+                            Fulsome
+                          </button>
+                        )}
                       </div>
                       <div className="expand-controls">
                         <button onClick={expandAllClauses}>Show All</button>
@@ -4838,13 +4840,19 @@ export default function DealDetail() {
                         <span className="sec-toggle-label">Default:</span>
                         <button
                           className={`sec-view-btn ${secDefaultView === "summary" ? "active" : ""}`}
-                          onClick={() => setSecDefaultView("summary")}
+                          onClick={() => {
+                            setSecDefaultView("summary");
+                            setSecDetailView("summary");
+                          }}
                         >
                           Summary
                         </button>
                         <button
                           className={`sec-view-btn ${secDefaultView === "full" ? "active" : ""}`}
-                          onClick={() => setSecDefaultView("full")}
+                          onClick={() => {
+                            setSecDefaultView("full");
+                            setSecDetailView("full");
+                          }}
                         >
                           Full Detail
                         </button>

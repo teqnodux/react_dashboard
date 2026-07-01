@@ -172,6 +172,8 @@ class Deal:
     stock_ratio: float = 0.0
     cvr_per_share: float = 0.0
     special_div: float = 0.0
+    # True when the exchange ratio floats/collars (no single fixed number to show)
+    floating_ratio: bool = False
 
     # Beta adjustment
     spy_at_announce: float = 0.0

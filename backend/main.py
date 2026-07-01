@@ -878,6 +878,7 @@ def deal_to_dict(deal: Deal) -> dict:
         "stock_ratio": deal.stock_ratio,
         "cvr_per_share": deal.cvr_per_share,
         "special_div": deal.special_div,
+        "floating_ratio": deal.floating_ratio,
         "spy_at_announce": deal.spy_at_announce,
 
         # Dates

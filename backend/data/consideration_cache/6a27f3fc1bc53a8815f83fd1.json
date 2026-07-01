@@ -1,0 +1,11 @@
+{
+  "hash": "2bda8230a0a86b9f",
+  "data": {
+    "cash_per_share": 124.0,
+    "exchange_ratio": 0.0,
+    "cvr_per_share": 0.0,
+    "special_div": 0.0,
+    "is_floating_ratio": false
+  },
+  "text": "1) Cash per Share: 124.00 per Share (Offer Price) paid in cash to holders of Shares at the Effective Time; 2) Cash-out for Company Stock Options: cash equal to the product of (x) the total number of Shares subject to such Company Stock Option immediately prior to the Effective Time (assuming full vesting) and (y) the excess, if any, of the Offer Price over the exercise price per Share; 3) Cash-out for Company RSUs: cash equal to the product of (x) the total number of Shares subject to (or deliverable under) such RSU immediately prior to the Effective Time (assuming full vesting) and (y) the Offer Price; 4) Cash-out for Company PSUs: cash equal to the product of (x) the total number of Shares subject to (or deliverable under) such PSU immediately prior to the Effective Time (assuming applicable performance goals are achieved in full) and (y) the Offer Price; 5) Dissenting Shares: payment of the appraised value of such Shares under Section 262 of the DGCL (unless such appraisal rights are withdrawn or perfected to convert to Merger Consideration).\nCompany Shares outstanding immediately prior to the Effective Time will be converted into the right to receive cash equal to the Offer Price, without interest (Merger Consideration); there is no fixed stock-for-stock exchange ratio for Company Shares. Purchaser's outstanding shares will be converted on a 1-for-1 basis into shares of the Surviving Corporation."
+}

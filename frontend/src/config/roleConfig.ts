@@ -25,6 +25,8 @@ export interface RolePermissions {
   showDealMetrics: boolean;
   /** Whether to show the Watchlist toggle and watch-star column on the List View page */
   showWatchlist: boolean;
+  /** Whether the "Fulsome" DMA Summary view toggle is available (super_admin only) */
+  showFulsomeDma: boolean;
   /**
    * Which List View columns are visible.
    * IDs: 'watch' | 'target' | 'acquirer' | 'current' | 'offer' |
@@ -42,6 +44,7 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
     showSummaryStats: true,
     showDealMetrics: true,
     showWatchlist: true,
+    showFulsomeDma: true,
     visibleColumns: "all"
   },
 
@@ -100,6 +103,7 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
     showSummaryStats: false,
     showDealMetrics: false,
     showWatchlist: false,
+    showFulsomeDma: false,
     visibleColumns: [
       // 'watch',
       "target",
@@ -170,6 +174,7 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
     showSummaryStats: false,
     showDealMetrics: false,
     showWatchlist: false,
+    showFulsomeDma: false,
     visibleColumns: [
       // 'watch',
       "target",

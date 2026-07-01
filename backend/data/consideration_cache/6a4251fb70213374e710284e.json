@@ -1,0 +1,11 @@
+{
+  "hash": "b1b17fa9dd7469a3",
+  "data": {
+    "cash_per_share": 27.0,
+    "exchange_ratio": 0.0,
+    "cvr_per_share": 0.0,
+    "special_div": 0.0,
+    "is_floating_ratio": true
+  },
+  "text": "Cash Consideration: $27.00 per Company Common Share; Stock Consideration: a number of Parent Common Shares equal to the Exchange Ratio per share; Cash in lieu of fractional shares as specified in Section 2.07; The Merger Consideration is the combination of Cash Consideration and the stock equal to the Exchange Ratio.\nThe Exchange Ratio is tiered by the Parent Stock Price: if the Parent Stock Price is equal to or less than $67.50, 0.4000; if the Parent Stock Price is greater than $67.50 but less than $112.50, the quotient obtained by dividing $27.00 by the Parent Stock Price, rounded to four decimal places; or if the Parent Stock Price is greater than or equal to $112.50, 0.2400. Each Company Common Share outstanding immediately prior to the First Effective Time will automatically be converted into the right to receive (A) $27.00 in cash (the\"Cash Consideration\") and (B) a number of Parent Common Shares equal to the Exchange Ratio."
+}

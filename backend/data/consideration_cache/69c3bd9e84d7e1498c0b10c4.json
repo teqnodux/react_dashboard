@@ -1,0 +1,11 @@
+{
+  "hash": "b0ec6cb76ac11b7f",
+  "data": {
+    "cash_per_share": 53.0,
+    "exchange_ratio": 0.0,
+    "cvr_per_share": 0.0,
+    "special_div": 0.0,
+    "is_floating_ratio": false
+  },
+  "text": "Cash-only consideration of $53.00 per share, net to the seller in cash; no stock or CVR components are included. Each Share converts to the right to receive the Offer Price (Merger Consideration) in cash at the Effective Time, and in-the-money Company Options and Company RSUs are paid in cash (Merger Consideration minus exercise price for options; Merger Consideration times Shares for RSUs) as described.\nMerger consideration components:\n- Per-share cash amount: 53.00 per share, net to the seller in cash.\n- Stock exchange ratio: 1-for-1 conversion of Purchaser common stock into the Surviving Corporation.\n- In-the-money Company Options: cash payment equal to Merger Consideration minus the exercise price per Share, multiplied by the number of Shares subject to such In the Money Option.\n- Company RSUs: cash payment equal to Merger Consideration multiplied by the number of Shares subject to such RSU.\n- Warrants: Warrant Consideration equals the number of Shares issuable upon exercise times the Offer Price.\n- ESPP: Shares purchased under the Company ESPP prior to the Effective Time shall be canceled at the Effective Time and converted into the Merger Consideration.\nCompany Shares are not exchanged on a fixed stock-for-stock basis; instead, at the Effective Time each Share issued and outstanding (other than Dissenting Shares) shall be converted into the right to receive the Offer Price (the Merger Consideration), subject to withholding taxes; Purchaser\u2019s outstanding Shares are converted 1-for-1 into Surviving Corporation stock."
+}

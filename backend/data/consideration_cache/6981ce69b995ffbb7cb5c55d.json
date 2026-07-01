@@ -1,0 +1,11 @@
+{
+  "hash": "2383de16fa04e01a",
+  "data": {
+    "cash_per_share": 16.0,
+    "exchange_ratio": 0.0,
+    "cvr_per_share": 0.0,
+    "special_div": 0.0,
+    "is_floating_ratio": false
+  },
+  "text": "All-cash: $16.00 per share Merger Consideration; no stock or CVR is issued; outstanding equity-based awards are addressed separately under Section 2.03 with cash payments based on Merger Consideration.\nMerger consideration components:\n- Merger Consideration: cash per share for Company Common Stock of $16.00 (without interest).\n- Equity-based awards cash-outs:\n  \u2022 Company Options: cash equal to the product of (i) the number of shares subject to such option and (ii) the excess of the Merger Consideration over the exercise price per share (with options having exercise price >= Merger Consideration canceled without payment).\n  \u2022 Company RSUs: cash equal to the product of (i) the number of shares subject to such RSU and (ii) the Merger Consideration.\n  \u2022 Company PSUs: cash equal to the product of (i) the applicable PSU Shares and (ii) the Merger Consideration.\n  \u2022 Former Company PSUs: cash equal to the product of (x) the applicable Company PSU Shares and (y) the Merger Consideration, with reductions as defined; not applicable to certain PSUs granted in 2026.\n  \u2022 Company Restricted Shares: cash equal to the product of (i) the number of shares subject to such Restricted Share and (ii) the Merger Consideration.\n- Appraisal Shares: not converted into Merger Consideration; canceled and entitled to rights under Section 262 of the DGCL ( appraisal rights ).\n- No stock exchange ratios, CVRs, or other forms of consideration are provided.\nThe exchange ratio is fixed cash consideration: each outstanding Company Common Stock share (excluding Canceled Shares and Appraisal Shares) will be converted into the right to receive cash equal to $16.00 per share, without interest; Appraisal Shares are treated under Section 2.06 and Canceled Shares receive no consideration."
+}

@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { usePermissions } from '../hooks/usePermissions';
 
 const API_BASE = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000').replace(/\/$/, '');
 function authHeaders(): Record<string, string> {
@@ -151,7 +152,14 @@ export default function DocketQuery({ dealId, focusEntry }: DocketQueryProps) {
   const [statusText, setStatusText] = useState('');
   const [ready, setReady] = useState<boolean | null>(null);
   const [entryCount, setEntryCount] = useState(0);
-  const [model, setModel] = useState<'haiku' | 'sonnet' | 'opus'>('sonnet');
+  // Only super_admin can pick Sonnet/Opus; user & admin are limited to Haiku.
+  const { isSuperAdmin } = usePermissions();
+  const availableModels = isSuperAdmin
+    ? (['haiku', 'sonnet', 'opus'] as const)
+    : (['haiku'] as const);
+  const [model, setModel] = useState<'haiku' | 'sonnet' | 'opus'>(
+    isSuperAdmin ? 'sonnet' : 'haiku'
+  );
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -195,7 +203,12 @@ export default function DocketQuery({ dealId, focusEntry }: DocketQueryProps) {
       const response = await fetch(`${API_BASE}/api/deals/${dealId}/docket-query`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...authHeaders() },
-        body: JSON.stringify({ question, history, model, focus_entry: focusEntry || null }),
+        body: JSON.stringify({
+          question,
+          history,
+          model: isSuperAdmin ? model : 'haiku',
+          focus_entry: focusEntry || null,
+        }),
       });
 
       if (!response.ok) {
@@ -307,7 +320,7 @@ export default function DocketQuery({ dealId, focusEntry }: DocketQueryProps) {
         <span className="dq-title">Docket Q&A</span>
         <span className="dq-meta">{entryCount} entries</span>
         <div className="dq-model-select">
-          {(['haiku', 'sonnet', 'opus'] as const).map(m => (
+          {availableModels.map(m => (
             <button
               key={m}
               className={`dq-model-btn ${model === m ? 'active' : ''}`}

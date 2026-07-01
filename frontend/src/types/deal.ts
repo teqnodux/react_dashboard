@@ -41,6 +41,7 @@ export interface Deal {
   stock_ratio: number;
   cvr_per_share: number;
   special_div: number;
+  floating_ratio?: boolean;
 
   // Beta adjustment
   spy_at_announce: number;

@@ -1,0 +1,11 @@
+{
+  "hash": "8a7a5c9306184d30",
+  "data": {
+    "cash_per_share": 3.15,
+    "exchange_ratio": 0.0,
+    "cvr_per_share": 0.0,
+    "special_div": 0.0,
+    "is_floating_ratio": false
+  },
+  "text": "- Per Share Merger Consideration: cash equal to the Offer Price (3.15 per share). - Option Consideration: cash equal to (Per Share Merger Consideration minus exercise price) times the number of shares underlying each Option with exercise price below the Per Share Merger Consideration. - RSU Consideration: cash equal to Per Share Merger Consideration times the number of shares underlying each RSU. - PSU Consideration: cash equal to Per Share Merger Consideration times the vested portion underlying PSUs; unvested PSUs cancelled with no payment. - Merger Sub: 1-for-1 stock exchange (Merger Sub shares convert into Surviving Corporation shares). - No CVRs or other non-cash forms of consideration are provided. - Dissenters\u2019 Rights: Dissenting Shares generally do not receive Per Share Merger Consideration unless appraisal rights are not properly perfected.\nCash per-share consideration: each share of Common Stock outstanding immediately prior to the Effective Time will be automatically converted into the right to receive cash equal to the Offer Price; there is no stock-for-stock exchange ratio described."
+}

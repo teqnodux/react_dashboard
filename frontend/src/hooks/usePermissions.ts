@@ -43,6 +43,9 @@ export function usePermissions() {
   /** Whether to show the Watchlist toggle and watch-star column on the List View page */
   const showWatchlist = config.showWatchlist;
 
+  /** Whether the "Fulsome" DMA Summary view toggle is available */
+  const showFulsomeDma = config.showFulsomeDma;
+
   /** Returns true if the List View column with `colId` is visible for the current role */
   const canSeeColumn = (colId: string): boolean => {
     if (config.visibleColumns === 'all') return true;
@@ -60,6 +63,7 @@ export function usePermissions() {
     showSummaryStats,
     showDealMetrics,
     showWatchlist,
+    showFulsomeDma,
     canSeeColumn,
   };
 }

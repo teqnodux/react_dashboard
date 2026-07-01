@@ -1,0 +1,11 @@
+{
+  "hash": "0fb9c1d3191399bb",
+  "data": {
+    "cash_per_share": 15.0,
+    "exchange_ratio": 0.0,
+    "cvr_per_share": 0.0,
+    "special_div": 0.0,
+    "is_floating_ratio": false
+  },
+  "text": "Merger Consideration components:\n- Cash per share: $15.00 per share of Company Common Stock (Merger Consideration).\n- Stock consideration: Merger Sub stock converted into Surviving Corporation stock on a 1-for-1 basis for Merger Sub shares (Merger Sub stock exchange).\n- Additional forms of consideration for Company Equity Awards: Converted Cash Awards for Company Restricted Stock Units (RSUs) and Company Performance Stock Units (PSUs) equal in value to the Merger Consideration times the number of shares (plus applicable dividend equivalents), and for Company Stock Options, a cash amount equal to the Merger Consideration minus the exercise price times the number of shares; plus treatment for Company Performance Cash Units (Converted Cash Awards).\n- Dissenting Shares: appraisal rights under DGCL Section 262, with payment of appraised value if required.\n- CVRs: not described in the provided excerpts.\nThere is no stock-for-stock exchange ratio in this merger; the consideration is cash. Each share of Company Common Stock will be exchanged for $15.00 in cash, without interest."
+}

@@ -1,0 +1,11 @@
+{
+  "hash": "2e67c016336b4c0f",
+  "data": {
+    "cash_per_share": 0.0,
+    "exchange_ratio": 1.0,
+    "cvr_per_share": 0.0,
+    "special_div": 0.0,
+    "is_floating_ratio": false
+  },
+  "text": "Merger Consideration is the sum of the Adjusted Stock Consideration, the Earnout Stock Consideration and Escrow Amount; i.e., stock-based consideration plus an escrow, with a cash payment for fractional shares deposited with the Paying Agent.\nAdjusted Stock Consideration; Earnout Stock Consideration; Escrow Amount\nNew RSU Exchange Ratio means 1; the number of Parent Shares subject to each assumed award of New Restricted Stock Units shall be determined by multiplying the number of shares of Company Common Stock subject to such assumed award by the New RSU Exchange Ratio (rounded to the nearest whole Parent Share)."
+}

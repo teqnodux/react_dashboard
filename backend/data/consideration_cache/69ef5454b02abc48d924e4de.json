@@ -1,0 +1,11 @@
+{
+  "hash": "410231689a71c3c6",
+  "data": {
+    "cash_per_share": 39.0,
+    "exchange_ratio": 0.0,
+    "cvr_per_share": 1.0,
+    "special_div": 0.0,
+    "is_floating_ratio": false
+  },
+  "text": "Merger Consideration per share consists of $39.00 in cash plus CVRs (as determined in Section 1.8(d)); there is no stock consideration. Equity awards and warrants are settled in cash and CVRs under Section 2.2 (e.g., Terminating Company Stock Options cash plus CVRs; Out-of-the-Money Warrants convert to CVRs).\nMerger Consideration components: (1) a cash amount of $39.00 per share (Closing Amount) payable to holders of the Company Shares; (2) CVRs in an amount determined under the CVR Agreement (per Section 1.8(d)); (3) a 1-for-1 stock exchange ratio in the Holding Company Reorganization, whereby each Share converts into one HoldCo share; (4) for Terminating Company Stock Options, cash equal to (Closing Amount minus exercise price) times the number of Shares, plus one CVR per Share; (5) Terminating Company RSUs: cash equal to Closing Amount times the Shares, plus one CVR per Share; (6) Converted PSUs: cash equal to Closing Amount times the Shares, plus one CVR per Share; (7) Untriggered PSUs: one CVR per Share; (8) Out-of-the-Money Warrants: one CVR per Share; (9) In-the-Money Warrants: cash equal to Merger Consideration times the Warrant Shares, less any withholding; and (10) CVR Spin Trust Proceeds Payment (additional CVRs representing contingent payments sourced from RemainCo CVR Trust).\nThe exchange ratio is cash-and-CVR based; each Company Share converts into Merger Consideration consisting of $39.00 in cash (subject to withholding) plus CVRs determined under Section 1.8(d)."
+}

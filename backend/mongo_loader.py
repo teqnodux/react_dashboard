@@ -93,20 +93,29 @@ def _get_answer(obj) -> str:
 def _derive_exchange_ratio(sr: dict) -> float:
     """
     Extract the stock exchange ratio from deal_consideration_details text.
-    Pattern: 'Exchange Ratio: 1.0340'
+    Handles 'Exchange Ratio: 1.0340' as well as connector phrasings like
+    'Exchange Ratio defined as 0.1574' / 'Exchange Ratio of 0.1574'.
     Returns 0.0 if not found or not a simple fixed ratio.
     """
     if not sr:
         return 0.0
     dc = (sr.get("complex_consideration_and_dividends", {})
             .get("deal_consideration", {}))
+    # "Exchange Ratio" optionally followed by a colon/equals or a short connector
+    # phrase ("defined as", "equal to", "of", "is", ...) before the number.
+    pattern = re.compile(
+        r'[Ee]xchange [Rr]atio'
+        r'(?:\s*[:=]\s*'
+        r'|\s+(?:defined as|equal to|set at|fixed at|approximately|of|is)\s+'
+        r'|\s+)'
+        r'([0-9]+\.[0-9]+)'
+    )
     for key in ("deal_consideration_details", "deal_consideration_overview"):
         node = dc.get(key, {})
         text = node.get("answer", "") if isinstance(node, dict) else str(node)
         if not text:
             continue
-        m = re.search(r'[Ee]xchange [Rr]atio[:\s]+([0-9]+\.[0-9]+)', text)
-        if m:
+        for m in pattern.finditer(text):
             ratio = float(m.group(1))
             if 0.01 < ratio < 20:
                 return ratio
@@ -196,13 +205,80 @@ def _derive_deal_type(sr: dict) -> str:
 
         details_node = dc.get("deal_consideration_details", {})
         details_text = str(details_node.get("answer", "") if isinstance(details_node, dict) else details_node).lower()
-        if "exchange ratio" in details_text or "parent shares" in details_text or "stock consideration" in details_text:
-            if "cash consideration" in details_text or "per share in cash" in details_text:
-                return "mixed"
+
+        has_stock = (
+            _derive_exchange_ratio(sr) > 0
+            or "exchange ratio" in details_text
+            or "parent shares" in details_text
+            or "stock consideration" in details_text
+        )
+        # Cash leg can be phrased many ways (e.g. "Per Share Cash Amount: $155",
+        # "$155 in cash"). Match the common variants — not just a single phrase —
+        # so mixed deals aren't mislabeled as pure stock. "cash in lieu of
+        # fractional shares" is rounding, not a cash leg, so exclude it.
+        cash_text = details_text.replace("cash in lieu", "")
+        has_cash = (
+            "cash consideration" in cash_text
+            or "per share in cash" in cash_text
+            or "per share cash amount" in cash_text
+            or "in cash" in cash_text
+        )
+        if has_stock and has_cash:
+            return "mixed"
+        if has_stock:
             return "stock"
     except Exception:
         pass
     return "cash"
+
+
+def _resolve_consideration(deal_id_str: str, sr: dict, deal_type: str) -> tuple:
+    """
+    Resolve (cash_per_share, stock_ratio, cvr_per_share, special_div,
+    floating_ratio) for a deal.
+
+    Fast path: regex derivation (free, no I/O). For stock/mixed deals whose
+    exchange ratio the regex can't extract (wording varies wildly across
+    agreements), fall back to the cached Claude Haiku normalizer, which reads
+    the consideration semantically. The LLM is only invoked on that miss and is
+    cached per deal, so it never fires for cash deals or on repeat loads.
+    """
+    cash = _derive_offer_price(sr)
+    ratio = _derive_exchange_ratio(sr)
+    cvr = 0.0
+    special = 0.0
+    floating = False
+
+    # Fall back to the cached LLM normalizer when the regex can't resolve the
+    # consideration: a missing ratio on a stock/mixed deal, OR nothing resolved at
+    # all (cash == 0 and ratio == 0) — which also covers cash deals whose price the
+    # regex can't parse (e.g. "cash of $150.00 per share"). normalize_consideration
+    # returns empty WITHOUT calling the LLM when there is no consideration text, so
+    # genuinely data-less deals (e.g. no schema_results) cost nothing and stay
+    # unresolved rather than being invented.
+    _need_ratio = ratio == 0 and deal_type in ("stock", "mixed")
+    _unresolved = cash == 0 and ratio == 0
+    if _need_ratio or _unresolved:
+        try:
+            from consideration_normalizer import normalize_consideration
+            norm = normalize_consideration(deal_id_str, sr)
+            ratio = norm.get("exchange_ratio") or ratio
+            # Prefer the semantic normalizer's cash over the greedy $-regex, which
+            # can grab an aggregate/trust figure for SPAC or oddly-worded filings.
+            if norm.get("cash_per_share"):
+                cash = norm["cash_per_share"]
+            cvr = norm.get("cvr_per_share") or 0.0
+            special = norm.get("special_div") or 0.0
+            floating = bool(norm.get("is_floating_ratio"))
+        except Exception as e:
+            print(f"[mongo_loader] consideration normalize failed for {deal_id_str}: {e}")
+
+    # Plausibility clamp — per-share cash is never absurdly large. The greedy
+    # $-regex in _derive_offer_price can pick up an aggregate deal value; drop it.
+    if not (0.0 <= cash <= 10_000.0):
+        cash = 0.0
+
+    return cash, ratio, cvr, special, floating
 
 
 def _derive_regulatory_bodies(sr: dict) -> list:
@@ -534,12 +610,39 @@ def load_deals_from_mongodb() -> list:
 
         deal_value_bn = float(doc.get("deal_value_bn") or 0.0)
 
-        # --- V2 extra fields (from DB when available, else 0.0) ---
-        cash_per_share  = float(doc.get("cash_per_share") or 0.0)
-        stock_ratio     = float(doc.get("stock_ratio") or 0.0)
-        cvr_per_share   = float(doc.get("cvr_per_share") or 0.0)
-        special_div     = float(doc.get("special_div") or 0.0)
+        # --- V2 extra fields (from DB when available, else derived) ---
+        # cash_per_share / stock_ratio are not stored in Mongo — regex-derive from
+        # schema_results text, with a cached LLM fallback for hard-to-parse ratios,
+        # so the Consideration column can show deal terms (e.g. "$96.00 + 0.9693x FOXA").
+        _c_cash, _c_ratio, _c_cvr, _c_special, _c_floating = _resolve_consideration(deal_id_str, sr, deal_type)
+        cash_per_share  = float(doc.get("cash_per_share") or 0.0) or _c_cash
+        stock_ratio     = float(doc.get("stock_ratio") or 0.0) or _c_ratio
+        cvr_per_share   = float(doc.get("cvr_per_share") or 0.0) or _c_cvr
+        special_div     = float(doc.get("special_div") or 0.0) or _c_special
+        floating_ratio  = _c_floating
         spy_at_announce = float(doc.get("spy_at_announce") or 0.0)
+
+        # If the cash-only price wasn't available as offer_price but the resolver
+        # recovered it (e.g. the LLM parsed "cash of $150.00 per share"), adopt it
+        # so the Consideration column and spread math have the value.
+        if not offer_price and cash_per_share and stock_ratio == 0 and not floating_ratio:
+            offer_price = cash_per_share
+
+        # Reconcile deal_type with the resolved consideration. The keyword-based
+        # _derive_deal_type can misfire — e.g. it reads the boilerplate Merger-Sub
+        # "1-for-1 exchange ratio" mechanics as stock consideration on all-cash
+        # deals. The resolved cash/ratio are the source of truth for the badge.
+        _has_stock = stock_ratio > 0 or floating_ratio
+        _has_cash = cash_per_share > 0
+        if _has_stock and _has_cash:
+            deal_type = "mixed"
+        elif _has_stock:
+            deal_type = "stock"
+        elif _has_cash:
+            deal_type = "cash"
+        else:
+            # No consideration data resolved at all — don't default to "cash".
+            deal_type = "unknown"
 
         deal = Deal(
             id=deal_id_str,
@@ -562,6 +665,7 @@ def load_deals_from_mongodb() -> list:
             stock_ratio=stock_ratio,
             cvr_per_share=cvr_per_share,
             special_div=special_div,
+            floating_ratio=floating_ratio,
             spy_at_announce=spy_at_announce,
             status=doc.get("status") or "pending",
             regulatory_bodies=regulatory_bodies,
@@ -730,11 +834,38 @@ def load_deals_page_from_mongodb(skip: int = 0, limit: int = 20, search: str = "
         # shares_outstanding not fetched live — avoids a polygon call per deal.
         # deal_value_bn should be stored in MongoDB; defaults to 0.0 if missing.
 
-        cash_per_share  = float(doc.get("cash_per_share") or 0.0)
-        stock_ratio     = float(doc.get("stock_ratio") or 0.0)
-        cvr_per_share   = float(doc.get("cvr_per_share") or 0.0)
-        special_div     = float(doc.get("special_div") or 0.0)
+        # cash_per_share / stock_ratio are not stored in Mongo — regex-derive from
+        # schema_results text, with a cached LLM fallback for hard-to-parse ratios,
+        # so the Consideration column can show deal terms (e.g. "$96.00 + 0.9693x FOXA").
+        _c_cash, _c_ratio, _c_cvr, _c_special, _c_floating = _resolve_consideration(deal_id_str, sr, deal_type)
+        cash_per_share  = float(doc.get("cash_per_share") or 0.0) or _c_cash
+        stock_ratio     = float(doc.get("stock_ratio") or 0.0) or _c_ratio
+        cvr_per_share   = float(doc.get("cvr_per_share") or 0.0) or _c_cvr
+        special_div     = float(doc.get("special_div") or 0.0) or _c_special
+        floating_ratio  = _c_floating
         spy_at_announce = float(doc.get("spy_at_announce") or 0.0)
+
+        # If the cash-only price wasn't available as offer_price but the resolver
+        # recovered it (e.g. the LLM parsed "cash of $150.00 per share"), adopt it
+        # so the Consideration column and spread math have the value.
+        if not offer_price and cash_per_share and stock_ratio == 0 and not floating_ratio:
+            offer_price = cash_per_share
+
+        # Reconcile deal_type with the resolved consideration. The keyword-based
+        # _derive_deal_type can misfire — e.g. it reads the boilerplate Merger-Sub
+        # "1-for-1 exchange ratio" mechanics as stock consideration on all-cash
+        # deals. The resolved cash/ratio are the source of truth for the badge.
+        _has_stock = stock_ratio > 0 or floating_ratio
+        _has_cash = cash_per_share > 0
+        if _has_stock and _has_cash:
+            deal_type = "mixed"
+        elif _has_stock:
+            deal_type = "stock"
+        elif _has_cash:
+            deal_type = "cash"
+        else:
+            # No consideration data resolved at all — don't default to "cash".
+            deal_type = "unknown"
 
         deal = Deal(
             id=deal_id_str,
@@ -757,6 +888,7 @@ def load_deals_page_from_mongodb(skip: int = 0, limit: int = 20, search: str = "
             stock_ratio=stock_ratio,
             cvr_per_share=cvr_per_share,
             special_div=special_div,
+            floating_ratio=floating_ratio,
             spy_at_announce=spy_at_announce,
             status=doc.get("status") or "pending",
             regulatory_bodies=regulatory_bodies,

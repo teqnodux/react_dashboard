@@ -1,0 +1,11 @@
+{
+  "hash": "539521dd091c78f8",
+  "data": {
+    "cash_per_share": 38.5,
+    "exchange_ratio": 0.0,
+    "cvr_per_share": 0.0,
+    "special_div": 0.0,
+    "is_floating_ratio": false
+  },
+  "text": "Merger Consideration per share is $38.50 in cash for Company Common Stock outstanding at the Effective Time (excluding Converted Shares and Dissenting Shares). Cancelled Shares receive no consideration; Converted Shares are exchanged for Surviving Company Stock; Dissenting Shares receive the appraised value; and outstanding Company Equity Awards are converted into restricted cash awards equal to Merger Consideration per underlying share.\n- Merger Consideration cash per share: $38.50 for each share of Company Common Stock.\n- Stock consideration: Merger Sub Shares convert 1-for-1 into Surviving Company Stock.\n- (Additional) Converted Shares: implied to be converted into Surviving Company Stock to preserve ownership percentages (reference in Section 3.1(b)); also related to the Surviving Company Stock conversion.\n- Other forms of consideration: equity awards (Company Options, Restricted Stock Awards, RSUs and PSUs) converted into restricted cash awards (details in Section 3.3).\n- Dissenting Shares: appraisal rights with payment of appraised value per DGCL Section 262.\nThere is no fixed stock-for-stock exchange ratio. Company Common Stock is cashed out at 38.50 per share (Merger Consideration) for all shares other than Dissenting, Cancelled or Converted; Converted Shares held by Parent or its Subsidiaries are converted into Surviving Company Stock in an amount that preserves the ownership percentage of such Subsidiaries in the Surviving Company equal to their pre-merger ownership in the Company."
+}

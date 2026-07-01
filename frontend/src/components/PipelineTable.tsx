@@ -360,20 +360,31 @@ export default function PipelineTable() {
                       {canSeeColumn('deal-type') && (
                         <td className="cell-deal-type">
                           <Link to={`/deal/${deal.id}`} className="deal-link">
-                            <span className={`deal-type-badge deal-type-${deal.deal_type}`}>
-                              {deal.deal_type.toUpperCase()}
-                            </span>
+                            {deal.deal_type && deal.deal_type !== 'unknown' ? (
+                              <span className={`deal-type-badge deal-type-${deal.deal_type}`}>
+                                {deal.deal_type.toUpperCase()}
+                              </span>
+                            ) : (
+                              <span className="company-ticker">—</span>
+                            )}
                           </Link>
                         </td>
                       )}
                       {canSeeColumn('consideration') && (
                         <td className="cell-consideration">
                           <Link to={`/deal/${deal.id}`} className="deal-link">
-                            <div>${deal.offer_price.toFixed(2)} per share</div>
-                            {deal.stock_ratio > 0 && (
-                              <div className="company-ticker" style={{ fontSize: '9px' }}>
-                                {deal.cash_per_share > 0 ? `$${deal.cash_per_share.toFixed(2)}+` : ''}{deal.stock_ratio}x {deal.acquirer_ticker}
+                            {deal.floating_ratio ? (
+                              <div>
+                                {deal.cash_per_share > 0 ? `$${deal.cash_per_share.toFixed(2)} + ` : ''}floating ratio {deal.acquirer_ticker}
                               </div>
+                            ) : deal.stock_ratio > 0 ? (
+                              <div>
+                                {deal.cash_per_share > 0 ? `$${deal.cash_per_share.toFixed(2)} + ` : ''}{deal.stock_ratio}x {deal.acquirer_ticker}
+                              </div>
+                            ) : deal.offer_price > 0 ? (
+                              <div>${deal.offer_price.toFixed(2)} per share</div>
+                            ) : (
+                              <div></div>
                             )}
                           </Link>
                         </td>
