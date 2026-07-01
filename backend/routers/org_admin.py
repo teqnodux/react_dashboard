@@ -33,6 +33,7 @@ def _user_to_dict(u: dict) -> dict:
         "status": u.get("status"),
         "is_individual": u.get("is_individual", False),
         "force_password_reset": u.get("force_password_reset", False),
+        "access_mode": u.get("access_mode", "full"),
         "created_at": u.get("created_at").isoformat() if u.get("created_at") else None,
     }
 
@@ -251,6 +252,45 @@ def resend_invite(invite_id: str, current_user=_require_admin):
     send_invite_email(email, org.get("name", ""), invite_link)
 
     return {"detail": "Invitation resent", "email": email}
+
+
+class _AccessModeBody(BaseModel):
+    access_mode: str
+
+
+@router.patch("/users/{user_id}/access-mode")
+def set_user_access_mode(user_id: str, body: _AccessModeBody, current_user=_require_admin):
+    """Set access_mode ('full' or 'deal_access_only') for a user in this org."""
+    org_id = _scoped_org_id(current_user)
+    db = get_db()
+    if body.access_mode not in ("full", "deal_access_only"):
+        raise HTTPException(status_code=422, detail="access_mode must be 'full' or 'deal_access_only'")
+    # _id may be ObjectId or plain string (legacy documents)
+    user = None
+    actual_id = user_id
+    try:
+        oid = ObjectId(user_id)
+        user = db["users"].find_one({"_id": oid})
+        if user:
+            actual_id = oid
+    except Exception:
+        pass
+
+    if user is None:
+        user = db["users"].find_one({"_id": user_id})
+        actual_id = user_id
+
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    if str(user.get("organization_id")) != str(org_id):
+        raise HTTPException(status_code=404, detail="User not found in your organization")
+
+    db["users"].update_one(
+        {"_id": actual_id},
+        {"$set": {"access_mode": body.access_mode, "updated_at": datetime.now(timezone.utc)}},
+    )
+    return _user_to_dict(db["users"].find_one({"_id": actual_id}))
 
 
 @router.patch("/users/{user_id}/force-reset")

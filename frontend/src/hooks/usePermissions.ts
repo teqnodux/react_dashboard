@@ -15,9 +15,12 @@ export function usePermissions() {
 
   const isSuperAdmin = role === "super_admin";
   const isAdmin = role === "admin" || role === "super_admin";
+  // Only applies to role='user'; admins and super_admins always get full access
+  const isDealAccessOnly = !isAdmin && user?.access_mode === "deal_access_only";
 
   /** Returns true if the nav tab at `path` is visible for the current role */
   const canSeeNavTab = (path: string): boolean => {
+    if (isDealAccessOnly) return false;
     if (config.navTabs === "all") return true;
     return config.navTabs.includes(path);
   };
@@ -49,6 +52,7 @@ export function usePermissions() {
   return {
     isAdmin,
     isSuperAdmin,
+    isDealAccessOnly,
     role,
     canSeeNavTab,
     canSeeDealTab,

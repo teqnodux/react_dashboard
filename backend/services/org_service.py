@@ -92,6 +92,7 @@ def org_to_dict(org: dict) -> dict:
         "created_by_super_admin_id": str(org["created_by_super_admin_id"])
             if org.get("created_by_super_admin_id") else None,
         "is_admin_dashboard_visible": org.get("is_admin_dashboard_visible", True),
+        "add_cc": org.get("add_cc", False),
         "created_at": org.get("created_at").isoformat() if org.get("created_at") else None,
         "updated_at": org.get("updated_at").isoformat() if org.get("updated_at") else None,
     }

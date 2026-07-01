@@ -29,7 +29,8 @@ import './styles/GlobalVars.css';
 
 /** Redirects to the first allowed nav tab for the current role */
 function DefaultRedirect() {
-  const { canSeeNavTab } = usePermissions();
+  const { canSeeNavTab, isDealAccessOnly } = usePermissions();
+  if (isDealAccessOnly) return <Navigate to="/user" replace />;
   const fallback = '/tearsheet';
   const allTabs = ['/tearsheet', '/pipeline', '/activity', '/all-dockets', '/all-regulatory', '/sec-filings', '/upcoming', '/feed'];
   const first = allTabs.find(t => canSeeNavTab(t)) ?? fallback;
@@ -39,8 +40,10 @@ function DefaultRedirect() {
 /** Redirects to the role's default if the current role cannot access this nav path */
 function NavGuard({ path, children }: { path: string; children: ReactNode }) {
   const { loading } = useAuth();
-  const { canSeeNavTab, role } = usePermissions();
+  const { canSeeNavTab, isDealAccessOnly, role } = usePermissions();
   if (loading) return null;
+  // deal_access_only users can only visit /user
+  if (isDealAccessOnly) return <Navigate to="/user" replace />;
   if (!canSeeNavTab(path)) {
     const navTabs = ROLE_CONFIG[role as keyof typeof ROLE_CONFIG]?.navTabs;
     const fallback = Array.isArray(navTabs) ? (navTabs[0] ?? '/tearsheet') : '/tearsheet';
@@ -53,6 +56,15 @@ function NavGuard({ path, children }: { path: string; children: ReactNode }) {
 function RoleGuard({ roles, children }: { roles: string[]; children: ReactNode }) {
   const { user } = useAuth();
   if (!user || !roles.includes(user.role)) return <Navigate to="/" replace />;
+  return <>{children}</>;
+}
+
+/** Redirects deal_access_only users away from any dashboard route */
+function DashboardGuard({ children }: { children: ReactNode }) {
+  const { isDealAccessOnly } = usePermissions();
+  const { loading } = useAuth();
+  if (loading) return null;
+  if (isDealAccessOnly) return <Navigate to="/user" replace />;
   return <>{children}</>;
 }
 
@@ -93,8 +105,8 @@ function App() {
 
             {/* Dashboard routes */}
             <Route path="/tearsheet" element={<NavGuard path="/tearsheet"><PipelineTearsheet /></NavGuard>} />
-            <Route path="/pipeline"  element={<PipelineTable />} />
-            <Route path="/deal/:dealId" element={<DealDetail />} />
+            <Route path="/pipeline"  element={<DashboardGuard><PipelineTable /></DashboardGuard>} />
+            <Route path="/deal/:dealId" element={<DashboardGuard><DealDetail /></DashboardGuard>} />
             <Route path="/all-dockets"    element={<NavGuard path="/all-dockets"><AllDockets /></NavGuard>} />
             <Route path="/all-regulatory" element={<NavGuard path="/all-regulatory"><AllRegulatory /></NavGuard>} />
             <Route path="/activity"       element={<NavGuard path="/activity"><AllActivity /></NavGuard>} />

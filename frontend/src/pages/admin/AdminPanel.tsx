@@ -15,6 +15,7 @@ interface OrgUser {
   status: string;
   is_individual: boolean;
   force_password_reset: boolean;
+  access_mode?: string;
   created_at: string | null;
   _is_invite?: boolean;
 }
@@ -296,6 +297,11 @@ function UsersTab() {
     load();
   };
 
+  const handleAccessModeChange = async (id: string, mode: string) => {
+    await orgAdminApi.setUserAccessMode(id, mode);
+    setUsers(prev => prev.map(u => u.id === id ? { ...u, access_mode: mode } : u));
+  };
+
   return (
     <div>
       {showInvite && <InviteModal onClose={() => setShowInvite(false)} onSuccess={load} />}
@@ -324,6 +330,7 @@ function UsersTab() {
                 <th>Email</th>
                 <th>Role</th>
                 <th>Status</th>
+                <th>Access</th>
                 <th>Joined</th>
                 <th>Actions</th>
               </tr>
@@ -334,6 +341,20 @@ function UsersTab() {
                   <td>{u.email}</td>
                   <td style={{ textTransform: 'capitalize' }}>{u.role}</td>
                   <td><span className={`status-badge ${u.status}`}>{u.status}</span></td>
+                  <td>
+                    {!u._is_invite && u.role === 'user' ? (
+                      <select
+                        value={u.access_mode ?? 'full'}
+                        onChange={(e) => handleAccessModeChange(u.id, e.target.value)}
+                        style={{ fontSize: 11, background: 'var(--bg-card)', color: 'var(--text-primary)', border: '1px solid var(--border-subtle)', borderRadius: 4, padding: '2px 6px' }}
+                      >
+                        <option value="full">Full Access</option>
+                        <option value="deal_access_only">Deal Access Only</option>
+                      </select>
+                    ) : (
+                      <span style={{ color: 'var(--text-muted)', fontSize: 11 }}>—</span>
+                    )}
+                  </td>
                   <td className="cell-muted">
                     {u.created_at ? new Date(u.created_at).toLocaleDateString() : '—'}
                   </td>

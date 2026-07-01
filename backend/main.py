@@ -531,6 +531,7 @@ def auth_login(body: LoginRequest):
         "must_reset": user.get("force_password_reset", False),
         "org_id": token_payload.get("org_id"),
         "is_individual": token_payload.get("is_individual", False),
+        "access_mode": user.get("access_mode", "full"),
     }
 
 

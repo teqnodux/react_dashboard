@@ -7,6 +7,7 @@ export interface User {
   id: string;
   org_id: string | null;
   is_individual: boolean;
+  access_mode: 'full' | 'deal_access_only';
 }
 
 interface AuthContextType {
@@ -56,7 +57,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = async (email: string, password: string): Promise<boolean> => {
     const { data } = await api.post('/api/auth/login', { email, password });
-    const { access, refresh, user_email, role, user_id, org_id, is_individual, must_reset } = data;
+    const { access, refresh, user_email, role, user_id, org_id, is_individual, must_reset, access_mode } = data;
 
     const userData: User = {
       email: user_email,
@@ -64,6 +65,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       id: user_id,
       org_id: org_id ?? null,
       is_individual: is_individual ?? false,
+      access_mode: access_mode ?? 'full',
     };
 
     localStorage.setItem('token', access);

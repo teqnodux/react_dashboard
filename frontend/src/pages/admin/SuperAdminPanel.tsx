@@ -15,6 +15,7 @@ interface Org {
   user_cap: number;
   recipient_cap: number;
   is_admin_dashboard_visible: boolean;
+  add_cc: boolean;
   start_date: string | null;
   end_date: string | null;
   created_at: string | null;
@@ -28,6 +29,7 @@ interface OrgUser {
   organization_id: string | null;
   is_individual: boolean;
   force_password_reset?: boolean;
+  access_mode?: string;
   created_at: string | null;
   _is_invite?: boolean;
 }
@@ -39,6 +41,7 @@ interface OrgMember {
   status: string;
   is_individual: boolean;
   force_password_reset: boolean;
+  access_mode?: string;
   created_at: string | null;
   _is_invite?: boolean;
 }
@@ -791,6 +794,11 @@ function OrgDetailUsersTab({
     load();
   };
 
+  const handleAccessModeChange = async (id: string, mode: string) => {
+    await superAdminApi.setOrgUserAccessMode(orgId, id, mode);
+    setUsers(prev => prev.map(u => u.id === id ? { ...u, access_mode: mode } : u));
+  };
+
   return (
     <div>
       {showInvite && (
@@ -831,6 +839,7 @@ function OrgDetailUsersTab({
                 <th>Email</th>
                 <th>Role</th>
                 <th>Status</th>
+                <th>Access</th>
                 <th>Joined</th>
                 <th>Actions</th>
               </tr>
@@ -844,6 +853,20 @@ function OrgDetailUsersTab({
                     <span className={`status-badge ${u.status}`}>
                       {u.status}
                     </span>
+                  </td>
+                  <td>
+                    {!u._is_invite && u.role === "user" ? (
+                      <select
+                        value={u.access_mode ?? "full"}
+                        onChange={(e) => handleAccessModeChange(u.id, e.target.value)}
+                        style={{ fontSize: 11, background: "var(--bg-card)", color: "var(--text-primary)", border: "1px solid var(--border-subtle)", borderRadius: 4, padding: "2px 6px" }}
+                      >
+                        <option value="full">Full Access</option>
+                        <option value="deal_access_only">Deal Access Only</option>
+                      </select>
+                    ) : (
+                      <span style={{ color: "var(--text-muted)", fontSize: 11 }}>—</span>
+                    )}
                   </td>
                   <td className="cell-muted">
                     {u.created_at
@@ -1163,12 +1186,15 @@ function OrgNotificationsTab({ orgId }: { orgId: string }) {
 
 function OrgSettingsTab({
   orgId,
-  defaultVisible
+  defaultVisible,
+  defaultAddCc
 }: {
   orgId: string;
   defaultVisible: boolean;
+  defaultAddCc: boolean;
 }) {
   const [visible, setVisible] = useState(defaultVisible);
+  const [addCc, setAddCc] = useState(defaultAddCc);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
@@ -1179,7 +1205,8 @@ function OrgSettingsTab({
     setSaved(false);
     try {
       await superAdminApi.updateOrg(orgId, {
-        is_admin_dashboard_visible: visible
+        is_admin_dashboard_visible: visible,
+        add_cc: addCc,
       });
       setSaved(true);
       setTimeout(() => setSaved(false), 2500);
@@ -1245,6 +1272,39 @@ function OrgSettingsTab({
               When enabled, admins in this organization can access the Admin
               Panel. When disabled, they are redirected away from the admin
               panel.
+            </div>
+          </div>
+        </label>
+
+        <label
+          className="report-type-check-row"
+          style={{
+            gap: "var(--space-md)",
+            alignItems: "flex-start",
+            cursor: "pointer",
+            marginTop: "var(--space-lg)"
+          }}
+        >
+          <input
+            type="checkbox"
+            checked={addCc}
+            onChange={(e) => setAddCc(e.target.checked)}
+            style={{ marginTop: 3 }}
+          />
+          <div>
+            <div style={{ fontWeight: 600, color: "var(--text-primary)" }}>
+              Add CC to Report Emails
+            </div>
+            <div
+              style={{
+                fontSize: 12,
+                color: "var(--text-secondary)",
+                marginTop: 4,
+                lineHeight: 1.5
+              }}
+            >
+              When enabled, report emails sent to this organization's recipients
+              will include a CC address.
             </div>
           </div>
         </label>
@@ -1407,7 +1467,7 @@ function OrgDetailView({
         )}
         {activeTab === "notifications" && <OrgNotificationsTab orgId={orgInfo.id} />}
         {activeTab === "settings" && (
-          <OrgSettingsTab orgId={orgInfo.id} defaultVisible={orgInfo.is_admin_dashboard_visible ?? true} />
+          <OrgSettingsTab orgId={orgInfo.id} defaultVisible={orgInfo.is_admin_dashboard_visible ?? true} defaultAddCc={orgInfo.add_cc ?? false} />
         )}
       </div>
     </div>

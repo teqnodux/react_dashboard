@@ -29,7 +29,7 @@ const DASHBOARD_HOME_TABS = [
 
 function ProfileMenu() {
   const { user, logout } = useAuth();
-  const { isAdmin, isSuperAdmin, canSeeNavTab } = usePermissions();
+  const { isAdmin, isSuperAdmin, isDealAccessOnly, canSeeNavTab } = usePermissions();
   const navigate = useNavigate();
   const location = useLocation();
   const [open, setOpen] = useState(false);
@@ -104,52 +104,61 @@ function ProfileMenu() {
           </div>
           <div className="profile-dropdown-divider" />
 
-          {(onSuperAdminRoute || onAdminRoute) ? (
-            <button
-              className="profile-panel-btn admin-btn"
-              onClick={goDashboard}
-            >
-              📊 Dashboard
-            </button>
-          ) : (
+          {/* deal_access_only users: show only logout — no nav buttons */}
+          {isDealAccessOnly ? (
             <>
-              {isSuperAdmin && (
-                <button
-                  className="profile-panel-btn super-admin-btn"
-                  onClick={() => {
-                    setOpen(false);
-                    navigate('/super-admin');
-                  }}
-                >
-                  ⚙️ Super Admin Panel
-                </button>
-              )}
-              {isAdmin && !isSuperAdmin && adminPanelVisible && (
-                <button
-                  className="profile-panel-btn admin-btn"
-                  onClick={() => {
-                    setOpen(false);
-                    navigate('/admin');
-                  }}
-                >
-                  🛠️ Admin Panel
-                </button>
-              )}
-            </>
-          )}
-
-          {!isSuperAdmin && !isAdmin && (
-            <>
-              <button
-                className="profile-panel-btn"
-                onClick={() => { setOpen(false); navigate('/user'); }}
-              >
-                🔑 Deal Access
-              </button>
               <div className="profile-dropdown-divider" />
             </>
+          ) : (
+            <>
+              {(onSuperAdminRoute || onAdminRoute) ? (
+                <button
+                  className="profile-panel-btn admin-btn"
+                  onClick={goDashboard}
+                >
+                  📊 Dashboard
+                </button>
+              ) : (
+                <>
+                  {isSuperAdmin && (
+                    <button
+                      className="profile-panel-btn super-admin-btn"
+                      onClick={() => {
+                        setOpen(false);
+                        navigate('/super-admin');
+                      }}
+                    >
+                      ⚙️ Super Admin Panel
+                    </button>
+                  )}
+                  {isAdmin && !isSuperAdmin && adminPanelVisible && (
+                    <button
+                      className="profile-panel-btn admin-btn"
+                      onClick={() => {
+                        setOpen(false);
+                        navigate('/admin');
+                      }}
+                    >
+                      🛠️ Admin Panel
+                    </button>
+                  )}
+                </>
+              )}
+
+              {!isSuperAdmin && !isAdmin && (
+                <>
+                  <button
+                    className="profile-panel-btn"
+                    onClick={() => { setOpen(false); navigate('/user'); }}
+                  >
+                    🔑 Deal Access
+                  </button>
+                  <div className="profile-dropdown-divider" />
+                </>
+              )}
+              {(isSuperAdmin || isAdmin) && <div className="profile-dropdown-divider" />}
+            </>
           )}
-          {(isSuperAdmin || isAdmin) && <div className="profile-dropdown-divider" />}
           <button className="profile-logout-btn" onClick={handleLogout}>
             Log out
           </button>
@@ -161,8 +170,8 @@ function ProfileMenu() {
 
 export default function DashboardNav({ children }: { children?: ReactNode }) {
   const location = useLocation();
-  const { canSeeNavTab } = usePermissions();
-  const visibleTabs = NAV_TABS.filter(tab => canSeeNavTab(tab.path));
+  const { canSeeNavTab, isDealAccessOnly } = usePermissions();
+  const visibleTabs = isDealAccessOnly ? [] : NAV_TABS.filter(tab => canSeeNavTab(tab.path));
   return (
     <nav className="top-nav">
       {visibleTabs.map(tab => (

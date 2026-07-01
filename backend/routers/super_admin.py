@@ -34,6 +34,7 @@ def _user_to_dict(u: dict) -> dict:
         "is_individual": u.get("is_individual", False),
         "organization_id": u.get("organization_id"),
         "force_password_reset": u.get("force_password_reset", False),
+        "access_mode": u.get("access_mode", "full"),
         "created_at": u.get("created_at").isoformat() if u.get("created_at") else None,
         "updated_at": u.get("updated_at").isoformat() if u.get("updated_at") else None,
     }
@@ -49,6 +50,7 @@ class CreateOrgRequest(BaseModel):
     start_date: str                    # ISO date string
     end_date: Optional[str] = None    # None = no fixed expiry
     status: str = "active"
+    add_cc: bool = False
 
 
 class UpdateOrgRequest(BaseModel):
@@ -60,6 +62,7 @@ class UpdateOrgRequest(BaseModel):
     end_date: Optional[str] = None
     status: Optional[str] = None
     is_admin_dashboard_visible: Optional[bool] = None
+    add_cc: Optional[bool] = None
 
 
 @router.post("/orgs")
@@ -121,6 +124,8 @@ def update_org(org_id: str, body: UpdateOrgRequest, current_user=_require_super)
         updates["end_date"] = datetime.fromisoformat(body.end_date)
     if body.is_admin_dashboard_visible is not None:
         updates["is_admin_dashboard_visible"] = body.is_admin_dashboard_visible
+    if body.add_cc is not None:
+        updates["add_cc"] = body.add_cc
 
     db["organizations"].update_one({"_id": ObjectId(org_id)}, {"$set": updates})
     return org_to_dict(get_org_or_404(org_id, db))
@@ -209,6 +214,7 @@ def _org_member_to_dict(u: dict) -> dict:
         "status": u.get("status"),
         "is_individual": u.get("is_individual", False),
         "force_password_reset": u.get("force_password_reset", False),
+        "access_mode": u.get("access_mode", "full"),
         "created_at": u.get("created_at").isoformat() if u.get("created_at") else None,
     }
 
@@ -399,6 +405,52 @@ def resend_org_invite(org_id: str, invite_id: str, current_user=_require_super):
     return {"detail": "Invitation resent", "email": email}
 
 
+class _OrgUserAccessModeBody(BaseModel):
+    access_mode: str
+
+
+@router.patch("/orgs/{org_id}/users/{user_id}/access-mode")
+def set_org_user_access_mode(
+    org_id: str,
+    user_id: str,
+    body: _OrgUserAccessModeBody,
+    current_user=_require_super,
+):
+    """Set access_mode ('full' or 'deal_access_only') for a user in a specific org."""
+    db = get_db()
+    get_org_or_404(org_id, db)
+    if body.access_mode not in ("full", "deal_access_only"):
+        raise HTTPException(status_code=422, detail="access_mode must be 'full' or 'deal_access_only'")
+    # _id may be ObjectId or plain string (legacy documents)
+    user = None
+    actual_id = user_id  # used for update_one filter
+    try:
+        oid = ObjectId(user_id)
+        user = db["users"].find_one({"_id": oid})
+        if user:
+            actual_id = oid
+    except Exception:
+        pass
+
+    if user is None:
+        # Fallback: string _id
+        user = db["users"].find_one({"_id": user_id})
+        actual_id = user_id
+
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    # Verify org membership — compare as strings to handle ObjectId vs string storage
+    if str(user.get("organization_id")) != str(org_id):
+        raise HTTPException(status_code=404, detail="User not found in this organization")
+
+    db["users"].update_one(
+        {"_id": actual_id},
+        {"$set": {"access_mode": body.access_mode, "updated_at": datetime.now(timezone.utc)}},
+    )
+    return _org_member_to_dict(db["users"].find_one({"_id": actual_id}))
+
+
 @router.patch("/orgs/{org_id}/users/{user_id}/force-reset")
 def force_reset_org_user(org_id: str, user_id: str, current_user=_require_super):
     db = get_db()
@@ -565,6 +617,7 @@ class UpdateUserRequest(BaseModel):
     status: Optional[str] = None
     organization_id: Optional[str] = None
     is_individual: Optional[bool] = None
+    access_mode: Optional[str] = None  # "full" | "deal_access_only"
 
 
 @router.post("/users")
@@ -632,6 +685,10 @@ def update_user(user_id: str, body: UpdateUserRequest, current_user=_require_sup
         updates["organization_id"] = body.organization_id
     if body.is_individual is not None:
         updates["is_individual"] = body.is_individual
+    if body.access_mode is not None:
+        if body.access_mode not in ("full", "deal_access_only"):
+            raise HTTPException(status_code=422, detail="access_mode must be 'full' or 'deal_access_only'")
+        updates["access_mode"] = body.access_mode
 
     db["users"].update_one({"_id": oid}, {"$set": updates})
     return _user_to_dict(db["users"].find_one({"_id": oid}))

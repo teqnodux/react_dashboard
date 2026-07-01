@@ -24,6 +24,9 @@ export const orgAdminApi = {
   forceResetUser: (userId: string) =>
     api.patch(`/api/org/users/${userId}/force-reset`),
 
+  setUserAccessMode: (userId: string, access_mode: string) =>
+    api.patch(`/api/org/users/${userId}/access-mode`, { access_mode }),
+
   getRecipients: () =>
     api.get('/api/org/email-recipients'),
 
@@ -97,6 +100,7 @@ export const superAdminApi = {
     end_date: string;
     status: string;
     is_admin_dashboard_visible: boolean;
+    add_cc: boolean;
   }>) => api.patch(`/api/super-admin/orgs/${id}`, body),
 
   deleteOrg: (id: string) =>
@@ -122,6 +126,9 @@ export const superAdminApi = {
 
   forceResetOrgUser: (orgId: string, userId: string) =>
     api.patch(`/api/super-admin/orgs/${orgId}/users/${userId}/force-reset`),
+
+  setOrgUserAccessMode: (orgId: string, userId: string, access_mode: string) =>
+    api.patch(`/api/super-admin/orgs/${orgId}/users/${userId}/access-mode`, { access_mode }),
 
   getOrgRecipients: (orgId: string) =>
     api.get(`/api/super-admin/orgs/${orgId}/email-recipients`),
