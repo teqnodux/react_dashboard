@@ -5224,6 +5224,39 @@ def get_dma_summary(deal_id: str):
             status_code=500, detail=f"Error parsing DMA summary: {str(e)}")
 
 
+@app.get("/api/deals/{deal_id}/dma-references")
+def get_dma_references(deal_id: str):
+    """
+    Return the actual contract-section text for a deal from Pinecone, keyed by both
+    the raw section ("Section 6.1") and its core id ("6.1"), so the DMA Summary tab
+    can expand each Document Reference tag inline.
+
+    No caching — a fresh Pinecone query runs on each request (per product decision).
+    Fails soft to an empty map if Pinecone is unavailable.
+
+    Also returns merger_agreement_url (the deal's SEC-filed EX-2.1 link) so the DMA
+    tab can show a single "View full Merger Agreement" link at the top.
+    """
+    from pinecone_service import get_sections_for_deal
+
+    merger_agreement_url = None
+    try:
+        from bson import ObjectId
+        from mongo_loader import get_db as _get_db
+        deal_doc = _get_db()["deals"].find_one(
+            {"_id": ObjectId(deal_id)}, {"sec_url": 1}
+        )
+        if deal_doc:
+            merger_agreement_url = deal_doc.get("sec_url") or None
+    except Exception:
+        pass
+
+    return {
+        "sections": get_sections_for_deal(deal_id),
+        "merger_agreement_url": merger_agreement_url,
+    }
+
+
 @app.get("/api/deals/{deal_id}/mae-analysis")
 def get_mae_analysis(deal_id: str):
     """

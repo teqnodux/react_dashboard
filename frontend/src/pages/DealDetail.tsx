@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { usePermissions } from "../hooks/usePermissions";
 
@@ -27,6 +27,19 @@ import "../styles/DealDetail.css";
 import "../styles/SECFilings.css";
 import api from "../services/api";
 import { useCachedFetch } from "../context/DashboardCacheContext";
+
+/**
+ * Normalize a section label for tolerant matching between DMA clause references
+ * and Pinecone `Section` values. Drops "ARTICLE"/"SECTION" prefixes and
+ * punctuation/case so "ARTICLE Preamble" and "Preamble" both map to "preamble".
+ */
+function normalizeSectionKey(s: string): string {
+  return (s || "")
+    .toLowerCase()
+    .replace(/\b(article|section)\b/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
 
 /** Render proxy detail section content with tables, headers, bullets, bold */
 function renderProxyDetailContent(content: string): React.ReactNode {
@@ -376,6 +389,24 @@ export default function DealDetail() {
   // DMA summary from MongoDB DOCX (deal_dma_summary)
   const [dmaSummary, setDmaSummary] = useState<any>(null);
   const [dmaSummaryLoading, setDmaSummaryLoading] = useState(false);
+  // Actual contract-section text from Pinecone, keyed by section id (raw + core).
+  // Fetched fresh on each DMA tab open (no cache).
+  const [dmaRefSections, setDmaRefSections] = useState<
+    Record<string, { section: string; label: string; text: string }>
+  >({});
+  const [dmaRefLoading, setDmaRefLoading] = useState(false);
+  const [expandedRefs, setExpandedRefs] = useState<Set<string>>(new Set());
+  // Link to the full merger agreement (deal's SEC EX-2.1), shown once at the top.
+  const [mergerAgreementUrl, setMergerAgreementUrl] = useState<string | null>(null);
+  // Normalized index of section content for tolerant (prefix/case-insensitive) lookup.
+  const normalizedSections = useMemo(() => {
+    const idx: Record<string, { section: string; label: string; text: string }> = {};
+    for (const [key, entry] of Object.entries(dmaRefSections)) {
+      const n = normalizeSectionKey(key);
+      if (n && !(n in idx)) idx[n] = entry;
+    }
+    return idx;
+  }, [dmaRefSections]);
   const [terminationPipelineStatus, setTerminationPipelineStatus] =
     useState<string>("idle");
   const [terminationPipelineStep, setTerminationPipelineStep] =
@@ -822,6 +853,24 @@ export default function DealDetail() {
         setExpandedSections(ids);
       })
       .catch(() => setDmaSummaryLoading(false));
+  }, [activeTab, dealId]);
+
+  // Fetch actual section content from Pinecone whenever the DMA tab opens.
+  // No cache — refetch each time (per product decision); reset expanded refs.
+  useEffect(() => {
+    if (activeTab !== "dma" || !dealId) return;
+    setDmaRefLoading(true);
+    setExpandedRefs(new Set());
+    api.get(`/api/deals/${dealId}/dma-references`)
+      .then((res) => {
+        setDmaRefSections(res.data?.sections || {});
+        setMergerAgreementUrl(res.data?.merger_agreement_url || null);
+      })
+      .catch(() => {
+        setDmaRefSections({});
+        setMergerAgreementUrl(null);
+      })
+      .finally(() => setDmaRefLoading(false));
   }, [activeTab, dealId]);
 
   // Auto-expand all DMA sections whenever view mode toggles or sections data arrives
@@ -1402,6 +1451,65 @@ export default function DealDetail() {
       newExpanded.add(clauseId);
     }
     setExpandedClauses(newExpanded);
+  };
+
+  // Toggle inline display of a reference's actual section text.
+  const toggleRef = (refKey: string) => {
+    setExpandedRefs((prev) => {
+      const next = new Set(prev);
+      next.has(refKey) ? next.delete(refKey) : next.add(refKey);
+      return next;
+    });
+  };
+
+  // Look up the Pinecone section content for a clause reference. Mirrors the
+  // backend keying: try the core section id ("Section 6.1 (d)" -> "6.1"), then
+  // the raw string (for "Definition > ..." refs).
+  const lookupSection = (ref: string) => {
+    if (!ref) return null;
+    // Numbered sections: match by core id ("Section 6.1 (d)" -> "6.1").
+    const m = ref.match(/(\d+(?:\.\d+)+|\d+)/);
+    if (m && dmaRefSections[m[1]]) return dmaRefSections[m[1]];
+
+    const trimmed = ref.trim();
+    // Exact raw match (e.g. "Definition > <term>" stored as the full path).
+    if (dmaRefSections[trimmed]) return dmaRefSections[trimmed];
+
+    // Non-numbered sections: normalized match, tolerant of "ARTICLE"/"SECTION"
+    // prefixes and case. Try the whole ref, then each path segment (root first),
+    // since e.g. "Preamble > Recital B" has no own chunk — its content is stored
+    // under the parent "ARTICLE Preamble" (normalizes to "preamble").
+    const candidates = [trimmed, ...trimmed.split(">").map((s) => s.trim())];
+    for (const c of candidates) {
+      const hit = normalizedSections[normalizeSectionKey(c)];
+      if (hit) return hit;
+    }
+    return null;
+  };
+
+  // Drop references that resolve to the same section, keeping the first form.
+  // Dedup by the RESOLVED section identity so different citations of one section
+  // collapse to a single tag — e.g. "Preamble", "Preamble > Recital B" and
+  // "Preamble > Recital C" all map to "ARTICLE Preamble". Falls back to core id /
+  // normalized string when the section content hasn't matched/loaded yet.
+  const dedupeRefs = (refs: string[]): string[] => {
+    const seen = new Set<string>();
+    const out: string[] = [];
+    for (const ref of refs || []) {
+      if (!ref) continue;
+      const sec = lookupSection(ref);
+      let key: string;
+      if (sec) {
+        key = `sec:${sec.section}`;
+      } else {
+        const m = ref.match(/(\d+(?:\.\d+)+|\d+)/);
+        key = m ? m[1] : normalizeSectionKey(ref);
+      }
+      if (seen.has(key)) continue;
+      seen.add(key);
+      out.push(ref);
+    }
+    return out;
   };
 
   const toggleClauseText = (clauseId: string) => {
@@ -4002,6 +4110,17 @@ export default function DealDetail() {
                         <button onClick={expandAllClauses}>Show All</button>
                         <button onClick={collapseAllClauses}>Hide All</button>
                       </div>
+                      {mergerAgreementUrl && (
+                        <div className="dma-agreement-link">
+                          <a
+                            href={mergerAgreementUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            📄 View full Merger Agreement (SEC filing)
+                          </a>
+                        </div>
+                      )}
                     </div>
                     <div className="dma-search">
                       <input
@@ -4078,7 +4197,9 @@ export default function DealDetail() {
                                     const refs =
                                       clause.references &&
                                       clause.references.length > 0
-                                        ? clause.references.join(", ")
+                                        ? dedupeRefs(clause.references).join(
+                                            ", "
+                                          )
                                         : "—";
                                     const fullText =
                                       clause.text ||
@@ -4113,20 +4234,83 @@ export default function DealDetail() {
                                                 <div className="clause-references">
                                                   <div className="layer-label">
                                                     Document References
+                                                    {dmaRefLoading && (
+                                                      <span className="reference-loading">
+                                                        {" "}
+                                                        loading…
+                                                      </span>
+                                                    )}
                                                   </div>
                                                   <div className="reference-tags">
-                                                    {clause.references.map(
+                                                    {dedupeRefs(
+                                                      clause.references
+                                                    ).map(
                                                       (
                                                         ref: string,
                                                         i: number
-                                                      ) => (
-                                                        <span
-                                                          key={i}
-                                                          className="reference-tag"
-                                                        >
-                                                          {ref}
-                                                        </span>
-                                                      )
+                                                      ) => {
+                                                        const refKey = `${clauseId}-ref-${i}`;
+                                                        const section =
+                                                          lookupSection(ref);
+                                                        const isRefOpen =
+                                                          expandedRefs.has(
+                                                            refKey
+                                                          );
+                                                        return (
+                                                          <div
+                                                            key={i}
+                                                            className="reference-item"
+                                                          >
+                                                            <span
+                                                              className={`reference-tag ${
+                                                                section
+                                                                  ? "reference-tag-clickable"
+                                                                  : ""
+                                                              } ${
+                                                                isRefOpen
+                                                                  ? "open"
+                                                                  : ""
+                                                              }`}
+                                                              onClick={() =>
+                                                                section &&
+                                                                toggleRef(
+                                                                  refKey
+                                                                )
+                                                              }
+                                                              title={
+                                                                section
+                                                                  ? "Click to view section text"
+                                                                  : undefined
+                                                              }
+                                                            >
+                                                              {ref}
+                                                              {section && (
+                                                                <span className="reference-caret">
+                                                                  {isRefOpen
+                                                                    ? " ▾"
+                                                                    : " ▸"}
+                                                                </span>
+                                                              )}
+                                                            </span>
+                                                            {isRefOpen &&
+                                                              section && (
+                                                                <div className="reference-content">
+                                                                  {section.label && (
+                                                                    <div className="reference-content-label">
+                                                                      {
+                                                                        section.label
+                                                                      }
+                                                                    </div>
+                                                                  )}
+                                                                  <div className="reference-content-text">
+                                                                    {section.text ||
+                                                                      "(no text available)"}
+                                                                  </div>
+                                                                </div>
+                                                              )}
+                                                          </div>
+                                                        );
+                                                      }
                                                     )}
                                                   </div>
                                                 </div>

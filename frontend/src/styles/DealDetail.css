@@ -991,9 +991,16 @@
 
 .reference-tags {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: var(--space-xs);
     margin-top: var(--space-xs);
+}
+
+.reference-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
 }
 
 .reference-tag {
@@ -1005,6 +1012,75 @@
     font-family: var(--font-mono);
     font-size: 11px;
     color: var(--accent-blue);
+}
+
+.reference-tag-clickable {
+    cursor: pointer;
+    user-select: none;
+}
+
+.reference-tag-clickable:hover,
+.reference-tag.open {
+    background: var(--bg-secondary);
+    border-color: var(--accent-blue);
+}
+
+.reference-caret {
+    opacity: 0.7;
+}
+
+.reference-loading {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.reference-content {
+    width: 100%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent-blue);
+    border-radius: var(--radius-sm);
+    padding: var(--space-sm) var(--space-md);
+}
+
+.reference-content-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    margin-bottom: var(--space-xs);
+}
+
+.reference-content-text {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    white-space: pre-wrap;
+}
+
+.dma-agreement-link {
+    display: flex;
+    align-items: center;
+}
+
+.dma-agreement-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--accent-blue);
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.15s;
+}
+
+.dma-agreement-link a:hover {
+    background: var(--bg-hover);
+    border-color: var(--accent-blue);
 }
 
 .clause-text-container {
