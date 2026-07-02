@@ -114,7 +114,7 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
       // 'offer',
       // 'gross-spread',
       // 'net-spread',
-      "close-date",
+      // 'close-date',
       "status",
       "milestone"
     ]
@@ -185,7 +185,7 @@ const ROLE_CONFIG: Record<Role, RolePermissions> = {
       // 'offer',
       // 'gross-spread',
       // 'net-spread',
-      "close-date",
+      // 'close-date',
       "status",
       "milestone"
     ]
