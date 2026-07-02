@@ -3715,10 +3715,38 @@ def get_proxy_analysis_parsed(deal_id: str, proxy_id: str):
         resp = requests.get(url, timeout=60)
         resp.raise_for_status()
         doc = Document(io.BytesIO(resp.content))
-        # Most of our parsing relies on the text lines (headers, markers, bullets).
-        # DOCX tables will be omitted, but the proxy templates typically store
-        # the important structure in paragraphs/headings.
-        return "\n".join([p.text for p in doc.paragraphs if p.text is not None])
+        # Walk the body IN ORDER so tables stay attached to the heading that
+        # precedes them (e.g. "5. Complete Bid Timeline" is followed by a table).
+        # Tables are emitted tab-separated with a dashed separator row after the
+        # header, which the frontend renderProxyDetailContent renders as a table
+        # and which _parse_detail_sections keeps as that section's content.
+        from docx.oxml.ns import qn
+        from docx.table import Table
+        from docx.text.paragraph import Paragraph
+
+        def _clean(cell_text: str) -> str:
+            return (cell_text or "").replace("\t", " ").replace("\n", " ").strip()
+
+        out_lines: list[str] = []
+        for child in doc.element.body.iterchildren():
+            if child.tag == qn("w:p"):
+                para = Paragraph(child, doc)
+                if para.text is not None:
+                    out_lines.append(para.text)
+            elif child.tag == qn("w:tbl"):
+                table = Table(child, doc)
+                if not table.rows:
+                    continue
+                header = [_clean(c.text) for c in table.rows[0].cells]
+                out_lines.append("\t".join(header))
+                out_lines.append("\t".join(["------"] * len(header)))
+                for row in table.rows[1:]:
+                    cells = [_clean(c.text) for c in row.cells]
+                    # Skip the source table's own dash-separator / empty rows.
+                    if all(not c or set(c) <= {"-"} for c in cells):
+                        continue
+                    out_lines.append("\t".join(cells))
+        return "\n".join(out_lines)
 
     from mongo_loader import get_db as _get_db
     db = _get_db()

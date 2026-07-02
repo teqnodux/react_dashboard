@@ -405,6 +405,7 @@ def _parse_detail_sections(lines: list[str]) -> list[dict]:
     sections = []
     current: dict | None = None
     current_lines: list[str] = []
+    last_section_num = 0  # top-level section numbers increase; nested lists reset
 
     for i in range(start, len(lines)):
         line = lines[i]
@@ -418,23 +419,38 @@ def _parse_detail_sections(lines: list[str]) -> list[dict]:
         if stripped.startswith("✓") or stripped.lower().startswith("extraction of other"):
             continue
 
-        # Check for numbered section header: "N. Title" or " N. Title"
-        # Distinguish from numbered list items by: short title (<=6 words),
-        # no trailing period, and title doesn't start with a digit
+        # Check for a numbered section header: "N. Title" / " N. Title".
+        # A paragraph may hold the heading PLUS its bullet content joined by
+        # newlines, so evaluate the title on the FIRST line only. Distinguish real
+        # top-level sections from nested numbered sub-lists (e.g. "1. Valuation/price:")
+        # via two signals that separate them cleanly:
+        #   - a real section title never ends with ':'  (sub-headings do)
+        #   - top-level numbers increase; nested sub-lists reset to 1
         m = re.match(r'^ ?(\d+)\.\s+(.+)', line)
-        if (m and len(m.group(2)) > 2 and not m.group(2)[0].isdigit()
-                and len(m.group(2).split()) <= 6 and not stripped.endswith('.')):
+        title = m.group(2).split("\n")[0].strip() if m else ""
+        number = int(m.group(1)) if m else 0
+        is_header = bool(
+            m
+            and len(title) > 2
+            and not title[0].isdigit()
+            and len(title.split()) <= 6
+            and not title.endswith(".")
+            and not title.endswith(":")
+            and number > last_section_num
+        )
+        if is_header:
             # Save previous section
             if current:
                 current["content"] = "\n".join(current_lines).strip()
                 if current["content"]:
                     sections.append(current)
             current = {
-                "number": int(m.group(1)),
-                "title": m.group(2).strip(),
+                "number": number,
+                "title": title,
                 "content": "",
             }
             current_lines = []
+            last_section_num = number
         elif current is not None:
             current_lines.append(line.rstrip())
 
