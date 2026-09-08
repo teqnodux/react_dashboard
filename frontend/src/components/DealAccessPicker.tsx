@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import type { CSSProperties } from 'react';
 import axios from 'axios';
 import { userApi } from '../services/adminApi';
 import '../styles/AdminNav.css';
@@ -13,6 +14,45 @@ export interface DealSummary {
   status: string;
   announce_date: string;
 }
+
+type SortKey = 'target' | 'acquirer' | 'tickers' | 'value' | 'status' | 'announced';
+type SortDir = 'asc' | 'desc';
+
+const tickerText = (d: DealSummary) =>
+  `${d.target_ticker || ''}${d.acquirer_ticker ? ` · ${d.acquirer_ticker}` : ''}`;
+
+const byText = (a: string, b: string) => {
+  // Blanks always sort last, regardless of direction.
+  if (!a && !b) return 0;
+  if (!a) return 1;
+  if (!b) return -1;
+  return a.localeCompare(b, undefined, { sensitivity: 'base' });
+};
+
+const announceTime = (d: DealSummary) => {
+  const t = d.announce_date ? new Date(d.announce_date).getTime() : NaN;
+  return Number.isNaN(t) ? null : t;
+};
+
+const byNumber = (a: number | null, b: number | null) => {
+  if (a === null && b === null) return 0;
+  if (a === null) return 1;
+  if (b === null) return -1;
+  return a - b;
+};
+
+const SORT_COLUMNS: Record<SortKey, { label: string; compare: (a: DealSummary, b: DealSummary) => number }> = {
+  target: { label: 'Target', compare: (a, b) => byText(a.target, b.target) },
+  acquirer: { label: 'Acquirer', compare: (a, b) => byText(a.acquirer, b.acquirer) },
+  tickers: { label: 'Tickers', compare: (a, b) => byText(tickerText(a), tickerText(b)) },
+  value: {
+    label: 'Value (Bn)',
+    compare: (a, b) =>
+      byNumber(a.deal_value_bn > 0 ? a.deal_value_bn : null, b.deal_value_bn > 0 ? b.deal_value_bn : null),
+  },
+  status: { label: 'Status', compare: (a, b) => byText(a.status || 'unknown', b.status || 'unknown') },
+  announced: { label: 'Announced', compare: (a, b) => byNumber(announceTime(a), announceTime(b)) },
+};
 
 interface DealAccessPickerProps {
   initialAllowedIds: string[];
@@ -34,6 +74,31 @@ export default function DealAccessPicker({
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [selectionFilter, setSelectionFilter] = useState('all');
+  const [sortKey, setSortKey] = useState<SortKey | null>(null);
+  const [sortDir, setSortDir] = useState<SortDir>('asc');
+
+  // The controls bar above the table is itself sticky and changes height (error /
+  // saved banners, wrapping filters), so the frozen header row has to sit at
+  // whatever offset the bar currently ends at.
+  const controlsRef = useRef<HTMLDivElement>(null);
+  const [headerTop, setHeaderTop] = useState(0);
+
+  useLayoutEffect(() => {
+    const el = controlsRef.current;
+    if (!el) return;
+    const measure = () => {
+      const stickyTop = parseFloat(getComputedStyle(el).top) || 0;
+      setHeaderTop(stickyTop + el.offsetHeight);
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    window.addEventListener('resize', measure);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', measure);
+    };
+  }, []);
 
   useEffect(() => {
     setAllowedIds(new Set(initialAllowedIds));
@@ -48,7 +113,7 @@ export default function DealAccessPicker({
       .finally(() => setLoading(false));
   }, []);
 
-  const visibleDeals = allDeals.filter((deal) => {
+  const filteredDeals = allDeals.filter((deal) => {
     if (statusFilter !== 'all') {
       const s = (deal.status || '').toLowerCase();
       if (statusFilter === 'open' && s !== 'open') return false;
@@ -68,6 +133,24 @@ export default function DealAccessPicker({
     }
     return true;
   });
+
+  const visibleDeals = sortKey
+    ? [...filteredDeals].sort((a, b) => {
+        const dir = sortDir === 'asc' ? 1 : -1;
+        const cmp = SORT_COLUMNS[sortKey].compare(a, b);
+        // Keep a stable, predictable tiebreak so equal values don't shuffle.
+        return (cmp !== 0 ? cmp : a.target.localeCompare(b.target)) * dir;
+      })
+    : filteredDeals;
+
+  const toggleSort = (key: SortKey) => {
+    if (sortKey === key) {
+      setSortDir((prev) => (prev === 'asc' ? 'desc' : 'asc'));
+    } else {
+      setSortKey(key);
+      setSortDir('asc');
+    }
+  };
 
   const toggleDeal = (id: string) => {
     setAllowedIds((prev) => {
@@ -118,7 +201,7 @@ export default function DealAccessPicker({
 
   return (
     <div className="notif-settings-panel">
-      <div className="deal-access-sticky-controls">
+      <div className="deal-access-sticky-controls" ref={controlsRef}>
         <div className="notif-settings-header">
           <div>
             <div className="notif-settings-title">Deal Access</div>
@@ -136,13 +219,29 @@ export default function DealAccessPicker({
         {saved && <div className="notif-saved-msg">Deal access saved successfully.</div>}
 
         <div className="admin-action-row deal-access-filter-row">
-          <input
-            type="text"
-            className="deal-access-search"
-            placeholder="Search deals…"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
+          <div className="deal-access-search-wrap">
+            <input
+              type="text"
+              className="deal-access-search"
+              placeholder="Search deals…"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Escape') setSearch('');
+              }}
+            />
+            {search && (
+              <button
+                type="button"
+                className="deal-access-search-clear"
+                onClick={() => setSearch('')}
+                aria-label="Clear search"
+                title="Clear search"
+              >
+                ×
+              </button>
+            )}
+          </div>
           <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
             <option value="all">All Statuses</option>
             <option value="open">Open</option>
@@ -172,17 +271,30 @@ export default function DealAccessPicker({
       ) : visibleDeals.length === 0 ? (
         <div className="admin-empty">No deals match the current filters.</div>
       ) : (
-        <div className="admin-table-wrapper">
-          <table className="admin-table">
+        <div className="admin-table-wrapper deal-access-table-wrapper">
+          <table
+            className="admin-table deal-access-table"
+            style={{ '--dap-header-top': `${headerTop}px` } as CSSProperties}
+          >
             <thead>
               <tr>
                 <th style={{ width: 40 }}></th>
-                <th>Target</th>
-                <th>Acquirer</th>
-                <th>Tickers</th>
-                <th>Value (Bn)</th>
-                <th>Status</th>
-                <th>Announced</th>
+                {(Object.keys(SORT_COLUMNS) as SortKey[]).map((key) => (
+                  <th
+                    key={key}
+                    className="deal-access-th-sortable"
+                    aria-sort={
+                      sortKey === key ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'
+                    }
+                  >
+                    <button type="button" className="deal-access-sort-btn" onClick={() => toggleSort(key)}>
+                      {SORT_COLUMNS[key].label}
+                      <span className={`deal-access-sort-arrow${sortKey === key ? ' is-active' : ''}`}>
+                        {sortKey === key ? (sortDir === 'asc' ? '▲' : '▼') : '↕'}
+                      </span>
+                    </button>
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>

@@ -804,13 +804,20 @@
   margin-top: var(--space-xs);
 }
 
-.deal-access-search {
+.deal-access-search-wrap {
+  position: relative;
+  display: flex;
   flex: 1 1 200px;
+  min-width: 0;
+}
+
+.deal-access-search {
+  width: 100%;
   min-width: 0;
   background: var(--bg-tertiary);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  padding: 4px 10px;
+  padding: 4px 22px 4px 10px; /* right side leaves room for the clear button */
   font-family: var(--font-mono);
   font-size: 10px;
   color: var(--text-primary);
@@ -824,6 +831,32 @@
 
 .deal-access-search:focus {
   border-color: var(--accent-blue);
+}
+
+.deal-access-search-clear {
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.deal-access-search-clear:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
 }
 
 /* Sticky controls bar inside the Deal Access tab */
@@ -841,6 +874,64 @@
 .org-detail-panel .deal-access-sticky-controls {
   top: 45px;
   background: var(--bg-secondary);
+}
+
+/* Frozen column headers on the Deal Access table.
+   `overflow: clip` keeps the rounded-corner clipping of .admin-table-wrapper
+   without turning it into a scroll container, which would break the sticky
+   headers below. */
+.deal-access-table-wrapper {
+  overflow: clip;
+}
+
+.deal-access-table thead th {
+  position: sticky;
+  top: var(--dap-header-top, 0px);
+  z-index: 8; /* below .deal-access-sticky-controls (z-index: 9) */
+  background: var(--bg-tertiary);
+  /* collapsed borders don't paint on sticky cells while scrolling */
+  box-shadow: inset 0 -1px 0 var(--border);
+}
+
+/* Click-to-sort column headers */
+.deal-access-table th.deal-access-th-sortable {
+  padding: 0; /* the button carries the padding so the whole cell is clickable */
+}
+
+.deal-access-sort-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.deal-access-sort-btn:hover {
+  color: var(--text-primary);
+}
+
+.deal-access-sort-arrow {
+  font-size: 8px;
+  line-height: 1;
+  opacity: 0;
+  transition: opacity 0.12s ease;
+}
+
+.deal-access-sort-btn:hover .deal-access-sort-arrow,
+.deal-access-sort-arrow.is-active {
+  opacity: 1;
+}
+
+.deal-access-sort-arrow.is-active {
+  color: var(--accent-blue);
 }
 
 /* ── Overview / Stats ────────────────────────────────────────────────────── */
