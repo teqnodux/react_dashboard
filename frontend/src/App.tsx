@@ -21,6 +21,7 @@ import ChangePassword from './pages/auth/ChangePassword';
 import AdminPanel from './pages/admin/AdminPanel';
 import SuperAdminPanel from './pages/admin/SuperAdminPanel';
 import UserDashboard from './pages/UserDashboard';
+import Unsubscribe from './pages/Unsubscribe';
 import { usePermissions } from './hooks/usePermissions';
 import { useAuth } from './context/AuthContext';
 import { ToastProvider } from './components/ToastNotification';
@@ -85,6 +86,7 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/" element={<DefaultRedirect />} />
             <Route path="/change-password" element={<ChangePassword />} />
+            <Route path="/unsubscribe" element={<Unsubscribe />} />
 
             {/* Admin panel — admin + super_admin */}
             <Route path="/admin" element={

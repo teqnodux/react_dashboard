@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { Link, Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+import { getUnsubscribeRedirect } from '../utils/authRedirect';
 import '../styles/Login.css';
 
 export default function Login() {
@@ -13,12 +14,14 @@ export default function Login() {
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
+  const redirectTo = getUnsubscribeRedirect(searchParams.get('redirect'));
   const infoParam = searchParams.get('info');
   const infoMessage = infoParam === 'invite_already_accepted'
     ? 'This invitation has already been accepted. Please sign in.'
     : null;
 
-  if (isAuthenticated) return <Navigate to="/" replace />;
+  // Skip this while submitting so must_reset can navigate to /change-password first.
+  if (isAuthenticated && !submitting) return <Navigate to={redirectTo} replace />;
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -27,7 +30,12 @@ export default function Login() {
     try {
       const mustReset = await login(email, password);
       if (mustReset) {
-        navigate('/change-password', { replace: true });
+        const changePath = redirectTo !== '/'
+          ? `/change-password?redirect=${encodeURIComponent(redirectTo)}`
+          : '/change-password';
+        navigate(changePath, { replace: true });
+      } else {
+        navigate(redirectTo, { replace: true });
       }
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
@@ -35,7 +43,6 @@ export default function Login() {
       } else {
         setError(err instanceof Error ? err.message : 'Login failed');
       }
-    } finally {
       setSubmitting(false);
     }
   };

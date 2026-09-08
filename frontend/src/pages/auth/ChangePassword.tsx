@@ -1,11 +1,14 @@
 import { useState, type FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { authApi } from '../../services/adminApi';
+import { getUnsubscribeRedirect } from '../../utils/authRedirect';
 import '../../styles/Login.css';
 
 export default function ChangePassword() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const redirectTo = getUnsubscribeRedirect(searchParams.get('redirect'));
 
   const [current, setCurrent] = useState('');
   const [password, setPassword] = useState('');
@@ -30,7 +33,7 @@ export default function ChangePassword() {
       if (data.refresh) {
         localStorage.setItem('refreshToken', data.refresh);
       }
-      navigate('/', { replace: true });
+      navigate(redirectTo, { replace: true });
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
         setError(err.response?.data?.detail || 'Password change failed.');

@@ -592,6 +592,66 @@ class _MyDealAccessRequest(_BaseModel):
     allowed_deal_ids: list[str]
 
 
+class _UnsubscribeRequest(_BaseModel):
+    deal_id: str
+
+
+def _lookup_deal_document(db, deal_id: str, projection: dict | None = None):
+    """Look up a deal by _id, supporting string ids and ObjectId ids."""
+    from bson import ObjectId
+
+    deal = db["deals"].find_one({"_id": deal_id}, projection)
+    if deal:
+        return deal
+    try:
+        return db["deals"].find_one({"_id": ObjectId(deal_id)}, projection)
+    except Exception:
+        return None
+
+
+def _require_existing_deal(db, deal_id: str, projection: dict | None = None):
+    deal = _lookup_deal_document(db, deal_id, projection)
+    if not deal:
+        raise HTTPException(status_code=404, detail="Deal not found")
+    return deal
+
+
+def _find_my_email_recipient(db, current_user: dict, *, resolve_email_from_db: bool = False):
+    """
+    Find the logged-in user's organization_email_recipients row.
+    Scoped by JWT org_id when present so the same email in another org is not updated.
+    """
+    from auth import find_user_by_id
+
+    if resolve_email_from_db:
+        user_id = current_user.get("user_id")
+        if not user_id:
+            raise HTTPException(status_code=401, detail="Invalid session")
+        user_doc = find_user_by_id(db, user_id, {"email": 1})
+        if not user_doc:
+            raise HTTPException(status_code=404, detail="User not found")
+        email = (user_doc.get("email") or "").lower().strip()
+        if not email:
+            raise HTTPException(status_code=404, detail="User email not found")
+    else:
+        email = (current_user.get("email") or "").lower().strip()
+        if not email:
+            raise HTTPException(status_code=404, detail="User email not found")
+
+    query: dict = {"email": email}
+    org_id = current_user.get("org_id")
+    if org_id:
+        query["organization_id"] = org_id
+
+    r = db["organization_email_recipients"].find_one(query)
+    if not r:
+        raise HTTPException(
+            status_code=404,
+            detail="No recipient record found for your account",
+        )
+    return r
+
+
 @app.get("/api/deals/summary")
 async def get_deals_summary(status: str = "all", request: Request = None):
     """
@@ -615,11 +675,8 @@ async def get_my_recipient(request: Request):
     from auth import get_current_user as _get_user
     from db import get_db as _get_db
     current_user = await _get_user(request)
-    email = current_user.get("email", "").lower().strip()
     db = _get_db()
-    r = db["organization_email_recipients"].find_one({"email": email})
-    if not r:
-        raise HTTPException(status_code=404, detail="No recipient record found for your email")
+    r = _find_my_email_recipient(db, current_user)
     return {
         "id": str(r["_id"]),
         "email": r.get("email"),
@@ -639,11 +696,8 @@ async def set_my_deal_access(body: _MyDealAccessRequest, request: Request):
     from db import get_db as _get_db
     from datetime import datetime, timezone as _tz
     current_user = await _get_user(request)
-    email = current_user.get("email", "").lower().strip()
     db = _get_db()
-    r = db["organization_email_recipients"].find_one({"email": email})
-    if not r:
-        raise HTTPException(status_code=404, detail="No recipient record found for your email")
+    r = _find_my_email_recipient(db, current_user)
     db["organization_email_recipients"].update_one(
         {"_id": r["_id"]},
         {"$set": {
@@ -652,6 +706,94 @@ async def set_my_deal_access(body: _MyDealAccessRequest, request: Request):
         }},
     )
     return {"allowed_deal_ids": body.allowed_deal_ids}
+
+
+@app.get("/api/me/subscription")
+async def get_my_subscription(deal_id: str, request: Request):
+    """
+    Whether this deal exists and whether the logged-in user is subscribed to it.
+    Used by the unsubscribe page so a fake deal_id is not treated as already-unsubscribed.
+    """
+    from auth import get_current_user as _get_user
+    from db import get_db as _get_db
+
+    deal_id = (deal_id or "").strip()
+    if not deal_id:
+        raise HTTPException(status_code=422, detail="deal_id is required")
+
+    current_user = await _get_user(request)
+    db = _get_db()
+    deal = _require_existing_deal(db, deal_id, {"target_name": 1, "acquire_name": 1})
+    r = _find_my_email_recipient(db, current_user, resolve_email_from_db=True)
+    canonical_id = str(deal["_id"])
+    ids = {str(x) for x in (r.get("allowed_deal_ids") or [])}
+    return {
+        "deal_id": canonical_id,
+        "target": deal.get("target_name") or "",
+        "acquirer": deal.get("acquire_name") or "",
+        "subscribed": deal_id in ids or canonical_id in ids,
+    }
+
+
+@app.post("/api/me/unsubscribe")
+async def unsubscribe_from_deal(body: _UnsubscribeRequest, request: Request):
+    """
+    Remove deal_id from the logged-in user's recipient allowed_deal_ids.
+    User is resolved by JWT user_id (not by a client-supplied id).
+    Idempotent: succeeding when the deal is already absent is OK.
+    """
+    from auth import get_current_user as _get_user
+    from db import get_db as _get_db
+    from datetime import datetime, timezone as _tz
+
+    current_user = await _get_user(request)
+    deal_id = (body.deal_id or "").strip()
+    if not deal_id:
+        raise HTTPException(status_code=422, detail="deal_id is required")
+
+    db = _get_db()
+    deal = _require_existing_deal(db, deal_id, {"_id": 1})
+    canonical_id = str(deal["_id"])
+    r = _find_my_email_recipient(db, current_user, resolve_email_from_db=True)
+
+    db["organization_email_recipients"].update_one(
+        {"_id": r["_id"]},
+        {
+            "$pull": {"allowed_deal_ids": {"$in": list({deal_id, canonical_id})}},
+            "$set": {"updated_at": datetime.now(_tz.utc)},
+        },
+    )
+    return {"ok": True, "deal_id": canonical_id}
+
+
+@app.post("/api/me/resubscribe")
+async def resubscribe_to_deal(body: _UnsubscribeRequest, request: Request):
+    """
+    Add deal_id back to the logged-in user's recipient allowed_deal_ids.
+    User is resolved by JWT user_id. Idempotent if already subscribed.
+    """
+    from auth import get_current_user as _get_user
+    from db import get_db as _get_db
+    from datetime import datetime, timezone as _tz
+
+    current_user = await _get_user(request)
+    deal_id = (body.deal_id or "").strip()
+    if not deal_id:
+        raise HTTPException(status_code=422, detail="deal_id is required")
+
+    db = _get_db()
+    deal = _require_existing_deal(db, deal_id, {"_id": 1})
+    canonical_id = str(deal["_id"])
+    r = _find_my_email_recipient(db, current_user, resolve_email_from_db=True)
+
+    db["organization_email_recipients"].update_one(
+        {"_id": r["_id"]},
+        {
+            "$addToSet": {"allowed_deal_ids": canonical_id},
+            "$set": {"updated_at": datetime.now(_tz.utc)},
+        },
+    )
+    return {"ok": True, "deal_id": canonical_id}
 
 # ── Auth middleware — protects all routes except public ones ──────────────
 

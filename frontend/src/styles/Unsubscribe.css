@@ -1,0 +1,115 @@
+.unsubscribe-modal {
+  max-width: 520px;
+}
+
+.unsubscribe-success-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #dcfce7;
+  border-radius: 8px;
+  padding: 16px 18px;
+}
+
+.unsubscribe-success-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #15803d;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.unsubscribe-success-copy {
+  min-width: 0;
+}
+
+.unsubscribe-success-title {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 700;
+  color: #166534;
+  margin: 0 0 4px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.unsubscribe-success-sub {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 400;
+  color: #166534;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.unsubscribe-success-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.unsubscribe-accident {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.unsubscribe-success-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.unsubscribe-resub-btn {
+  background: #e5e7eb;
+  color: #111827;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+.unsubscribe-resub-btn:hover:not(:disabled) {
+  background: #d1d5db;
+}
+
+.unsubscribe-resub-btn:disabled,
+.unsubscribe-dashboard-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.unsubscribe-dashboard-btn {
+  background: var(--accent-blue);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+.unsubscribe-dashboard-btn:hover:not(:disabled) {
+  opacity: 0.85;
+}

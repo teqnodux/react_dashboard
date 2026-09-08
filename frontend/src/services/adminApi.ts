@@ -61,8 +61,19 @@ export const userApi = {
       organization_id: string; allowed_deal_ids: string[];
     }>('/api/me/recipient'),
 
+  getSubscription: (deal_id: string) =>
+    api.get<{
+      deal_id: string; target: string; acquirer: string; subscribed: boolean;
+    }>('/api/me/subscription', { params: { deal_id } }),
+
   setMyDealAccess: (allowed_deal_ids: string[]) =>
     api.put('/api/me/deal-access', { allowed_deal_ids }),
+
+  unsubscribeDeal: (deal_id: string) =>
+    api.post<{ ok: boolean; deal_id: string }>('/api/me/unsubscribe', { deal_id }),
+
+  resubscribeDeal: (deal_id: string) =>
+    api.post<{ ok: boolean; deal_id: string }>('/api/me/resubscribe', { deal_id }),
 
   getDeals: (status?: string) =>
     api.get<{
