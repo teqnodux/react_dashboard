@@ -22,31 +22,49 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [token, setToken] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
+function readStoredAuth(): { user: User | null; token: string | null } {
+  try {
     const storedToken = localStorage.getItem('token');
     const storedUser = localStorage.getItem('user');
-    if (storedToken && storedUser) {
-      try {
-        setToken(storedToken);
-        setUser(JSON.parse(storedUser));
-      } catch {
-        localStorage.removeItem('token');
-        localStorage.removeItem('refreshToken');
-        localStorage.removeItem('user');
-      }
+    if (!storedToken || !storedUser) return { user: null, token: null };
+    return { token: storedToken, user: JSON.parse(storedUser) as User };
+  } catch {
+    try {
+      localStorage.removeItem('token');
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('user');
+    } catch {
+      /* storage may be blocked in some in-app browsers */
     }
-    setLoading(false);
+    return { user: null, token: null };
+  }
+}
+
+export function AuthProvider({ children }: { children: ReactNode }) {
+  const initial = readStoredAuth();
+  const [user, setUser] = useState<User | null>(initial.user);
+  const [token, setToken] = useState<string | null>(initial.token);
+  const [loading] = useState(false);
+
+  useEffect(() => {
+    function onPageShow(event: PageTransitionEvent) {
+      if (!event.persisted) return;
+      const stored = readStoredAuth();
+      setToken(stored.token);
+      setUser(stored.user);
+    }
+    window.addEventListener('pageshow', onPageShow);
+    return () => window.removeEventListener('pageshow', onPageShow);
   }, []);
 
   const logout = useCallback(() => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('refreshToken');
-    localStorage.removeItem('user');
+    try {
+      localStorage.removeItem('token');
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('user');
+    } catch {
+      /* ignore */
+    }
     setToken(null);
     setUser(null);
   }, []);
@@ -68,9 +86,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       access_mode: access_mode ?? 'full',
     };
 
-    localStorage.setItem('token', access);
-    localStorage.setItem('refreshToken', refresh);
-    localStorage.setItem('user', JSON.stringify(userData));
+    try {
+      localStorage.setItem('token', access);
+      localStorage.setItem('refreshToken', refresh);
+      localStorage.setItem('user', JSON.stringify(userData));
+    } catch {
+      /* keep in-memory session even if storage is blocked */
+    }
 
     setToken(access);
     setUser(userData);

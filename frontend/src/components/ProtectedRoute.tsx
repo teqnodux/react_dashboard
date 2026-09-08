@@ -6,7 +6,24 @@ export default function ProtectedRoute() {
   const { isAuthenticated, loading } = useAuth();
   const location = useLocation();
 
-  if (loading) return null;
+  if (loading) {
+    return (
+      <div
+        style={{
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: 'var(--text-secondary)',
+          fontFamily: 'var(--font-sans)',
+          fontSize: 13,
+        }}
+      >
+        Loading…
+      </div>
+    );
+  }
+
   if (!isAuthenticated) {
     const to = location.pathname === '/unsubscribe'
       ? `/login?redirect=${encodeURIComponent(location.pathname + location.search)}`
